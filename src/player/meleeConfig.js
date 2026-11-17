@@ -1,0 +1,33 @@
+// Seconds/metres, except health and damage. Prototype tuning lives here.
+export const MELEE_RANGE = 2
+export const MELEE_RADIUS = 0.42
+export const MELEE_COOLDOWN = 0.6
+export const MELEE_DAMAGE = 25
+export const ENTITY_HEALTH = 100
+export const ENTITY_RADIUS = 0.30
+export const ENTITY_HEIGHT = 1.8
+export const STAGGER_DURATION = 0.48
+export const STAGGER_PUSH = 0.85
+export const STAGGER_TILT = 0.21
+export const DEATH_DURATION = 0.45
+export const ENTITY_STATE = Object.freeze(Object.fromEntries(
+  ['IDLE', 'CHASE', 'ATTACK', 'ATTACK_RECOVER', 'STAGGER', 'DEAD', 'DODGE', 'TELEPORT_OUT', 'TELEPORT_IN', 'LIGHT_STUN', 'LIGHT_RECOVER'].map(name => [name, name])))
+export const AGGRO_RANGE = 13
+export const CHASE_SPEED = 0.6
+// Walk: 4 s loop, planted feet retreat ~0.4 m/s at the model's human scale.
+export const WALK_REFERENCE_SPEED = 0.4
+export const WALK_REFERENCE_TIME_SCALE = 1
+export const WALK_MAX_TIME_SCALE = 1.8
+export const WALK_STOP_SPEED = 0.015
+export const WALK_TURN_SPEED = 3.5
+export const ENTITY_ATTACK_RANGE = 1.7
+export const ENTITY_ATTACK_DAMAGE = 20
+export const ENTITY_ATTACK_COOLDOWN = 0.9
+export const ENTITY_IMPACT_FRACTION = 0.5
+export const ANIM_FADE = 0.16
+export const PLAYER_MAX_HEALTH = 100
+export const DAMAGE_FEEDBACK_DURATION = 0.2
+export const SMOKE_COUNT = 12
+export const SMOKE_DURATION = 1.8
+export const SMOKE_DELAY = 0.3
+export const BODY_FADE_DURATION = 0.6

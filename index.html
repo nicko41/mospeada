@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>MOSPEADA</title>
+    <style>
+      html, body { margin: 0; background: #000; }
+      #entry-preloader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: #000; opacity: 1; transition: opacity .55s ease; }
+      #entry-preloader.is-ready { opacity: 0; pointer-events: none; }
+      .entry-progress { width: min(220px, 55vw); height: 3px; overflow: hidden; background: #24231f; border-radius: 2px; }
+      #entry-progress-fill { width: 0; height: 100%; background: #d8d5c9; transition: width .3s ease-out; }
+      @media (prefers-reduced-motion: reduce) { #entry-preloader, #entry-progress-fill { transition: none; } }
+    </style>
+  </head>
+  <body>
+    <div id="entry-preloader">
+      <div class="entry-progress" role="progressbar" aria-label="Cargando el juego" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="entry-progress-fill"></div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

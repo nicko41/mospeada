@@ -1,0 +1,22 @@
+// All distances are metres, times seconds. Debug is deliberately off by default.
+export const SHOW_COLLIDERS = false
+export const PLAYER_RADIUS = 0.28
+export const PLAYER_HEIGHT = 1.8
+export const EYE_HEIGHT = 1.7
+export const MOVE_SPEED = 6
+export const RUN_SPEED = 10.5
+export const JUMP_FORCE = 4.5
+export const GRAVITY = 18
+export const GROUND_EPSILON = 0.025
+export const STEP_HEIGHT = 0.28
+export const MAX_MOVE_STEP = 0.10
+export const MAX_FRAME_DELTA = 0.05
+export const VAULT_CHECK_DISTANCE = 1.5
+export const MIN_VAULT_HEIGHT = 0.35
+export const MAX_VAULT_HEIGHT = 1.15
+export const VAULT_DURATION = 0.7
+export const VAULT_LANDING_MARGIN = 0.18
+export const VAULT_MAX_GROUND_CHANGE = 0.35
+export const VAULT_CLEARANCE = 0.10
+export const VAULT_CAMERA_DUCK = 0.28
+export const VAULT_CAMERA_PITCH = 0.10

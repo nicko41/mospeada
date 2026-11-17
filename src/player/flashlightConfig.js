@@ -1,0 +1,16 @@
+export const FLASHLIGHT_STUN_RANGE = 10
+export const FLASHLIGHT_STUN_CONE = 44 // Total angle in degrees.
+export const FLASHLIGHT_EXPOSURE_TIME = 0.60
+export const FLASHLIGHT_STUN_HOLD = 0.70
+export const FLASHLIGHT_RECOVERY_TIME = 0.60
+export const FLASHLIGHT_EVALUATION_HZ = 12
+export const FLASHLIGHT_MIN_MOVEMENT = 0.15
+export const FLASHLIGHT_MIN_ANIMATION = 0.25
+export const FLASHLIGHT_STUN_ANIMATION = 0.08
+export const MOBILE_RAISE_TIME = 0.30
+export const MOBILE_POSITION = [-0.23, -0.13, -0.48]
+export const MOBILE_SCALE = 0.18 / 54.8
+export const FLASHLIGHT_MAX_ACTIVE_TIME = 5
+export const FLASHLIGHT_RECHARGE_DELAY = 1.5
+export const FLASHLIGHT_FULL_RECHARGE = 7
+export const FLASHLIGHT_RESTART_THRESHOLD = 0.25
