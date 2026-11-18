@@ -1,0 +1,1971 @@
+{
+  "source": "assets/scott-bernard-gear.glb",
+  "output": "assets/scott-bernard-gear-hybrid.glb",
+  "sourceSha256": "bb96f71e8c0d2758f2d016a282d898e0218cbaa402ac3315209a2d5b1bf7373b",
+  "outputSha256": "9a83cd43c6151dec8fef5bb30b8fd6177e8e5166ebe2221a25642602f4c04d14",
+  "sourceUntouched": true,
+  "originalTrianglesPreserved": 10334,
+  "materialsAndTexturePayloadsIdentical": true,
+  "skeletonAndBindMatricesIdentical": true,
+  "originalAnimationDataIdentical": true,
+  "rigidRegions": 17,
+  "flexibleRegions": [
+    "Flexible_cloth_and_joint_liners",
+    "Review_unsplit_cloth_armor_interfaces"
+  ],
+  "originalArmorBlendedVertices": 12596,
+  "originalArmorVertices": 14106,
+  "maxBindIdentityError": 2.0524097754659465e-7,
+  "maxWeightSumError": 1.341104507446289e-7,
+  "invalidWeightVertices": 0,
+  "maxRestPoseDifferenceMetres": 3.255866414347115e-7,
+  "maxRigidDistanceErrorMetres": 4.172896164722495e-7,
+  "mixedTriangleInterfacesNeedingReview": 126,
+  "limitations": [
+    "Painted armor/cloth boundaries cross 126 existing triangles. These triangles keep their original geometry and skinning in a separately named review mesh.",
+    "Rigid shells can expose original open seams or overlap under deep bends; no filler geometry or altered proportions were added.",
+    "The current game pose is reproduced only in the isolated viewer. No driving solver or runtime asset reference was changed."
+  ],
+  "tests": [
+    {
+      "pose": "rest",
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923961182507e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.482294106902593e-7,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.309826299702223e-7,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.5954709492737038e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.112471248071905e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.024216187688116e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.393395738351181e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.4515875824207556e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.503156736534457e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.102820836710986e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.106030392942884e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923348601801e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.923304015666766e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2135527796552914e-7,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.8149762396068034e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.894378700578185e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.504011525714336e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "arms",
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923961182507e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.482294106902593e-7,
+          "maxOriginalRelativeDistanceChange": 0.505031926233074,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.309826299702223e-7,
+          "maxOriginalRelativeDistanceChange": 0.26459330469248066,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.5954709492737038e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.112471229336892e-8,
+          "maxOriginalRelativeDistanceChange": 0.2527502949158338,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.024216147095586e-8,
+          "maxOriginalRelativeDistanceChange": 0.000005167633841618446,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.393395738351181e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.4515875824207556e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.50315676706559e-8,
+          "maxOriginalRelativeDistanceChange": 0.44192127786216195,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.102820836710986e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.106030392942884e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923362479589e-8,
+          "maxOriginalRelativeDistanceChange": 0.2915095446329994,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.923303998666476e-8,
+          "maxOriginalRelativeDistanceChange": 0.0000036959269190672828,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2135527796552914e-7,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.8149762396068034e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.89437872902765e-8,
+          "maxOriginalRelativeDistanceChange": 0.39271620661052475,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.504011525714336e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "shoulders",
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923961182507e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.482294106902593e-7,
+          "maxOriginalRelativeDistanceChange": 1.122643571659892,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.309826299702223e-7,
+          "maxOriginalRelativeDistanceChange": 0.26657119983201794,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.5954709492737038e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.112471222397998e-8,
+          "maxOriginalRelativeDistanceChange": 0.000010278365705551629,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.024216143279195e-8,
+          "maxOriginalRelativeDistanceChange": 0.00000707984160619457,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.393395738351181e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.4515875824207556e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.50315675596336e-8,
+          "maxOriginalRelativeDistanceChange": 0.7248432812865311,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.102820836710986e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.106030392942884e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923370806262e-8,
+          "maxOriginalRelativeDistanceChange": 0.000014288251945382413,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.923304019483157e-8,
+          "maxOriginalRelativeDistanceChange": 0.000007598212815151939,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2135527796552914e-7,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.8149762396068034e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.894378690863734e-8,
+          "maxOriginalRelativeDistanceChange": 0.7172631741581377,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.504011525714336e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "knees",
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923961182507e-8,
+          "maxOriginalRelativeDistanceChange": 0.6741021709208319,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.482294106902593e-7,
+          "maxOriginalRelativeDistanceChange": 0.654471055056288,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.309826299702223e-7,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.5954709437225887e-8,
+          "maxOriginalRelativeDistanceChange": 0.2699383380958704,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.112471248071905e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.024216187688116e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.3933957411267386e-8,
+          "maxOriginalRelativeDistanceChange": 0.8425305411741058,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.451587588145343e-8,
+          "maxOriginalRelativeDistanceChange": 0.18061763603031034,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.503156736534457e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.10282083254765e-8,
+          "maxOriginalRelativeDistanceChange": 0.31259877043831996,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.1060304095962294e-8,
+          "maxOriginalRelativeDistanceChange": 0.2632943095958806,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923348601801e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.923304015666766e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2135527796552914e-7,
+          "maxOriginalRelativeDistanceChange": 0.8319541045052008,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.814976242382361e-8,
+          "maxOriginalRelativeDistanceChange": 0.20083422507459514,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.894378700578185e-8,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.50401153265323e-8,
+          "maxOriginalRelativeDistanceChange": 0.3376423917893211,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "seated",
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923961182507e-8,
+          "maxOriginalRelativeDistanceChange": 0.6741021709208319,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.482294106902593e-7,
+          "maxOriginalRelativeDistanceChange": 0.654471055056288,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.309826299702223e-7,
+          "maxOriginalRelativeDistanceChange": 0.26459330469248066,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.5954709437225887e-8,
+          "maxOriginalRelativeDistanceChange": 0.2699383380958704,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.112471229336892e-8,
+          "maxOriginalRelativeDistanceChange": 0.2527502949158338,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.024216147095586e-8,
+          "maxOriginalRelativeDistanceChange": 0.000005167633841618446,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.3933957411267386e-8,
+          "maxOriginalRelativeDistanceChange": 0.8425305411741058,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.451587588145343e-8,
+          "maxOriginalRelativeDistanceChange": 0.18061763603031034,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.50315676706559e-8,
+          "maxOriginalRelativeDistanceChange": 0.44192127786216195,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.10282083254765e-8,
+          "maxOriginalRelativeDistanceChange": 0.31259877043831996,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.1060304095962294e-8,
+          "maxOriginalRelativeDistanceChange": 0.2632943095958806,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923362479589e-8,
+          "maxOriginalRelativeDistanceChange": 0.2915095446329994,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.923303998666476e-8,
+          "maxOriginalRelativeDistanceChange": 0.0000036959269190672828,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2135527796552914e-7,
+          "maxOriginalRelativeDistanceChange": 0.8319541045052008,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.814976242382361e-8,
+          "maxOriginalRelativeDistanceChange": 0.20083422507459514,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.89437872902765e-8,
+          "maxOriginalRelativeDistanceChange": 0.39271620661052475,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.50401153265323e-8,
+          "maxOriginalRelativeDistanceChange": 0.3376423917893211,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "driving",
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.151977419490475e-8,
+          "maxOriginalRelativeDistanceChange": 0.7556939710975765,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.8688169217684347e-7,
+          "maxOriginalRelativeDistanceChange": 1.4348365353481154,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 4.172896164722495e-7,
+          "maxOriginalRelativeDistanceChange": 0.6280247593500305,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.2722656195804944e-8,
+          "maxOriginalRelativeDistanceChange": 0.5564749176656758,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.967118278468966e-8,
+          "maxOriginalRelativeDistanceChange": 0.2894011215814052,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.0116609707247481e-7,
+          "maxOriginalRelativeDistanceChange": 0.17045327140867217,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.799776888777309e-8,
+          "maxOriginalRelativeDistanceChange": 2.1952732208499413,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.0908632264736724e-8,
+          "maxOriginalRelativeDistanceChange": 0.8845065543447972,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.1981198599908538e-7,
+          "maxOriginalRelativeDistanceChange": 0.8436297159661694,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.433431719299332e-8,
+          "maxOriginalRelativeDistanceChange": 1.1322014002739889,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.437478106136041e-8,
+          "maxOriginalRelativeDistanceChange": 0.584326709565806,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.1479121936330827e-7,
+          "maxOriginalRelativeDistanceChange": 0.7950743363465687,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.989383681005548e-8,
+          "maxOriginalRelativeDistanceChange": 0.32574292261623905,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.5299986422245837e-7,
+          "maxOriginalRelativeDistanceChange": 1.7772532430644246,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.549009057468577e-8,
+          "maxOriginalRelativeDistanceChange": 0.4930858975457847,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.692155931827594e-8,
+          "maxOriginalRelativeDistanceChange": 0.5691132446025325,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.939236847636199e-8,
+          "maxOriginalRelativeDistanceChange": 1.3440391741672602,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "Running",
+      "animationTime": 0,
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923960141673e-8,
+          "maxOriginalRelativeDistanceChange": 0.3925381534290363,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.487415297041217e-7,
+          "maxOriginalRelativeDistanceChange": 0.5451212627714845,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.3124960252539637e-7,
+          "maxOriginalRelativeDistanceChange": 0.33382699335214383,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.501568762720453e-8,
+          "maxOriginalRelativeDistanceChange": 1.5458466209751989,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.270704865253164e-8,
+          "maxOriginalRelativeDistanceChange": 0.30078979569175934,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.987635645273494e-8,
+          "maxOriginalRelativeDistanceChange": 0.09847756173707523,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.9551942072078035e-8,
+          "maxOriginalRelativeDistanceChange": 1.621076393775275,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.5914754508971072e-8,
+          "maxOriginalRelativeDistanceChange": 0.6598439786330663,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.288247460048638e-8,
+          "maxOriginalRelativeDistanceChange": 0.6051519868329082,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.219154985442898e-8,
+          "maxOriginalRelativeDistanceChange": 0.505002372191689,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 4.9521036271649166e-8,
+          "maxOriginalRelativeDistanceChange": 1.2551746740142673,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.210402976411736e-8,
+          "maxOriginalRelativeDistanceChange": 0.6025562179827348,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.945134813253096e-8,
+          "maxOriginalRelativeDistanceChange": 0.16201340761963268,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2228381565670965e-7,
+          "maxOriginalRelativeDistanceChange": 1.4084921152203402,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.7766304977472345e-8,
+          "maxOriginalRelativeDistanceChange": 0.6908122606935818,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.000639509063822e-8,
+          "maxOriginalRelativeDistanceChange": 0.6677271032157606,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.5050750152885186e-8,
+          "maxOriginalRelativeDistanceChange": 0.4774172853546652,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "Running",
+      "animationTime": 0.25,
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.46592396950918e-8,
+          "maxOriginalRelativeDistanceChange": 0.3896545771033051,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.4849248192172482e-7,
+          "maxOriginalRelativeDistanceChange": 0.6018800230757047,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.3128934523452003e-7,
+          "maxOriginalRelativeDistanceChange": 0.4187015793354676,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.5350415155944717e-8,
+          "maxOriginalRelativeDistanceChange": 2.294594880639198,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.118071812528548e-8,
+          "maxOriginalRelativeDistanceChange": 0.38259217027300396,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.023791688363535e-8,
+          "maxOriginalRelativeDistanceChange": 0.02837348676968432,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.4421417705619035e-8,
+          "maxOriginalRelativeDistanceChange": 0.6743230770490236,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.4541815598841388e-8,
+          "maxOriginalRelativeDistanceChange": 0.3612249808418546,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.379628587713462e-8,
+          "maxOriginalRelativeDistanceChange": 0.7670384311409063,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.1543634971285e-8,
+          "maxOriginalRelativeDistanceChange": 0.29441913193898706,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.633971866814136e-8,
+          "maxOriginalRelativeDistanceChange": 2.521363991412212,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.042383108948115e-8,
+          "maxOriginalRelativeDistanceChange": 0.5217342569504435,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.918495818423632e-8,
+          "maxOriginalRelativeDistanceChange": 0.15500433901353206,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.1845782785235848e-7,
+          "maxOriginalRelativeDistanceChange": 0.9529995057915386,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.9268969636842e-8,
+          "maxOriginalRelativeDistanceChange": 0.27740087370315236,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.881656942209213e-8,
+          "maxOriginalRelativeDistanceChange": 0.590118625789321,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.503118168104226e-8,
+          "maxOriginalRelativeDistanceChange": 0.4231893909145532,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "Running",
+      "animationTime": 0.5,
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.466538806162991e-8,
+          "maxOriginalRelativeDistanceChange": 0.2552230175904715,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.4811161608285772e-7,
+          "maxOriginalRelativeDistanceChange": 0.6314439990007964,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.308529410994687e-7,
+          "maxOriginalRelativeDistanceChange": 0.4549712791968439,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.021221173238331e-8,
+          "maxOriginalRelativeDistanceChange": 3.130691838422176,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.227257131647846e-8,
+          "maxOriginalRelativeDistanceChange": 0.3617656753114509,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.071227314276896e-8,
+          "maxOriginalRelativeDistanceChange": 0.11892549727821966,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 4.739924591712352e-8,
+          "maxOriginalRelativeDistanceChange": 0.9255300429974893,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.4413547072832387e-8,
+          "maxOriginalRelativeDistanceChange": 1.1971386749595272,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.918654164664531e-8,
+          "maxOriginalRelativeDistanceChange": 0.6898732605829554,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.4644848451745887e-8,
+          "maxOriginalRelativeDistanceChange": 0.552866676789312,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.4013713234859466e-8,
+          "maxOriginalRelativeDistanceChange": 4.6494481461476385,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.48052177041081e-8,
+          "maxOriginalRelativeDistanceChange": 0.5824609738910491,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.932100172872159e-8,
+          "maxOriginalRelativeDistanceChange": 0.20394962088739887,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.3003836896174903e-7,
+          "maxOriginalRelativeDistanceChange": 0.7476007241641764,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.147793159463674e-8,
+          "maxOriginalRelativeDistanceChange": 0.548632022426387,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.928503701320032e-8,
+          "maxOriginalRelativeDistanceChange": 0.6290291838420178,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.9032409266412955e-8,
+          "maxOriginalRelativeDistanceChange": 0.3326746817709374,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "Running",
+      "animationTime": 0.75,
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923961529452e-8,
+          "maxOriginalRelativeDistanceChange": 0.36610136329532894,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.4819093147044882e-7,
+          "maxOriginalRelativeDistanceChange": 0.5587629361273001,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.3093746393264567e-7,
+          "maxOriginalRelativeDistanceChange": 0.408360006431844,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.206388560217377e-8,
+          "maxOriginalRelativeDistanceChange": 3.0841364450646145,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.9879268448092e-8,
+          "maxOriginalRelativeDistanceChange": 0.31514594077677205,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.047228615762347e-8,
+          "maxOriginalRelativeDistanceChange": 0.1263514269829814,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.694153618063247e-8,
+          "maxOriginalRelativeDistanceChange": 1.8476516849374414,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.475400172341491e-8,
+          "maxOriginalRelativeDistanceChange": 0.6095224740021765,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.662302374868759e-8,
+          "maxOriginalRelativeDistanceChange": 0.6025663474927908,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.3764910828979495e-8,
+          "maxOriginalRelativeDistanceChange": 0.5100405386179001,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.259845553551301e-8,
+          "maxOriginalRelativeDistanceChange": 3.6758745944008053,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.717990437889789e-8,
+          "maxOriginalRelativeDistanceChange": 0.72939005193451,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.886593297520839e-8,
+          "maxOriginalRelativeDistanceChange": 0.13041190031293037,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2050821432407766e-7,
+          "maxOriginalRelativeDistanceChange": 1.1842137711106053,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.8482507477556318e-8,
+          "maxOriginalRelativeDistanceChange": 1.1164126544619588,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.838872361643322e-8,
+          "maxOriginalRelativeDistanceChange": 0.8237100613811454,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.4578923588954886e-8,
+          "maxOriginalRelativeDistanceChange": 0.4899873605835878,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "Walking",
+      "animationTime": 0,
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923967774456e-8,
+          "maxOriginalRelativeDistanceChange": 0.18767102439533767,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.4822941085679275e-7,
+          "maxOriginalRelativeDistanceChange": 0.5297910030998815,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.3098262991471117e-7,
+          "maxOriginalRelativeDistanceChange": 0.3941086657723565,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.299278145656558e-8,
+          "maxOriginalRelativeDistanceChange": 0.8348535279109683,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.181941841238881e-8,
+          "maxOriginalRelativeDistanceChange": 0.11205229836256225,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.991308871926894e-8,
+          "maxOriginalRelativeDistanceChange": 0.12431401715462154,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.231062830124422e-8,
+          "maxOriginalRelativeDistanceChange": 0.5903199728101723,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.4378815235634455e-8,
+          "maxOriginalRelativeDistanceChange": 0.3046505898732996,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.21546280119312e-8,
+          "maxOriginalRelativeDistanceChange": 0.5466382224726105,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.1028208512826634e-8,
+          "maxOriginalRelativeDistanceChange": 0.2277255277357737,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.731735948031556e-8,
+          "maxOriginalRelativeDistanceChange": 0.6829976660364161,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923343050686e-8,
+          "maxOriginalRelativeDistanceChange": 0.1565805275223664,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.923304003523701e-8,
+          "maxOriginalRelativeDistanceChange": 0.043763301792510534,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.375787924695615e-7,
+          "maxOriginalRelativeDistanceChange": 0.5812085136690006,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.8028490356722955e-8,
+          "maxOriginalRelativeDistanceChange": 0.32425351835307925,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.894378699884296e-8,
+          "maxOriginalRelativeDistanceChange": 0.3903636612700123,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.25697215428378e-8,
+          "maxOriginalRelativeDistanceChange": 0.30455285713793345,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "Walking",
+      "animationTime": 0.25,
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923982346133e-8,
+          "maxOriginalRelativeDistanceChange": 0.3691771908091206,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.4822941107883736e-7,
+          "maxOriginalRelativeDistanceChange": 0.5229361414355709,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.309826301922669e-7,
+          "maxOriginalRelativeDistanceChange": 0.34273618132396955,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.2130740406911542e-8,
+          "maxOriginalRelativeDistanceChange": 2.4886057248187705,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.112471225173556e-8,
+          "maxOriginalRelativeDistanceChange": 0.14066368928070982,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.024294228733964e-8,
+          "maxOriginalRelativeDistanceChange": 0.14928195501991515,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.089215154852056e-8,
+          "maxOriginalRelativeDistanceChange": 1.6870872398461638,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.4252779142613923e-8,
+          "maxOriginalRelativeDistanceChange": 0.4499663722438132,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.5031567337589e-8,
+          "maxOriginalRelativeDistanceChange": 0.4952173351108009,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.225658236684971e-8,
+          "maxOriginalRelativeDistanceChange": 0.42437197142075633,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.038117012468035e-8,
+          "maxOriginalRelativeDistanceChange": 3.0698351475957315,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923345826244e-8,
+          "maxOriginalRelativeDistanceChange": 0.19552036475113455,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.923303989298969e-8,
+          "maxOriginalRelativeDistanceChange": 0.050190253210014024,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2158420301111583e-7,
+          "maxOriginalRelativeDistanceChange": 1.234958517551041,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.805849311227071e-8,
+          "maxOriginalRelativeDistanceChange": 0.8951924813833343,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.89437869502707e-8,
+          "maxOriginalRelativeDistanceChange": 0.4204965787726207,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.5156052267135713e-8,
+          "maxOriginalRelativeDistanceChange": 0.4375492147064155,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "Walking",
+      "animationTime": 0.5,
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923956325281e-8,
+          "maxOriginalRelativeDistanceChange": 0.19326888031533696,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.4822941096781506e-7,
+          "maxOriginalRelativeDistanceChange": 0.5337704559839611,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.309826300812446e-7,
+          "maxOriginalRelativeDistanceChange": 0.3845537484394692,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.141731963474115e-8,
+          "maxOriginalRelativeDistanceChange": 0.9899000780991014,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.121673293447595e-8,
+          "maxOriginalRelativeDistanceChange": 0.1135640336201007,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.022793204776058e-8,
+          "maxOriginalRelativeDistanceChange": 0.12076652944918198,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 4.677715223500023e-8,
+          "maxOriginalRelativeDistanceChange": 0.343015298662931,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.5179173718248293e-8,
+          "maxOriginalRelativeDistanceChange": 0.16393568341639475,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.503156725432227e-8,
+          "maxOriginalRelativeDistanceChange": 0.5082846229845355,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.441007229489703e-8,
+          "maxOriginalRelativeDistanceChange": 0.19775030439808816,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.422361192859327e-8,
+          "maxOriginalRelativeDistanceChange": 0.974546331112766,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923365255146e-8,
+          "maxOriginalRelativeDistanceChange": 0.11210739286836091,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.923124255293512e-8,
+          "maxOriginalRelativeDistanceChange": 0.12219412482317771,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.1462815835416862e-7,
+          "maxOriginalRelativeDistanceChange": 0.6852781826139688,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.064918271955541e-8,
+          "maxOriginalRelativeDistanceChange": 0.14179330660689027,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.894378677679835e-8,
+          "maxOriginalRelativeDistanceChange": 0.4091544311074069,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 4.904888258050466e-8,
+          "maxOriginalRelativeDistanceChange": 0.2572675397035602,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    },
+    {
+      "pose": "Walking",
+      "animationTime": 0.75,
+      "parts": [
+        {
+          "name": "Flexible_cloth_and_joint_liners",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Review_unsplit_cloth_armor_interfaces",
+          "rigid": false,
+          "maxRigidDistanceErrorMetres": 0,
+          "maxOriginalRelativeDistanceChange": 0,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_belt_and_groin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.465923976448074e-8,
+          "maxOriginalRelativeDistanceChange": 0.3570300828812146,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_chest_and_back",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.482294112453708e-7,
+          "maxOriginalRelativeDistanceChange": 0.6223361852683765,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_helmet_and_jaw",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 3.309826300812446e-7,
+          "maxOriginalRelativeDistanceChange": 0.43342573594188316,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.7117693923717212e-8,
+          "maxOriginalRelativeDistanceChange": 1.9201452980019909,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.112471236275786e-8,
+          "maxOriginalRelativeDistanceChange": 0.2506236361205081,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 8.024216149871144e-8,
+          "maxOriginalRelativeDistanceChange": 0.08540787042488396,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 4.786348295482412e-8,
+          "maxOriginalRelativeDistanceChange": 1.9959006186989203,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.4405947041117315e-8,
+          "maxOriginalRelativeDistanceChange": 1.2079709361291915,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.503156728207784e-8,
+          "maxOriginalRelativeDistanceChange": 0.4575826371958782,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Left_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.3476858448420206e-8,
+          "maxOriginalRelativeDistanceChange": 0.5328199785008849,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_boot_and_ankle",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.069909247978899e-8,
+          "maxOriginalRelativeDistanceChange": 3.2100813586227677,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_forearm",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 9.104923348601801e-8,
+          "maxOriginalRelativeDistanceChange": 0.15694713951714812,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_glove",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 7.92330402191177e-8,
+          "maxOriginalRelativeDistanceChange": 0.13561042464395656,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_kneecap",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 1.2132205029491416e-7,
+          "maxOriginalRelativeDistanceChange": 0.9856413105458626,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shin",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 2.81618419140095e-8,
+          "maxOriginalRelativeDistanceChange": 0.3832243361343586,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_shoulder",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 6.894378676985946e-8,
+          "maxOriginalRelativeDistanceChange": 0.5291674411184153,
+          "maxFlexibleDifferenceMetres": 0
+        },
+        {
+          "name": "Rigid_Right_thigh",
+          "rigid": true,
+          "maxRigidDistanceErrorMetres": 5.504011527102115e-8,
+          "maxOriginalRelativeDistanceChange": 0.33630886109084535,
+          "maxFlexibleDifferenceMetres": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "entryMs": 14739.099999904633,
+  "preparation": {
+    "startMs": 11025.299999952316,
+    "initialGLError": 0,
+    "compileMs": 656.6000000238419,
+    "primeMs": 1791.1000000238419,
+    "totalMs": 2447.7000000476837,
+    "programs": 334
+  },
+  "programs": 334,
+  "materials": 374,
+  "assetsEndMs": 7603.399999976158,
+  "longTasks": 19,
+  "longTaskMs": 10153,
+  "maxTaskMs": 1791,
+  "mode": "ANIME",
+  "error": "",
+  "gl": 0
+}

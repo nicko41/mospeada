@@ -1,0 +1,19 @@
+{
+  "entryMs": 66119.30000007153,
+  "preparation": {
+    "startMs": 28769.900000095367,
+    "compileMs": 452.2999999523163,
+    "primeMs": 34642.89999997616,
+    "totalMs": 35095.199999928474,
+    "programs": 420
+  },
+  "programs": 463,
+  "materials": 374,
+  "assetsEndMs": 6922.900000095367,
+  "longTasks": 20,
+  "longTaskMs": 61614,
+  "maxTaskMs": 34643,
+  "mode": "ANIME",
+  "error": "",
+  "gl": 1281
+}

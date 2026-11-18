@@ -1,0 +1,73 @@
+{
+  "initialContextError": 0,
+  "startupError": 0,
+  "samples": [
+    {
+      "name": "dayPBR",
+      "ms": 22.700000047683716,
+      "newPrograms": 0,
+      "calls": 807,
+      "gl": 0
+    },
+    {
+      "name": "nightPBR-first",
+      "ms": 27,
+      "newPrograms": 0,
+      "calls": 829,
+      "gl": 0
+    },
+    {
+      "name": "nightPBR-repeat",
+      "ms": 23.299999952316284,
+      "newPrograms": 0,
+      "calls": 829,
+      "gl": 0
+    },
+    {
+      "name": "nightANIME-first",
+      "ms": 19.59999990463257,
+      "newPrograms": 0,
+      "calls": 829,
+      "gl": 0
+    },
+    {
+      "name": "nightANIME-repeat",
+      "ms": 14.200000047683716,
+      "newPrograms": 0,
+      "calls": 829,
+      "gl": 0
+    },
+    {
+      "name": "dayANIME-first",
+      "ms": 17.09999990463257,
+      "newPrograms": 0,
+      "calls": 808,
+      "gl": 0
+    },
+    {
+      "name": "dayANIME-repeat",
+      "ms": 11.600000023841858,
+      "newPrograms": 0,
+      "calls": 808,
+      "gl": 0
+    },
+    {
+      "name": "dayPBR-return",
+      "ms": 20.700000047683716,
+      "newPrograms": 0,
+      "calls": 807,
+      "gl": 0
+    }
+  ],
+  "pbrPixels": {
+    "direct": 0,
+    "roundtrip": 0
+  },
+  "originalMeshes": true,
+  "nightShadowMaps": true,
+  "invalidPrograms": [],
+  "error": "",
+  "maskFormat": 1028,
+  "programs": 334,
+  "context": "Frozen scene, 1422x904. Each measurement renders then calls gl.finish; excludes startup precompilation, not a gameplay FPS benchmark."
+}

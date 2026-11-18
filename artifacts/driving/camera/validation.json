@@ -1,0 +1,70 @@
+{
+  "startupGLError": 0,
+  "default": {
+    "enabled": true,
+    "mode": 0,
+    "azimuth": 1.5707963267948966,
+    "radius": 3.6017356926904007,
+    "zoom": 3.6017356926904007,
+    "subjectDistance": 3.311470511740941,
+    "paused": true
+  },
+  "mouseLook": {
+    "enabled": true,
+    "mode": 0,
+    "azimuth": 0.9717258143782602,
+    "radius": 3.6017356926903963,
+    "zoom": 3.6017356926904007,
+    "subjectDistance": 3.2909843740367855,
+    "paused": true
+  },
+  "zoom": {
+    "enabled": true,
+    "mode": 0,
+    "azimuth": 0.5526792526186345,
+    "radius": 2.933636232544396,
+    "zoom": 2.9336362325444085,
+    "subjectDistance": 2.74995352394171,
+    "paused": true
+  },
+  "recentered": {
+    "enabled": true,
+    "mode": 0,
+    "azimuth": 1.5707963267948966,
+    "radius": 3.6017356926904007,
+    "zoom": 3.6017356926904007,
+    "subjectDistance": 3.439366792219051,
+    "paused": true
+  },
+  "fastFollow": {
+    "enabled": true,
+    "mode": 0,
+    "azimuth": 1.5707963267948966,
+    "radius": 4.025380420117806,
+    "zoom": 3.6017356926904007,
+    "subjectDistance": 3.65180295178702,
+    "paused": true
+  },
+  "touchOrbit": {
+    "enabled": true,
+    "mode": 0,
+    "azimuth": 1.3408213907486926,
+    "radius": 3.601735692690402,
+    "zoom": 3.6017356926904007,
+    "subjectDistance": 3.2501755078092125,
+    "paused": true
+  },
+  "touchZoom": {
+    "enabled": true,
+    "mode": 0,
+    "azimuth": 1.1948790253987107,
+    "radius": 2.521214984883277,
+    "zoom": 2.5212149848832706,
+    "subjectDistance": 2.195214673750634,
+    "paused": true
+  },
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

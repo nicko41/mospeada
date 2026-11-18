@@ -1,0 +1,363 @@
+{
+  "nodeTests": {
+    "passed": 75,
+    "failed": 0,
+    "drivingAndAssetTests": 10,
+    "worldGrassTests": 2,
+    "animeTests": 5,
+    "actionDynamicsTests": 7,
+    "surfaceBrushTests": 4,
+    "riderMotionTests": 2,
+    "drivingRefinementTests": 5,
+    "drivingCameraTests": 4,
+    "wheeliePresenceTests": 7
+  },
+  "productionBuild": "passed",
+  "diffWhitespaceCheck": "passed",
+  "sourceHashes": {
+    "checked": 7,
+    "unchanged": 7
+  },
+  "revision": {
+    "report": "revision-validation.json",
+    "freeOrbit": true,
+    "zoom": true,
+    "handbrakeSlipRadians": 0.15399281972302714,
+    "inertialTakeoff": true,
+    "landed": true,
+    "maxGapMetres": 1.9091522309179183,
+    "idleLeanRadians": -0.13751680314578346,
+    "errors": []
+  },
+  "verifiedGeometry": [
+    "gloves inside sloped fairing planes",
+    "hydraulic swivel and piston endpoints",
+    "hydraulic clearance from tires across steering and suspension",
+    "stationary display",
+    "left-foot sole at ground",
+    "idle head scan"
+  ],
+  "limitations": [
+    "Arcade dynamics; no lateral falls or full rigid-body collision simulation."
+  ],
+  "hydraulicSeating": {
+    "report": "hydraulic-seating-validation.json",
+    "bothBasesInsideSlots": true,
+    "externalBaseSpacersRemoved": true,
+    "guardMaxOpeningDegrees": 11.459155902616464,
+    "steeringSamples": 21,
+    "suspensionSamples": 3,
+    "guardAndTireClearance": "passed",
+    "browserErrors": []
+  },
+  "frontForkMounts": {
+    "report": "front-forks-validation.json",
+    "fixedTopMounts": true,
+    "geometryCases": 63,
+    "browserCases": 6,
+    "maxTopErrorMetres": 0,
+    "maxBottomErrorMetres": 1.4238583238573986e-14,
+    "minInsertionMetres": 0.12900591781419135,
+    "errors": []
+  },
+  "booster": {
+    "report": "boost-validation.json",
+    "topSpeedKmh": 214.7633230135415,
+    "boostedSpeedKmh": 252.30602081590436,
+    "zeroTo100Seconds": 2.933333333333333,
+    "oneImpulsePerPress": true,
+    "bothShiftKeys": true,
+    "spaceHandbrakeIndependent": true,
+    "rearSquatMetres": 0.03646258108915257,
+    "frontDiveMetres": 0.009809579425277947,
+    "flatContactAndForkAnchors": "passed",
+    "airborneThrust": "passed",
+    "frameRate30and120": "passed",
+    "errors": []
+  },
+  "driving": {
+    "report": "browser-validation.json",
+    "samples": 214,
+    "maxFrontContactError": 0.03253983565661489,
+    "maxRearContactError": 0.00012066247555519993,
+    "maxHandError": 3.3740735317990876e-14,
+    "errors": []
+  },
+  "scottReplacement": {
+    "report": "scott-replacement-validation.json",
+    "source": "C:\\IT-UP\\MOSPEADA\\assets\\scott-bernard-gear.glb",
+    "sha256": "bb96f71e8c0d2758f2d016a282d898e0218cbaa402ac3315209a2d5b1bf7373b",
+    "bones": 24,
+    "textures": 3,
+    "poseAndContacts": "passed",
+    "errors": []
+  },
+  "hydraulicParallel": {
+    "report": "hydraulic-parallel-validation.json",
+    "sidewaysOffsetMetres": 2.842170943040401e-14,
+    "restPitchDegrees": 0.012627710174740672,
+    "concealedFrontMount": true,
+    "geometryCases": 63,
+    "guardAndTireClearance": "passed"
+  },
+  "hydraulicForkConnection": {
+    "report": "hydraulic-connector-validation.json",
+    "connectedPart": "Fork_Left_Lower_Reinforcement",
+    "mount": "Closest point on the original reinforcement surface",
+    "geometryCases": 63,
+    "connectorLengthAtRestMetres": 0.24767539547137174,
+    "maxConnectorStartErrorMetres": 1.4210854715202004e-14,
+    "maxConnectorEndErrorMetres": 2.010208941128915e-14,
+    "frontTireClearance": "passed",
+    "mainActuatorParallelAtRest": "passed",
+    "nodeTests": {
+      "passed": 39,
+      "failed": 0
+    },
+    "productionBuild": "passed",
+    "browserErrors": [],
+    "screenshot": "hydraulic-fork-connection.png"
+  },
+  "nightLights": {
+    "report": "night-lights-validation.json",
+    "headlights": 2,
+    "amber": 2,
+    "emissiveOpticalSurfaces": 10,
+    "independentRoadBeams": "passed",
+    "automaticNightAndDay": "passed",
+    "sourceMaterialsPreserved": "passed",
+    "roadLuminance": {
+      "off": 18.948435480262994,
+      "left": 23.92854983223705,
+      "right": 23.908587473684104,
+      "both": 27.83090411513089
+    },
+    "errors": []
+  },
+  "environmentRestoration": {
+    "report": "environment-restoration-validation.json",
+    "originalGrass": 11000,
+    "fogDensity": 0.068,
+    "allPbrMapsLoaded": true,
+    "studioReflectionsVehicleOnly": true,
+    "extensionVegetation": true,
+    "stableRecycling": true,
+    "embankmentDepthOcclusion": "verified visually",
+    "errors": [],
+    "hardwareConclusion": "Isolated test renderer; this does not benchmark the user GPU."
+  },
+  "anime": {
+    "report": "../anime/validation.json",
+    "pbrPixelDifferences": 0,
+    "comparisonPbrPixelDifferences": 0,
+    "originalGeometryAndBones": true,
+    "glbReloadsOnSwitch": 0,
+    "levels": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "cameraModes": 4,
+    "invalidShaderPrograms": 0,
+    "switchReport": "../anime/switch-performance.json",
+    "runtimeShaderCompilationsOnSwitch": 0
+  },
+  "weightDynamics": {
+    "report": "action/validation.json",
+    "renderRegression": "action/render-regression.json",
+    "braking100ToZeroMetres": 14.722962962963038,
+    "braking100ToZeroSeconds": 1.075,
+    "frontFirstImpactStrokeMetres": 0.05879843848220223,
+    "rearWagAndBothColeadaDirections": true,
+    "firstAxleIndependentImpacts": true,
+    "frameRatesChecked": [
+      30,
+      120
+    ],
+    "handbrakeStopFrom72KmhSeconds": 0.925,
+    "handbrakeWagDurationSeconds": 0.8,
+    "jumpAirtimeSeconds": [
+      0.8916666666666659,
+      1.3166666666666644,
+      1.3249999999999977
+    ],
+    "jumpDistanceMetres": [
+      16.233516625316618,
+      48.99022733100165,
+      72.94930741833284
+    ]
+  },
+  "surfaceBrush": {
+    "report": "../anime/brush/validation.json",
+    "paintedPieces": 70,
+    "pbrPixelsChanged": 0,
+    "unselectedMeshesPixelsChanged": 0,
+    "newPrograms": 0,
+    "webglErrors": 0,
+    "manualPlayback": true,
+    "staggerByPieceAndNormal": true,
+    "sweepSeconds": 0.55,
+    "maximumDelaySeconds": 0.32,
+    "sequenceSeconds": 0.87
+  },
+  "refinedAction": {
+    "report": "action/refinement.json",
+    "maximumTerrainLaunchSpeed": 11,
+    "airGravityScale": 1.6,
+    "handbrakeDeceleration": 23,
+    "handbrakeTurnDuration": 1.25,
+    "terrainLaunchGain": 2.35,
+    "latestLandingReport": "landing/validation.json"
+  },
+  "heavyLanding": {
+    "report": "landing/validation.json",
+    "terrainLaunchGain": 2.35,
+    "maximumTerrainLaunchSpeed": 11,
+    "airGravityScale": 1.6,
+    "chassisCompressionMetres": 0.19897590236741325,
+    "reboundMetres": 0.05475527396012114,
+    "secondCompressionMetres": 0.020130517827460226,
+    "bothWheelsRemainPlanted": true,
+    "landingCounts": [
+      1,
+      1
+    ],
+    "realCrestPeakMetres": 4.019261099519684,
+    "contactSamples": 48,
+    "errors": {
+      "shader": "",
+      "gl": 0
+    }
+  },
+  "riderActions": {
+    "report": "rider/validation.json",
+    "standingOnPegs": true,
+    "hipsRiseMetres": 0.2996258560299645,
+    "feetFixedInFlight": true,
+    "handsInsideCovers": true,
+    "landingKneeFlexion": true,
+    "insideLegDuringColeada": true,
+    "boneProportionsUnchanged": true,
+    "errors": {
+      "shader": "",
+      "gl": 0
+    },
+    "bootSolesFixedOnPegs": true,
+    "kneesBendForward": true,
+    "maximumSoleContactShift": 0.0005397815000622543
+  },
+  "footSupport": {
+    "report": "foot/validation.json",
+    "reference": "Original boot sole and toe bind pose",
+    "terrainAligned": true,
+    "heelAndForefootChecked": true,
+    "stoppedClearanceMin": 0.0025341934625058293,
+    "stoppedClearanceMax": 0.014865691625908006,
+    "startupGLError": 1281,
+    "poseErrors": {
+      "shader": "",
+      "gl": 0
+    }
+  },
+  "latestDrivingRefinements": {
+    "report": "refinements/validation.json",
+    "jump": [
+      {
+        "speed": 8,
+        "peak": 3.5751551838050997,
+        "gap": 1.8315421134412466
+      },
+      {
+        "speed": 20,
+        "peak": 4.361260364101091,
+        "gap": 2.2460499329021006
+      },
+      {
+        "speed": 40,
+        "peak": 4.987920594602611,
+        "gap": 4.182697346404714
+      },
+      {
+        "speed": 80,
+        "peak": 5.809233285923022,
+        "gap": 5.730332639669071
+      }
+    ],
+    "road": {
+      "highway": {
+        "low": -0.002708898276550631,
+        "high": 0.002971162664257676,
+        "span": 0.005680060940808307,
+        "grounded": true,
+        "surface": "asphalt"
+      },
+      "rough": {
+        "low": -0.009759206060958689,
+        "high": 0.01258578127160176,
+        "span": 0.022344987332560448,
+        "grounded": true,
+        "surface": "dirt"
+      }
+    },
+    "brakeReverseKey": "S / ArrowDown",
+    "reversePoweredByRider": true,
+    "reverseMaxMetresPerSecond": 0.9,
+    "boostRiderCrouchesForward": true,
+    "errors": {
+      "shader": "",
+      "gl": 0
+    },
+    "touchLayoutVerified": true
+  },
+  "drivingCamera": {
+    "report": "camera/validation.json",
+    "alwaysActive": true,
+    "mouseLookWithoutActivation": true,
+    "closeThirdPerson": true,
+    "stationarySubjectDistance": 3.3122259013264967,
+    "fastSubjectDistance": 3.6514555817931162,
+    "touchOrbitAndZoom": true,
+    "interactiveDuringPause": true,
+    "obstacleRetractionTested": true,
+    "errors": {
+      "shader": "",
+      "gl": 0
+    }
+  },
+  "wheelieAndPresence": {
+    "report": "actions/validation.json",
+    "wheelieStable": true,
+    "wheelieMaxSeconds": 6,
+    "releaseRequiredToRearm": true,
+    "dismountWalkRemount": true,
+    "bootsGrounded": true,
+    "sourceModelsUnchanged": true,
+    "errors": {
+      "shader": "",
+      "gl": 0
+    }
+  },
+  "speedBrush": {
+    "report": "actions/speed-brush-validation.json",
+    "stoppedAutomaticStrokes": 0,
+    "adaptiveCadence": true,
+    "highSpeedPauseSeconds": 0.045,
+    "panelStaggerPreserved": true,
+    "newShaderCompilations": 0
+  },
+  "wheelieImpact": {
+    "report": "wheelie-impact/validation.json",
+    "dropSeconds": 0.38333333333333336,
+    "frontSpringCompressionMetres": 0.186904295350782,
+    "chassisDiveMetres": 0.10616573523492168,
+    "frontReboundMetres": 0.04796,
+    "frontSteerRadians": 0.52,
+    "contactSamples": 85,
+    "singleImpact": true,
+    "errors": {
+      "shader": "",
+      "gl": 0
+    }
+  }
+}

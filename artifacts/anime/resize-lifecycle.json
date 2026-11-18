@@ -1,0 +1,19 @@
+{
+  "resize": {
+    "size": [
+      1000,
+      700
+    ],
+    "releasedComparison": true,
+    "samplerReset": true,
+    "error": 0
+  },
+  "compare": {
+    "size": [
+      1000,
+      700
+    ],
+    "error": 0,
+    "shaderError": ""
+  }
+}

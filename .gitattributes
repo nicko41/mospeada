@@ -1,0 +1,19 @@
+* text=auto
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Frozen animation data is hashed by the tests; use identical bytes on checkout.
+*.json text eol=lf
+*.gltf text eol=lf
+
+# Keep original model, texture and audio bytes intact.
+*.glb binary
+*.bin binary
+*.fbx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.mp3 binary
+*.wav binary
+*.ogg binary

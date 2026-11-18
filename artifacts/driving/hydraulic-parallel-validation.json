@@ -1,0 +1,27 @@
+{
+  "rest": {
+    "base": [
+      0.20697032660245895,
+      0.3140709861278534,
+      0.047272306263446806
+    ],
+    "end": [
+      0.20697032660248738,
+      0.31414071245578956,
+      0.3636419561619846
+    ],
+    "sidewaysOffsetMetres": 2.842170943040401e-14,
+    "pitchDegrees": 0.012627710174740672,
+    "length": 0.316369657582209,
+    "stroke": -0.00003916805370102194,
+    "baseError": 0,
+    "targetError": 1.4238583238573986e-14
+  },
+  "geometryCases": 63,
+  "guardAndTireClearance": "passed",
+  "nodeTests": {
+    "passed": 39,
+    "failed": 0
+  },
+  "productionBuild": "passed"
+}

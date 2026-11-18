@@ -1,4 +1,4 @@
-import { terrainHeight } from '../terrain'
+import { terrainHeight } from '../terrain.js'
 
 export const HIGHWAY_Z = -72
 export const HIGHWAY_LENGTH = 260

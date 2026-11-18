@@ -1,0 +1,13 @@
+{
+  "imported": true,
+  "meshes": 19,
+  "rigidRegions": 17,
+  "bones": 24,
+  "trianglesImportedByBlender": 10334,
+  "actions": [
+    "Running",
+    "Walking"
+  ],
+  "singleJointWeightsVerified": true,
+  "originalTrianglesImportedByBlender": 10334
+}

@@ -1,0 +1,513 @@
+{
+  "frames": [
+    {
+      "name": "straight",
+      "snapshot": {
+        "x": 65,
+        "z": -78.25,
+        "yaw": -1.5707963267948966,
+        "label": "Autopista",
+        "speed": 0,
+        "acceleration": 0,
+        "steer": 0,
+        "yawRate": 0,
+        "lean": 0,
+        "leanVelocity": 0,
+        "pitch": -0.01677085502720784,
+        "bank": 0,
+        "height": 2.2168546548470345,
+        "frontSpring": 2.2299988898435448,
+        "frontVelocity": 0,
+        "rearSpring": 2.203710419850524,
+        "rearVelocity": 0,
+        "frontGround": 2.2161213490167473,
+        "rearGround": 2.2175879606773217,
+        "frontSpin": 0,
+        "rearSpin": 0,
+        "distance": 0,
+        "blocked": false,
+        "accumulator": 0,
+        "travelYaw": -1.5707963267948966,
+        "slip": 0,
+        "handbrake": 0,
+        "parked": true,
+        "frontGrounded": true,
+        "rearGrounded": true,
+        "airborne": false,
+        "airTime": 0,
+        "frontAirGap": 0,
+        "rearAirGap": 0,
+        "verticalVelocity": 0,
+        "landingImpact": 0,
+        "frontAngularSpeed": 0,
+        "rearAngularSpeed": 0,
+        "idleBlend": 0,
+        "idleTime": 0,
+        "throttlePressed": false,
+        "launchTime": 0,
+        "boostPressed": false,
+        "boostTime": 0,
+        "boostCooldown": 0,
+        "boostCount": 0,
+        "frontTarget": 2.2299988898435448,
+        "rearTarget": 2.203710419850524,
+        "frontTravel": 0.00006963992902132261,
+        "rearTravel": 0.000056913851494755356,
+        "frontContactError": -1.865174681370263e-14,
+        "rearContactError": 7.993605777301127e-15,
+        "handErrors": [
+          1.4383281002407285e-14,
+          1.517719948885615e-14
+        ],
+        "hydraulics": [
+          {
+            "length": 0.31637471968599856,
+            "stroke": -0.000034105949911433786,
+            "baseError": 0,
+            "targetError": 0,
+            "connectorLength": 0.24767539547137174,
+            "connectorStartError": 0,
+            "connectorEndError": 1.4217791915866692e-14
+          },
+          {
+            "length": 0.8120000754096152,
+            "stroke": 0.000003331953153384859,
+            "baseError": 0,
+            "targetError": 4.440892098500626e-16,
+            "connectorLength": 0.01999999999999602,
+            "connectorStartError": 0,
+            "connectorEndError": 1.4217791915866692e-14
+          }
+        ],
+        "cameraMode": 3,
+        "metrics": {
+          "frontZ": 0.7836811318993568,
+          "rearZ": -0.7836811318993568,
+          "frontY": 0.3606423493474722,
+          "rearY": 0.3883974440395832,
+          "frontRadius": 0.3745198901742697,
+          "rearRadius": 0.3745199032127857,
+          "wheelbase": 1.5673622637987137,
+          "tireHalfWidth": 0.12001047655940056
+        },
+        "render": {
+          "frame": 1259,
+          "calls": 678,
+          "triangles": 2237933,
+          "points": 0,
+          "lines": 520
+        }
+      },
+      "seats": [
+        {
+          "base": [
+            0.20697032660245895,
+            0.3140709861278534,
+            0.047272306263446806
+          ],
+          "floor": 0.17609532177448273,
+          "outer": 0.23784533143043518,
+          "radius": 0.029375004827976225
+        },
+        {
+          "base": [
+            -0.20694752037525177,
+            0.3140709861278534,
+            0.047272306263446806
+          ],
+          "floor": -0.1760725229978561,
+          "outer": -0.2378225177526474,
+          "radius": 0.029374997377395642
+        }
+      ],
+      "guardAngle": 0,
+      "pivot": [
+        0.2245346267735009,
+        -0.009407011197034517,
+        0.11626361236279013
+      ]
+    },
+    {
+      "name": "left",
+      "snapshot": {
+        "x": 65,
+        "z": -78.25,
+        "yaw": -1.5707963267948966,
+        "label": "Autopista",
+        "speed": 0,
+        "acceleration": 0,
+        "steer": 0.52,
+        "yawRate": 0,
+        "lean": 0,
+        "leanVelocity": 0,
+        "pitch": -0.01677085502720784,
+        "bank": 0,
+        "height": 2.2168546548470345,
+        "frontSpring": 2.2299988898435448,
+        "frontVelocity": 0,
+        "rearSpring": 2.203710419850524,
+        "rearVelocity": 0,
+        "frontGround": 2.2161213490167473,
+        "rearGround": 2.2175879606773217,
+        "frontSpin": 0,
+        "rearSpin": 0,
+        "distance": 0,
+        "blocked": false,
+        "accumulator": 0,
+        "travelYaw": -1.5707963267948966,
+        "slip": 0,
+        "handbrake": 0,
+        "parked": true,
+        "frontGrounded": true,
+        "rearGrounded": true,
+        "airborne": false,
+        "airTime": 0,
+        "frontAirGap": 0,
+        "rearAirGap": 0,
+        "verticalVelocity": 0,
+        "landingImpact": 0,
+        "frontAngularSpeed": 0,
+        "rearAngularSpeed": 0,
+        "idleBlend": 0,
+        "idleTime": 0,
+        "throttlePressed": false,
+        "launchTime": 0,
+        "boostPressed": false,
+        "boostTime": 0,
+        "boostCooldown": 0,
+        "boostCount": 0,
+        "frontTarget": 2.2299988898435448,
+        "rearTarget": 2.203710419850524,
+        "frontTravel": 0.0053871933169364755,
+        "rearTravel": 0.005225573978034248,
+        "frontContactError": -1.4281908988778014e-12,
+        "rearContactError": 2.7844393457598926e-13,
+        "handErrors": [
+          1.7763568394002505e-15,
+          8.881784197001252e-16
+        ],
+        "hydraulics": [
+          {
+            "length": 0.23543420804414653,
+            "stroke": -0.08097461759176347,
+            "baseError": 0,
+            "targetError": 1.4217791915866692e-14,
+            "connectorLength": 0.26292201410890875,
+            "connectorStartError": 1.4210854715202004e-14,
+            "connectorEndError": 2.010208941128915e-14
+          },
+          {
+            "length": 0.8123004954114907,
+            "stroke": 0.00030375195502896357,
+            "baseError": 0,
+            "targetError": 0,
+            "connectorLength": 0.01999999999999602,
+            "connectorStartError": 0,
+            "connectorEndError": 1.4210854715202004e-14
+          }
+        ],
+        "cameraMode": 3,
+        "metrics": {
+          "frontZ": 0.7836811318993568,
+          "rearZ": -0.7836811318993568,
+          "frontY": 0.3606423493474722,
+          "rearY": 0.3883974440395832,
+          "frontRadius": 0.3745198901742697,
+          "rearRadius": 0.3745199032127857,
+          "wheelbase": 1.5673622637987137,
+          "tireHalfWidth": 0.12001047655940056
+        },
+        "render": {
+          "frame": 1269,
+          "calls": 680,
+          "triangles": 2237937,
+          "points": 0,
+          "lines": 520
+        }
+      },
+      "seats": [
+        {
+          "base": [
+            0.20697032660245895,
+            0.3140709861278534,
+            0.047272306263446806
+          ],
+          "floor": 0.17609532177448273,
+          "outer": 0.23784533143043518,
+          "radius": 0.029375004827976225
+        },
+        {
+          "base": [
+            -0.20694752037525177,
+            0.3140709861278534,
+            0.047272306263446806
+          ],
+          "floor": -0.1760725229978561,
+          "outer": -0.2378225177526474,
+          "radius": 0.029374997377395642
+        }
+      ],
+      "guardAngle": -0.2,
+      "pivot": [
+        0.2245346267735009,
+        -0.009407011197034517,
+        0.11626361236279013
+      ]
+    },
+    {
+      "name": "right",
+      "snapshot": {
+        "x": 65,
+        "z": -78.25,
+        "yaw": -1.5707963267948966,
+        "label": "Autopista",
+        "speed": 0,
+        "acceleration": 0,
+        "steer": -0.52,
+        "yawRate": 0,
+        "lean": 0,
+        "leanVelocity": 0,
+        "pitch": -0.01677085502720784,
+        "bank": 0,
+        "height": 2.2168546548470345,
+        "frontSpring": 2.2299988898435448,
+        "frontVelocity": 0,
+        "rearSpring": 2.203710419850524,
+        "rearVelocity": 0,
+        "frontGround": 2.2161213490167473,
+        "rearGround": 2.2175879606773217,
+        "frontSpin": 0,
+        "rearSpin": 0,
+        "distance": 0,
+        "blocked": false,
+        "accumulator": 0,
+        "travelYaw": -1.5707963267948966,
+        "slip": 0,
+        "handbrake": 0,
+        "parked": true,
+        "frontGrounded": true,
+        "rearGrounded": true,
+        "airborne": false,
+        "airTime": 0,
+        "frontAirGap": 0,
+        "rearAirGap": 0,
+        "verticalVelocity": 0,
+        "landingImpact": 0,
+        "frontAngularSpeed": 0,
+        "rearAngularSpeed": 0,
+        "idleBlend": 0,
+        "idleTime": 0,
+        "throttlePressed": false,
+        "launchTime": 0,
+        "boostPressed": false,
+        "boostTime": 0,
+        "boostCooldown": 0,
+        "boostCount": 0,
+        "frontTarget": 2.2299988898435448,
+        "rearTarget": 2.203710419850524,
+        "frontTravel": 0.005097067459123212,
+        "rearTravel": 0.0050847644895397615,
+        "frontContactError": -1.3518075547835906e-12,
+        "rearContactError": 2.8066438062523957e-13,
+        "handErrors": [
+          1.7763568394002505e-15,
+          1.4383281002407285e-14
+        ],
+        "hydraulics": [
+          {
+            "length": 0.4740026642280704,
+            "stroke": 0.15759383859216042,
+            "baseError": 0,
+            "targetError": 1.4217791915866692e-14,
+            "connectorLength": 0.252473902483301,
+            "connectorStartError": 0,
+            "connectorEndError": 4.440892098500626e-16
+          },
+          {
+            "length": 0.8122923680910924,
+            "stroke": 0.00029562463463062016,
+            "baseError": 0,
+            "targetError": 4.440892098500626e-16,
+            "connectorLength": 0.01999999999999602,
+            "connectorStartError": 0,
+            "connectorEndError": 1.4217791915866692e-14
+          }
+        ],
+        "cameraMode": 3,
+        "metrics": {
+          "frontZ": 0.7836811318993568,
+          "rearZ": -0.7836811318993568,
+          "frontY": 0.3606423493474722,
+          "rearY": 0.3883974440395832,
+          "frontRadius": 0.3745198901742697,
+          "rearRadius": 0.3745199032127857,
+          "wheelbase": 1.5673622637987137,
+          "tireHalfWidth": 0.12001047655940056
+        },
+        "render": {
+          "frame": 1279,
+          "calls": 678,
+          "triangles": 2237933,
+          "points": 0,
+          "lines": 520
+        }
+      },
+      "seats": [
+        {
+          "base": [
+            0.20697032660245895,
+            0.3140709861278534,
+            0.047272306263446806
+          ],
+          "floor": 0.17609532177448273,
+          "outer": 0.23784533143043518,
+          "radius": 0.029375004827976225
+        },
+        {
+          "base": [
+            -0.20694752037525177,
+            0.3140709861278534,
+            0.047272306263446806
+          ],
+          "floor": -0.1760725229978561,
+          "outer": -0.2378225177526474,
+          "radius": 0.029374997377395642
+        }
+      ],
+      "guardAngle": 0,
+      "pivot": [
+        0.2245346267735009,
+        -0.009407011197034517,
+        0.11626361236279013
+      ]
+    },
+    {
+      "name": "rear-seat",
+      "snapshot": {
+        "x": 65,
+        "z": -78.25,
+        "yaw": -1.5707963267948966,
+        "label": "Autopista",
+        "speed": 0,
+        "acceleration": 0,
+        "steer": 0,
+        "yawRate": 0,
+        "lean": 0,
+        "leanVelocity": 0,
+        "pitch": -0.01677085502720784,
+        "bank": 0,
+        "height": 2.2168546548470345,
+        "frontSpring": 2.2299988898435448,
+        "frontVelocity": 0,
+        "rearSpring": 2.203710419850524,
+        "rearVelocity": 0,
+        "frontGround": 2.2161213490167473,
+        "rearGround": 2.2175879606773217,
+        "frontSpin": 0,
+        "rearSpin": 0,
+        "distance": 0,
+        "blocked": false,
+        "accumulator": 0,
+        "travelYaw": -1.5707963267948966,
+        "slip": 0,
+        "handbrake": 0,
+        "parked": true,
+        "frontGrounded": true,
+        "rearGrounded": true,
+        "airborne": false,
+        "airTime": 0,
+        "frontAirGap": 0,
+        "rearAirGap": 0,
+        "verticalVelocity": 0,
+        "landingImpact": 0,
+        "frontAngularSpeed": 0,
+        "rearAngularSpeed": 0,
+        "idleBlend": 0,
+        "idleTime": 0,
+        "throttlePressed": false,
+        "launchTime": 0,
+        "boostPressed": false,
+        "boostTime": 0,
+        "boostCooldown": 0,
+        "boostCount": 0,
+        "frontTarget": 2.2299988898435448,
+        "rearTarget": 2.203710419850524,
+        "frontTravel": 0.00006963992902132261,
+        "rearTravel": 0.000056913851494755356,
+        "frontContactError": -1.865174681370263e-14,
+        "rearContactError": 7.993605777301127e-15,
+        "handErrors": [
+          1.4383281002407285e-14,
+          1.517719948885615e-14
+        ],
+        "hydraulics": [
+          {
+            "length": 0.31637471968599856,
+            "stroke": -0.000034105949911433786,
+            "baseError": 0,
+            "targetError": 0,
+            "connectorLength": 0.24767539547137174,
+            "connectorStartError": 0,
+            "connectorEndError": 1.4217791915866692e-14
+          },
+          {
+            "length": 0.8120000754096152,
+            "stroke": 0.000003331953153384859,
+            "baseError": 0,
+            "targetError": 4.440892098500626e-16,
+            "connectorLength": 0.01999999999999602,
+            "connectorStartError": 0,
+            "connectorEndError": 1.4217791915866692e-14
+          }
+        ],
+        "cameraMode": 3,
+        "metrics": {
+          "frontZ": 0.7836811318993568,
+          "rearZ": -0.7836811318993568,
+          "frontY": 0.3606423493474722,
+          "rearY": 0.3883974440395832,
+          "frontRadius": 0.3745198901742697,
+          "rearRadius": 0.3745199032127857,
+          "wheelbase": 1.5673622637987137,
+          "tireHalfWidth": 0.12001047655940056
+        },
+        "render": {
+          "frame": 1289,
+          "calls": 821,
+          "triangles": 2362611,
+          "points": 0,
+          "lines": 520
+        }
+      },
+      "seats": [
+        {
+          "base": [
+            0.20697032660245895,
+            0.3140709861278534,
+            0.047272306263446806
+          ],
+          "floor": 0.17609532177448273,
+          "outer": 0.23784533143043518,
+          "radius": 0.029375004827976225
+        },
+        {
+          "base": [
+            -0.20694752037525177,
+            0.3140709861278534,
+            0.047272306263446806
+          ],
+          "floor": -0.1760725229978561,
+          "outer": -0.2378225177526474,
+          "radius": 0.029374997377395642
+        }
+      ],
+      "guardAngle": 0,
+      "pivot": [
+        0.2245346267735009,
+        -0.009407011197034517,
+        0.11626361236279013
+      ]
+    }
+  ],
+  "errors": []
+}

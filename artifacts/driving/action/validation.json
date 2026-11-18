@@ -1,0 +1,336 @@
+{
+  "before": {
+    "jump": [
+      {
+        "speed": 20,
+        "start": 15.912217584467514,
+        "end": 32.892719331010134,
+        "distance": 16.980501746542622,
+        "air": 0.8499999999999994,
+        "peak": 1.2585444560932966
+      },
+      {
+        "speed": 40,
+        "start": 16.028520984494936,
+        "end": 72.38284420913982,
+        "distance": 56.35432322464489,
+        "air": 1.466666666666664,
+        "peak": 3.735875894182547
+      },
+      {
+        "speed": 60,
+        "start": 16.237804826372845,
+        "end": 131.29791854037018,
+        "distance": 115.06011371399734,
+        "air": 2.0749999999999953,
+        "peak": 6.606610317550649
+      }
+    ],
+    "braking": {
+      "seconds": 1.7416666666666667,
+      "distance": 23.997037037037106,
+      "pitchDegrees": 2.1548350912485983
+    }
+  },
+  "after": {
+    "jump": [
+      {
+        "speed": 20,
+        "start": 15.912217584467514,
+        "end": 32.14573420978413,
+        "distance": 16.233516625316618,
+        "air": 0.8916666666666659,
+        "peak": 1.4885892862339218
+      },
+      {
+        "speed": 40,
+        "start": 16.028520984494936,
+        "end": 65.01874831549658,
+        "distance": 48.99022733100165,
+        "air": 1.3166666666666644,
+        "peak": 3.382591921287455
+      },
+      {
+        "speed": 60,
+        "start": 16.721436813261498,
+        "end": 89.67074423159434,
+        "distance": 72.94930741833284,
+        "air": 1.3249999999999977,
+        "peak": 3.360978045335309
+      }
+    ],
+    "braking": {
+      "seconds": 1.075,
+      "distance": 14.722962962963038,
+      "pitchDegrees": 4.300840389551404
+    }
+  },
+  "generated": {
+    "neutral": {
+      "speed": 20,
+      "pitch": -0.01677085502720784,
+      "slip": 0,
+      "frontImpact": 0,
+      "rearImpact": 0,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    },
+    "brake": {
+      "speed": 16.077777777777868,
+      "pitch": 0.057550058129525135,
+      "slip": 0,
+      "frontImpact": 0,
+      "rearImpact": 0,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    },
+    "boost": {
+      "speed": 26.644313451274623,
+      "pitch": -0.07446516638499565,
+      "slip": 0,
+      "frontImpact": 0,
+      "rearImpact": 0,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    },
+    "coleada-left": {
+      "speed": 5.041543293344647,
+      "pitch": 0.0565351778555225,
+      "slip": 0.4249982506538148,
+      "frontImpact": 0,
+      "rearImpact": 0,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    },
+    "coleada-right": {
+      "speed": 5.045441705856588,
+      "pitch": 0.058755960761023046,
+      "slip": -0.4250934683210901,
+      "frontImpact": 0,
+      "rearImpact": 0,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    },
+    "wag-left": {
+      "speed": 18.096929218647865,
+      "pitch": 0.008892945597478118,
+      "slip": 0.025257629692252648,
+      "frontImpact": 0,
+      "rearImpact": 0,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    },
+    "wag-right": {
+      "speed": 11.112088619771397,
+      "pitch": 0.05744416046186762,
+      "slip": -0.07042805581199629,
+      "frontImpact": 0,
+      "rearImpact": 0,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    },
+    "jump": {
+      "speed": 22.427754818043635,
+      "pitch": -0.055831914278469674,
+      "slip": 0,
+      "frontImpact": 0,
+      "rearImpact": 0,
+      "frontGrounded": false,
+      "rearGrounded": false,
+      "airGap": 2.350263624325981
+    },
+    "first-impact": {
+      "speed": 22.012923525026732,
+      "pitch": -0.020966027053357407,
+      "slip": 0,
+      "frontImpact": 1,
+      "rearImpact": 1,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    },
+    "landed": {
+      "speed": 22.012923525026732,
+      "pitch": -0.020966027053357407,
+      "slip": 0,
+      "frontImpact": 1,
+      "rearImpact": 1,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "airGap": 0
+    }
+  },
+  "model": {
+    "neutral": {
+      "frontTravel": 0.00006963992902132261,
+      "rearTravel": 0.000056913851494755356,
+      "frontError": -1.865174681370263e-14,
+      "rearError": 7.993605777301127e-15,
+      "handErrors": [
+        1.4383281002407285e-14,
+        1.517719948885615e-14
+      ],
+      "forkInsertion": [
+        0.17296967545068842,
+        0.17296967545068842
+      ],
+      "neckZ": 0.003743772670901535
+    },
+    "brake": {
+      "frontTravel": 0.05881063182045216,
+      "rearTravel": -0.06380940740054131,
+      "frontError": -8.215650382226158e-13,
+      "rearError": 2.950129029954951e-11,
+      "handErrors": [
+        7.755684626330685e-15,
+        4.884981308350689e-15
+      ],
+      "forkInsertion": [
+        0.23171066733990742,
+        0.23171066733990692
+      ],
+      "neckZ": 0.03061072430261902
+    },
+    "boost": {
+      "frontTravel": -0.04742401155704572,
+      "rearTravel": 0.05103659828996942,
+      "frontError": 2.7342572650468355e-12,
+      "rearError": 1.1457501614131615e-12,
+      "handErrors": [
+        1.3322676295501878e-15,
+        7.444291678311382e-15
+      ],
+      "forkInsertion": [
+        0.1254760239663899,
+        0.1254760239663899
+      ],
+      "neckZ": -0.0322249057886097
+    },
+    "coleada-left": {
+      "frontTravel": 0.06,
+      "rearTravel": -0.06257816975070618,
+      "frontError": -0.011371988643827269,
+      "rearError": 0.000007671733006198167,
+      "handErrors": [
+        1.3322676295501878e-15,
+        8.62265274246159e-15
+      ],
+      "forkInsertion": [
+        0.22763328995325793,
+        0.22777860544569184
+      ],
+      "neckZ": 0.014066083203644553
+    },
+    "coleada-right": {
+      "frontTravel": 0.06,
+      "rearTravel": -0.06303401862514235,
+      "frontError": -0.010844596945127627,
+      "rearError": 0.000007744351893990142,
+      "handErrors": [
+        7.32410687763558e-15,
+        1.4217791915866692e-14
+      ],
+      "forkInsertion": [
+        0.22763482202990992,
+        0.22778009549405737
+      ],
+      "neckZ": 0.009354188325286119
+    },
+    "wag-left": {
+      "frontTravel": 0.022057371631076607,
+      "rearTravel": -0.02085683389879822,
+      "frontError": -1.5893952820533741e-12,
+      "rearError": 6.000977492703896e-12,
+      "handErrors": [
+        4.440892098500626e-16,
+        1.7763568394002505e-15
+      ],
+      "forkInsertion": [
+        0.19495740715190574,
+        0.19495740715190657
+      ],
+      "neckZ": 0.009234769155384015
+    },
+    "wag-right": {
+      "frontTravel": 0.05864669848724237,
+      "rearTravel": -0.0633095751790691,
+      "frontError": -1.2185807918285718e-12,
+      "rearError": 3.7552183584921295e-12,
+      "handErrors": [
+        1.7763568394002505e-15,
+        2.220446049250313e-15
+      ],
+      "forkInsertion": [
+        0.2315467340067015,
+        0.23154673400670495
+      ],
+      "neckZ": 0.012803896605149134
+    },
+    "jump": {
+      "frontTravel": -0.055,
+      "rearTravel": -0.065,
+      "frontError": 2.352553536253199,
+      "rearError": 2.0165962395966273,
+      "handErrors": [
+        8.881784197001252e-16,
+        2.6645352591003757e-15
+      ],
+      "forkInsertion": [
+        0.11790003552371531,
+        0.11790003552372386
+      ],
+      "neckZ": 0.004170285239851523
+    },
+    "first-impact": {
+      "frontTravel": 0.06,
+      "rearTravel": 0.05999999999999999,
+      "frontError": -0.0007822374024124123,
+      "rearError": -0.0001641711561116855,
+      "handErrors": [
+        2.886579864025407e-15,
+        5.773159728050814e-15
+      ],
+      "forkInsertion": [
+        0.23290003551940897,
+        0.2329000355194163
+      ],
+      "neckZ": 0.01159599914663545
+    },
+    "landed": {
+      "frontTravel": 0.06,
+      "rearTravel": 0.05999999999999999,
+      "frontError": -0.0007822374024124123,
+      "rearError": -0.0001641711561116855,
+      "handErrors": [
+        2.886579864025407e-15,
+        5.773159728050814e-15
+      ],
+      "forkInsertion": [
+        0.23290003551940897,
+        0.2329000355194163
+      ],
+      "neckZ": 0.01159599914663545
+    }
+  },
+  "keyboard": {
+    "handbrake": 0.9726762775527075,
+    "slip": 0.2050913309338338,
+    "rearAngularSpeed": 0,
+    "boost": {
+      "count": 1,
+      "blend": 0.6752479590545363,
+      "pitch": -0.049773685262862355
+    }
+  },
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

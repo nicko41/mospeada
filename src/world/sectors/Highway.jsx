@@ -866,7 +866,10 @@ export default function Highway() {
       roughness: 0.88,
       metalness: 0,
       transparent: true,
-      depthWrite: false,
+      // The solid crown must occlude its far slope. Otherwise transparent
+      // triangles draw over each other as flat blocks at shallow camera angles.
+      depthWrite: true,
+      alphaTest: 0.015,
     }), embankmentShader)
   }, [embankmentMap, embankmentNormal, embankmentRoughness, gl])
   const markingMaterial = useMemo(() => addMarkingPaintWear(new THREE.MeshBasicMaterial({
@@ -879,9 +882,9 @@ export default function Highway() {
 
   return (
     <group>
-      <mesh geometry={embankment} material={embankmentMaterial} receiveShadow />
-      <mesh geometry={leftCarriageway} material={asphaltMaterial} receiveShadow renderOrder={1} />
-      <mesh geometry={rightCarriageway} material={asphaltMaterial} receiveShadow renderOrder={1} />
+      <mesh userData={{ rideSurface: true, rideSurfaceType: 'dirt' }} geometry={embankment} material={embankmentMaterial} receiveShadow />
+      <mesh userData={{ rideSurface: true, rideSurfaceType: 'asphalt' }} geometry={leftCarriageway} material={asphaltMaterial} receiveShadow renderOrder={1} />
+      <mesh userData={{ rideSurface: true, rideSurfaceType: 'asphalt' }} geometry={rightCarriageway} material={asphaltMaterial} receiveShadow renderOrder={1} />
       <mesh geometry={markings} material={markingMaterial} renderOrder={2} />
       <Guardrails material={guardrailMaterial} geometries={guardrailGeometries} />
       <HighwayFurniture />

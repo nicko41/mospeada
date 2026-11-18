@@ -6,7 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test",
+    "test:driving": "node scripts/validate-driving.mjs",
+    "test:anime": "node scripts/validate-anime.mjs",
+    "test:brush": "node scripts/validate-surface-brush.mjs",
+    "assets:import": "node scripts/import-mospeada.mjs",
+    "assets:scott": "node scripts/import-scott.mjs"
   },
   "dependencies": {
     "@react-three/drei": "10.7.8",

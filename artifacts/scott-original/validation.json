@@ -1,0 +1,536 @@
+{
+  "sourceSha256": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+  "byteIdenticalRuntimeCopy": true,
+  "startupGLError": 0,
+  "bones": 24,
+  "meshes": 1,
+  "vertices": 15429,
+  "triangles": 10334,
+  "sharedOriginalGeometry": true,
+  "sharedOriginalSkinIndices": true,
+  "sharedOriginalWeights": true,
+  "clips": [
+    {
+      "name": "Running",
+      "duration": 0.6333333253860474,
+      "tracks": 48
+    },
+    {
+      "name": "Walking",
+      "duration": 1.0333333015441895,
+      "tracks": 48
+    },
+    {
+      "name": "One_Arm_Handstand",
+      "duration": 3.8333330154418945,
+      "tracks": 48
+    },
+    {
+      "name": "Roll_Dodge_4",
+      "duration": 3.1333329677581787,
+      "tracks": 48
+    },
+    {
+      "name": "Run_Turn_Right",
+      "duration": 1.600000023841858,
+      "tracks": 48
+    },
+    {
+      "name": "Stand_Up1",
+      "duration": 8.266666412353516,
+      "tracks": 48
+    },
+    {
+      "name": "Stand_Up10",
+      "duration": 7.6666669845581055,
+      "tracks": 48
+    },
+    {
+      "name": "Stand_Up4",
+      "duration": 1.6666669845581055,
+      "tracks": 48
+    },
+    {
+      "name": "Standard_Forward_Charge",
+      "duration": 0.6333330273628235,
+      "tracks": 48
+    },
+    {
+      "name": "Standard_Forward_Charge_inplace",
+      "duration": 0.6333330273628235,
+      "tracks": 48
+    },
+    {
+      "name": "Walk_Left_with_Gun",
+      "duration": 1.2000000476837158,
+      "tracks": 48
+    },
+    {
+      "name": "Walk_Turn_Left",
+      "duration": 2,
+      "tracks": 48
+    },
+    {
+      "name": "Walk_Turn_Right_Idle_Style",
+      "duration": 1.1333329677581787,
+      "tracks": 48
+    },
+    {
+      "name": "air_squat",
+      "duration": 1.8666670322418213,
+      "tracks": 48
+    },
+    {
+      "name": "walking_2",
+      "duration": 1.1666669845581055,
+      "tracks": 48
+    },
+    {
+      "name": "walking_2_inplace",
+      "duration": 1.1666669845581055,
+      "tracks": 48
+    }
+  ],
+  "cameraActive": true,
+  "preview": true,
+  "samples": [
+    {
+      "clip": "Running",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Running",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Running",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walking",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walking",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walking",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "One_Arm_Handstand",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "One_Arm_Handstand",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "One_Arm_Handstand",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Roll_Dodge_4",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Roll_Dodge_4",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Roll_Dodge_4",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Run_Turn_Right",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Run_Turn_Right",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Run_Turn_Right",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up1",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up1",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up1",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up10",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up10",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up10",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up4",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up4",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Stand_Up4",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Standard_Forward_Charge",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Standard_Forward_Charge",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Standard_Forward_Charge",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Standard_Forward_Charge_inplace",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Standard_Forward_Charge_inplace",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Standard_Forward_Charge_inplace",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Left_with_Gun",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Left_with_Gun",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Left_with_Gun",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Turn_Left",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Turn_Left",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Turn_Left",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Turn_Right_Idle_Style",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Turn_Right_Idle_Style",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "Walk_Turn_Right_Idle_Style",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "air_squat",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "air_squat",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "air_squat",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "walking_2",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "walking_2",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "walking_2",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "walking_2_inplace",
+      "fraction": 0.15,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "walking_2_inplace",
+      "fraction": 0.45,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    },
+    {
+      "clip": "walking_2_inplace",
+      "fraction": 0.75,
+      "rotationError": 0,
+      "positionError": 0,
+      "scaleError": 0,
+      "originalClipObject": true,
+      "actionActive": true
+    }
+  ],
+  "originalMaterialRestored": true,
+  "textureOnly": true,
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

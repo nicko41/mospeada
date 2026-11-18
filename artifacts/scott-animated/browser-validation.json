@@ -1,0 +1,486 @@
+{
+  "clips": [
+    {
+      "name": "Running",
+      "duration": 0.6333333253860474
+    },
+    {
+      "name": "Walking",
+      "duration": 1.0333333015441895
+    },
+    {
+      "name": "One_Arm_Handstand",
+      "duration": 3.8333330154418945
+    },
+    {
+      "name": "Roll_Dodge_4",
+      "duration": 3.1333329677581787
+    },
+    {
+      "name": "Run_Turn_Right",
+      "duration": 1.600000023841858
+    },
+    {
+      "name": "Stand_Up1",
+      "duration": 8.266666412353516
+    },
+    {
+      "name": "Stand_Up10",
+      "duration": 7.6666669845581055
+    },
+    {
+      "name": "Stand_Up4",
+      "duration": 1.6666669845581055
+    },
+    {
+      "name": "Standard_Forward_Charge",
+      "duration": 0.6333330273628235
+    },
+    {
+      "name": "Standard_Forward_Charge_inplace",
+      "duration": 0.6333330273628235
+    },
+    {
+      "name": "Walk_Left_with_Gun",
+      "duration": 1.2000000476837158
+    },
+    {
+      "name": "Walk_Turn_Left",
+      "duration": 2
+    },
+    {
+      "name": "Walk_Turn_Right_Idle_Style",
+      "duration": 1.1333329677581787
+    },
+    {
+      "name": "air_squat",
+      "duration": 1.8666670322418213
+    },
+    {
+      "name": "walking_2",
+      "duration": 1.1666669845581055
+    },
+    {
+      "name": "walking_2_inplace",
+      "duration": 1.1666669845581055
+    }
+  ],
+  "startupGLError": 0,
+  "bones": 54,
+  "fingerJoints": 30,
+  "animationClips": 16,
+  "drivingLean": 0.33648757607183793,
+  "crouchTime": 0.8026668238639831,
+  "contacts": [
+    {
+      "pose": "walking",
+      "side": "Left",
+      "error": 1.1539505824419336e-9,
+      "clearance": 0.003995421953371547
+    },
+    {
+      "pose": "walking",
+      "side": "Right",
+      "error": 3.2429354556809054e-9,
+      "clearance": 0.00402048352447526
+    },
+    {
+      "pose": "walking",
+      "side": "Left",
+      "error": 2.4731593362070288e-9,
+      "clearance": 0.003995420124106808
+    },
+    {
+      "pose": "walking",
+      "side": "Left",
+      "error": 2.2590407735385405e-9,
+      "clearance": 0.0039954199799066
+    },
+    {
+      "pose": "walking",
+      "side": "Left",
+      "error": 2.04349214935393e-9,
+      "clearance": 0.003995418589973543
+    },
+    {
+      "pose": "walking",
+      "side": "Right",
+      "error": 4.166898334848278e-9,
+      "clearance": 0.004000009297804752
+    },
+    {
+      "pose": "walking",
+      "side": "Right",
+      "error": 5.435198536644871e-9,
+      "clearance": 0.004000016880591151
+    },
+    {
+      "pose": "walking",
+      "side": "Right",
+      "error": 4.987152996182423e-9,
+      "clearance": 0.004000011109676738
+    },
+    {
+      "pose": "walking",
+      "side": "Left",
+      "error": 3.074191108070796e-9,
+      "clearance": 0.004000016085500935
+    },
+    {
+      "pose": "walking",
+      "side": "Left",
+      "error": 2.726711830408371e-9,
+      "clearance": 0.004000015567636517
+    },
+    {
+      "pose": "walking",
+      "side": "Left",
+      "error": 2.2074033066507988e-9,
+      "clearance": 0.00400001494233404
+    },
+    {
+      "pose": "walking",
+      "side": "Right",
+      "error": 4.16883125499695e-9,
+      "clearance": 0.003973126621426459
+    },
+    {
+      "pose": "walking",
+      "side": "Right",
+      "error": 5.345544002730034e-9,
+      "clearance": 0.00397313474786154
+    },
+    {
+      "pose": "running",
+      "side": "Right",
+      "error": 4.286034520358507e-9,
+      "clearance": 0.0039731303396814965
+    },
+    {
+      "pose": "running",
+      "side": "Left",
+      "error": 2.0546217918760725e-9,
+      "clearance": 0.004000013327580376
+    },
+    {
+      "pose": "running",
+      "side": "Right",
+      "error": 3.925363736611753e-9,
+      "clearance": 0.004000012131656128
+    },
+    {
+      "pose": "running",
+      "side": "Left",
+      "error": 2.1438773327133168e-9,
+      "clearance": 0.004000015276431679
+    },
+    {
+      "pose": "running",
+      "side": "Right",
+      "error": 8.814823513016921e-9,
+      "clearance": 0.004000008759804441
+    },
+    {
+      "pose": "running",
+      "side": "Right",
+      "error": 4.617712416956604e-9,
+      "clearance": 0.004000008236615837
+    },
+    {
+      "pose": "running",
+      "side": "Left",
+      "error": 2.0774568948031355e-9,
+      "clearance": 0.00400001391848237
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.2083855701899856e-9,
+      "clearance": 0.004000013816542136
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 4.549517245680681e-9,
+      "clearance": 0.004000009608834176
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.494505852083395e-9,
+      "clearance": 0.004000011652508295
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 2.5605796853202694e-9,
+      "clearance": 0.004000009026310369
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.574037061915401e-9,
+      "clearance": 0.004000010773865803
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 5.093253760993748e-9,
+      "clearance": 0.004000008449267511
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.417606477712104e-9,
+      "clearance": 0.004000010691381561
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 5.5671836328971145e-9,
+      "clearance": 0.004000009183176889
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.332110584719538e-9,
+      "clearance": 0.004000010728426151
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 5.467990368049908e-9,
+      "clearance": 0.004000009045534103
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.2946229669744987e-9,
+      "clearance": 0.004000010746112448
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 5.414732061555426e-9,
+      "clearance": 0.004000008969233804
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.279973789290773e-9,
+      "clearance": 0.00400001075297407
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 5.393720088052158e-9,
+      "clearance": 0.00400000893968544
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.2744728776487055e-9,
+      "clearance": 0.004000010755530692
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 5.385791579988807e-9,
+      "clearance": 0.004000008928612964
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.2724307344948952e-9,
+      "clearance": 0.004000010756478822
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 5.382842388268195e-9,
+      "clearance": 0.004000008924507803
+    },
+    {
+      "pose": "crouch",
+      "side": "Left",
+      "error": 2.2716745833323178e-9,
+      "clearance": 0.004000010756838979
+    },
+    {
+      "pose": "crouch",
+      "side": "Right",
+      "error": 5.381766317836846e-9,
+      "clearance": 0.004000008923006337
+    }
+  ],
+  "programsBefore": 361,
+  "poses": [
+    {
+      "name": "idle",
+      "mode": "mounted",
+      "handErrors": [
+        1.7910373260492538e-8,
+        1.081960614774059e-8
+      ],
+      "legErrors": [
+        4.5027334539100795e-9,
+        2.5117939204067993e-9
+      ],
+      "gloveViolation": 1.1147055611893109e-8,
+      "hip": [
+        65.34085182717428,
+        3.2972126156729447,
+        -78.2529973093275
+      ]
+    },
+    {
+      "name": "driving",
+      "mode": "mounted",
+      "handErrors": [
+        1.7970484805937367e-8,
+        1.0828746219741407e-8
+      ],
+      "legErrors": [
+        1.5116852808207545e-9,
+        2.533786305399247e-9
+      ],
+      "gloveViolation": 1.122141962683898e-8,
+      "hip": [
+        57.92539780327982,
+        3.2893285528390246,
+        -78.25523893247642
+      ]
+    },
+    {
+      "name": "standing",
+      "mode": "onFoot",
+      "handErrors": [
+        1.7970484805937367e-8,
+        1.0828746219741407e-8
+      ],
+      "legErrors": [
+        1.6241817932152715e-9,
+        4.509189517855688e-9
+      ],
+      "gloveViolation": null,
+      "hip": [
+        65.2,
+        3.4237824062804636,
+        -77.14999999999998
+      ]
+    },
+    {
+      "name": "walking",
+      "mode": "onFoot",
+      "handErrors": [
+        1.7970484805937367e-8,
+        1.0828746219741407e-8
+      ],
+      "legErrors": [
+        3.252513445395044e-9,
+        6.57111228666103e-9
+      ],
+      "gloveViolation": null,
+      "hip": [
+        64.12333333333324,
+        3.4231713125012884,
+        -77.15000000000003
+      ]
+    },
+    {
+      "name": "running",
+      "mode": "onFoot",
+      "handErrors": [
+        1.7970484805937367e-8,
+        1.0828746219741407e-8
+      ],
+      "legErrors": [
+        3.4514255001459037e-9,
+        6.521753612149325e-9
+      ],
+      "gloveViolation": null,
+      "hip": [
+        61.07930221077945,
+        3.420489100219463,
+        -77.15000000000005
+      ]
+    },
+    {
+      "name": "crouch",
+      "mode": "onFoot",
+      "handErrors": [
+        1.7970484805937367e-8,
+        1.0828746219741407e-8
+      ],
+      "legErrors": [
+        2.2780596724685483e-9,
+        5.390950795181073e-9
+      ],
+      "gloveViolation": null,
+      "hip": [
+        59.53971710888295,
+        2.8505807980440623,
+        -77.14999999999998
+      ]
+    },
+    {
+      "name": "recovered",
+      "mode": "onFoot",
+      "handErrors": [
+        1.7970484805937367e-8,
+        1.0828746219741407e-8
+      ],
+      "legErrors": [
+        1.6389872429924858e-9,
+        4.535413029735034e-9
+      ],
+      "gloveViolation": null,
+      "hip": [
+        59.539717108882954,
+        3.4168699067073773,
+        -77.15000000000002
+      ]
+    },
+    {
+      "name": "fist",
+      "mode": "onFoot",
+      "handErrors": [
+        1.7970484805937367e-8,
+        1.0828746219741407e-8
+      ],
+      "legErrors": [
+        1.6238233070863673e-9,
+        4.511741068871712e-9
+      ],
+      "gloveViolation": null,
+      "hip": [
+        59.53971710888296,
+        3.4178958255131606,
+        -77.15000000000002
+      ]
+    },
+    {
+      "name": "remounted",
+      "mode": "mounted",
+      "handErrors": [
+        1.7088509246603502e-8,
+        1.0029653912823306e-8
+      ],
+      "legErrors": [
+        4.150174195206665e-9,
+        2.3844612291294724e-9
+      ],
+      "gloveViolation": 1.0462711197423147e-8,
+      "hip": [
+        65.34068682724259,
+        3.2883206614079112,
+        -78.10412059530822
+      ]
+    }
+  ],
+  "programsAfter": 361,
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

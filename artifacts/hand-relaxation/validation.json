@@ -1,0 +1,24 @@
+{
+  "mode": "onFoot",
+  "originalClips": 16,
+  "bones": 24,
+  "modifiedVertices": 729,
+  "activeVariant": true,
+  "sameBindPositions": true,
+  "sameWeights": true,
+  "sameIndices": true,
+  "sourceHasMorph": false,
+  "seat": [
+    {
+      "roughness": 0.98,
+      "metalness": 0,
+      "shine": 0.05
+    }
+  ],
+  "ridingInfluence": 0,
+  "gripInfluence": 1,
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

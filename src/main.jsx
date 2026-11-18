@@ -1,25 +1,14 @@
-import React, { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useProgress } from '@react-three/drei'
-import FirstPersonRig from './player/FirstPersonRig'
-import MeleePrototype from './player/MeleePrototype'
-import BatViewModel from './player/BatViewModel'
-import PlayerDamageFeedback from './player/PlayerDamageFeedback'
-import PlayerHealthBar from './player/PlayerHealthBar'
-import ColliderDebug from './player/ColliderDebug'
 import { registerColliders, cylinderCollider } from './player/collisionWorld'
 import * as THREE from 'three'
 import { getWalkableHeightAt } from './player/getWalkableHeight'
-import PhoneLight from './player/PhoneLight'
-import CameraLocomotion from './player/CameraLocomotion'
-import FlashlightEnergyBar from './player/FlashlightEnergyBar'
-import EntityImpactFeedback from './world/EntityImpactFeedback'
 import DirtRoad from './world/DirtRoad'
 import Rain from './world/Rain'
 import Lightning from './world/Lightning'
 import AmbienceAudio from './world/AmbienceAudio'
-import ApparitionSystem from './world/ApparitionSystem'
 import Ground from './world/Ground'
 import GroundMist from './world/GroundMist'
 import GuardHut from './world/GuardHut'
@@ -30,16 +19,18 @@ import Puddles from './world/Puddles'
 import RoadsideVegetation from './world/RoadsideVegetation'
 import Highway from './world/sectors/Highway'
 import TreeClusters from './world/TreeClusters'
-import ZombieTest from './world/ZombieTest'
 import RuralPowerLines, { RURAL_POLES } from './world/RuralPowerLines'
 import { createAgedPoleWood } from './world/agedPoleWood'
-import TimeOfDay from './world/TimeOfDay'
-import CasetaInteraction from './narrative/CasetaInteraction'
-import NarrativeUI from './narrative/NarrativeUI'
-import HighwaySequence from './narrative/HighwayNarrative'
+import TimeOfDay, { timeOfDayState } from './world/TimeOfDay'
+import Motorcycle from './vehicle/Motorcycle'
+import DrivingHUD from './vehicle/DrivingHUD'
+import DrivingLighting from './vehicle/DrivingLighting'
+import JumpTestMound from './vehicle/JumpTestMound'
+import AnimeRendering from './rendering/AnimeRendering'
+import { animeState } from './rendering/animeState.js'
+timeOfDayState.value = 1
+timeOfDayState.target = 1
 import './styles.css'
-import MobileControls from './player/MobileControls'
-import MobileOrientation from './player/MobileOrientation'
 import { desktopInput } from './player/touchInput'
 
 function Pole({ x, z, leanX, leanZ, wood }) {
@@ -94,7 +85,7 @@ function Landscape() {
       <RuralPowerLines />
 
       <GuardHut position={[28, getWalkableHeightAt(28, -105), -105]} />
-      <ParkedRangeRover />
+      <ParkedRangeRover drivable={false} />
 
     </>
   )
@@ -110,6 +101,8 @@ function SceneReady({ onReady }) {
 
 function EntryPreloader({ sceneReady }) {
   const { active, progress } = useProgress()
+  const renderState = useSyncExternalStore(animeState.subscribe, animeState.snapshot)
+  const renderReady = renderState.ready || !!renderState.error
   const startedAt = useRef(performance.now())
   const highestProgress = useRef(0)
 
@@ -121,7 +114,9 @@ function EntryPreloader({ sceneReady }) {
     highestProgress.current = Math.max(highestProgress.current, Math.min(progress, 95))
     fill.style.width = `${highestProgress.current}%`
     fill.parentElement.setAttribute('aria-valuenow', Math.round(highestProgress.current))
-    if (active || !sceneReady) return
+    const status = document.getElementById('entry-loading-status')
+    if (status) status.textContent = active || !sceneReady ? 'Cargando escenario…' : !renderReady ? 'Preparando iluminación y estilos…' : 'Listo'
+    if (active || !sceneReady || !renderReady) return
 
     let removeTimer
     const finishTimer = window.setTimeout(() => {
@@ -141,41 +136,28 @@ function EntryPreloader({ sceneReady }) {
       window.clearTimeout(finishTimer)
       window.clearTimeout(removeTimer)
     }
-  }, [active, progress, sceneReady])
+  }, [active, progress, sceneReady, renderReady])
 
   return null
 }
 
 function Scene({ onReady }) {
-  return (
-    <>
-      <color attach="background" args={['#030507']} />
-      <fogExp2 attach="fog" args={['#0b0e0f', 0.068]} />
-
-      <TimeOfDay />
-      <HighwaySequence />
-      <OvercastSky />
-      <Landscape />
-      <Suspense fallback={null}>
-        <ZombieTest />
-      </Suspense>
-      <GroundMist />
-      <Rain />
-      <Lightning />
-      <AmbienceAudio />
-      <ApparitionSystem />
-      <PhoneLight />
-      <FirstPersonRig />
-      <CameraLocomotion />
-      <MeleePrototype />
-      <EntityImpactFeedback />
-      <Suspense fallback={null}><BatViewModel /></Suspense>
-      <PlayerDamageFeedback />
-      <ColliderDebug />
-      <CasetaInteraction />
-      <SceneReady onReady={onReady} />
-    </>
-  )
+  return <>
+    <color attach="background" args={['#839196']} />
+    <fogExp2 attach="fog" args={['#839196', 0.068]} />
+    <TimeOfDay />
+    <DrivingLighting />
+    <OvercastSky />
+    <Landscape />
+    <JumpTestMound />
+    <GroundMist />
+    <Rain />
+    <Lightning />
+    <AmbienceAudio />
+    <Motorcycle />
+    <AnimeRendering />
+    <SceneReady onReady={onReady} />
+  </>
 }
 
 function App() {
@@ -183,9 +165,8 @@ function App() {
   return (
     <main className="app">
       <EntryPreloader sceneReady={sceneReady} />
-      <MobileOrientation>
       <Canvas
-        shadows
+        shadows="percentage"
         camera={{ fov: 65, near: 0.1, far: 220 }}
         gl={{ antialias: true, powerPreference: 'high-performance' }}
         dpr={[1, 1.5]}
@@ -195,14 +176,7 @@ function App() {
         </Suspense>
       </Canvas>
 
-      <div className="hud">
-        <PlayerHealthBar />
-        <FlashlightEnergyBar />
-        <div className="crosshair" aria-hidden="true" />
-        <NarrativeUI />
-        <MobileControls />
-      </div>
-      </MobileOrientation>
+      <DrivingHUD />
     </main>
   )
 }

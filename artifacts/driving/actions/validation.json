@@ -1,0 +1,87 @@
+{
+  "startupGLError": 0,
+  "wheelie": {
+    "keyboardActive": true,
+    "held": {
+      "angle": 0.8599999990548381,
+      "remaining": 2.0000000000000115,
+      "rearError": 0.00008765986695591366,
+      "frontGap": 1.1778279795567275,
+      "hands": [
+        2.220446049250313e-15,
+        7.944109290391274e-15
+      ],
+      "legs": [
+        1.3322676295501878e-15,
+        4.440892098500626e-16
+      ]
+    },
+    "expired": {
+      "angle": 0,
+      "time": 6,
+      "exhausted": true,
+      "frontGrounded": true,
+      "rearGrounded": true
+    }
+  },
+  "dismount": {
+    "requested": "stopping",
+    "mode": "onFoot",
+    "blend": 1,
+    "position": {
+      "x": 65.2,
+      "z": -77.15,
+      "ground": 2.2199153153175053,
+      "yaw": -1.5707963267948966,
+      "phase": 0,
+      "moving": false,
+      "feet": {
+        "Left": null,
+        "Right": null
+      },
+      "side": 1
+    },
+    "hands": [
+      1.7763568394002505e-15,
+      1.3322676295501878e-15
+    ],
+    "legs": [
+      6.661338147750939e-15,
+      5.329070518200751e-15
+    ]
+  },
+  "walk": {
+    "keyboardActive": true,
+    "bikeMovement": 0,
+    "distance": 1.0200000000000955,
+    "errors": [
+      1.6091724337024826e-14,
+      1.5888218580782548e-14
+    ],
+    "soleMinimum": [
+      0.005440658470088344,
+      0.006573029897047444
+    ],
+    "soleMaximum": [
+      0.005456892178784756,
+      0.006589181674653943
+    ]
+  },
+  "remount": {
+    "requested": "mounting",
+    "mode": "mounted",
+    "blend": 0,
+    "hands": [
+      0,
+      1.432144669219779e-14
+    ],
+    "legs": [
+      7.105427357601002e-15,
+      1.3322676295501878e-15
+    ]
+  },
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

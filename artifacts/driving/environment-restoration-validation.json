@@ -1,0 +1,809 @@
+{
+  "native": {
+    "fog": 0.068,
+    "grass": 11000,
+    "grassTriangles": 280,
+    "worldEnvironment": false,
+    "vehicleReflections": 216,
+    "surfaces": [
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      }
+    ],
+    "tiles": [],
+    "render": {
+      "frame": 184,
+      "calls": 993,
+      "triangles": 7234485,
+      "points": 0,
+      "lines": 529
+    },
+    "testRenderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "extension": {
+    "fog": 0.068,
+    "grass": 11000,
+    "grassTriangles": 280,
+    "worldEnvironment": false,
+    "vehicleReflections": 216,
+    "surfaces": [
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      }
+    ],
+    "tiles": [
+      {
+        "key": "-10,-5",
+        "count": 150,
+        "firstMatrix": [
+          -0.9314236044883728,
+          -0.009756476618349552,
+          -0.32020890712738037,
+          0,
+          -0.008763095363974571,
+          0.9354627132415771,
+          -0.0030126154888421297,
+          0,
+          0.3202246129512787,
+          -2.1358275167562271e-19,
+          -0.9314693212509155,
+          0,
+          5.882373809814453,
+          -0.05033775791525841,
+          16.141643524169922,
+          1
+        ]
+      },
+      {
+        "key": "-10,-2",
+        "count": 76,
+        "firstMatrix": [
+          1.1280823945999146,
+          -0.013897744938731194,
+          -0.4530619978904724,
+          0,
+          0.010111809708178043,
+          0.9531686305999756,
+          -0.004061118699610233,
+          0,
+          0.4530916213989258,
+          0,
+          1.1281561851501465,
+          0,
+          14.811138153076172,
+          -0.007479604799300432,
+          10.659395217895508,
+          1
+        ]
+      },
+      {
+        "key": "-13,-5",
+        "count": 172,
+        "firstMatrix": [
+          1.092820167541504,
+          0.01242885086685419,
+          -0.10469253361225128,
+          0,
+          -0.008920484222471714,
+          0.7915416955947876,
+          0.0008545853197574615,
+          0,
+          0.10469924658536911,
+          0,
+          1.0928902626037598,
+          0,
+          19.842092514038086,
+          -0.06101058050990105,
+          10.732918739318848,
+          1
+        ]
+      },
+      {
+        "key": "-13,-2",
+        "count": 188,
+        "firstMatrix": [
+          -0.8741464018821716,
+          0.041138529777526855,
+          -0.3421141803264618,
+          0,
+          0.046879809349775314,
+          1.1487210988998413,
+          0.018347324803471565,
+          0,
+          0.3424425721168518,
+          0,
+          -0.87498539686203,
+          0,
+          22.182010650634766,
+          -0.008365128189325333,
+          5.011826515197754,
+          1
+        ]
+      },
+      {
+        "key": "-12,-5",
+        "count": 183,
+        "firstMatrix": [
+          1.0838029384613037,
+          -0.004096731077879667,
+          -0.1630486398935318,
+          0,
+          0.004603039938956499,
+          1.2453092336654663,
+          -0.000692486937623471,
+          0,
+          0.16304977238178253,
+          0,
+          1.0838104486465454,
+          0,
+          20.346267700195312,
+          -0.0663880705833435,
+          7.893519401550293,
+          1
+        ]
+      },
+      {
+        "key": "-12,-2",
+        "count": 186,
+        "firstMatrix": [
+          0.34562209248542786,
+          0.015512187033891678,
+          -0.7284807562828064,
+          0,
+          -0.012406591325998306,
+          1.504471778869629,
+          0.026149841025471687,
+          0,
+          0.7286155819892883,
+          0,
+          0.34568604826927185,
+          0,
+          10.492862701416016,
+          0.002093323739245534,
+          23.173927307128906,
+          1
+        ]
+      },
+      {
+        "key": "-11,-5",
+        "count": 205,
+        "firstMatrix": [
+          -0.6688213348388672,
+          0.003914161119610071,
+          -0.4235934317111969,
+          0,
+          0.00481815030798316,
+          1.153528094291687,
+          0.003051542676985264,
+          0,
+          0.42359861731529236,
+          0,
+          -0.6688295006752014,
+          0,
+          10.71616268157959,
+          -0.037424396723508835,
+          21.38992691040039,
+          1
+        ]
+      },
+      {
+        "key": "-11,-2",
+        "count": 184,
+        "firstMatrix": [
+          -0.9289647340774536,
+          -0.054574403911828995,
+          -0.15059919655323029,
+          0,
+          -0.05715848132967949,
+          0.9985213279724121,
+          -0.009266252629458904,
+          0,
+          0.15085221827030182,
+          0,
+          -0.9305254220962524,
+          0,
+          1.291675090789795,
+          -0.007876818999648094,
+          9.192259788513184,
+          1
+        ]
+      }
+    ],
+    "render": {
+      "frame": 202,
+      "calls": 703,
+      "triangles": 956065,
+      "points": 0,
+      "lines": 520
+    },
+    "testRenderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "night": {
+    "fog": 0.068,
+    "grass": 11000,
+    "grassTriangles": 280,
+    "worldEnvironment": false,
+    "vehicleReflections": 216,
+    "surfaces": [
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      },
+      {
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "environment": false
+      }
+    ],
+    "tiles": [
+      {
+        "key": "-10,-5",
+        "count": 150,
+        "firstMatrix": [
+          -0.9314236044883728,
+          -0.009756476618349552,
+          -0.32020890712738037,
+          0,
+          -0.008763095363974571,
+          0.9354627132415771,
+          -0.0030126154888421297,
+          0,
+          0.3202246129512787,
+          -2.1358275167562271e-19,
+          -0.9314693212509155,
+          0,
+          5.882373809814453,
+          -0.05033775791525841,
+          16.141643524169922,
+          1
+        ]
+      },
+      {
+        "key": "-10,-2",
+        "count": 76,
+        "firstMatrix": [
+          1.1280823945999146,
+          -0.013897744938731194,
+          -0.4530619978904724,
+          0,
+          0.010111809708178043,
+          0.9531686305999756,
+          -0.004061118699610233,
+          0,
+          0.4530916213989258,
+          0,
+          1.1281561851501465,
+          0,
+          14.811138153076172,
+          -0.007479604799300432,
+          10.659395217895508,
+          1
+        ]
+      },
+      {
+        "key": "-13,-5",
+        "count": 172,
+        "firstMatrix": [
+          1.092820167541504,
+          0.01242885086685419,
+          -0.10469253361225128,
+          0,
+          -0.008920484222471714,
+          0.7915416955947876,
+          0.0008545853197574615,
+          0,
+          0.10469924658536911,
+          0,
+          1.0928902626037598,
+          0,
+          19.842092514038086,
+          -0.06101058050990105,
+          10.732918739318848,
+          1
+        ]
+      },
+      {
+        "key": "-13,-2",
+        "count": 188,
+        "firstMatrix": [
+          -0.8741464018821716,
+          0.041138529777526855,
+          -0.3421141803264618,
+          0,
+          0.046879809349775314,
+          1.1487210988998413,
+          0.018347324803471565,
+          0,
+          0.3424425721168518,
+          0,
+          -0.87498539686203,
+          0,
+          22.182010650634766,
+          -0.008365128189325333,
+          5.011826515197754,
+          1
+        ]
+      },
+      {
+        "key": "-12,-5",
+        "count": 183,
+        "firstMatrix": [
+          1.0838029384613037,
+          -0.004096731077879667,
+          -0.1630486398935318,
+          0,
+          0.004603039938956499,
+          1.2453092336654663,
+          -0.000692486937623471,
+          0,
+          0.16304977238178253,
+          0,
+          1.0838104486465454,
+          0,
+          20.346267700195312,
+          -0.0663880705833435,
+          7.893519401550293,
+          1
+        ]
+      },
+      {
+        "key": "-12,-2",
+        "count": 186,
+        "firstMatrix": [
+          0.34562209248542786,
+          0.015512187033891678,
+          -0.7284807562828064,
+          0,
+          -0.012406591325998306,
+          1.504471778869629,
+          0.026149841025471687,
+          0,
+          0.7286155819892883,
+          0,
+          0.34568604826927185,
+          0,
+          10.492862701416016,
+          0.002093323739245534,
+          23.173927307128906,
+          1
+        ]
+      },
+      {
+        "key": "-11,-5",
+        "count": 205,
+        "firstMatrix": [
+          -0.6688213348388672,
+          0.003914161119610071,
+          -0.4235934317111969,
+          0,
+          0.00481815030798316,
+          1.153528094291687,
+          0.003051542676985264,
+          0,
+          0.42359861731529236,
+          0,
+          -0.6688295006752014,
+          0,
+          10.71616268157959,
+          -0.037424396723508835,
+          21.38992691040039,
+          1
+        ]
+      },
+      {
+        "key": "-11,-2",
+        "count": 184,
+        "firstMatrix": [
+          -0.9289647340774536,
+          -0.054574403911828995,
+          -0.15059919655323029,
+          0,
+          -0.05715848132967949,
+          0.9985213279724121,
+          -0.009266252629458904,
+          0,
+          0.15085221827030182,
+          0,
+          -0.9305254220962524,
+          0,
+          1.291675090789795,
+          -0.007876818999648094,
+          9.192259788513184,
+          1
+        ]
+      }
+    ],
+    "render": {
+      "frame": 239,
+      "calls": 715,
+      "triangles": 978029,
+      "points": 0,
+      "lines": 520
+    },
+    "testRenderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "stableRecycling": true,
+  "errors": [],
+  "hardwareConclusion": "Isolated test renderer; this does not benchmark the user GPU."
+}

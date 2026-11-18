@@ -1,0 +1,146 @@
+{
+  "date": "2026-11-18T19:13:07.378Z",
+  "reversibility": {
+    "directPbr": {
+      "pixels": 0,
+      "max": 0,
+      "total": 0
+    },
+    "pbrRoundtrip": {
+      "pixels": 0,
+      "max": 0,
+      "total": 0
+    },
+    "comparisonPbr": {
+      "pixels": 0,
+      "max": 0,
+      "total": 0
+    },
+    "anime": {
+      "pixels": 684584,
+      "max": 190,
+      "total": 28130510
+    },
+    "controls": {
+      "celOff": 574561,
+      "levels2": 515821,
+      "levels5": 79592,
+      "shadowZero": 532191,
+      "outlinesOff": 18177,
+      "wideOutline": 29532,
+      "redOutline": 17418,
+      "reflectionsOff": 63902
+    },
+    "originalMaterials": true,
+    "originalGeometries": true,
+    "unchangedBones": true,
+    "bones": 24,
+    "glError": 0
+  },
+  "panel": {
+    "mode": "ANIME",
+    "compare": true,
+    "split": 0.5,
+    "ready": true,
+    "error": "",
+    "cel": false,
+    "levels": 4,
+    "shadow": 0.54,
+    "outlines": false,
+    "width": 1.8,
+    "color": "#152a45",
+    "highlights": 0.8
+  },
+  "night": {
+    "headlights": [
+      {
+        "intensity": 2400,
+        "emission": 0.85
+      },
+      {
+        "intensity": 2400,
+        "emission": 0.85
+      }
+    ],
+    "amber": [
+      65,
+      65
+    ]
+  },
+  "moving": {
+    "speed": 7.741625533204425,
+    "sceneFog": 0.068,
+    "grass": 11000
+  },
+  "cameras": [
+    {
+      "mode": 0,
+      "sameCamera": true,
+      "width": 1.2,
+      "gl": 0
+    },
+    {
+      "mode": 1,
+      "sameCamera": true,
+      "width": 1.2,
+      "gl": 0
+    },
+    {
+      "mode": 2,
+      "sameCamera": true,
+      "width": 1.2,
+      "gl": 0
+    },
+    {
+      "mode": 3,
+      "sameCamera": true,
+      "width": 1.2,
+      "gl": 0
+    }
+  ],
+  "resize": {
+    "size": [
+      1920,
+      1080
+    ],
+    "outlinePixels": 1.7999999999999998,
+    "aspect": 1.7777777777777777,
+    "gl": 0
+  },
+  "environment": {
+    "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": [
+      1262,
+      804
+    ],
+    "dpr": 1,
+    "samples": 4,
+    "glbs": 7,
+    "shaderError": "",
+    "programs": 497,
+    "invalidPrograms": []
+  },
+  "performance": {
+    "PBR": {
+      "medianMs": 180.60000000000582,
+      "p95Ms": 201.20000000001164,
+      "fps": 5.537098560354196,
+      "frames": 34,
+      "renderCalls": 472
+    },
+    "ANIME": {
+      "medianMs": 215.30000000001746,
+      "p95Ms": 229.09999999997672,
+      "fps": 4.644681839293631,
+      "frames": 29,
+      "renderCalls": 473
+    }
+  },
+  "sourceHashes": {
+    "assets/scott-bernard-gear.glb": "bb96f71e8c0d2758f2d016a282d898e0218cbaa402ac3315209a2d5b1bf7373b",
+    "public/models/mospeada/scott-bernard-gear.glb": "bb96f71e8c0d2758f2d016a282d898e0218cbaa402ac3315209a2d5b1bf7373b",
+    "public/models/mospeada/cyclone-vr052f.glb": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c"
+  },
+  "errors": [],
+  "performanceContext": "Isolated headless Chrome on the local GPU, full environment, 6 seconds per mode; not the user session. Comparison renders both modes and costs an additional scene pass."
+}

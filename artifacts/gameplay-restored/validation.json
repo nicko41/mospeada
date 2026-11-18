@@ -1,0 +1,182 @@
+{
+  "animationPanelRemoved": true,
+  "samples": [
+    {
+      "label": "mounted",
+      "speed": 0,
+      "x": 65,
+      "z": -78.25,
+      "yaw": -1.5707963267948966,
+      "boostCount": 0,
+      "handbrake": 0,
+      "riderMode": "mounted",
+      "pedestrian": null,
+      "clip": "Cyclone_RidingPose",
+      "frontTravel": 0.00008711610206568903,
+      "wheelSpin": 0
+    },
+    {
+      "label": "accelerating",
+      "speed": 8.887118436506723,
+      "x": 61.104091142730354,
+      "z": -78.25,
+      "yaw": -1.5707963267948966,
+      "boostCount": 0,
+      "handbrake": 0,
+      "riderMode": "mounted",
+      "pedestrian": null,
+      "clip": "Cyclone_RidingPose",
+      "frontTravel": -0.054610931741539255,
+      "wheelSpin": 4.764407258749079
+    },
+    {
+      "label": "boost",
+      "speed": 21.425883822160984,
+      "x": 59.074919226448856,
+      "z": -78.25,
+      "yaw": -1.5707963267948966,
+      "boostCount": 1,
+      "handbrake": 0,
+      "riderMode": "mounted",
+      "pedestrian": null,
+      "clip": "Cyclone_RidingPose",
+      "frontTravel": -0.055,
+      "wheelSpin": 4.2353258364587845
+    },
+    {
+      "label": "handbrake",
+      "speed": 33.21159908004856,
+      "x": 20.69885800847671,
+      "z": -78.25,
+      "yaw": -1.5707963267948966,
+      "boostCount": 1,
+      "handbrake": 0.6988057880877983,
+      "riderMode": "mounted",
+      "pedestrian": null,
+      "clip": "Cyclone_RidingPose",
+      "frontTravel": -0.055,
+      "wheelSpin": 2.9659545908929728
+    },
+    {
+      "label": "dismounting",
+      "speed": 0,
+      "x": -4.548561025353765,
+      "z": -78.2328899372923,
+      "yaw": -1.5693274862983002,
+      "boostCount": 1,
+      "handbrake": 4.327038760761211e-9,
+      "riderMode": "dismounting",
+      "pedestrian": {
+        "x": -4.041299187990227,
+        "z": -77.71077774909233,
+        "moving": false,
+        "runBlend": 0
+      },
+      "clip": "Cyclone_Dismount",
+      "frontTravel": 0.056587075587986674,
+      "wheelSpin": 4.3901527667933635
+    },
+    {
+      "label": "on-foot",
+      "speed": 0,
+      "x": -4.548561025353765,
+      "z": -78.2328899372923,
+      "yaw": -1.5693274862983002,
+      "boostCount": 1,
+      "handbrake": 4.049079729476008e-22,
+      "riderMode": "onFoot",
+      "pedestrian": {
+        "x": -4.041299187990227,
+        "z": -77.71077774909233,
+        "moving": false,
+        "runBlend": 0
+      },
+      "clip": "Walking",
+      "frontTravel": -0.00023446975926472358,
+      "wheelSpin": 4.3901527667933635
+    },
+    {
+      "label": "walking",
+      "speed": 0,
+      "x": -4.548561025353765,
+      "z": -78.2328899372923,
+      "yaw": -1.5693274862983002,
+      "boostCount": 1,
+      "handbrake": 2.256918045614096e-28,
+      "riderMode": "onFoot",
+      "pedestrian": {
+        "x": -3.7035089298257455,
+        "z": -77.73785901582464,
+        "moving": true,
+        "runBlend": 0
+      },
+      "clip": "walking_2_inplace",
+      "frontTravel": -0.00023450036355271713,
+      "wheelSpin": 4.3901527667933635
+    },
+    {
+      "label": "running",
+      "speed": 0,
+      "x": -4.548561025353765,
+      "z": -78.2328899372923,
+      "yaw": -1.5693274862983002,
+      "boostCount": 1,
+      "handbrake": 5.0358648495975404e-29,
+      "riderMode": "onFoot",
+      "pedestrian": {
+        "x": -3.7990940917958045,
+        "z": -77.73785901582464,
+        "moving": true,
+        "runBlend": 0.6321205588285577
+      },
+      "clip": "Running",
+      "frontTravel": -0.00023450046336216006,
+      "wheelSpin": 4.3901527667933635
+    },
+    {
+      "label": "mounting",
+      "speed": 0,
+      "x": -4.548561025353765,
+      "z": -78.2328899372923,
+      "yaw": -1.5693274862983002,
+      "boostCount": 1,
+      "handbrake": 8.454348546841731e-36,
+      "riderMode": "mounting",
+      "pedestrian": {
+        "x": -4.041299187990227,
+        "z": -77.71077774909233,
+        "moving": false,
+        "runBlend": 0
+      },
+      "clip": "Cyclone_Mount",
+      "frontTravel": -0.00023450061637273858,
+      "wheelSpin": 4.3901527667933635
+    },
+    {
+      "label": "riding-again",
+      "speed": 2.603080288346723,
+      "x": -4.827043164536978,
+      "z": -78.23248089115451,
+      "yaw": -1.5693274862983002,
+      "boostCount": 1,
+      "handbrake": 7.176933709183784e-50,
+      "riderMode": "mounted",
+      "pedestrian": null,
+      "clip": "Cyclone_RidingPose",
+      "frontTravel": -0.04016737161532681,
+      "wheelSpin": 5.17984594707675
+    }
+  ],
+  "startupGL": 0,
+  "wheelie": 0.8569119200874942,
+  "integrity": {
+    "bones": 24,
+    "originalClips": 16,
+    "sameBaseGeometry": true,
+    "relaxedHandInfluence": 0,
+    "sameWeights": true,
+    "cameraActive": true,
+    "gl": 0,
+    "shader": ""
+  }
+}

@@ -1,9 +1,10 @@
-import { useMemo, useRef } from 'react'
+import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { roadCenterAt, terrainHeight } from './terrain'
 import CarDriving from './CarDriving'
 import CarHeadlights from './CarHeadlights'
+import { registerColliders, boxCollider } from '../player/collisionWorld'
 
 const PARK_Z = 3
 const PARK_X = roadCenterAt(PARK_Z) + 6.6
@@ -51,7 +52,7 @@ function muddyPaint(source, ground) {
   return material
 }
 
-export default function ParkedRangeRover() {
+export default function ParkedRangeRover({ drivable = true }) {
   const car = useRef()
   const ground = useMemo(() => ({ value: terrainHeight(PARK_X, PARK_Z) + 0.025 }), [])
   const { scene } = useGLTF('/models/rangerover.glb')
@@ -82,9 +83,15 @@ export default function ParkedRangeRover() {
     return { model, offset: [-center.x, -bounds.min.y, -center.z], sideX: bounds.min.x - center.x, colliderSize: bounds.getSize(new THREE.Vector3()).toArray() }
   }, [scene, ground])
 
+  useLayoutEffect(() => {
+    if (drivable) return
+    model.updateWorldMatrix(true, true)
+    return registerColliders([boxCollider(new THREE.Box3().setFromObject(model), { walkable: false, environment: true })])
+  }, [drivable, model])
+
   return (
     <group ref={car} position={[PARK_X, terrainHeight(PARK_X, PARK_Z) + 0.025, PARK_Z]} rotation-y={Math.PI / 2 + 0.12}>
-      <CarDriving car={car} size={colliderSize} ground={ground} />
+      {drivable && <CarDriving car={car} size={colliderSize} ground={ground} />}
       <CarHeadlights />
       <primitive object={model} position={offset} />
       <mesh position={[sideX - 0.055, 1.98, -0.84]} castShadow>

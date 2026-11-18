@@ -1,0 +1,248 @@
+{
+  "frames": [
+    {
+      "name": "straight",
+      "steer": 0,
+      "heave": 0,
+      "airborne": false,
+      "forks": [
+        {
+          "side": "Left",
+          "length": 0.5099740443897836,
+          "stroke": 0.00006963992902941918,
+          "insertion": 0.17296967545068842,
+          "topError": 0,
+          "bottomError": 4.440892098500626e-16,
+          "axisError": 0,
+          "radialError": 5.714546125223698e-9,
+          "top": [
+            0.21653260979601133,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        },
+        {
+          "side": "Right",
+          "length": 0.5099740443897836,
+          "stroke": 0.00006963992902941918,
+          "insertion": 0.17296967545068842,
+          "topError": 0,
+          "bottomError": 4.440892098500626e-16,
+          "axisError": 0,
+          "radialError": 5.765048159904069e-9,
+          "top": [
+            -0.21350738838795694,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        }
+      ]
+    },
+    {
+      "name": "left",
+      "steer": 0.52,
+      "heave": 0,
+      "airborne": false,
+      "forks": [
+        {
+          "side": "Left",
+          "length": 0.5196827998583432,
+          "stroke": -0.00963911553953023,
+          "insertion": 0.16326091998212877,
+          "topError": 0,
+          "bottomError": 1.4238583238573986e-14,
+          "axisError": 0,
+          "radialError": 5.714534177667553e-9,
+          "top": [
+            0.21653260979601133,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        },
+        {
+          "side": "Right",
+          "length": 0.5192717268199986,
+          "stroke": -0.009228042501185585,
+          "insertion": 0.16367199302047342,
+          "topError": 0,
+          "bottomError": 4.440892098500626e-16,
+          "axisError": 0,
+          "radialError": 5.765037077498574e-9,
+          "top": [
+            -0.21350738838795694,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        }
+      ]
+    },
+    {
+      "name": "right",
+      "steer": -0.52,
+      "heave": 0,
+      "airborne": false,
+      "forks": [
+        {
+          "side": "Left",
+          "length": 0.5199645415237987,
+          "stroke": -0.0099208572049857,
+          "insertion": 0.1629791783166733,
+          "topError": 0,
+          "bottomError": 1.4217791915866692e-14,
+          "axisError": 0,
+          "radialError": 5.7145355333220224e-9,
+          "top": [
+            0.21653260979601133,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        },
+        {
+          "side": "Right",
+          "length": 0.519553691389696,
+          "stroke": -0.009510007070883009,
+          "insertion": 0.163390028450776,
+          "topError": 0,
+          "bottomError": 1.4238583238573986e-14,
+          "axisError": 0,
+          "radialError": 5.76503432840307e-9,
+          "top": [
+            -0.21350738838795694,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        }
+      ]
+    },
+    {
+      "name": "compressed-left",
+      "steer": 0.52,
+      "heave": -0.012,
+      "airborne": false,
+      "forks": [
+        {
+          "side": "Left",
+          "length": 0.5061891588619715,
+          "stroke": 0.0038545254568415066,
+          "insertion": 0.1767545609785005,
+          "topError": 0,
+          "bottomError": 0,
+          "axisError": 0,
+          "radialError": 5.7145323843575275e-9,
+          "top": [
+            0.21653260979601133,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        },
+        {
+          "side": "Right",
+          "length": 0.5057671186973329,
+          "stroke": 0.004276565621480044,
+          "insertion": 0.17717660114313905,
+          "topError": 0,
+          "bottomError": 0,
+          "axisError": 0,
+          "radialError": 5.765035040063622e-9,
+          "top": [
+            -0.21350738838795694,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        }
+      ]
+    },
+    {
+      "name": "extended-right",
+      "steer": -0.52,
+      "heave": 0.028,
+      "airborne": false,
+      "forks": [
+        {
+          "side": "Left",
+          "length": 0.5515304854843611,
+          "stroke": -0.04148680116554815,
+          "insertion": 0.13141323435611085,
+          "topError": 0,
+          "bottomError": 4.440892098500626e-16,
+          "axisError": 0,
+          "radialError": 5.714541847511311e-9,
+          "top": [
+            0.21653260979601133,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        },
+        {
+          "side": "Right",
+          "length": 0.55114316671189,
+          "stroke": -0.041099482393077036,
+          "insertion": 0.13180055312858197,
+          "topError": 0,
+          "bottomError": 1.4217791915866692e-14,
+          "axisError": 0,
+          "radialError": 5.765033519171672e-9,
+          "top": [
+            -0.21350738838795694,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        }
+      ]
+    },
+    {
+      "name": "airborne",
+      "steer": 0.3,
+      "heave": 0.45,
+      "airborne": true,
+      "forks": [
+        {
+          "side": "Left",
+          "length": 0.5539378020262806,
+          "stroke": -0.04389411770746765,
+          "insertion": 0.12900591781419135,
+          "topError": 0,
+          "bottomError": 1.4217791915866692e-14,
+          "axisError": 0,
+          "radialError": 5.7145328735888255e-9,
+          "top": [
+            0.21653260979601133,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        },
+        {
+          "side": "Right",
+          "length": 0.5538025872891402,
+          "stroke": -0.04375890297032725,
+          "insertion": 0.12914113255133175,
+          "topError": 0,
+          "bottomError": 1.3322676295501878e-15,
+          "axisError": 0,
+          "radialError": 5.7650441827427996e-9,
+          "top": [
+            -0.21350738838795694,
+            0.7988158018999203,
+            0.4052507704304111
+          ],
+          "fixedMountsStable": true
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "maxTopError": 0,
+  "maxBottomError": 1.4238583238573986e-14,
+  "minInsertion": 0.12900591781419135
+}

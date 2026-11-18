@@ -1,0 +1,38 @@
+{
+  "correction": {
+    "sourceClip": "Roll_Dodge_4",
+    "sourceDuration": 3.1333329677581787,
+    "foldInterval": [
+      1.95,
+      2.22
+    ],
+    "openFrame": 0.2,
+    "localBones": [
+      "mixamorigRightUpLeg",
+      "mixamorigRightLeg",
+      "mixamorigRightFoot",
+      "mixamorigRightToeBase"
+    ],
+    "support": 0.55,
+    "raised": 1.12,
+    "crossed": 1.72,
+    "lowered": 2.1,
+    "end": 2.5,
+    "rightLegIK": false,
+    "collisionAvoidance": false,
+    "baselineSha256": "05bf61d7b500d92c0cc16420665c9c98e3de069c87ba32fab250d59b749f80c6"
+  },
+  "bikeScale": 0.9416000000000001,
+  "originalClips": 16,
+  "bones": 24,
+  "originalGeometry": true,
+  "originalWeights": true,
+  "startupGL": 0,
+  "localPoseError": 1.5958111609926107e-8,
+  "frameStep": 2.4833333333333334,
+  "fKey": true,
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "cadence": [
+    {
+      "speedKmh": 0,
+      "strokesIn20Seconds": 0,
+      "pauseSeconds": 6.045
+    },
+    {
+      "speedKmh": 18,
+      "strokesIn20Seconds": 3,
+      "pauseSeconds": 5.128829068990964
+    },
+    {
+      "speedKmh": 90,
+      "strokesIn20Seconds": 6,
+      "pauseSeconds": 2.1624372316664706
+    },
+    {
+      "speedKmh": 162,
+      "strokesIn20Seconds": 15,
+      "pauseSeconds": 0.44533171876825955
+    },
+    {
+      "speedKmh": 252,
+      "strokesIn20Seconds": 22,
+      "pauseSeconds": 0.0434866503362247
+    }
+  ],
+  "programsBefore": 356,
+  "programsAfter": 356,
+  "panels": 70,
+  "stopped": {
+    "playing": false,
+    "progress": -1
+  },
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

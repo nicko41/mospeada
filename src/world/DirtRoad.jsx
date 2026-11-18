@@ -73,5 +73,5 @@ export default function DirtRoad() {
   const material = useDirtRoadMaterials()
   const geometry = useMemo(makeRoadGeometry, [])
 
-  return <mesh geometry={geometry} material={material} receiveShadow renderOrder={1} />
+  return <mesh userData={{ rideSurface: true, rideSurfaceType: 'dirt' }} geometry={geometry} material={material} receiveShadow renderOrder={1} />
 }

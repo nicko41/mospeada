@@ -1,0 +1,31 @@
+{
+  "bikeScale": 0.88,
+  "actorScale": 1.2607598654177716,
+  "originalClips": 16,
+  "bones": 24,
+  "originalGeometry": true,
+  "originalWeights": true,
+  "startupGL": 0,
+  "scaleComparison": [
+    {
+      "bikeScale": 0.9,
+      "scottScale": 1.2607598654177716,
+      "seatHeight": 0.8079391051931697,
+      "gripHeight": 0.8712150290608406,
+      "footHeight": 0.3962781763517538
+    },
+    {
+      "bikeScale": 0.85,
+      "scottScale": 1.2607598654177716,
+      "seatHeight": 0.7630535993491048,
+      "gripHeight": 0.8228141941130162,
+      "footHeight": 0.37610040732866323
+    }
+  ],
+  "frameStep": 3.6333333333333333,
+  "fKey": true,
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

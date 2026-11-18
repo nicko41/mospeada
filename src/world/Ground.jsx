@@ -28,6 +28,6 @@ export default function Ground() {
   }, [])
 
   return (
-    <mesh geometry={geometry} material={material} position-z={WORLD_CENTER_Z} receiveShadow />
+    <mesh userData={{ rideSurface: true, rideSurfaceType: 'dirt' }} geometry={geometry} material={material} position-z={WORLD_CENTER_Z} receiveShadow />
   )
 }

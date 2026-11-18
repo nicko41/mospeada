@@ -1,9 +1,50 @@
-node_modules/ 
-dist/ 
+# Dependencies and generated builds
+node_modules/
+/dist/
+/build/
+/coverage/
 
-# Local generated files
-build/
+# Local caches, browser profiles, logs and temporary files
 .vite/
+.cache/
 .local/
+.codex/
+.npm/
+/tmp/
+/temp/
+/logs/
 *.log
 *.tmp
+*.temp
+*.pid
+*.swp
+*.swo
+*.bak
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Credentials and machine-specific secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+.npmrc
+.netrc
+.pypirc
+.git-credentials
+.aws/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# Retain animation baselines and JSON reports required by authoring/tests.
+# Screenshots, rejected exported binaries and generated source backups stay local.
+/artifacts/**
+!/artifacts/**/
+!/artifacts/**/*.json

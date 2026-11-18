@@ -1,0 +1,22 @@
+{
+  "source": "C:\\IT-UP\\MOSPEADA\\assets\\scott-bernard-gear.glb",
+  "runtime": "public/models/mospeada/scott-bernard-gear.glb",
+  "sha256": "bb96f71e8c0d2758f2d016a282d898e0218cbaa402ac3315209a2d5b1bf7373b",
+  "bytes": 12998440,
+  "skins": 1,
+  "bones": 24,
+  "embeddedImages": 3,
+  "runtimeMatchesInput": true,
+  "newBoneOffsetsPreserved": true,
+  "poseTransfer": "world-space rotations, new joint offsets, seated pelvis retained",
+  "soleGroundContact": "passed",
+  "glovesInsideCovers": "passed",
+  "nodeTests": {
+    "passed": 39,
+    "failed": 0
+  },
+  "productionBuild": "passed",
+  "revisionReport": "revision-validation.json",
+  "screenshot": "scott-replacement-idle.png",
+  "errors": []
+}

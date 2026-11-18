@@ -1,0 +1,111 @@
+{
+  "before": [
+    {
+      "kmh": 72,
+      "seconds": 1.9666666666666666,
+      "distance": 20.05282521390363,
+      "turnDegrees": 139.50586083093089,
+      "peakSlipDegrees": 65.89014644004466,
+      "staysStopped": true
+    },
+    {
+      "kmh": 100,
+      "seconds": 2.65,
+      "distance": 36.92552262467747,
+      "turnDegrees": 204.67780514240144,
+      "peakSlipDegrees": 65.89014644004466,
+      "staysStopped": true
+    },
+    {
+      "kmh": 216,
+      "seconds": 5.025,
+      "distance": 140.77367468505918,
+      "turnDegrees": 429.66553219123006,
+      "peakSlipDegrees": 65.89014644004466,
+      "staysStopped": true
+    }
+  ],
+  "after": [
+    {
+      "kmh": 72,
+      "seconds": 0.925,
+      "distance": 9.801377203591613,
+      "turnDegrees": 58.66933010503376,
+      "peakSlipDegrees": 38.16974227386136,
+      "staysStopped": true
+    },
+    {
+      "kmh": 100,
+      "seconds": 1.25,
+      "distance": 17.955743134517697,
+      "turnDegrees": 75.5324436470536,
+      "peakSlipDegrees": 52.8232119226131,
+      "staysStopped": true
+    },
+    {
+      "kmh": 216,
+      "seconds": 2.45,
+      "distance": 72.28498459303398,
+      "turnDegrees": 79.17588970471769,
+      "peakSlipDegrees": 56.23801651292813,
+      "staysStopped": true
+    }
+  ],
+  "jump": [
+    {
+      "speed": 20,
+      "start": 15.912217584467514,
+      "end": 32.14573420978413,
+      "distance": 16.233516625316618,
+      "air": 0.8916666666666659,
+      "peak": 1.4885892862339218
+    },
+    {
+      "speed": 40,
+      "start": 16.028520984494936,
+      "end": 65.01874831549658,
+      "distance": 48.99022733100165,
+      "air": 1.3166666666666644,
+      "peak": 3.382591921287455
+    },
+    {
+      "speed": 60,
+      "start": 16.721436813261498,
+      "end": 89.67074423159434,
+      "distance": 72.94930741833284,
+      "air": 1.3249999999999977,
+      "peak": 3.360978045335309
+    }
+  ],
+  "jumpBeforeLatestIncrease": [
+    {
+      "speed": 20,
+      "start": 15.912217584467514,
+      "end": 30.796401766853936,
+      "distance": 14.884184182386422,
+      "air": 0.8083333333333329,
+      "peak": 1.1401117986530631
+    },
+    {
+      "speed": 40,
+      "start": 16.028520984494936,
+      "end": 59.96050533881487,
+      "distance": 43.93198435431994,
+      "air": 1.1833333333333316,
+      "peak": 2.8918847853803475
+    },
+    {
+      "speed": 60,
+      "start": 16.721436813261498,
+      "end": 82.3122403291323,
+      "distance": 65.59080351587079,
+      "air": 1.1833333333333316,
+      "peak": 2.856904664873259
+    }
+  ],
+  "jumpConfig": {
+    "terrainLaunchGain": 1.2,
+    "maxTerrainLaunchSpeed": 6.3,
+    "airGravityScale": 1.12
+  }
+}

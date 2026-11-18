@@ -1,0 +1,46 @@
+{
+  "startupGLError": 1281,
+  "stopped": {
+    "idle": 1,
+    "footReachError": 3.9968028886505635e-15,
+    "minimum": 0.0025341934625058293,
+    "maximum": 0.014865691625908006,
+    "heelToeHeightDifference": 0.012331498163402177,
+    "normalDot": 1.0000000000000002,
+    "samples": 72,
+    "handErrors": [
+      3.9968028886505635e-15,
+      8.881784197001252e-16
+    ]
+  },
+  "stopped-anime": {
+    "idle": 1,
+    "footReachError": 3.9968028886505635e-15,
+    "minimum": 0.0025341934625058293,
+    "maximum": 0.014865691625908006,
+    "heelToeHeightDifference": 0.012331498163402177,
+    "normalDot": 1.0000000000000002,
+    "samples": 72,
+    "handErrors": [
+      3.9968028886505635e-15,
+      8.881784197001252e-16
+    ]
+  },
+  "after-coleada": {
+    "idle": 0.9999832982992098,
+    "footReachError": 3.552713678800501e-15,
+    "minimum": 0.002458194412560566,
+    "maximum": 0.014657620560890372,
+    "heelToeHeightDifference": 0.012199426148329806,
+    "normalDot": 0.9999999999972229,
+    "samples": 72,
+    "handErrors": [
+      8.881784197001252e-16,
+      4.440892098500626e-15
+    ]
+  },
+  "errors": {
+    "shader": "",
+    "gl": 0
+  }
+}

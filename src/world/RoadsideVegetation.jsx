@@ -7,6 +7,7 @@ import { timeOfDayState } from './TimeOfDay'
 import { HIGHWAY_CLEARANCE, HIGHWAY_Z, highwayLiftAt } from './sectors/highwayProfile'
 import { roadCenterAt, terrainHeight } from './terrain'
 import { createGrassModelGeometry } from './grassModelGeometry'
+import HighwayGrass from './HighwayGrass'
 
 const CLUMP_COUNT = 11000
 
@@ -90,7 +91,7 @@ void main() {
 }
 `
 
-export default function RoadsideVegetation() {
+export default function RoadsideVegetation({ count = CLUMP_COUNT }) {
   const mesh = useRef()
   const grass = useGLTF('/models/grass02.glb')
   const geometry = useMemo(() => createGrassModelGeometry(grass.scene, 1), [grass.scene])
@@ -121,7 +122,7 @@ export default function RoadsideVegetation() {
     ]
     let placed = 0
 
-    while (placed < CLUMP_COUNT) {
+    while (placed < count) {
       const z = 46 - random() * 225
       const center = roadCenterAt(z)
       const roadside = random() < 0.14
@@ -164,7 +165,8 @@ export default function RoadsideVegetation() {
     mesh.current.instanceMatrix.setUsage(THREE.StaticDrawUsage)
     mesh.current.instanceMatrix.needsUpdate = true
     mesh.current.instanceColor.needsUpdate = true
-  }, [])
+    mesh.current.computeBoundingSphere(); mesh.current.boundingSphere.radius += 2
+  }, [count])
 
   useFrame((state) => {
     material.uniforms.uTime.value = state.clock.elapsedTime
@@ -173,15 +175,18 @@ export default function RoadsideVegetation() {
     material.uniforms.uPhoneEnabled.value = phoneLightState.enabled ? 1 : 0
     material.uniforms.uDay.value = timeOfDayState.value
     material.uniforms.uFogColor.value.copy(state.scene.fog.color)
+    material.uniforms.uFogDensity.value = state.scene.fog.density
   })
 
-  return (
+  return <>
     <instancedMesh
+      name="Grass_original_field"
       ref={mesh}
-      args={[geometry, material, CLUMP_COUNT]}
+      args={[geometry, material, count]}
       castShadow={false}
       receiveShadow={false}
-      frustumCulled={false}
+      frustumCulled
     />
-  )
+    <HighwayGrass geometry={geometry} material={material} />
+  </>
 }

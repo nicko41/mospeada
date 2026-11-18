@@ -1,0 +1,17 @@
+{
+  "connectedPart": "Fork_Left_Lower_Reinforcement",
+  "mount": "Closest point on the original reinforcement surface",
+  "geometryCases": 63,
+  "connectorLengthAtRestMetres": 0.24767539547137174,
+  "maxConnectorStartErrorMetres": 1.4210854715202004e-14,
+  "maxConnectorEndErrorMetres": 2.010208941128915e-14,
+  "frontTireClearance": "passed",
+  "mainActuatorParallelAtRest": "passed",
+  "nodeTests": {
+    "passed": 39,
+    "failed": 0
+  },
+  "productionBuild": "passed",
+  "browserErrors": [],
+  "screenshot": "hydraulic-fork-connection.png"
+}
