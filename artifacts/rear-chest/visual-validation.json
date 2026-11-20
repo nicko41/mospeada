@@ -1,0 +1,152 @@
+[
+  {
+    "name": "start",
+    "progress": 0,
+    "rearActive": false,
+    "parts": [
+      {
+        "id": "4f8dcb27-ecfb-40f1-af7e-147dcc02e754",
+        "kind": "plate",
+        "visible": true,
+        "scale": [
+          0.9416000000000001,
+          0.9416000000000001,
+          0.9416000000000001
+        ]
+      },
+      {
+        "id": "70581499-b1e5-4642-901e-a0727e391866",
+        "kind": "grille",
+        "visible": true,
+        "scale": [
+          0.9416000000000001,
+          0.9416000000000001,
+          0.9416000000000001
+        ]
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "rising",
+    "progress": 0.11,
+    "rearActive": false,
+    "parts": [
+      {
+        "id": "4f8dcb27-ecfb-40f1-af7e-147dcc02e754",
+        "kind": "plate",
+        "visible": true,
+        "scale": [
+          0.9557076405452974,
+          0.9557076405452968,
+          0.9557076405452966
+        ]
+      },
+      {
+        "id": "70581499-b1e5-4642-901e-a0727e391866",
+        "kind": "grille",
+        "visible": true,
+        "scale": [
+          0.6641575447390904,
+          0.955707640545297,
+          0.5523287783191195
+        ]
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "chest-arrived",
+    "progress": 0.22,
+    "rearActive": false,
+    "parts": [
+      {
+        "id": "4f8dcb27-ecfb-40f1-af7e-147dcc02e754",
+        "kind": "plate",
+        "visible": true,
+        "scale": [
+          0.9698152810905946,
+          0.9698152810905928,
+          0.9698152810905929
+        ]
+      },
+      {
+        "id": "70581499-b1e5-4642-901e-a0727e391866",
+        "kind": "grille",
+        "visible": true,
+        "scale": [
+          0.3781076790566544,
+          0.9698152810905941,
+          0.15114863438956735
+        ]
+      }
+    ],
+    "endpointError": 2.6645352591003757e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "armor",
+    "progress": 1,
+    "rearActive": true,
+    "parts": [
+      {
+        "id": "4f8dcb27-ecfb-40f1-af7e-147dcc02e754",
+        "kind": "plate",
+        "visible": true,
+        "scale": [
+          0.9698152810905946,
+          0.9698152810905928,
+          0.9698152810905929
+        ]
+      },
+      {
+        "id": "70581499-b1e5-4642-901e-a0727e391866",
+        "kind": "grille",
+        "visible": true,
+        "scale": [
+          0.3781076790566544,
+          0.9698152810905941,
+          0.15114863438956735
+        ]
+      }
+    ],
+    "endpointError": 4.440892098500626e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "reverted",
+    "progress": 0,
+    "rearActive": false,
+    "parts": [
+      {
+        "id": "4f8dcb27-ecfb-40f1-af7e-147dcc02e754",
+        "kind": "plate",
+        "visible": true,
+        "scale": [
+          0.9416000000000001,
+          0.9416000000000001,
+          0.9416000000000001
+        ]
+      },
+      {
+        "id": "70581499-b1e5-4642-901e-a0727e391866",
+        "kind": "grille",
+        "visible": true,
+        "scale": [
+          0.9416000000000001,
+          0.9416000000000001,
+          0.9416000000000001
+        ]
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  }
+]

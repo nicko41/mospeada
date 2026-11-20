@@ -1,0 +1,2712 @@
+[
+  {
+    "name": "ground-idle-flat-feet",
+    "active": true,
+    "state": {
+      "x": 50,
+      "y": 0.15387431543139093,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -1.414900805769698e-20,
+      "bank": -1.9364704023173764e-22,
+      "vx": 0,
+      "vz": 0,
+      "vy": 0,
+      "ax": 0,
+      "az": 0,
+      "ay": 0,
+      "speed": 0,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19375701248645782,
+      "groundSmooth": 0.19375701248645782,
+      "surface": "dirt",
+      "height": 0.024999999999999994,
+      "grounded": true,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 11.39999999999992,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 0.000009928653774002919,
+      "time": 4.105900000095362,
+      "stride": 5.56406624650778,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0.000026984078901461825,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "walking_2_inplace",
+    "clip": "Armor_Walk",
+    "body": {
+      "boost": 0,
+      "reverse": 0,
+      "lean": -9.940474945976181e-12,
+      "bank": 1.3503977332991444e-13,
+      "tuck": 1.3047754840677041e-9,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": true,
+      "speed": 0,
+      "acceleration": [
+        0,
+        0,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.000043815216282061894,
+      "sway": 0
+    },
+    "landing": {
+      "compression": 0.10001976027465792,
+      "flat": 0.999999999241744
+    },
+    "torsoError": 1.509903313490213e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.06615620816114,
+          1.5632547032774462,
+          -250.276997983469
+        ],
+        "knee": [
+          50.325722034931246,
+          1.0183383956211995,
+          -250.13938424892038
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 7.191640501203643e-15,
+        "lengthScale": 0.7844848022720675
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.96270420963587,
+          1.5543703425907356,
+          -250.26249312740313
+        ],
+        "knee": [
+          49.670623260209226,
+          1.0204345061415698,
+          -250.1351369956816
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 1.9984014443252818e-15,
+        "lengthScale": 0.7896783334322202
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      0.000009928653774002919,
+      0.000009928653774002919
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "ground-free-camera",
+    "active": true,
+    "state": {
+      "x": 50,
+      "y": 0.15387431543139093,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -6.423639720282784e-25,
+      "bank": -8.791562025234017e-27,
+      "vx": 0,
+      "vz": 0,
+      "vy": 0,
+      "ax": 0,
+      "az": 0,
+      "ay": 0,
+      "speed": 0,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19375701248645782,
+      "groundSmooth": 0.19375701248645782,
+      "surface": "dirt",
+      "height": 0.024999999999999994,
+      "grounded": true,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 12.399999999999864,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 2.4610672153676393e-8,
+      "time": 5.105900000095412,
+      "stride": 5.56406624650778,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 6.688684431233527e-8,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "walking_2_inplace",
+    "clip": "Armor_Walk",
+    "body": {
+      "boost": 0,
+      "reverse": 0,
+      "lean": -3.3346578479762468e-15,
+      "bank": 1.666523197055435e-17,
+      "tuck": 1.1898012330190012e-12,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": true,
+      "speed": 0,
+      "acceleration": [
+        0,
+        0,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.000013223862190228467,
+      "sway": 0
+    },
+    "landing": {
+      "compression": 0.10000004847327736,
+      "flat": 0.9999999999999998
+    },
+    "torsoError": 1.6431300764452317e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.06617485278749,
+          1.563198445193246,
+          -250.27703777098236
+        ],
+        "knee": [
+          50.32555254864227,
+          1.0182863645371352,
+          -250.1389964816344
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 6.661338147750939e-16,
+        "lengthScale": 0.7845007904287107
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.962720664320805,
+          1.5543462462815494,
+          -250.26252887108257
+        ],
+        "knee": [
+          49.67042839804313,
+          1.0205286857701648,
+          -250.13521467579412
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 2.914203267236168e-14,
+        "lengthScale": 0.7896645650558933
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      2.4610672153676393e-8,
+      2.4610672153676393e-8
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "ground-turn-right",
+    "active": true,
+    "state": {
+      "x": 50.00346971227896,
+      "y": 0.15387264468584388,
+      "z": -249.8893729988876,
+      "yaw": -0.20010490172691234,
+      "pitch": -2.3631249905843117e-25,
+      "bank": -3.234234924867166e-27,
+      "vx": -0.2570579752608637,
+      "vz": 0.9889471765063718,
+      "vy": -0.00004825649707836265,
+      "ax": -7.960954071756987,
+      "az": -2.718525333011712,
+      "ay": -0.0010329202465987435,
+      "speed": 1.0218098260269077,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19358939903507533,
+      "groundSmooth": 0.19369783722414438,
+      "surface": "dirt",
+      "height": 0.025165942705835442,
+      "grounded": true,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 12.499999999999858,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 1.3506623250032842e-8,
+      "time": 5.205900000095417,
+      "stride": 5.688463777948282,
+      "localForward": 1.020309423148705,
+      "localSide": -0.055353424456815015,
+      "forwardAcceleration": -1.0818632688209373,
+      "sideAcceleration": -8.342466157343804,
+      "settle": 3.6708278460219155e-8,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": {
+        "name": "Armor_Turn_Right",
+        "time": 0.09999999999999999,
+        "end": 0.29999999999999993,
+        "startYaw": 0,
+        "startX": 50,
+        "startZ": -250,
+        "offsetX": 0.0013143613711505964,
+        "offsetZ": -0.18265426981463406,
+        "finished": false
+      },
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Right_Idle_Style",
+    "clip": "Armor_Turn_Right",
+    "body": {
+      "boost": 0,
+      "reverse": 0,
+      "lean": -0.0012907933283393329,
+      "bank": -0.011085083727451171,
+      "tuck": 5.908378067501343e-13,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": true,
+      "speed": 1.0218098260269077,
+      "acceleration": [
+        -7.960954071756987,
+        -0.0010329202465987435,
+        -2.718525333011712
+      ]
+    },
+    "arms": {
+      "lift": 0.000013223862190228467,
+      "sway": 0
+    },
+    "landing": {
+      "compression": 0.05770039329314552,
+      "flat": 0.2231301601484298
+    },
+    "torsoError": 3.375077994860476e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          49.42597871328875,
+          1.6166438920072033,
+          -250.4311746112437
+        ],
+        "knee": [
+          49.65107655868521,
+          1.071696038544651,
+          -250.25096035850336
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 9.589139651961702e-15,
+        "lengthScale": 0.7812733596869992
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.3234227959839,
+          1.5955073134182343,
+          -250.43638686454614
+        ],
+        "knee": [
+          49.11034277769676,
+          1.0486230562952592,
+          -250.28474382943455
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 3.9968028886505635e-15,
+        "lengthScale": 0.7698861303386292
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      1.4858765818393544e-8,
+      1.2154480681672138e-8
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "native-walk",
+    "active": true,
+    "state": {
+      "x": 48.33497057144375,
+      "y": 0.15328015510880108,
+      "z": -248.7590869757833,
+      "yaw": -1.05,
+      "pitch": -1.0728570859250087e-29,
+      "bank": -1.4683403842434563e-31,
+      "vx": -2.1673996563986404,
+      "vz": 1.2436373399967982,
+      "vy": -0.0007164367488911446,
+      "ax": -0.010826590949406523,
+      "az": 0.00271298285833943,
+      "ay": -0.000030785653892754367,
+      "speed": 2.4988507566461937,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19280530972125293,
+      "groundSmooth": 0.1928989721588641,
+      "surface": "dirt",
+      "height": 0.02535754244261504,
+      "grounded": true,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 13.499999999999801,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 3.3479571780431384e-11,
+      "time": 6.2059000000954665,
+      "stride": 7.9584887950159535,
+      "localForward": 2.4988507355641594,
+      "localSide": 0.00032459469474543923,
+      "forwardAcceleration": 0.01074113816725744,
+      "sideAcceleration": -0.0030336938618292265,
+      "settle": 9.099072513494312e-11,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711422003,
+      "pelvisOffsetZ": -0.18265426981464594
+    },
+    "source": "walking_2_inplace",
+    "clip": "Armor_Walk",
+    "body": {
+      "boost": 0,
+      "reverse": 0,
+      "lean": 0.0001502704914314218,
+      "bank": -0.00002503711015456006,
+      "tuck": 0.0000015324616762457656,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": true,
+      "speed": 2.4988507566461937,
+      "acceleration": [
+        -0.010826590949406523,
+        -0.000030785653892754367,
+        0.00271298285833943
+      ]
+    },
+    "arms": {
+      "lift": 0.000013223862190228467,
+      "sway": 0
+    },
+    "landing": {
+      "compression": 6.268816115037613e-11,
+      "flat": 6.825603376334854e-8
+    },
+    "torsoError": 5.684341886080802e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          47.93930363663071,
+          1.6838584650112987,
+          -249.69078306665196
+        ],
+        "knee": [
+          47.87513941835525,
+          1.1554749249247473,
+          -249.4036202239647
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 3.225766324136159e-14,
+        "lengthScale": 0.7663887864430702
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          47.86923105736493,
+          1.6674205507920314,
+          -249.7670147354277
+        ],
+        "knee": [
+          47.73419843687636,
+          1.0775084491510178,
+          -249.86151020911313
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 1.5543122344752192e-15,
+        "lengthScale": 0.7778878062458224
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      3.3480790581688264e-11,
+      3.3478352979174497e-11
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "native-run",
+    "active": true,
+    "state": {
+      "x": 43.842666206555194,
+      "y": 0.15146052023074225,
+      "z": -246.18217267311041,
+      "yaw": -1.05,
+      "pitch": -4.8707636346179825e-34,
+      "bank": -6.666255031207325e-36,
+      "vx": -4.770506452217247,
+      "vz": 2.7364565121445144,
+      "vy": -0.0032553203439621005,
+      "ax": -0.003002794307285228,
+      "az": 0.0017220303519671631,
+      "ay": -0.0017290891660978747,
+      "speed": 5.499629628757241,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.18961154178941983,
+      "groundSmooth": 0.1900829578480797,
+      "surface": "dirt",
+      "height": 0.0267316754963893,
+      "grounded": true,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 14.499999999999744,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 8.2987561424602e-14,
+      "time": 7.205900000095516,
+      "stride": 11.411106857172559,
+      "localForward": 5.499629628757241,
+      "localSide": 4.005816789387495e-8,
+      "forwardAcceleration": 0.003461525970550365,
+      "sideAcceleration": -3.743876050663498e-7,
+      "settle": 2.2554345798469089e-13,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711422003,
+      "pelvisOffsetZ": -0.18265426981464594
+    },
+    "source": "Running",
+    "clip": "Armor_Run",
+    "body": {
+      "boost": 0,
+      "reverse": 0,
+      "lean": 0.00006752661724447687,
+      "bank": -6.100945483208801e-9,
+      "tuck": 1.3974241654719543e-9,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": true,
+      "speed": 5.499629628757241,
+      "acceleration": [
+        -0.003002794307285228,
+        -0.0017290891660978747,
+        0.0017220303519671631
+      ]
+    },
+    "arms": {
+      "lift": 0.000013223862190228467,
+      "sway": 0
+    },
+    "landing": {
+      "compression": 1.636560658904906e-13,
+      "flat": 2.0879679116459267e-14
+    },
+    "torsoError": 2.842170943040401e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          43.44128014864056,
+          1.7022519351266614,
+          -247.12827855406167
+        ],
+        "knee": [
+          43.57465907568629,
+          1.12304464561332,
+          -246.9511904091717
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 4.440892098500626e-16,
+        "lengthScale": 0.7859015400702436
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          43.36974668027249,
+          1.6784375565076124,
+          -247.20113098701626
+        ],
+        "knee": [
+          42.95694838662173,
+          1.3049160027409805,
+          -247.12402176161194
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 3.0433074220920305e-14,
+        "lengthScale": 0.7137742199159253
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      8.298756179743618e-14,
+      8.298756105176783e-14
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "ground-turn-left",
+    "active": true,
+    "state": {
+      "x": 42.29104085110021,
+      "y": 0.1482541961487331,
+      "z": -245.25111712282808,
+      "yaw": -0.7436897868743234,
+      "pitch": -9.154740609815263e-46,
+      "bank": -1.2529418429553001e-47,
+      "vx": -0.71876795026526,
+      "vz": 0.858703027864749,
+      "vy": -0.00004032236639768811,
+      "ax": 2.121208131768526,
+      "az": -2.0979739311314916,
+      "ay": -0.0008318333565491879,
+      "speed": 1.1198206358129907,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.18799715933243116,
+      "groundSmooth": 0.1880900480921705,
+      "surface": "dirt",
+      "height": 0.025139733871368808,
+      "grounded": true,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 17.19999999999959,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 7.646142652003222e-21,
+      "time": 9.905900000095448,
+      "stride": 13.42718222424853,
+      "localForward": 1.118596170102824,
+      "localSide": 0.05235326755709646,
+      "forwardAcceleration": -2.980132638017088,
+      "sideAcceleration": 0.14081198036231934,
+      "settle": 2.0780673927186825e-20,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": {
+        "name": "Armor_Turn_Left",
+        "time": 0.09999999999999999,
+        "end": 0.43999999999999995,
+        "startYaw": -1.05,
+        "startX": 42.377570214722745,
+        "startZ": -245.34176473992284,
+        "offsetX": 0.0013143613711422003,
+        "offsetZ": -0.18265426981464594,
+        "finished": false
+      },
+      "pelvisOffsetX": 0.0013143613711422003,
+      "pelvisOffsetZ": -0.18265426981464594
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Armor_Turn_Left",
+    "body": {
+      "boost": 0,
+      "reverse": 0,
+      "lean": -0.0035557078631065085,
+      "bank": 0.00042443223203264747,
+      "tuck": 5.557009686565269e-7,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": true,
+      "speed": 1.1198206358129907,
+      "acceleration": [
+        2.121208131768526,
+        -0.0008318333565491879,
+        -2.0979739311314916
+      ]
+    },
+    "arms": {
+      "lift": 0.000013223862190228467,
+      "sway": 0
+    },
+    "landing": {
+      "compression": 0.05770035171204648,
+      "flat": 0.22313015939017378
+    },
+    "torsoError": 5.684341886080802e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          43.082678323721176,
+          1.5741302055365176,
+          -247.16955347387733
+        ],
+        "knee": [
+          43.06703131101671,
+          1.0129275840107324,
+          -246.93004411146003
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 3.583183538494467e-14,
+        "lengthScale": 0.7734687669209916
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          42.996240361822565,
+          1.5779407093062274,
+          -247.22876156046195
+        ],
+        "knee": [
+          42.703731030034994,
+          1.0713511460804734,
+          -247.3269070945806
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 3.190727663079838e-14,
+        "lengthScale": 0.7533099884976037
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      7.633222630135686e-21,
+      7.659062673870759e-21
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "boost-KeyW",
+    "active": true,
+    "state": {
+      "x": 50,
+      "y": 0.8947038985069474,
+      "z": -219.86132872882354,
+      "yaw": 0,
+      "pitch": -4.6772384804373577e-57,
+      "bank": -6.401391422644461e-59,
+      "vx": 0,
+      "vz": 31.9951976951631,
+      "vy": -0.07654757947308047,
+      "ax": 0,
+      "az": 0.044882812141224804,
+      "ay": -0.05845833739731576,
+      "speed": 31.9951976951631,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.11821105365890061,
+      "groundSmooth": 0.12926606800136323,
+      "surface": "dirt",
+      "height": 0.8413755419031137,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0.999932271263509,
+      "boostRelease": 0,
+      "boosting": true,
+      "thrustForward": 1,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 1,
+      "lift": 0.25,
+      "time": 12.5059000000953,
+      "stride": 46.91459474777793,
+      "localForward": 31.9951976951631,
+      "localSide": 0,
+      "forwardAcceleration": 0.044882812141224804,
+      "sideAcceleration": 0,
+      "settle": 0,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 0.9994847162217197,
+      "reverse": 0,
+      "lean": 0.2406597319293475,
+      "bank": 2.919560511245088e-14,
+      "tuck": 3.570491913111098e-18,
+      "leftFlex": 2.6274264957904972e-14,
+      "rightFlex": 0,
+      "ground": false,
+      "speed": 31.9951976951631,
+      "acceleration": [
+        0,
+        -0.05845833739731576,
+        0.044882812141224804
+      ]
+    },
+    "arms": {
+      "lift": 0.000013223862190228467,
+      "sway": 0
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 2.576757100398458e-18
+    },
+    "torsoError": 2.842170943040401e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.06586453314791,
+          2.350726923404994,
+          -220.13704719769598
+        ],
+        "knee": [
+          50.23106975874432,
+          1.8039093473656096,
+          -220.18134571475213
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 1.4273168140722167e-14,
+        "lengthScale": 0.7260355440242733
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.96244277629641,
+          2.3410343093685673,
+          -220.12284747389353
+        ],
+        "knee": [
+          49.81243006724745,
+          1.8011397170129013,
+          -220.18863405104622
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 1.7763568394002505e-15,
+        "lengthScale": 0.7165384441836362
+      }
+    ],
+    "main": 0.999932271263509,
+    "lifts": [
+      0.25,
+      0.25
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "boost-KeyS",
+    "active": true,
+    "state": {
+      "x": 50,
+      "y": 0.9332939882365139,
+      "z": -280.13867127117624,
+      "yaw": 0,
+      "pitch": -2.389642780203843e-68,
+      "bank": -3.2705278681772e-70,
+      "vx": 0,
+      "vz": -31.9951976951631,
+      "vy": -0.01630319409482044,
+      "ax": 0,
+      "az": -0.044882812141224804,
+      "ay": -0.09645940652379996,
+      "speed": 31.9951976951631,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.18186861216626632,
+      "groundSmooth": 0.18848114116370845,
+      "surface": "dirt",
+      "height": 0.8163080731253145,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0.999932271263509,
+      "boostRelease": 0,
+      "boosting": true,
+      "thrustForward": -1,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": -1,
+      "lift": 0.25,
+      "time": 15.105900000095152,
+      "stride": 80.4020072713074,
+      "localForward": -31.9951976951631,
+      "localSide": 0,
+      "forwardAcceleration": -0.044882812141224804,
+      "sideAcceleration": 0,
+      "settle": 0,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 9.256587991881273e-10,
+      "reverse": 0.9994847162217197,
+      "lean": -0.22067003738532256,
+      "bank": 2.008290826076098e-24,
+      "tuck": 1.6859890064798214e-8,
+      "leftFlex": 1.8073393263683474e-24,
+      "rightFlex": 0,
+      "ground": false,
+      "speed": 31.9951976951631,
+      "acceleration": [
+        0,
+        -0.09645940652379996,
+        -0.044882812141224804
+      ]
+    },
+    "arms": {
+      "lift": 0.000013223862190228467,
+      "sway": 0
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 2.97569686348114e-35
+    },
+    "torsoError": 1.6431300764452317e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.065717764152865,
+          2.3827331758186787,
+          -280.41963460365
+        ],
+        "knee": [
+          50.24913110503141,
+          1.90149264284276,
+          -280.06044854869833
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 2.2648549702353193e-14,
+        "lengthScale": 0.7956651830754649
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.962314335831564,
+          2.3738614967045573,
+          -280.40477987260994
+        ],
+        "knee": [
+          49.75051127643761,
+          1.9118066223658081,
+          -280.0487748740431
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 5.896904420135023e-14,
+        "lengthScale": 0.7881208609916268
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      1.6499051797689126,
+      1.6499051797689126
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "boost-KeyA",
+    "active": true,
+    "state": {
+      "x": 80.13867127117649,
+      "y": 0.904720380412703,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -1.220889770933038e-79,
+      "bank": -1.6709418047279738e-81,
+      "vx": 31.9951976951631,
+      "vz": 0,
+      "vy": -0.06421656006882352,
+      "ax": 0.044882812141224804,
+      "az": 0,
+      "ay": -0.07853653930231685,
+      "speed": 31.9951976951631,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.13236969631370513,
+      "groundSmooth": 0.14303007632359105,
+      "surface": "dirt",
+      "height": 0.8372333811540648,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0.999932271263509,
+      "boostRelease": 0,
+      "boosting": true,
+      "thrustForward": 0,
+      "thrustSide": -1,
+      "thrustX": 1,
+      "thrustZ": 0,
+      "lift": 0.25,
+      "time": 17.705900000095006,
+      "stride": 113.8894197948368,
+      "localForward": 0,
+      "localSide": 31.9951976951631,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0.044882812141224804,
+      "settle": 0,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711577018,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 8.572859580619429e-19,
+      "reverse": 9.256587991881273e-10,
+      "lean": -2.0437047061116228e-10,
+      "bank": 0.29999250387405263,
+      "tuck": 4.079892281200408e-13,
+      "leftFlex": 0.26997496718472763,
+      "rightFlex": 0,
+      "ground": false,
+      "speed": 31.9951976951631,
+      "acceleration": [
+        0.044882812141224804,
+        -0.07853653930231685,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 4.5166489772871703e-54,
+      "sway": -0.16492057203809865
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 3.436401445041999e-52
+    },
+    "torsoError": 2.842170943040401e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          80.19852127492474,
+          2.361836797427079,
+          -250.27872354825234
+        ],
+        "knee": [
+          80.42538507231018,
+          1.802861024972945,
+          -250.15968221029638
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 1.4217791915866692e-14,
+        "lengthScale": 0.7791921595617473
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          80.09611848742648,
+          2.3448709121934206,
+          -250.26397680067868
+        ],
+        "knee": [
+          79.77515170674883,
+          1.824863819480394,
+          -250.186263171853
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 3.305482805185466e-14,
+        "lengthScale": 0.7823402818634074
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      1.6490165511580999,
+      1.6507938083797256
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "boost-KeyD",
+    "active": true,
+    "state": {
+      "x": 19.861328728823498,
+      "y": 0.9151200318848804,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -6.237634533148817e-91,
+      "bank": -8.536990441068156e-93,
+      "vx": -31.9951976951631,
+      "vz": 0,
+      "vy": -0.05497741631104133,
+      "ax": -0.044882812141224804,
+      "az": 0,
+      "ay": -0.12440705997057627,
+      "speed": 31.9951976951631,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.14284017254549639,
+      "groundSmooth": 0.15504948752286615,
+      "surface": "dirt",
+      "height": 0.8371625563944509,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0.999932271263509,
+      "boostRelease": 0,
+      "boosting": true,
+      "thrustForward": 0,
+      "thrustSide": 1,
+      "thrustX": -1,
+      "thrustZ": 0,
+      "lift": 0.25,
+      "time": 20.30590000009486,
+      "stride": 147.37683231836607,
+      "localForward": 0,
+      "localSide": -31.9951976951631,
+      "forwardAcceleration": 0,
+      "sideAcceleration": -0.044882812141224804,
+      "settle": 0,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 7.939634069646189e-28,
+      "reverse": 8.572859580619429e-19,
+      "lean": -1.8927485467769278e-19,
+      "bank": -0.29999250385341686,
+      "tuck": 4.0407207982865346e-7,
+      "leftFlex": 0,
+      "rightFlex": 0.2999721857401741,
+      "ground": false,
+      "speed": 31.9951976951631,
+      "acceleration": [
+        -0.044882812141224804,
+        -0.12440705997057627,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 2.307596173347133e-65,
+      "sway": 0.16492057195142681
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 3.96843342358202e-69
+    },
+    "torsoError": 2.842170943040401e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          19.93280250958236,
+          2.3625567028415064,
+          -250.27842725663743
+        ],
+        "knee": [
+          20.21903103356405,
+          1.8329416479921075,
+          -250.1861460712572
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 2.892040412512553e-14,
+        "lengthScale": 0.7717819053316182
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          19.828958205940104,
+          2.361214572298417,
+          -250.26406766054856
+        ],
+        "knee": [
+          19.573632871986707,
+          1.8122227582419401,
+          -250.16117718686064
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 2.842170943040401e-14,
+        "lengthScale": 0.779968872283636
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      1.6507938083797256,
+      1.6490165511580999
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "shift-alone",
+    "active": true,
+    "state": {
+      "x": 50,
+      "y": 0.928874315431391,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -8.662791824653308e-102,
+      "bank": -1.1856124402129047e-103,
+      "vx": 0,
+      "vz": 0,
+      "vy": 0,
+      "ax": 0,
+      "az": 0,
+      "ay": 0,
+      "speed": 0,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19375701248645782,
+      "groundSmooth": 0.19375701248645782,
+      "surface": "dirt",
+      "height": 0.8,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 12.499999999999858,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 0.25,
+      "time": 22.805900000094717,
+      "stride": 147.37683231836607,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 1.6364805523487813e-36,
+      "reverse": 1.766998057925081e-27,
+      "lean": -3.9012455235545757e-28,
+      "bank": -5.0755669406970744e-11,
+      "tuck": 1.0146246513094586e-14,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": false,
+      "speed": 0,
+      "acceleration": [
+        0,
+        0,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 1.0476470419013865e-69,
+      "sway": 0.000020352815474388717
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 2.053884547061129e-85
+    },
+    "torsoError": 7.105427357601002e-15,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.06587990123523,
+          2.3814728905798184,
+          -250.27847704362017
+        ],
+        "knee": [
+          50.32386750242342,
+          1.8271094513068902,
+          -250.19049444441197
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 1.7763568394002505e-15,
+        "lengthScale": 0.782816424380548
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.96245624529718,
+          2.37232002857542,
+          -250.2639370565943
+        ],
+        "knee": [
+          49.669673305615206,
+          1.8288587488700494,
+          -250.19084233792626
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 8.62265274246159e-15,
+        "lengthScale": 0.7894704865891675
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      0.25,
+      0.25
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "boost-diagonal",
+    "active": true,
+    "state": {
+      "x": 28.688741168198888,
+      "y": 0.911822871921562,
+      "z": -228.6887411681989,
+      "yaw": 0,
+      "pitch": -4.425897466373359e-113,
+      "bank": -6.05739950982722e-115,
+      "vx": -22.62402125565402,
+      "vz": 22.62402125565402,
+      "vy": -0.041604874884902374,
+      "ax": -0.031736940824060866,
+      "az": 0.031736940824060866,
+      "ay": -0.05022083374807168,
+      "speed": 31.9951976951631,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.15241205849822548,
+      "groundSmooth": 0.1595148535514576,
+      "surface": "dirt",
+      "height": 0.8242935104784034,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0.999932271263509,
+      "boostRelease": 0,
+      "boosting": true,
+      "thrustForward": 0.7071067811865475,
+      "thrustSide": 0.7071067811865475,
+      "thrustX": -0.7071067811865475,
+      "thrustZ": 0.7071067811865475,
+      "lift": 0.25,
+      "time": 25.40590000009457,
+      "stride": 180.86424484189533,
+      "localForward": 22.62402125565402,
+      "localSide": -22.62402125565402,
+      "forwardAcceleration": 0.031736940824060866,
+      "sideAcceleration": -0.031736940824060866,
+      "settle": 0,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 0,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 0.999474955711533,
+      "reverse": 1.6364805523487813e-36,
+      "lean": 0.2404660718697722,
+      "bank": -0.29998735403800175,
+      "tuck": 6.642656231879617e-26,
+      "leftFlex": 0,
+      "rightFlex": 0.2999670362735495,
+      "ground": false,
+      "speed": 31.9951976951631,
+      "acceleration": [
+        -0.031736940824060866,
+        -0.05022083374807168,
+        0.031736940824060866
+      ]
+    },
+    "arms": {
+      "lift": 1.6373489024971652e-87,
+      "sway": 0.16490230120671462
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 2.3718719174954795e-102
+    },
+    "torsoError": 1.9095836023552692e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          28.760193840553093,
+          2.3627208364336925,
+          -228.96457463167638
+        ],
+        "knee": [
+          28.88388514639951,
+          1.8049746423112873,
+          -229.0084640306572
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 1.7763568394002505e-15,
+        "lengthScale": 0.7260820431279641
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          28.65634974770544,
+          2.3608233843379884,
+          -228.95027628319244
+        ],
+        "knee": [
+          28.466219620016304,
+          1.8336526372423598,
+          -229.01552273235671
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 5.515473566030869e-15,
+        "lengthScale": 0.716535859689471
+      }
+    ],
+    "main": 0.7070588897376935,
+    "lifts": [
+      1.2403546465424409,
+      1.2394102447231008
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "jump-directional-boost",
+    "active": true,
+    "state": {
+      "x": 38.94807731774276,
+      "y": 6.49449282053038,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -9.122454595357195e-122,
+      "bank": -1.2485230942238067e-123,
+      "vx": -30.936738896541833,
+      "vz": 0,
+      "vy": 8.063234534616251,
+      "ax": -9.937342585379696,
+      "az": 0,
+      "ay": -5.012918633439085,
+      "speed": 30.936738896541833,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19006612880430393,
+      "groundSmooth": 0.19255350699144738,
+      "surface": "dirt",
+      "height": 6.369309388781143,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0.99177025295098,
+      "boostRelease": 0,
+      "boosting": true,
+      "thrustForward": 0,
+      "thrustSide": 1,
+      "thrustX": -1,
+      "thrustZ": 0,
+      "lift": 1.1015808633654063,
+      "time": 27.405900000094455,
+      "stride": 193.14415893329223,
+      "localForward": 0,
+      "localSide": -30.936738896541833,
+      "forwardAcceleration": 0,
+      "sideAcceleration": -9.937342585379696,
+      "settle": 0,
+      "jumpHeld": true,
+      "jump": {
+        "originY": 0.928874315431391,
+        "ceilingY": 12.928874315431392,
+        "elapsed": 0.6000000000000003,
+        "thrustEnded": false,
+        "phase": "powered"
+      },
+      "jumpCount": 1,
+      "jumpPowered": true,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 1.12476088768521e-7,
+      "reverse": 1.841616248832395e-43,
+      "lean": 2.7060891411918705e-8,
+      "bank": -0.29834031418737506,
+      "tuck": 0.6354936810717494,
+      "leftFlex": 0,
+      "rightFlex": 0.2958850488670878,
+      "ground": false,
+      "speed": 30.936738896541833,
+      "acceleration": [
+        -9.937342585379696,
+        -5.012918633439085,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.5092324018112155,
+      "sway": 0.15762233882355361
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 2.21950831343026e-115
+    },
+    "torsoError": 2.842170943040401e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          39.01943860892495,
+          7.941975546317876,
+          -250.27847615403007
+        ],
+        "knee": [
+          39.30071377497666,
+          7.508102526717454,
+          -249.98747289183865
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 1.4238583238573986e-14,
+        "lengthScale": 0.7518731832505682
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          38.915597631219235,
+          7.940486211668986,
+          -250.26410702237226
+        ],
+        "knee": [
+          38.69282428708155,
+          7.463972012887141,
+          -249.95782850172696
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 3.088256521748482e-14,
+        "lengthScale": 0.7730423081363441
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      2.7869940755225544,
+      2.193124359471003
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "held-space-landed",
+    "active": true,
+    "state": {
+      "x": 17.50910699447876,
+      "y": 0.8692725620124312,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -2.4079360185265847e-187,
+      "bank": -3.295564474581028e-189,
+      "vx": 0,
+      "vz": 0,
+      "vy": -1.4802973661668766e-15,
+      "ax": 0,
+      "az": 0,
+      "ay": 0,
+      "speed": 0,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.1341552590674973,
+      "groundSmooth": 0.1341552590674975,
+      "surface": "dirt",
+      "height": 0.8000000000000007,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 5.821358841838796e-27,
+      "boostRelease": 15.099999999999783,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 0.25,
+      "time": 42.5059000000936,
+      "stride": 216.96523707025224,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0,
+      "jumpHeld": true,
+      "jump": null,
+      "jumpCount": 1,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 3.87513459916424e-60,
+      "reverse": 6.344913770001921e-96,
+      "lean": 9.323279084709902e-61,
+      "bank": -8.072546931567081e-54,
+      "tuck": 2.4233794219175403e-27,
+      "leftFlex": 0,
+      "rightFlex": 4.699319245623667e-80,
+      "ground": false,
+      "speed": 0,
+      "acceleration": [
+        0,
+        0,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.000016810919370602875,
+      "sway": 6.523883634399772e-19
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 9.51823942476565e-214
+    },
+    "torsoError": 2.842170943040401e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          17.57488988429444,
+          2.3219031092504734,
+          -250.2785174372684
+        ],
+        "knee": [
+          17.83374436706828,
+          1.768015787822346,
+          -250.1900647412767
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 2.8464178426024444e-14,
+        "lengthScale": 0.7828198342557178
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          17.471478280264794,
+          2.3126273450702404,
+          -250.26396961736077
+        ],
+        "knee": [
+          17.17952335727337,
+          1.768729404651351,
+          -250.19099738193935
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 6.8833827526759706e-15,
+        "lengthScale": 0.7894426427936985
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      0.25,
+      0.25
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "jump-knees-and-arms",
+    "active": true,
+    "state": {
+      "x": 17.50910699447876,
+      "y": 7.943089234416422,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -1.0932012611366496e-191,
+      "bank": -1.4961839567371993e-193,
+      "vx": 0,
+      "vz": 0,
+      "vy": 7.06046780269205,
+      "ax": 0,
+      "az": 0,
+      "ay": -5.014753379330088,
+      "speed": 0,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.1341552590674973,
+      "groundSmooth": 0.1341552590674975,
+      "surface": "dirt",
+      "height": 7.873816672403991,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 1.0662190638885923e-28,
+      "boostRelease": 16.099999999999728,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 0.42651169506730124,
+      "time": 43.50590000009354,
+      "stride": 216.96523707025224,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0,
+      "jumpHeld": true,
+      "jump": {
+        "originY": 0.8692725620124312,
+        "ceilingY": 12.869272562012432,
+        "elapsed": 0.7999999999999996,
+        "thrustEnded": true,
+        "phase": "coast"
+      },
+      "jumpCount": 2,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 0,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 1.299962836111582e-63,
+      "reverse": 2.1284814470996766e-99,
+      "lean": 3.127611702425307e-64,
+      "bank": -9.962314353052195e-58,
+      "tuck": 0.6088732941747362,
+      "leftFlex": 0,
+      "rightFlex": 1.0622009483675198e-85,
+      "ground": false,
+      "speed": 0,
+      "acceleration": [
+        0,
+        -5.014753379330088,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.4911947981144071,
+      "sway": 6.597181937590164e-62
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 2.911651527127769e-220
+    },
+    "torsoError": 1.7763568394002505e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          17.57487160612313,
+          9.395773035204412,
+          -250.27848821768248
+        ],
+        "knee": [
+          17.82705500871572,
+          8.935784754766194,
+          -249.9749806614948
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 5.739584601870544e-14,
+        "lengthScale": 0.7679939909499374
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          17.47146228980171,
+          9.386466960771816,
+          -250.26394349390483
+        ],
+        "knee": [
+          17.212326377179593,
+          8.916895533249198,
+          -249.9759893118938
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 1.7763568394002505e-15,
+        "lengthScale": 0.7731112434701031
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      0.42651169506730124,
+      0.42651169506730124
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "ctrl-fast-dive-arms",
+    "active": true,
+    "state": {
+      "x": 17.50910699447876,
+      "y": 2.639130901083089,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -2.0022679531687715e-193,
+      "bank": -2.740356506271609e-195,
+      "vx": 0,
+      "vz": 0,
+      "vy": -18,
+      "ax": 0,
+      "az": 0,
+      "ay": 0,
+      "speed": 0,
+      "mode": "ARMOR_HOVER",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.1341552590674973,
+      "groundSmooth": 0.1341552590674975,
+      "surface": "dirt",
+      "height": 2.569858339070658,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 2.1526591641862782e-29,
+      "boostRelease": 16.499999999999705,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 0.25,
+      "time": 43.90590000009352,
+      "stride": 216.96523707025224,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0,
+      "jumpHeld": true,
+      "jump": {
+        "originY": 0.8692725620124312,
+        "ceilingY": 12.869272562012432,
+        "elapsed": 1.1999999999999982,
+        "thrustEnded": true,
+        "phase": "fall"
+      },
+      "jumpCount": 2,
+      "jumpPowered": false,
+      "descendHeld": true,
+      "diving": true,
+      "diveBlend": 0.968825440556366,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "Walk_Turn_Left",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 5.298935028987574e-65,
+      "reverse": 8.676159491084508e-101,
+      "lean": 1.2748834617938554e-65,
+      "bank": -2.722075123154771e-59,
+      "tuck": 0.3657421012307622,
+      "leftFlex": 0,
+      "rightFlex": 5.85969995946261e-88,
+      "ground": false,
+      "speed": 0,
+      "acceleration": [
+        0,
+        0,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.8724221361322454,
+      "sway": 1.8025956819700538e-63
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 7.217262560561879e-223
+    },
+    "torsoError": 2.842170943040401e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          17.574866493462153,
+          4.091827723584932,
+          -250.2784814990182
+        ],
+        "knee": [
+          17.831410830791643,
+          3.5790743231266395,
+          -250.05455859616703
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 5.955433342649105e-14,
+        "lengthScale": 0.7799960715430384
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          17.47145781800702,
+          4.082513456019907,
+          -250.26393746335
+        ],
+        "knee": [
+          17.199267284990103,
+          3.5676618892971965,
+          -250.05614122987689
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 6.0402662910232525e-15,
+        "lengthScale": 0.7852959357151513
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      0.25,
+      0.25
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "ground-jump",
+    "active": true,
+    "state": {
+      "x": 50,
+      "y": 4.890194484308166,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -2.780738493622468e-204,
+      "bank": -3.805791732908959e-206,
+      "vx": 0,
+      "vz": 0,
+      "vy": 8.56449098858856,
+      "ax": 0,
+      "az": 0,
+      "ay": -5.012162550049908,
+      "speed": 0,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19375701248645782,
+      "groundSmooth": 0.19375701248645782,
+      "surface": "dirt",
+      "height": 4.761320168876775,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 11.899999999999892,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 1.114112274714714,
+      "time": 46.405900000093375,
+      "stride": 216.96523707025224,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0.0000013434581811109147,
+      "jumpHeld": true,
+      "jump": {
+        "originY": 0.15387431543139093,
+        "ceilingY": 12.153874315431391,
+        "elapsed": 0.5000000000000007,
+        "thrustEnded": false,
+        "phase": "powered"
+      },
+      "jumpCount": 3,
+      "jumpPowered": true,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 1.3454993333396028e-11,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "walking_2_inplace",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 1.0921919130064281e-73,
+      "reverse": 1.7882897563903483e-109,
+      "lean": 2.627730665463409e-74,
+      "bank": -4.6054732460678795e-69,
+      "tuck": 0.6419638017757074,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": false,
+      "speed": 0,
+      "acceleration": [
+        0,
+        -5.012162550049908,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.5163982753515214,
+      "sway": 3.049807889640138e-73
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 0.0005530843697284535
+    },
+    "torsoError": 2.042810365310288e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.06581881056672,
+          6.342795338275896,
+          -250.2785164035706
+        ],
+        "knee": [
+          50.31708180341415,
+          5.890487067339866,
+          -249.96609235860214
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 3.552713678800501e-15,
+        "lengthScale": 0.7659234262729965
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.962402726346,
+          6.333567776496925,
+          -250.26396977711482
+        ],
+        "knee": [
+          49.704552636361335,
+          5.871835435847224,
+          -249.96600735551712
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 2.929642751054232e-14,
+        "lengthScale": 0.7709161288920824
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      1.114112274714714,
+      1.114112274714714
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "ground-touchdown",
+    "active": true,
+    "state": {
+      "x": 50,
+      "y": 0.15387431543139093,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -1.1813562212234415e-221,
+      "bank": -1.616835150325772e-223,
+      "vx": 0,
+      "vz": 0,
+      "vy": 0,
+      "ax": 0,
+      "az": 0,
+      "ay": 0,
+      "speed": 0,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19375701248645782,
+      "groundSmooth": 0.19375701248645782,
+      "surface": "dirt",
+      "height": 0.024999999999999994,
+      "grounded": true,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 15.899999999999665,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 0.20193243363317032,
+      "time": 50.40590000009315,
+      "stride": 216.96523707025224,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0.5488116360940264,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 3,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 5.716157818285435e-29,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "walking_2_inplace",
+    "clip": "Armor_Walk",
+    "body": {
+      "boost": 1.3831699197695233e-87,
+      "reverse": 2.2647197524676615e-123,
+      "lean": 3.3278016165859925e-88,
+      "bank": -1.0682500338330397e-84,
+      "tuck": 0.08630893914617745,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": true,
+      "speed": 0,
+      "acceleration": [
+        0,
+        0,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.5536592860795182,
+      "sway": 7.074099027877259e-89
+    },
+    "landing": {
+      "compression": 0.2764632002679772,
+      "flat": 0.7768698398515702
+    },
+    "torsoError": 2.842170943040401e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.066931104758616,
+          1.4867302351692055,
+          -250.274297595552
+        ],
+        "knee": [
+          50.31982995933666,
+          0.9892945270444127,
+          -250.02455751220919
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 1.128775274998693e-14,
+        "lengthScale": 0.7747261515198013
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.96340523140454,
+          1.478656314572233,
+          -250.25984615736596
+        ],
+        "knee": [
+          49.682391833426934,
+          0.9942349931782495,
+          -250.01411098646903
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 2.9337630296305466e-14,
+        "lengthScale": 0.7767038052605134
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      0.20193243363317032,
+      0.20193243363317032
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "ground-repeat-jump",
+    "active": true,
+    "state": {
+      "x": 50,
+      "y": 3.08123773596854,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -5.881626295285302e-223,
+      "bank": -8.049748216883491e-225,
+      "vx": 0,
+      "vz": 0,
+      "vy": 9.566796687077916,
+      "ax": 0,
+      "az": 0,
+      "ay": -5.010888302123959,
+      "speed": 0,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19375701248645782,
+      "groundSmooth": 0.19375701248645782,
+      "surface": "dirt",
+      "height": 2.952363420537149,
+      "grounded": false,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 16.199999999999648,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 1.139169917176948,
+      "time": 50.70590000009313,
+      "stride": 216.96523707025224,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0.09071795328941251,
+      "jumpHeld": true,
+      "jump": {
+        "originY": 0.15387431543139093,
+        "ceilingY": 12.153874315431391,
+        "elapsed": 0.3000000000000001,
+        "thrustEnded": false,
+        "phase": "powered"
+      },
+      "jumpCount": 4,
+      "jumpPowered": true,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 2.845907401004774e-30,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "walking_2_inplace",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 1.2547834417297202e-88,
+      "reverse": 2.0545074071797112e-124,
+      "lean": 3.0189135160987938e-89,
+      "bank": -7.179229125800444e-86,
+      "tuck": 0.6211971772495077,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": false,
+      "speed": 0,
+      "acceleration": [
+        0,
+        -5.010888302123959,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.5382392668248279,
+      "sway": 4.754184523402565e-90
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 0.008630244361575945
+    },
+    "torsoError": 3.2862601528904634e-14,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.06592091572155,
+          4.533643584449071,
+          -250.27859928314723
+        ],
+        "knee": [
+          50.31663244199396,
+          4.076557216207326,
+          -249.97071279489634
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 3.1887955513483207e-14,
+        "lengthScale": 0.7672364843500096
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.96249221016353,
+          4.524569908082904,
+          -250.2640455902492
+        ],
+        "knee": [
+          49.70258767370528,
+          4.058155811195528,
+          -249.97278388015317
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 2.8435583831733384e-14,
+        "lengthScale": 0.7724428221970208
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      1.139169917176948,
+      1.139169917176948
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  },
+  {
+    "name": "motorcycle-return",
+    "active": false,
+    "state": {
+      "x": 50,
+      "y": 0.15387431543139093,
+      "z": -250,
+      "yaw": 0,
+      "pitch": -1.5352686014190889e-245,
+      "bank": -2.1012089286626598e-247,
+      "vx": 0,
+      "vz": 0,
+      "vy": 0,
+      "ax": 0,
+      "az": 0,
+      "ay": 0,
+      "speed": 0,
+      "mode": "ARMOR_GROUND",
+      "soleOffset": 0.06488269705506688,
+      "ground": 0.19375701248645782,
+      "groundSmooth": 0.19375701248645782,
+      "surface": "dirt",
+      "height": 0.024999999999999994,
+      "grounded": true,
+      "contactSpeed": 0,
+      "boostBlend": 0,
+      "boostRelease": 21.399999999999352,
+      "boosting": false,
+      "thrustForward": 0,
+      "thrustSide": 0,
+      "thrustX": 0,
+      "thrustZ": 0,
+      "lift": 0.0005005404594077564,
+      "time": 55.905900000092835,
+      "stride": 216.96523707025224,
+      "localForward": 0,
+      "localSide": 0,
+      "forwardAcceleration": 0,
+      "sideAcceleration": 0,
+      "settle": 0.0013603680375478945,
+      "jumpHeld": false,
+      "jump": null,
+      "jumpCount": 4,
+      "jumpPowered": false,
+      "descendHeld": false,
+      "diving": false,
+      "diveBlend": 7.42861252305541e-53,
+      "groundTurn": null,
+      "pelvisOffsetX": 0.0013143613711505964,
+      "pelvisOffsetZ": -0.18265426981463406
+    },
+    "source": "walking_2_inplace",
+    "clip": "Cyclone_RidingPose",
+    "body": {
+      "boost": 1.0762628057685043e-106,
+      "reverse": 1.7622083883058614e-142,
+      "lean": 2.5894064450914334e-107,
+      "bank": -3.3970040217243274e-106,
+      "tuck": 0.0000787035650735429,
+      "leftFlex": 0,
+      "rightFlex": 0,
+      "ground": true,
+      "speed": 0,
+      "acceleration": [
+        0,
+        0,
+        0
+      ]
+    },
+    "arms": {
+      "lift": 0.0022016156486056337,
+      "sway": 2.249542905376687e-110
+    },
+    "landing": {
+      "compression": 0,
+      "flat": 0
+    },
+    "torsoError": 1.9061334250098867,
+    "knees": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          50.06612166899195,
+          1.5629314958250224,
+          -250.27693961729557
+        ],
+        "knee": [
+          50.32622580268945,
+          1.0180705128599954,
+          -250.14053769587855
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 2.8508313657667433e-14,
+        "lengthScale": 0.784369544980126
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          49.96267379156414,
+          1.5539921724444132,
+          -250.26243913915326
+        ],
+        "knee": [
+          49.67092960566661,
+          1.0199217725857543,
+          -250.1349324231968
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 1.4295603459064552e-14,
+        "lengthScale": 0.7896635064626774
+      }
+    ],
+    "main": 0,
+    "lifts": [
+      0,
+      0
+    ],
+    "gl": 0,
+    "shadow": {
+      "enabled": true,
+      "map": true
+    }
+  }
+]

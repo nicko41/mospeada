@@ -1,0 +1,10 @@
+{
+  "note": "Node CPU simulation only, after 120 warmup frames, no GPU or gameplay FPS claim.",
+  "version": "three.quarks 0.18.0",
+  "meanUpdateMs": 0.45074770833333194,
+  "maxUpdateMs": 1.2153000000000134,
+  "active": 632,
+  "pooled": 640,
+  "cap": 640,
+  "batches": 1
+}

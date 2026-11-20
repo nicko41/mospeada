@@ -1,0 +1,133 @@
+{
+  "parts": 32,
+  "retracted": 6,
+  "legs": [
+    [
+      "0e6d481c-36e4-4cd2-8e42-51841ec8004e"
+    ],
+    [
+      "fd15df60-81e9-44b7-af9b-54a69ce6366a"
+    ]
+  ],
+  "hiddenInArmor": [
+    {
+      "id": "7ad2fa75-5076-400d-ba63-8d1bf0298ff0",
+      "name": "Tank_Cap_Detail_Left (copia) 2",
+      "key": "rear_body-axle-rounded.json|Tank_Cap_Detail_Left (copia) 2|2436|c20d3245"
+    },
+    {
+      "id": "2f1d3f85-f8d9-4112-8957-3ab5d1ae87c9",
+      "name": "Tank_Cap_Detail_Left (copia) 2",
+      "key": "rear_body-axle-rounded.json|Tank_Cap_Detail_Left (copia) 2|2436|861d3753"
+    }
+  ],
+  "sourceMeshes": 26,
+  "maxFitError": 5.828670879282072e-16,
+  "replacements": [
+    {
+      "targetId": "cef1a3e5-5732-4354-93dd-ab85425b4917",
+      "sourceId": "dcfcf888-f004-4610-bf75-d1d44200d9b1",
+      "vertexPairs": [
+        {
+          "source": "549062ed-16dd-4daf-8449-c279da287b1c",
+          "target": "ef9cb776-f27a-4a2c-bc11-2d444b9c2c80"
+        },
+        {
+          "source": "1b72f474-d6e7-4999-8f68-e45d81cb5818",
+          "target": "9691cd11-0c0a-4fa5-b8a6-67b4e14931e0"
+        },
+        {
+          "source": "b8b11a08-4bc9-447b-a315-c2270a0e3607",
+          "target": "e380bcd2-2f14-44dd-9096-ac10dc0acd51"
+        },
+        {
+          "source": "a441653e-4f4f-4fc5-9b94-372932d9aced",
+          "target": "7c275e4f-9e9c-43e9-a0ec-6cee579ccfeb"
+        },
+        {
+          "source": "a58d8173-199f-4e37-a9fa-91543373e8c3",
+          "target": "e1074ecc-a432-49b4-bcc2-0275c6546fa7"
+        },
+        {
+          "source": "a663d07f-f2f4-4f10-a96c-0e4352e6e3f1",
+          "target": "0583b608-5261-436c-8f90-3bcd6e24b4f4"
+        },
+        {
+          "source": "6162d9ad-3527-4005-82d7-a6d2c119d593",
+          "target": "59f1e880-a7a8-4c81-8b27-3937433ae17c"
+        },
+        {
+          "source": "8567a0be-e185-4b64-b282-c76bdd365dc6",
+          "target": "250c6e9e-4f5a-498e-9cd3-53b8a7a1381b"
+        }
+      ],
+      "translation": [
+        0.2411703254938337,
+        0.5876525584668272,
+        0.013608946881424805
+      ]
+    },
+    {
+      "targetId": "dc0ca4bc-bde4-4c76-a968-879a5457d598",
+      "sourceId": "80089720-55b5-4db2-9a79-79cabff00299",
+      "vertexPairs": [
+        {
+          "source": "617dff30-840d-4461-aa62-86e12e15e934",
+          "target": "9597fb70-0b63-4f04-bbc9-d6fe43de06f3"
+        },
+        {
+          "source": "6fdcfb04-4aec-4829-8e6a-305eefa670ef",
+          "target": "06c9421b-d7ca-4cf0-88f2-54ebb7e3678d"
+        },
+        {
+          "source": "e3c1220b-addb-4adc-be1e-11808d90458e",
+          "target": "c93ce67d-b143-4f40-9846-e07901c382d6"
+        },
+        {
+          "source": "ecf0af6a-e5df-4d23-b952-64f43596ea2f",
+          "target": "ffda111b-cb1a-49ad-9688-cc593de5e2c6"
+        },
+        {
+          "source": "00e72164-a6c0-424b-93c5-f907b2347f9a",
+          "target": "72f50eeb-5e3a-4c0f-ae32-d8acb98707fa"
+        },
+        {
+          "source": "ff335592-3a53-4cb4-950a-f47329155d03",
+          "target": "c2315443-732a-4fd7-93d8-70ff1c70c017"
+        },
+        {
+          "source": "a1f9d922-16db-4e8d-af32-d6761cbec1cc",
+          "target": "720950fc-c8f5-425f-8544-7d14aa8a7745"
+        },
+        {
+          "source": "19afa31a-c236-46ae-8275-a131de631cc8",
+          "target": "ba41db03-6df5-458f-a21a-5aba64429127"
+        }
+      ],
+      "translation": [
+        0.24317528662006457,
+        0.5930677401374839,
+        8.326672684688674e-17
+      ]
+    }
+  ],
+  "geometryBytes": 5608972,
+  "sourceFiles": [
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/cyclone-material-assembly.json",
+      "sha256": "1770cd554cba3138300fb79581b76d0d77291ed6e9c26e1ff63e192a6b5c8d15"
+    },
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/material-studio/rear_body-axle-rounded.json",
+      "sha256": "e8dbc94105b02acf86ede0614134c62a8139473efb16356f2d9e48865b70d212"
+    },
+    {
+      "path": "assets/scott-cyclone/armor/rear_body · extremo lateral redondeado · armor.json",
+      "sha256": "da79b9530eef2acb0c57909791f61367f938c118f5da9623f2b520b99e6b484a"
+    },
+    {
+      "path": "public/models/mospeada/cyclone-vr052f.glb",
+      "sha256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c"
+    }
+  ]
+}

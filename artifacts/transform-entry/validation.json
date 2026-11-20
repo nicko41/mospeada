@@ -1,0 +1,153 @@
+{
+  "stopped": {
+    "phase": "idle",
+    "progress": 0,
+    "boost": 0
+  },
+  "early": {
+    "frames": 12,
+    "phase": "wheelie",
+    "pose": 0,
+    "progress": 0,
+    "choreography": {
+      "turn": 0.5829903978052127,
+      "separate": 0
+    },
+    "cameraProgress": 0.07142857142857142,
+    "wheelie": 0.35975305964003823,
+    "boostTime": 0,
+    "boostCount": 0,
+    "airborne": false,
+    "height": 2.21514486703974,
+    "speed": 13.90789918099712
+  },
+  "wheelie": {
+    "frames": 13,
+    "phase": "boost",
+    "pose": 0,
+    "progress": 0,
+    "choreography": {
+      "turn": 1,
+      "separate": 0.0545219907407407
+    },
+    "cameraProgress": 0.1488095238095238,
+    "wheelie": 0.6739003921130126,
+    "boostTime": 0,
+    "boostCount": 0,
+    "airborne": false,
+    "height": 2.21012598502465,
+    "speed": 15.94164946391927
+  },
+  "boost": {
+    "frames": 4,
+    "phase": "boost",
+    "pose": 0,
+    "progress": 0,
+    "choreography": {
+      "turn": 1,
+      "separate": 0.22658217592592583
+    },
+    "cameraProgress": 0.17261904761904762,
+    "wheelie": 0.7263974135496939,
+    "boostTime": 0.49166666666666686,
+    "boostCount": 1,
+    "airborne": false,
+    "height": 2.206574460131466,
+    "speed": 27.612966795020434
+  },
+  "launch": {
+    "frames": 5,
+    "phase": "airpose",
+    "pose": 0,
+    "progress": 0,
+    "choreography": {
+      "turn": 1,
+      "separate": 0.5249907407407411
+    },
+    "cameraProgress": 0.20238095238095244,
+    "wheelie": 0.772519720412095,
+    "boostTime": 0.40833333333333327,
+    "boostCount": 1,
+    "airborne": true,
+    "height": 2.364280999671897,
+    "speed": 29.474745191123727
+  },
+  "pose": {
+    "frames": 25,
+    "phase": "transforming",
+    "pose": 1,
+    "progress": 0.008333333333333333,
+    "choreography": {
+      "turn": 1,
+      "separate": 1
+    },
+    "cameraProgress": 0.3511904761904767,
+    "wheelie": 0,
+    "boostTime": 0,
+    "boostCount": 1,
+    "airborne": true,
+    "height": 4.176318036708937,
+    "speed": 31.508572673170285
+  },
+  "midpoint": {
+    "frames": 60,
+    "phase": "transforming",
+    "pose": 1,
+    "progress": 0.508333333333334,
+    "choreography": {
+      "turn": 1,
+      "separate": 1
+    },
+    "cameraProgress": 0.7083333333333326,
+    "wheelie": 0,
+    "boostTime": 0,
+    "boostCount": 1,
+    "airborne": true,
+    "height": 6.132614333005239,
+    "speed": 29.995755014523226
+  },
+  "complete": {
+    "frames": 60,
+    "phase": "complete",
+    "pose": 1,
+    "progress": 1,
+    "choreography": {
+      "turn": 1,
+      "separate": 1
+    },
+    "cameraProgress": 1,
+    "wheelie": 0,
+    "boostTime": 0,
+    "boostCount": 1,
+    "airborne": true,
+    "height": 4.7111328515237565,
+    "speed": 28.62157681208147
+  },
+  "restPose": {
+    "bones": 24,
+    "clips": 16,
+    "lowerError": 0,
+    "rotationError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "camera": {
+    "degrees": 359.9618865403304,
+    "samples": 168,
+    "controlsRestored": true
+  },
+  "reverted": {
+    "frames": 145,
+    "phase": "idle",
+    "pose": 0,
+    "progress": 0,
+    "choreography": null,
+    "cameraProgress": null,
+    "wheelie": 0,
+    "boostTime": 0,
+    "boostCount": 1,
+    "airborne": false,
+    "height": 2.0476141567627355,
+    "speed": 25.181200407455147
+  }
+}

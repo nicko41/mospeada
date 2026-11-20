@@ -49,8 +49,8 @@ export function updateRiderPresence(s, input, dt, sample, canWalk, c) {
     const stride = c.walkStride + p.runBlend * (1.5 - c.walkStride)
     p.stride = stride; p.contactDuty = 0.6 - p.runBlend * 0.28
     const length = Math.hypot(forward, side), distance = (c.walkSpeed + p.runBlend * (c.runSpeed - c.walkSpeed)) * (1 - p.crouchBlend * 0.6) * dt
-    const dx = (Math.sin(yaw) * forward + Math.cos(yaw) * side) / Math.max(1, length) * distance
-    const dz = (Math.cos(yaw) * forward - Math.sin(yaw) * side) / Math.max(1, length) * distance
+    const dx = (Math.sin(yaw) * forward - Math.cos(yaw) * side) / Math.max(1, length) * distance
+    const dz = (Math.cos(yaw) * forward + Math.sin(yaw) * side) / Math.max(1, length) * distance
     const free = (x, z) => Number.isFinite(sample(x, z)) && Math.abs(sample(x, z) - p.ground) < 0.24 && canWalk(x, z)
     const oldX = p.x, oldZ = p.z
     if (free(p.x + dx, p.z)) p.x += dx

@@ -1,0 +1,53 @@
+[
+  {
+    "name": "covers-arrived",
+    "progress": 0.48,
+    "arms": 0,
+    "legs": 0,
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "arms-down",
+    "progress": 0.62,
+    "arms": 1,
+    "legs": 0,
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "legs-extending",
+    "progress": 0.8,
+    "arms": 1,
+    "legs": 0.708454810495627,
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "armor-ready",
+    "progress": 1,
+    "arms": 1,
+    "legs": 1,
+    "endpointError": 1.8332002582610585e-12,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "offset": [
+      -3.627347525602151,
+      1.1607512081926883,
+      2.221109768311873e-16
+    ],
+    "emitted": 119,
+    "projectedChest": [
+      2.3183611103120665e-15,
+      0.18435022183279925,
+      0.9417570023382713
+    ],
+    "gl": 0
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "key": {
+    "ready": true,
+    "error": "",
+    "progress": 0,
+    "duration": 2,
+    "playing": true,
+    "direction": 1,
+    "surfaces": 111,
+    "warnings": [
+      {
+        "kind": "reevaluated-cut-detail",
+        "id": "55c39789-8d14-4667-bb40-b600ececa62d",
+        "name": "chest-relieve",
+        "maxDetailDifference": 0.27273056763141224,
+        "reason": "El corte interno cambió en el JSON final; se conserva la geometría original y se mueve por los vértices de contorno."
+      },
+      {
+        "kind": "reevaluated-cut-detail",
+        "id": "103cbdd8-0c93-44fc-a3bd-a0bf8189bc71",
+        "name": "chest-relieve",
+        "maxDetailDifference": 0.2727305676314131,
+        "reason": "El corte interno cambió en el JSON final; se conserva la geometría original y se mueve por los vértices de contorno."
+      }
+    ]
+  },
+  "destination": {
+    "error": 3.7125857943465235e-12,
+    "visible": 83,
+    "total": 111
+  },
+  "moved": 2.3943069749066126e-12,
+  "restoration": {
+    "state": true,
+    "bones": true,
+    "meshes": true,
+    "originalClips": 16,
+    "shader": "",
+    "gl": 0
+  }
+}

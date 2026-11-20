@@ -1,0 +1,16 @@
+{
+  "src/vfx/DustTrail.js": "f85fa73e53ddd96fb3d0c5db892d3f49ecdb64df8cb2f21064387f7cde4c4905",
+  "src/vfx/dustResponse.js": "90f0fcee8990be61b99e690fb959d5fdff978fed2ec99d935d1bf57551cea9ed",
+  "src/vfx/dustAtlas.js": "a3a133fcb24769c25e0a44459385b33d9ff78c35f1af36e6f20abd5351f935e0",
+  "src/vfx/WheelEjecta.js": "8a50e4ca92a8d77645cf94a51ec8673660892f01089685a6d49d71bb42a9bc9c",
+  "src/vfx/ejectaResponse.js": "c8520e478d1e3691addb42fc8a071a91ce2e0b750e7c3b212e1217f3f9edee7d",
+  "src/vfx/ejectaAtlas.js": "a04788e06f76a5e9108c44994339cba859c4847dcd0bc53dab19cdc9038fec66",
+  "src/vehicle/CycloneWeathering.jsx": "5cba42beff55f1223fa8af34f27b66d23b5866572cd347f3f698f83e85c83c40",
+  "src/vehicle/ScottSoilLayer.js": "58199ad04f7df3fdf8e13c51f65033af27943f992673cadf204243dfc62d7127",
+  "src/vehicle/soilShader.js": "a6ff4181ad49aacbcac5431da50bc5b2c360503d3ff738f5f94be71490b61205",
+  "src/vehicle/bikePhysics.js": "48a3dcc0ba67f660937c735e60cbdef274854bd7f7cd71114a3fcffcd97a1a2f",
+  "src/vehicle/createDrivingCyclone.js": "dd91699de19f97745173c36d148fb8e364e66d3d0b5cde6d7b28e6ac5d165a91",
+  "src/vfx/engineSockets.js": "268ded20f696b8853b7cd3c63805303cdbb95dd0cdaf6dcd998ade0970aaaae5",
+  "src/vfx/smokeAtlas.js": "3b5ef521cfab1fded4885a11a1c19835ab8a2cc3779f8d3cb72d604b5b735d0d",
+  "src/vfx/engineVFXState.js": "fe24f02c58532bc312c92da56075296b37ae98aa033446a9fddac5b321cf6fe9"
+}

@@ -1,0 +1,21 @@
+{
+  "previousRecords": 30,
+  "preservedRecords": 30,
+  "newRecords": [
+    {
+      "ids": [
+        "cef1a3e5-5732-4354-93dd-ab85425b4917"
+      ],
+      "sourceId": "dcfcf888-f004-4610-bf75-d1d44200d9b1",
+      "checkpoints": 8
+    },
+    {
+      "ids": [
+        "dc0ca4bc-bde4-4c76-a968-879a5457d598"
+      ],
+      "sourceId": "80089720-55b5-4db2-9a79-79cabff00299",
+      "checkpoints": 8
+    }
+  ],
+  "wheelCarriersUnchanged": true
+}

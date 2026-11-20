@@ -1,0 +1,778 @@
+[
+  {
+    "name": "motorcycle",
+    "progress": 0,
+    "active": false,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.32839080555393024,
+        "stroke": 0.030460255335157338,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.23321115927205102,
+        "connectorStartError": 1.4210854715202004e-14,
+        "connectorEndError": 8.881784197001252e-16
+      },
+      {
+        "length": 0.7604085508970737,
+        "stroke": -0.004162370319893749,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.020000000000010232,
+        "connectorStartError": 0,
+        "connectorEndError": 8.881784197001252e-16
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "waiting",
+    "progress": 0.22,
+    "active": false,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.32839080555393024,
+        "stroke": 0.030460255335157338,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.23321115927205102,
+        "connectorStartError": 1.4210854715202004e-14,
+        "connectorEndError": 8.881784197001252e-16
+      },
+      {
+        "length": 0.7604085508970737,
+        "stroke": -0.004162370319893749,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.020000000000010232,
+        "connectorStartError": 0,
+        "connectorEndError": 8.881784197001252e-16
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "first-arc-mid",
+    "progress": 0.32,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 0.5360141439609865,
+        "fit": 0,
+        "radius": 0.35941834460624567,
+        "center": [
+          0.3613341713502223,
+          -0.15788324632352424,
+          0.6082816260438335
+        ],
+        "expectedRadius": 0.7249110562252004,
+        "radiusFromCenter": 0.7249110562252065
+      },
+      {
+        "wheel": "rear",
+        "angle": 0.38179288911044557,
+        "fit": 0,
+        "radius": 0.726345766371429,
+        "center": [
+          0.14897449283407127,
+          -0.288326100854416,
+          -0.7202232513097044
+        ],
+        "expectedRadius": 0.789966373762974,
+        "radiusFromCenter": 0.7899663737629755
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.359418344606236,
+        "stroke": 0.0614877943874631,
+        "baseError": 0,
+        "targetError": 8.881784197001252e-16,
+        "connectorLength": 0.23670527482660764,
+        "connectorStartError": 8.881784197001252e-16,
+        "connectorEndError": 1.4210854715202004e-14
+      },
+      {
+        "length": 0.7263457663714268,
+        "stroke": -0.038225154845540676,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.020299652517967753,
+        "connectorStartError": 1.4210854715202004e-14,
+        "connectorEndError": 0
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "authored-intermediate",
+    "progress": 0.42,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 1.3451977874326908,
+        "fit": 0,
+        "radius": 0.42315709560551185,
+        "center": [
+          0.6196579140961092,
+          -0.29463408793454704,
+          0.14221480632710382
+        ],
+        "expectedRadius": 0.7007212194686409,
+        "radiusFromCenter": 0.7007212194686447
+      },
+      {
+        "wheel": "rear",
+        "angle": 0,
+        "fit": 0,
+        "radius": 0.6237304203656304,
+        "center": [
+          0.08254972413905648,
+          -0.5281948134360617,
+          -0.5650563898684453
+        ],
+        "expectedRadius": 0.7778772021516882,
+        "radiusFromCenter": 0.7778772021516949
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.4231570956055189,
+        "stroke": 0.125226545386746,
+        "baseError": 0,
+        "targetError": 8.881784197001252e-16,
+        "connectorLength": 0.24019939038114252,
+        "connectorStartError": 8.881784197001252e-16,
+        "connectorEndError": 2.0116800053149086e-14
+      },
+      {
+        "length": 0.6237304203656304,
+        "stroke": -0.14084050085133704,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.020599305035915234,
+        "connectorStartError": 1.4210854715202004e-14,
+        "connectorEndError": 0
+      }
+    ],
+    "endpointError": 1.4210854715202004e-14,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "horizontal-mid",
+    "progress": 0.49,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 2.2468888614247873,
+        "fit": 0,
+        "radius": 0.5996993813146718,
+        "center": [
+          0.4942588964209733,
+          -0.4867258836931443,
+          -0.396503883686421
+        ],
+        "expectedRadius": 0.8086048285784395,
+        "radiusFromCenter": 0.7990051766581847
+      },
+      {
+        "wheel": "rear",
+        "angle": 0.27507642321713327,
+        "fit": 0.15625000000000006,
+        "radius": 0.6557394008319866,
+        "center": [
+          0.03893978005527288,
+          -0.34318567325126015,
+          -0.6653255311825035
+        ],
+        "expectedRadius": 0.7496337607384955,
+        "radiusFromCenter": 0.7496337607384991
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.5996993813146746,
+        "stroke": 0.3017688310959017,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.2401993903811349,
+        "connectorStartError": 2.0097183471152322e-14,
+        "connectorEndError": 0
+      },
+      {
+        "length": 0.655739400831977,
+        "stroke": -0.10883152038499044,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.020599305035913833,
+        "connectorStartError": 1.4210854715202004e-14,
+        "connectorEndError": 0
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "behind",
+    "progress": 0.56,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 3.141592653589793,
+        "fit": 0,
+        "radius": 0.7713817435216973,
+        "center": [
+          -1.4210854715202004e-14,
+          -0.6650130450984832,
+          -0.6319090686726412
+        ],
+        "expectedRadius": 0.9173611182200078,
+        "radiusFromCenter": 0.917361118220011
+      },
+      {
+        "wheel": "rear",
+        "angle": 0.8784128473596866,
+        "fit": 0.5000000000000004,
+        "radius": 0.7121092124907228,
+        "center": [
+          -0.049157973474336814,
+          0.08033180084736102,
+          -0.6754663648000871
+        ],
+        "expectedRadius": 0.6820003772431023,
+        "radiusFromCenter": 0.6820003772430949
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.7713817435216929,
+        "stroke": 0.47345119330291996,
+        "baseError": 0,
+        "targetError": 8.881784197001252e-16,
+        "connectorLength": 0.24019939038113372,
+        "connectorStartError": 2.0097183471152322e-14,
+        "connectorEndError": 0
+      },
+      {
+        "length": 0.712109212490716,
+        "stroke": -0.052461708726251444,
+        "baseError": 0,
+        "targetError": 0,
+        "connectorLength": 0.020599305035909454,
+        "connectorStartError": 0,
+        "connectorEndError": 1.4210854715202004e-14
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "rising",
+    "progress": 0.63,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 2.8484982349565966,
+        "fit": 0.5,
+        "radius": 0.22184045572437272,
+        "center": [
+          0.13387692343155777,
+          -0.15905876387652196,
+          -0.4436155836757223
+        ],
+        "expectedRadius": 0.7735445320780502,
+        "radiusFromCenter": 0.48991581631273406
+      },
+      {
+        "wheel": "rear",
+        "angle": 1.48091326869755,
+        "fit": 0.8437500000000002,
+        "radius": 0.6696628372023745,
+        "center": [
+          -0.1036321274227987,
+          0.39763853858409615,
+          -0.4539750034480363
+        ],
+        "expectedRadius": 0.612331061564824,
+        "radiusFromCenter": 0.6123310615648272
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.22184045572437533,
+        "stroke": -0.07609009449439758,
+        "baseError": 0,
+        "targetError": 8.881784197001252e-16,
+        "connectorLength": 0.24019939038113156,
+        "connectorStartError": 1.4238583238573986e-14,
+        "connectorEndError": 0
+      },
+      {
+        "length": 0.6696628372023676,
+        "stroke": -0.09490808401459983,
+        "baseError": 0,
+        "targetError": 1.4238583238573986e-14,
+        "connectorLength": 0.020599305035900645,
+        "connectorStartError": 2.0116800053149086e-14,
+        "connectorEndError": 8.881784197001252e-16
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "early-armor",
+    "progress": 0.7,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 2.555403816323439,
+        "fit": 1,
+        "radius": 0.4619450281380953,
+        "center": [
+          0.16356536442904712,
+          0.4780911578128224,
+          -0.24631485341005543
+        ],
+        "expectedRadius": 0.6302961713173482,
+        "radiusFromCenter": 0.5621350288231745
+      },
+      {
+        "wheel": "rear",
+        "angle": 1.7551269640503315,
+        "fit": 1,
+        "radius": 0.6136854125398138,
+        "center": [
+          -0.1130462213411505,
+          0.47809115781282774,
+          -0.3089887150488835
+        ],
+        "expectedRadius": 0.5803659443539791,
+        "radiusFromCenter": 0.5803659443539784
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.461945028138098,
+        "stroke": 0.1640144779193251,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.24019939038113078,
+        "connectorStartError": 1.4238583238573986e-14,
+        "connectorEndError": 8.881784197001252e-16
+      },
+      {
+        "length": 0.613685412539803,
+        "stroke": -0.15088550867716444,
+        "baseError": 0,
+        "targetError": 8.881784197001252e-16,
+        "connectorLength": 0.020599305035921996,
+        "connectorStartError": 2.0116800053149086e-14,
+        "connectorEndError": 8.881784197001252e-16
+      }
+    ],
+    "endpointError": 1.4210854715202004e-14,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "armor",
+    "progress": 1,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 2.555403816323439,
+        "fit": 1,
+        "radius": 0.4619450281380953,
+        "center": [
+          0.16356536442904712,
+          0.4780911578128224,
+          -0.24631485341005543
+        ],
+        "expectedRadius": 0.6302961713173482,
+        "radiusFromCenter": 0.5621350288231745
+      },
+      {
+        "wheel": "rear",
+        "angle": 1.7551269640503315,
+        "fit": 1,
+        "radius": 0.6136854125398138,
+        "center": [
+          -0.1130462213411505,
+          0.47809115781282774,
+          -0.3089887150488835
+        ],
+        "expectedRadius": 0.5803659443539791,
+        "radiusFromCenter": 0.5803659443539784
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.461945028138098,
+        "stroke": 0.1640144779193251,
+        "baseError": 0,
+        "targetError": 1.4238583238573986e-14,
+        "connectorLength": 0.24019939038113064,
+        "connectorStartError": 1.4238583238573986e-14,
+        "connectorEndError": 0
+      },
+      {
+        "length": 0.6136854125398022,
+        "stroke": -0.15088550867716521,
+        "baseError": 0,
+        "targetError": 0,
+        "connectorLength": 0.02059930503592197,
+        "connectorStartError": 2.0097183471152322e-14,
+        "connectorEndError": 0
+      }
+    ],
+    "endpointError": 1.4210854715202004e-14,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "departure",
+    "progress": 1,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 2.555403816323439,
+        "fit": 1,
+        "radius": 0.461945028138097,
+        "center": [
+          0.1635653644290329,
+          0.4780911578128215,
+          -0.24631485341005543
+        ],
+        "expectedRadius": 0.6302961713173482,
+        "radiusFromCenter": 0.5621350288231745
+      },
+      {
+        "wheel": "rear",
+        "angle": 1.7551269640503133,
+        "fit": 1,
+        "radius": 0.6136854125398358,
+        "center": [
+          -0.11304622134116471,
+          0.47809115781283396,
+          -0.3089887150489119
+        ],
+        "expectedRadius": 0.5803659443539896,
+        "radiusFromCenter": 0.580365944353989
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.461945028138098,
+        "stroke": 0.1640144779193251,
+        "baseError": 0,
+        "targetError": 1.4238583238573986e-14,
+        "connectorLength": 0.24019939038113036,
+        "connectorStartError": 0,
+        "connectorEndError": 0
+      },
+      {
+        "length": 0.6136854125398316,
+        "stroke": -0.1508855086771359,
+        "baseError": 0,
+        "targetError": 0,
+        "connectorLength": 0.020599305035935454,
+        "connectorStartError": 0,
+        "connectorEndError": 0
+      }
+    ],
+    "endpointError": 2.842170943040401e-14,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "reverse",
+    "progress": 0.5,
+    "active": true,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [
+      {
+        "wheel": "front",
+        "angle": 2.437671395952507,
+        "fit": 0,
+        "radius": 0.6261958910705676,
+        "center": [
+          0.40991954369800965,
+          -0.5138191122195899,
+          -0.4828184579771744
+        ],
+        "expectedRadius": 0.8317818199706281,
+        "radiusFromCenter": 0.8155720542975684
+      },
+      {
+        "wheel": "rear",
+        "angle": 0.3488962332190624,
+        "fit": 0.19825072886297387,
+        "radius": 0.6651028022458303,
+        "center": [
+          0.027283311166073076,
+          -0.29081088070978733,
+          -0.6816018611896197
+        ],
+        "expectedRadius": 0.741550028376061,
+        "radiusFromCenter": 0.7415500283760578
+      }
+    ],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.6261958910705729,
+        "stroke": 0.32826534085180004,
+        "baseError": 0,
+        "targetError": 8.881784197001252e-16,
+        "connectorLength": 0.24019939038115176,
+        "connectorStartError": 8.881784197001252e-16,
+        "connectorEndError": 0
+      },
+      {
+        "length": 0.665102802245827,
+        "stroke": -0.0994681189711405,
+        "baseError": 0,
+        "targetError": 8.881784197001252e-16,
+        "connectorLength": 0.020599305035920723,
+        "connectorStartError": 1.4238583238573986e-14,
+        "connectorEndError": 0
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "reverted",
+    "progress": 0,
+    "active": false,
+    "wheels": 2,
+    "visible": true,
+    "originalTubesHidden": true,
+    "motions": [],
+    "hydraulicIds": [
+      [
+        "f242a44b-5d54-48f4-8d16-55411266cca1",
+        "23070f57-5ce2-4ea3-a3fd-78efde44adfa",
+        "57f6fbd6-b122-4788-bdad-1e85eb07eba5"
+      ],
+      [
+        "bff084c3-6cc4-494e-88e0-3aab2885b4b5",
+        "bbaf78a0-d042-4d1e-a6e6-50dfd838e12a",
+        "b468947c-ca25-441b-843b-8efcc3e2f1f5"
+      ]
+    ],
+    "hydraulicErrors": [
+      {
+        "length": 0.32839080555393024,
+        "stroke": 0.030460255335157338,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.23321115927205102,
+        "connectorStartError": 1.4210854715202004e-14,
+        "connectorEndError": 8.881784197001252e-16
+      },
+      {
+        "length": 0.7604085508970737,
+        "stroke": -0.004162370319893749,
+        "baseError": 0,
+        "targetError": 1.4210854715202004e-14,
+        "connectorLength": 0.020000000000010232,
+        "connectorStartError": 0,
+        "connectorEndError": 8.881784197001252e-16
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "controls",
+    "heightPreview": -0.2,
+    "resetComposition": true
+  }
+]

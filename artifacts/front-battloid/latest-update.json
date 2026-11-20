@@ -1,0 +1,175 @@
+{
+  "surfaces": 111,
+  "changed": [
+    {
+      "id": "7e70f3ca-0927-478d-8fa2-66a16efceb5d",
+      "name": "Pieza 30",
+      "hidden": false
+    },
+    {
+      "id": "340e885e-c8ea-4f4f-9b92-2eef7a23add9",
+      "name": "Display_Recessed_Bevel_Frame",
+      "hidden": false
+    },
+    {
+      "id": "eb65b387-30c3-4347-b4e3-cc4e9e459be7",
+      "name": "tanque-nafta",
+      "hidden": false
+    },
+    {
+      "id": "d5f35188-6baa-4f15-987c-0b484191c190",
+      "name": "tanque-nafta",
+      "hidden": false
+    },
+    {
+      "id": "b0e60efd-3d9f-4902-9e07-3321b950f9a2",
+      "name": "Pieza 33",
+      "hidden": false
+    },
+    {
+      "id": "0fdd6c06-4027-4a71-a4b7-f89bc836f1b1",
+      "name": "Pieza 33",
+      "hidden": false
+    },
+    {
+      "id": "65ecca6d-615c-4511-9884-9a717627ff05",
+      "name": "Círculo / Óvalo",
+      "hidden": false
+    },
+    {
+      "id": "6a4add3d-dcad-4448-94ab-01b582fb62f2",
+      "name": "Conexión de perfiles",
+      "hidden": false
+    },
+    {
+      "id": "5a163cbf-8879-45ec-99bf-30393ca40b12",
+      "name": "Conexión circulo front-chest",
+      "hidden": true
+    },
+    {
+      "id": "d01c324a-29af-43f5-94d2-b5ba4747f608",
+      "name": "Tank_Cap_Detail_Left",
+      "hidden": false
+    },
+    {
+      "id": "3edbde9d-bd5f-4896-b86d-8af29dc22cee",
+      "name": "Tank_Cap_Curved_Relief_Left",
+      "hidden": false
+    },
+    {
+      "id": "d028c343-9b88-4174-809d-ca86cca98828",
+      "name": "Pieza 25",
+      "hidden": false
+    },
+    {
+      "id": "acbe4278-4bf2-46aa-afa7-052769a9f92f",
+      "name": "Pieza 26",
+      "hidden": false
+    },
+    {
+      "id": "4741a55d-6566-496f-9100-cd05408bb887",
+      "name": "Pieza 27",
+      "hidden": false
+    },
+    {
+      "id": "d02f9ae1-1203-4640-abd9-c5011d14e77a",
+      "name": "Pieza 28",
+      "hidden": false
+    },
+    {
+      "id": "6dca5eeb-da67-4a20-9e1b-cd461109e6c5",
+      "name": "Pieza 32",
+      "hidden": false
+    },
+    {
+      "id": "5a9d9299-01f3-4b28-8c33-174ee781b139",
+      "name": "Pieza 34",
+      "hidden": false
+    },
+    {
+      "id": "9160adc3-346b-4d8f-b2ab-0ce4c3787d2b",
+      "name": "Círculo / Óvalo",
+      "hidden": false
+    },
+    {
+      "id": "79089246-d9eb-443a-b2e6-c5f1ac6810ff",
+      "name": "Conexión de perfiles",
+      "hidden": false
+    },
+    {
+      "id": "5551e978-ddaa-4e88-82f1-06172c5b0567",
+      "name": "Conexión circulo front-chest",
+      "hidden": true
+    },
+    {
+      "id": "fac160ea-ddc6-46fc-877f-486422ce6bd3",
+      "name": "Tank_Cap_Detail_Right",
+      "hidden": false
+    },
+    {
+      "id": "f81289a9-220d-43c5-9f0b-6e53adb40be4",
+      "name": "Tank_Cap_Curved_Relief_Right",
+      "hidden": false
+    },
+    {
+      "id": "0ba86281-1a93-4123-89db-4b5de475498b",
+      "name": "Pieza 25",
+      "hidden": false
+    },
+    {
+      "id": "4d185b95-3cee-4b30-8c0b-29ff6beaf29c",
+      "name": "Pieza 26",
+      "hidden": false
+    },
+    {
+      "id": "2aa8e440-103c-4437-b79f-0750d91c5492",
+      "name": "Pieza 27",
+      "hidden": false
+    },
+    {
+      "id": "765a4917-20f7-4575-adbe-ff99d6282509",
+      "name": "Pieza 28",
+      "hidden": false
+    },
+    {
+      "id": "0e65a829-a479-4592-85b0-3fb12e1087b4",
+      "name": "Pieza 32",
+      "hidden": false
+    },
+    {
+      "id": "8ee64e79-7504-42c2-bfd2-39343fe093ea",
+      "name": "Pieza 34",
+      "hidden": false
+    }
+  ],
+  "visible": 99,
+  "issues": [
+    {
+      "kind": "reevaluated-cut-detail",
+      "id": "55c39789-8d14-4667-bb40-b600ececa62d",
+      "name": "chest-relieve",
+      "maxDetailDifference": 0.27273056763141224,
+      "reason": "El corte interno cambió en el JSON final; se conserva la geometría original y se mueve por los vértices de contorno."
+    },
+    {
+      "kind": "reevaluated-cut-detail",
+      "id": "103cbdd8-0c93-44fc-a3bd-a0bf8189bc71",
+      "name": "chest-relieve",
+      "maxDetailDifference": 0.2727305676314131,
+      "reason": "El corte interno cambió en el JSON final; se conserva la geometría original y se mueve por los vértices de contorno."
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/material-studio/vr052-cyclone-1rst-attempt · test-soldar.json",
+      "bytes": 13474999,
+      "sha256": "d9eea002ba06506d2064df0413f38188602367b75c5e292fd57c9ebc53019759"
+    },
+    {
+      "path": "assets/scott-cyclone/armor/vr052-cyclone-1rst-attempt · test-soldar -armor.json",
+      "bytes": 8937552,
+      "sha256": "31bba5256d2f2eb0f5f71fd05359ec92b7f0870393cf7fd6db10e68b22ca33a9"
+    }
+  ],
+  "glbSHA256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c"
+}

@@ -1,0 +1,38 @@
+{
+  "asphalt": {
+    "frontMud": 0,
+    "rearMud": 0,
+    "frontFilm": 0,
+    "rearFilm": 0
+  },
+  "dirt": {
+    "frontMud": 0.42971669994756434,
+    "rearMud": 0.42971669994756434,
+    "frontFilm": 0.4537433800604686,
+    "rearFilm": 0.4537433800604686
+  },
+  "returnAsphalt": {
+    "frontMud": 0.42374258254703534,
+    "rearMud": 0.42374258254703534,
+    "frontFilm": 0.382807325520539,
+    "rearFilm": 0.382807325520539
+  },
+  "stopped": {
+    "frontMud": 0.4207867419808607,
+    "rearMud": 0.4207867419808607,
+    "frontFilm": 0.3516132310494825,
+    "rearFilm": 0.3516132310494825
+  },
+  "legacySpray": false,
+  "reversibility": {
+    "PBR": {
+      "changed": 10250,
+      "restored": 0
+    },
+    "ANIME": {
+      "changed": 10162,
+      "restored": 0
+    },
+    "gl": 0
+  }
+}

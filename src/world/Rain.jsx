@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { phoneLightState } from '../player/PhoneLight'
+import { weatherState } from './weatherState.js'
 
 const DROP_COUNT = 520
 const SPAN_Y = 17
@@ -35,6 +36,9 @@ export default function Rain() {
 
   useFrame(({ camera, clock }) => {
     if (!mesh.current) return
+    mesh.current.visible = weatherState.rainIntensity > 0
+    if (!mesh.current.visible) return
+    mesh.current.material.opacity = .19 * THREE.MathUtils.clamp(weatherState.rainIntensity, 0, 1)
     mesh.current.position.copy(camera.position)
     const positions = geometry.attributes.position.array
     const colors = geometry.attributes.color.array

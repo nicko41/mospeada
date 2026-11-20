@@ -16,6 +16,15 @@ function setup() {
   return { camera, orbit, runtime, s, controller, listeners }
 }
 
+test('camera follows the armored rider departure without dragging back to the unfinished bike',()=>{
+  const f=setup();f.runtime.transformEntry={actorOffset:new Vector3(0,2.4,7.5),cameraProgress:1}
+  for(let i=0;i<60;i++)f.controller.update(f.s,1/60)
+  assert.ok(f.orbit.target.z>7);assert.ok(f.orbit.target.y>3)
+  f.runtime.transformEntry.actorOffset.set(0,0,0)
+  for(let i=0;i<100;i++)f.controller.update(f.s,1/60)
+  assert.ok(Math.abs(f.orbit.target.z)<.5);f.controller.dispose()
+})
+
 test('third-person camera stays close at road and boost speeds instead of accumulating positional lag', () => {
   for (const speed of [0, 20, 60, 80]) {
     const { camera, s, controller } = setup(); s.speed = speed
@@ -78,5 +87,26 @@ test('camera retracts before an obstruction and recovers its close follow distan
   for (let i = 0; i < 180; i++) controller.update(s, 1 / 120)
   assert.ok(orbit.getDistance() > 3.4 && orbit.getDistance() < 3.8)
   assert.ok(camera.position.y >= 0.35)
+  controller.dispose()
+})
+
+test('transformation camera makes a full orbit, passes the front and returns behind without changing the chosen zoom',()=>{
+  const {camera,orbit,runtime,s,controller}=setup(),radius=controller.radius
+  orbit.enableDamping=true;runtime.transformEntry={cameraProgress:0};s.speed=14
+  let last=Math.PI,turn=0,front=false
+  for(let i=0;i<120;i++){
+    runtime.transformEntry.cameraProgress=i/120;s.z+=s.speed/60;s.height=2*Math.sin(i/120*Math.PI)
+    controller.update(s,1/60)
+    const theta=Math.atan2(camera.position.x-s.x,camera.position.z-s.z)
+    turn+=Math.atan2(Math.sin(theta-last),Math.cos(theta-last));last=theta
+    if(camera.position.z>s.z+3)front=true
+    assert.equal(orbit.enabled,false)
+  }
+  assert.ok(turn>6.2&&front);assert.equal(controller.radius,radius)
+  runtime.transformEntry.cameraProgress=1;controller.update(s,1/60)
+  assert.equal(orbit.enabled,true);assert.equal(orbit.enableDamping,true);assert.ok(camera.position.z<s.z-3)
+  runtime.transformEntry.cameraProgress=0;controller.update(s,1/60)
+  runtime.transformEntry.cameraProgress=null;controller.update(s,1/60)
+  assert.equal(orbit.enabled,true);assert.equal(orbit.enableDamping,true)
   controller.dispose()
 })

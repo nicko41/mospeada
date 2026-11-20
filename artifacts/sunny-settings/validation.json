@@ -1,0 +1,35 @@
+{
+  "sunny": {
+    "preset": "sunny",
+    "rainIntensity": 0,
+    "fog": 0,
+    "sky": 1,
+    "rain": false,
+    "event": 1,
+    "pausedSounds": [
+      "ambience-rain.mp3",
+      "trueno01.mp3",
+      "trueno02.mp3"
+    ],
+    "shader": ""
+  },
+  "panels": {
+    "Anime": true,
+    "Reflejo": true,
+    "Suciedad": true,
+    "VFX · terreno": true,
+    "Conducción": true
+  },
+  "bounds": {
+    "x": 12,
+    "y": 132,
+    "right": 378,
+    "bottom": 451,
+    "screen": [
+      390,
+      844
+    ],
+    "overflow": false
+  },
+  "errors": []
+}

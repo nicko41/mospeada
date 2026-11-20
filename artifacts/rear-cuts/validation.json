@@ -1,0 +1,990 @@
+[
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.32839080555390904,
+      0.7654056163558707
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539085,
+      0.7664552072941864
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539231,
+      0.7667692976688212
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539225,
+      0.7673820923023091
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "boost",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539176,
+      0.7675230298787389
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "boost",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539201,
+      0.7677736303767766
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.32839080555392414,
+      0.7604085508970838
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539166,
+      0.7604085508970866
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539236,
+      0.7604085508970833
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539201,
+      0.7604085508970873
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.11319999998807907,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539198,
+      0.7604085508970796
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.22769999998807908,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 2.8420191547362528e-14,
+    "seamError": 7.993605777301127e-15,
+    "protrusion": 3.552713678800501e-15,
+    "lengths": [
+      0.32839080555392,
+      0.7604085508970796
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.3805999999642372,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.421258943867798e-14,
+    "seamError": 4.126162952233366e-15,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539217,
+      0.7604085508970826
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.42714999997615816,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.4212372598243483e-14,
+    "seamError": 1.4383281002407285e-14,
+    "protrusion": 0,
+    "lengths": [
+      0.3283908055539178,
+      0.7604085508970831
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.529800000011921,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.4212806279112478e-14,
+    "seamError": 1.4334458322332812e-14,
+    "protrusion": 7.216449660063518e-16,
+    "lengths": [
+      0.3283908055539192,
+      0.7604085508970838
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.648,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 2.842301047301099e-14,
+    "seamError": 1.421781900766999e-14,
+    "protrusion": 1.3322676295501878e-15,
+    "lengths": [
+      0.3281011472665779,
+      0.7552236559339917
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.648,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 2.842301047301099e-14,
+    "seamError": 1.421781900766999e-14,
+    "protrusion": 1.3322676295501878e-15,
+    "lengths": [
+      0.3281011472665779,
+      0.7552236559339917
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.7519000000357628,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.4212372598243483e-14,
+    "seamError": 1.429441785774423e-14,
+    "protrusion": 1.2212453270876722e-15,
+    "lengths": [
+      0.35774188051945194,
+      0.5748338353627539
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.7519000000357628,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.4212372598243483e-14,
+    "seamError": 1.429441785774423e-14,
+    "protrusion": 1.2212453270876722e-15,
+    "lengths": [
+      0.35774188051945194,
+      0.5748338353627539
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.8678500000238419,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.421258943867798e-14,
+    "seamError": 2.154433477880106e-14,
+    "protrusion": 2.9976021664879227e-15,
+    "lengths": [
+      0.25755795923778224,
+      0.5735881182838246
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.8678500000238419,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.421258943867798e-14,
+    "seamError": 2.154433477880106e-14,
+    "protrusion": 2.9976021664879227e-15,
+    "lengths": [
+      0.25755795923778224,
+      0.5735881182838246
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.9843999999761582,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.4209119991726027e-14,
+    "seamError": 2.1844325716240446e-14,
+    "protrusion": 4.773959005888173e-15,
+    "lengths": [
+      0.5249188056349199,
+      0.6193940704896079
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 2.8423444153879984e-14,
+    "seamError": 2.143422417540949e-14,
+    "protrusion": 1.3322676295501878e-15,
+    "lengths": [
+      0.5362604068947403,
+      0.6136854125398318
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 1.4212372598243483e-14,
+    "seamError": 2.1377505783599383e-14,
+    "protrusion": 1.3322676295501878e-15,
+    "lengths": [
+      0.5362604068947376,
+      0.6136854125398293
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "offset": [
+      -2.9179260860638356,
+      0.9337363475404273,
+      1.7867144207233204e-16
+    ],
+    "rigidError": 1.4212372598243483e-14,
+    "seamError": 8.62283142621908e-15,
+    "protrusion": 4.884981308350689e-15,
+    "lengths": [
+      0.5362604068947364,
+      0.6136854125398178
+    ],
+    "frameError": 2.6728257673940127e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "offset": [
+      -4.757133375624426,
+      1.5222826801998164,
+      2.912904080787749e-16
+    ],
+    "rigidError": 1.4209336832160524e-14,
+    "seamError": 1.3110507071683842e-14,
+    "protrusion": 1.2212453270876722e-15,
+    "lengths": [
+      0.536260406894739,
+      0.6136854125398126
+    ],
+    "frameError": 9.60736599508952e-16,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "offset": [
+      -5.916409983119277,
+      1.8932511945981687,
+      3.622756274135235e-16
+    ],
+    "rigidError": 1.4209119991726027e-14,
+    "seamError": 2.136970244204297e-14,
+    "protrusion": 8.326672684688674e-15,
+    "lengths": [
+      0.5362604068947431,
+      0.6136854125398242
+    ],
+    "frameError": 2.6982022874097637e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "offset": [
+      -6.647117315736393,
+      2.1270775410356455,
+      4.07018547213676e-16
+    ],
+    "rigidError": 1.4212155757808986e-14,
+    "seamError": 1.6497648915551698e-14,
+    "protrusion": 8.43769498715119e-15,
+    "lengths": [
+      0.5362604068947422,
+      0.613685412539834
+    ],
+    "frameError": 2.027305754907481e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "offset": [
+      -7.107691783027875,
+      2.27446137056892,
+      4.352205995705516e-16
+    ],
+    "rigidError": 4.2630829422130034e-14,
+    "seamError": 2.210461081980151e-14,
+    "protrusion": 1.5432100042289676e-14,
+    "lengths": [
+      0.5362604068947379,
+      0.6136854125398312
+    ],
+    "frameError": 1.3293377226019633e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "offset": [
+      -7.3979979431714575,
+      2.367359341814866,
+      4.529967250601814e-16
+    ],
+    "rigidError": 5.684168413733204e-14,
+    "seamError": 1.4273168140722167e-14,
+    "protrusion": 8.43769498715119e-15,
+    "lengths": [
+      0.5362604068947483,
+      0.6136854125398321
+    ],
+    "frameError": 3.6089050614773296e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "complete",
+    "progress": 1,
+    "offset": [
+      -7.5,
+      2.4,
+      4.592425496802575e-16
+    ],
+    "rigidError": 1.4432899320127035e-14,
+    "seamError": 1.7090313971545128e-14,
+    "protrusion": 1.554312234475219e-14,
+    "lengths": [
+      0.5362604068947411,
+      0.613685412539819
+    ],
+    "frameError": 6.388418785130454e-16,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 1,
+    "offset": [
+      -7.5,
+      2.4,
+      4.592425496802575e-16
+    ],
+    "rigidError": 2.839395385478838e-14,
+    "seamError": 2.2184745281305414e-14,
+    "protrusion": 1.554312234475219e-14,
+    "lengths": [
+      0.5362604068947427,
+      0.613685412539842
+    ],
+    "frameError": 6.388418785130454e-16,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.8933000000119209,
+    "offset": [
+      -7.5,
+      2.4,
+      4.592425496802575e-16
+    ],
+    "rigidError": 2.842322731344549e-14,
+    "seamError": 2.140206861276458e-14,
+    "protrusion": 8.326672684688674e-15,
+    "lengths": [
+      0.23526008079867508,
+      0.6314492169650979
+    ],
+    "frameError": 7.134088370624998e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.8023000000119209,
+    "offset": [
+      -7.262061491496131,
+      2.323859677278762,
+      4.4467301803859955e-16
+    ],
+    "rigidError": 2.841997470692803e-14,
+    "seamError": 2.974352804726151e-14,
+    "protrusion": 1.5432100042289676e-14,
+    "lengths": [
+      0.37565437297482096,
+      0.5056398585857216
+    ],
+    "frameError": 4.485139011201559e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.7055,
+    "offset": [
+      -6.736488402580088,
+      2.155676288825628,
+      4.124909479856486e-16
+    ],
+    "rigidError": 1.421258943867798e-14,
+    "seamError": 1.538092195795729e-14,
+    "protrusion": 8.215650382226158e-15,
+    "lengths": [
+      0.33599591787539457,
+      0.6868692239506281
+    ],
+    "frameError": 5.345010885875399e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.7055,
+    "offset": [
+      -6.736488402580088,
+      2.155676288825628,
+      4.124909479856486e-16
+    ],
+    "rigidError": 1.421258943867798e-14,
+    "seamError": 1.538092195795729e-14,
+    "protrusion": 8.215650382226158e-15,
+    "lengths": [
+      0.33599591787539457,
+      0.6868692239506281
+    ],
+    "frameError": 5.345010885875399e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.5945,
+    "offset": [
+      -5.931700254375,
+      1.8981440814,
+      3.6321188650109427e-16
+    ],
+    "rigidError": 4.263104626256453e-14,
+    "seamError": 1.1053446727423667e-14,
+    "protrusion": 8.43769498715119e-15,
+    "lengths": [
+      0.3283908055539306,
+      0.7604085508970725
+    ],
+    "frameError": 1.866703436993939e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.5028999999761582,
+    "offset": [
+      -4.800466370625,
+      1.5361492386,
+      2.9394378876002096e-16
+    ],
+    "rigidError": 4.260480856999038e-14,
+    "seamError": 4.126507407115741e-14,
+    "protrusion": 2.142730437526552e-14,
+    "lengths": [
+      0.32839080555393024,
+      0.760408550897073
+    ],
+    "frameError": 2.6898800911036935e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.5028999999761582,
+    "offset": [
+      -4.800466370625,
+      1.5361492386,
+      2.9394378876002096e-16
+    ],
+    "rigidError": 4.260480856999038e-14,
+    "seamError": 4.126507407115741e-14,
+    "protrusion": 2.142730437526552e-14,
+    "lengths": [
+      0.32839080555393024,
+      0.760408550897073
+    ],
+    "frameError": 2.6898800911036935e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.3960000000000001,
+    "offset": [
+      -3.7826246338967886,
+      1.2104398828469722,
+      2.316189575138816e-16
+    ],
+    "rigidError": 5.68449367438495e-14,
+    "seamError": 2.1977088414373925e-14,
+    "protrusion": 0,
+    "lengths": [
+      0.32839080555388817,
+      0.7604085508970873
+    ],
+    "frameError": 9.44358011178569e-16,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.292550000011921,
+    "offset": [
+      -2.5968729600000007,
+      0.8309993472000002,
+      1.5901260791281569e-16
+    ],
+    "rigidError": 4.241051954068098e-14,
+    "seamError": 6.328271240363392e-15,
+    "protrusion": 6.328271240363392e-15,
+    "lengths": [
+      0.3283908055539304,
+      0.7604085508970732
+    ],
+    "frameError": 1.7869120241364317e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.292550000011921,
+    "offset": [
+      -2.5968729600000007,
+      0.8309993472000002,
+      1.5901260791281569e-16
+    ],
+    "rigidError": 4.241051954068098e-14,
+    "seamError": 6.328271240363392e-15,
+    "protrusion": 6.328271240363392e-15,
+    "lengths": [
+      0.3283908055539304,
+      0.7604085508970732
+    ],
+    "frameError": 1.7869120241364317e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.17925000000000008,
+    "offset": [
+      -1.5501032250153999,
+      0.496033032004928,
+      9.491644764315495e-17
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.2904339299927134,
+      0.764040881373507
+    ],
+    "frameError": 5.556365003201759e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.17925000000000008,
+    "offset": [
+      -1.5501032250153999,
+      0.496033032004928,
+      9.491644764315495e-17
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.2904339299927134,
+      0.764040881373507
+    ],
+    "frameError": 5.556365003201759e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.06585000002384193,
+    "offset": [
+      -0.6365466063281255,
+      0.20369491402500015,
+      3.8977238197392464e-17
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.26576754007961506,
+      0.7720506373798027
+    ],
+    "frameError": 8.894664143722701e-16,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.06585000002384193,
+    "offset": [
+      -0.6365466063281255,
+      0.20369491402500015,
+      3.8977238197392464e-17
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.26576754007961506,
+      0.7720506373798027
+    ],
+    "frameError": 8.894664143722701e-16,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0,
+    "offset": [
+      -0.09328190254162233,
+      0.029850208813319144,
+      5.711869168298657e-18
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.27510838572280094,
+      0.7692067748903378
+    ],
+    "frameError": 2.943479101593627e-15,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3275459267597714,
+      0.7636898307309997
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.31638373925269786,
+      0.7635887794896415
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.31182598376717424,
+      0.7665048874323517
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.31898665340393384,
+      0.7672251924346978
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "idle",
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "rigidError": 0,
+    "seamError": 0,
+    "protrusion": 0,
+    "lengths": [
+      0.3204886497433632,
+      0.7663772919380855
+    ],
+    "frameError": 0,
+    "gl": 0,
+    "shader": ""
+  }
+]

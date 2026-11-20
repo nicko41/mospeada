@@ -14,10 +14,18 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { DrivingCamera } from './drivingCamera.js'
 import { requestRiderToggle, riderCameraState } from './riderPresence.js'
 import { rideMotion } from './rideMotion.js'
+import CycloneWeathering from './CycloneWeathering.jsx'
+import CycloneVFX from '../vfx/CycloneVFX.jsx'
+import FrontTransformation from './FrontTransformation.jsx'
+import {ArmorController} from './ArmorController.js'
+import {ArmorCamera} from './ArmorCamera.js'
+
+const CYCLONE_MODEL='/models/mospeada/cyclone-vr052f.glb'
+useGLTF.preload(CYCLONE_MODEL)
 
 export default function Motorcycle() {
   const { scene, camera, gl } = useThree()
-  const bike = useGLTF('/models/mospeada/cyclone-vr052f.glb')
+  const bike = useGLTF(CYCLONE_MODEL)
   const rig = useMemo(() => createDrivingCyclone(bike.scene), [bike])
   const runtime = useRef({ state: null, keys: {}, input: {}, paused: false, cameraMode: 0, stamp: 0, nearby: [], cameraNearby: [], cameraTarget: new T.Vector3(), desired: new T.Vector3(), probe: new T.Vector3() }).current
 
@@ -30,18 +38,26 @@ export default function Motorcycle() {
     runtime.orbit = orbit; runtime.orbitAnchor = new T.Vector3(); runtime.orbitDelta = new T.Vector3()
     const drivingCamera = new DrivingCamera(camera, orbit, runtime, bikeConfig, sampleRideHeight)
     runtime.cameraController = drivingCamera
+    const armor=new ArmorController(runtime,rig,sampleRideHeight,(x,z,y)=>{
+      if(!Number.isFinite(sampleRideHeight(x,z)))return false
+      queryColliders(x-.4,z-.4,x+.4,z+.4,runtime.cameraNearby)
+      const feet=y+(armor.state?.soleOffset||0)
+      return !runtime.cameraNearby.some(c=>c.maxY>feet+.08&&c.minY<feet+1.85&&overlapsFootprint(c,x,z,.34))
+    })
+    const armorCamera=new ArmorCamera(camera,orbit,runtime,sampleRideHeight);armor.camera=armorCamera;runtime.armorController=armor
     const setCameraMode = mode => {
       drivingCamera.setMode(mode, riderCameraState(runtime.state))
       rideUI.publish({ cameraMode: mode })
     }
     const reset = (name = 'highway') => {
+      armor.reset();runtime.transformEntry?.reset()
       const start = TEST_STARTS[name] || TEST_STARTS.highway
       runtime.state = createBikeState(start, rig.metrics, sampleRideHeight)
       runtime.keys = {}; runtime.input = {}; runtime.boostQueued = false; runtime.paused = false
       rig.update(runtime.state, sampleRideHeight, getConfig())
       drivingCamera.reset(runtime.state)
       rideMotion.speed = 0; rideMotion.paused = false
-      rideUI.publish({ scottPreview: false, paused: false, location: start.label, riderMode: 'mounted', wheelieAngle: 0, wheelieRemaining: 0 })
+      rideUI.publish({ scottPreview: false, paused: false, location: start.label, riderMode: 'mounted', wheelieAngle: 0, wheelieRemaining: 0,controlMode:'MOTORCYCLE' })
     }
     reset(new URLSearchParams(location.search).get('start') || 'highway')
     const clear = () => { runtime.keys = {}; runtime.input = {}; runtime.boostQueued = false }
@@ -51,11 +67,12 @@ export default function Motorcycle() {
       if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ControlLeft', 'ControlRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF'].includes(event.code)) event.preventDefault()
       runtime.keys[event.code] = true
       if (event.repeat) return
+      if(event.code==='KeyG'&&armor.active){event.preventDefault();armor.toggle()}
       if (['ShiftLeft', 'ShiftRight'].includes(event.code) && runtime.state.riderMode === 'mounted') runtime.boostQueued = true
       if (event.code === 'KeyR') reset()
       if (event.code === 'KeyP' || event.code === 'Escape') pause()
-      if (event.code === 'KeyC') setCameraMode((runtime.cameraMode + 1) % 4)
-      if (event.code === 'KeyF' && !runtime.paused) requestRiderToggle(runtime.state, getConfig())
+      if (event.code === 'KeyC'&&!armor.active) setCameraMode((runtime.cameraMode + 1) % 4)
+      if (event.code === 'KeyF' && !runtime.paused && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
       const starts = { Digit1: 'highway', Digit2: 'curves', Digit3: 'slope', Digit4: 'rough', Digit5: 'jump' }
       if (starts[event.code]) reset(starts[event.code])
     }
@@ -67,10 +84,11 @@ export default function Motorcycle() {
     const command = event => {
       if (event.detail.start) reset(event.detail.start)
       if (event.detail.pause) pause()
-      if (event.detail.camera) setCameraMode((runtime.cameraMode + 1) % 4)
-      if (event.detail.freeCamera) setCameraMode(runtime.cameraMode === 3 ? 0 : 3)
-      if (event.detail.centerCamera) setCameraMode(0)
-      if (event.detail.rider && !runtime.paused) requestRiderToggle(runtime.state, getConfig())
+      if (event.detail.camera&&!armor.active) setCameraMode((runtime.cameraMode + 1) % 4)
+      if (event.detail.freeCamera&&!armor.active) setCameraMode(runtime.cameraMode === 3 ? 0 : 3)
+      if (event.detail.centerCamera){if(armor.active)armorCamera.yaw=armor.state.yaw;else setCameraMode(0)}
+      if(event.detail.armorGround)armor.toggle()
+      if (event.detail.rider && !runtime.paused && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
       if (event.detail.touch) Object.assign(runtime.keys, event.detail.touch)
     }
     window.addEventListener('ride-command', command)
@@ -80,6 +98,7 @@ export default function Motorcycle() {
       snapshot: () => ({ ...runtime.state, ...rig.articulation, handErrors: rig.arms.map(a => a.error), hydraulics: rig.hydraulics.map(link => ({ ...link.state })), cameraMode: runtime.cameraMode, metrics: rig.metrics, render: gl.info.render }),
     }
     return () => {
+      armorCamera.dispose();delete runtime.armorController
       unregister(); clear(); window.removeEventListener('keydown', down); window.removeEventListener('keyup', up); window.removeEventListener('blur', blur)
       drivingCamera.dispose(); runtime.cameraController = null; orbit.dispose(); runtime.orbit = null
       document.removeEventListener('visibilitychange', visibility); window.removeEventListener('ride-command', command)
@@ -129,18 +148,32 @@ export default function Motorcycle() {
       queryColliders(x - 0.3, z - 0.3, x + 0.3, z + 0.3, runtime.nearby)
       return !runtime.nearby.some(item => item.maxY > y + 0.2 && item.minY < y + 1.9 && overlapsFootprint(item, x, z, 0.23))
     }
-    if (!runtime.paused) advanceBike(s, runtime.input, Math.min(delta, 0.1), rig.metrics, sampleRideHeight, canMove, getConfig(), canWalk)
+    if (!runtime.paused) {
+      const dt=Math.min(delta,.1),entry=runtime.transformEntry
+      const armor=runtime.armorController
+      if(entry?.phase==='complete'&&!entry.returnFlight&&!armor.active)armor.activate()
+      if(armor.active){
+        armor.update({forward:runtime.input.walkForward,side:runtime.input.walkSide,yaw:armor.camera.yaw,boost:runtime.input.run,rise:!!k.Space,descend:!!(k.ControlLeft||k.ControlRight)},dt)
+      }else{
+        if(entry&&entry.phase!=='idle'&&entry.phase!=='complete')runtime.input={throttle:0,steer:0,boost:false,handbrake:false,brake:0}
+        if(entry)runtime.input=entry.beforePhysics(runtime.input,dt)
+        const config={...getConfig(),...entry?.physicsConfig}
+        advanceBike(s,runtime.input,dt,rig.metrics,sampleRideHeight,canMove,config,canWalk)
+        entry?.afterPhysics(dt,rig.metrics,config)
+      }
+    }
     if (s.boostPressed || s.riderMode !== 'mounted') runtime.boostQueued = false
-    rig.update(s, sampleRideHeight, getConfig())
+    rig.update(s, sampleRideHeight, getConfig(),runtime.transformEntry?.returnTilt)
     rig.sunlight.intensity = 0.015 + timeOfDayState.value * 0.6
     rig.lighting.update(timeOfDayState.value)
     rideMotion.speed = s.speed; rideMotion.paused = runtime.paused
     runtime.stamp += delta
     if (runtime.stamp > 0.1) {
       runtime.stamp = 0
-      rideUI.publish({ speed: Math.abs(s.speed) * 3.6, lean: s.lean * 180 / Math.PI, frontTravel: rig.articulation.frontTravel, rearTravel: rig.articulation.rearTravel, blocked: s.blocked, reverse: s.speed < -0.1, airborne: s.airborne, slip: s.slip * 180 / Math.PI, handbrake: s.handbrake > 0.15, boost: s.boostTime > 0, boostCooldown: s.boostCooldown, cameraMode: runtime.cameraMode, riderMode: s.riderMode, wheelieAngle: s.wheelieAngle, wheelieRemaining: s.wheelieRemaining })
+      const armor=runtime.armorController,active=armor?.active,a=armor?.state
+      rideUI.publish({ speed: Math.abs(s.speed) * 3.6, lean: s.lean * 180 / Math.PI, frontTravel: rig.articulation.frontTravel, rearTravel: rig.articulation.rearTravel, blocked: s.blocked, reverse: !active&&s.speed < -0.1, airborne: active?!a.grounded:s.airborne, slip: s.slip * 180 / Math.PI, handbrake: s.handbrake > 0.15, boost: active?a.boostBlend>.15:s.boostTime > 0, boostCooldown: s.boostCooldown, cameraMode: runtime.cameraMode, riderMode: s.riderMode, wheelieAngle: s.wheelieAngle, wheelieRemaining: s.wheelieRemaining,controlMode:active?a.mode:runtime.transformEntry?.phase&&runtime.transformEntry.phase!=='idle'?'TRANSFORMING':'MOTORCYCLE',armorHeight:active?a.height:0,verticalSpeed:active?a.vy:0 })
     }
   }, -2)
-  useFrame((_, delta) => { if (runtime.state) runtime.cameraController?.update(riderCameraState(runtime.state), delta) })
-  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /></>
+  useFrame((_, delta) => { if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta);else if (runtime.state) runtime.cameraController?.update(riderCameraState(runtime.state), delta) })
+  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} /></>
 }

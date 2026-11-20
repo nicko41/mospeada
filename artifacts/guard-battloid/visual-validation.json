@@ -1,0 +1,72 @@
+[
+  {
+    "name": "motorcycle",
+    "progress": 0,
+    "active": false,
+    "surfaces": 30,
+    "visible": true,
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "waiting",
+    "progress": 0.22,
+    "active": false,
+    "surfaces": 30,
+    "visible": true,
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "travel",
+    "progress": 0.35,
+    "active": true,
+    "surfaces": 30,
+    "visible": true,
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "attached-tpose",
+    "progress": 0.48,
+    "active": true,
+    "surfaces": 30,
+    "visible": true,
+    "endpointError": 1.4210854715202004e-14,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "arms-down",
+    "progress": 0.62,
+    "active": true,
+    "surfaces": 30,
+    "visible": true,
+    "endpointError": 1.4210854715202004e-14,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "armor",
+    "progress": 1,
+    "active": true,
+    "surfaces": 30,
+    "visible": true,
+    "endpointError": 1.4210854715202004e-14,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "reverted",
+    "progress": 0,
+    "active": false,
+    "surfaces": 30,
+    "visible": true,
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  }
+]

@@ -12,6 +12,8 @@ import { parseCycloneScottActions } from './cycloneScottActions.js'
 import { updateScottGameplay } from './scottGameplay.js'
 import { registerRideSurfaces } from './rideSurface.js'
 import { createRelaxedScottHands } from './relaxedScottHands.js'
+import openingPatches from './headlightOpeningsData.js'
+import { frontGeometryKey } from './frontTransformMath.js'
 
 globalThis.self = globalThis; globalThis.createImageBitmap = async () => ({ width: 1, height: 1, close() {} })
 const data = JSON.parse(fs.readFileSync('public/animations/scott-cyclone-actions.json')), flat = () => 0
@@ -21,7 +23,16 @@ const assets = Promise.all([load('public/models/mospeada/cyclone-vr052f.glb'), l
 test('restored vehicle steers, rolls wheels and keeps axle/fork contacts at the current size without loading a rider rig', async () => {
   const [bike] = await assets, rig = createDrivingCyclone(bike.scene), sourceGeometry = new Set()
   bike.scene.traverse(n => { if (n.isMesh) sourceGeometry.add(n.geometry) })
-  rig.surfaces.forEach(mesh => assert.ok(sourceGeometry.has(mesh.geometry)))
+  const opened=new Set()
+  rig.surfaces.forEach(mesh=>{
+    const patch=openingPatches.find(p=>p.key===frontGeometryKey(mesh))
+    if(!patch){assert.ok(sourceGeometry.has(mesh.geometry));return}
+    assert.ok(!sourceGeometry.has(mesh.geometry),'Only the two approved housing faces use a local geometry copy')
+    assert.deepEqual(mesh.geometry.userData.openHeadlightFaces,patch.faceIds)
+    assert.equal(mesh.geometry.index.count,patch.vertexCount-3*patch.removeTriangleStarts.length)
+    opened.add(patch.pieceId)
+  })
+  assert.equal(opened.size,2)
   const s = createBikeState({ x: 0, z: 0, yaw: 0 }, rig.metrics, flat)
   for (let i = 0; i < 240; i++) { advanceBike(s, { throttle: 1, steer: .1 }, 1 / 120, rig.metrics, flat); rig.update(s, flat, bikeConfig) }
   assert.ok(s.speed > 10 && Math.hypot(s.x, s.z) > 8)
@@ -45,6 +56,22 @@ test('F uses the authored left approach point and clip duration, then walking an
   run({ walkForward: 1, walkYaw: 0, run: true }, .2); assert.ok(s.pedestrian.z - walked > .4)
   assert.ok(requestRiderToggle(s, c)); assert.equal(s.riderMode, 'approaching')
   run({}, 4); assert.equal(s.riderMode, 'mounted'); assert.equal(s.pedestrian, null)
+})
+
+test('completed motorcycle settles rear-first while its front axle keeps its flight path; driving state stays intact',async()=>{
+  const [bike]=await assets,rig=createDrivingCyclone(bike.scene),s=createBikeState({x:8,z:12,yaw:.7},rig.metrics,flat)
+  s.height+=3;s.frontSpring+=3;s.rearSpring+=3;s.airborne=true;s.frontGrounded=s.rearGrounded=false
+  const before=JSON.stringify(s)
+  rig.update(s,flat,bikeConfig)
+  const rear=rig.rearAxle.getWorldPosition(new T.Vector3()),front=rig.frontAxle.getWorldPosition(new T.Vector3()),matrices=rig.surfaces.map(m=>m.matrixWorld.clone())
+  for(const tilt of[.1,.3,.55,.3,0]){
+    rig.update(s,flat,bikeConfig,tilt)
+    assert.equal(JSON.stringify(s),before)
+    assert.ok(Math.abs(rig.body.rotation.x-(s.pitch-tilt))<1e-9)
+    assert.ok(rig.frontAxle.getWorldPosition(new T.Vector3()).distanceTo(front)<1e-8,'Front follows its original path instead of being lifted')
+    if(tilt===.55)assert.ok(rear.y-rig.rearAxle.getWorldPosition(new T.Vector3()).y>.7,'Rear sinks under the rider')
+  }
+  rig.surfaces.forEach((m,i)=>assert.ok(m.matrixWorld.elements.every((v,k)=>Math.abs(v-matrices[i].elements[k])<1e-8)))
 })
 
 test('mounted Scott has lower soles, fixed jump supports, boost/brake/dab movements and unmodified Roll_Dodge_4 transitions', async () => {

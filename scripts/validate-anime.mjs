@@ -72,7 +72,7 @@ try {
   console.log('Reversibility and visual controls:', JSON.stringify(reversibility))
 
   // Exercise the actual React panel, not only its developer store.
-  await c.evaluate(`document.querySelectorAll('.anime-switcher button')[3].click()`)
+  await c.openSettings('Anime')
   await wait(150)
   await c.evaluate(`{const s=document.querySelector('[aria-label="Niveles de iluminación"]');s.value='4';s.dispatchEvent(new Event('change',{bubbles:true}));document.querySelector('.anime-settings input[type=checkbox]').click()}`)
   await wait(150)
@@ -84,7 +84,7 @@ try {
   await c.evaluate(`{const p=document.querySelector('.anime-settings');[...p.querySelectorAll('button')].find(b=>b.textContent==='Restablecer estilo').click()}`)
   await mode('ANIME')
   await screenshot('04-anime-settings')
-  await c.evaluate(`document.querySelectorAll('.anime-switcher button')[3].click()`)
+  await c.closeSettings()
 
   await view([1.1, 1.8, 1.4], [0, 1.35, 0])
   await mode('PBR'); await screenshot('05-helmet-pbr')

@@ -1,0 +1,5 @@
+.weathering-toggle{position:absolute;right:28px;top:110px;pointer-events:auto;z-index:5}
+.weathering-settings{left:auto;right:28px;top:155px;max-height:calc(100vh - 260px);min-height:0}
+.weathering-surfaces{font-size:11px;line-height:1.8;padding:7px 0 10px;border-bottom:1px solid #93b0c833}.weathering-surfaces span{display:block}.weathering-surfaces b{color:#d8d8ac}
+.weathering-buttons{display:flex;gap:6px}.weathering-buttons button{padding:8px 5px}
+@media(max-width:700px){.weathering-toggle{top:202px;right:16px;font-size:10px;padding:6px 8px}.weathering-settings{right:16px;left:auto;top:316px;max-height:calc(100vh - 340px)}}

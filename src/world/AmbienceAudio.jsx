@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { lightningState } from './Lightning'
 import { desktopInput } from '../player/touchInput'
+import { weatherState } from './weatherState.js'
 
 const RAIN_VOLUME = 0.18
 const THUNDER_VOLUME = 0.55
@@ -29,7 +30,7 @@ export default function AmbienceAudio() {
     const state = { rain, thunders, play, started: false, eventId: lightningState.eventId }
     audio.current = state
     const resume = () => {
-      if (!state.started || document.hidden || !document.hasFocus()) return
+      if (!state.started || document.hidden || !document.hasFocus() || weatherState.rainIntensity <= 0) return
       if (rain.paused) play(rain)
     }
     // Start in a user gesture so the browser can authorize audio playback.
@@ -39,6 +40,13 @@ export default function AmbienceAudio() {
       resume()
     }
     const pause = () => sounds.forEach(sound => sound.pause())
+    const unsubscribeWeather = weatherState.subscribe(() => {
+      state.eventId = lightningState.eventId
+      if (weatherState.rainIntensity <= 0) {
+        pause()
+        thunders.forEach(sound => { sound.currentTime = 0 })
+      } else resume()
+    })
     const visibilityChanged = () => { if (document.hidden) pause(); else resume() }
     window.addEventListener('pointerdown', start)
     window.addEventListener('keydown', start)
@@ -50,6 +58,7 @@ export default function AmbienceAudio() {
 
     return () => {
       audio.current = null
+      unsubscribeWeather()
       window.removeEventListener('pointerdown', start)
       window.removeEventListener('keydown', start)
       window.removeEventListener('game-ready', start)
@@ -68,7 +77,7 @@ export default function AmbienceAudio() {
     const a = audio.current
     if (!a || a.eventId === lightningState.eventId) return
     a.eventId = lightningState.eventId
-    if (!a.started || document.hidden || !document.hasFocus()) return
+    if (!a.started || document.hidden || !document.hasFocus() || weatherState.rainIntensity <= 0) return
     // One thunder per lightning event, even when that event has several flashes.
     const thunder = a.thunders[Math.floor(Math.random() * a.thunders.length)]
     thunder.currentTime = 0

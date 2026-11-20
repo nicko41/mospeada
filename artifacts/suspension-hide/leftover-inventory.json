@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Tank_Cap_Detail_Left_(copia)_2",
+    "source": "Tank_Cap_Detail_Left (copia) 2",
+    "assembly": "rear_body-axle-rounded.json",
+    "pos": [
+      0.14661547542363407,
+      0.5657256659299136,
+      -0.2147552704751492
+    ],
+    "size": [
+      0.00811667046546935,
+      0.13340213680863378,
+      0.13356225080490114
+    ],
+    "parent": "Chassis",
+    "controlled": false
+  },
+  {
+    "name": "Tank_Cap_Detail_Left_(copia)_2_1",
+    "source": "Tank_Cap_Detail_Left (copia) 2",
+    "assembly": "rear_body-axle-rounded.json",
+    "pos": [
+      -0.144578594301641,
+      0.5657168957196177,
+      -0.21478536682724955
+    ],
+    "size": [
+      0.00811665643453599,
+      0.13340213505476717,
+      0.13356222274303436
+    ],
+    "parent": "Chassis",
+    "controlled": false
+  },
+  {
+    "name": "Deployed_kickstand",
+    "pos": [
+      0,
+      0,
+      0
+    ],
+    "size": [
+      0.035999998450279236,
+      1,
+      0.035999998450279236
+    ],
+    "parent": "Cyclone_riding_vehicle",
+    "controlled": false
+  }
+]

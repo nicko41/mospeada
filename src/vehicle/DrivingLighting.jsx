@@ -3,6 +3,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { PMREMGenerator } from 'three'
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
 import { timeOfDayState } from '../world/TimeOfDay'
+import { weatherState } from '../world/weatherState.js'
 
 export default function DrivingLighting() {
   const { scene, gl } = useThree()
@@ -36,8 +37,8 @@ export default function DrivingLighting() {
       })
     }
     for (const material of materials.current) material.envMapIntensity = 0.04 + timeOfDayState.value * 0.55
-    // Original weather density; the existing weather owns color and lightning.
-    scene.fog.density = 0.068
+    // Weather keeps the original storm density and a lighter sunny haze.
+    scene.fog.density = weatherState.fogDensity
   })
   return null
 }

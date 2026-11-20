@@ -1,0 +1,1916 @@
+[
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539163,
+      0.7652551271642309
+    ],
+    "radius": 1.6810457675823238,
+    "speed": 29.09775282487245,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539085,
+      0.7664552072941864
+    ],
+    "radius": 1.6860488826911733,
+    "speed": 30.232225006941892,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555391553,
+      0.767263273343377
+    ],
+    "radius": 1.6890067131584077,
+    "speed": 30.972869868216556,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "boost",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539176,
+      0.7675230298787389
+    ],
+    "radius": 1.6976964189611254,
+    "speed": 31.94068661415908,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "boost",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555391553,
+      0.7677736303767728
+    ],
+    "radius": 1.3529086095511218,
+    "speed": 44.70714755451347,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.328390805553912,
+      0.7604085508970869
+    ],
+    "radius": 1.3581701136127535,
+    "speed": 46.34608751705565,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "pose": 0.15625,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555392514,
+      0.7604085508970879
+    ],
+    "radius": 1.470610203958712,
+    "speed": 46.88468856715129,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "pose": 0.5,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539166,
+      0.760408550897084
+    ],
+    "radius": 1.590250481375477,
+    "speed": 47.09024468996619,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "pose": 0.8437500000000002,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555392386,
+      0.7604085508970826
+    ],
+    "radius": 1.6929641376189044,
+    "speed": 46.96770423791358,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.125,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539163,
+      0.7604085508970873
+    ],
+    "radius": 1.731407108174788,
+    "speed": 46.62389325644854,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.25,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539182,
+      0.7604085508970873
+    ],
+    "radius": 1.7346902029119042,
+    "speed": 46.278450198772084,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.41055000001192093,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539181,
+      0.7604085508970869
+    ],
+    "radius": 1.7357401151877556,
+    "speed": 45.71395168105534,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.46935000002384186,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555391964,
+      0.7604085508970844
+    ],
+    "radius": 1.7358359909445373,
+    "speed": 45.381816765697465,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.5861000000238419,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539193,
+      0.7604085508970849
+    ],
+    "radius": 1.735861906644623,
+    "speed": 45.05447472392123,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.705050000011921,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3363582289753142,
+      0.6867790684237257
+    ],
+    "radius": 1.720654772385239,
+    "speed": 44.73182253327108,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.830050000011921,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.35938894960404527,
+      0.5025626262379833
+    ],
+    "radius": 1.3704982634784129,
+    "speed": 44.41376010332815,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.9545,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.4494560536523125,
+      0.6495116945072801
+    ],
+    "radius": 0.9095790153614929,
+    "speed": 44.10019017212737,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947295,
+      0.6136854125398206
+    ],
+    "radius": 0.9095790153614771,
+    "speed": 43.79101820693545,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947322,
+      0.613685412539814
+    ],
+    "radius": 0.9095790153614643,
+    "speed": 43.48615230917698,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -2.9179260860638356,
+      0.9337363475404273,
+      1.7867144207233204e-16
+    ],
+    "frameApplied": true,
+    "frameError": 9.127487831146624e-16,
+    "offsetError": 0,
+    "lengths": [
+      0.536260406894726,
+      0.61368541253983
+    ],
+    "radius": 0.9095790153614721,
+    "speed": 43.185503123307626,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -4.757133375624426,
+      1.5222826801998164,
+      2.912904080787749e-16
+    ],
+    "frameApplied": true,
+    "frameError": 9.60736599508952e-16,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947352,
+      0.6136854125398168
+    ],
+    "radius": 0.9095790153614636,
+    "speed": 42.88898374944483,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -5.916409983119277,
+      1.8932511945981687,
+      3.622756274135235e-16
+    ],
+    "frameApplied": true,
+    "frameError": 2.6982022874097637e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947343,
+      0.6136854125398231
+    ],
+    "radius": 0.9095790153614745,
+    "speed": 42.59650965957621,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -6.647117315736393,
+      2.1270775410356455,
+      4.07018547213676e-16
+    ],
+    "frameApplied": true,
+    "frameError": 1.822390660275666e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.536260406894724,
+      0.6136854125398101
+    ],
+    "radius": 0.9095790153614578,
+    "speed": 42.30799861717585,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -7.107691783027875,
+      2.27446137056892,
+      4.352205995705516e-16
+    ],
+    "frameApplied": true,
+    "frameError": 1.3293377226019633e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947324,
+      0.6136854125398069
+    ],
+    "radius": 0.9095790153614709,
+    "speed": 42.023370600068155,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -7.3979979431714575,
+      2.367359341814866,
+      4.529967250601814e-16
+    ],
+    "frameApplied": true,
+    "frameError": 3.6089050614773296e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947266,
+      0.6136854125398057
+    ],
+    "radius": 0.9095790153614901,
+    "speed": 41.7425477263869,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "complete",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -7.5,
+      2.4,
+      4.592425496802575e-16
+    ],
+    "frameApplied": true,
+    "frameError": 6.388418785130454e-16,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947235,
+      0.6136854125398299
+    ],
+    "radius": 0.909579015361459,
+    "speed": 41.46545418348567,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -7.5,
+      2.4,
+      4.592425496802575e-16
+    ],
+    "frameApplied": true,
+    "frameError": 7.134088370624998e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947354,
+      0.6136854125398085
+    ],
+    "radius": 0.9095790153614615,
+    "speed": 41.19201615966336,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.875,
+    "pose": 1,
+    "offset": [
+      -7.5,
+      2.4,
+      4.592425496802575e-16
+    ],
+    "frameApplied": true,
+    "frameError": 6.388418785130454e-16,
+    "offsetError": 0,
+    "lengths": [
+      0.2423766362630172,
+      0.5906357269151777
+    ],
+    "radius": 1.3206374086861499,
+    "speed": 40.92216177857539,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.75875,
+    "pose": 1,
+    "offset": [
+      -7.177734375,
+      2.296875,
+      4.3950947137368394e-16
+    ],
+    "frameApplied": true,
+    "frameError": 4.3950947137368394e-16,
+    "offsetError": 0,
+    "lengths": [
+      0.3613043200109726,
+      0.559402930104546
+    ],
+    "radius": 1.6166265497138086,
+    "speed": 40.65582103620837,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.75875,
+    "pose": 1,
+    "offset": [
+      -7.177734375,
+      2.296875,
+      4.3950947137368394e-16
+    ],
+    "frameApplied": true,
+    "frameError": 4.3950947137368394e-16,
+    "offsetError": 0,
+    "lengths": [
+      0.3613043200109726,
+      0.559402930104546
+    ],
+    "radius": 1.6166265497138086,
+    "speed": 40.65582103620837,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.6381499999761582,
+    "pose": 1,
+    "offset": [
+      -6.401081748046876,
+      2.048346159375,
+      3.9195321369130757e-16
+    ],
+    "frameApplied": true,
+    "frameError": 1.8190851938837254e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32821050420980913,
+      0.7583376755443111
+    ],
+    "radius": 1.7376349086706633,
+    "speed": 40.392925740301834,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.6381499999761582,
+    "pose": 1,
+    "offset": [
+      -6.401081748046876,
+      2.048346159375,
+      3.9195321369130757e-16
+    ],
+    "frameApplied": true,
+    "frameError": 1.8190851938837254e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32821050420980913,
+      0.7583376755443111
+    ],
+    "radius": 1.7376349086706633,
+    "speed": 40.392925740301834,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.5293999999761582,
+    "pose": 1,
+    "offset": [
+      -5.264637732976631,
+      1.684684074552522,
+      3.223660874180105e-16
+    ],
+    "frameApplied": true,
+    "frameError": 7.116201348685847e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555391625,
+      0.760408550897073
+    ],
+    "radius": 1.735871707561544,
+    "speed": 40.13340945210712,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.5293999999761582,
+    "pose": 1,
+    "offset": [
+      -5.264637732976631,
+      1.684684074552522,
+      3.223660874180105e-16
+    ],
+    "frameApplied": true,
+    "frameError": 7.116201348685847e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555391625,
+      0.760408550897073
+    ],
+    "radius": 1.735871707561544,
+    "speed": 40.13340945210712,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.4189499999880791,
+    "pose": 1,
+    "offset": [
+      -4.080368816972706,
+      1.3057180214312658,
+      2.4985053055231486e-16
+    ],
+    "frameApplied": true,
+    "frameError": 1.7938419407799898e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539164,
+      0.7604085508970885
+    ],
+    "radius": 1.7358717355678739,
+    "speed": 39.87720743037877,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.32330000001192094,
+    "pose": 1,
+    "offset": [
+      -2.8461738862337884,
+      0.9107756435948123,
+      1.7427788697964963e-16
+    ],
+    "frameApplied": true,
+    "frameError": 3.115484685003533e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539304,
+      0.7604085508970873
+    ],
+    "radius": 1.7358717115175133,
+    "speed": 39.62425657749922,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.32330000001192094,
+    "pose": 1,
+    "offset": [
+      -2.8461738862337884,
+      0.9107756435948123,
+      1.7427788697964963e-16
+    ],
+    "frameApplied": true,
+    "frameError": 3.115484685003533e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539304,
+      0.7604085508970873
+    ],
+    "radius": 1.7358717115175133,
+    "speed": 39.62425657749922,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.21115000003576279,
+    "pose": 1,
+    "offset": [
+      -1.8448812700623614,
+      0.5903620064199556,
+      1.1296639710943873e-16
+    ],
+    "frameApplied": true,
+    "frameError": 2.226088052200831e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393035,
+      0.7604085508970737
+    ],
+    "radius": 1.7358717075615755,
+    "speed": 39.37449538764256,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.1155,
+    "pose": 1,
+    "offset": [
+      -0.8619375610799332,
+      0.27582001954557867,
+      5.2778453762070834e-17
+    ],
+    "frameApplied": true,
+    "frameError": 6.55429073544914e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555391625,
+      0.7604085508970873
+    ],
+    "radius": 1.7358717287284846,
+    "speed": 39.127863896888044,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.014650000035762792,
+    "pose": 1,
+    "offset": [
+      -0.277043641875,
+      0.0886539654,
+      1.6964030462317222e-17
+    ],
+    "frameApplied": true,
+    "frameError": 3.3917919337930155e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.2670028003475748,
+      0.7673210260508107
+    ],
+    "radius": 1.768423920353562,
+    "speed": 39.088457692602745,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.014650000035762792,
+    "pose": 1,
+    "offset": [
+      -0.277043641875,
+      0.0886539654,
+      1.6964030462317222e-17
+    ],
+    "frameApplied": true,
+    "frameError": 3.3917919337930155e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.2670028003475748,
+      0.7673210260508107
+    ],
+    "radius": 1.768423920353562,
+    "speed": 39.088457692602745,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0,
+    "pose": 1,
+    "offset": [
+      -0.004781842978856223,
+      0.0015301897532339914,
+      2.928034349040759e-19
+    ],
+    "frameApplied": true,
+    "frameError": 1.5309938807789322e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.2643032679249063,
+      0.7720585582898916
+    ],
+    "radius": 1.6254481983890552,
+    "speed": 39.65475138007186,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.290828235428436,
+      0.7679755774992638
+    ],
+    "radius": 1.7806929594168817,
+    "speed": 40.208460767700544,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "pose": 0.84375,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3250509655528961,
+      0.7630911929874971
+    ],
+    "radius": 1.8165130905711633,
+    "speed": 40.749791917141806,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "pose": 0.5,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.31327001611688593,
+      0.764299816519005
+    ],
+    "radius": 1.7436764806507714,
+    "speed": 41.278964796961894,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "pose": 0.15624999999999978,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.31451511126495857,
+      0.7667665273662416
+    ],
+    "radius": 1.6863086032134256,
+    "speed": 41.796205828329136,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "idle",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32077000035429354,
+      0.7669801551973952
+    ],
+    "radius": 1.6683375820514155,
+    "speed": 42.30174234164472,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3177574042860453,
+      0.766386398024597
+    ],
+    "radius": 1.6634325871459843,
+    "speed": 42.79580256555821,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539166,
+      0.766053623782725
+    ],
+    "radius": 1.6828034346750917,
+    "speed": 43.280271874824116,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555387234,
+      0.7658670880133641
+    ],
+    "radius": 1.68632326370164,
+    "speed": 43.75383483303749,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "wheelie",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539025,
+      0.766013718211995
+    ],
+    "radius": 1.6892109611763373,
+    "speed": 44.21685274251808,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "boost",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539285,
+      0.7665162376564405
+    ],
+    "radius": 1.6937170708360603,
+    "speed": 44.66863506789701,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "boost",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539327,
+      0.7675870540000665
+    ],
+    "radius": 1.358191165746577,
+    "speed": 56.46224373883638,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055538801,
+      0.760408550897087
+    ],
+    "radius": 1.3541124833851863,
+    "speed": 57.87792355397379,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "pose": 0.322043122084171,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539327,
+      0.7604085508970594
+    ],
+    "radius": 1.5260043321829244,
+    "speed": 58.4353314305602,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "pose": 0.6892066220834557,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393163,
+      0.7604085508970586
+    ],
+    "radius": 1.6455354731992546,
+    "speed": 58.39338069088968,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "airpose",
+    "progress": 0,
+    "pose": 0.9596201220380368,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393085,
+      0.7604085508970317
+    ],
+    "radius": 1.7174801849927082,
+    "speed": 58.0277184073441,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.15279999995231627,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539306,
+      0.7604085508970873
+    ],
+    "radius": 1.7344233783228378,
+    "speed": 57.18641141109556,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.2777999999523163,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555390215,
+      0.7604085508970878
+    ],
+    "radius": 1.735492613284576,
+    "speed": 56.66751948112491,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.3941499999761582,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555390227,
+      0.7604085508971163
+    ],
+    "radius": 1.7357716158979726,
+    "speed": 56.157962876071984,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.5049499999284744,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393035,
+      0.7604085508971161
+    ],
+    "radius": 1.7358450349716277,
+    "speed": 55.657491854753694,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.6141499999761582,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393046,
+      0.7604085508970584
+    ],
+    "radius": 1.7358645307237262,
+    "speed": 55.165865507041666,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.7282999999523163,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.34662213770344824,
+      0.6310650929016786
+    ],
+    "radius": 1.686295588904316,
+    "speed": 54.6828513668857,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.8383999999761582,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3407576534358884,
+      0.5124598950473638
+    ],
+    "radius": 1.368776249642062,
+    "speed": 54.20822504551155,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 0.9508999999761583,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.43654886423282696,
+      0.6532713837939292
+    ],
+    "radius": 0.9095790153614868,
+    "speed": 53.741769883576424,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "transforming",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947402,
+      0.6136854125398159
+    ],
+    "radius": 0.9095790153614602,
+    "speed": 53.28327662114886,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947338,
+      0.6136854125398296
+    ],
+    "radius": 0.9095790153614609,
+    "speed": 52.83254308445616,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "armorboost",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -2.9179260860638356,
+      0.9337363475404273,
+      1.7867144207233204e-16
+    ],
+    "frameApplied": true,
+    "frameError": 6.220806522605077e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947207,
+      0.613685412539833
+    ],
+    "radius": 0.9095790153614602,
+    "speed": 52.38937388841381,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 1,
+    "pose": 1,
+    "offset": [
+      -4.757133375624426,
+      1.5222826801998164,
+      2.912904080787749e-16
+    ],
+    "frameApplied": true,
+    "frameError": 6.228028441187837e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.5362604068947434,
+      0.6136854125397913
+    ],
+    "radius": 0.9095790153614708,
+    "speed": 51.95358015401679,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.9001000000238418,
+    "pose": 1,
+    "offset": [
+      -4.757133375624426,
+      1.5222826801998164,
+      2.912904080787749e-16
+    ],
+    "frameApplied": true,
+    "frameError": 6.228028441187837e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.24649962561421906,
+      0.6438758018869815
+    ],
+    "radius": 1.1781851615117467,
+    "speed": 51.52497923973384,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.799199999988079,
+    "pose": 1,
+    "offset": [
+      -4.624190412189702,
+      1.4797409319007049,
+      2.8314999934679997e-16
+    ],
+    "frameApplied": true,
+    "frameError": 2.6887219781330148e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.37520550329662694,
+      0.5071233164285958
+    ],
+    "radius": 1.479605802259245,
+    "speed": 51.1033944861014,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.7118500000238418,
+    "pose": 1,
+    "offset": [
+      -4.258732550726058,
+      1.3627944162323384,
+      2.6077215933356553e-16
+    ],
+    "frameApplied": true,
+    "frameError": 6.2227153618748355e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.3383039371233215,
+      0.6730628658746982
+    ],
+    "radius": 1.7166892699951846,
+    "speed": 50.68865497276683,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.63025,
+    "pose": 1,
+    "offset": [
+      -3.7998038829839524,
+      1.215937242554865,
+      2.326708831341991e-16
+    ],
+    "frameApplied": true,
+    "frameError": 1.0199077759212904e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32831112444397065,
+      0.759779196509887
+    ],
+    "radius": 1.7419611515974498,
+    "speed": 50.28059528727845,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.567050000011921,
+    "pose": 1,
+    "offset": [
+      -3.286967951632357,
+      1.0518297445223543,
+      2.0126873904332493e-16
+    ],
+    "frameApplied": true,
+    "frameError": 2.2650532367515234e-14,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393046,
+      0.7604085508970027
+    ],
+    "radius": 1.7359608844833878,
+    "speed": 49.879055304965064,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.49760000002384186,
+    "pose": 1,
+    "offset": [
+      -2.8541474265246434,
+      0.9133271764878859,
+      1.7476612550940302e-16
+    ],
+    "frameApplied": true,
+    "frameError": 1.865785136684814e-14,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555404293,
+      0.7604085508971156
+    ],
+    "radius": 1.735871707561004,
+    "speed": 49.48387997928938,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.37260000002384186,
+    "pose": 1,
+    "offset": [
+      -2.361441139355313,
+      0.7556611645937003,
+      1.4459656663431817e-16
+    ],
+    "frameApplied": true,
+    "frameError": 2.04289170780206e-14,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555381794,
+      0.7604085508970589
+    ],
+    "radius": 1.7358717075613406,
+    "speed": 49.094919142098234,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.30545000004768375,
+    "pose": 1,
+    "offset": [
+      -1.489152089488923,
+      0.4765286686364554,
+      9.118426699181014e-17
+    ],
+    "frameApplied": true,
+    "frameError": 2.454257315942452e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393035,
+      0.7604085508970595
+    ],
+    "radius": 1.7358717075615095,
+    "speed": 48.71202731322893,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.23585000002384188,
+    "pose": 1,
+    "offset": [
+      -1.0603760626625194,
+      0.3393203400520062,
+      6.492930755160638e-17
+    ],
+    "frameApplied": true,
+    "frameError": 2.0429413561908005e-14,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055538742,
+      0.7604085508971162
+    ],
+    "radius": 1.735871707561567,
+    "speed": 48.33506351896425,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.16575,
+    "pose": 1,
+    "offset": [
+      -0.6690301561760779,
+      0.21408964997634491,
+      4.096628196470438e-17
+    ],
+    "frameApplied": true,
+    "frameError": 1.4435119021032683e-14,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555387407,
+      0.7604085508970583
+    ],
+    "radius": 1.7358717075614865,
+    "speed": 47.96389111886,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.0946500000357628,
+    "pose": 1,
+    "offset": [
+      -0.3487543306729827,
+      0.11160138581535448,
+      2.1355043737372296e-17
+    ],
+    "frameApplied": true,
+    "frameError": 6.274331396503207e-15,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393063,
+      0.7604085508970596
+    ],
+    "radius": 1.7358717105629073,
+    "speed": 47.59837764049807,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0.02635000002384187,
+    "pose": 1,
+    "offset": [
+      -0.11978461972611679,
+      0.038331078312357374,
+      7.334692556733593e-18
+    ],
+    "frameApplied": true,
+    "frameError": 2.6673110077644512e-14,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539866,
+      0.7604085508971157
+    ],
+    "radius": 1.936938624187241,
+    "speed": 47.23839462174488,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "reversing",
+    "progress": 0,
+    "pose": 1,
+    "offset": [
+      -0.009734886936347033,
+      0.0031151638196310503,
+      5.960899063329389e-19
+    ],
+    "frameApplied": true,
+    "frameError": 2.4334905355356445e-14,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539304,
+      0.7604085508970589
+    ],
+    "radius": 1.9773037809479914,
+    "speed": 46.883817460120575,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "pose": 1,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.32839080555393046,
+      0.7604085508970596
+    ],
+    "radius": 1.9773037809479992,
+    "speed": 46.534525268907714,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "pose": 0.84375,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.2642074623898815,
+      0.7715055700767312
+    ],
+    "radius": 1.611522813841629,
+    "speed": 46.867688362867206,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "pose": 0.5,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.26403526050889836,
+      0.769482040069761
+    ],
+    "radius": 1.6284312514215922,
+    "speed": 47.25289628317143,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "returning",
+    "progress": 0,
+    "pose": 0.15624999999999978,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3283908055539866,
+      0.7637275681063526
+    ],
+    "radius": 1.70969163673608,
+    "speed": 47.62811632280423,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "phase": "idle",
+    "progress": 0,
+    "pose": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "frameApplied": false,
+    "frameError": 0,
+    "offsetError": 0,
+    "lengths": [
+      0.3128696149384812,
+      0.76284418755018
+    ],
+    "radius": 1.6552786218672608,
+    "speed": 47.993531014537304,
+    "yaw": -1.5707963267948966,
+    "gl": 0,
+    "shader": ""
+  }
+]

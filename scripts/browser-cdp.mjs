@@ -21,5 +21,10 @@ export async function connect() {
     if (response.exceptionDetails) throw Error(JSON.stringify(response.exceptionDetails))
     return response.result.value
   }
-  return { send, evaluate, events, close: () => socket.close() }
+  const openSettings = async section => {
+    await evaluate(`(()=>{if(!document.querySelector('.ride-settings'))[...document.querySelectorAll('.ride-actions button')].find(b=>b.textContent==='Ajustes').click()})()`)
+    await evaluate(`(()=>{const b=[...document.querySelectorAll('.ride-settings-tabs button')].find(b=>b.textContent===${JSON.stringify(section)});if(!b)throw Error('Missing settings section');b.click()})()`)
+  }
+  const closeSettings = () => evaluate(`document.querySelector('[aria-label="Cerrar ajustes"]')?.click()`)
+  return { send, evaluate, events, openSettings, closeSettings, close: () => socket.close() }
 }

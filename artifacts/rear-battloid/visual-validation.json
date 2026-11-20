@@ -1,0 +1,163 @@
+[
+  {
+    "name": "motorcycle",
+    "progress": 0,
+    "active": false,
+    "parts": 23,
+    "legs": [
+      {
+        "ids": [
+          "0e6d481c-36e4-4cd2-8e42-51841ec8004e"
+        ],
+        "visible": true
+      },
+      {
+        "ids": [
+          "fd15df60-81e9-44b7-af9b-54a69ce6366a"
+        ],
+        "visible": true
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "tank-start",
+    "progress": 0.22,
+    "active": false,
+    "parts": 23,
+    "legs": [
+      {
+        "ids": [
+          "0e6d481c-36e4-4cd2-8e42-51841ec8004e"
+        ],
+        "visible": true
+      },
+      {
+        "ids": [
+          "fd15df60-81e9-44b7-af9b-54a69ce6366a"
+        ],
+        "visible": true
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "dip",
+    "progress": 0.28,
+    "active": true,
+    "parts": 23,
+    "legs": [
+      {
+        "ids": [
+          "0e6d481c-36e4-4cd2-8e42-51841ec8004e"
+        ],
+        "visible": true
+      },
+      {
+        "ids": [
+          "fd15df60-81e9-44b7-af9b-54a69ce6366a"
+        ],
+        "visible": true
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "slide",
+    "progress": 0.48,
+    "active": true,
+    "parts": 23,
+    "legs": [
+      {
+        "ids": [
+          "0e6d481c-36e4-4cd2-8e42-51841ec8004e"
+        ],
+        "visible": true
+      },
+      {
+        "ids": [
+          "fd15df60-81e9-44b7-af9b-54a69ce6366a"
+        ],
+        "visible": true
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "configure",
+    "progress": 0.75,
+    "active": true,
+    "parts": 23,
+    "legs": [
+      {
+        "ids": [
+          "0e6d481c-36e4-4cd2-8e42-51841ec8004e"
+        ],
+        "visible": true
+      },
+      {
+        "ids": [
+          "fd15df60-81e9-44b7-af9b-54a69ce6366a"
+        ],
+        "visible": true
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "battloid",
+    "progress": 1,
+    "active": true,
+    "parts": 23,
+    "legs": [
+      {
+        "ids": [
+          "0e6d481c-36e4-4cd2-8e42-51841ec8004e"
+        ],
+        "visible": true
+      },
+      {
+        "ids": [
+          "fd15df60-81e9-44b7-af9b-54a69ce6366a"
+        ],
+        "visible": true
+      }
+    ],
+    "endpointError": 9.237055564881302e-13,
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "reverted",
+    "progress": 0,
+    "active": false,
+    "parts": 23,
+    "legs": [
+      {
+        "ids": [
+          "0e6d481c-36e4-4cd2-8e42-51841ec8004e"
+        ],
+        "visible": true
+      },
+      {
+        "ids": [
+          "fd15df60-81e9-44b7-af9b-54a69ce6366a"
+        ],
+        "visible": true
+      }
+    ],
+    "endpointError": 0,
+    "gl": 0,
+    "shader": ""
+  }
+]

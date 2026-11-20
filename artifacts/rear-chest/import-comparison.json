@@ -1,0 +1,26 @@
+{
+  "preserved": 23,
+  "maxDeltaDifference": 0,
+  "newPieces": [
+    {
+      "ids": [
+        "4f8dcb27-ecfb-40f1-af7e-147dcc02e754"
+      ],
+      "role": "chest",
+      "chestPart": "plate",
+      "sourceKey": "rear_body-axle-rounded.json|Pieza 1 (copia)|42|aafd0ed0"
+    },
+    {
+      "ids": [
+        "70581499-b1e5-4642-901e-a0727e391866"
+      ],
+      "role": "chest",
+      "chestPart": "grille",
+      "sourceKey": "rear_body-axle-rounded.json|Abertura frontal inferior · marco y cavidad|5292|f05a1dbc"
+    }
+  ],
+  "originalJSON": {
+    "path": "assets/scott-cyclone/armor/rear_body · extremo lateral redondeado · armor.json",
+    "sha256": "32f4732b67e50160bba4cfcd24594350dc74b68de327645f1c7a473fcaebd002"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "note": "Node CPU simulation/buffer fill only, 480 measured ticks after 120 warmup ticks. Not GPU timing or gameplay FPS. Mixed contacts and high effect intensities.",
+  "dustOnly": {
+    "meanMs": 0.5051016666666669,
+    "maxMs": 3.356800000000021,
+    "dust": 302,
+    "ejecta": 0,
+    "batches": 1
+  },
+  "withEjecta": {
+    "meanMs": 0.4966741666666716,
+    "maxMs": 1.7339999999999236,
+    "dust": 299,
+    "ejecta": 172,
+    "batches": 3
+  }
+}

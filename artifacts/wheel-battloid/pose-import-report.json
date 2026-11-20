@@ -1,0 +1,124 @@
+{
+  "wheels": [
+    {
+      "wheel": "front",
+      "parts": [
+        {
+          "id": "9b0ac572-b52f-4149-bda7-4bf4c5ba3d38",
+          "key": "Rueda delantera · pivote de eje|Front_Tire_Rubber|147456|b5ab00bb",
+          "name": "Front_Tire_Rubber",
+          "geometryVerified": true
+        },
+        {
+          "id": "848dbc3c-9d98-45a0-a423-967e682c77e7",
+          "key": "Rueda delantera · pivote de eje|Front_Rim_Outer|1920|de9be99",
+          "name": "Front_Rim_Outer",
+          "geometryVerified": true
+        },
+        {
+          "id": "8716f8f4-d59e-4459-9414-0f6fd41883d0",
+          "key": "Rueda delantera · pivote de eje|Front_Rim_Inner|1152|7c019bdd",
+          "name": "Front_Rim_Inner",
+          "geometryVerified": true
+        },
+        {
+          "id": "e827132d-6e69-4ae8-9bba-c4a50d9f4fc6",
+          "key": "Rueda delantera · pivote de eje|Front_Hub_Center|756|b05c5a17",
+          "name": "Front_Hub_Center",
+          "geometryVerified": true
+        }
+      ],
+      "poses": {
+        "intermediate": {
+          "file": "cyclone-rueda-front-intermedio.json",
+          "maxFitError": 5.003707553108401e-16,
+          "checkpoints": 36
+        },
+        "final": {
+          "file": "cyclone-rueda-front-final-armor.json",
+          "maxFitError": 6.497413668604471e-16,
+          "checkpoints": 36
+        }
+      }
+    },
+    {
+      "wheel": "rear",
+      "parts": [
+        {
+          "id": "9b0ac572-b52f-4149-bda7-4bf4c5ba3d38",
+          "key": "Rueda trasera · pivote de eje|Rear_Tire_Rubber|147456|cb56dc05",
+          "name": "Rear_Tire_Rubber",
+          "geometryVerified": true
+        },
+        {
+          "id": "848dbc3c-9d98-45a0-a423-967e682c77e7",
+          "key": "Rueda trasera · pivote de eje|Rear_Rim_Outer|1920|eff0fbd7",
+          "name": "Rear_Rim_Outer",
+          "geometryVerified": true
+        },
+        {
+          "id": "8716f8f4-d59e-4459-9414-0f6fd41883d0",
+          "key": "Rueda trasera · pivote de eje|Rear_Rim_Inner|1152|d92e48b9",
+          "name": "Rear_Rim_Inner",
+          "geometryVerified": true
+        },
+        {
+          "id": "e827132d-6e69-4ae8-9bba-c4a50d9f4fc6",
+          "key": "Rueda trasera · pivote de eje|Rear_Hub_Center|756|8610e614",
+          "name": "Rear_Hub_Center",
+          "geometryVerified": true
+        }
+      ],
+      "poses": {
+        "intermediate": {
+          "file": "cyclone-rueda-rear-intermedio.json",
+          "maxFitError": 5.266250202865052e-16,
+          "checkpoints": 36
+        },
+        "final": {
+          "file": "cyclone-rueda-rear-final-armor.json",
+          "maxFitError": 5.578801654593729e-16,
+          "checkpoints": 36
+        }
+      }
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/cyclone-material-assembly.json",
+      "sha256": "1770cd554cba3138300fb79581b76d0d77291ed6e9c26e1ff63e192a6b5c8d15"
+    },
+    {
+      "path": "public/transformations/cyclone-rear-battloid.json",
+      "sha256": "1cd86e07518eb25159423aacd5275e98f030415b6bdd8db773834be0e5e742ed"
+    },
+    {
+      "path": "public/models/mospeada/cyclone-vr052f.glb",
+      "sha256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c"
+    },
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/material-studio/cyclone-rueda.json",
+      "sha256": "1c6a44f7e42d73a1dc86cb3b90a1415fde0b268e6c4ed1ef5258b9882f2bf795"
+    },
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/ARMOR MODE/cyclone-rueda-front-intermedio.json",
+      "sha256": "308b482196ec1a48f15adb157ebbffd1aec18cfc0d18c2de9df60b65a2ca188b"
+    },
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/ARMOR MODE/cyclone-rueda-front-final-armor.json",
+      "sha256": "cbfcd426c3802b25e3f3185dae8e4928db84e970c9f09a4a82db9ef16d90bf4d"
+    },
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/material-studio/cyclone-rueda-rear.json",
+      "sha256": "182d79391567a4b6b82a9f173d6699ad6b82c00b55a5881f41c22872de7d85dc"
+    },
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/ARMOR MODE/cyclone-rueda-rear-intermedio.json",
+      "sha256": "34a442f57905bf885a4f98b4e49c2b86c118409ec0c1f2cfec407c3811633df8"
+    },
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/ARMOR MODE/cyclone-rueda-rear-final-armor.json",
+      "sha256": "418b5e8bba5f2276d047f314b6b8fe9dac4b59a78f103570c280e568f32f919d"
+    }
+  ]
+}

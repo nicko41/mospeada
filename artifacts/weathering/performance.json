@@ -1,0 +1,59 @@
+{
+  "note": "Isolated Chrome, 1280x900, parked current highway camera. Synchronous GPU-complete render samples; not gameplay FPS or a guarantee for the user session. Shader cost compares uniform-off with maximum dirt on the same private materials, not a pre-feature executable.",
+  "visualUpdateMs": 0.11183333317438761,
+  "stateUnchanged": true,
+  "particleDrawCalls": 1,
+  "pool": 384,
+  "budget": 384,
+  "renders": {
+    "PBR": {
+      "disabled": {
+        "medianMs": 20.199999928474426,
+        "samplesMs": [
+          19.399999976158142,
+          20.5,
+          14.399999976158142,
+          17.399999976158142,
+          20.199999928474426,
+          22.300000071525574
+        ]
+      },
+      "dirty": {
+        "medianMs": 24.600000023841858,
+        "samplesMs": [
+          17,
+          24.600000023841858,
+          18.600000023841858,
+          17.300000071525574,
+          95.20000004768372,
+          222.59999990463257
+        ]
+      }
+    },
+    "ANIME": {
+      "disabled": {
+        "medianMs": 174.70000004768372,
+        "samplesMs": [
+          10.700000047683716,
+          179.5,
+          169.5,
+          176.30000007152557,
+          174.29999995231628,
+          174.70000004768372
+        ]
+      },
+      "dirty": {
+        "medianMs": 178,
+        "samplesMs": [
+          11.5,
+          188.60000002384186,
+          178,
+          327,
+          171.80000007152557,
+          171.5
+        ]
+      }
+    }
+  },
+  "gl": 0
+}

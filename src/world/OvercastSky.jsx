@@ -4,6 +4,7 @@ import * as THREE from 'three'
 import { lightningState } from './Lightning'
 import { timeOfDayState } from './TimeOfDay'
 import { highwayFogState } from './sectors/highwayFogState'
+import { weatherState } from './weatherState.js'
 
 const vertexShader = /* glsl */ `
 varying vec3 vDirection;
@@ -19,6 +20,7 @@ uniform float uTime;
 uniform float uLightning;
 uniform float uDay;
 uniform float uHighwayHaze;
+uniform float uClear;
 varying vec3 vDirection;
 
 float hash(vec2 point) {
@@ -47,7 +49,7 @@ float fbm(vec2 point) {
 void main() {
   vec3 direction = normalize(vDirection);
   vec2 cloudUv = direction.xz / max(direction.y + 0.38, 0.18);
-  float clouds = fbm(cloudUv * 1.35 + vec2(uTime * 0.004, -uTime * 0.002));
+  float clouds = uClear < 0.5 ? fbm(cloudUv * 1.35 + vec2(uTime * 0.004, -uTime * 0.002)) : 0.0;
   clouds = smoothstep(0.3, 0.88, clouds);
 
   float horizon = pow(1.0 - max(direction.y, 0.0), 2.4);
@@ -65,6 +67,15 @@ void main() {
   vec3 dayCloud = mix(vec3(0.16, 0.19, 0.20), vec3(0.25, 0.29, 0.30), clouds);
   vec3 overcastDay = mix(dayBase, dayCloud, clouds * 0.78);
   color = mix(color, overcastDay, uDay);
+  vec3 clearDay = mix(vec3(0.16, 0.38, 0.67), vec3(0.40, 0.65, 0.86), horizon);
+  float cloudBody = uClear > 0.5 ? fbm(cloudUv * 0.7 + vec2(uTime * 0.002, -uTime * 0.001)) : 0.0;
+  float whiteClouds = smoothstep(0.52, 0.65, cloudBody) * smoothstep(0.0, 0.08, direction.y);
+  vec3 cloudWhite = mix(vec3(0.72, 0.81, 0.90), vec3(1.0), smoothstep(0.53, 0.72, cloudBody));
+  clearDay = mix(clearDay, cloudWhite, whiteClouds);
+  float sunAlignment = max(dot(direction, normalize(vec3(-25.0, 35.0, 20.0))), 0.0);
+  clearDay += vec3(0.32, 0.23, 0.10) * pow(sunAlignment, 128.0);
+  clearDay = mix(clearDay, vec3(1.0, 0.94, 0.78), smoothstep(0.9990, 0.9996, sunAlignment));
+  color = mix(color, mix(base, clearDay, uDay), uClear);
   color += mix(vec3(0.3, 0.36, 0.4), vec3(0.19, 0.22, 0.24), uDay)
     * uLightning * (0.3 + clouds * 0.7);
   gl_FragColor = vec4(color, 1.0);
@@ -82,7 +93,7 @@ export default function OvercastSky() {
     side: THREE.BackSide,
     depthWrite: false,
     fog: false,
-    uniforms: { uTime: { value: 0 }, uLightning: { value: 0 }, uDay: { value: 0 }, uHighwayHaze: { value: 0 } },
+    uniforms: { uTime: { value: 0 }, uLightning: { value: 0 }, uDay: { value: 0 }, uHighwayHaze: { value: 0 }, uClear: { value: 0 } },
   }), [])
 
   useFrame((state) => {
@@ -90,6 +101,7 @@ export default function OvercastSky() {
     material.uniforms.uTime.value = state.clock.elapsedTime
     material.uniforms.uLightning.value = lightningState.flash
     material.uniforms.uDay.value = timeOfDayState.value
+    material.uniforms.uClear.value = weatherState.clear
     material.uniforms.uHighwayHaze.value = highwayFogState.darkness * (1 - timeOfDayState.value)
   })
 

@@ -1,0 +1,21 @@
+{
+  "sourceFile": {
+    "path": "assets/scott-cyclone/armor/vr052-cyclone-1rst-attempt · test-soldar -armor · suspension-hide.json",
+    "sha256": "eb524cd3f2a16d6867ae8ea042de92f34f9df05e8485e26e7e32efe4669aecc5"
+  },
+  "tankAccessoryPieces": 16,
+  "suspensions": [
+    {
+      "side": "Left",
+      "pieces": 13,
+      "maxVertexError": 9.489809492268385e-16
+    },
+    {
+      "side": "Right",
+      "pieces": 13,
+      "maxVertexError": 3.7341307954279784e-16
+    }
+  ],
+  "unrelatedFrontRecordsUnchanged": true,
+  "glbSHA256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c"
+}

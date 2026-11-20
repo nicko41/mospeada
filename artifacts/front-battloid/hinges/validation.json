@@ -1,0 +1,121 @@
+{
+  "samples": [
+    {
+      "progress": 0,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "hingeError": 0,
+          "rigidError": 1.4210854715202004e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "hingeError": 0,
+          "rigidError": 1.4210854715202004e-14
+        }
+      ]
+    },
+    {
+      "progress": 0,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "hingeError": 2.0336182767720087e-14,
+          "rigidError": 1.4210854715202004e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "hingeError": 2.040878629308206e-14,
+          "rigidError": 1.4210854715202004e-14
+        }
+      ]
+    },
+    {
+      "progress": 0,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "hingeError": 2.0336182767720087e-14,
+          "rigidError": 1.4210854715202004e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "hingeError": 2.040878629308206e-14,
+          "rigidError": 1.4210854715202004e-14
+        }
+      ]
+    },
+    {
+      "progress": 0.5,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "hingeError": 2.040878629308206e-14,
+          "rigidError": 4.973799150320701e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "hingeError": 1.4546887564889487e-14,
+          "rigidError": 1.0036416142611415e-13
+        }
+      ]
+    },
+    {
+      "progress": 1,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "hingeError": 2.040878629308206e-14,
+          "rigidError": 4.973799150320701e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "hingeError": 1.4546887564889487e-14,
+          "rigidError": 1.0036416142611415e-13
+        }
+      ]
+    },
+    {
+      "progress": 0,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "hingeError": 0,
+          "rigidError": 1.4210854715202004e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "hingeError": 0,
+          "rigidError": 1.4210854715202004e-14
+        }
+      ]
+    }
+  ],
+  "integrity": {
+    "clips": 16,
+    "gl": 0,
+    "shader": ""
+  },
+  "openings": [
+    {
+      "pieceId": "c77677c1-3942-4620-832b-30a542d075ca",
+      "removedTriangles": 14
+    },
+    {
+      "pieceId": "b6372bca-aa37-433c-84b6-aa2159073be8",
+      "removedTriangles": 14
+    }
+  ]
+}

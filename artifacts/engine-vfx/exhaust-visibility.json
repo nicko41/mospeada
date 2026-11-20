@@ -1,0 +1,50 @@
+{
+  "idle": {
+    "PBR": {
+      "left": {
+        "changed": 3133,
+        "maxContrast": 12
+      },
+      "right": {
+        "changed": 9234,
+        "maxContrast": 5
+      }
+    },
+    "ANIME": {
+      "left": {
+        "changed": 3354,
+        "maxContrast": 44
+      },
+      "right": {
+        "changed": 10688,
+        "maxContrast": 18
+      }
+    }
+  },
+  "accelerating": {
+    "PBR": {
+      "left": {
+        "changed": 6010,
+        "maxContrast": 24
+      },
+      "right": {
+        "changed": 3065,
+        "maxContrast": 14
+      }
+    },
+    "ANIME": {
+      "left": {
+        "changed": 6510,
+        "maxContrast": 57
+      },
+      "right": {
+        "changed": 3769,
+        "maxContrast": 39
+      }
+    }
+  },
+  "gl": 0,
+  "error": "",
+  "boostParticles": 0,
+  "boostUnchanged": true
+}

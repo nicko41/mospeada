@@ -1,0 +1,90 @@
+[
+  {
+    "name": "torso-start",
+    "progress": 0,
+    "phase": "airpose",
+    "pose": 0.01,
+    "chestLift": 1,
+    "chainError": 4.263256414560601e-14,
+    "chestPoseError": 1.1681513534256283e-8,
+    "caps": [
+      {
+        "name": "Tank_Cap_Detail_Left (copia) 2",
+        "visible": true
+      },
+      {
+        "name": "Tank_Cap_Detail_Left (copia) 2",
+        "visible": true
+      }
+    ],
+    "far": [],
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "torso-middle",
+    "progress": 0,
+    "phase": "airpose",
+    "pose": 0.5,
+    "chestLift": 1,
+    "chainError": 4.263256414560601e-14,
+    "chestPoseError": 1.1168599600708262e-8,
+    "caps": [
+      {
+        "name": "Tank_Cap_Detail_Left (copia) 2",
+        "visible": true
+      },
+      {
+        "name": "Tank_Cap_Detail_Left (copia) 2",
+        "visible": true
+      }
+    ],
+    "far": [],
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "torso-upright",
+    "progress": 0,
+    "phase": "airpose",
+    "pose": 1,
+    "chestLift": 1,
+    "chainError": 4.263256414560601e-14,
+    "chestPoseError": 1.3110787344672303e-8,
+    "caps": [
+      {
+        "name": "Tank_Cap_Detail_Left (copia) 2",
+        "visible": true
+      },
+      {
+        "name": "Tank_Cap_Detail_Left (copia) 2",
+        "visible": true
+      }
+    ],
+    "far": [],
+    "gl": 0,
+    "shader": ""
+  },
+  {
+    "name": "early-return",
+    "progress": 0,
+    "phase": "returning",
+    "pose": 0.5,
+    "chestLift": 0.5,
+    "chainError": 2.842170943040401e-14,
+    "chestPoseError": 0,
+    "caps": [
+      {
+        "name": "Tank_Cap_Detail_Left (copia) 2",
+        "visible": true
+      },
+      {
+        "name": "Tank_Cap_Detail_Left (copia) 2",
+        "visible": true
+      }
+    ],
+    "far": [],
+    "gl": 0,
+    "shader": ""
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "surfaces": 30,
+  "groups": [
+    {
+      "id": "a1b02f8a-ccf7-40f7-a613-b649702b4aa8",
+      "bone": "mixamorigLeftForeArm",
+      "mirrored": false
+    },
+    {
+      "id": "b966c731-f9e4-4a6f-8db6-22d4a5b1cdca",
+      "bone": "mixamorigRightForeArm",
+      "mirrored": true
+    }
+  ],
+  "maxFitError": 2.430501097498409e-14,
+  "sourceFiles": [
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/cyclone-material-assembly.json",
+      "sha256": "1770cd554cba3138300fb79581b76d0d77291ed6e9c26e1ff63e192a6b5c8d15"
+    },
+    {
+      "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/material-studio/arm-guard-cuff.json",
+      "sha256": "90d28525a9b0f1b31229e50e5a656feb287906ca775c6c93f5eadbf46c5b2452"
+    },
+    {
+      "path": "assets/scott-cyclone/armor/arm-guard-cuff.json",
+      "sha256": "feea1967724a2176a9c3094b8e8f6625d16402a226d85eae78437b95f80ca020"
+    },
+    {
+      "path": "public/models/mospeada/cyclone-vr052f.glb",
+      "sha256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c"
+    },
+    {
+      "path": "public/models/mospeada/scott-bernard-animated-original.glb",
+      "sha256": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961"
+    }
+  ]
+}

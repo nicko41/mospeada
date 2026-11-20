@@ -1,0 +1,110 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "name": "riding-before",
+      "phase": "idle",
+      "poseBlend": 0,
+      "returnFlight": false,
+      "clip": "Cyclone_RidingPose",
+      "riderStand": 0,
+      "airborne": false,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "baseHip": [
+        -83.48750305175781,
+        79.76795959472656,
+        1.3299435377120972
+      ],
+      "hip": [
+        -83.48750305175781,
+        79.76795959472659,
+        1.3299435377084592
+      ]
+    },
+    {
+      "name": "ARMOR_HOVER-falling",
+      "phase": "falling",
+      "poseBlend": 0,
+      "returnFlight": true,
+      "clip": "Cyclone_RidingPose",
+      "riderStand": 0.999999832117247,
+      "airborne": true,
+      "frontGrounded": false,
+      "rearGrounded": false,
+      "baseHip": [
+        -83.48750305175781,
+        79.76795959472656,
+        1.3299435377120972
+      ],
+      "hip": [
+        -83.48750305175416,
+        103.56312930658666,
+        12.434356069912607
+      ]
+    },
+    {
+      "name": "ARMOR_HOVER-landed",
+      "phase": "idle",
+      "poseBlend": 0,
+      "returnFlight": false,
+      "clip": "Cyclone_RidingPose",
+      "riderStand": 1.1806395793187877e-32,
+      "airborne": false,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "baseHip": [
+        -83.48750305175781,
+        79.76795959472656,
+        1.3299435377120972
+      ],
+      "hip": [
+        -83.48750305176509,
+        79.76795959472611,
+        1.3299435377120972
+      ]
+    },
+    {
+      "name": "ARMOR_GROUND-falling",
+      "phase": "falling",
+      "poseBlend": 0,
+      "returnFlight": true,
+      "clip": "Cyclone_RidingPose",
+      "riderStand": 0.999979600496589,
+      "airborne": true,
+      "frontGrounded": false,
+      "rearGrounded": false,
+      "baseHip": [
+        -83.48750305175781,
+        79.76795959472656,
+        1.3299435377120972
+      ],
+      "hip": [
+        -83.48750305175963,
+        103.56238411923641,
+        12.434131409616384
+      ]
+    },
+    {
+      "name": "ARMOR_GROUND-landed",
+      "phase": "idle",
+      "poseBlend": 0,
+      "returnFlight": false,
+      "clip": "Cyclone_RidingPose",
+      "riderStand": 1.7035646782257018e-32,
+      "airborne": false,
+      "frontGrounded": true,
+      "rearGrounded": true,
+      "baseHip": [
+        -83.48750305175781,
+        79.76795959472656,
+        1.3299435377120972
+      ],
+      "hip": [
+        -83.48750305176145,
+        79.76795959472656,
+        1.3299435377157351
+      ]
+    }
+  ]
+}

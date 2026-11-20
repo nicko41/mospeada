@@ -5,11 +5,13 @@ import { createGuardHinge, seatHydraulicInHousing } from './guardMounts.js'
 import { createHydraulicLink, closestSurfacePoint } from './hydraulicLink.js'
 import { frontSteer } from './wheelieDynamics.js'
 import { compressionStroke } from './suspensionLimits.js'
+import { applyHeadlightOpenings } from './headlightOpenings.js'
 
 // Vehicle articulation only. Scott is a separate original skinned instance;
 // none of the rejected rider IK, finger construction or weight edits run here.
 export function createDrivingCyclone(source) {
   const rig = createParkedCyclone(source), { root, body, surfaces, metrics: m, presentationScale: scale } = rig
+  rig.headlightOpenings=applyHeadlightOpenings(surfaces)
   const group = (name, parent, p = new T.Vector3()) => { const g = new T.Group(); g.name = name; g.position.copy(p); parent.add(g); return g }
   const imported = body.children[0], offset = imported.position.clone()
   const fc = new T.Vector3(0, m.frontY, m.frontZ), rc = new T.Vector3(0, m.rearY, m.rearZ)
@@ -18,12 +20,16 @@ export function createDrivingCyclone(source) {
   const frontAxle = group('Front_axle', frontLower, fc.clone().sub(neck)), frontSpin = group('Front_wheel_spin', frontAxle)
   const rearPivot = new T.Vector3(0, .36, -.05).multiplyScalar(scale), rearSwing = group('Rear_swingarm', body, rearPivot)
   const rearAxle = group('Rear_axle', rearSwing, rc.clone().sub(rearPivot)), rearSpin = group('Rear_wheel_spin', rearAxle)
+  const rearIdle = group('Rear_engine_idle', body, new T.Vector3(0, m.rearY + .17, m.rearZ))
   root.updateMatrixWorld(true)
   const profile = prefix => {
     const tire = surfaces.find(m => m.userData.sourcePiece === prefix + '_Tire_Rubber'), center = prefix === 'Front' ? fc : rc, unique = new Map()
-    const p = tire.geometry.attributes.position
+    // Freeze the coordinate conversion once: localToWorld/worldToLocal update
+    // the whole ancestor chain, which used to happen for every tire vertex.
+    const toBody = body.matrixWorld.clone().invert().multiply(tire.matrixWorld)
+    const p = tire.geometry.attributes.position, v = new T.Vector3()
     for (let i = 0; i < p.count; i++) {
-      const v = body.worldToLocal(tire.localToWorld(new T.Vector3().fromBufferAttribute(p, i))).sub(center)
+      v.fromBufferAttribute(p, i).applyMatrix4(toBody).sub(center)
       const r = Math.hypot(v.y, v.z); unique.set(`${v.x.toFixed(5)},${r.toFixed(5)}`, [v.x, r])
     }
     return [...unique.values()]
@@ -36,6 +42,7 @@ export function createDrivingCyclone(source) {
     else if (/^Rear_(Tire|Rim|Hub)/.test(name)) parent = rearSpin
     else if (/^Fork_/.test(name)) parent = /Upper_Clamp|Upper_Chassis_Lug|Upper_Cross_Pin/.test(name) ? body : frontLower
     else if (/^Arm_Guard_/.test(name)) parent = frontLower
+    else if (/^(rear1$|Carcasa aerodinámica del escape|Silenciador metálico|Salida posterior oscura|Collar de transición)/.test(name)) parent = rearIdle
     if (/brazo tubular/.test(name)) mesh.visible = false
     parent.attach(mesh)
   }
@@ -57,13 +64,27 @@ export function createDrivingCyclone(source) {
   }
   const stand = new T.Mesh(new T.CylinderGeometry(.014, .018, 1, 8), new T.MeshStandardMaterial({ color: '#3a4545', metalness: .65, roughness: .45 }))
   stand.name = 'Deployed_kickstand'; root.add(stand)
-  rig.update = (s, sample, c) => {
+  rig.update = (s, sample, c, rearDrop=0) => {
     const recoil = (s.boostKick || 0) * c.boostRecoilDistance
     root.position.set(s.x - Math.sin(s.yaw) * recoil, s.height, s.z - Math.cos(s.yaw) * recoil); root.rotation.y = s.yaw
     body.position.set(0, 0, 0); body.rotation.set(s.pitch, 0, s.lean + s.bank, 'YXZ')
+    // Only the rear cowl and exhaust assembly idle; Scott, seat, chassis and
+    // wheel supports remain steady. Always write from rest, never accumulate.
+    const idle = (s.airborne || s.wheelieAngle > 0 || s.boostTime > 0 ? 0 : s.idleBlend || 0) * (1 - T.MathUtils.smoothstep(Math.abs(s.speed), .05, .65))
+    const t = s.idleTime || 0, pulse = Math.sin(t * Math.PI * 2 * 8.5)
+    rearIdle.position.set(0, m.rearY + .17 + idle * (.0011 * pulse + .00035 * Math.sin(t * Math.PI * 2 * 13.2)), m.rearZ)
+    rearIdle.rotation.z = idle * .00085 * pulse
     if (s.wheelieAngle > 0) { const rear = rc.clone().applyEuler(body.rotation); body.rotation.x -= s.wheelieAngle; body.position.copy(rear.sub(rc.clone().applyEuler(body.rotation))) }
     const steer = T.MathUtils.clamp(frontSteer(s), -c.mechanicalSteerLimit, c.mechanicalSteerLimit)
     rig.articulation.frontSteer = steer; steering.quaternion.setFromAxisAngle(axis, Math.atan(Math.tan(steer) / axis.y))
+    if(rearDrop>0){
+      // Hold the front axle on its existing flight path and let the tail
+      // sink beneath it. This is distinct from the rear-pivot Ctrl wheelie.
+      // Include the fork's airborne extension and current steering frame.
+      const pivot=frontAxle.position.clone().addScaledVector(axis,s.frontGrounded===false?-c.forkExtension:0).applyQuaternion(steering.quaternion).add(neck)
+      const front=pivot.clone().applyEuler(body.rotation).add(body.position)
+      body.rotation.x-=rearDrop;body.position.copy(front.sub(pivot.clone().applyEuler(body.rotation)))
+    }
     const opening = T.MathUtils.clamp(steer / c.mechanicalSteerLimit, 0, 1)
     guards[0].root.rotation.y = -c.guardClearanceAngle * opening * opening * (3 - 2 * opening)
     frontLower.position.set(0, 0, 0); rearSwing.rotation.x = 0
@@ -98,5 +119,5 @@ export function createDrivingCyclone(source) {
     }
     root.updateMatrixWorld(true)
   }
-  return Object.assign(rig, { steering, frontLower, frontAxle, frontSpin, rearSwing, rearAxle, rearSpin, frontForks, guards, hydraulics, hydraulicSeats: seats })
+  return Object.assign(rig, { steering, frontLower, frontAxle, frontSpin, rearSwing, rearAxle, rearSpin, rearIdle, frontForks, guards, hydraulics, hydraulicSeats: seats })
 }

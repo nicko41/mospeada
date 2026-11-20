@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { HIGHWAY_CLEARANCE, HIGHWAY_Z } from './sectors/highwayProfile'
+import { weatherState } from './weatherState.js'
 
 export const RURAL_POLES = Array.from({ length: 13 }, (_, index) => ({
   x: -7.5,
@@ -118,9 +119,10 @@ void main() {
 
 const fragmentShader = /* glsl */ `
 uniform vec3 uFogColor;
+uniform float uFogDensity;
 varying float vDepth;
 void main() {
-  float fog = 1.0 - exp(-0.045 * 0.045 * vDepth * vDepth);
+  float fog = 1.0 - exp(-uFogDensity * uFogDensity * vDepth * vDepth);
   gl_FragColor = vec4(mix(vec3(0.002, 0.0025, 0.003), uFogColor, fog), 1.0);
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
@@ -137,12 +139,14 @@ export default function RuralPowerLines() {
     uniforms: {
       uTime: { value: 0 },
       uFogColor: { value: new THREE.Color('#0b0e0f') },
+      uFogDensity: { value: .045 },
     },
   }), [])
   const last = CONNECTED_POLES[CONNECTED_POLES.length - 1]
 
   useFrame(({ clock }) => {
     material.uniforms.uTime.value = clock.elapsedTime
+    material.uniforms.uFogDensity.value = weatherState.clear ? 0 : .045
     if (scene.fog) material.uniforms.uFogColor.value.copy(scene.fog.color)
   })
 

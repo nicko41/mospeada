@@ -1,0 +1,32 @@
+{
+  "note": "Node CPU smoke simulation/buffer fill only, 480 measured ticks after 120 warmup ticks. Continuous boost stress case, not normal 0.55s gameplay bursts, GPU timing or gameplay FPS.",
+  "meanMs": 0.22631124999999652,
+  "maxMs": 0.8086999999999307,
+  "active": [
+    {
+      "id": "left",
+      "active": 4,
+      "pooled": 6,
+      "quota": 24
+    },
+    {
+      "id": "right",
+      "active": 4,
+      "pooled": 6,
+      "quota": 24
+    },
+    {
+      "id": "core",
+      "active": 8,
+      "pooled": 18,
+      "quota": 128
+    },
+    {
+      "id": "plume",
+      "active": 318,
+      "pooled": 320,
+      "quota": 320
+    }
+  ],
+  "batches": 2
+}

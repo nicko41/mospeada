@@ -1,0 +1,300 @@
+{
+  "asphalt": {
+    "emitted": {
+      "water": 332,
+      "earth": 0,
+      "mud": 0,
+      "front": 166,
+      "rear": 166
+    },
+    "active": 55,
+    "surfaces": {
+      "front": "asphalt",
+      "rear": "asphalt"
+    },
+    "bike": {
+      "frontMud": 0,
+      "rearMud": 0,
+      "frontFilm": 0,
+      "rearFilm": 0
+    },
+    "scott": {
+      "bootsMud": 0,
+      "bootsFilm": 0,
+      "legsMud": 0,
+      "legsFilm": 0,
+      "armsMud": 0,
+      "armsFilm": 0,
+      "torsoMud": 0,
+      "torsoFilm": 0
+    },
+    "bounces": 0,
+    "speed": 22.628218047561486,
+    "mode": "mounted"
+  },
+  "waterPixels": 294,
+  "asphaltSkid": {
+    "emitted": {
+      "water": 96,
+      "earth": 0,
+      "mud": 0,
+      "front": 61,
+      "rear": 35
+    },
+    "active": 45,
+    "surfaces": {
+      "front": "asphalt",
+      "rear": "asphalt"
+    },
+    "bike": {
+      "frontMud": 0,
+      "rearMud": 0,
+      "frontFilm": 0,
+      "rearFilm": 0
+    },
+    "scott": {
+      "bootsMud": 0,
+      "bootsFilm": 0,
+      "legsMud": 0,
+      "legsFilm": 0,
+      "armsMud": 0,
+      "armsFilm": 0,
+      "torsoMud": 0,
+      "torsoFilm": 0
+    },
+    "bounces": 0,
+    "speed": 11.884635720920253,
+    "mode": "mounted"
+  },
+  "mixed": {
+    "emitted": {
+      "water": 24,
+      "earth": 2,
+      "mud": 14,
+      "front": 16,
+      "rear": 24
+    },
+    "active": 13,
+    "surfaces": {
+      "front": "dirt",
+      "rear": "asphalt"
+    },
+    "bike": {
+      "frontMud": 0.006449242554449124,
+      "rearMud": 0,
+      "frontFilm": 0.01023744161530443,
+      "rearFilm": 0
+    },
+    "scott": {
+      "bootsMud": 0.002960544032985034,
+      "bootsFilm": 0.003976523787271345,
+      "legsMud": 0.0016343204748449072,
+      "legsFilm": 0.0021951756744157257,
+      "armsMud": 0.0008514292120892968,
+      "armsFilm": 0.0011436170100253675,
+      "torsoMud": 0.0004031725619133802,
+      "torsoFilm": 0.0005415306325328315
+    },
+    "bounces": 1,
+    "speed": 10,
+    "mode": "mounted"
+  },
+  "mud": {
+    "emitted": {
+      "water": 0,
+      "earth": 26,
+      "mud": 190,
+      "front": 108,
+      "rear": 108
+    },
+    "active": 49,
+    "surfaces": {
+      "front": "dirt",
+      "rear": "dirt"
+    },
+    "bike": {
+      "frontMud": 0.03696717814234299,
+      "rearMud": 0.030538668750613073,
+      "frontFilm": 0.05785131278185021,
+      "rearFilm": 0.04800643058593228
+    },
+    "scott": {
+      "bootsMud": 0.03142024982581988,
+      "bootsFilm": 0.041682712925855576,
+      "legsMud": 0.01674470229057859,
+      "legsFilm": 0.022212428479025416,
+      "armsMud": 0.006721156759838084,
+      "armsFilm": 0.008909340113693492,
+      "torsoMud": 0.004734762626796248,
+      "torsoFilm": 0.006282958671471526
+    },
+    "bounces": 12,
+    "speed": 22.547081577517023,
+    "mode": "mounted"
+  },
+  "mudSkid": {
+    "emitted": {
+      "water": 0,
+      "earth": 7,
+      "mud": 45,
+      "front": 32,
+      "rear": 20
+    },
+    "active": 31,
+    "surfaces": {
+      "front": "dirt",
+      "rear": "dirt"
+    },
+    "bike": {
+      "frontMud": 0.04711604066417999,
+      "rearMud": 0.04099218582121459,
+      "frontFilm": 0.07352846940260549,
+      "rearFilm": 0.06424474604032562
+    },
+    "scott": {
+      "bootsMud": 0.04094827623107937,
+      "bootsFilm": 0.054170300446460394,
+      "legsMud": 0.021741356021878856,
+      "legsFilm": 0.028758255498357598,
+      "armsMud": 0.008759150607008447,
+      "armsFilm": 0.01158043288601362,
+      "torsoMud": 0.006100877352984722,
+      "torsoFilm": 0.008070918394417951
+    },
+    "bounces": 13,
+    "speed": 7.967309933693023,
+    "mode": "mounted"
+  },
+  "accumulated": {
+    "bike": {
+      "frontMud": 0.5402731663005177,
+      "rearMud": 0.5641817199431292,
+      "frontFilm": 0.7022208657768694,
+      "rearFilm": 0.7355791035484054
+    },
+    "scott": {
+      "bootsMud": 0.5254753232614477,
+      "bootsFilm": 0.5790347341525556,
+      "legsMud": 0.27102206371383425,
+      "legsFilm": 0.2985101315844316,
+      "armsMud": 0.11188267555896687,
+      "armsFilm": 0.12327307063082066,
+      "torsoMud": 0.07234906696014218,
+      "torsoFilm": 0.07962364296944914
+    }
+  },
+  "returnRoad": {
+    "emitted": {
+      "water": 98,
+      "earth": 0,
+      "mud": 0,
+      "front": 49,
+      "rear": 49
+    },
+    "active": 17,
+    "surfaces": {
+      "front": "asphalt",
+      "rear": "asphalt"
+    },
+    "bike": {
+      "frontMud": 0.5395173130884015,
+      "rearMud": 0.5633924181753656,
+      "frontFilm": 0.6903840094073876,
+      "rearFilm": 0.7231799502030232
+    },
+    "scott": {
+      "bootsMud": 0.5247401725344655,
+      "bootsFilm": 0.569274342066339,
+      "legsMud": 0.27064289830235333,
+      "legsFilm": 0.2934783506667698,
+      "armsMud": 0.11172614940705662,
+      "armsFilm": 0.12119514087624449,
+      "torsoMud": 0.07224784913540756,
+      "torsoFilm": 0.07828148173303875
+    },
+    "bounces": 13,
+    "speed": 12,
+    "mode": "mounted"
+  },
+  "stopped": {
+    "emitted": {
+      "water": 0,
+      "earth": 0,
+      "mud": 0,
+      "front": 0,
+      "rear": 0
+    },
+    "active": 0,
+    "surfaces": {
+      "front": "asphalt",
+      "rear": "asphalt"
+    },
+    "bike": {
+      "frontMud": 0.5387625173303917,
+      "rearMud": 0.5626042206569221,
+      "frontFilm": 0.6787466788218014,
+      "rearFilm": 0.7109898008966905
+    },
+    "scott": {
+      "bootsMud": 0.5240060502983894,
+      "bootsFilm": 0.5596784742272145,
+      "legsMud": 0.27026426335103976,
+      "legsFilm": 0.28853138703510417,
+      "armsMud": 0.11156984223843497,
+      "armsFilm": 0.11915223736091797,
+      "torsoMud": 0.07214677291648039,
+      "torsoFilm": 0.07696194438970011
+    },
+    "bounces": 13,
+    "speed": 0,
+    "mode": "mounted"
+  },
+  "scottPixels": {
+    "PBR": {
+      "changed": 23006,
+      "returned": 0
+    },
+    "ANIME": {
+      "changed": 24186,
+      "returned": 0
+    }
+  },
+  "walking": {
+    "mode": "onFoot",
+    "clip": "walking_2_inplace",
+    "load": {
+      "bootsMud": 0.5188641267003175,
+      "bootsFilm": 0.4965179151307651,
+      "legsMud": 0.26761223635125847,
+      "legsFilm": 0.25597018527158444,
+      "armsMud": 0.11047503884005382,
+      "armsFilm": 0.10570572784543286,
+      "torsoMud": 0.0714388169797641,
+      "torsoFilm": 0.06827667300506245
+    }
+  },
+  "integrity": {
+    "gl": 0,
+    "shader": "",
+    "bones": 24,
+    "clips": 16,
+    "batches": 3,
+    "systems": 7,
+    "legacy": false
+  },
+  "dustPreserved": true,
+  "locomotion": {
+    "running": "Running",
+    "crouching": "air_squat"
+  },
+  "night": {
+    "PBR": {
+      "gl": 0,
+      "shader": ""
+    },
+    "ANIME": {
+      "gl": 0,
+      "shader": ""
+    }
+  }
+}

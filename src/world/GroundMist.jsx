@@ -5,6 +5,7 @@ import { getWalkableHeightAt } from '../player/getWalkableHeight'
 import { timeOfDayState } from './TimeOfDay'
 import { highwayFogState } from './sectors/highwayFogState'
 import { highwayLightState } from './sectors/highwayLightState'
+import { weatherState } from './weatherState.js'
 
 const PATCH_COUNT = 8
 const vertexShader = /* glsl */ `
@@ -68,6 +69,8 @@ export default function GroundMist() {
   useEffect(() => () => { geometry.dispose(); material.dispose() }, [geometry, material])
 
   useFrame(({ camera, scene }, delta) => {
+    mesh.current.visible = !weatherState.clear
+    if (weatherState.clear) return
     camera.getWorldDirection(forward)
     forward.y = 0
     if (forward.lengthSq() < 0.001) forward.set(0, 0, -1)

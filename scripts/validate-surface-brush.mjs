@@ -80,7 +80,7 @@ try {
   await photo('turned-leaned-airborne')
   await c.evaluate(`(()=>{const d=__MOSPEADA__;d.runtime.orbit.target.copy(d.rig.root.localToWorld(d.camera.position.clone().set(0,.9,0)));d.camera.position.copy(d.rig.root.localToWorld(d.camera.position.clone().set(2.6,1.8,2.5)));d.runtime.orbit.update()})()`)
   for(const [name,phase]of [['body-front',.26],['body-middle',.5],['body-rear',.73]]){await c.evaluate('__ANIME__.effect.brush.store.scrub('+phase+')');await photo(name)}
-  await c.evaluate(`document.querySelectorAll('.anime-switcher button')[4].click()`); await photo('controls')
+  await c.openSettings('Reflejo'); await photo('controls')
   await c.evaluate(`(()=>{const set=(label,value)=>{const input=document.querySelector('[aria-label="'+label+'"]');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,value);input.dispatchEvent(new Event('input',{bubbles:true}))};set('Velocidad del reflejo','1.25');set('Tamaño del reflejo','1.2');set('Intensidad del reflejo','1.1');set('Irregularidad de la pincelada','1');set('Normales y relieves','1.5');set('Color del reflejo','#d0eaff');const s=document.querySelector('[aria-label="Dirección del reflejo"]');s.value='-1';s.dispatchEvent(new Event('change',{bubbles:true}));[...document.querySelectorAll('.surface-brush-settings label')].find(x=>x.textContent.includes('Reproducción lenta')).querySelector('input').click()})()`)
   const panel = await c.evaluate('__ANIME__.effect.brush.store.snapshot()')
   assert.equal(panel.speed,1.25);assert.equal(panel.size,1.2);assert.equal(panel.intensity,1.1);assert.equal(panel.irregularity,1);assert.equal(panel.sensitivity,1.5);assert.equal(panel.color,'#d0eaff');assert.equal(panel.direction,-1);assert.equal(panel.slow,true)

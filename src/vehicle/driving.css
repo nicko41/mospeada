@@ -16,6 +16,7 @@
 .ride-flight-option input { accent-color:#c0df90; }
 .ride-flight-option + .ride-tuning { top:122px; }
 .ride-motion-status { position:absolute; left:28px; bottom:267px; padding:8px 12px; color:#e6edc9; background:#153023cf; border-left:2px solid #c0df90; }
+.ride-transform-status{bottom:310px;max-width:calc(100vw - 56px)}
 .ride-boost { position:absolute; left:28px; bottom:211px; width:190px; padding:9px 12px; background:#10261ee8; color:#c8daba; font-size:10px; letter-spacing:.06em; border-left:2px solid #9bc89c; }
 .ride-boost .ride-meter { margin-top:7px; }.ride-boost.active { color:#fff3bc; background:#524522e8; border-color:#ffe396; }.ride-boost.active .ride-meter i { background:#ffe396; }
 .camera-active .ride-paused { inset:auto; top:80px; right:28px; display:flex; gap:12px; align-items:center; padding:10px; background:#04100bbf; }
@@ -27,3 +28,15 @@
 .ride-paused { position:absolute; inset:0; display:grid; place-content:center; gap:22px; text-align:center; background:#04100b80; }.ride-paused strong { font-size:26px; letter-spacing:.18em; }.ride-blocked { position:absolute; bottom:175px; left:50%; transform:translateX(-50%); background:#231e0dd9; padding:10px 16px; text-align:center; }.ride-touch { display:none; }
 @media (pointer:coarse) { .ride-touch { position:absolute; bottom:80px; left:20px; right:20px; display:flex; gap:6px; justify-content:center; }.ride-touch button { min-width:48px; min-height:52px; padding:8px; font-size:11px; touch-action:none; }.ride-speed { bottom:150px; }.ride-telemetry { bottom:150px; }.ride-boost { bottom:286px; }.ride-motion-status { bottom:342px; }.driving-hud footer { display:none; } }
 @media (max-width:700px) { .driving-hud header { left:16px; top:16px; }.driving-hud header strong { font-size:22px; }.ride-actions { right:12px; top:16px; }.ride-actions button { padding:7px; font-size:10px; }.driving-hud nav { top:95px; left:16px; }.driving-hud nav button { font-size:10px; padding:7px; }.ride-label { font-size:8px; }.ride-telemetry { right:16px; }.ride-speed { left:16px; }.driving-hud footer { font-size:9px; left:16px; right:16px; } }
+
+.ride-actions{z-index:11}
+.ride-settings{position:absolute;top:76px;right:28px;width:min(390px,calc(100vw - 56px));max-height:calc(100dvh - 100px);display:flex;flex-direction:column;z-index:10;pointer-events:auto;background:#0d1c23f5;border:1px solid #93b0c855;border-radius:7px;box-shadow:0 12px 35px #0005;color:#dce6ee}
+.ride-settings-heading{display:flex;justify-content:space-between;align-items:center;padding:12px 15px 8px}.ride-settings-heading h2{font-size:16px;margin:0}.ride-settings-heading button{font-size:20px;line-height:1;padding:3px 8px}
+.ride-settings-tabs{display:flex;gap:5px;flex-wrap:wrap;padding:0 15px 12px;border-bottom:1px solid #93b0c833}.ride-settings-tabs button{font-size:11px;padding:7px 9px}.ride-settings-tabs button[aria-pressed=true],.weather-presets button[aria-pressed=true]{background:#455d67;border-color:#b0cfe5}
+.ride-settings-body{overflow:auto;overscroll-behavior:contain;padding:15px;min-height:0}
+.ride-settings .anime-settings,.ride-settings .ride-tuning{position:static;inset:auto;width:auto;min-height:0;max-height:none;overflow:visible;background:transparent;border:0;padding:0}
+.ride-settings .anime-switcher{position:static;inset:auto;display:flex;flex-wrap:wrap;margin-bottom:16px}.ride-settings .anime-switcher button{flex:1}
+.ride-settings .ride-flight-option{position:static;inset:auto;width:auto;padding:5px 0;background:none;display:flex;align-items:center;gap:8px}.ride-settings .ride-flight-option input{width:auto}
+.ride-settings .ride-tuning select{width:100%;padding:8px;border:1px solid #93b0c855;border-radius:4px;background:#304556;color:#eef6ff}
+.weather-presets{display:flex;gap:8px;margin:12px 0}.weather-presets button{flex:1}
+@media(max-width:700px){.ride-actions{top:90px}.ride-settings{right:12px;top:132px;width:min(390px,calc(100vw - 24px));max-height:calc(100dvh - 148px)}}

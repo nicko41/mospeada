@@ -1,0 +1,5 @@
+.vfx-toggle{position:absolute;right:28px;top:150px;pointer-events:auto;z-index:5}
+.vfx-settings{left:auto;right:28px;top:193px;max-height:calc(100vh - 215px)}
+.vfx-settings .anime-range{margin-bottom:5px}.vfx-settings small{display:block;margin-bottom:8px}
+.vfx-effect-control,.vfx-soil-controls{border-top:1px solid #93b0c833;margin-top:10px;padding-top:5px}.vfx-settings h3{font-size:12px;margin:8px 0}.vfx-settings summary{cursor:pointer;font-size:12px;margin:12px 0}.vfx-settings details{border-top:1px solid #93b0c833}
+@media(max-width:700px){.vfx-toggle{top:240px;right:16px;font-size:10px;padding:6px 8px}.vfx-settings{right:16px;top:278px;max-height:calc(100vh - 294px)}}

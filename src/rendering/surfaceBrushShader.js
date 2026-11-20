@@ -64,6 +64,9 @@ if (uBrushEnabled > 0.5 && vBrushData.x > 0.99 && gl_FrontFacing && uBrushProgre
   float gain = mix(1.0, foldLight * (1.0 - relief * 0.7), clamp(uBrushSensitivity, 0.0, 1.0));
   float envelope = smoothstep(0.0, 0.09, progress) * (1.0 - smoothstep(0.91, 1.0, progress));
   float coverage = stroke * gain * envelope * clamp(uBrushIntensity, 0.0, 1.0);
+  #ifdef MOSPEADA_SOIL
+    coverage *= 1.0 - soilCoverage * .9;
+  #endif
   vec3 pigment = uBrushColor * (1.25 + 0.2 * max(0.0, uBrushIntensity - 1.0)) * (0.55 + 0.45 * uBrushDay);
   outgoingLight = mix(outgoingLight, pigment, coverage);
 }

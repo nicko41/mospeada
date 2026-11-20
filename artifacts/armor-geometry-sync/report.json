@@ -1,0 +1,79 @@
+{
+  "status": "applied-and-verified",
+  "source": {
+    "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/ARMOR MODE/vr052-cyclone-1rst-attempt · test-soldar -armor.json",
+    "sha256": "8bc3bc306e73436e64dfbafe7dca04452bfbe1adda71aac0382a4c9df845ac63"
+  },
+  "target": {
+    "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/material-studio/vr052-cyclone-1rst-attempt · test-soldar.json",
+    "sha256Before": "e33a660c21f5139969e1710d69fffa7644705a98c5a1bfaaeee347c1291da88b",
+    "sha256After": "d9eea002ba06506d2064df0413f38188602367b75c5e292fd57c9ebc53019759"
+  },
+  "assembly": {
+    "path": "C:/IT-UP/3D-LAB/assets/mospeada/assembly json/cyclone-material-assembly.json",
+    "sha256": "1770cd554cba3138300fb79581b76d0d77291ed6e9c26e1ff63e192a6b5c8d15"
+  },
+  "backup": ".local/armor-geometry-sync/motorcycle-before.json",
+  "candidate": ".local/armor-geometry-sync/motorcycle-after.json",
+  "changes": [
+    {
+      "pieceId": "c77677c1-3942-4620-832b-30a542d075ca",
+      "name": "Headlight_Housing",
+      "groupId": "ec759edd-5762-4df3-a888-cc273028e205",
+      "parentId": "ec759edd-5762-4df3-a888-cc273028e205",
+      "facesBefore": 162,
+      "facesAfter": 161,
+      "removedFaceIds": [
+        "8717ff0e-9337-47e9-b6e8-14cddaedf7d2"
+      ],
+      "removedFaceVertices": 16,
+      "allVertexCoordinatesPreserved": true,
+      "assemblyFitError": 7.947987303456224e-16
+    },
+    {
+      "pieceId": "b6372bca-aa37-433c-84b6-aa2159073be8",
+      "name": "Headlight_Housing",
+      "groupId": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+      "parentId": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+      "facesBefore": 162,
+      "facesAfter": 161,
+      "removedFaceIds": [
+        "c4a6aba5-c5b1-4353-bb18-66f4d6a0df0e"
+      ],
+      "removedFaceVertices": 16,
+      "allVertexCoordinatesPreserved": true,
+      "assemblyFitError": 7.550332863779066e-16
+    }
+  ],
+  "preserved": {
+    "allVertexCoordinates": true,
+    "allObjectPoses": true,
+    "allPrimitiveParameters": true,
+    "allGroupsAndParentIds": true,
+    "allMaterialsAndVisibility": true,
+    "allOtherPieces": true,
+    "allModifiers": true,
+    "allTopLevelMetadata": true
+  },
+  "deferred": [
+    {
+      "pieceId": "55c39789-8d14-4667-bb40-b600ececa62d",
+      "name": "chest-relieve",
+      "reason": "Las diferencias son nodos generados por el corte 2a3600d4-03a4-448c-a58d-eb904a2ad04e. El contorno editable sólo se trasladó. No se copia el corte reevaluado sin confirmar que sea un cambio de diseño."
+    },
+    {
+      "pieceId": "103cbdd8-0c93-44fc-a3bd-a0bf8189bc71",
+      "name": "chest-relieve",
+      "reason": "Las diferencias son nodos generados por el corte 11a6ba4d-9cf7-42a1-8d52-1c5f2b99033b. El contorno editable sólo se trasladó. No se copia el corte reevaluado sin confirmar que sea un cambio de diseño."
+    }
+  ],
+  "excluded": "No se copian desplazamientos, rotaciones, escalas, reagrupaciones, visibilidad, piezas ausentes ni guías nuevas de Armor.",
+  "verification": {
+    "sourceArmorUnchanged": true,
+    "assemblyUnchanged": true,
+    "updatedPieces": 2,
+    "removedFaces": 2,
+    "allOtherDataIdentical": true,
+    "parser": "3D LAB parseProject validated before applying"
+  }
+}

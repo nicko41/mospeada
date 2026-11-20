@@ -1,0 +1,99 @@
+{
+  "samples": [
+    {
+      "progress": 0,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "rigidError": 1.4210854715202004e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "rigidError": 1.4210854715202004e-14
+        }
+      ]
+    },
+    {
+      "progress": 0.25,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "rigidError": 1.7763568394002505e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "rigidError": 3.1308289294429414e-14
+        }
+      ]
+    },
+    {
+      "progress": 0.5,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "rigidError": 5.684341886080802e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "rigidError": 1.0014211682118912e-13
+        }
+      ]
+    },
+    {
+      "progress": 0.75,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "rigidError": 8.526512829121202e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "rigidError": 1.6986412276764895e-13
+        }
+      ]
+    },
+    {
+      "progress": 1,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "rigidError": 9.237055564881302e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "rigidError": 2.007283228522283e-13
+        }
+      ]
+    },
+    {
+      "progress": 0,
+      "groups": [
+        {
+          "id": "ec759edd-5762-4df3-a888-cc273028e205",
+          "surfaces": 8,
+          "rigidError": 1.4210854715202004e-14
+        },
+        {
+          "id": "c18ba18b-4823-447d-b055-d4aa08c6517c",
+          "surfaces": 8,
+          "rigidError": 1.4210854715202004e-14
+        }
+      ]
+    }
+  ],
+  "integrity": {
+    "clips": 16,
+    "gl": 0,
+    "shader": ""
+  }
+}

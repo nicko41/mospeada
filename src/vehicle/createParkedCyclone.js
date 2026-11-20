@@ -1,5 +1,6 @@
 import * as T from 'three'
 import { createCycloneLights } from './cycloneLights.js'
+import { matchCyclonePaintToBoots } from './cyclonePaint.js'
 
 // Shared imported vehicle instance. The driving controller adds mechanical
 // articulation separately; this constructor never creates or modifies Scott.
@@ -14,6 +15,7 @@ export function createParkedCyclone(source, { scale = CYCLONE_PRESENTATION_SCALE
   model.traverse(mesh => {
     if (!mesh.isMesh) return
     mesh.material = Array.isArray(mesh.material) ? mesh.material.map(m => m.clone()) : mesh.material.clone()
+    for(const material of Array.isArray(mesh.material)?mesh.material:[mesh.material])matchCyclonePaintToBoots(mesh,material)
     if (mesh.userData.sourcePiece === 'rear_sit + rear_sit') {
       for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) {
         // Keep the upholstery's original brown vertex colours and geometry.
@@ -34,5 +36,5 @@ export function createParkedCyclone(source, { scale = CYCLONE_PRESENTATION_SCALE
   const lighting = createCycloneLights(body, surfaces), sunlight = new T.DirectionalLight('#f1f3df', 0.6)
   sunlight.position.set(4, 7, 3); root.add(sunlight, sunlight.target)
   const articulation = { frontTravel: 0, rearTravel: 0 }
-  return { root, body, surfaces, metrics, lighting, sunlight, articulation, presentationScale: scale, arms: [], hydraulics: [], update(s) { root.position.set(s.x, s.height, s.z); root.rotation.y = s.yaw; body.rotation.x = s.pitch; root.updateMatrixWorld(true) } }
+  return { root, body, surfaces, surfaceMaterials:new Map(surfaces.map(mesh=>[mesh,mesh.material])), metrics, lighting, sunlight, articulation, presentationScale: scale, arms: [], hydraulics: [], update(s) { root.position.set(s.x, s.height, s.z); root.rotation.y = s.yaw; body.rotation.x = s.pitch; root.updateMatrixWorld(true) } }
 }

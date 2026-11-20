@@ -1,0 +1,176 @@
+{
+  "note": "Fixed 60 Hz visual samples use the existing advanceBike implementation. Humidity samples hold the same real contact/state for direct comparison. No production physics changes.",
+  "stopped": {
+    "emitted": 0,
+    "active": 0,
+    "rate": 0,
+    "budget": 640,
+    "surface": "dirt",
+    "speed": 0,
+    "slip": 0,
+    "unchanged": true
+  },
+  "gentle": {
+    "emitted": 171,
+    "active": 146,
+    "rate": 90.335928021611,
+    "budget": 640,
+    "surface": "dirt",
+    "speed": 10.2517319866957,
+    "slip": 0,
+    "unchanged": true
+  },
+  "strong": {
+    "emitted": 356,
+    "active": 331,
+    "rate": 230.94068152130404,
+    "budget": 640,
+    "surface": "dirt",
+    "speed": 25.06700410102532,
+    "slip": 0,
+    "unchanged": true
+  },
+  "visiblePixels": {
+    "PBR": 34331,
+    "ANIME": 36820
+  },
+  "cruise": {
+    "active": 268,
+    "emitted": 316
+  },
+  "drift": {
+    "emitted": 82,
+    "active": 222,
+    "rate": 128.63355339295038,
+    "budget": 640,
+    "surface": "dirt",
+    "speed": 9.834996218454103,
+    "slip": 0.616900647254397,
+    "unchanged": true
+  },
+  "braking": {
+    "emitted": 27,
+    "active": 103,
+    "rate": 118.40629760026323,
+    "budget": 640,
+    "surface": "dirt",
+    "speed": 17.264160214409713,
+    "slip": 0,
+    "unchanged": true
+  },
+  "completeStop": {
+    "emitted": 37,
+    "active": 1,
+    "rate": 0,
+    "budget": 640,
+    "surface": "dirt",
+    "speed": 0,
+    "slip": 0,
+    "unchanged": true
+  },
+  "afterStop": {
+    "emitted": 0,
+    "active": 0,
+    "rate": 0,
+    "budget": 640,
+    "surface": "dirt",
+    "speed": 0,
+    "slip": 0,
+    "unchanged": true
+  },
+  "dissipated": {
+    "emitted": 0,
+    "active": 0,
+    "rate": 0,
+    "budget": 640,
+    "surface": "dirt",
+    "speed": 0,
+    "slip": 0,
+    "unchanged": true
+  },
+  "worldSpace": {
+    "distance": 0,
+    "worldSpace": true,
+    "rootIsWorld": true
+  },
+  "enterAsphalt": {
+    "emitted": 0,
+    "active": 87,
+    "rate": 0,
+    "budget": 640,
+    "surface": "asphalt",
+    "speed": 16,
+    "slip": 0,
+    "unchanged": true
+  },
+  "humidity": {
+    "0": {
+      "emitted": 187,
+      "active": 184,
+      "rate": 99.8,
+      "budget": 640,
+      "surface": "dirt",
+      "speed": 14,
+      "slip": 0,
+      "unchanged": true
+    },
+    "1": {
+      "emitted": 0,
+      "active": 0,
+      "rate": 0,
+      "budget": 640,
+      "surface": "dirt",
+      "speed": 14,
+      "slip": 0,
+      "unchanged": true
+    },
+    "0.5": {
+      "emitted": 41,
+      "active": 40,
+      "rate": 21.720236554238294,
+      "budget": 640,
+      "surface": "dirt",
+      "speed": 14,
+      "slip": 0,
+      "unchanged": true
+    },
+    "0.9": {
+      "emitted": 2,
+      "active": 2,
+      "rate": 0.6296954297912323,
+      "budget": 640,
+      "surface": "dirt",
+      "speed": 14,
+      "slip": 0,
+      "unchanged": true
+    }
+  },
+  "keyboard": {
+    "active": 49,
+    "speed": 8.69421200894069,
+    "emitted": 1571
+  },
+  "integrity": {
+    "batches": 1,
+    "systems": 1,
+    "pooled": 331,
+    "active": 49,
+    "budget": 288,
+    "gl": 0,
+    "shader": "",
+    "bones": 24,
+    "legacySpray": false
+  },
+  "night": {
+    "PBR": {
+      "gl": 0,
+      "shader": ""
+    },
+    "ANIME": {
+      "gl": 0,
+      "shader": ""
+    },
+    "dustVisible": true,
+    "legacySpray": false
+  }
+}

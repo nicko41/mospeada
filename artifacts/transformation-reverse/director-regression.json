@@ -1,0 +1,782 @@
+[
+  {
+    "progress": 0.9833333333333333,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4619451255025827,
+      0.6136854125398005
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.9666666666666666,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4619451257853808,
+      0.6136854125398018
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.9499999999999998,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194512607816907,
+      0.6136854125398217
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.9333333333333331,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4619451263799989,
+      0.6136854125398017
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.9166666666666664,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194512669015186,
+      0.6136854125398228
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.8999999999999997,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194512700780405,
+      0.613685412539813
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.883333333333333,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4619451273323618,
+      0.6136854125398051
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.8666666666666663,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194512766321,
+      0.6136854125397996
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.8499999999999995,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194512799982906,
+      0.6136854125398151
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.8333333333333328,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194512834172474,
+      0.6136854125397854
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.8166666666666661,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4619451286885365,
+      0.6136854125397962
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.7999999999999994,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.461945129039834,
+      0.6136854125398125
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.7833333333333327,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4619451293952472,
+      0.6136854125398188
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.7666666666666659,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4619451297545046,
+      0.6136854125398267
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.7499999999999992,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194513011735727,
+      0.6136854125398074
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.7333333333333325,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194513048347585,
+      0.6136854125398101
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.7166666666666658,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4619451308527346,
+      0.6136854125397899
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.6999999999999991,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.46194513122484554,
+      0.6136854125397949
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.6833333333333323,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4085235665133973,
+      0.6178967937875252
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.6666666666666656,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.2687543802152099,
+      0.6294561376304247
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.6499999999999989,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.0873833041966868,
+      0.6462726589607045
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.6333333333333322,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.17801601404729991,
+      0.6657191757357194
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.6166666666666655,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3964582169353913,
+      0.6848377231612707
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.5999999999999988,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.5881131597637129,
+      0.700690887021824
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.583333333333332,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.7228306542584337,
+      0.7108274722278248
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.5666666666666653,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.77671466801304,
+      0.7137569562754621
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.5499999999999986,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.7493403765082745,
+      0.709293347031273
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.5333333333333319,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.7105068124813292,
+      0.6986365443836963
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.5166666666666652,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.6690888326445177,
+      0.6841093790455209
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.4999999999999985,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.625905005896725,
+      0.6685640736339199
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.48333333333333184,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.5818308747205576,
+      0.6546075269305498
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.4666666666666652,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.5378028249063628,
+      0.6439263076893927
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.4499999999999985,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4948361355939333,
+      0.6370178620445358
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.43333333333333185,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4540670013071861,
+      0.6334742536625685
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.4166666666666652,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.42379937205297374,
+      0.6328073422995397
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.3999999999999985,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4197764311146528,
+      0.6382711313536572
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.38333333333333186,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.4109750369722546,
+      0.6509533209547317
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.3666666666666652,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.39876414529277443,
+      0.6698303087072048
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.34999999999999853,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.38463927857729285,
+      0.6927393695916435
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.33333333333333187,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3701453032683452,
+      0.7163490137460017
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.3166666666666652,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.35674028435193694,
+      0.7370466204468209
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.29999999999999855,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3455992265845202,
+      0.752130685122593
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.2833333333333319,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.33740430639693003,
+      0.7606343935742329
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.2666666666666652,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.33221403124575205,
+      0.7634344298023694
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.24999999999999856,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3295064965980315,
+      0.762701134778946
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.2333333333333319,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32843255460436455,
+      0.7610102741034054
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.21666666666666523,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32822770442799976,
+      0.7604085508970866
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.19999999999999857,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3282274053384919,
+      0.7604085508970878
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.1833333333333319,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3282271059271428,
+      0.760408550897087
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.16666666666666524,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32822680619903427,
+      0.7604085508970597
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.14999999999999858,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32822650615856414,
+      0.7604085508970873
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.13333333333333192,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3282262058097781,
+      0.7604085508971159
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.11666666666666525,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32822590515622824,
+      0.7604085508970317
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.09999999999999859,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3282256042012445,
+      0.7604085508970874
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.08333333333333193,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3282253029477676,
+      0.7604085508970867
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.06666666666666526,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.3282250013982594,
+      0.7604085508970879
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.0499999999999986,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32822469955517747,
+      0.7604085508971159
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.03333333333333194,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32822439742060844,
+      0.760408550897087
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0.01666666666666527,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32822409499637745,
+      0.7604085508970588
+    ],
+    "maxFrameError": 0
+  },
+  {
+    "progress": 0,
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "hydraulicLengths": [
+      0.32822379228415866,
+      0.7604085508970877
+    ],
+    "maxFrameError": 0
+  }
+]

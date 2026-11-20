@@ -66,6 +66,9 @@ if (uAnimeCel > 0.5) {
   animeShine += vec3(0.04, 0.05, 0.065) * animeRim * uAnimeHero;
   reflectedLight.directSpecular = (animeShine + animeSpecular * 0.06) * uAnimeHighlights * uAnimeSurfaceShine;
   reflectedLight.indirectSpecular = vec3(0.0);
+  #ifdef MOSPEADA_SOIL
+    reflectedLight.directSpecular *= 1.0 - soilCoverage * .9;
+  #endif
 }
 `
 
