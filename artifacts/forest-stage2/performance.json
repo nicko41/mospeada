@@ -1,0 +1,44 @@
+{
+  "scope": "Paused identical Plano 1 viewpoint, extension hidden versus loaded; separate representative Plano 2 checkpoint. Render cost only at actual 1920x1080, adaptive resolution disabled and render DPR locked. This machine is not the target RTX 3060.",
+  "results": [
+    {
+      "name": "Plano 1 / extension hidden",
+      "meanMs": 120.5899999999999,
+      "medianMs": 124.89999999999418,
+      "p95Ms": 132,
+      "calls": 736,
+      "triangles": 2166000,
+      "width": 1920,
+      "height": 1080,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "stage2GpuMB": 21.333333333333332,
+      "stage2LatePrepares": 0
+    },
+    {
+      "name": "Plano 1 / extension loaded",
+      "meanMs": 119.97166666671643,
+      "medianMs": 118.10000000000582,
+      "p95Ms": 138.89999999999418,
+      "calls": 806,
+      "triangles": 2715728,
+      "width": 1920,
+      "height": 1080,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "stage2GpuMB": 21.333333333333332,
+      "stage2LatePrepares": 0
+    },
+    {
+      "name": "Plano 2 / checkpoint",
+      "meanMs": 93.96000000002483,
+      "medianMs": 90.30000000001746,
+      "p95Ms": 111.20000000001164,
+      "calls": 768,
+      "triangles": 1571340,
+      "width": 1920,
+      "height": 1080,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "stage2GpuMB": 26.97495396931966,
+      "stage2LatePrepares": 0
+    }
+  ]
+}

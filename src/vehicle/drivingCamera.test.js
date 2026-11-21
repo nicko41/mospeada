@@ -25,13 +25,13 @@ test('camera follows the armored rider departure without dragging back to the un
   assert.ok(Math.abs(f.orbit.target.z)<.5);f.controller.dispose()
 })
 
-test('third-person camera stays close at road and boost speeds instead of accumulating positional lag', () => {
+test('Cyclone keeps its wider contextual frame at road and boost speeds without accumulating positional lag', () => {
   for (const speed of [0, 20, 60, 80]) {
     const { camera, s, controller } = setup(); s.speed = speed
     for (let i = 0; i < 360; i++) { s.z += speed / 120; controller.update(s, 1 / 120) }
     const behind = s.z - camera.position.z
-    assert.ok(behind > 2.5 && behind < 4.2, `${speed} m/s: ${behind} m behind`)
-    assert.ok(camera.position.distanceTo(new Vector3(s.x, s.height + 1, s.z)) < 4.4)
+    assert.ok(behind > 4 && behind < 4.8, `${speed} m/s: ${behind} m behind`)
+    assert.ok(camera.position.distanceTo(new Vector3(s.x, s.height + 1, s.z)) < 5.5)
     controller.dispose()
   }
 })
@@ -85,7 +85,7 @@ test('camera retracts before an obstruction and recovers its close follow distan
     assert.ok(camera.position.z > -1.6 && orbit.getDistance() < 2.1)
   } finally { unregister() }
   for (let i = 0; i < 180; i++) controller.update(s, 1 / 120)
-  assert.ok(orbit.getDistance() > 3.4 && orbit.getDistance() < 3.8)
+  assert.ok(orbit.getDistance() > 4.5 && orbit.getDistance() < 4.8)
   assert.ok(camera.position.y >= 0.35)
   controller.dispose()
 })

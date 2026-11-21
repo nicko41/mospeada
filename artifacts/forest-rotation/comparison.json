@@ -1,0 +1,47 @@
+{
+  "raster": {
+    "viewport": [
+      1440,
+      960
+    ],
+    "render": [
+      950,
+      633
+    ],
+    "pixelRatio": 0.66
+  },
+  "before": {
+    "framesWithMissingVegetation": 144,
+    "auditedFrames": 145,
+    "medianMs": 20.899999999997817,
+    "p95Ms": 41.599999999998545
+  },
+  "after": {
+    "framesWithMissingVegetation": 0,
+    "auditedFrames": 145,
+    "mouseTurns": [
+      {
+        "direction": "mouse-clockwise",
+        "turns": 3.296972998917157,
+        "frames": 218,
+        "missingFrames": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0
+      },
+      {
+        "direction": "mouse-counterclockwise",
+        "turns": 3.2955801879504687,
+        "frames": 219,
+        "missingFrames": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0
+      }
+    ],
+    "medianMs": 20.900000000001455,
+    "p95Ms": 41.70000000000073,
+    "assetRequestsDuringRotation": 0,
+    "shaderProgramsBefore": 77,
+    "shaderProgramsAfter": 77,
+    "webglError": 0
+  }
+}

@@ -28,8 +28,15 @@ import DrivingLighting from './vehicle/DrivingLighting'
 import JumpTestMound from './vehicle/JumpTestMound'
 import AnimeRendering from './rendering/AnimeRendering'
 import { animeState } from './rendering/animeState.js'
+import ForestEnvironment from './world/forest/ForestEnvironment.jsx'
+import { activeEnvironment } from './world/environmentConfig.js'
+import { weatherState } from './world/weatherState.js'
+import {ForestOpeningOverlay} from './world/forest/ForestOpening.jsx'
+import {forestOpeningState} from './world/forest/forestOpeningState.js'
+import {startupRenderReady} from './rendering/renderPreparation.js'
 timeOfDayState.value = 1
 timeOfDayState.target = 1
+if (activeEnvironment === 'forest') weatherState.setPreset('sunny')
 import './styles.css'
 import { desktopInput } from './player/touchInput'
 
@@ -102,14 +109,18 @@ function SceneReady({ onReady }) {
 function EntryPreloader({ sceneReady }) {
   const { active, progress } = useProgress()
   const renderState = useSyncExternalStore(animeState.subscribe, animeState.snapshot)
-  const renderReady = renderState.ready || !!renderState.error
-  const startedAt = useRef(performance.now())
+  const opening = useSyncExternalStore(forestOpeningState.subscribe, forestOpeningState.snapshot)
+  // Finish GPU preparation behind the loader, before music/fade/camera begin.
+  // Otherwise night-program reflection competes with the visible cinematic.
+  const renderReady = startupRenderReady(renderState,opening.phase)
   const highestProgress = useRef(0)
+  const revealed = useRef(false)
 
   useEffect(() => {
     const overlay = document.getElementById('entry-preloader')
     const fill = document.getElementById('entry-progress-fill')
     if (!overlay || !fill) return
+    if(revealed.current){overlay.remove();return}
 
     highestProgress.current = Math.max(highestProgress.current, Math.min(progress, 95))
     fill.style.width = `${highestProgress.current}%`
@@ -118,42 +129,35 @@ function EntryPreloader({ sceneReady }) {
     if (status) status.textContent = active || !sceneReady ? 'Cargando escenario…' : !renderReady ? 'Preparando iluminación y estilos…' : 'Listo'
     if (active || !sceneReady || !renderReady) return
 
-    let removeTimer
-    const finishTimer = window.setTimeout(() => {
-      fill.style.width = '100%'
-      fill.parentElement.setAttribute('aria-valuenow', '100')
-      removeTimer = window.setTimeout(() => {
-        overlay.classList.add('is-ready')
-        removeTimer = window.setTimeout(() => {
-          overlay.remove()
-          desktopInput.ready = true
-          window.dispatchEvent(new Event('game-ready'))
-        }, 550)
-      }, 300)
-    }, Math.max(350, 900 - (performance.now() - startedAt.current)))
-
-    return () => {
-      window.clearTimeout(finishTimer)
-      window.clearTimeout(removeTimer)
-    }
+    fill.style.width = '100%'
+    fill.parentElement.setAttribute('aria-valuenow', '100')
+    overlay.classList.add('is-ready')
+    revealed.current=true
+    desktopInput.ready = true
+    window.dispatchEvent(new Event('game-ready'))
+    const removeTimer=window.setTimeout(()=>overlay.remove(),180)
+    return()=>window.clearTimeout(removeTimer)
   }, [active, progress, sceneReady, renderReady])
 
   return null
 }
 
 function Scene({ onReady }) {
+  const forest = activeEnvironment === 'forest'
   return <>
-    <color attach="background" args={['#839196']} />
-    <fogExp2 attach="fog" args={['#839196', 0.068]} />
-    <TimeOfDay />
-    <DrivingLighting />
-    <OvercastSky />
-    <Landscape />
-    <JumpTestMound />
-    <GroundMist />
-    <Rain />
-    <Lightning />
-    <AmbienceAudio />
+    {forest ? <ForestEnvironment /> : <>
+      <color attach="background" args={['#839196']} />
+      <fogExp2 attach="fog" args={['#839196', 0.068]} />
+      <TimeOfDay />
+      <OvercastSky />
+      <Landscape />
+      <JumpTestMound />
+      <GroundMist />
+      <Rain />
+      <Lightning />
+      <AmbienceAudio />
+    </>}
+    <DrivingLighting manageFog={!forest} />
     <Motorcycle />
     <AnimeRendering />
     <SceneReady onReady={onReady} />
@@ -162,12 +166,13 @@ function Scene({ onReady }) {
 
 function App() {
   const [sceneReady, setSceneReady] = useState(false)
+  const opening=useSyncExternalStore(forestOpeningState.subscribe,forestOpeningState.snapshot)
   return (
-    <main className="app">
+    <main className="app" data-forest-opening={opening.phase!=='done'?'active':undefined}>
       <EntryPreloader sceneReady={sceneReady} />
       <Canvas
         shadows="percentage"
-        camera={{ fov: 65, near: 0.1, far: 220 }}
+        camera={{ fov: 65, near: 0.1, far: activeEnvironment === 'forest' ? 700 : 220 }}
         gl={{ antialias: true, powerPreference: 'high-performance' }}
         dpr={[1, 1.5]}
       >
@@ -177,6 +182,7 @@ function App() {
       </Canvas>
 
       <DrivingHUD />
+      <ForestOpeningOverlay />
     </main>
   )
 }

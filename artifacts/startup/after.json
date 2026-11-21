@@ -1,0 +1,22 @@
+{
+  "timing": {
+    "renderer": 13110.600000023842,
+    "preparation": 13110.600000023842,
+    "ready": 17829.799999952316,
+    "playable": 18040.899999976158
+  },
+  "preparation": {
+    "startMs": 13085.600000023842,
+    "initialMode": "ANIME",
+    "initialNight": false,
+    "initialGLError": 0,
+    "compileMs": 1313.6000000238419,
+    "primeMs": 3351.1999999284744,
+    "totalMs": 4664.799999952316,
+    "programs": 77
+  },
+  "programs": 78,
+  "error": "",
+  "armorResourcesReady": true,
+  "bodyPrepared": true
+}

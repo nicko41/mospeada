@@ -4,6 +4,7 @@ import { patchAnimeShader, compositeVertex, compositeFragment } from './animeSha
 import { SurfaceBrush } from './SurfaceBrush.js'
 import { patchSurfaceBrush } from './surfaceBrushShader.js'
 import { animeProgramKey, createPreparationTargets } from './renderPreparation.js'
+import { publishRenderMetrics } from './renderMetrics.js'
 
 const dynamic = ['color', 'emissive', 'emissiveIntensity', 'opacity', 'roughness', 'metalness', 'envMapIntensity', 'normalScale', 'clearcoat', 'clearcoatRoughness', 'transmission', 'thickness', 'ior', 'specularIntensity', 'specularColor', 'attenuationColor', 'attenuationDistance']
 const textureKeys = ['map', 'alphaMap', 'normalMap', 'roughnessMap', 'metalnessMap', 'emissiveMap', 'envMap']
@@ -15,7 +16,8 @@ export function materialProfile(object, material) {
   const glass = (material.transmission || 0) > 0 || material.transparent && material.opacity < 0.95
   const lit = material.isMeshStandardMaterial || material.isMeshLambertMaterial || material.isMeshPhongMaterial
   const emitter = /Headlight_.*(Optic|Glass)|faro-yellow/.test(object.userData.sourcePiece || '')
-  return { surfaceShine: material.userData.animeSurfaceShine ?? 1, hero, grass, glass: glass ? 1 : 0, mask: lit && !glass && !emitter && !object.userData.rideSurface ? hero ? 1 : 0.5 : 0 }
+  const natural = !!(object.userData.forest || material.userData.forest)
+  return { surfaceShine: material.userData.animeSurfaceShine ?? 1, hero, grass, natural, glass: glass ? 1 : 0, mask: lit && !natural && !glass && !emitter && !object.userData.rideSurface ? hero ? 1 : 0.5 : 0 }
 }
 
 export class AnimeRenderer {
@@ -30,15 +32,13 @@ export class AnimeRenderer {
     this.target.textures[1].type = T.UnsignedByteType; this.target.textures[1].colorSpace = T.NoColorSpace
     this.target.textures[1].format = T.RedFormat
     this.target.textures[1].minFilter = T.NearestFilter; this.target.textures[1].magFilter = T.NearestFilter
-    this.pbrTexture = null
     this.composite = new T.ShaderMaterial({ vertexShader: compositeVertex, fragmentShader: compositeFragment, depthTest: false, depthWrite: false,
-      uniforms: { uBeauty: { value: this.target.textures[0] }, uMask: { value: this.target.textures[1] }, uDepth: { value: this.target.depthTexture }, uPbr: { value: this.target.textures[0] },
-        uPixel: { value: new T.Vector2(1, 1) }, uNear: { value: camera.near }, uFar: { value: camera.far }, uWidth: { value: 1.2 }, uOutlineColor: { value: new T.Color('#111b2e').convertLinearToSRGB() },
-        uFogDensity: { value: 0.068 }, uOutlines: { value: 1 }, uCompare: { value: 0 }, uSplit: { value: 0.5 } },
+      uniforms: { uBeauty: { value: this.target.textures[0] }, uMask: { value: this.target.textures[1] }, uDepth: { value: this.target.depthTexture }, uPixel: { value: new T.Vector2(1, 1) }, uNear: { value: camera.near }, uFar: { value: camera.far }, uWidth: { value: 1.2 }, uOutlineColor: { value: new T.Color('#111b2e').convertLinearToSRGB() },
+        uFogDensity: { value: 0.068 }, uOutlines: { value: 1 } },
     })
     this.quad = new FullScreenQuad(this.composite)
     this.size = new T.Vector2(); this.zero = new Float32Array([0, 0, 0, 0])
-    this.stats = { materials: 0, renderCalls: 0, mode: 'PBR' }
+    this.stats = { materials: 0, renderCalls: 0, mode: 'ANIME' }
   }
   sourceRecord(material) {
     if (this.sources.has(material)) return this.sources.get(material)
@@ -58,7 +58,7 @@ export class AnimeRenderer {
     return record
   }
   variant(source, profile) {
-    const key = `${source.uuid}:${profile.hero}:${profile.glass}:${profile.mask}:${profile.grass}:${profile.surfaceShine ?? 1}:${profile.brush?.object.uuid || ''}`
+    const key = `${source.uuid}:${profile.hero}:${profile.glass}:${profile.mask}:${profile.grass}:${!!profile.natural}:${profile.surfaceShine ?? 1}:${profile.brush?.object.uuid || ''}`
     if (this.records.has(key)) return this.records.get(key).variant
     const record = this.sourceRecord(source), variant = source.clone()
     if (variant.isShaderMaterial) variant.uniforms = { ...source.uniforms }
@@ -98,7 +98,7 @@ export class AnimeRenderer {
       for (const key of textureKeys) if (key in source && source[key] !== variant[key]) { variant[key] = source[key]; variant.needsUpdate = true }
     }
     // The original world's shader callbacks keep refs to their last compile.
-    // Share those custom uniform values across cached PBR/Anime programs.
+    // Share those custom uniform values across cached daylight/night programs.
     for (const source of this.sources.values()) for (const list of source.custom.values()) {
       const current = list[list.length - 1]
       for (const uniform of list) uniform.value = current.value
@@ -108,125 +108,196 @@ export class AnimeRenderer {
     this.renderer.getDrawingBufferSize(this.size)
     if (this.target.width !== this.size.x || this.target.height !== this.size.y) {
       this.target.setSize(this.size.x, this.size.y)
-      this.pbrTexture?.dispose(); this.pbrTexture = null
-      this.composite.uniforms.uPbr.value = this.target.textures[0]
     }
     this.composite.uniforms.uPixel.value.set(1 / this.size.x, 1 / this.size.y)
   }
-  warm(initialMode = 'ANIME') {
-    if (this.warming || this.ready || this.error || this.disposed || !this.scene.getObjectByName('Cyclone_riding_vehicle')) return
-    // Keep pre-existing context/texture-upload flags separate from preparation.
-    this.stats.preparation = { startMs: performance.now(), initialGLError: this.renderer.getContext?.().getError() || 0 }
-    this.preparationTargets ||= createPreparationTargets(this.target?.samples || 0)
-    const previous = this.renderer.getRenderTarget(), lights = []
-    this.scene.traverse(object => { if (object.isLight && /^Cyclone_(headlight|amber)_/.test(object.name)) lights.push({ object, visible: object.visible }) })
-    // compileAsync traverses invisible objects too. Empty grass pool slots have
-    // no instanceColor yet; their shader is valid only after a tile is populated.
-    // The populated original field precompiles that same valid program instead.
-    const inactive = this.bindings.filter(({ object }) => object.isInstancedMesh && !object.visible && !object.instanceColor && /^Grass_/.test(object.name))
+  preparationLights() {
+    const lights=[]
+    this.scene.traverse(object=>{if(object.isLight&&/^Cyclone_(headlight|amber)_/.test(object.name))lights.push(object)})
+    return lights
+  }
+  withPreparationVariant(night,work) {
+    const lights=this.preparationLights(),visibility=lights.map(l=>l.visible),previous=this.renderer.getRenderTarget()
+    const inactive=this.bindings.filter(({object})=>object.isInstancedMesh&&!object.visible&&!object.instanceColor&&/^Grass_/.test(object.name))
     try {
-      const pending = []
-      // Light visibility changes Three's light/shadow counts and shader defines.
-      // Prepare both counts for BOTH modes, without keeping night lights active
-      // (and paying for their shadow maps) during normal daytime rendering.
-      for (const night of [false, true]) {
-        for (const { object } of lights) object.visible = night
-        for (const anime of [false, true]) {
-          this.restore(); if (anime) this.apply()
-          for (const { object } of inactive) object.material = null
-          this.renderer.setRenderTarget(anime ? this.preparationTargets.anime : null)
-          pending.push(this.renderer.compileAsync(this.scene, this.camera))
-          if (!anime) {
-            // Three captures opaque PBR objects in a linear target behind
-            // transmission materials. Its color-space/tone-mapping defines
-            // differ from the final PBR framebuffer, even for opaque objects.
-            this.renderer.setRenderTarget(this.preparationTargets.pbr)
-            pending.push(this.renderer.compileAsync(this.scene, this.camera))
-          }
-        }
+      lights.forEach(light=>{light.visible=night});this.restore();this.apply()
+      const materials=inactive.map(({object})=>object.material)
+      try {for(const {object} of inactive)object.material=null;return work()}
+      finally {inactive.forEach(({object},i)=>{object.material=materials[i]})}
+    } finally {lights.forEach((light,i)=>{light.visible=visibility[i]});this.renderer.setRenderTarget(previous);this.restore()}
+  }
+  compileObject(object,targetScene=object) {
+    const pending=this.renderer.compile?Promise.resolve(this.renderer.compile(object,this.camera,targetScene)):this.renderer.compileAsync(object,this.camera,targetScene)
+    const programs=new Set()
+    object.traverse(node=>{for(const material of Array.isArray(node.material)?node.material:[node.material]){
+      if(material){const p=this.renderer.properties?.get(material).currentProgram;if(p)programs.add(p)}
+    }})
+    // Capture the actual programs: live renders change currentProgram, and
+    // Suspense/StrictMode may dispose one while compilation is still pending.
+    // Never poll a deleted WebGLProgram or mistake a ready day shader for night.
+    return pending.then(async()=>{
+      while([...programs].some(p=>p.program&&p.isReady&&!p.isReady())){
+        await this.idleTurn();if(this.disposed)return
       }
-      this.renderer.setRenderTarget(null)
-      // FullScreenQuad's mesh is used only for precompilation (Three 0.186).
-      pending.push(this.renderer.compileAsync(this.quad._mesh, this.camera))
-      this.warming = Promise.all(pending).then(() => {
-        if (this.disposed) return
-        this.stats.preparation.compileMs = performance.now() - this.stats.preparation.startMs
-        const primeStart = performance.now()
-        this.primePasses(lights)
-        // Allocate the real starting framebuffer/transmission capture once,
-        // after preparation. All hidden variants used tiny temporary targets.
-        if (initialMode === 'ANIME') this.drawSceneTarget()
-        else this.renderer.render(this.scene, this.camera)
-        // Linking is not the last first-use cost: initialize Three's native
-        // uniform/attribute reflection while the loading screen is still up.
-        for (const program of this.renderer.info.programs) if (program.program) {
-          program.getUniforms(); program.getAttributes()
-        }
-        this.ready = true
-        this.stats.preparation.primeMs = performance.now() - primeStart
-        this.stats.preparation.totalMs = performance.now() - this.stats.preparation.startMs
-        this.stats.preparation.programs = this.renderer.info.programs.length
-      }).catch(error => { this.error = error.message }).finally(() => { this.preparationTargets?.dispose(); this.preparationTargets = null })
-    } catch (error) { this.error = error.message; this.preparationTargets?.dispose(); this.preparationTargets = null }
-    finally {
-      for (const { object, anime } of inactive) object.material = anime
-      for (const { object, visible } of lights) object.visible = visible
-      this.renderer.setRenderTarget(previous); this.restore()
+    })
+  }
+  compileVariant(night,object=this.scene) {
+    return this.withPreparationVariant(night,()=>{
+      this.renderer.setRenderTarget(this.preparationTargets.anime)
+      return this.compileObject(object,this.scene)
+    })
+  }
+  preparationObjects() {
+    if(!this.renderer.properties)return [this.scene]
+    const seen=new Set(),objects=[]
+    for(const b of this.bindings){
+      if(b.object.isInstancedMesh&&!b.object.visible&&!b.object.instanceColor&&/^Grass_/.test(b.object.name))continue
+      const materials=Array.isArray(b.anime)?b.anime:[b.anime]
+      const keys=materials.map(m=>this.renderer.properties.get(m).currentProgram?.cacheKey||m.uuid)
+      if(keys.some(key=>!seen.has(key))){objects.push(b.object);keys.forEach(key=>seen.add(key))}
+    }
+    return objects
+  }
+  withDormantArmor(work) {
+    const root=this.scene.getObjectByName('Cyclone_rear_transformation'),saved=[],batches=[]
+    root?.traverse(object=>{saved.push({object,visible:object.visible,culled:object.frustumCulled});object.visible=true;object.frustumCulled=false})
+    // Upload the empty Quarks buffers/atlases without spawning particles or
+    // advancing any emitter. Zero-sized entries stay in this offscreen draw.
+    this.scene.getObjectByName('MOSPEADA_Quarks_batches')?.traverse(object=>{
+      if(!object.geometry?.isInstancedBufferGeometry)return
+      batches.push({object,count:object.geometry.instanceCount,visible:object.visible,culled:object.frustumCulled})
+      object.geometry.instanceCount=Math.max(1,object.geometry.instanceCount);object.visible=true;object.frustumCulled=false
+    })
+    try{return work()}
+    finally{
+      for(const {object,visible,culled} of saved){object.visible=visible;object.frustumCulled=culled}
+      for(const {object,count,visible,culled} of batches){object.geometry.instanceCount=count;object.visible=visible;object.frustumCulled=culled}
     }
   }
-  primePasses(lights) {
-    const visibility = lights.map(({ object }) => object.visible)
-    const { anime, pbr } = this.preparationTargets
-    const shadows = this.renderer.shadowMap, autoUpdate = shadows.autoUpdate, needsUpdate = shadows.needsUpdate
+  primeVariant(night,initial=false) {
+    const shadows=this.renderer.shadowMap,autoUpdate=shadows?.autoUpdate,needsUpdate=shadows?.needsUpdate
     try {
+      // Shadow samplers require real depth maps, including headlights that
+      // were invisible by day. Null color-texture fallbacks are invalid here.
+      const missing=night&&this.preparationLights().some(light=>light.castShadow&&!light.shadow.map)
+      if(shadows){shadows.autoUpdate=initial||missing;shadows.needsUpdate=initial||missing}
       this.sync()
-      for (const night of [false, true]) {
-        lights.forEach(({ object }) => { object.visible = night })
-        // The second shadow draw covers depth shaders using the newly updated
-        // light counts. The remaining hidden passes can reuse these maps.
-        shadows.autoUpdate = true; shadows.needsUpdate = true
-        // compileAsync doesn't allocate shadow maps or run transmission/depth
-        // passes. Draw offscreen now, so their first use cannot freeze an M key
-        // press or the first Anime frame. The visible PBR framebuffer stays put.
-        this.drawSceneTarget(true, anime)
-        this.drawSceneTarget(true, anime)
-        shadows.autoUpdate = false; shadows.needsUpdate = false
-        // Exercise native PBR transmission too: its back-face capture creates
-        // variants which compileAsync alone doesn't cover. Never present these
-        // preparation frames on the visible framebuffer.
-        this.drawSceneTarget(false, pbr); this.drawSceneTarget(false, pbr)
-        // The canvas has its own tone-mapping/output-space variants. A linear
-        // render target cannot exercise these native transmission/side passes.
-        // Keep the real canvas path, but rasterize only a tiny hidden viewport.
-        this.drawPreparationPBR(); this.drawPreparationPBR()
+      this.withPreparationVariant(night,()=>this.withDormantArmor(()=>this.drawSceneTarget(this.preparationTargets.anime)))
+    } finally {if(shadows){shadows.autoUpdate=autoUpdate;shadows.needsUpdate=needsUpdate}}
+  }
+  warm() {
+    if(this.warming||this.ready||this.error||this.disposed||!this.scene.getObjectByName('Cyclone_riding_vehicle'))return
+    const night=this.preparationLights().some(light=>light.visible)
+    this.initialNight=night;this.preparedLighting ||=new Set()
+    this.stats.preparation={startMs:performance.now(),initialMode:'ANIME',initialNight:night,initialGLError:this.renderer.getContext?.().getError()||0}
+    this.preparationTargets ||=createPreparationTargets(this.target?.samples||0)
+    const assembly=this.scene.getObjectByName('Cyclone_riding_vehicle').userData.armorPreparation
+    this.warming=Promise.resolve(assembly).then(()=>{
+      if(this.disposed)return
+      this.collect();this.sync()
+      return Promise.all([this.compileVariant(night),this.compileObject(this.quad._mesh)])
+    }).then(()=>{
+      if(this.disposed)return
+      this.stats.preparation.compileMs=performance.now()-this.stats.preparation.startMs
+      const primeStart=performance.now();this.primeVariant(night,true)
+      // Only the starting image gets a full-sized first draw. No repeated
+      // canvas captures or synchronous reflection of hundreds of unused shaders.
+      this.drawSceneTarget()
+      this.preparedLighting.add(night);this.ready=true
+      Object.assign(this.stats.preparation,{primeMs:performance.now()-primeStart,totalMs:performance.now()-this.stats.preparation.startMs,programs:this.renderer.info.programs.length})
+    }).catch(error=>{this.error=error.message})
+  }
+  idleTurn() {
+    return new Promise(resolve=>{
+      const done=()=>{
+        if(!this.disposed&&this.allowBackgroundWork?.()===false){
+          const id=setTimeout(done,50);this.pendingIdle=()=>{clearTimeout(id);this.pendingIdle=null;resolve()};return
+        }
+        this.pendingIdle=null;resolve()
       }
-    } finally {
-      lights.forEach(({ object }, i) => { object.visible = visibility[i] })
-      shadows.autoUpdate = autoUpdate; shadows.needsUpdate = needsUpdate
+      if(typeof requestIdleCallback==='function'){
+        const id=requestIdleCallback(done,{timeout:50});this.pendingIdle=()=>{cancelIdleCallback(id);done()}
+      }else{const id=setTimeout(done,0);this.pendingIdle=()=>{clearTimeout(id);done()}}
+    })
+  }
+  async prepareProgramBindings(programs) {
+    let i=0
+    while(i<programs.length){
+      await this.idleTurn();if(this.disposed)return
+      const deadline=performance.now()+4
+      do{const p=programs[i++];if(p.program){p.getUniforms?.();p.getAttributes?.()}}while(i<programs.length&&performance.now()<deadline)
     }
   }
-  drawPreparationPBR() {
-    const r = this.renderer, previous = r.getRenderTarget()
-    const viewport = r.getViewport(new T.Vector4()), scissor = r.getScissor(new T.Vector4()), scissorTest = r.getScissorTest()
-    try {
-      this.restore(); r.setRenderTarget(null)
-      r.setViewport(0, 0, 16, 16); r.setScissor(0, 0, 16, 16); r.setScissorTest(true)
-      r.render(this.scene, this.camera)
-    } finally {
-      r.setRenderTarget(previous); r.setViewport(viewport); r.setScissor(scissor); r.setScissorTest(scissorTest)
-    }
+  prepareViewVisibility(camera){
+    // Reuse the existing distance/LOD selectors; keep all normal culling.
+    this.scene.traverse(object=>{object.updateDistance?.(camera);object.updateVisibility?.(camera)})
   }
-  drawSceneTarget(anime = true, target = this.target) {
+  async waitForPreparedGpu(){
+    const gl=this.renderer.getContext?.();if(!gl?.fenceSync||gl.isContextLost())return
+    const fence=gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE,0);if(!fence)return
+    gl.flush()
+    try{while(!this.disposed&&!gl.isContextLost()){
+      const result=gl.clientWaitSync(fence,0,0)
+      if(result!==gl.TIMEOUT_EXPIRED)break
+      await this.idleTurn()
+    }}finally{if(!gl.isContextLost())gl.deleteSync(fence)}
+  }
+  async prepareStartupViews(){
+    const views=this.startupViews?.()||[];if(!views.length)return
+    const start=performance.now(),camera=this.camera,shadows=this.renderer.shadowMap,oldAuto=shadows?.autoUpdate,oldNeeds=shadows?.needsUpdate
+    for(const view of views){
+      await this.idleTurn();if(this.disposed)return
+      // Tiny MRT with the same formats/MSAA as gameplay. Upload VAOs, batch
+      // draw buffers and textures for every part of the shot before its fade.
+      // Initial lighting preparation already rendered the static shadow maps.
+      try{
+        if(shadows){shadows.autoUpdate=false;shadows.needsUpdate=false}
+        this.prepareViewVisibility(view);this.camera=view;this.sync()
+        this.withPreparationVariant(this.initialNight,()=>this.drawSceneTarget(this.preparationTargets.anime))
+      }finally{
+        this.camera=camera;this.prepareViewVisibility(camera)
+        if(shadows){shadows.autoUpdate=oldAuto;shadows.needsUpdate=oldNeeds}
+      }
+    }
+    await this.waitForPreparedGpu()
+    this.stats.preparation.startupViews=views.length;this.stats.preparation.startupViewsMs=performance.now()-start
+  }
+  prepareNight() {
+    if(this.backgroundWork||!this.ready||this.disposed)return this.backgroundWork
+    this.backgroundWork=(async()=>{
+      const start=performance.now(),jobs=[false,true]
+      for(const night of jobs){
+        if(this.preparedLighting.has(night))continue
+        // Submit one distinct shader at a time. Queuing the whole night scene
+        // monopolized the driver just as the player pressed T after loading.
+        for(const object of this.preparationObjects()){
+          await this.idleTurn();if(this.disposed)return
+          const existing=new Set(this.renderer.info.programs)
+          await this.compileVariant(night,object);if(this.disposed)return
+          await this.prepareProgramBindings(this.renderer.info.programs.filter(p=>!existing.has(p)));if(this.disposed)return
+        }
+        await this.idleTurn();if(this.disposed)return
+        this.primeVariant(night)
+        this.preparedLighting.add(night)
+      }
+      await this.prepareStartupViews();if(this.disposed)return
+      this.nightReady=true;this.stats.preparation.backgroundMs=performance.now()-start
+      this.preparationTargets?.dispose();this.preparationTargets=null
+    })().catch(error=>{if(!this.disposed)this.error=error.message})
+    return this.backgroundWork
+  }
+  drawSceneTarget(target = this.target) {
     const { renderer, scene, camera } = this
     const previous = renderer.getRenderTarget(), background = scene.background, clearColor = renderer.getClearColor(new T.Color()), clearAlpha = renderer.getClearAlpha(), autoClear = renderer.autoClear
     try {
-      if (anime) this.apply(); else this.restore()
+      this.apply()
       renderer.setRenderTarget(target)
       renderer.setClearColor(background?.isColor ? background : clearColor, 1)
       renderer.clear()
       if (target.textures.length > 1) renderer.getContext().clearBufferfv(renderer.getContext().COLOR, 1, this.zero)
       scene.background = null; renderer.autoClear = false
       renderer.render(scene, camera)
+      if(target===this.target)this.stats.renderTriangles=renderer.info.render.triangles
       return renderer.info.render.calls
     } finally {
       scene.background = background; renderer.autoClear = autoClear; renderer.setClearColor(clearColor, clearAlpha)
@@ -235,6 +306,7 @@ export class AnimeRenderer {
   }
   render(config, day) {
     const { renderer, scene, camera } = this
+    if(this.warming&&!this.ready&&!this.error)return
     this.collect(); this.resize(); this.sync()
     this.brush?.sync(camera)
     Object.assign(this.uniforms.uAnimeCel, { value: config.cel ? 1 : 0 }); this.uniforms.uAnimeLevels.value = config.levels
@@ -244,38 +316,25 @@ export class AnimeRenderer {
     uniforms.uWidth.value = config.width * renderer.getPixelRatio()
     uniforms.uOutlineColor.value.set(config.color).convertLinearToSRGB()
     uniforms.uFogDensity.value = scene.fog?.density || 0; uniforms.uOutlines.value = config.outlines ? 1 : 0
-    uniforms.uCompare.value = config.compare ? 1 : 0; uniforms.uSplit.value = config.split
-    this.stats.mode = config.mode
-    // Do not synchronously draw/compile PBR on every loading frame. Preparing
-    // both styles asynchronously is enough while the DOM loading screen is up.
+    this.stats.mode = 'ANIME'
     if (!this.ready && !this.error) {
-      this.stats.renderCalls = 0
-      this.warm(config.mode); return
+      this.stats.renderCalls = 0;this.warm();return
     }
-    if (config.mode === 'PBR' || this.error) {
-      renderer.render(scene, camera); this.stats.renderCalls = renderer.info.render.calls
-      return
+    if (this.error) {
+      renderer.render(scene,camera);this.stats.renderCalls=renderer.info.render.calls;return
     }
-    let comparisonCalls = 0
-    if (config.compare) {
-      // Copy the actual PBR framebuffer. Rendering PBR into a linear HDR target
-      // would change its fog/tone-mapping order and make the reference inaccurate.
-      this.pbrTexture ||= new T.FramebufferTexture(this.size.x, this.size.y)
-      renderer.setRenderTarget(null); renderer.render(scene, camera)
-      comparisonCalls = renderer.info.render.calls
-      renderer.copyFramebufferToTexture(this.pbrTexture)
-      uniforms.uPbr.value = this.pbrTexture
-    }
-    this.stats.renderCalls = this.drawSceneTarget() + comparisonCalls
+    this.stats.renderCalls = this.drawSceneTarget()
     renderer.setRenderTarget(null); this.quad.render(renderer)
     this.stats.renderCalls += renderer.info.render.calls
+    this.stats.renderTriangles+=renderer.info.render.triangles
+    publishRenderMetrics(renderer,this.stats)
   }
   dispose() {
-    this.disposed = true; this.restore()
+    this.disposed = true; this.pendingIdle?.(); this.restore()
     for (const record of this.sources.values()) { record.material.onBeforeCompile = record.compile; record.material.customProgramCacheKey = record.cacheKey }
     for (const record of this.records.values()) record.variant.dispose()
     this.brush?.dispose()
     this.preparationTargets?.dispose(); this.preparationTargets = null
-    this.target.dispose(); this.pbrTexture?.dispose(); this.composite.dispose(); this.quad.dispose()
+    this.target.dispose(); this.composite.dispose(); this.quad.dispose()
   }
 }

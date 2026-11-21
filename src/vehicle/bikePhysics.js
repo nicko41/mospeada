@@ -33,6 +33,8 @@ export function createBikeState(start, metrics, sample) {
     riderMode: 'mounted', dismountBlend: 0, pedestrian: null,
     throttlePressed: false, launchTime: 0,
     boostPressed: false, boostTime: 0, boostCooldown: 0, boostCount: 0,
+    boostMode:'ground',airBoostUsed:false,airBoostCount:0,airBoostBlend:0,airBoostGroundTime:0,
+    frontHasSurface:true,rearHasSurface:true,
   }
   const f = sample(start.x + Math.sin(start.yaw) * metrics.frontZ, start.z + Math.cos(start.yaw) * metrics.frontZ)
   const r = sample(start.x + Math.sin(start.yaw) * metrics.rearZ, start.z + Math.cos(start.yaw) * metrics.rearZ)
@@ -66,10 +68,18 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
   s.boostTime = Math.max(0, s.boostTime - dt)
   s.launchTime = Math.max(0, s.launchTime - dt)
   s.boostKick = (s.boostKick || 0) * Math.exp(-dt * 20)
-  // One turbine impulse per press, including in flight. Holding Shift never retriggers.
-  if (input.boost && !s.boostPressed && s.boostCooldown <= 1e-8 && !input.brake && !input.brakeReverse && !input.reverse && !input.handbrake && s.speed >= 0) {
-    s.speed = Math.min(Math.max(c.maxSpeed, c.boostMaxSpeed), s.speed + c.boostImpulse)
-    s.boostTime = c.boostDuration; s.boostCooldown = c.boostCooldown; s.boostCount++
+  const airPreset=c.airBoostEnabled&&s.airborne
+  s.airBoostGroundTime=s.frontGrounded&&s.rearGrounded?(s.airBoostGroundTime||0)+dt:0
+  if(s.airBoostGroundTime>.12)s.airBoostUsed=false
+  // A fresh airborne press has its own charge, independent of ground cooldown.
+  // The charge returns only after a stable two-wheel landing, never in flight.
+  if (input.boost && !s.boostPressed && (airPreset?!s.airBoostUsed:s.boostCooldown <= 1e-8) && !input.brake && !input.brakeReverse && !input.reverse && !input.handbrake && s.speed >= 0) {
+    s.boostMode=airPreset?'air':'ground'
+    s.speed = Math.max(s.speed,Math.min(Math.max(c.maxSpeed, airPreset?c.airBoostMaxSpeed:c.boostMaxSpeed), s.speed + (airPreset?c.airBoostImpulse:c.boostImpulse)))
+    s.boostTime = airPreset?c.airBoostDuration:c.boostDuration
+    if(airPreset){s.airBoostUsed=true;s.airBoostCount++;s.frontVelocity+=c.airBoostVerticalImpulse;s.rearVelocity+=c.airBoostVerticalImpulse}
+    else s.boostCooldown = c.boostCooldown
+    s.boostCount++
     s.boostKick = 1
     s.parked = false
   }
@@ -98,14 +108,14 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
     s.speed = Math.sign(s.speed) * Math.max(0, speed - c.braking * input.brake * traction * dt)
     force = 0
   } else {
-    const turbine = c.boostAcceleration * (s.boostTime / c.boostDuration)
+    const turbine = (s.boostMode==='air'?c.airBoostAcceleration:c.boostAcceleration) * (s.boostTime / (s.boostMode==='air'?c.airBoostDuration:c.boostDuration))
     const rearDrive = input.reverse ? traction : s.rearGrounded ? 1 - s.handbrake : 0
     s.speed += (force * rearDrive + turbine - c.gravity * grade * traction) * dt
     s.speed = Math.sign(s.speed) * Math.max(0, Math.abs(s.speed) - drag * dt)
   }
   if (s.speed < 0 && !input.reverse && traction) s.speed = Math.min(0, s.speed + c.reverseFootBrake * dt)
   if (s.handbrake > 0.01 && traction) s.speed = Math.sign(s.speed) * Math.max(0, Math.abs(s.speed) - s.handbrake * c.handbrakeDeceleration * dt)
-  s.speed = clamp(s.speed, -c.reverseSpeed, Math.max(c.maxSpeed, c.boostMaxSpeed))
+  s.speed = clamp(s.speed, -c.reverseSpeed, Math.max(c.maxSpeed, c.boostMaxSpeed,c.airBoostEnabled&&(s.airBoostUsed||s.speed>c.boostMaxSpeed)?c.airBoostMaxSpeed:0))
   if ((input.brake || s.handbrake > 0.1) && Math.abs(s.speed) < 0.025 && traction) s.parked = true
   // Scott holds the stopped bike with brake and left foot until drive input.
   if (s.parked && traction && !input.throttle && !input.reverse) s.speed = 0
@@ -113,6 +123,7 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
   s.acceleration = damp(s.acceleration, (s.speed - previousSpeed) / dt, 9, dt)
   s.brakeBlend = damp(s.brakeBlend, (input.brake || 0) * clamp(Math.abs(s.speed) / 2, 0, 1), 18, dt)
   s.boostBlend = damp(s.boostBlend, s.boostTime / c.boostDuration, input.brake || input.handbrake ? 20 : 14, dt)
+  s.airBoostBlend=damp(s.airBoostBlend||0,s.boostMode==='air'&&s.boostTime>0?1:0,14,dt)
   s.handbrakeTime = input.handbrake ? s.handbrakeTime + dt : s.handbrake < 0.02 ? 0 : s.handbrakeTime
   const groundYawRate = s.speed * Math.tan(s.steer) / m.wheelbase
   if (traction && s.speed === 0) s.yawRate = 0
@@ -125,12 +136,12 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
     const turnFade = clamp((c.handbrakeTurnDuration - s.handbrakeTime) / 0.65, 0, 1)
     const oversteer = clamp(groundYawRate * c.handbrakeYawMultiplier, -c.handbrakeYawRate, c.handbrakeYawRate) * turnFade
     s.yawRate = damp(s.yawRate, (oversteer + wag) * s.handbrake * moving, 11, dt)
-  } else s.yawRate = s.frontGrounded ? damp(s.yawRate, groundYawRate, 18, dt) : damp(s.yawRate, 0, 1.5, dt)
+  } else s.yawRate = s.frontGrounded ? damp(s.yawRate, groundYawRate, 18, dt) : damp(s.yawRate,c.airBoostEnabled?(input.steer||0)*c.airSteerRate:0,c.airBoostEnabled?c.airSteerResponse:1.5,dt)
   const yaw = s.yaw + s.yawRate * dt, middleYaw = (s.yaw + yaw) / 2, previousTravelYaw = s.travelYaw
   const drifting = s.handbrake > 0.02 || Math.abs(s.slip) > 0.002
   if (drifting || !traction) {
     const slidingGrip = c.recoveryGrip + (c.handbrakeGrip - c.recoveryGrip) * clamp(Math.abs(s.speed) / 8, 0, 1)
-    const grip = traction ? s.handbrake > 0.1 ? slidingGrip : c.recoveryGrip : 0
+    const grip = traction ? s.handbrake > 0.1 ? slidingGrip : c.recoveryGrip : c.airBoostEnabled?c.airTravelGrip:0
     s.travelYaw += wrapAngle(yaw - s.travelYaw) * (1 - Math.exp(-grip * dt))
     const slip = traction ? clamp(wrapAngle(yaw - s.travelYaw), -c.maxDriftAngle, c.maxDriftAngle) : wrapAngle(yaw - s.travelYaw)
     s.travelYaw = yaw - slip; s.slip = slip
@@ -154,8 +165,13 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
     s.rearSpin = (s.rearSpin + s.rearAngularSpeed * dt) % (Math.PI * 2)
   }
   const forward = Math.sin(s.yaw), along = Math.cos(s.yaw)
-  s.frontGround = sample(s.x + forward * m.frontZ, s.z + along * m.frontZ, s.frontContact)
-  s.rearGround = sample(s.x + forward * m.rearZ, s.z + along * m.rearZ, s.rearContact)
+  for(const side of ['front','rear']){
+    const ground=sample(s.x+forward*m[side+'Z'],s.z+along*m[side+'Z'],s[side+'Contact'])
+    s[side+'HasSurface']=Number.isFinite(ground)
+    // Retain a finite last-support reference for attitude/rig calculations;
+    // HasSurface=false explicitly removes support in verticalDynamics.
+    if(Number.isFinite(ground))s[side+'Ground']=ground
+  }
   const resting = Math.abs(s.speed) < 0.35 && !input.throttle && !input.reverse && !s.reverseIntent && s.frontGrounded && s.rearGrounded
   s.idleBlend = damp(s.idleBlend, resting ? 1 : 0, c.idlePoseResponse, dt)
   s.idleTime = s.idleBlend > 0.5 ? s.idleTime + dt : 0
@@ -168,7 +184,7 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
   updateVerticalDynamics(s, dt, m, c)
   const rightGround = sample(s.x + along * 0.38, s.z - forward * 0.38)
   const leftGround = sample(s.x - along * 0.38, s.z + forward * 0.38)
-  s.bank = damp(s.bank, traction ? Math.atan2(rightGround - leftGround, 0.76) : 0, traction ? 12 : 0.5, dt)
+  s.bank = damp(s.bank, traction&&Number.isFinite(rightGround)&&Number.isFinite(leftGround) ? Math.atan2(rightGround - leftGround, 0.76) : 0, traction ? 12 : 0.5, dt)
   updateRiderMotion(s, dt, c)
 }
 

@@ -20,18 +20,29 @@ export class ArmorLocomotion{
       // every original joint track. Never edit the source AnimationClip.
       const end=new Vector3().fromArray(track.values,track.values.length-3),duration=clip.duration
       for(let i=0;i<track.times.length;i++)for(const axis of [0,2])track.values[i*3+axis]-=(end.getComponent(axis)-start.getComponent(axis))*track.times[i]/duration
-      this.clips.set(name,clip);this.info.set(name,{sourceName,start,speed:this.measureSpeed(instance.sourceScene,clip,actorScale)})
+      this.clips.set(name,clip);this.info.set(name,{sourceName,start,...this.measureGait(instance.sourceScene,clip,actorScale)})
     }
   }
-  measureSpeed(source,clip,scale){
-    const model=clone(source),mixer=new AnimationMixer(model),action=mixer.clipAction(clip).play(),hips=model.getObjectByName('mixamorigHips'),feet=['Left','Right'].map(side=>model.getObjectByName(`mixamorig${side}Foot`)),ranges=feet.map(()=>({min:Infinity,max:-Infinity})),p=new Vector3(),h=new Vector3()
-    for(let i=0;i<60;i++){
-      action.time=clip.duration*i/60;mixer.update(0);model.updateMatrixWorld(true);hips.getWorldPosition(h)
-      feet.forEach((foot,j)=>{foot.getWorldPosition(p);const z=(p.z-h.z)*scale;ranges[j].min=Math.min(ranges[j].min,z);ranges[j].max=Math.max(ranges[j].max,z)})
+  measureGait(source,clip,scale){
+    const model=clone(source),mixer=new AnimationMixer(model),action=mixer.clipAction(clip).play(),feet=['Left','Right'].map(side=>model.getObjectByName(`mixamorig${side}Foot`)),frames=[],count=180
+    for(let i=0;i<=count;i++){
+      action.time=clip.duration*i/count;mixer.update(0);model.updateMatrixWorld(true)
+      frames.push(feet.map(foot=>foot.getWorldPosition(new Vector3()).multiplyScalar(scale)))
+    }
+    const supportSpeeds=[],floors=feet.map((_,side)=>Math.min(...frames.map(f=>f[side].y))),step=clip.duration/count
+    for(let i=1;i<count;i++)for(let side=0;side<2;side++){
+      const backward=(frames[i-1][side].z-frames[i+1][side].z)/(2*step)
+      // Calibrate the in-place clip from its low, backward-moving support
+      // foot. The airborne recovery must not inflate/shorten stride distance.
+      if(frames[i][side].y<floors[side]+.065&&backward>.05)supportSpeeds.push(backward)
     }
     mixer.stopAllAction();mixer.uncacheRoot(model)
-    return Math.max(.1,ranges.reduce((n,r)=>n+2*(r.max-r.min)/clip.duration,0)/ranges.length)
+    supportSpeeds.sort((a,b)=>a-b)
+    if(supportSpeeds.length<6)throw Error(`No se pudo medir el apoyo del clip original ${clip.name}`)
+    const speed=supportSpeeds[Math.floor(supportSpeeds.length/2)],contactPhase=frames.findIndex(f=>f[0].y===floors[0])/count
+    return{speed,cycleDistance:speed*clip.duration,contactPhase}
   }
+  groundGait(speed){this.gait=speed>(this.gait==='Armor_Run'?3:3.5)?'Armor_Run':'Armor_Walk';return this.gait}
   restore(){if(!this.applied)return;for(const r of this.records){r.bone.position.copy(r.p);r.bone.quaternion.copy(r.q);r.bone.scale.copy(r.s)}this.applied=false}
   capture(name){
     const info=this.info.get(name);if(!info)return
@@ -43,7 +54,7 @@ export class ArmorLocomotion{
   }
   apply(armor,dt,paused){
     if(!armor?.active){this.weight=0;return}
-    const target=armor.state.mode==='ARMOR_GROUND'&&!armor.state.jump&&armor.state.height<.45&&(armor.state.speed>.05||armor.state.groundTurn)?1:0
+    const target=armor.state.mode==='ARMOR_GROUND'&&!armor.state.jump&&!armor.state.groundLanding&&armor.state.height<.45&&(armor.state.speed>.05||armor.state.groundTurn)?1:0
     if(!paused)this.weight+=(target-this.weight)*(1-Math.exp(-dt*12))
     if(this.weight>.999)this.weight=1
     if(!this.ready||this.weight<1e-5)return

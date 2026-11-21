@@ -1,4 +1,5 @@
 // Metres, seconds, radians. Suspension limits keep the telescopic legs seated.
+import {FOREST_SPAWN} from '../world/forest/forestCrashConfig.js'
 export const bikeConfig = {
   acceleration: 10, braking: 26, maxSpeed: 60, reverseSpeed: 0.9,
   reversePushAcceleration: 1.8, reverseFootBrake: 2.5, reversePause: 0.18, reverseStride: 0.68,
@@ -6,6 +7,11 @@ export const bikeConfig = {
   launchAcceleration: 4, launchDuration: 0.38,
   boostImpulse: 10, boostAcceleration: 18, boostDuration: 0.55,
   boostCooldown: 1.5, boostMaxSpeed: 80,
+  // Plano 2 opts into this separate, once-per-flight impulse. Ground values
+  // above and the approved behavior of Plano 1/highway remain unchanged.
+  airBoostEnabled:false, airBoostImpulse:60, airBoostAcceleration:12,
+  airBoostDuration:.32, airBoostMaxSpeed:118, airBoostVerticalImpulse:2.5,
+  airSteerRate:.20, airSteerResponse:2, airTravelGrip:.6,
   steeringSensitivity: 0.52, steeringResponse: 6.5, maxLateralAcceleration: 6.2,
   mechanicalSteerLimit: 0.52,
   guardClearanceAngle: 0.20,
@@ -37,7 +43,7 @@ export const bikeConfig = {
   wheelieDropAcceleration: 12, wheelieMaxLandingSpeed: 5.5, wheelieImpactLever: 1.4,
   dismountDuration: 1.1, walkSpeed: 1.7, runSpeed: 4.2, walkStride: 0.9,
   cameraSmoothing: 3.4, cameraTargetSmoothing: 6,
-  cameraDistance: 3.5, cameraHeight: 1.9, cameraLookAhead: 0.4,
+  cameraDistance: 4.5, cameraHeight: 2.1, cameraLookAhead: 0.4,
   cameraSpeedPullback: 0.006, cameraMouseSensitivity: 0.0035, cameraReturnDelay: 1.4,
   fixedStep: 1 / 120,
 }
@@ -48,4 +54,5 @@ export const TEST_STARTS = {
   slope: { x: 50, z: -92, yaw: 0, label: 'Pendiente · terraplén' },
   rough: { x: 16, z: -180, yaw: Math.PI, label: 'Campo irregular' },
   jump: { x: 50, z: -160, yaw: 0, label: 'Cresta · salto por inercia' },
+  forest: FOREST_SPAWN,
 }

@@ -1,0 +1,263 @@
+{
+  "audit": {
+    "config": {
+      "x": 10,
+      "z": -10,
+      "yaw": 0.65,
+      "pitch": -0.045,
+      "roll": -0.14,
+      "length": 16,
+      "previousLength": 10,
+      "sourceLength": 1.902529001235962,
+      "burial": 0.3,
+      "model": "/models/mospeada/alpha-fighter-down.glb"
+    },
+    "scale": 8.409858661605545,
+    "y": 1.9689849756024234,
+    "supportSamples": 47565,
+    "worldMin": [
+      1.1791911981713454,
+      -1.1777580284198452,
+      -19.47559614990989
+    ],
+    "worldMax": [
+      18.80387071811428,
+      5.108159593773748,
+      -0.5426863812103786
+    ],
+    "sourceSize": [
+      1.902529001235962,
+      0.5084750056266785,
+      1.1396620273590088
+    ],
+    "materials": [
+      {
+        "name": "Alpha crashed / preserved livery + local dirt and scuffs",
+        "map": true,
+        "normal": true,
+        "roughness": true,
+        "triangles": 104994
+      }
+    ],
+    "contact": [
+      {
+        "minGap": -0.2999999956728987,
+        "buriedVertices": 329,
+        "vertices": 73113
+      }
+    ],
+    "colliders": [
+      {
+        "type": "box",
+        "minX": 4.960181173451341,
+        "maxX": 7.481277499778323,
+        "minY": 0.6839255869055874,
+        "maxY": 2.5343597136384215,
+        "minZ": -16.367804607160704,
+        "maxZ": -13.538077837887196,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": 0
+      },
+      {
+        "type": "box",
+        "minX": 5.828164305407634,
+        "maxX": 9.348706459672616,
+        "minY": 0.516515078728095,
+        "maxY": 3.2198505316463084,
+        "minZ": -15.069269271533717,
+        "maxZ": -11.312139669524738,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": 1
+      },
+      {
+        "type": "box",
+        "minX": 7.18884802781456,
+        "maxX": 11.470367582741028,
+        "minY": 0.23814829475512922,
+        "maxY": 3.757329844476197,
+        "minZ": -13.139447062415263,
+        "maxZ": -8.661161176300778,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": 2
+      },
+      {
+        "type": "box",
+        "minX": 8.56466898522406,
+        "maxX": 14.116899793664766,
+        "minY": 0.049895183734100845,
+        "maxY": 3.7730583914177873,
+        "minZ": -10.969881398811948,
+        "maxZ": -5.428902123755968,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": 3
+      },
+      {
+        "type": "box",
+        "minX": 10.197469074329984,
+        "maxX": 15.952983721793736,
+        "minY": 0.1456392111855851,
+        "maxY": 3.778152721352388,
+        "minZ": -8.659594363886463,
+        "maxZ": -3.139202712978383,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": 4
+      },
+      {
+        "type": "box",
+        "minX": 7.299710528723676,
+        "maxX": 11.453056174789197,
+        "minY": 1.524420851545178,
+        "maxY": 3.0230980725053693,
+        "minZ": -8.192735965910515,
+        "maxZ": -3.6508396242247922,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": 5,
+        "queryId": 1787
+      },
+      {
+        "type": "box",
+        "minX": 11.988906185964819,
+        "maxX": 16.14225183203034,
+        "minY": 0.6991618931438859,
+        "maxY": 2.1978391141040774,
+        "minZ": -11.710802443350818,
+        "maxZ": -7.168906101665096,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": 6
+      },
+      {
+        "type": "box",
+        "minX": 12.276689901140712,
+        "maxX": 15.069914987702536,
+        "minY": 2.1429970359698416,
+        "maxY": 4.543431514032637,
+        "minZ": -6.861155699966047,
+        "maxZ": -3.9913543744904505,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": 7
+      },
+      {
+        "type": "box",
+        "minX": 4.610181173451341,
+        "maxX": 7.831277499778323,
+        "minY": -0.10602493945649807,
+        "maxY": 0.5382742560590114,
+        "minZ": -16.717804607160705,
+        "maxZ": -13.188077837887196,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": "contact-0"
+      },
+      {
+        "type": "box",
+        "minX": 5.478164305407635,
+        "maxX": 9.698706459672616,
+        "minY": -0.14005401861104252,
+        "maxY": 0.5967595697081451,
+        "minZ": -15.419269271533716,
+        "maxZ": -10.962139669524738,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": "contact-1"
+      },
+      {
+        "type": "box",
+        "minX": 6.83884802781456,
+        "maxX": 11.820367582741028,
+        "minY": -0.1734278950263063,
+        "maxY": 0.6378668556899514,
+        "minZ": -13.489447062415262,
+        "maxZ": -8.311161176300779,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": "contact-2"
+      },
+      {
+        "type": "box",
+        "minX": 8.21466898522406,
+        "maxX": 14.466899793664766,
+        "minY": -0.1885105874962577,
+        "maxY": 0.7661952197288522,
+        "minZ": -11.319881398811948,
+        "maxZ": -5.078902123755968,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": "contact-3"
+      },
+      {
+        "type": "box",
+        "minX": 9.847469074329984,
+        "maxX": 16.302983721793737,
+        "minY": -0.15577621349912762,
+        "maxY": 0.8575798016323855,
+        "minZ": -9.009594363886462,
+        "maxZ": -2.789202712978383,
+        "vaultable": false,
+        "walkable": false,
+        "environment": true,
+        "source": "forest-alpha",
+        "part": "contact-4"
+      }
+    ],
+    "actorScale": 1.2607598654177716,
+    "gl": 0,
+    "shader": "",
+    "cycloneBlocked": {
+      "x": 5.688463246171906,
+      "z": -10,
+      "blocked": true
+    },
+    "standingScottHeight": 2.124694890972842,
+    "scottCollision": {
+      "x": 6.596005609093257,
+      "z": -10.522856711434718,
+      "lastSecondTravel": 0
+    },
+    "armorAccess": {
+      "blockedInside": true,
+      "canApproach": true
+    },
+    "cameraClearance": {
+      "distanceFromScott": 4.1,
+      "position": [
+        2.496005609093257,
+        2.079675126246225,
+        -10.522856711434718
+      ]
+    }
+  },
+  "errors": [],
+  "failedAssets": []
+}

@@ -26,7 +26,10 @@ export class ArmorReactiveMotion{
       this.vertical=damp(this.vertical,clamp(flight+Math.max(0,a.ay)/armorConfig.jumpAcceleration*.6+Math.max(0,a.vy)/armorConfig.maxRiseSpeed*.25,0,.75),7,dt)
       this.groundBlend=damp(this.groundBlend,ground?1:0,10,dt)
     }
-    const lean=(this.boost*.24-this.reverse*.22+this.forward)*intensity,bank=this.side*intensity,tuck=this.vertical*(1-Math.max(this.boost,this.reverse))*intensity
+    const lean=(this.boost*.24-this.reverse*.22+this.forward)*intensity,bank=this.side*intensity
+    // A powered jump still gathers both knees when Shift is held. Horizontal
+    // thrust must not erase the airborne flexion into two straight legs.
+    const tuck=Math.max(this.vertical*(1-Math.max(this.boost,this.reverse)),a.jump?this.vertical*.85:0)*intensity
     const sideFlex=(a.mode==='ARMOR_HOVER'||a.jump?a.boostBlend:0)*clamp(Math.abs(this.side)/.30,0,1)*intensity
     for(const r of this.records){
       r.q.copy(r.bone.quaternion)
@@ -41,7 +44,9 @@ export class ArmorReactiveMotion{
         // Both legs counter the lateral lean. Only the leg ON the thrust
         // side receives a mild source-squat bend, before the lateral offset.
         const inside=(n.startsWith('Right')&&this.side<0)||(n.startsWith('Left')&&this.side>0)
-        const flex=Math.max(tuck,inside?sideFlex*(n.endsWith('UpLeg')?.09:n.endsWith('Leg')?(n.startsWith('Right')?.30:.27):n.endsWith('Foot')?.12:.07):0)
+        // The jump layer owns the complete squat/extension chain, including
+        // pelvis translation. Do not stack an independent knee tuck onto it.
+        const flex=Math.max(a.jump?0:tuck,inside?sideFlex*(n.endsWith('UpLeg')?.09:n.endsWith('Leg')?(n.startsWith('Right')?.30:.27):n.endsWith('Foot')?.12:.07):0)
         const track=this.tracks.get('air_squat')?.tracks.get(r.name)
         if(track&&flex>0)r.bone.quaternion.slerp(this.q.fromArray(track.evaluate(.42)).normalize(),flex)
       }

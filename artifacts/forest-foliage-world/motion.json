@@ -1,0 +1,76 @@
+{
+  "rotations": {
+    "frames": 775,
+    "missingFrames": 0,
+    "matrixWrites": 0,
+    "rebuilds": 0,
+    "sectorPreparations": 0,
+    "shaderProgramsBefore": 90,
+    "shaderProgramsAfter": 90
+  },
+  "drive": {
+    "x": 1.4393877060073817e-14,
+    "z": -117.53492574426663,
+    "speed": 0,
+    "boostCount": 1,
+    "metres": 117.53492574426663
+  },
+  "streaming": {
+    "frames": 521,
+    "metres": 693.3333333333334,
+    "simulatedSpeed": 80,
+    "missingFrames": 0,
+    "latePrepares": 0,
+    "prepared": 230,
+    "evicted": 233,
+    "gpuMB": 53.91440709431966,
+    "generations": 1,
+    "pending": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "walk": {
+    "mode": "onFoot",
+    "pedestrian": {
+      "x": -23.94431291701111,
+      "z": -32.28343127403625,
+      "ground": -0.9725432540321374,
+      "yaw": 3.441592653589746,
+      "phase": 14.044082714381409,
+      "moving": true,
+      "motionBlend": 0.9999927414707576,
+      "runBlend": 0,
+      "crouchBlend": 0,
+      "feet": {
+        "Left": {
+          "cycle": 2,
+          "x": -24.15064875884707,
+          "z": -32.27368628464218
+        },
+        "Right": null
+      },
+      "side": 1,
+      "stride": 0.9,
+      "contactDuty": 0.6
+    },
+    "visible": {
+      "groups": 3140,
+      "crossed": 499,
+      "billboards": 2887,
+      "tested": 14071,
+      "projectedScreenArea": 1.7253785017406174,
+      "residentSectors": 226,
+      "pendingSectors": 0,
+      "worldGroups": 683898,
+      "preparedSectors": 226,
+      "latePrepares": 0,
+      "gpuMB": 52.26354344685872
+    },
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": [],
+  "requests": [],
+  "pass": true,
+  "walkRecheckedAfterWaitingForNativeDismount": true
+}

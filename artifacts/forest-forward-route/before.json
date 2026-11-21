@@ -1,0 +1,33 @@
+{
+  "positionHash": "fc1a53bea55aee01700791ab192928840c13ddc5ea475a03950f24235c4d3f79",
+  "layoutHash": "ca4456725dd13d32db915d156cf02034ea79da90ff6824c4f17b8a4c3266e2e6",
+  "FOREST_CRASH": {
+    "x": -26,
+    "z": 4,
+    "yaw": 0.65,
+    "pitch": -0.045,
+    "roll": -0.14,
+    "settledPitch": 0.075,
+    "noseClearance": 0.025,
+    "length": 16,
+    "previousLength": 10,
+    "sourceLength": 1.902529001235962,
+    "burial": 0.3,
+    "model": "/models/mospeada/alpha-fighter-down.glb"
+  },
+  "FOREST_SPAWN": {
+    "x": -35.704101262496955,
+    "z": 0.32298780431652574,
+    "yaw": 2.3707963267948964,
+    "label": "Nivel 01 · Bosque"
+  },
+  "files": {
+    "src/world/forest/forestCrashConfig.js": "f79a32b1ff205970762977885d428ccb237e9dbfc8b43d7ef46888c31263276c",
+    "src/world/forest/forestCrashSite.js": "baee48cba63536f376188461dfe0255756487f4dcb213dd25fcc72bd2a596077",
+    "src/world/forest/forestCrashDressing.js": "9807df57425f5acbcd8a14846f6aefd49da6720d94531c1541ee72c6bc8b56f2",
+    "src/world/forest/forestAlpha.js": "e8c1629e798e05877180dc22f61ecf4a15413587e62efae05aaec7effb38fc43",
+    "src/vehicle/Motorcycle.jsx": "81aeb1507ba37ff1b307d4650e1c8067dbc4a113350b65e82e25a397cd055e79",
+    "src/vehicle/drivingCamera.js": "27af2ee5251c6ecb9fefbea5da1e31c8ad0d0c3a2c301780e1da2e067d288c78",
+    "src/vehicle/bikePhysics.js": "48a3dcc0ba67f660937c735e60cbdef274854bd7f7cd71114a3fcffcd97a1a2f"
+  }
+}

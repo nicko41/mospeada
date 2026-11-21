@@ -91,12 +91,12 @@ test('Ground weight/landing is a reversible original squat response; idle soles 
   landing.restore();for(const p of base){assert.ok(p.b.position.distanceTo(p.p)<1e-10);assert.ok(p.b.quaternion.toArray().every((n,i)=>Math.abs(n-p.q.toArray()[i])<1e-10))}
 })
 
-test('arms rise for actual jumps, diving and touchdown, and sway opposite lateral boost without replacing a grounded gait',async()=>{
+test('arms react to diving and touchdown, and sway opposite lateral boost without replacing a grounded gait',async()=>{
   const f=await fixture(),arms=new ArmorArmMotion(f.instance),a=createArmorState({x:0,z:0,height:.8,yaw:0,speed:0}),armor={active:true,state:a}
   const hands=()=>['Left','Right'].map(side=>f.bones.get(`mixamorig${side}Hand`).getWorldPosition(new T.Vector3()))
   const base=hands(),hips=f.bones.get('mixamorigSpine2'),meanX=()=>hands().map(p=>hips.worldToLocal(p)).reduce((sum,p)=>sum+p.x,0)/2
   const baselineX=meanX()
-  for(const kind of ['jump','dive','impact']){
+  for(const kind of ['dive','impact']){
     a.jump=kind==='jump'?{phase:'powered'}:null;a.vy=kind==='jump'?10:kind==='dive'?-16:0;a.diveBlend=kind==='dive'?1:0;a.mode=kind==='impact'?'ARMOR_GROUND':'ARMOR_HOVER';a.settle=kind==='impact'?1:0
     for(let i=0;i<100;i++){arms.restore();arms.apply(armor,{bank:0},1/60,false);f.wrapper.updateMatrixWorld(true)}
     assert.ok(hands().every((p,i)=>p.y>base[i].y+.08),kind+' must visibly raise both hands')
@@ -109,6 +109,19 @@ test('arms rise for actual jumps, diving and touchdown, and sway opposite latera
     arms.restore();arms.sway=0
   }
   a.mode='ARMOR_GROUND';a.boostBlend=0;arms.apply(armor,{bank:0},1/60,false);assert.equal(arms.applied,false)
+})
+
+test('jumping gathers both knees even with full forward boost and sweeps both arms backward using the source poses',async()=>{
+  const f=await fixture(),reaction=new ArmorReactiveMotion(f.instance,f.wrapper),arms=new ArmorArmMotion(f.instance)
+  const a=createArmorState({x:0,z:0,height:4,yaw:0,speed:0}),armor={active:true,state:a}
+  Object.assign(a,{height:4,vy:10,ay:22,localForward:32,boostBlend:1,jump:{phase:'powered'}})
+  const axis=new T.Vector3(0,0,1).transformDirection(f.instance.model.matrixWorld)
+  const hand=side=>f.bones.get(`mixamorig${side}Hand`).getWorldPosition(new T.Vector3()).sub(f.bones.get(`mixamorig${side}Shoulder`).getWorldPosition(new T.Vector3())).dot(axis)
+  const base=['Left','Right'].map(hand)
+  for(let i=0;i<60;i++){arms.restore();reaction.restore();reaction.apply(a,1/60,false);arms.apply(armor,reaction.diagnostics,1/60,false);f.wrapper.updateMatrixWorld(true)}
+  assert.ok(reaction.diagnostics.boost>.9&&reaction.diagnostics.tuck>.5)
+  assert.ok(arms.diagnostics.jumpBack>.9)
+  for(const [i,side]of ['Left','Right'].entries())assert.ok(hand(side)<base[i]-.08,`${side} arm must sweep backward during the jump`)
 })
 
 test('returning from Armor releases its raised pelvis and restores the seated Motorcycle base after landing',async()=>{

@@ -28,47 +28,23 @@ test('uniform-only Anime differences reuse a program without sharing their mater
   variants.forEach(m => m.dispose()); source.dispose()
 })
 
-test('hidden preparation uses tiny targets and reuses shadow maps after light counts stabilize', () => {
+test('Anime preparation keeps full resolution and only draws the active shadow maps once', () => {
   const targets = createPreparationTargets(4), lamp = { visible: false }, draws = []
   const shadowMap = { autoUpdate: true, needsUpdate: false }
   const fullTarget = new T.WebGLRenderTarget(1920, 1080)
-  const native = []
-  const effect = Object.assign(Object.create(AnimeRenderer.prototype), { preparationTargets: targets, target: fullTarget, renderer: { shadowMap }, sync() {}, drawPreparationPBR() { native.push({ night: lamp.visible, shadow: shadowMap.autoUpdate }) }, drawSceneTarget(anime, target) {
-    draws.push({ night: lamp.visible, anime, shadow: shadowMap.autoUpdate, target })
+  const effect = Object.assign(Object.create(AnimeRenderer.prototype), { scene:new T.Scene(),preparationLights(){return []},preparationTargets: targets, target: fullTarget, renderer: { shadowMap }, sync() {}, withPreparationVariant(night, work) { const previous=lamp.visible;try{lamp.visible=night;return work()}finally{lamp.visible=previous} }, drawSceneTarget(target) {
+    draws.push({ night: lamp.visible, shadow: shadowMap.autoUpdate, target })
   } })
   try {
-    assert.equal(targets.anime.textures.length, 2); assert.equal(targets.pbr.textures.length, 1)
+    assert.equal(targets.anime.textures.length, 2); assert.deepEqual(Object.keys(targets), ['anime','dispose'])
     assert.equal(targets.anime.samples, 4); assert.equal(targets.anime.textures[1].format, T.RedFormat)
-    effect.primePasses([{ object: lamp }])
-    assert.equal(draws.length, 8)
+    effect.primeVariant(false,true);effect.primeVariant(true)
+    assert.equal(draws.length, 2)
     for (const draw of draws) { assert.equal(draw.target.width, 16); assert.equal(draw.target.height, 16) }
-    assert.deepEqual(draws.filter(d => d.shadow).map(d => d.night), [false, false, true, true])
-    assert.ok(native.some(d => !d.night) && native.some(d => d.night))
-    assert.ok(native.every(d => !d.shadow))
+    assert.deepEqual(draws.map(d => [d.night,d.shadow]), [[false,true],[true,false]])
     assert.equal(fullTarget.width, 1920); assert.equal(fullTarget.height, 1080)
     assert.equal(lamp.visible, false); assert.equal(shadowMap.autoUpdate, true); assert.equal(shadowMap.needsUpdate, false)
   } finally { targets.dispose(); fullTarget.dispose() }
-})
-
-test('native PBR preparation uses the canvas output path and restores viewport/scissor even on error', () => {
-  const viewport = new T.Vector4(0, 0, 1920, 1080), scissor = new T.Vector4(5, 6, 1800, 1000)
-  const originalTarget = {}, state = { target: originalTarget, viewport: viewport.clone(), scissor: scissor.clone(), test: false }
-  const setRectangle = (key, args) => args[0]?.isVector4 ? state[key].copy(args[0]) : state[key].set(...args)
-  const renderer = {
-    getRenderTarget: () => state.target, setRenderTarget: target => { state.target = target },
-    getViewport: target => target.copy(state.viewport), setViewport: (...args) => setRectangle('viewport', args),
-    getScissor: target => target.copy(state.scissor), setScissor: (...args) => setRectangle('scissor', args),
-    getScissorTest: () => state.test, setScissorTest: value => { state.test = value },
-    render() {
-      assert.equal(state.target, null); assert.deepEqual(state.viewport.toArray(), [0, 0, 16, 16])
-      assert.deepEqual(state.scissor.toArray(), [0, 0, 16, 16]); assert.equal(state.test, true)
-      throw Error('test render failure')
-    },
-  }
-  const effect = Object.assign(Object.create(AnimeRenderer.prototype), { renderer, restore() {} })
-  assert.throws(() => effect.drawPreparationPBR(), /test render failure/)
-  assert.equal(state.target, originalTarget); assert.equal(state.test, false)
-  assert.ok(state.viewport.equals(viewport) && state.scissor.equals(scissor))
 })
 
 test('starting in Anime triggers preparation and renders Anime after it completes', async () => {
@@ -82,7 +58,7 @@ test('starting in Anime triggers preparation and renders Anime after it complete
     warmCalls++
     effect.warming ||= Promise.resolve().then(() => { effect.ready = true })
   }
-  const config = { ...animeState.defaults, mode: 'ANIME', compare: false, split: .5 }
+  const config = { ...animeState.defaults }
   try {
     effect.render(config, 1)
     assert.equal(warmCalls, 1); assert.equal(nativeDraws, 0); assert.equal(animeDraws, 0)
@@ -93,17 +69,15 @@ test('starting in Anime triggers preparation and renders Anime after it complete
   } finally { effect.dispose() }
 })
 
-test('mode changes retain tuning and PBR closes the comparison', () => {
+test('Anime is the only mode and settings still clamp and reset', () => {
   const previous = animeState.snapshot()
   try {
-    animeState.set({ mode: 'ANIME', compare: true, levels: 9, width: 0, shadow: 3, highlights: -2, split: 2 })
-    assert.deepEqual([animeState.snapshot().levels, animeState.snapshot().width, animeState.snapshot().shadow, animeState.snapshot().highlights, animeState.snapshot().split], [5, 0.5, 1, 0, 1])
-    animeState.set({ mode: 'PBR' })
-    assert.equal(animeState.snapshot().compare, false)
-    assert.equal(animeState.snapshot().levels, 5)
+    animeState.set({ mode: 'PBR', compare: true, levels: 9, width: 0, shadow: 3, highlights: -2, split: 2 })
+    assert.deepEqual([animeState.snapshot().levels, animeState.snapshot().width, animeState.snapshot().shadow, animeState.snapshot().highlights], [5, 0.5, 1, 0])
+    assert.equal(animeState.snapshot().mode,'ANIME')
+    assert.equal(animeState.snapshot().compare,undefined);assert.equal(animeState.snapshot().split,undefined)
     animeState.reset()
-    assert.equal(animeState.snapshot().mode, 'PBR')
-    assert.equal(animeState.snapshot().levels, 3)
+    assert.equal(animeState.snapshot().mode, 'ANIME');assert.equal(animeState.snapshot().levels, 3)
   } finally { animeState.set(previous) }
 })
 
@@ -164,7 +138,7 @@ test('prewarming excludes empty grass slots without changing their materials or 
   const grass = new T.InstancedMesh(new T.PlaneGeometry(), new T.ShaderMaterial(), 3)
   grass.name = 'Grass_highway_tile_0'; grass.visible = false; root.add(grass)
   const source = grass.material, originalGeometry = grass.geometry
-  const effect = Object.assign(Object.create(AnimeRenderer.prototype), { scene: root, camera: new T.Camera(), records: new Map(), sources: new Map(), bindings: [], uniforms: {}, stats: {}, quad: { _mesh: new T.Mesh() }, drawSceneTarget() {}, primePasses() {} })
+  const effect = Object.assign(Object.create(AnimeRenderer.prototype), { scene: root, camera: new T.Camera(), records: new Map(), sources: new Map(), bindings: [], uniforms: {}, stats: {}, quad: { _mesh: new T.Mesh() }, drawSceneTarget() {}, primeVariant() {} })
   effect.renderer = { info: { programs: [] }, getRenderTarget: () => null, setRenderTarget() {}, compileAsync(object) {
     object.traverse(node => { if (node === grass) assert.equal(node.material, null, 'Unpopulated grass cannot compile without instanceColor') })
     return Promise.resolve()
@@ -177,22 +151,32 @@ test('prewarming excludes empty grass slots without changing their materials or 
   for (const record of effect.records.values()) record.variant.dispose()
 })
 
-test('prewarming covers both material modes and light counts and restores the live scene', async () => {
+test('startup prepares only current Anime lighting and defers the other lighting until playable', async () => {
   const scene = new T.Scene(), root = new T.Group(); root.name = 'Cyclone_riding_vehicle'; scene.add(root)
   const material = new T.MeshStandardMaterial(), mesh = new T.Mesh(new T.BoxGeometry(), material); root.add(mesh)
   const lamp = new T.SpotLight(); lamp.name = 'Cyclone_headlight_left'; lamp.visible = false; root.add(lamp)
-  const target = { name: 'HDR' }, calls = [], screen = new T.Mesh(), camera = new T.Camera()
-  let currentTarget = null, primed = false
-  const effect = Object.assign(Object.create(AnimeRenderer.prototype), { scene, camera, target, records: new Map(), sources: new Map(), bindings: [], uniforms: {}, stats: {}, quad: { _mesh: screen }, drawSceneTarget() {}, primePasses() { primed = true; assert.equal(mesh.material, material); assert.equal(lamp.visible, false) } })
+  const target = { name: 'HDR' }, calls = [], primes = [], screen = new T.Mesh(), camera = new T.Camera()
+  let currentTarget = null
+  const effect = Object.assign(Object.create(AnimeRenderer.prototype), { scene, camera, target, records: new Map(), sources: new Map(), bindings: [], uniforms: {}, stats: {}, quad: { _mesh: screen }, drawSceneTarget() {}, primeVariant(night,initial=false) { primes.push([night,initial]);assert.equal(mesh.material, material);assert.equal(lamp.visible, false) } })
   effect.renderer = { info: { programs: [] }, getRenderTarget: () => currentTarget, setRenderTarget(value) { currentTarget = value }, compileAsync(object) {
     if (object === scene) calls.push({ night: lamp.visible, anime: mesh.material !== material, target: currentTarget })
     return Promise.resolve()
   } }
-  effect.collect(); effect.warm(); await effect.warming; await Promise.resolve()
-  assert.deepEqual(calls.map(c => [c.night, c.anime, !!c.target]), [[false, false, false], [false, false, true], [false, true, true], [true, false, false], [true, false, true], [true, true, true]])
-  for (const call of calls.filter(c => c.target)) { assert.equal(call.target.width, 16); assert.equal(call.target.height, 16); assert.notEqual(call.target, target) }
+  let finishAssembly;root.userData.armorPreparation=new Promise(resolve=>{finishAssembly=resolve})
+  effect.collect();effect.warm();await Promise.resolve();assert.equal(calls.length,0);assert.ok(!effect.ready)
+  finishAssembly();await effect.warming
+  assert.equal(effect.ready,true);assert.ok(!effect.nightReady)
+  assert.deepEqual(calls.map(c=>[c.night,c.anime]),[[false,true]])
+  assert.deepEqual(primes,[[false,true]])
+  let transforming=true;effect.allowBackgroundWork=()=>!transforming
+  const background=effect.prepareNight();await new Promise(resolve=>setTimeout(resolve,10))
+  assert.equal(calls.length,1,'Background preparation yields to the transformation')
+  transforming=false;await background
+  assert.deepEqual(calls.map(c=>[c.night,c.anime]),[[false,true],[true,true]])
+  assert.deepEqual(primes,[[false,true],[true,false]])
+  for (const call of calls) { assert.equal(call.target.width, 16); assert.equal(call.target.height, 16); assert.notEqual(call.target, target) }
   assert.equal(currentTarget, null); assert.equal(lamp.visible, false); assert.equal(mesh.material, material)
-  assert.ok(primed && effect.ready)
+  assert.ok(effect.nightReady);assert.equal(effect.preparationTargets,null)
   for (const record of effect.records.values()) record.variant.dispose()
-  mesh.geometry.dispose(); material.dispose()
+  mesh.geometry.dispose();material.dispose()
 })

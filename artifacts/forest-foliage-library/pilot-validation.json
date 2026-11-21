@@ -1,0 +1,79 @@
+{
+  "pass": true,
+  "audit": {
+    "instances": 66,
+    "triangles": 264,
+    "sourceSprites": 24,
+    "usedSprites": 20,
+    "atlas": [
+      2048,
+      2048
+    ],
+    "alphaTest": 0.42,
+    "transparent": false,
+    "depthWrite": true,
+    "colorSpace": "srgb",
+    "castShadow": false,
+    "contactOpacity": 0.14,
+    "stats": {
+      "tree": {
+        "before": 4200,
+        "after": 4200
+      },
+      "shrub": {
+        "before": 11000,
+        "after": 10974
+      },
+      "grass": {
+        "before": 58294,
+        "after": 2702
+      },
+      "plant": {
+        "before": 6570,
+        "after": 222
+      },
+      "rock": {
+        "before": 480,
+        "after": 480
+      },
+      "pebble": {
+        "before": 1800,
+        "after": 1800
+      }
+    },
+    "failures": [],
+    "matrixVersion": 132,
+    "colorVersion": 131,
+    "gl": 0,
+    "shader": ""
+  },
+  "walk": {
+    "x": -12.221017233965577,
+    "z": -14.82017366836038,
+    "ground": -0.3338849300972029,
+    "yaw": 3.491592653589795,
+    "phase": 18.395770316020194,
+    "moving": true,
+    "motionBlend": 0.9999998144608636,
+    "runBlend": 0,
+    "crouchBlend": 0,
+    "feet": {
+      "Left": null,
+      "Right": {
+        "cycle": 3,
+        "x": -11.987708731908253,
+        "z": -14.764286345399194
+      }
+    },
+    "side": 1,
+    "stride": 0.9,
+    "contactDuty": 0.6
+  },
+  "stable": {
+    "matrixVersion": 132,
+    "colorVersion": 131,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

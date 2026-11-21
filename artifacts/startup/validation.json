@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-20T04:50:07.031Z",
+  "integrity": {
+    "materials": true,
+    "geometries": true,
+    "bones": 24,
+    "unchangedBones": true,
+    "samples": 4,
+    "size": [
+      1100,
+      900
+    ],
+    "noPbrTarget": true,
+    "gl": 0
+  },
+  "lighting": [
+    {
+      "day": 0,
+      "gl": 0,
+      "shaderError": "",
+      "invalidPrograms": []
+    },
+    {
+      "day": 1,
+      "gl": 0,
+      "shaderError": "",
+      "invalidPrograms": []
+    }
+  ],
+  "errors": []
+}

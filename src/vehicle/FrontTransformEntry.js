@@ -117,7 +117,7 @@ export class FrontTransformEntry {
     const sequence=sampleFrontSequence(this.store.snapshot().progress)
     if(!this.mechanicalStarted)return sequence
     const p=this.mechanicalProgress
-    return{...sequence,legs:Math.max(sequence.legs,ramp(.22,.4,p)),legLift:ramp(.22,.4,p)*(1-ramp(.7,.88,p)),leftToeDown:ramp(.7,.88,p),rightToeDown:ramp(.22,.64,p)}
+    return{...sequence,departureBoost:this.phase==='armorboost'?ramp(0,.10,this.time)*(1-ramp(.30,.65,this.time)):0,legs:Math.max(sequence.legs,ramp(.22,.4,p)),legLift:ramp(.22,.4,p)*(1-ramp(.7,.88,p)),leftToeDown:ramp(.7,.88,p),rightToeDown:ramp(.22,.64,p)}
   }
   get assemblyDuration(){return this.returnFlight?RETURN_ASSEMBLY_TIME:this.store.snapshot().duration}
   get returnTilt(){

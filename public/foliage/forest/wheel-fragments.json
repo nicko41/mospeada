@@ -1,0 +1,135 @@
+{
+  "source": "approved original foliage library",
+  "tiles": [
+    {
+      "file": "public/foliage/forest/pasto/pasto-bajo-01.png",
+      "polygon": [
+        [
+          84,
+          0
+        ],
+        [
+          104,
+          0
+        ],
+        [
+          88,
+          19
+        ],
+        [
+          73,
+          33
+        ],
+        [
+          69,
+          28
+        ],
+        [
+          76,
+          13
+        ]
+      ]
+    },
+    {
+      "file": "public/foliage/forest/pasto/pasto-bajo-01.png",
+      "polygon": [
+        [
+          24,
+          12
+        ],
+        [
+          28,
+          9
+        ],
+        [
+          40,
+          18
+        ],
+        [
+          53,
+          38
+        ],
+        [
+          49,
+          43
+        ],
+        [
+          38,
+          27
+        ]
+      ]
+    },
+    {
+      "file": "public/foliage/forest/pasto/pasto-bajo-01.png",
+      "polygon": [
+        [
+          0,
+          42
+        ],
+        [
+          16,
+          38
+        ],
+        [
+          33,
+          40
+        ],
+        [
+          47,
+          51
+        ],
+        [
+          44,
+          57
+        ],
+        [
+          30,
+          48
+        ],
+        [
+          13,
+          46
+        ],
+        [
+          0,
+          48
+        ]
+      ]
+    },
+    {
+      "file": "public/foliage/forest/hierbas/hojas-anchas-01.png",
+      "polygon": [
+        [
+          110,
+          45
+        ],
+        [
+          134,
+          37
+        ],
+        [
+          158,
+          43
+        ],
+        [
+          175,
+          58
+        ],
+        [
+          171,
+          63
+        ],
+        [
+          150,
+          66
+        ],
+        [
+          131,
+          59
+        ]
+      ]
+    }
+  ],
+  "width": 128,
+  "height": 128
+}

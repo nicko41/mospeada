@@ -1,5 +1,12 @@
 import { HalfFloatType, LinearSRGBColorSpace, NoColorSpace, RedFormat, UnsignedByteType, WebGLRenderTarget } from 'three'
 
+export function startupRenderReady(render,openingPhase){
+  return !!render.error||!!render.ready&&(openingPhase==='done'||!!render.nightReady)
+}
+export function canPrepareLighting(ready,gameReady,openingPhase){
+  return !!ready&&openingPhase!=='playing'&&(gameReady||openingPhase==='loading')
+}
+
 // These targets are only for hidden preparation draws. The live render target,
 // camera, textures, geometry and shadow-map resolution are never reduced.
 export function createPreparationTargets(samples = 0) {
@@ -8,13 +15,11 @@ export function createPreparationTargets(samples = 0) {
   anime.textures[1].type = UnsignedByteType
   anime.textures[1].format = RedFormat
   anime.textures[1].colorSpace = NoColorSpace
-  const pbr = new WebGLRenderTarget(16, 16, { type: HalfFloatType, samples })
-  pbr.texture.colorSpace = LinearSRGBColorSpace
-  return { anime, pbr, dispose() { anime.dispose(); pbr.dispose() } }
+  return { anime, dispose() { anime.dispose() } }
 }
 
 // Hero, glass, shadow mask and upholstery shine are uniforms. Their values
 // require separate material instances, but not separately compiled programs.
 export function animeProgramKey(profile) {
-  return `mospeada-anime-v2|grass:${!!profile.grass}|brush:${!!profile.brush}`
+  return `mospeada-anime-v2|grass:${!!profile.grass}|brush:${!!profile.brush}${profile.natural ? '|natural:true' : ''}`
 }

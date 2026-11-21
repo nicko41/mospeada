@@ -1,0 +1,146 @@
+{
+  "images": [
+    "spawn"
+  ],
+  "medianMs": 41.599999999998545,
+  "p95Ms": 41.79999999999927,
+  "calls": 695,
+  "mesh": [
+    {
+      "name": "Forest_detail_CommonTree_3_0",
+      "prepared": 1225,
+      "drawn": 27
+    },
+    {
+      "name": "Forest_detail_CommonTree_3_1",
+      "prepared": 1225,
+      "drawn": 27
+    },
+    {
+      "name": "Forest_horizon_CommonTree_3_0",
+      "prepared": 1225,
+      "drawn": 163
+    },
+    {
+      "name": "Forest_horizon_CommonTree_3_1",
+      "prepared": 1225,
+      "drawn": 164
+    },
+    {
+      "name": "Forest_detail_CommonTree_5_0",
+      "prepared": 922,
+      "drawn": 18
+    },
+    {
+      "name": "Forest_detail_CommonTree_5_1",
+      "prepared": 922,
+      "drawn": 18
+    },
+    {
+      "name": "Forest_horizon_CommonTree_5_0",
+      "prepared": 922,
+      "drawn": 123
+    },
+    {
+      "name": "Forest_horizon_CommonTree_5_1",
+      "prepared": 922,
+      "drawn": 123
+    },
+    {
+      "name": "Forest_detail_TwistedTree_1_0",
+      "prepared": 175,
+      "drawn": 7
+    },
+    {
+      "name": "Forest_detail_TwistedTree_1_1",
+      "prepared": 175,
+      "drawn": 7
+    },
+    {
+      "name": "Forest_horizon_TwistedTree_1_0",
+      "prepared": 175,
+      "drawn": 36
+    },
+    {
+      "name": "Forest_horizon_TwistedTree_1_1",
+      "prepared": 175,
+      "drawn": 35
+    },
+    {
+      "name": "Forest_detail_Pine_5_0",
+      "prepared": 378,
+      "drawn": 8
+    },
+    {
+      "name": "Forest_detail_Pine_5_1",
+      "prepared": 378,
+      "drawn": 8
+    },
+    {
+      "name": "Forest_horizon_Pine_5_0",
+      "prepared": 378,
+      "drawn": 49
+    },
+    {
+      "name": "Forest_horizon_Pine_5_1",
+      "prepared": 378,
+      "drawn": 50
+    },
+    {
+      "name": "Forest_detail_Bush_Common_0",
+      "prepared": 6500,
+      "drawn": 105
+    },
+    {
+      "name": "Forest_detail_Grass_Common_Short_0",
+      "prepared": 20982,
+      "drawn": 236
+    },
+    {
+      "name": "Forest_detail_Grass_Wispy_Short_0",
+      "prepared": 21018,
+      "drawn": 213
+    },
+    {
+      "name": "Forest_detail_Fern_1_0",
+      "prepared": 1395,
+      "drawn": 7
+    },
+    {
+      "name": "Forest_detail_Plant_1_0",
+      "prepared": 1400,
+      "drawn": 13
+    },
+    {
+      "name": "Forest_detail_Plant_7_0",
+      "prepared": 1405,
+      "drawn": 6
+    },
+    {
+      "name": "Forest_prop_Rock_Medium_1_0",
+      "prepared": 232,
+      "drawn": 6
+    },
+    {
+      "name": "Forest_prop_Rock_Medium_2_0",
+      "prepared": 248,
+      "drawn": 1
+    },
+    {
+      "name": "Forest_prop_Pebble_Round_2_0",
+      "prepared": 875,
+      "drawn": 11
+    },
+    {
+      "name": "Forest_prop_Pebble_Square_3_0",
+      "prepared": 925,
+      "drawn": 10
+    }
+  ],
+  "shader": "",
+  "gl": 0,
+  "raster": [
+    950,
+    633
+  ]
+}

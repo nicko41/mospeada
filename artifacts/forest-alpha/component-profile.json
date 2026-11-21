@@ -1,0 +1,52 @@
+[
+  {
+    "name": "full",
+    "medianMs": 55.39999999999418,
+    "p95Ms": 62.60000000000582,
+    "drawCalls": 697,
+    "raster": [
+      938,
+      570
+    ]
+  },
+  {
+    "name": "without-alpha",
+    "medianMs": 48.60000000000582,
+    "p95Ms": 55.60000000000582,
+    "drawCalls": 694,
+    "raster": [
+      938,
+      570
+    ]
+  },
+  {
+    "name": "without-ground",
+    "medianMs": 48.60000000000582,
+    "p95Ms": 55.60000000000582,
+    "drawCalls": 695,
+    "raster": [
+      938,
+      570
+    ]
+  },
+  {
+    "name": "without-forest",
+    "medianMs": 20.800000000017462,
+    "p95Ms": 27.89999999999418,
+    "drawCalls": 642,
+    "raster": [
+      938,
+      570
+    ]
+  },
+  {
+    "name": "full-repeat",
+    "medianMs": 48.69999999998254,
+    "p95Ms": 55.70000000001164,
+    "drawCalls": 697,
+    "raster": [
+      938,
+      570
+    ]
+  }
+]

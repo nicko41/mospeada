@@ -51,6 +51,7 @@ export class EngineSmoke {
     this.geometry = new PlaneGeometry(1, 1); this.atlas = createSmokeAtlas()
     this.material = new MeshBasicMaterial({ name: 'Engine smoke source', map: this.atlas, transparent: true, depthWrite: false, alphaTest: .001 })
     this.day = { value: 1 }; this.records = []; this.systems = []; this.batches = new Set()
+    this.airGlow={value:0}
     this.clock = 0; this.activity = 0; this.boostLevel = 0; this.frame = 1 / 60; this.elapsed = 0
     this.emitted = { exhaust: 0, boost: 0, left: 0, right: 0, core: 0, plume: 0 }
     this.offset = new Vector3(); this.rotation = new Quaternion(); this.euler = new Euler(0, 0, 0, 'YXZ')
@@ -89,12 +90,12 @@ export class EngineSmoke {
       this.batches.add(batch)
       const material = batch.material, core = r.kind === 'core'
       material.name = core ? 'Quarks turbine concentrated core' : 'Quarks exhaust and turbine plume'; material.fog = true
-      Object.assign(material.uniforms, UniformsUtils.clone(UniformsLib.fog), { uEngineDay: this.day })
+      Object.assign(material.uniforms, UniformsUtils.clone(UniformsLib.fog), { uEngineDay: this.day,uAirBoostGlow:this.airGlow })
       material.onBeforeCompile = shader => {
         shader.vertexShader = '#include <fog_pars_vertex>\n' + shader.vertexShader.replace('#include <logdepthbuf_vertex>', '#include <logdepthbuf_vertex>\n#include <fog_vertex>')
-        shader.fragmentShader = 'uniform float uEngineDay;\n#include <fog_pars_fragment>\n' + shader.fragmentShader.replace('outgoingLight = diffuseColor.rgb;', `outgoingLight = diffuseColor.rgb * mix(${core ? '.55' : '.3'}, 1.0, uEngineDay);`).replace('#include <tonemapping_fragment>', '#include <tonemapping_fragment>\n#include <colorspace_fragment>\n#include <fog_fragment>')
+        shader.fragmentShader = 'uniform float uEngineDay;uniform float uAirBoostGlow;\n#include <fog_pars_fragment>\n' + shader.fragmentShader.replace('outgoingLight = diffuseColor.rgb;', `outgoingLight = diffuseColor.rgb * mix(${core ? '.55' : '.3'}, 1.0, uEngineDay)${core?'*(1.0+uAirBoostGlow*.45)':''};`).replace('#include <tonemapping_fragment>', '#include <tonemapping_fragment>\n#include <colorspace_fragment>\n#include <fog_fragment>')
       }
-      material.customProgramCacheKey = () => 'mospeada-engine-smoke-v1-' + (core ? 'core' : 'plume')
+      material.customProgramCacheKey = () => 'mospeada-engine-smoke-air-v2-' + (core ? 'core' : 'plume')
       material.needsUpdate = true; batch.name = core ? 'Quarks_boost_core_batch' : 'Quarks_engine_smoke_batch'; batch.userData.vfx = 'engine'
     }
     this.riding.configureBatches(renderer); this.batches.add(this.riding.batch)
@@ -107,6 +108,7 @@ export class EngineSmoke {
     this.activity += (target - this.activity) * (1 - Math.exp(-dt * (target > this.activity ? 9 : 4)))
     const softActivity = state.speed < 0 || speed >= .3 ? 0 : this.activity
     this.boosting = config.boostEnabled && state.boostTime > 0
+    this.airGlow.value=this.boosting&&state.boostMode==='air'?1:0
     this.boostLevel += ((this.boosting ? 1 : 0) - this.boostLevel) * (1 - Math.exp(-dt * 60))
     const lod = distance > 85 ? 0 : distance > 45 ? .22 : distance > 24 ? .55 : 1
     const performance = this.frame > .085 ? .55 : this.frame > .045 ? .75 : 1, gain = lod * performance
@@ -140,6 +142,7 @@ export class EngineSmoke {
       r.speed.b = exhaust ? 1.3 + softActivity * .7 : config.boostSpeed * (core ? 1.2 : 1.05)
       r.life.a = exhaust ? .7 : core ? .055 : .9 * config.boostLength
       r.life.b = exhaust ? 1.3 : core ? .09 : 2.1 * config.boostLength
+      if(!exhaust&&state.boostMode==='air'){r.desired*=core?1.2:.7;r.life.a*=core?1:.35;r.life.b*=core?1:.35}
       r.opacity = exhaust ? config.exhaustOpacity : config.boostOpacity
       r.sizeFactor = exhaust ? config.exhaustSize : core ? 1 : config.boostExpansion
       const turbulence = exhaust ? config.exhaustTurbulence * .55 : core ? config.boostTurbulence * .3 : config.boostTurbulence * 4.5

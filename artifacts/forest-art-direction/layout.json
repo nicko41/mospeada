@@ -1,0 +1,72 @@
+{
+  "counts": {
+    "tree": 4200,
+    "shrub": 11000,
+    "grass": 58330,
+    "plant": 6569,
+    "rock": 480,
+    "pebble": 1800
+  },
+  "layers": {
+    "hero": 6,
+    "foreground": 194,
+    "middle": 900,
+    "outer": 3100
+  },
+  "averageTreeHeight": 21.942549948177476,
+  "hero": [
+    {
+      "name": "CommonTree_3",
+      "x": -15,
+      "z": -17,
+      "height": 38.64327851831913
+    },
+    {
+      "name": "CommonTree_3",
+      "x": 17,
+      "z": -21,
+      "height": 42.413354471325874
+    },
+    {
+      "name": "CommonTree_3",
+      "x": 23,
+      "z": 10,
+      "height": 35.81572155356407
+    },
+    {
+      "name": "CommonTree_5",
+      "x": -24,
+      "z": 4,
+      "height": 30.82745512723923
+    },
+    {
+      "name": "TwistedTree_1",
+      "x": 25,
+      "z": 32,
+      "height": 41.813739612698555
+    },
+    {
+      "name": "Pine_5",
+      "x": -13,
+      "z": 24,
+      "height": 35.76761117279529
+    }
+  ],
+  "clearingPatches": 399,
+  "originalAssets": [
+    "CommonTree_3",
+    "CommonTree_5",
+    "TwistedTree_1",
+    "Pine_5",
+    "Bush_Common",
+    "Grass_Common_Short",
+    "Grass_Wispy_Short",
+    "Fern_1",
+    "Plant_1",
+    "Plant_7",
+    "Rock_Medium_1",
+    "Rock_Medium_2",
+    "Pebble_Round_2",
+    "Pebble_Square_3"
+  ]
+}

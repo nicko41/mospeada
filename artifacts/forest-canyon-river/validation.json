@@ -1,0 +1,28 @@
+{
+  "preserved": true,
+  "audit": {
+    "wallMap": "http://127.0.0.1:5173/assets/texturas/pasto/dirt01.jpg",
+    "wallTriangles": 32640,
+    "riverTriangles": 8192,
+    "riverIsRideSurface": false,
+    "gapHasNoSupport": true,
+    "animatedTime": 20.833200000002968,
+    "rocks": 84,
+    "gl": 0,
+    "shader": ""
+  },
+  "jump": {
+    "z": -960.3874281845265,
+    "y": 8.812306444222692,
+    "airBoosts": 1,
+    "recoveries": 0
+  },
+  "shots": [
+    "gameplay-rim",
+    "elevated",
+    "river-detail",
+    "river-current",
+    "landing"
+  ],
+  "errors": []
+}

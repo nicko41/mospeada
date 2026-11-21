@@ -1,0 +1,162 @@
+{
+  "frames": [
+    {
+      "dt": 395.90000000000146,
+      "phase": "wheelie",
+      "programs": 83
+    },
+    {
+      "dt": 291.70000000000437,
+      "phase": "complete",
+      "programs": 83
+    },
+    {
+      "dt": 229.29999999999927,
+      "phase": "airpose",
+      "programs": 83
+    },
+    {
+      "dt": 229.20000000000073,
+      "phase": "airpose",
+      "programs": 83
+    },
+    {
+      "dt": 229.1999999999971,
+      "phase": "boost",
+      "programs": 83
+    },
+    {
+      "dt": 229.10000000000218,
+      "phase": "boost",
+      "programs": 83
+    },
+    {
+      "dt": 229.10000000000218,
+      "phase": "airpose",
+      "programs": 83
+    },
+    {
+      "dt": 229.10000000000218,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 229.09999999999854,
+      "phase": "airpose",
+      "programs": 83
+    },
+    {
+      "dt": 222.29999999999927,
+      "phase": "wheelie",
+      "programs": 83
+    },
+    {
+      "dt": 222.29999999999927,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 222.29999999999927,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 215.29999999999927,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 215.29999999999927,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 215.20000000000073,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 208.39999999999782,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 208.3000000000029,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 208.29999999999927,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 208.29999999999927,
+      "phase": "transforming",
+      "programs": 83
+    },
+    {
+      "dt": 208.29999999999927,
+      "phase": "armorboost",
+      "programs": 83
+    },
+    {
+      "dt": 201.40000000000146,
+      "phase": "armorboost",
+      "programs": 83
+    },
+    {
+      "dt": 201.39999999999782,
+      "phase": "armorboost",
+      "programs": 83
+    },
+    {
+      "dt": 201.3000000000029,
+      "phase": "armorboost",
+      "programs": 83
+    },
+    {
+      "dt": 201.3000000000029,
+      "phase": "armorboost",
+      "programs": 83
+    },
+    {
+      "dt": 201.29999999999563,
+      "phase": "complete",
+      "programs": 83
+    },
+    {
+      "dt": 194.5,
+      "phase": "armorboost",
+      "programs": 83
+    },
+    {
+      "dt": 194.5,
+      "phase": "armorboost",
+      "programs": 83
+    },
+    {
+      "dt": 194.5,
+      "phase": "complete",
+      "programs": 83
+    },
+    {
+      "dt": 166.5,
+      "phase": "wheelie",
+      "programs": 83
+    },
+    {
+      "dt": 69.5,
+      "phase": "wheelie",
+      "programs": 83
+    },
+    {
+      "dt": -4.500000023843313,
+      "phase": "idle",
+      "programs": 83
+    }
+  ],
+  "startPrograms": 83,
+  "stop": true,
+  "endPrograms": 85
+}

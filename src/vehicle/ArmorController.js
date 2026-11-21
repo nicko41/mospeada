@@ -1,5 +1,7 @@
 import {Vector3} from 'three'
 import {advanceArmor,armorConfig,createArmorState} from './armorPhysics.js'
+import {advanceGroundLanding,beginGroundLanding,touchGroundLanding} from './armorGroundLanding.js'
+import {isJumpCharging} from './armorJumpMotion.js'
 
 export class ArmorController{
   constructor(runtime,rig,sample,canMove){Object.assign(this,{runtime,rig,sample,canMove,active:false,state:null});this.point=new Vector3()}
@@ -25,16 +27,28 @@ export class ArmorController{
     this.active=true;this.runtime.boostQueued=false
     this.camera?.activate(a);return true
   }
-  toggle(){if(this.active){this.state.mode=this.state.mode==='ARMOR_HOVER'?'ARMOR_GROUND':'ARMOR_HOVER';this.state.groundTurn=null}}
+  startLanding(reason){
+    if(!this.active||!beginGroundLanding(this.state,reason))return
+    this.landingStartPose=new Map([...this.runtime.scottInstance.bones].map(([name,bone])=>[name,{q:bone.quaternion.clone(),p:bone.position.clone()}]))
+    const reaction=this.runtime.scottInstance.armorReaction
+    if(reaction)reaction.boost=reaction.reverse=reaction.side=reaction.forward=reaction.vertical=0
+  }
+  toggle(){
+    if(!this.active||this.state.groundLanding)return
+    if(this.state.mode==='ARMOR_HOVER')this.startLanding('toggle')
+    else{this.state.mode='ARMOR_HOVER';this.state.groundTurn=null}
+  }
   update(input,dt){
     if(!this.active)return
     const a=this.state,instance=this.runtime.scottInstance
+    if(input.descend&&!a.descendHeld&&!a.groundLanding&&(a.jump||a.height>1.2))this.startLanding('dive')
     if(instance?.armorBaseHipPosition&&!a.groundTurn){
       instance.bones.get('mixamorigHips').parent.localToWorld(this.point.copy(instance.armorBaseHipPosition))
       const x=this.point.x-a.x,z=this.point.z-a.z
       a.pelvisOffsetX=Math.cos(a.yaw)*x-Math.sin(a.yaw)*z;a.pelvisOffsetZ=Math.sin(a.yaw)*x+Math.cos(a.yaw)*z
     }
-    advanceArmor(a,input,dt,this.sample,this.canMove,armorConfig,instance?.armorLocomotion?.turns)
+    if(a.groundLanding)advanceGroundLanding(a,input,dt,this.sample,this.canMove)
+    else advanceArmor(a,input,dt,this.sample,this.canMove,armorConfig,instance?.armorLocomotion?.turns)
     this.sync()
   }
   sync(){
@@ -53,15 +67,25 @@ export class ArmorController{
   }
   reset(){this.active=false;this.state=null;this.camera?.deactivate()}
   guardFloor(instance,wrapper){
-    if(!this.active||this.state.height>.65)return
-    let correction=0
+    if(!this.active||!this.state.groundLanding&&!isJumpCharging(this.state)&&this.state.height>.65)return
+    const a=this.state,landing=a.groundLanding,charging=isJumpCharging(a)
+    let correction=0,clearance=Infinity
     for(const limb of instance.mountedMotion?.limbs.filter(l=>l.leg)||[]){
       const mesh=instance.skins[0].mesh
-      for(const id of limb.soleIds){mesh.localToWorld(mesh.getVertexPosition(id,this.point));const ground=this.sample(this.point.x,this.point.z);if(Number.isFinite(ground))correction=Math.max(correction,ground+.008-this.point.y)}
+      for(const id of limb.soleIds){mesh.localToWorld(mesh.getVertexPosition(id,this.point));const ground=this.sample(this.point.x,this.point.z);if(Number.isFinite(ground)){clearance=Math.min(clearance,this.point.y-ground);correction=Math.max(correction,ground+.008-this.point.y)}}
     }
-    if(correction>0){
+    if(landing&&Number.isFinite(clearance)){
+      landing.soleOffset=clearance+a.ground-a.y
+      if(clearance<=.025&&a.vy<0)touchGroundLanding(a)
+      if(['impact','recover'].includes(landing.phase))correction=.025-clearance
+    }
+    if(charging&&Number.isFinite(clearance))correction=a.jump.supportClearance-clearance
+    if(correction!==0){
       this.state.y+=correction;this.state.vy=Math.max(0,this.state.vy);this.sync()
       this.rig.root.position.y+=correction;wrapper.position.y+=correction;this.rig.root.updateMatrixWorld(true);wrapper.updateMatrixWorld(true)
+    }
+    if(landing?.finished){
+      a.soleOffset=a.ground+.025-a.y;a.height=.025;a.settle=0;a.groundLanding=null;this.landingStartPose=null
     }
   }
 }

@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "medianMs": 83.30000000000291,
+    "p95Ms": 132,
+    "maxMs": 263.90000000000146,
+    "over100ms": 50,
+    "programs": [
+      65,
+      104
+    ],
+    "pending": [
+      35,
+      0
+    ],
+    "lateCompiles": 12,
+    "sectorPrepares": 21,
+    "resizes": 0,
+    "shaderError": ""
+  },
+  "final": {
+    "medianMs": 83.30000000000291,
+    "p95Ms": 90.90000000000146,
+    "maxMs": 97.30000000000291,
+    "over100ms": 0,
+    "programs": [
+      111,
+      111
+    ],
+    "pending": [
+      0,
+      0
+    ],
+    "lateCompiles": 0,
+    "sectorPrepares": 0,
+    "resizes": 0,
+    "shaderError": ""
+  }
+}

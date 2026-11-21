@@ -1,0 +1,20 @@
+{
+  "mode": "ARMOR_GROUND",
+  "landing": null,
+  "jump": null,
+  "grounded": true,
+  "height": 0.024999999999999994,
+  "ctrlHeld": true,
+  "knees": [
+    2.886579864025407e-15,
+    5.662137425588298e-15
+  ],
+  "body": {
+    "phase": "recover",
+    "enter": 1,
+    "bend": 0.1,
+    "lean": 0,
+    "back": 0,
+    "forward": 0
+  }
+}

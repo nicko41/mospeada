@@ -1,0 +1,163 @@
+{
+  "layout": {
+    "counts": {
+      "tree": 4200,
+      "shrub": 11000,
+      "grass": 58330,
+      "plant": 6569,
+      "rock": 480,
+      "pebble": 1800
+    },
+    "layers": {
+      "hero": 6,
+      "foreground": 194,
+      "middle": 900,
+      "outer": 3100
+    },
+    "averageTreeHeight": 21.942549948177476,
+    "hero": [
+      {
+        "name": "CommonTree_3",
+        "x": -15,
+        "z": -17,
+        "height": 38.64327851831913
+      },
+      {
+        "name": "CommonTree_3",
+        "x": 17,
+        "z": -21,
+        "height": 42.413354471325874
+      },
+      {
+        "name": "CommonTree_3",
+        "x": 23,
+        "z": 10,
+        "height": 35.81572155356407
+      },
+      {
+        "name": "CommonTree_5",
+        "x": -24,
+        "z": 4,
+        "height": 30.82745512723923
+      },
+      {
+        "name": "TwistedTree_1",
+        "x": 25,
+        "z": 32,
+        "height": 41.813739612698555
+      },
+      {
+        "name": "Pine_5",
+        "x": -13,
+        "z": 24,
+        "height": 35.76761117279529
+      }
+    ],
+    "clearingPatches": 399,
+    "originalAssets": [
+      "CommonTree_3",
+      "CommonTree_5",
+      "TwistedTree_1",
+      "Pine_5",
+      "Bush_Common",
+      "Grass_Common_Short",
+      "Grass_Wispy_Short",
+      "Fern_1",
+      "Plant_1",
+      "Plant_7",
+      "Rock_Medium_1",
+      "Rock_Medium_2",
+      "Pebble_Round_2",
+      "Pebble_Square_3"
+    ]
+  },
+  "before": {
+    "medianMs": 41.599999999998545,
+    "p95Ms": 41.79999999999927,
+    "calls": 695,
+    "raster": [
+      950,
+      633
+    ]
+  },
+  "after": {
+    "medianMs": 41.60000000000218,
+    "p95Ms": 83.39999999999782,
+    "calls": 698,
+    "raster": [
+      950,
+      633
+    ]
+  },
+  "gameplay": {
+    "pass": true,
+    "stages": [
+      "spawn",
+      "cyclone-driving",
+      "cyclone-braking",
+      "armor-hover",
+      "armor-ground-walk",
+      "armor-jump",
+      "cyclone-return",
+      "trunk-collision",
+      "rock-collision",
+      "scott-on-foot",
+      "reset-forest",
+      "highway-preserved"
+    ],
+    "performance": {
+      "frames": 120,
+      "medianMs": 41.700000000004366,
+      "p95Ms": 48.799999999995634,
+      "drawCalls": 698,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "pixelRatio": 0.66,
+      "renderWidth": 950,
+      "renderHeight": 633
+    }
+  },
+  "rotation": [
+    {
+      "name": "audit",
+      "frames": 145,
+      "missingFrames": 0,
+      "missingInstances": 0,
+      "matrixWriteFrames": 0,
+      "resourceRebuildFrames": 0,
+      "medianMs": 27.79999999998836,
+      "p95Ms": 48.5,
+      "maxDrawCalls": 698
+    },
+    {
+      "name": "performance",
+      "frames": 181,
+      "missingFrames": 0,
+      "missingInstances": 0,
+      "matrixWriteFrames": 0,
+      "resourceRebuildFrames": 0,
+      "medianMs": 27.70000000001164,
+      "p95Ms": 48.69999999999709,
+      "maxDrawCalls": 698
+    },
+    {
+      "name": "mouse-clockwise",
+      "frames": 220,
+      "turns": 3.2950871987875723,
+      "missingFrames": 0,
+      "matrixWriteFrames": 0,
+      "resourceRebuildFrames": 0
+    },
+    {
+      "name": "mouse-counterclockwise",
+      "frames": 215,
+      "turns": 3.293141839041285,
+      "missingFrames": 0,
+      "matrixWriteFrames": 0,
+      "resourceRebuildFrames": 0
+    }
+  ],
+  "rotationErrors": [],
+  "rotationRequests": [],
+  "unitTests": 221,
+  "build": "pass"
+}

@@ -1,0 +1,91 @@
+{
+  "pass": true,
+  "alphaFullWorldMatrixUnchanged": true,
+  "focusedTests": 18,
+  "build": true,
+  "protectedFiles": [
+    {
+      "file": "src/world/forest/forestCrashConfig.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/vehicle/OriginalScott.jsx",
+      "unchanged": true
+    },
+    {
+      "file": "src/vehicle/Motorcycle.jsx",
+      "unchanged": true
+    },
+    {
+      "file": "src/vehicle/drivingCamera.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/vehicle/ArmorController.js",
+      "unchanged": true
+    },
+    {
+      "file": "assets/alpha-fighter/alpha-fighter-down.glb",
+      "unchanged": true
+    },
+    {
+      "file": "assets/texturas/pasto/grass-01.jpg",
+      "unchanged": true
+    },
+    {
+      "file": "assets/texturas/pasto/dirt01.jpg",
+      "unchanged": true
+    }
+  ],
+  "visual": {
+    "matrix": [
+      0.7920938610204633,
+      -0.13940185108129932,
+      -0.5942679860541054,
+      0,
+      0.08413017650275319,
+      0.9892135716927384,
+      -0.1199108960041214,
+      0,
+      0.6045737578950237,
+      0.044984814037660234,
+      0.7952778997122242,
+      0,
+      10,
+      1.9689849756024234,
+      -10,
+      1
+    ],
+    "sourceMatrix": [
+      5.149553245608437e-16,
+      0,
+      8.409858661605545,
+      0,
+      0,
+      8.409858661605545,
+      0,
+      0,
+      -8.409858661605545,
+      0,
+      5.149553245608437e-16,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "treeDirection": [
+      -0.11997067075606199,
+      0.04498900153352325,
+      -0.9917575449167793
+    ],
+    "fallenParts": 3,
+    "treeColliders": 13,
+    "crushedGroups": 28,
+    "gl": 0,
+    "shader": "",
+    "errors": []
+  },
+  "relief": "Actual triangulated local 0.5m grid; same sampler for wheels, feet and props",
+  "art": "Original ground images retained; exposed dirt, shallow ruts, heaped shoulders, fallen original tree, 28 flattened original sprites"
+}

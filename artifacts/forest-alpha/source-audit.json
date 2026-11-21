@@ -1,0 +1,100 @@
+{
+  "path": "assets/alpha-fighter/alpha-fighter-down.glb",
+  "sha256": "c9d433a50222e0730f2cceb13dd8d3f2edd6e3a43f54d7ce8555bebfc4ee6836",
+  "bytes": 38387840,
+  "generator": {
+    "generator": "pygltflib@v1.16.5",
+    "version": "2.0"
+  },
+  "size": [
+    1.902529001235962,
+    0.5084750056266785,
+    1.1396620273590088
+  ],
+  "min": [
+    -0.9527580142021179,
+    -0.2546370029449463,
+    -0.5697420239448547
+  ],
+  "max": [
+    0.949770987033844,
+    0.2538380026817322,
+    0.569920003414154
+  ],
+  "nodes": [
+    {
+      "id": 0,
+      "mesh": 0,
+      "min": [
+        -0.9527580142021179,
+        -0.2546370029449463,
+        -0.5697420239448547
+      ],
+      "max": [
+        0.949770987033844,
+        0.2538380026817322,
+        0.569920003414154
+      ],
+      "triangles": 599874
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "baseColorTexture": {
+          "index": 0,
+          "texCoord": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1,
+          "texCoord": 0
+        }
+      },
+      "normalTexture": {
+        "index": 2,
+        "texCoord": 0
+      },
+      "alphaMode": "OPAQUE",
+      "doubleSided": true
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/jpeg",
+      "bufferView": 4
+    },
+    {
+      "mimeType": "image/jpeg",
+      "bufferView": 5
+    },
+    {
+      "mimeType": "image/jpeg",
+      "bufferView": 6
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "material": 0,
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 2,
+            "TEXCOORD_0": 1
+          },
+          "triangles": 599874
+        }
+      ]
+    }
+  ],
+  "animations": 0,
+  "skins": 0
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/world/forest/forestGroundMaterial.js",
+    "unchanged": true
+  },
+  {
+    "file": "src/world/forest/forestTerrainGeometry.js",
+    "unchanged": true
+  },
+  {
+    "file": "src/world/forest/forestLayout.js",
+    "unchanged": true
+  },
+  {
+    "file": "src/world/forest/ForestAlpha.jsx",
+    "unchanged": true
+  },
+  {
+    "file": "src/world/forest/forestAlpha.js",
+    "unchanged": true
+  },
+  {
+    "file": "src/world/forest/forestCrashConfig.js",
+    "unchanged": true
+  },
+  {
+    "file": "src/world/forest/ForestAtmosphere.jsx",
+    "unchanged": true
+  },
+  {
+    "file": "src/vehicle/Motorcycle.jsx",
+    "unchanged": true
+  },
+  {
+    "file": "src/vehicle/OriginalScott.jsx",
+    "unchanged": true
+  },
+  {
+    "file": "src/vehicle/ArmorController.js",
+    "unchanged": true
+  },
+  {
+    "file": "src/vehicle/drivingCamera.js",
+    "unchanged": true
+  },
+  {
+    "file": "assets/texturas/pasto/grass-01.jpg",
+    "unchanged": true
+  },
+  {
+    "file": "assets/texturas/pasto/dirt01.jpg",
+    "unchanged": true
+  },
+  {
+    "file": "assets/texturas/pasto/vegetacion01.png",
+    "unchanged": true
+  }
+]

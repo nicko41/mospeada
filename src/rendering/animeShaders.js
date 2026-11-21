@@ -84,7 +84,7 @@ export function insertAtMainEnd(shader, code) {
 export function patchAnimeShader(shader, profile) {
   const lit = shader.includes('#include <lights_fragment_end>')
   let result = animeUniformsGLSL + shader
-  if (lit) result = result.replace('#include <lights_fragment_end>', '#include <lights_fragment_end>\n' + animeLightingGLSL)
+  if (lit && !profile.natural) result = result.replace('#include <lights_fragment_end>', '#include <lights_fragment_end>\n' + animeLightingGLSL)
   if (profile.grass) result = result.replace(
     'mix(vColor * 0.55, vColor, smoothstep(0.05, 0.8, vUv.y))',
     'mix(vColor * 0.55, vColor, uAnimeCel > 0.5 ? animeBand(smoothstep(0.05, 0.8, vUv.y)) : smoothstep(0.05, 0.8, vUv.y))',
@@ -101,7 +101,6 @@ export const compositeFragment = /* glsl */`
 uniform sampler2D uBeauty;
 uniform sampler2D uMask;
 uniform sampler2D uDepth;
-uniform sampler2D uPbr;
 uniform vec2 uPixel;
 uniform float uNear;
 uniform float uFar;
@@ -109,18 +108,12 @@ uniform float uWidth;
 uniform float uOutlines;
 uniform vec3 uOutlineColor;
 uniform float uFogDensity;
-uniform float uCompare;
-uniform float uSplit;
 varying vec2 vUv;
 float viewDepth(vec2 uv) {
   float d = texture2D(uDepth, uv).r;
   return uNear * uFar / max(uFar - d * (uFar - uNear), 0.0001);
 }
 void main() {
-  if (uCompare > 0.5 && vUv.x < uSplit) {
-    gl_FragColor = texture2D(uPbr, vUv);
-    return;
-  }
   float edge = 0.0;
   if (uOutlines > 0.5) {
   vec4 mask = texture2D(uMask, vUv);

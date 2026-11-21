@@ -1,0 +1,5198 @@
+{
+  "baseline": false,
+  "results": [
+    {
+      "name": "audit",
+      "frames": 145,
+      "missingFrames": 0,
+      "missingInstances": 0,
+      "matrixWriteFrames": 0,
+      "resourceRebuildFrames": 0,
+      "medianMs": 28,
+      "p95Ms": 69.39999999999782,
+      "maxDrawCalls": 697,
+      "rows": [
+        {
+          "angle": 0,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.2617993877991494,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.5235987755982988,
+          "expected": 2792,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.7853981633974483,
+          "expected": 3271,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 591
+        },
+        {
+          "angle": 1.0471975511965976,
+          "expected": 3331,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 1.3089969389957472,
+          "expected": 3070,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 1.5707963267948966,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 1.832595714594046,
+          "expected": 3315,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 2.0943951023931953,
+          "expected": 3235,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 2.356194490192345,
+          "expected": 2804,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 2.6179938779914944,
+          "expected": 2419,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 2.8797932657906435,
+          "expected": 2295,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 3.141592653589793,
+          "expected": 2097,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 3.4033920413889427,
+          "expected": 1870,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 3.665191429188092,
+          "expected": 1814,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 3.926990816987241,
+          "expected": 1913,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 4.1887902047863905,
+          "expected": 2209,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 4.4505895925855405,
+          "expected": 2334,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 4.71238898038469,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 4.974188368183839,
+          "expected": 2615,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 5.235987755982989,
+          "expected": 2505,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 5.497787143782138,
+          "expected": 2314,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 667
+        },
+        {
+          "angle": 5.759586531581287,
+          "expected": 2411,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": 6.021385919380436,
+          "expected": 2686,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 6.283185307179586,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 6.544984694978736,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 6.806784082777885,
+          "expected": 2792,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 7.0685834705770345,
+          "expected": 3271,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 591
+        },
+        {
+          "angle": 7.330382858376184,
+          "expected": 3331,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 7.592182246175334,
+          "expected": 3070,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 7.853981633974482,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 8.115781021773632,
+          "expected": 3315,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 8.377580409572781,
+          "expected": 3235,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 8.639379797371932,
+          "expected": 2804,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 8.901179185171081,
+          "expected": 2419,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 9.16297857297023,
+          "expected": 2295,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 9.42477796076938,
+          "expected": 2097,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 9.686577348568528,
+          "expected": 1870,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 9.948376736367678,
+          "expected": 1814,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 10.210176124166827,
+          "expected": 1913,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 10.471975511965978,
+          "expected": 2209,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 10.733774899765125,
+          "expected": 2334,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 10.995574287564276,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 11.257373675363425,
+          "expected": 2615,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 11.519173063162574,
+          "expected": 2505,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 11.780972450961725,
+          "expected": 2314,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 667
+        },
+        {
+          "angle": 12.042771838760872,
+          "expected": 2411,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": 12.304571226560023,
+          "expected": 2686,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 12.566370614359172,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 12.828170002158322,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 13.089969389957473,
+          "expected": 2792,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 13.35176877775662,
+          "expected": 3271,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 591
+        },
+        {
+          "angle": 13.61356816555577,
+          "expected": 3331,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 13.87536755335492,
+          "expected": 3070,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 14.137166941154069,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 14.39896632895322,
+          "expected": 3315,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 14.660765716752367,
+          "expected": 3235,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 14.922565104551516,
+          "expected": 2804,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 15.184364492350667,
+          "expected": 2419,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 15.446163880149816,
+          "expected": 2295,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 15.707963267948964,
+          "expected": 2097,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 15.969762655748115,
+          "expected": 1870,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 16.231562043547264,
+          "expected": 1814,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 16.493361431346415,
+          "expected": 1913,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 16.755160819145562,
+          "expected": 2209,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 17.016960206944713,
+          "expected": 2334,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 17.278759594743864,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 17.54055898254301,
+          "expected": 2615,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 17.802358370342162,
+          "expected": 2505,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 18.06415775814131,
+          "expected": 2314,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 667
+        },
+        {
+          "angle": 18.32595714594046,
+          "expected": 2411,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": 18.58775653373961,
+          "expected": 2686,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 18.84955592153876,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 18.58775653373961,
+          "expected": 2686,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 18.32595714594046,
+          "expected": 2411,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": 18.06415775814131,
+          "expected": 2314,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 667
+        },
+        {
+          "angle": 17.802358370342162,
+          "expected": 2505,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 17.54055898254301,
+          "expected": 2615,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 17.278759594743864,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 17.016960206944713,
+          "expected": 2334,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 16.755160819145562,
+          "expected": 2209,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 16.493361431346415,
+          "expected": 1913,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 16.231562043547264,
+          "expected": 1814,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 15.969762655748115,
+          "expected": 1870,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 15.707963267948964,
+          "expected": 2097,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 15.446163880149816,
+          "expected": 2295,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 15.184364492350667,
+          "expected": 2419,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 14.922565104551516,
+          "expected": 2804,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 14.660765716752367,
+          "expected": 3235,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 14.39896632895322,
+          "expected": 3315,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 14.137166941154069,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 13.87536755335492,
+          "expected": 3070,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 13.61356816555577,
+          "expected": 3331,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 13.35176877775662,
+          "expected": 3271,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 591
+        },
+        {
+          "angle": 13.089969389957473,
+          "expected": 2792,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 12.828170002158322,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 12.566370614359172,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 12.304571226560023,
+          "expected": 2686,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 12.042771838760872,
+          "expected": 2411,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": 11.780972450961725,
+          "expected": 2314,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 667
+        },
+        {
+          "angle": 11.519173063162574,
+          "expected": 2505,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 11.257373675363425,
+          "expected": 2615,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 10.995574287564276,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 10.733774899765125,
+          "expected": 2334,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 10.471975511965978,
+          "expected": 2209,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 10.210176124166827,
+          "expected": 1913,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 9.948376736367678,
+          "expected": 1814,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 9.686577348568528,
+          "expected": 1870,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 9.42477796076938,
+          "expected": 2097,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 9.16297857297023,
+          "expected": 2295,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 8.901179185171081,
+          "expected": 2419,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 8.639379797371932,
+          "expected": 2804,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 8.377580409572781,
+          "expected": 3235,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 8.115781021773632,
+          "expected": 3315,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 7.853981633974482,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 7.592182246175334,
+          "expected": 3070,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 7.330382858376184,
+          "expected": 3331,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 7.0685834705770345,
+          "expected": 3271,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 591
+        },
+        {
+          "angle": 6.806784082777885,
+          "expected": 2792,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 6.544984694978736,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 6.283185307179586,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 6.021385919380436,
+          "expected": 2686,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 5.759586531581287,
+          "expected": 2411,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": 5.497787143782138,
+          "expected": 2314,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 667
+        },
+        {
+          "angle": 5.235987755982989,
+          "expected": 2505,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 4.974188368183839,
+          "expected": 2615,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 4.71238898038469,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 4.4505895925855405,
+          "expected": 2334,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 4.1887902047863905,
+          "expected": 2209,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 3.926990816987241,
+          "expected": 1913,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 3.665191429188092,
+          "expected": 1814,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 3.4033920413889427,
+          "expected": 1870,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 3.141592653589793,
+          "expected": 2097,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 2.8797932657906435,
+          "expected": 2295,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 2.6179938779914944,
+          "expected": 2419,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 2.356194490192345,
+          "expected": 2804,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 2.0943951023931953,
+          "expected": 3235,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 1.832595714594046,
+          "expected": 3315,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 240
+        },
+        {
+          "angle": 1.5707963267948966,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 1.3089969389957472,
+          "expected": 3070,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 1.0471975511965976,
+          "expected": 3331,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 243
+        },
+        {
+          "angle": 0.7853981633974483,
+          "expected": 3271,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 591
+        },
+        {
+          "angle": 0.5235987755982988,
+          "expected": 2792,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.2617993877991494,
+          "expected": 2626,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        }
+      ]
+    },
+    {
+      "name": "performance",
+      "frames": 181,
+      "missingFrames": 0,
+      "missingInstances": 0,
+      "matrixWriteFrames": 0,
+      "resourceRebuildFrames": 0,
+      "medianMs": 27.80000000000291,
+      "p95Ms": 62.599999999998545,
+      "maxDrawCalls": 697
+    },
+    {
+      "name": "mouse-clockwise",
+      "frames": 213,
+      "turns": 3.29406729339904,
+      "missingFrames": 0,
+      "matrixWriteFrames": 0,
+      "resourceRebuildFrames": 0,
+      "rows": [
+        {
+          "angle": 2.4492935982947143e-16,
+          "expected": 2682,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.4492935982947143e-16,
+          "expected": 2682,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.053224843102164444,
+          "expected": 2635,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.08120322725210828,
+          "expected": 2592,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.167642083367927,
+          "expected": 2575,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.21307987859539215,
+          "expected": 2703,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.320245346499501,
+          "expected": 2703,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.3765783754738544,
+          "expected": 2701,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.4966779153928648,
+          "expected": 2761,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.559809920453655,
+          "expected": 2832,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.687980737077002,
+          "expected": 3091,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.7553555217694948,
+          "expected": 3235,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.888563074508345,
+          "expected": 3433,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.9585854900755961,
+          "expected": 3449,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.0949361280569063,
+          "expected": 3313,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.1666107503983658,
+          "expected": 3249,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.3049227746057603,
+          "expected": 3177,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.3776284270846775,
+          "expected": 3145,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.5171644193461051,
+          "expected": 3199,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.5905134677733628,
+          "expected": 3243,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7308132554450828,
+          "expected": 3312,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.804563803626132,
+          "expected": 3337,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.9453402241861542,
+          "expected": 3348,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.019341321119819,
+          "expected": 3333,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.1604151759235544,
+          "expected": 3375,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.2345726233327663,
+          "expected": 3274,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.3758320866656306,
+          "expected": 2953,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.450087101797486,
+          "expected": 2819,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.591462390818932,
+          "expected": 2417,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.6657782913460397,
+          "expected": 2287,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.80722585932039,
+          "expected": 2158,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.881579754291303,
+          "expected": 2163,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 3.0230724266556788,
+          "expected": 2146,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 3.0974500313808617,
+          "expected": 2130,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.1241431813258007,
+          "expected": 2108,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.0731387678927726,
+          "expected": 2082,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.0309020131288817,
+          "expected": 2061,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.9275366002617114,
+          "expected": 1991,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.873201123434394,
+          "expected": 1946,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.7554729400115825,
+          "expected": 1812,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.6935874717020565,
+          "expected": 1764,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.566896457759829,
+          "expected": 1733,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.5002995520701736,
+          "expected": 1760,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.368015443772747,
+          "expected": 1932,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.298478449708265,
+          "expected": 2041,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.162704070742617,
+          "expected": 2211,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.0913323670228086,
+          "expected": 2254,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.953379946965091,
+          "expected": 2211,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.8808633254434335,
+          "expected": 2268,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.7415517377309155,
+          "expected": 2395,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.6683206506974069,
+          "expected": 2447,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.5281608986777129,
+          "expected": 2551,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.4544839621982437,
+          "expected": 2524,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.3137949283865462,
+          "expected": 2452,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.239839767520923,
+          "expected": 2426,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.0988204448571988,
+          "expected": 2352,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.0246916630310645,
+          "expected": 2435,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.8834662295065069,
+          "expected": 2330,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.8092291026199505,
+          "expected": 2342,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.6678750492927797,
+          "expected": 2385,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": -0.5935703116057571,
+          "expected": 2425,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.45213599538725857,
+          "expected": 2521,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.3777890663873892,
+          "expected": 2624,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.23630466354464358,
+          "expected": 2820,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.16193140580931378,
+          "expected": 2724,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.020415747302998485,
+          "expected": 2702,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.05397394040959837,
+          "expected": 2635,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.19550910345469757,
+          "expected": 2571,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.26990904400125243,
+          "expected": 2698,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.33151963476785457,
+          "expected": 2705,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.4578843330001073,
+          "expected": 2725,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.524309706267012,
+          "expected": 2785,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.6563901830719634,
+          "expected": 3033,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.725820135390722,
+          "expected": 3161,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.8614674417593106,
+          "expected": 3400,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.9327723479889203,
+          "expected": 3438,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.070645470661312,
+          "expected": 3425,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.1431204084018733,
+          "expected": 3262,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.2823825119969252,
+          "expected": 3188,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.3555875870111007,
+          "expected": 3157,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.4957164593508236,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.5693771634940696,
+          "expected": 3231,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7100469273928356,
+          "expected": 3299,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.783991958758866,
+          "expected": 3328,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.9249992563774874,
+          "expected": 3346,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.999121717070261,
+          "expected": 3333,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.1403396465801277,
+          "expected": 3390,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.2145728288762743,
+          "expected": 3309,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.355922199457061,
+          "expected": 2998,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.4302244755928686,
+          "expected": 2844,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.5716558696270964,
+          "expected": 2439,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.6460012625398805,
+          "expected": 2325,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.7874838418457073,
+          "expected": 2156,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.8618561410133183,
+          "expected": 2160,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 3.0033706615739786,
+          "expected": 2153,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 3.0777597511095056,
+          "expected": 2150,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.06389110313965,
+          "expected": 2079,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.9894915358748153,
+          "expected": 2028,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.8479446445049192,
+          "expected": 1935,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.7735385388001887,
+          "expected": 1843,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.6319838854442317,
+          "expected": 1749,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.5575736995428273,
+          "expected": 1736,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.4959546245978745,
+          "expected": 1853,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.3695798545327156,
+          "expected": 1932,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.303149186865795,
+          "expected": 2037,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.1710624249133503,
+          "expected": 2193,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.101629168718793,
+          "expected": 2248,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.9659779402161315,
+          "expected": 2206,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.8946709722618205,
+          "expected": 2252,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.7567954020516907,
+          "expected": 2379,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.6843191777286408,
+          "expected": 2440,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.5450555467913631,
+          "expected": 2540,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.4718496689083573,
+          "expected": 2515,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.3317198434579898,
+          "expected": 2456,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.258058638298786,
+          "expected": 2434,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.1173882796283394,
+          "expected": 2363,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.043442935612246,
+          "expected": 2459,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.9024352668369768,
+          "expected": 2335,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.8283126110405129,
+          "expected": 2342,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.687094449916967,
+          "expected": 2383,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": -0.612861145869847,
+          "expected": 2409,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.471511630754679,
+          "expected": 2498,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.3972092786423503,
+          "expected": 2591,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.25577779441402293,
+          "expected": 2793,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.18143235408944694,
+          "expected": 2714,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.03994971849960291,
+          "expected": 2719,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.0344226102544901,
+          "expected": 2650,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.1759371659381863,
+          "expected": 2573,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.25032627393662926,
+          "expected": 2693,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.3918607487849639,
+          "expected": 2713,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.4662603275712517,
+          "expected": 2722,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.607807232618624,
+          "expected": 2942,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.6822133455131114,
+          "expected": 3081,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.8237680074042536,
+          "expected": 3343,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.8981781977922969,
+          "expected": 3438,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.9597972764526361,
+          "expected": 3451,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.0861720509284465,
+          "expected": 3410,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.1526027209138872,
+          "expected": 3254,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.2846894856187197,
+          "expected": 3187,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.3541227432601086,
+          "expected": 3164,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.489773973480348,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.561080942337529,
+          "expected": 3228,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.698956513619483,
+          "expected": 3293,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7714327385059525,
+          "expected": 3325,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.9106963701120834,
+          "expected": 3354,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.9839022483466802,
+          "expected": 3333,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.124032074214434,
+          "expected": 3393,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.197693279593043,
+          "expected": 3336,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.338363638523951,
+          "expected": 3051,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 693
+        },
+        {
+          "angle": 2.4123089826769597,
+          "expected": 2878,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.5533166516147654,
+          "expected": 2476,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.627439307496669,
+          "expected": 2361,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.7686574687216425,
+          "expected": 2166,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.8428907728220802,
+          "expected": 2156,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.9842402880005423,
+          "expected": 2157,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 3.058542640146143,
+          "expected": 2149,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.083211182765619,
+          "expected": 2081,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.0088657424202805,
+          "expected": 2053,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.8673831068057885,
+          "expected": 1951,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.793010778038739,
+          "expected": 1868,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.6514962223396616,
+          "expected": 1753,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.5771071143331334,
+          "expected": 1740,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.435572639475201,
+          "expected": 1896,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.3611730606838677,
+          "expected": 1941,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.219626155630506,
+          "expected": 2139,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.1452200427328703,
+          "expected": 2217,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.003665380837991,
+          "expected": 2183,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.9292551904479824,
+          "expected": 2232,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.8676361117860165,
+          "expected": 2290,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.7412613373082748,
+          "expected": 2395,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.6748306673218185,
+          "expected": 2445,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.5427439026157805,
+          "expected": 2541,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.473310644973758,
+          "expected": 2516,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.337659414752766,
+          "expected": 2458,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.2663524458951905,
+          "expected": 2431,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.1284768746127662,
+          "expected": 2373,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.0560006497260506,
+          "expected": 2465,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.9167370181196273,
+          "expected": 2335,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.843531139884876,
+          "expected": 2344,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.7034013140169396,
+          "expected": 2375,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": -0.6297401086382343,
+          "expected": 2405,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.48906974970721234,
+          "expected": 2476,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.4151244055541435,
+          "expected": 2563,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.2741167366162668,
+          "expected": 2780,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.19999408073432554,
+          "expected": 2704,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.05877591950930736,
+          "expected": 2727,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.015457384591153357,
+          "expected": 2664,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.15680689976964327,
+          "expected": 2574,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.23110925191525825,
+          "expected": 2697,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.3725407361831007,
+          "expected": 2701,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.4468861765284486,
+          "expected": 2724,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.5883688121429512,
+          "expected": 2894,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.6627411409100065,
+          "expected": 3047,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.8042556966090905,
+          "expected": 3316,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.8786448046156221,
+          "expected": 3422,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.0201792794735591,
+          "expected": 3455,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.0945788582648945,
+          "expected": 3410,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.2361257633182592,
+          "expected": 3206,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.3105318762158964,
+          "expected": 3173,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.452086538110778,
+          "expected": 3159,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.526496728500787,
+          "expected": 3212,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.588115807162754,
+          "expected": 3237,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.6391425662027288,
+          "expected": 3261,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.6813978253637316,
+          "expected": 3279,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7163894054749582,
+          "expected": 3305,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.745365932965065,
+          "expected": 3310,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7693613953796223,
+          "expected": 3326,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7892320378051174,
+          "expected": 3325,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.8056869167976697,
+          "expected": 3337,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.819313202091402,
+          "expected": 3346,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.8305971289431417,
+          "expected": 3336,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.8399413487690686,
+          "expected": 3342,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.8476792972069174,
+          "expected": 3345,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        }
+      ]
+    },
+    {
+      "name": "mouse-counterclockwise",
+      "frames": 213,
+      "turns": 3.2901771198497336,
+      "missingFrames": 0,
+      "matrixWriteFrames": 0,
+      "resourceRebuildFrames": 0,
+      "rows": [
+        {
+          "angle": 1.8540870923083004,
+          "expected": 3343,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.808469142754583,
+          "expected": 3333,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7844894287271156,
+          "expected": 3328,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7027975187098814,
+          "expected": 3291,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.6598550221764927,
+          "expected": 3269,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.555651801228958,
+          "expected": 3221,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.5008759188513348,
+          "expected": 3183,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.382624916254951,
+          "expected": 3138,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.3204646207251531,
+          "expected": 3170,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.1934473508125423,
+          "expected": 3236,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.1266789441030889,
+          "expected": 3276,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.9941912415926122,
+          "expected": 3459,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.9245472253788589,
+          "expected": 3440,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.7886457970797113,
+          "expected": 3290,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.7172073080985195,
+          "expected": 3140,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.5791756051726843,
+          "expected": 2873,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.506617307501105,
+          "expected": 2771,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.367256244730326,
+          "expected": 2704,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.2939991504395819,
+          "expected": 2709,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.15380852439315268,
+          "expected": 2571,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.08011535854916291,
+          "expected": 2597,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.060592941647666466,
+          "expected": 2722,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.13455823015844529,
+          "expected": 2727,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.2755895756658116,
+          "expected": 2778,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.3497246774680771,
+          "expected": 2664,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.49095761363354223,
+          "expected": 2477,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.5651986843883607,
+          "expected": 2442,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.7065574196046316,
+          "expected": 2375,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": -0.7808646183922259,
+          "expected": 2366,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.9223018562600227,
+          "expected": 2335,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.9966503210657609,
+          "expected": 2415,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.1381365471115852,
+          "expected": 2382,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.2125107632391459,
+          "expected": 2410,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.2741000516143788,
+          "expected": 2433,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.400439461113002,
+          "expected": 2510,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.4668515410029246,
+          "expected": 2516,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.5989162368251821,
+          "expected": 2512,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.6683378936493876,
+          "expected": 2447,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.803975352177494,
+          "expected": 2329,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.875275081751842,
+          "expected": 2279,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.013142059055213,
+          "expected": 2176,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.085613766396487,
+          "expected": 2256,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.224872035083728,
+          "expected": 2129,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.2980750942249064,
+          "expected": 2042,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.4382015734588807,
+          "expected": 1897,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.5118610196325766,
+          "expected": 1756,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.6525292901564286,
+          "expected": 1755,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.7264735365090216,
+          "expected": 1790,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.867479902213692,
+          "expected": 1950,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.9416018730328473,
+          "expected": 1991,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.082819220998452,
+          "expected": 2080,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 3.1261332095818735,
+          "expected": 2126,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.9847842019034,
+          "expected": 2156,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.910482116532276,
+          "expected": 2173,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.769050948960757,
+          "expected": 2166,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.6947056750912672,
+          "expected": 2243,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.553223237105451,
+          "expected": 2476,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.4788510122246823,
+          "expected": 2759,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.3373365798522516,
+          "expected": 3053,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 693
+        },
+        {
+          "angle": 2.262947536674102,
+          "expected": 3221,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.121413138775961,
+          "expected": 3395,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.0470136004396196,
+          "expected": 3435,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.9054667434116421,
+          "expected": 3348,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.831060655759221,
+          "expected": 3336,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.689506023833725,
+          "expected": 3290,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.6150958491975422,
+          "expected": 3255,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.55347678358132,
+          "expected": 3223,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.4271020245905872,
+          "expected": 3134,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.3606713627450941,
+          "expected": 3155,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.2285846077034475,
+          "expected": 3214,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.1591513551416481,
+          "expected": 3249,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.0235001309515477,
+          "expected": 3456,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.9521931652641936,
+          "expected": 3450,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.8143175977452394,
+          "expected": 3331,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.7418413748368442,
+          "expected": 3208,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.6025777455789474,
+          "expected": 2927,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.5293718685787319,
+          "expected": 2794,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.3892420441763513,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.31558083956803623,
+          "expected": 2699,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.17491048155156802,
+          "expected": 2573,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.10096513787924727,
+          "expected": 2582,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.04004253048791859,
+          "expected": 2719,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.11416518606985748,
+          "expected": 2724,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.2553833469387336,
+          "expected": 2794,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.32961665085198333,
+          "expected": 2695,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.47096616580822903,
+          "expected": 2500,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.545268517837018,
+          "expected": 2463,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.6867000019661732,
+          "expected": 2385,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": -0.7610454422386174,
+          "expected": 2366,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.9025280777665747,
+          "expected": 2335,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.9769004064881361,
+          "expected": 2403,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.1184149621332127,
+          "expected": 2365,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.1928040701113551,
+          "expected": 2405,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.2544056904280547,
+          "expected": 2432,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.3807597395592657,
+          "expected": 2505,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.4471795149770752,
+          "expected": 2526,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.5792533464006595,
+          "expected": 2518,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.6486798054816396,
+          "expected": 2472,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.784322964918639,
+          "expected": 2352,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.8556256912555842,
+          "expected": 2298,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.9146714789352084,
+          "expected": 2243,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.0379914193768816,
+          "expected": 2169,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.102816273071661,
+          "expected": 2248,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.2329967231412478,
+          "expected": 2116,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.301427899798138,
+          "expected": 2040,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.43588952840731,
+          "expected": 1898,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.50657116651817,
+          "expected": 1760,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.643704388154955,
+          "expected": 1746,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.715790386554401,
+          "expected": 1781,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.854590768119042,
+          "expected": 1939,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.9275531324818673,
+          "expected": 1991,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.067393875432513,
+          "expected": 2083,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.140903120327359,
+          "expected": 2129,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 3.0017922249541944,
+          "expected": 2154,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.927941709027839,
+          "expected": 2163,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.7870466136374277,
+          "expected": 2157,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.7129831336172185,
+          "expected": 2216,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.5718352219045073,
+          "expected": 2439,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.4976388454439813,
+          "expected": 2723,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.356333168219348,
+          "expected": 2997,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.2820538601080953,
+          "expected": 3175,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": 2.140649732132635,
+          "expected": 3391,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.0663186720054822,
+          "expected": 3428,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.9248531075967972,
+          "expected": 3345,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.8504897525481487,
+          "expected": 3343,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7089858498302501,
+          "expected": 3296,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.6346023417124658,
+          "expected": 3264,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.4930745146572295,
+          "expected": 3176,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.4186784303764814,
+          "expected": 3119,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.277135673765696,
+          "expected": 3189,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.2027317415549963,
+          "expected": 3223,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.061179668421637,
+          "expected": 3427,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.9867708388503751,
+          "expected": 3471,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.9251528870824135,
+          "expected": 3439,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.7987794503757139,
+          "expected": 3308,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.7323494836073403,
+          "expected": 3179,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.6002635537134354,
+          "expected": 2921,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.530830734902102,
+          "expected": 2796,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.3951800256307161,
+          "expected": 2715,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.3238733306175958,
+          "expected": 2704,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.1859980844244722,
+          "expected": 2561,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.11352203042549956,
+          "expected": 2581,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.025741398314750218,
+          "expected": 2706,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.09894716991005642,
+          "expected": 2712,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.23907686918297968,
+          "expected": 2815,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.3127380080152431,
+          "expected": 2722,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.4534082879469075,
+          "expected": 2523,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.5273535905728575,
+          "expected": 2468,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": -0.6683612102125959,
+          "expected": 2385,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": -0.7424838401802801,
+          "expected": 2379,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.883701970641675,
+          "expected": 2330,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -0.9579352585708062,
+          "expected": 2378,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.0992847545518063,
+          "expected": 2352,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.1735870966059925,
+          "expected": 2399,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.3150185688939835,
+          "expected": 2457,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.3893640029419547,
+          "expected": 2506,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.530846631080646,
+          "expected": 2546,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.6052189559179355,
+          "expected": 2507,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.7467335069518724,
+          "expected": 2386,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.8211226125061049,
+          "expected": 2318,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -1.9626570844528397,
+          "expected": 2210,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.0370566617138612,
+          "expected": 2170,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.1786035649505426,
+          "expected": 2185,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.253009676893215,
+          "expected": 2092,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.3945643376544274,
+          "expected": 1917,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.4689745274485078,
+          "expected": 1874,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.530593605616986,
+          "expected": 1745,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.6569683795088928,
+          "expected": 1753,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.7233990491873965,
+          "expected": 1787,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.8554858135278547,
+          "expected": 1940,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -2.9249190709777046,
+          "expected": 1986,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.0605703009705634,
+          "expected": 2079,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": -3.131877269708218,
+          "expected": 2123,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 3.0134324663313072,
+          "expected": 2150,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.9409562415194266,
+          "expected": 2168,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.880938679752708,
+          "expected": 2162,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.7564651159637346,
+          "expected": 2177,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.6910338440008337,
+          "expected": 2250,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.560133495879194,
+          "expected": 2467,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.4913238947296197,
+          "expected": 2736,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.356413026594772,
+          "expected": 2996,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 691
+        },
+        {
+          "angle": 2.2854952394359835,
+          "expected": 3168,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 695
+        },
+        {
+          "angle": 2.1480816778943277,
+          "expected": 3382,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 2.0758483148979403,
+          "expected": 3416,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.9368729922211054,
+          "expected": 3347,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.8638186676127382,
+          "expected": 3347,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.7238687557845844,
+          "expected": 3310,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.6503021247404501,
+          "expected": 3269,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.5097440379536071,
+          "expected": 3194,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.435857711225412,
+          "expected": 3142,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.2949201037145022,
+          "expected": 3184,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.2208342766028029,
+          "expected": 3214,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.079659835960344,
+          "expected": 3416,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 1.0054495141963788,
+          "expected": 3448,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.8641272820668081,
+          "expected": 3403,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.7898392716379359,
+          "expected": 3291,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.6484248128696356,
+          "expected": 3026,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.5740883222165513,
+          "expected": 2863,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.43261631106104925,
+          "expected": 2731,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.3582495671896552,
+          "expected": 2701,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.29666646658975393,
+          "expected": 2708,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.2456695009829755,
+          "expected": 2696,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.20343891376400236,
+          "expected": 2580,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.16846776448797077,
+          "expected": 2574,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.1395081557724889,
+          "expected": 2568,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.11552670379519839,
+          "expected": 2581,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.09566766341280414,
+          "expected": 2584,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.07922239207214346,
+          "expected": 2596,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.06560406287494235,
+          "expected": 2627,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.054326724466740084,
+          "expected": 2635,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.04498796053090777,
+          "expected": 2645,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.03725453011564503,
+          "expected": 2646,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        },
+        {
+          "angle": 0.030850476388765972,
+          "expected": 2656,
+          "missing": 0,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 697
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "info": {
+    "pixelRatio": 0.66,
+    "width": 950,
+    "height": 633,
+    "programsBefore": 90,
+    "programsAfter": 90,
+    "gl": 0
+  }
+}

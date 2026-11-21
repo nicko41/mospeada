@@ -1,0 +1,192 @@
+{
+  "scope": "Forest visual language: ramified broadleaf silhouettes, painted leaf packets, tapered authored trunks; no conifers or geometric crown volumes",
+  "sourceModelsUnchanged": true,
+  "treeSpecies": [
+    "CommonTree_3",
+    "CommonTree_2",
+    "CommonTree_4",
+    "CommonTree_1"
+  ],
+  "treeCount": 4200,
+  "meanHeight": 22.621525977742863,
+  "heroes": [
+    {
+      "name": "CommonTree_3",
+      "x": -15,
+      "z": -17,
+      "scale": 3.5,
+      "yaw": 0.5,
+      "height": 32.98816458880901
+    },
+    {
+      "name": "CommonTree_3",
+      "x": 17,
+      "z": -21,
+      "scale": 3.8,
+      "yaw": 2.4,
+      "height": 35.81572155356407
+    },
+    {
+      "name": "CommonTree_2",
+      "x": -24,
+      "z": 4,
+      "scale": 4.1,
+      "yaw": 1.8,
+      "height": 31.336282554268834
+    },
+    {
+      "name": "CommonTree_3",
+      "x": 23,
+      "z": 10,
+      "scale": 3.4,
+      "yaw": 4.2,
+      "height": 32.04564560055733
+    },
+    {
+      "name": "CommonTree_4",
+      "x": -13,
+      "z": 24,
+      "scale": 3.6,
+      "yaw": 3.1,
+      "height": 33.97817198038101
+    },
+    {
+      "name": "CommonTree_1",
+      "x": 25,
+      "z": 32,
+      "scale": 4.2,
+      "yaw": 2.9,
+      "height": 30.512097841501237
+    }
+  ],
+  "fog": {
+    "density": 0.0047,
+    "color": "#4c7c8a"
+  },
+  "atlas": {
+    "views": 8,
+    "columns": 4,
+    "tileWidth": 256,
+    "treeTileHeight": 512,
+    "shrubTileHeight": 256,
+    "bakedBeforeGameplay": true,
+    "photos": false,
+    "farGeometry": "one alpha-tested quad per species, GPU orientation/view interpolation",
+    "rotationBounds": "all billboard orientations"
+  },
+  "checks": {
+    "unitTests": 224,
+    "build": "passed",
+    "foliage": true,
+    "gameplay": true,
+    "gameplayCases": [
+      "spawn",
+      "cyclone-driving",
+      "cyclone-braking",
+      "armor-hover",
+      "armor-ground-walk",
+      "armor-jump",
+      "cyclone-return",
+      "trunk-collision",
+      "rock-collision",
+      "scott-on-foot",
+      "reset-forest",
+      "highway-preserved"
+    ],
+    "rotation": [
+      {
+        "name": "audit",
+        "frames": 145,
+        "missingFrames": 0,
+        "missingInstances": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0,
+        "medianMs": 20.900000000001455,
+        "p95Ms": 41.70000000000073,
+        "maxDrawCalls": 690
+      },
+      {
+        "name": "performance",
+        "frames": 181,
+        "missingFrames": 0,
+        "missingInstances": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0,
+        "medianMs": 20.900000000001455,
+        "p95Ms": 41.70000000000073,
+        "maxDrawCalls": 690
+      },
+      {
+        "name": "mouse-clockwise",
+        "frames": 223,
+        "turns": 3.2951164446698904,
+        "missingFrames": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0
+      },
+      {
+        "name": "mouse-counterclockwise",
+        "frames": 232,
+        "turns": 3.2943726412858583,
+        "missingFrames": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0
+      }
+    ],
+    "assetRequestsOnTurn": 0,
+    "rotationErrors": 0,
+    "programs": {
+      "pixelRatio": 0.66,
+      "width": 950,
+      "height": 633,
+      "programsBefore": 81,
+      "programsAfter": 81,
+      "gl": 0
+    }
+  },
+  "performance": {
+    "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "viewport": [
+      1440,
+      960
+    ],
+    "raster": [
+      950,
+      633
+    ],
+    "pixelRatio": 0.66,
+    "beforeArtPass": {
+      "medianMs": 41.60000000000218,
+      "p95Ms": 83.39999999999782,
+      "drawCalls": 698
+    },
+    "finalCapture": {
+      "medianMs": 41.69999999999709,
+      "p95Ms": 48.60000000000582,
+      "drawCalls": 690
+    },
+    "gameplay": {
+      "frames": 120,
+      "medianMs": 41.60000000000582,
+      "p95Ms": 41.80000000000291,
+      "drawCalls": 690,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "pixelRatio": 0.66,
+      "renderWidth": 950,
+      "renderHeight": 633
+    },
+    "medianDeltaMs": 0.09999999999490683,
+    "limitation": "Intel UHD remains about 24 FPS at this raster; this is a like-for-like regression comparison, not a 60 FPS claim."
+  },
+  "evidence": {
+    "capture": "after-spawn.png",
+    "sideViews": [
+      "after-side-1.png",
+      "after-side-2.png"
+    ],
+    "speciesReview": "species-review.png",
+    "foliage": "foliage-validation.json",
+    "rotation": "rotation/validation.json",
+    "gameplay": "gameplay/validation.json"
+  }
+}

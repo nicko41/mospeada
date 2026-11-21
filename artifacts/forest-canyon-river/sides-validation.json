@@ -1,0 +1,27 @@
+{
+  "preserved": true,
+  "audit": {
+    "wallMap": "http://127.0.0.1:5173/assets/texturas/pasto/barranco.png",
+    "wallTriangles": 32640,
+    "riverTriangles": 8192,
+    "riverIsRideSurface": false,
+    "gapHasNoSupport": true,
+    "animatedTime": 23.90400000004472,
+    "rocks": 84,
+    "gl": 0,
+    "shader": ""
+  },
+  "sides": {
+    "tiles": 6,
+    "minX": -1024,
+    "maxX": 1024
+  },
+  "shots": [
+    "gameplay-rim",
+    "elevated",
+    "extended-side",
+    "river-detail",
+    "river-current"
+  ],
+  "errors": []
+}

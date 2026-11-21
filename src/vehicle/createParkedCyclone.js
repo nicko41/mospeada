@@ -18,7 +18,9 @@ export function createParkedCyclone(source, { scale = CYCLONE_PRESENTATION_SCALE
     for(const material of Array.isArray(mesh.material)?mesh.material:[mesh.material])matchCyclonePaintToBoots(mesh,material)
     if (mesh.userData.sourcePiece === 'rear_sit + rear_sit') {
       for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) {
-        // Keep the upholstery's original brown vertex colours and geometry.
+        // Neutral charcoal upholstery; the imported vertex tint is brown.
+        material.vertexColors = false
+        material.color.set('#4c5054')
         material.metalness = 0; material.roughness = 0.98
         material.envMapIntensity = 0.08
         material.userData.animeSurfaceShine = 0.05

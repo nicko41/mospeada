@@ -19,6 +19,10 @@ import CycloneVFX from '../vfx/CycloneVFX.jsx'
 import FrontTransformation from './FrontTransformation.jsx'
 import {ArmorController} from './ArmorController.js'
 import {ArmorCamera} from './ArmorCamera.js'
+import { activeEnvironment, defaultStart, selectEnvironment } from '../world/environmentConfig.js'
+import {ForestStage2Progress} from '../world/forest/forestStage2Progress.js'
+import ForestFoliageInteraction from '../world/forest/ForestFoliageInteraction.jsx'
+import ForestOpening from '../world/forest/ForestOpening.jsx'
 
 const CYCLONE_MODEL='/models/mospeada/cyclone-vr052f.glb'
 useGLTF.preload(CYCLONE_MODEL)
@@ -49,20 +53,27 @@ export default function Motorcycle() {
       drivingCamera.setMode(mode, riderCameraState(runtime.state))
       rideUI.publish({ cameraMode: mode })
     }
-    const reset = (name = 'highway') => {
+    const levelProgress=activeEnvironment==='forest'?new ForestStage2Progress():null
+    runtime.levelProgress=levelProgress
+    const resetAt=start=>{
       armor.reset();runtime.transformEntry?.reset()
-      const start = TEST_STARTS[name] || TEST_STARTS.highway
-      runtime.state = createBikeState(start, rig.metrics, sampleRideHeight)
-      runtime.keys = {}; runtime.input = {}; runtime.boostQueued = false; runtime.paused = false
-      rig.update(runtime.state, sampleRideHeight, getConfig())
-      drivingCamera.reset(runtime.state)
-      rideMotion.speed = 0; rideMotion.paused = false
-      rideUI.publish({ scottPreview: false, paused: false, location: start.label, riderMode: 'mounted', wheelieAngle: 0, wheelieRemaining: 0,controlMode:'MOTORCYCLE' })
+      runtime.state=createBikeState(start,rig.metrics,sampleRideHeight)
+      runtime.keys={};runtime.input={};runtime.boostQueued=false;runtime.paused=false
+      rig.update(runtime.state,sampleRideHeight,getConfig());drivingCamera.reset(runtime.state)
+      rideMotion.speed=0;rideMotion.paused=false
+      rideUI.publish({scottPreview:false,paused:false,location:start.label,riderMode:'mounted',wheelieAngle:0,wheelieRemaining:0,controlMode:'MOTORCYCLE',speed:0,airborne:false,boost:false,boostCooldown:0,blocked:false,slip:0,handbrake:false})
     }
-    reset(new URLSearchParams(location.search).get('start') || 'highway')
+    runtime.resetAt=resetAt
+    const reset = (name = defaultStart) => {
+      if ((name === 'forest') !== (activeEnvironment === 'forest')) { selectEnvironment(name); return }
+      const start = TEST_STARTS[name] || TEST_STARTS.highway
+      levelProgress?.reset();resetAt(start)
+    }
+    reset(activeEnvironment === 'forest' ? 'forest' : new URLSearchParams(location.search).get('start') || 'highway')
     const clear = () => { runtime.keys = {}; runtime.input = {}; runtime.boostQueued = false }
     const pause = () => { clear(); runtime.paused = !runtime.paused; rideUI.publish({ paused: runtime.paused }) }
     const down = event => {
+      if(runtime.opening?.active)return
       if (/INPUT|SELECT|TEXTAREA/.test(event.target.tagName)) return
       if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ControlLeft', 'ControlRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF'].includes(event.code)) event.preventDefault()
       runtime.keys[event.code] = true
@@ -73,7 +84,7 @@ export default function Motorcycle() {
       if (event.code === 'KeyP' || event.code === 'Escape') pause()
       if (event.code === 'KeyC'&&!armor.active) setCameraMode((runtime.cameraMode + 1) % 4)
       if (event.code === 'KeyF' && !runtime.paused && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
-      const starts = { Digit1: 'highway', Digit2: 'curves', Digit3: 'slope', Digit4: 'rough', Digit5: 'jump' }
+      const starts = { Digit1: 'highway', Digit2: 'curves', Digit3: 'slope', Digit4: 'rough', Digit5: 'jump', Digit6: 'forest' }
       if (starts[event.code]) reset(starts[event.code])
     }
     const up = event => { runtime.keys[event.code] = false }
@@ -82,6 +93,7 @@ export default function Motorcycle() {
     window.addEventListener('keydown', down); window.addEventListener('keyup', up); window.addEventListener('blur', blur)
     document.addEventListener('visibilitychange', visibility)
     const command = event => {
+      if(runtime.opening?.active)return
       if (event.detail.start) reset(event.detail.start)
       if (event.detail.pause) pause()
       if (event.detail.camera&&!armor.active) setCameraMode((runtime.cameraMode + 1) % 4)
@@ -107,7 +119,7 @@ export default function Motorcycle() {
   }, [rig, runtime, camera, scene, gl])
 
   useFrame((_, delta) => {
-    const s = runtime.state
+    let s = runtime.state
     if (!s) return
     const k = runtime.keys
     const view = camera.getWorldDirection(runtime.probe)
@@ -126,15 +138,19 @@ export default function Motorcycle() {
     }
     const canMove = (x, z, yaw) => {
       const y = sampleRideHeight(x, z)
-      if (!Number.isFinite(y)) return false
+      if (!Number.isFinite(y)&&!runtime.levelProgress?.allowsVoid(x,z)) return false
+      // An airborne bike that arrives below the far lip hits the cliff; it
+      // cannot snap upward onto the landing platform from underneath.
+      if(Number.isFinite(y)&&s.airborne&&(s.frontOverVoid||s.rearOverVoid)&&s.height<y-.25)return false
       // Keep the entire contact footprint inside a rendered surface.
       for (const along of [-1.2, 1.2]) {
-        if (!Number.isFinite(sampleRideHeight(x + Math.sin(yaw) * along, z + Math.cos(yaw) * along))) return false
+        const px=x+Math.sin(yaw)*along,pz=z+Math.cos(yaw)*along
+        if (!Number.isFinite(sampleRideHeight(px,pz))&&!runtime.levelProgress?.allowsVoid(px,pz)) return false
       }
       queryColliders(x - 1.3, z - 1.3, x + 1.3, z + 1.3, runtime.nearby)
       // Three swept stations and a small fixed physics step stop guardrail/pole tunnelling.
       for (const along of [-0.85, 0, 0.85]) for (const collider of runtime.nearby) {
-        const base = s.airborne ? Math.max(y, s.height) : y
+        const base = s.airborne ? Math.max(Number.isFinite(y)?y:s.height, s.height) : Number.isFinite(y)?y:s.height
         if (collider.maxY < base + 0.12 || collider.minY > base + 1.6 || collider.walkable && collider.maxY < base + 0.18) continue
         if (overlapsFootprint(collider, x + Math.sin(yaw) * along, z + Math.cos(yaw) * along, 0.3)) return false
       }
@@ -148,7 +164,7 @@ export default function Motorcycle() {
       queryColliders(x - 0.3, z - 0.3, x + 0.3, z + 0.3, runtime.nearby)
       return !runtime.nearby.some(item => item.maxY > y + 0.2 && item.minY < y + 1.9 && overlapsFootprint(item, x, z, 0.23))
     }
-    if (!runtime.paused) {
+    if (!runtime.paused&&!runtime.opening?.holding) {
       const dt=Math.min(delta,.1),entry=runtime.transformEntry
       const armor=runtime.armorController
       if(entry?.phase==='complete'&&!entry.returnFlight&&!armor.active)armor.activate()
@@ -158,8 +174,13 @@ export default function Motorcycle() {
         if(entry&&entry.phase!=='idle'&&entry.phase!=='complete')runtime.input={throttle:0,steer:0,boost:false,handbrake:false,brake:0}
         if(entry)runtime.input=entry.beforePhysics(runtime.input,dt)
         const config={...getConfig(),...entry?.physicsConfig}
+        if(runtime.levelProgress)config.airBoostEnabled=runtime.levelProgress.airEnabled(s,entry?.phase||'idle')
         advanceBike(s,runtime.input,dt,rig.metrics,sampleRideHeight,canMove,config,canWalk)
         entry?.afterPhysics(dt,rig.metrics,config)
+      }
+      runtime.levelProgress?.observe(runtime.state)
+      if(runtime.levelProgress?.needsRecovery(runtime.state)){
+        runtime.levelProgress.recover(runtime.resetAt);s=runtime.state
       }
     }
     if (s.boostPressed || s.riderMode !== 'mounted') runtime.boostQueued = false
@@ -174,6 +195,6 @@ export default function Motorcycle() {
       rideUI.publish({ speed: Math.abs(s.speed) * 3.6, lean: s.lean * 180 / Math.PI, frontTravel: rig.articulation.frontTravel, rearTravel: rig.articulation.rearTravel, blocked: s.blocked, reverse: !active&&s.speed < -0.1, airborne: active?!a.grounded:s.airborne, slip: s.slip * 180 / Math.PI, handbrake: s.handbrake > 0.15, boost: active?a.boostBlend>.15:s.boostTime > 0, boostCooldown: s.boostCooldown, cameraMode: runtime.cameraMode, riderMode: s.riderMode, wheelieAngle: s.wheelieAngle, wheelieRemaining: s.wheelieRemaining,controlMode:active?a.mode:runtime.transformEntry?.phase&&runtime.transformEntry.phase!=='idle'?'TRANSFORMING':'MOTORCYCLE',armorHeight:active?a.height:0,verticalSpeed:active?a.vy:0 })
     }
   }, -2)
-  useFrame((_, delta) => { if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta);else if (runtime.state) runtime.cameraController?.update(riderCameraState(runtime.state), delta) })
-  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} /></>
+  useFrame((_, delta) => { if(runtime.opening?.update(delta))return;if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta);else if (runtime.state) runtime.cameraController?.update(riderCameraState(runtime.state), delta) })
+  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} />{activeEnvironment==='forest'&&<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/></>}</>
 }

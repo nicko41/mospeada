@@ -1,0 +1,324 @@
+{
+  "frames": [
+    {
+      "dt": 190.80000002384259,
+      "phase": "wheelie",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 291.7000000000007,
+      "phase": "wheelie",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 48.69999999999709,
+      "phase": "wheelie",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 180.5,
+      "phase": "wheelie",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 458.3000000000029,
+      "phase": "boost",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 41.69999999999709,
+      "phase": "boost",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 208.3000000000029,
+      "phase": "boost",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 222.1999999999971,
+      "phase": "airpose",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 250,
+      "phase": "airpose",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 222.20000000000073,
+      "phase": "airpose",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 229.20000000000073,
+      "phase": "airpose",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 222.29999999999927,
+      "phase": "transforming",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 222.10000000000218,
+      "phase": "transforming",
+      "programs": 81,
+      "paused": false
+    },
+    {
+      "dt": 215.29999999999927,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 423.7000000000007,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 34.69999999999709,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 6.900000000001455,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 173.59999999999854,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 208.40000000000146,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 201.29999999999927,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 215.29999999999927,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 222.20000000000073,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 222.29999999999927,
+      "phase": "transforming",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 208.20000000000073,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 194.5,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 201.40000000000146,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 210.20000000000073,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 206.5,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 208.39999999999782,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 215.20000000000073,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 208.29999999999927,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 215.40000000000146,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 215.20000000000073,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 215.29999999999927,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 208.20000000000073,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": true
+    },
+    {
+      "dt": 208.5,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 208.1999999999971,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 208.40000000000146,
+      "phase": "armorboost",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 208.29999999999927,
+      "phase": "complete",
+      "programs": 82,
+      "paused": false
+    },
+    {
+      "dt": 208.40000000000146,
+      "phase": "complete",
+      "programs": 83,
+      "paused": false
+    },
+    {
+      "dt": 208.39999999999782,
+      "phase": "complete",
+      "programs": 83,
+      "paused": false
+    }
+  ],
+  "startPrograms": 78,
+  "stop": true,
+  "endPrograms": 83,
+  "gl": 0,
+  "error": "",
+  "pose": {
+    "legs": [
+      {
+        "side": "Left",
+        "id": "0e6d481c-36e4-4cd2-8e42-51841ec8004e",
+        "hip": [
+          -31.057520590246085,
+          9.066330955799073,
+          -78.15139839791817
+        ],
+        "knee": [
+          -31.069853158647835,
+          8.659785587445153,
+          -77.77992301190145
+        ],
+        "socket": [
+          10594,
+          10582,
+          10591
+        ],
+        "error": 2.869792300935272e-14,
+        "lengthScale": 0.6980261344638402
+      },
+      {
+        "side": "Right",
+        "id": "fd15df60-81e9-44b7-af9b-54a69ce6366a",
+        "hip": [
+          -31.072108541376096,
+          9.059536085510484,
+          -78.25499695067236
+        ],
+        "knee": [
+          -31.06305718982415,
+          8.661239590239866,
+          -78.65491491948247
+        ],
+        "socket": [
+          12109,
+          12102,
+          12105
+        ],
+        "error": 3.972054645195637e-15,
+        "lengthScale": 0.7169193829286076
+      }
+    ],
+    "cuffs": [
+      {
+        "bone": "mixamorigLeftForeArm",
+        "error": 0
+      },
+      {
+        "bone": "mixamorigRightForeArm",
+        "error": 0
+      }
+    ],
+    "weight": 1,
+    "phase": "armorboost",
+    "time": 0.2,
+    "left": [
+      -0.41908532178586455,
+      0.5505260295461323,
+      -0.25720476464420017
+    ],
+    "right": [
+      -1.254473554534357,
+      0.5135898668378553,
+      -0.22651415321793777
+    ]
+  }
+}

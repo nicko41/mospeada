@@ -11,6 +11,19 @@ export function updateVerticalDynamics(s, dt, m, c) {
   let landingSpeed = 0
   for (const side of ['front', 'rear']) {
     const front = side === 'front', positionKey = side + 'Spring', velocityKey = side + 'Velocity'
+    if(s[side+'HasSurface']===false){
+      let velocity=s[velocityKey]
+      if(s[side+'Grounded']){
+        const approach=(s[side+'RampSlope']||0)*Math.abs(s.speed)
+        if(approach>0){velocity=Math.max(velocity,approach);if(velocity>0)velocity=Math.min(velocity*c.terrainLaunchGain,c.maxTerrainLaunchSpeed*(.7+.3*clamp(Math.abs(s.speed)/60,0,1)))}
+      }
+      velocity-=c.gravity*c.airGravityScale*dt
+      s[positionKey]+=velocity*dt;s[velocityKey]=velocity;s[side+'Grounded']=false;s[side+'OverVoid']=true
+      s[side+'SurfaceVelocity']=0;s[side+'RampSlope']=s[side+'RampRise']=0
+      s[side+'Impact']=(s[side+'Impact']||0)*Math.exp(-dt*c.landingRecovery)
+      s[side+'AirGap']=Math.max(0,s[positionKey]-(s[side+'Target']??s[positionKey]))
+      continue
+    }
     const target = s[side + 'Ground'] + m[side + 'Radius'] - m[side + 'Y']
     const previous = s[side + 'Target'] ?? target
     const previousSurfaceVelocity = s[side + 'SurfaceVelocity'] || 0
@@ -48,6 +61,7 @@ export function updateVerticalDynamics(s, dt, m, c) {
       }
     }
     const land = () => {
+      s[side+'OverVoid']=false
       if (front && s.wheelieAngle > 0.025 && s.rearGrounded) {
         // This is the terrain guide underneath the raised wheel, not a tire
         // impact. Only the eventual wheelie contact may load the front fork.
@@ -77,7 +91,8 @@ export function updateVerticalDynamics(s, dt, m, c) {
       if (bounded !== position) velocity *= 0.2
       position = bounded; grounded = true
     } else {
-      if (!grounded && position <= target + extension && velocity <= terrainVelocity + 0.1) {
+      const belowCliff=s[side+'OverVoid']&&position<target-.25
+      if (!grounded && !belowCliff && position <= target + extension && velocity <= terrainVelocity + 0.1) {
         land()
       }
       if (grounded) {
@@ -118,7 +133,7 @@ export function updateVerticalDynamics(s, dt, m, c) {
       if (!grounded) {
         velocity -= c.gravity * c.airGravityScale * dt
         position += velocity * dt
-        if (position <= target + extension && velocity < terrainVelocity) {
+        if (!belowCliff && position <= target + extension && velocity < terrainVelocity) {
           land()
         }
       }

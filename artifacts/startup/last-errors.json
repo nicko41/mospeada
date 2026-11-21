@@ -1,0 +1,1329 @@
+[
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885457.875,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.187,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.223,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.248,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.277,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.3,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.331,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.359,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.389,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.416,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.437,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.465,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.494,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.519,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.544,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.575,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.606,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.626,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.656,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.682,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.707,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.731,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.75,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.775,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.799,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.829,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.852,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.874,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.897,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.919,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.945,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885458.975,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.036,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.073,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.103,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.127,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.153,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.176,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.202,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.229,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.255,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.285,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.311,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.34,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.362,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.389,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.419,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.449,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.472,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.501,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.522,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.552,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.581,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.611,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.636,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.66,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.685,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.71,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.733,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.756,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.778,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.82,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.844,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.87,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.893,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885459.978,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.116,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.179,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.209,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.321,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.375,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.406,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.432,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.459,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.484,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.51,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.545,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.573,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.598,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.633,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.657,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.679,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.759,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.808,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.834,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.86,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.885,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.908,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.932,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885460.965,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.027,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.055,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.081,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.11,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.141,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.165,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.19,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.214,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.238,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.262,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.288,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.312,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.339,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.365,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.388,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x5d5c00e7f600] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795149885461.418,
+        "url": "http://127.0.0.1:5174/?qa=startup-final"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "WebGL: INVALID_VALUE: getProgramParamter: attempt to use a deleted object",
+        "timestamp": 1795149885516.008,
+        "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+        "lineNumber": 46417,
+        "stackTrace": {
+          "callFrames": [
+            {
+              "functionName": "WebGLProgram.isReady",
+              "scriptId": "44",
+              "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+              "lineNumber": 46417,
+              "columnNumber": 48
+            },
+            {
+              "functionName": "",
+              "scriptId": "140",
+              "url": "http://127.0.0.1:5174/src/rendering/AnimeRenderer.js?t=1795149570046",
+              "lineNumber": 136,
+              "columnNumber": 70
+            }
+          ]
+        }
+      }
+    }
+  }
+]

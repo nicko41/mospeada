@@ -1,0 +1,2397 @@
+{
+  "results": [
+    {
+      "name": "dirt-acceleration",
+      "speed": 15.674053428566479,
+      "boost": 0,
+      "phase": "idle",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 1.7,
+        "size": 1.25,
+        "life": 1,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 68,
+        "budget": 448,
+        "rate": 80.23663150299626,
+        "rearSurface": "dirt",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 19,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 0,
+        "grassEnabled": true,
+        "surfaceName": "dirt",
+        "dustEmission": 1.7,
+        "dustSize": 1.25,
+        "dustLife": 1,
+        "dustLaunch": 1,
+        "mudEmission": 1,
+        "mudSize": 1,
+        "mudLife": 1,
+        "mudLaunch": 1,
+        "grassEmission": 0,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 1.7,
+        "size": 1.25,
+        "life": 1,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 68,
+        "budget": 448,
+        "rate": 80.23663150299626,
+        "rearSurface": "dirt",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 19,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 0,
+        "grassEnabled": true,
+        "surfaceName": "dirt",
+        "dustEmission": 1.7,
+        "dustSize": 1.25,
+        "dustLife": 1,
+        "dustLaunch": 1,
+        "mudEmission": 1,
+        "mudSize": 1,
+        "mudLife": 1,
+        "mudLaunch": 1,
+        "grassEmission": 0,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 1,
+          "grounded": true
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 1,
+          "grounded": true
+        }
+      },
+      "dust": {
+        "active": 82,
+        "rate": 87.36112567022727,
+        "emitted": 82
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 9,
+          "rate": 24.179268710754943,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 9,
+          "rate": 24.179268710754943,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 2,
+          "rate": 9.790870529425293,
+          "slide": 0,
+          "size": 0.026,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 2,
+          "rate": 9.790870529425293,
+          "slide": 0,
+          "size": 0.026,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 44,
+        "mud": 18,
+        "grass": 0,
+        "front": 31,
+        "rear": 31
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "dirt-boost",
+      "speed": 25.777415472383804,
+      "boost": 1,
+      "phase": "idle",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 1.7,
+        "size": 1.25,
+        "life": 1,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 56,
+        "budget": 448,
+        "rate": 178.6264134655565,
+        "rearSurface": "dirt",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 37,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 0,
+        "grassEnabled": true,
+        "surfaceName": "dirt",
+        "dustEmission": 1.7,
+        "dustSize": 1.25,
+        "dustLife": 1,
+        "dustLaunch": 1,
+        "mudEmission": 1,
+        "mudSize": 1,
+        "mudLife": 1,
+        "mudLaunch": 1,
+        "grassEmission": 0,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 1.7,
+        "size": 1.25,
+        "life": 1,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 56,
+        "budget": 448,
+        "rate": 178.6264134655565,
+        "rearSurface": "dirt",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 37,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 0,
+        "grassEnabled": true,
+        "surfaceName": "dirt",
+        "dustEmission": 1.7,
+        "dustSize": 1.25,
+        "dustLife": 1,
+        "dustLaunch": 1,
+        "mudEmission": 1,
+        "mudSize": 1,
+        "mudLife": 1,
+        "mudLaunch": 1,
+        "grassEmission": 0,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 1,
+          "grounded": true
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 1,
+          "grounded": true
+        }
+      },
+      "dust": {
+        "active": 70,
+        "rate": 179.68817949885926,
+        "emitted": 162
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 16,
+          "rate": 47.47993265915454,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 15,
+          "rate": 47.47993265915454,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 6,
+          "rate": 19.225969113153514,
+          "slide": 0,
+          "size": 0.026,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 4,
+          "rate": 19.225969113153514,
+          "slide": 0,
+          "size": 0.026,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 90,
+        "mud": 36,
+        "grass": 0,
+        "front": 63,
+        "rear": 63
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "dirt-skid",
+      "speed": 9.504613522178056,
+      "boost": 0,
+      "phase": "idle",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 1.7,
+        "size": 1.25,
+        "life": 1,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 26,
+        "budget": 448,
+        "rate": 50.649983288386515,
+        "rearSurface": "dirt",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 21,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 0,
+        "grassEnabled": true,
+        "surfaceName": "dirt",
+        "dustEmission": 1.7,
+        "dustSize": 1.25,
+        "dustLife": 1,
+        "dustLaunch": 1,
+        "mudEmission": 1,
+        "mudSize": 1,
+        "mudLife": 1,
+        "mudLaunch": 1,
+        "grassEmission": 0,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 1.7,
+        "size": 1.25,
+        "life": 1,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 26,
+        "budget": 448,
+        "rate": 50.649983288386515,
+        "rearSurface": "dirt",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 21,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 0,
+        "grassEnabled": true,
+        "surfaceName": "dirt",
+        "dustEmission": 1.7,
+        "dustSize": 1.25,
+        "dustLife": 1,
+        "dustLaunch": 1,
+        "mudEmission": 1,
+        "mudSize": 1,
+        "mudLife": 1,
+        "mudLaunch": 1,
+        "grassEmission": 0,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 1,
+          "grounded": true
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 1,
+          "grounded": true
+        }
+      },
+      "dust": {
+        "active": 37,
+        "rate": 53.79332529873888,
+        "emitted": 218
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0.6485008680781779,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0.6485008680781779,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 13,
+          "rate": 28.23452480016647,
+          "slide": 0.6485008680781779,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 8,
+          "rate": 16.785442045086782,
+          "slide": 0.6485008680781779,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 3,
+          "rate": 11.432958543337442,
+          "slide": 0.6485008680781779,
+          "size": 0.026,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 2,
+          "rate": 6.796900758603841,
+          "slide": 0.6485008680781779,
+          "size": 0.026,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0.6485008680781779,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0.6485008680781779,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 128,
+        "mud": 54,
+        "grass": 0,
+        "front": 94,
+        "rear": 88
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "grass-acceleration",
+      "speed": 11.786634231970668,
+      "boost": 0,
+      "phase": "idle",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 8,
+        "budget": 448,
+        "rate": 12.757220476506975,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 6,
+        "ejectaActive": 18,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 8,
+        "budget": 448,
+        "rate": 12.757220476506975,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 6,
+        "ejectaActive": 18,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 1.2887975052022426e-305,
+          "grounded": true
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 9.05015925338599e-290,
+          "grounded": true
+        }
+      },
+      "dust": {
+        "active": 11,
+        "rate": 14.435159544932647,
+        "emitted": 236
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 6,
+          "rate": 19.14003241785031,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 7,
+          "rate": 19.14003241785031,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 2,
+          "rate": 11.237994551538701,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 3,
+          "rate": 11.237994551538701,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 1,
+          "rate": 19.14003241785031,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 3,
+          "rate": 19.14003241785031,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 160,
+        "mud": 72,
+        "grass": 26,
+        "front": 133,
+        "rear": 125
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "grass-boost",
+      "speed": 24.318713343826605,
+      "boost": 1,
+      "phase": "idle",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 9,
+        "budget": 448,
+        "rate": 34.987136944510226,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 17,
+        "ejectaActive": 48,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 9,
+        "budget": 448,
+        "rate": 34.987136944510226,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 17,
+        "ejectaActive": 48,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 0,
+          "grounded": true
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 7.83065096751388e-302,
+          "grounded": true
+        }
+      },
+      "dust": {
+        "active": 11,
+        "rate": 36.34988203172801,
+        "emitted": 248
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 14,
+          "rate": 49.06348711818318,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 13,
+          "rate": 49.0634871181832,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 5,
+          "rate": 28.807432969622887,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 7,
+          "rate": 28.807432969622894,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 10,
+          "rate": 49.06348711818318,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 12,
+          "rate": 49.0634871181832,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 196,
+        "mud": 92,
+        "grass": 62,
+        "front": 179,
+        "rear": 171
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "grass-skid",
+      "speed": 11.400954279140493,
+      "boost": 0,
+      "phase": "idle",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 6,
+        "budget": 448,
+        "rate": 11.14461500494996,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 8,
+        "ejectaActive": 32,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 6,
+        "budget": 448,
+        "rate": 11.14461500494996,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 8,
+        "ejectaActive": 32,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 5.6269479912236e-311,
+          "grounded": true
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 0,
+          "grounded": true
+        }
+      },
+      "dust": {
+        "active": 6,
+        "rate": 11.254842298011141,
+        "emitted": 258
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0.45469536045743636,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0.45469536045743636,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 9,
+          "rate": 30.51340268549534,
+          "slide": 0.45469536045743636,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 9,
+          "rate": 17.81334046714776,
+          "slide": 0.45469536045743636,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 5,
+          "rate": 17.915824050992725,
+          "slide": 0.45469536045743636,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 3,
+          "rate": 10.459032604762646,
+          "slide": 0.45469536045743636,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 7,
+          "rate": 30.51340268549534,
+          "slide": 0.45469536045743636,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 4,
+          "rate": 17.81334046714776,
+          "slide": 0.45469536045743636,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 229,
+        "mud": 112,
+        "grass": 95,
+        "front": 226,
+        "rear": 210
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "stopped",
+      "speed": 0,
+      "boost": 0,
+      "phase": "idle",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 0,
+        "budget": 448,
+        "rate": 0,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 0,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 0,
+        "budget": 448,
+        "rate": 0,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 0,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 4.653208068312161e-241,
+          "grounded": true
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 4.906552345372436e-230,
+          "grounded": true
+        }
+      },
+      "dust": {
+        "active": 0,
+        "rate": 0,
+        "emitted": 387
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 386,
+        "mud": 198,
+        "grass": 201,
+        "front": 381,
+        "rear": 404
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "stopped-again",
+      "speed": 0,
+      "boost": 0,
+      "phase": "idle",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 0,
+        "budget": 448,
+        "rate": 0,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 0,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 0,
+        "budget": 448,
+        "rate": 0,
+        "rearSurface": "grass",
+        "grounded": true,
+        "grassActive": 0,
+        "ejectaActive": 0,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 4.595317247004861e-241,
+          "grounded": true
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 4.947399795009716e-230,
+          "grounded": true
+        }
+      },
+      "dust": {
+        "active": 0,
+        "rate": 0,
+        "emitted": 387
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 386,
+        "mud": 198,
+        "grass": 201,
+        "front": 381,
+        "rear": 404
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "transforming",
+      "speed": 28.26269753185228,
+      "boost": 1,
+      "phase": "boost",
+      "armor": false,
+      "front": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 0,
+        "budget": 448,
+        "rate": 0,
+        "rearSurface": "grass",
+        "grounded": false,
+        "grassActive": 0,
+        "ejectaActive": 0,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 0,
+        "budget": 448,
+        "rate": 0,
+        "rearSurface": "grass",
+        "grounded": false,
+        "grassActive": 0,
+        "ejectaActive": 0,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 0,
+          "grounded": false
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 0,
+          "grounded": false
+        }
+      },
+      "dust": {
+        "active": 0,
+        "rate": 0,
+        "emitted": 390
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 394,
+        "mud": 204,
+        "grass": 209,
+        "front": 392,
+        "rear": 415
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "armor",
+      "speed": 0,
+      "boost": 1,
+      "phase": "complete",
+      "armor": true,
+      "front": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 0,
+        "budget": 448,
+        "rate": 0,
+        "rearSurface": "grass",
+        "grounded": false,
+        "grassActive": 0,
+        "ejectaActive": 0,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "rear": {
+        "enabled": true,
+        "emission": 0.35,
+        "size": 0.65,
+        "life": 0.7,
+        "gravity": 0.65,
+        "drag": 1.35,
+        "turbulence": 0.55,
+        "spread": 1,
+        "wind": 0.35,
+        "humidity": 0.3,
+        "maximum": 640,
+        "waterEnabled": true,
+        "earthEnabled": true,
+        "mudEnabled": true,
+        "water": 1,
+        "earth": 1,
+        "mud": 1,
+        "active": 0,
+        "budget": 448,
+        "rate": 0,
+        "rearSurface": "grass",
+        "grounded": false,
+        "grassActive": 0,
+        "ejectaActive": 0,
+        "ejectaBudget": 288,
+        "forestWheelFX": true,
+        "grassWeight": 1,
+        "grassEnabled": true,
+        "surfaceName": "grass",
+        "dustEmission": 0.35,
+        "dustSize": 0.65,
+        "dustLife": 0.7,
+        "dustLaunch": 0.8,
+        "mudEmission": 1.45,
+        "mudSize": 1.8,
+        "mudLife": 1.05,
+        "mudLaunch": 1.1,
+        "grassEmission": 1,
+        "grassSize": 1,
+        "grassLife": 0.45,
+        "grassLaunch": 0.65,
+        "grassGravity": 10
+      },
+      "contacts": {
+        "front": {
+          "biome": "forest",
+          "earth": 0,
+          "grounded": false
+        },
+        "rear": {
+          "biome": "forest",
+          "earth": 0,
+          "grounded": false
+        }
+      },
+      "dust": {
+        "active": 0,
+        "rate": 0,
+        "emitted": 390
+      },
+      "ejecta": [
+        {
+          "type": "water",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "water",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "earth",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.022,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "mud",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.0468,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "front",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        },
+        {
+          "type": "grass",
+          "side": "rear",
+          "active": 0,
+          "rate": 0,
+          "slide": 0,
+          "size": 0.04,
+          "quota": 36
+        }
+      ],
+      "emitted": {
+        "water": 0,
+        "earth": 394,
+        "mud": 204,
+        "grass": 209,
+        "front": 392,
+        "rear": 415
+      },
+      "gl": 0,
+      "error": ""
+    }
+  ],
+  "transitions": [
+    {
+      "kind": "to-grass",
+      "rows": [
+        {
+          "x": -2.8321995730203264,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -2.759764244142028,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -2.6630189542267293,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -2.511585965721984,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -2.3206451191777124,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -2.1271506466571846,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -1.7053913543104824,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -1.149923635383412,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -0.9955724939059177,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -0.9427477453622406,
+          "emission": 1.7,
+          "grass": 0
+        },
+        {
+          "x": -0.7245822698002805,
+          "emission": 1.698748787128173,
+          "grass": 0.000926824349501517
+        },
+        {
+          "x": -0.3767596934640379,
+          "emission": 1.6802224964873234,
+          "grass": 0.014650002601982733
+        },
+        {
+          "x": -0.004299316039915263,
+          "emission": 1.6352385820854023,
+          "grass": 0.04797142067747974
+        },
+        {
+          "x": 0.3927364669657991,
+          "emission": 1.557421039927063,
+          "grass": 0.1056140444984719
+        },
+        {
+          "x": 0.7423247201037063,
+          "emission": 1.4534146078563612,
+          "grass": 0.18265584603232504
+        },
+        {
+          "x": 1.1842424325808705,
+          "emission": 1.3149015321525233,
+          "grass": 0.28525812433146425
+        },
+        {
+          "x": 1.6505513178245144,
+          "emission": 1.1588469541349784,
+          "grass": 0.4008541080481641
+        },
+        {
+          "x": 2.1411885326705757,
+          "emission": 1.0132631762677264,
+          "grass": 0.5086939435053878
+        },
+        {
+          "x": 2.568589523190184,
+          "emission": 0.8910628767981063,
+          "grass": 0.5992126838532545
+        },
+        {
+          "x": 3.1036551293372088,
+          "emission": 0.7853989634532288,
+          "grass": 0.6774822492939045
+        },
+        {
+          "x": 3.6628491978908664,
+          "emission": 0.6984641987587215,
+          "grass": 0.7418783712898359
+        },
+        {
+          "x": 4.246040859089918,
+          "emission": 0.6296490699227013,
+          "grass": 0.7928525407979989
+        },
+        {
+          "x": 4.7502462919912185,
+          "emission": 0.5755485635951225,
+          "grass": 0.8329269899295388
+        },
+        {
+          "x": 5.377015642486833,
+          "emission": 0.5325769739221033,
+          "grass": 0.8647577970947381
+        },
+        {
+          "x": 5.91736198616801,
+          "emission": 0.49732284520598635,
+          "grass": 0.8908719665140841
+        },
+        {
+          "x": 6.587350543715203,
+          "emission": 0.4682293526479213,
+          "grass": 0.9124227017422805
+        },
+        {
+          "x": 7.280790738826767,
+          "emission": 0.44346867977265636,
+          "grass": 0.9307639409091434
+        },
+        {
+          "x": 7.997526275972712,
+          "emission": 0.42477208246949094,
+          "grass": 0.9446132722448215
+        },
+        {
+          "x": 8.862603969736552,
+          "emission": 0.4091663919539492,
+          "grass": 0.9561730429970746
+        },
+        {
+          "x": 9.62840906533324,
+          "emission": 0.39694562611608863,
+          "grass": 0.9652254621362305
+        },
+        {
+          "x": 10.416503539967552,
+          "emission": 0.3868951811338073,
+          "grass": 0.9726702361971797
+        },
+        {
+          "x": 11.22679021350275,
+          "emission": 0.37942125327207443,
+          "grass": 0.9782064790577225
+        },
+        {
+          "x": 12.059064019835596,
+          "emission": 0.373133060113217,
+          "grass": 0.9828643999161355
+        },
+        {
+          "x": 12.912623610730515,
+          "emission": 0.3688367212497392,
+          "grass": 0.9860468731483412
+        },
+        {
+          "x": 13.786831720598487,
+          "emission": 0.36506880035286815,
+          "grass": 0.9888379256645421
+        },
+        {
+          "x": 14.681526085862227,
+          "emission": 0.3619563529906358,
+          "grass": 0.9911434422291586
+        },
+        {
+          "x": 15.596604785636035,
+          "emission": 0.35946094108950843,
+          "grass": 0.9929918954892529
+        },
+        {
+          "x": 16.531936500127884,
+          "emission": 0.35740848825608484,
+          "grass": 0.9945122309214186
+        },
+        {
+          "x": 17.648532976160293,
+          "emission": 0.3557644936238382,
+          "grass": 0.9957300047230827
+        },
+        {
+          "x": 18.627223840988172,
+          "emission": 0.35454482871674364,
+          "grass": 0.9966334602098195
+        },
+        {
+          "x": 19.625749597310683,
+          "emission": 0.35362417401526147,
+          "grass": 0.9973154266553618
+        },
+        {
+          "x": 20.644164285513835,
+          "emission": 0.3529323619444158,
+          "grass": 0.9978278800411734
+        }
+      ]
+    },
+    {
+      "kind": "to-dirt",
+      "rows": [
+        {
+          "x": 4.113899944087353,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 4.054232096232006,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 3.9622699799628256,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 3.839358978555979,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 3.686853743179482,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 3.4733459847324393,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 3.223589922558524,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 2.982154288515768,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 2.6690560088352875,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 2.3221729748246167,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 1.9980035529970983,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 1.5885534774140124,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 1.2755229395613386,
+          "emission": 0.35,
+          "grass": 1
+        },
+        {
+          "x": 0.877310259142461,
+          "emission": 0.350000820866744,
+          "grass": 0.9999993919505599
+        },
+        {
+          "x": 0.45452106666288317,
+          "emission": 0.3620990999542708,
+          "grass": 0.9910377037375772
+        },
+        {
+          "x": -0.06970657997852515,
+          "emission": 0.4165909097026279,
+          "grass": 0.9506734002202756
+        },
+        {
+          "x": -0.5455076656021332,
+          "emission": 0.5148462165610279,
+          "grass": 0.8778916914362755
+        },
+        {
+          "x": -1.04565337762113,
+          "emission": 0.6556298201809709,
+          "grass": 0.7736075406066881
+        },
+        {
+          "x": -1.5700699941576195,
+          "emission": 0.8246501749501554,
+          "grass": 0.6484072778146996
+        },
+        {
+          "x": -2.1186870170855037,
+          "emission": 1.0018604733596335,
+          "grass": 0.5171403901039751
+        },
+        {
+          "x": -2.6914310528365295,
+          "emission": 1.1475692597086273,
+          "grass": 0.4092079557713872
+        },
+        {
+          "x": -3.2882257040345744,
+          "emission": 1.2612746797036594,
+          "grass": 0.3249817187380301
+        },
+        {
+          "x": -4.01478191130597,
+          "emission": 1.3514179907578803,
+          "grass": 0.2582088957349034
+        },
+        {
+          "x": -4.663433478934171,
+          "emission": 1.42815361125519,
+          "grass": 0.20136769536652593
+        },
+        {
+          "x": -5.450296812799775,
+          "emission": 1.459232043055197,
+          "grass": 0.17834663477392804
+        },
+        {
+          "x": -6.150455979786441,
+          "emission": 1.4084403359428226,
+          "grass": 0.215970121523835
+        },
+        {
+          "x": -6.874245883727107,
+          "emission": 1.2764911611590017,
+          "grass": 0.313710250993332
+        },
+        {
+          "x": -7.621574559977096,
+          "emission": 1.0986188497417388,
+          "grass": 0.44546751870982293
+        },
+        {
+          "x": -8.65457500937766,
+          "emission": 0.9191471805872851,
+          "grass": 0.5784094958612702
+        },
+        {
+          "x": -9.729474994233277,
+          "emission": 0.7576882146147721,
+          "grass": 0.6980087299149835
+        },
+        {
+          "x": -10.563052311496886,
+          "emission": 0.678220133034461,
+          "grass": 0.7568739755300288
+        },
+        {
+          "x": -11.419997508990477,
+          "emission": 0.6094812694435829,
+          "grass": 0.8077916522640125
+        },
+        {
+          "x": -12.449213075954402,
+          "emission": 0.5519923802452191,
+          "grass": 0.8503760146331709
+        },
+        {
+          "x": -13.50993031567049,
+          "emission": 0.5049697559760169,
+          "grass": 0.8852075881659133
+        },
+        {
+          "x": -14.602174100314233,
+          "emission": 0.4706357204230587,
+          "grass": 0.9106402070940305
+        },
+        {
+          "x": -15.725609267802735,
+          "emission": 0.4425945213416318,
+          "grass": 0.9314114656728653
+        },
+        {
+          "x": -16.71343731839501,
+          "emission": 0.42152507996643873,
+          "grass": 0.9470184592841194
+        },
+        {
+          "x": -17.894726590891732,
+          "emission": 0.4055520758387774,
+          "grass": 0.9588503141934982
+        },
+        {
+          "x": -19.106890623238236,
+          "emission": 0.3931461681894701,
+          "grass": 0.9680398754152072
+        },
+        {
+          "x": -20.170458321703954,
+          "emission": 0.3838014162472605,
+          "grass": 0.9749619138909181
+        },
+        {
+          "x": -21.43961718920833,
+          "emission": 0.37625287297416454,
+          "grass": 0.9805534274265446
+        },
+        {
+          "x": -22.551563205119106,
+          "emission": 0.37050159529567206,
+          "grass": 0.9848136331143169
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

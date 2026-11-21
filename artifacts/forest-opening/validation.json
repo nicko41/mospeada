@@ -1,0 +1,113 @@
+{
+  "initial": {
+    "x": -35.704101262496955,
+    "z": 0.32298780431652574,
+    "yaw": 2.3707963267948964,
+    "speed": 0,
+    "transform": "idle"
+  },
+  "frames": [
+    {
+      "phase": "lead",
+      "active": true,
+      "elapsed": 0.3916000000014901,
+      "audio": {
+        "time": 0.559642,
+        "paused": false,
+        "failed": false
+      },
+      "pose": {
+        "x": -35.704101262496955,
+        "z": 0.32298780431652574,
+        "yaw": 2.3707963267948964,
+        "speed": 0,
+        "transform": "idle"
+      },
+      "camera": [
+        -20.37655365685931,
+        3.0483325222079176,
+        -15.45884619547297
+      ],
+      "error": ""
+    },
+    {
+      "phase": "playing",
+      "active": true,
+      "elapsed": 1.8350000000074507,
+      "audio": {
+        "time": 4.555259,
+        "paused": false,
+        "failed": false
+      },
+      "pose": {
+        "x": -35.704101262496955,
+        "z": 0.32298780431652574,
+        "yaw": 2.3707963267948964,
+        "speed": 0,
+        "transform": "idle"
+      },
+      "camera": [
+        -17.378822970790495,
+        3.510216992500418,
+        -13.035092219007558
+      ],
+      "error": ""
+    },
+    {
+      "phase": "playing",
+      "active": true,
+      "elapsed": 5.621000000014901,
+      "audio": {
+        "time": 9.56999,
+        "paused": false,
+        "failed": false
+      },
+      "pose": {
+        "x": -35.704101262496955,
+        "z": 0.32298780431652574,
+        "yaw": 2.3707963267948964,
+        "speed": 0,
+        "transform": "idle"
+      },
+      "camera": [
+        -15.012905562719947,
+        5.440947961643225,
+        10.423033366808392
+      ],
+      "error": ""
+    },
+    {
+      "phase": "playing",
+      "active": true,
+      "elapsed": 11.809499999999996,
+      "audio": {
+        "time": 16.355814,
+        "paused": false,
+        "failed": false
+      },
+      "pose": {
+        "x": -35.704101262496955,
+        "z": 0.32298780431652574,
+        "yaw": 2.3707963267948964,
+        "speed": 0,
+        "transform": "idle"
+      },
+      "camera": [
+        -38.55542274980511,
+        1.2500364495975385,
+        3.731771546870843
+      ],
+      "error": ""
+    }
+  ],
+  "end": {
+    "mode": 0,
+    "holding": false,
+    "orbit": true,
+    "overlay": false,
+    "gl": 0
+  },
+  "minHandoffSpeed": 1.3528490196478724,
+  "replaysOnRefresh": true,
+  "errors": []
+}

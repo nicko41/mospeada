@@ -17,7 +17,7 @@ test('boost has higher speed and assisted inertia but never glides forever',()=>
   assert.ok(boost.z-zB>(normal.z-zN)*2);assert.equal(normal.speed,0);assert.equal(boost.speed,0)
 })
 test('bounded vertical thrust gives a large aerial arc; release and Ctrl return safely to hover',()=>{
-  const a=run(state(),{rise:true,forward:1,boost:true},.8)
+  const a=run(state(),{rise:true,forward:1,boost:true},1.1)
   assert.ok(a.y>5&&a.vy>4&&a.z>8);assert.equal(a.jumpPowered,false)
   const released=structuredClone(a),descending=structuredClone(a);run(released,{},.2);run(descending,{descend:true},.2)
   assert.ok(descending.vy<released.vy-10&&descending.vy< -10);assert.ok(descending.y<released.y)
@@ -42,7 +42,7 @@ test('holding Space completes exactly one jump, respects the launch-relative cei
   }
   assert.ok(peak-launch>8&&peak-launch<=armorConfig.jumpMaxHeight+1e-6)
   assert.ok(sawFall);assert.ok(maxPowered<=armorConfig.jumpThrustDuration);assert.equal(a.jumpCount,1);assert.equal(a.jump,null);assert.ok(Math.abs(a.y-.8)<.01)
-  run(a,{},.05);run(a,{rise:true},.2);assert.equal(a.jumpCount,2);assert.ok(a.vy>8)
+  run(a,{},.05);run(a,{rise:true},.5);assert.equal(a.jumpCount,2);assert.ok(a.vy>8)
   // No airborne double jumps, including releasing/repressing before landing.
   run(a,{},.1);run(a,{rise:true},1);assert.equal(a.jumpCount,2)
   const low=state(),c={...armorConfig,jumpMaxHeight:3};let max=low.y
@@ -69,11 +69,11 @@ test('Ground idle ignores camera orientation, Hover freely follows it, and Groun
 test('Ground walks/runs and turbine jumps return to the floor, with repeatable impacts and no held-key auto hopping',()=>{
   const a=state();a.mode='ARMOR_GROUND';run(a,{forward:1},4)
   assert.ok(a.grounded&&a.y>=.025&&a.y<.12);assert.ok(Math.abs(a.speed-2.5)<.03)
-  run(a,{forward:1,boost:true},2);assert.ok(Math.abs(a.speed-5.5)<.03)
-  run(a,{rise:true},.25);assert.equal(a.mode,'ARMOR_GROUND');assert.ok(a.y>1&&a.lift>1)
+  run(a,{forward:1,boost:true},2);assert.ok(Math.abs(a.speed-armorConfig.runSpeed)<.03)
+  run(a,{rise:true},.5);assert.equal(a.mode,'ARMOR_GROUND');assert.ok(a.y>1&&a.lift>1)
   let contact=0;for(let i=0;i<1800;i++){advanceArmor(a,{rise:true},1/120,flat);contact=Math.max(contact,a.settle)}
   assert.equal(a.mode,'ARMOR_GROUND');assert.ok(a.grounded&&a.height<.12);assert.equal(a.jumpCount,1);assert.ok(contact>.6)
-  run(a,{},.05);run(a,{rise:true},.15);assert.equal(a.jumpCount,2);assert.ok(a.vy>8)
+  run(a,{},.05);run(a,{rise:true},.5);assert.equal(a.jumpCount,2);assert.ok(a.vy>8)
 })
 test('terrain is sampled by geometry tags, floor never penetrates, obstacles stop actual acceleration and 30/120 FPS agree',()=>{
   const terrain=(x,z,c)=>{if(c)c.surface='dirt';return Math.max(0,Math.min(1,z*.04))}

@@ -1,0 +1,14 @@
+{
+  "withRim": {
+    "visible": true,
+    "frameMs": 30.46129032258074,
+    "calls": 718,
+    "triangles": 1080424
+  },
+  "withoutRim": {
+    "visible": false,
+    "frameMs": 31.13870967741945,
+    "calls": 710,
+    "triangles": 1072872
+  }
+}

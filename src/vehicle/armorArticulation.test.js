@@ -7,10 +7,12 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {createDrivingCyclone} from './createDrivingCyclone.js'
 import {createBikeState} from './bikePhysics.js'
 import {bikeConfig} from './bikeConfig.js'
+import {armorConfig} from './armorPhysics.js'
+import {ArmorLandingMotion} from './ArmorLandingMotion.js'
 import {parseCycloneScottActions} from './cycloneScottActions.js'
 import {updateScottGameplay} from './scottGameplay.js'
 import {ArmorController} from './ArmorController.js'
-import {ArmorArticulation,caballerSettings} from './ArmorArticulation.js'
+import {ArmorArticulation,caballerSettings,armorAttachmentTarget} from './ArmorArticulation.js'
 import {FrontBattloidTransform} from './FrontBattloidTransform.js'
 import {RearBattloidTransform} from './RearBattloidTransform.js'
 import {GuardBattloidTransform} from './GuardBattloidTransform.js'
@@ -34,7 +36,9 @@ async function fixture(){
   const articulation=new ArmorArticulation(runtime)
   const tick=()=>{
     articulation.restore();guards.restore();rear.restore();front.restore();base();articulation.prepare(controller)
-    instance.armorLocomotion.apply(controller,1/60,false);wrapper.updateMatrixWorld(true);articulation.apply(controller,entry,1/60)
+    instance.armorLocomotion.apply(controller,1/60,false);instance.armorLanding?.apply(controller,1/60,false);wrapper.updateMatrixWorld(true)
+    if(instance.armorLanding)controller.guardFloor(instance,wrapper)
+    articulation.apply(controller,entry,1/60)
   }
   tick();return{rig,source,wrapper,bones,instance,controller,entry,articulation,guards,rear,tick}
 }
@@ -104,7 +108,17 @@ test('Ground uses complete native walk/run tracks through the existing mixer, re
     assert.ok(bone.quaternion.toArray().every((v,i)=>Math.abs(v-expected.toArray()[i])<1e-6),`${bone.name} must preserve the native clip, including torso/head/arms: ${bone.quaternion.toArray()} / ${expected.toArray()}`)
   }
   const rate=f.instance.action.getEffectiveTimeScale();a.speed=1.25;f.tick();assert.ok(Math.abs(f.instance.action.getEffectiveTimeScale()-rate/2)<1e-8)
-  a.speed=5.5;for(let i=0;i<90;i++)f.tick();assert.equal(loco.source,'Running');assert.equal(f.instance.clip,'Armor_Run');assert.ok(f.articulation.diagnostics.legs.every(l=>l.error<1e-6))
+  a.speed=armorConfig.runSpeed;for(let i=0;i<90;i++)f.tick();assert.equal(loco.source,'Running');assert.equal(f.instance.clip,'Armor_Run');assert.ok(f.articulation.diagnostics.legs.every(l=>l.error<1e-6))
+  const runRate=f.instance.action.getEffectiveTimeScale(),runInfo=loco.info.get('Armor_Run')
+  assert.ok(runRate>1.9&&runRate<2.2,'An agile run uses about twice the native cadence, with matching controller travel')
+  assert.ok(Math.abs(a.speed*f.instance.action.getClip().duration/runRate-runInfo.cycleDistance)<1e-6)
+  assert.equal(f.instance.action.getEffectiveWeight(),1)
+  assert.equal(f.instance.mixer.clipAction(loco.clips.get('Armor_Walk')).getEffectiveWeight(),0,'Walking must fully leave the running pose')
+  for(const track of f.instance.action.getClip().tracks.filter(t=>t.name.endsWith('.quaternion'))){
+    const expected=new T.Quaternion().fromArray(track.createInterpolant().evaluate(f.instance.action.time)),bone=f.bones.get(track.name.replace('.quaternion',''))
+    assert.ok(bone.quaternion.toArray().every((v,i)=>Math.abs(v-expected.toArray()[i])<1e-6),`${bone.name}: Running retains the complete native body motion`)
+  }
+  assert.equal(loco.groundGait(3.4),'Armor_Run');assert.equal(loco.groundGait(2.9),'Armor_Walk')
   assert.deepEqual(f.source.animations.map(c=>c.toJSON()),original,'All 16 source clips remain unedited')
   a.speed=0;f.tick();assert.ok(loco.weight<1&&loco.weight>.5);for(let i=0;i<90;i++)f.tick();assert.ok(loco.weight<1e-5)
 })
@@ -119,4 +133,107 @@ test('releasing the four attachments preserves the visible pose then hands back 
   for(let i=0;i<15;i++){layer.restore();layer.apply(f.controller,f.entry,1/60)}
   layer.restore();assert.equal(layer.active,false)
   for(const r of layer.records)assert.ok(maxError(r.mesh.matrix,r.canonical)<1e-7)
+})
+
+test('G and Ctrl land through preparation, descent, impact and recovery with real sole contact and all Armor attachments following',async()=>{
+  const f=await fixture(),c=f.controller,a=c.state,original=f.source.animations.map(clip=>clip.toJSON())
+  f.instance.armorLanding=new ArmorLandingMotion(f.instance)
+  for(const reason of ['toggle','dive']){
+    Object.assign(a,{mode:'ARMOR_HOVER',y:-a.soleOffset+(reason==='dive'?5:.8),height:reason==='dive'?5:.8,vx:0,vz:0,vy:reason==='dive'?8:0,speed:0,descendHeld:false,jumpHeld:false})
+    if(reason==='dive')a.jump={phase:'powered',elapsed:.2,originY:a.y-2,ceilingY:a.y+8}
+    c.sync();f.tick()
+    if(reason==='toggle')c.toggle()
+    const phases=new Set(),yaw=a.yaw;let lowest=Infinity,backward=false,raised=false,peakBend=0
+    for(let i=0;i<300;i++){
+      c.update({forward:1,side:1,yaw:yaw+1,boost:true,rise:true,descend:reason==='dive'},1/60)
+      if(a.groundLanding)phases.add(a.groundLanding.phase)
+      f.tick()
+      assert.ok(f.articulation.diagnostics.legs.every(l=>l.error<1e-6))
+      for(const b of f.articulation.torsoBindings)assert.ok(maxError(b.mesh.matrixWorld,f.articulation.spine.matrixWorld.clone().multiply(b.inBone))<1e-7)
+      assert.equal(a.yaw,yaw,'Player steering cannot fight the directed landing')
+      if(a.groundLanding?.phase==='descend'){
+        const hand=f.bones.get('mixamorigLeftHand').getWorldPosition(new T.Vector3()),shoulder=f.bones.get('mixamorigLeftShoulder').getWorldPosition(new T.Vector3())
+        raised||=['Left','Right'].every(side=>f.bones.get('mixamorig'+side+'Hand').getWorldPosition(new T.Vector3()).y>f.bones.get('mixamorig'+side+'Shoulder').getWorldPosition(new T.Vector3()).y+.12)
+        backward||=hand.sub(shoulder).dot(new T.Vector3(Math.sin(yaw),0,Math.cos(yaw)))<-.04
+      }
+      peakBend=Math.max(peakBend,f.instance.armorLanding.weight)
+      for(const limb of f.instance.mountedMotion.limbs.filter(l=>l.leg))for(const id of limb.soleIds)lowest=Math.min(lowest,f.instance.skins[0].mesh.localToWorld(f.instance.skins[0].mesh.getVertexPosition(id,new T.Vector3())).y)
+      if(!a.groundLanding)break
+    }
+    assert.deepEqual([...phases],['prepare','descend','impact','recover'])
+    if(reason==='dive')assert.ok(raised,'Ctrl raises both hands clearly above shoulder height')
+    else assert.ok(backward,'G retains the native backward running swing')
+    assert.ok(peakBend>.55&&lowest>=.0079,'Impact bends the knees while the actual soles remain above the terrain')
+    assert.equal(a.mode,'ARMOR_GROUND');assert.equal(a.groundLanding,null);assert.ok(a.grounded)
+    c.update({rise:true},1/60);assert.equal(a.jump,null,'Held input cannot queue a jump through the landing')
+  }
+  assert.deepEqual(f.source.animations.map(clip=>clip.toJSON()),original)
+})
+
+test('a jump lowers the actual pelvis over planted soles, extends the knees, and only then launches and gathers the legs',async()=>{
+  const f=await fixture(),c=f.controller,a=c.state
+  f.instance.armorLanding=new ArmorLandingMotion(f.instance)
+  Object.assign(a,{mode:'ARMOR_GROUND',y:-a.soleOffset+.025,height:.025,vx:0,vz:0,vy:0,speed:0,jump:null,jumpHeld:false})
+  c.sync();for(let i=0;i<30;i++)f.tick()
+  const hips=()=>f.bones.get('mixamorigHips').getWorldPosition(new T.Vector3()).y
+  const knee=side=>{const [h,k,f1]=['UpLeg','Leg','Foot'].map(s=>f.bones.get(`mixamorig${side}${s}`).getWorldPosition(new T.Vector3()));return Math.PI-h.sub(k).angleTo(f1.sub(k))}
+  const start=hips(),phases=new Set();let low=start,maxBend=0,endExtension=Infinity,airBend=0
+  for(let i=0;i<65;i++){
+    c.update({rise:true},1/60);f.tick();const j=a.jump;phases.add(j?.phase)
+    assert.ok(f.articulation.diagnostics.legs.every(l=>l.error<1e-6))
+    if(j?.launched===false){
+      assert.equal(a.vy,0,'No vertical launch during the preparation')
+      low=Math.min(low,hips());maxBend=Math.max(maxBend,Math.min(knee('Left'),knee('Right')))
+      for(const limb of f.instance.mountedMotion.limbs.filter(l=>l.leg)){
+        const skin=f.instance.skins[0].mesh,min=Math.min(...limb.soleIds.map(id=>skin.localToWorld(skin.getVertexPosition(id,new T.Vector3())).y))
+        assert.ok(min>=.0079&&min<.06,`${limb.side} boot clearance during ${j.phase}: ${min}; requested ${j.supportClearance}`)
+      }
+      if(j.phase==='pushOff')endExtension=Math.min(endExtension,knee('Left'))
+    }else if(j?.elapsed>.25)airBend=Math.max(airBend,Math.min(knee('Left'),knee('Right')))
+  }
+  assert.ok(phases.has('compress')&&phases.has('pushOff')&&phases.has('powered'))
+  assert.ok(start-low>.12,`Actual pelvis must visibly lower before takeoff: ${start-low} m`)
+  assert.ok(maxBend>.7&&endExtension<maxBend*.5,'Legs visibly load then extend before leaving the floor')
+  assert.ok(airBend>.7,'Both actual knees gather again after the impulse')
+})
+
+
+test('returning from Ground walk/run releases native locomotion without a sideways mounting tween or retired clip',async()=>{
+  const f=await fixture(),a=f.controller.state,runtime=f.controller.runtime
+  a.mode='ARMOR_GROUND';a.height=.025;a.speed=2.5
+  for(let i=0;i<30;i++)f.tick()
+  assert.equal(f.instance.clip,'Armor_Walk')
+  a.speed=armorConfig.runSpeed;f.tick()
+  const outgoing=f.instance.retiredActions.map(r=>r.action)
+  assert.ok(outgoing.length>0,'Reproduce the native walk/run crossfade at T')
+  f.controller.deactivate();Object.assign(f.entry,{returnFlight:true,phase:'returnboost',time:0,returnProgress:0})
+  for(let i=0;i<3;i++){
+    f.tick()
+    assert.equal(f.instance.frameTransition,null,'Do not reuse the on-foot mount wrapper tween')
+    assert.equal(f.instance.retiredActions.length,0)
+    assert.equal(f.instance.clip,'Cyclone_RidingPose')
+    assert.ok(outgoing.every(action=>!action.isScheduled()),'Old locomotion must no longer contribute to the return pose')
+    const expected=runtime.scottBikeBody.localToWorld(new T.Vector3().fromArray(data.actorOrigin))
+    assert.ok(f.wrapper.position.distanceTo(expected)<1e-8,'Use the same bike-local origin as the returning assembly')
+  }
+})
+
+
+test('caballer and cuffs follow the completed assembly during its departure boost before Armor physics activates',async()=>{
+  const f=await fixture(),layer=f.articulation
+  layer.restore();f.controller.active=false;Object.assign(f.entry,{phase:'armorboost',returnFlight:false})
+  const target=armorAttachmentTarget(f.controller,f.entry)
+  assert.equal(target.active,true);assert.equal(target.state,f.entry);assert.equal(f.controller.active,false)
+  layer.prepare(target)
+  const binding=layer.bindings[0],canonical=layer.records.find(r=>r.mesh===binding.mesh).canonical.clone()
+  f.bones.get('mixamorigLeftUpLeg').quaternion.multiply(new T.Quaternion().setFromEuler(new T.Euler(-.28,0,.42)))
+  f.bones.get('mixamorigRightUpLeg').quaternion.multiply(new T.Quaternion().setFromEuler(new T.Euler(-.22,0,-.42)))
+  f.bones.get('mixamorigLeftArm').quaternion.multiply(new T.Quaternion().setFromEuler(new T.Euler(.25,0,.10)))
+  f.wrapper.updateMatrixWorld(true);layer.apply(target,f.entry,1/60)
+  assert.ok(layer.diagnostics.legs.every(l=>l.error<1e-6),'Both lower ends must still meet their actual knee discs during the booster')
+  assert.ok(layer.diagnostics.legs.some(l=>Math.abs(l.lengthScale-1)>.01),'Length adaptation is already active')
+  assert.ok(layer.diagnostics.cuffs.every(c=>c.error===0))
+  layer.restore();assert.ok(maxError(binding.mesh.matrix,canonical)<1e-7)
+  assert.equal(armorAttachmentTarget(f.controller,{phase:'transforming',returnFlight:false}).active,false)
+  assert.equal(armorAttachmentTarget(f.controller,{phase:'returnboost',returnFlight:true}).active,false)
 })

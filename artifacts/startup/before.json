@@ -1,0 +1,100 @@
+{
+  "timing": {
+    "renderer": 11331.400000095367,
+    "preparation": 11331.600000023842,
+    "ready": 72492.5,
+    "playable": 74356
+  },
+  "preparation": {
+    "startMs": 17300.300000071526,
+    "initialGLError": 1281,
+    "compileMs": 9229.299999952316,
+    "primeMs": 45905.800000071526,
+    "totalMs": 55135.10000002384,
+    "programs": 422
+  },
+  "programs": 422,
+  "error": "",
+  "resources": [
+    {
+      "name": "sounds/ambience/ambience-rain.mp3",
+      "duration": 53124.5,
+      "bytes": 0
+    },
+    {
+      "name": "transformations/cyclone-rear-battloid.json",
+      "duration": 6619.899999976158,
+      "bytes": 0
+    },
+    {
+      "name": "transformations/cyclone-front-battloid.json",
+      "duration": 6619.799999952316,
+      "bytes": 0
+    },
+    {
+      "name": "transformations/cyclone-guard-battloid.json",
+      "duration": 6619.100000023842,
+      "bytes": 0
+    },
+    {
+      "name": "transformations/cyclone-wheel-battloid.json",
+      "duration": 6618.799999952316,
+      "bytes": 0
+    },
+    {
+      "name": "transformations/cyclone-suspension-hide.json",
+      "duration": 6617.200000047684,
+      "bytes": 0
+    },
+    {
+      "name": "transformations/cyclone-rear-pieces.glb",
+      "duration": 5983.700000047684,
+      "bytes": 5608972
+    },
+    {
+      "name": "sounds/ambience/trueno02.mp3",
+      "duration": 5823,
+      "bytes": 461427
+    },
+    {
+      "name": "sounds/ambience/trueno01.mp3",
+      "duration": 5622,
+      "bytes": 229041
+    },
+    {
+      "name": "models/mospeada/cyclone-vr052f.glb",
+      "duration": 4293.100000023842,
+      "bytes": 23345364
+    },
+    {
+      "name": "models/mospeada/scott-bernard-animated-original.glb",
+      "duration": 3734.2999999523163,
+      "bytes": 13993900
+    },
+    {
+      "name": "models/mospeada/scott-shoulders-normal.png",
+      "duration": 3021.5,
+      "bytes": 5737544
+    },
+    {
+      "name": "models/mospeada/scott-shoulders-color.png",
+      "duration": 2732,
+      "bytes": 4947171
+    },
+    {
+      "name": "models/glTF/Bark_NormalTree_Normal.png",
+      "duration": 2500.7000000476837,
+      "bytes": 4384496
+    },
+    {
+      "name": "models/glTF/Bark_DeadTree_Normal.png",
+      "duration": 2484.600000023842,
+      "bytes": 5728199
+    },
+    {
+      "name": "models/mospeada/scott-shoulders-roughness.png",
+      "duration": 2402.7999999523163,
+      "bytes": 2809606
+    }
+  ]
+}

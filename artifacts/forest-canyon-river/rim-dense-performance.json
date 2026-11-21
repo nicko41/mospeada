@@ -1,0 +1,34 @@
+[
+  {
+    "visible": true,
+    "frameMs": 61.730555555555235,
+    "calls": 822,
+    "triangles": 1949740,
+    "dpr": 0.66,
+    "ready": true
+  },
+  {
+    "visible": false,
+    "frameMs": 39.73888888888905,
+    "calls": 812,
+    "triangles": 1935868,
+    "dpr": 0.66,
+    "ready": true
+  },
+  {
+    "visible": false,
+    "frameMs": 41.47222222222222,
+    "calls": 812,
+    "triangles": 1935868,
+    "dpr": 0.66,
+    "ready": true
+  },
+  {
+    "visible": true,
+    "frameMs": 40.125,
+    "calls": 822,
+    "triangles": 1949740,
+    "dpr": 0.66,
+    "ready": true
+  }
+]

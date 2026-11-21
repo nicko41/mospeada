@@ -1,7 +1,10 @@
 import {advanceGroundTurn} from './armorGroundTurns.js'
+import {isJumpCharging,jumpTiming} from './armorJumpMotion.js'
 
 // Armour-only arcade propulsion; the Motorcycle solver remains independent.
-export const armorConfig={hoverHeight:.8,hoverSpeed:9,acceleration:30,braking:17,inertia:3.2,boostSpeed:32,boostAcceleration:64,boostBraking:30,boostInertia:1.5,boostCoastTime:.18,jumpImpulse:8,jumpAcceleration:22,jumpThrustDuration:.65,jumpMaxHeight:12,maxRiseSpeed:13,airGravity:5,descentAcceleration:32,diveImpulse:6,maxDiveSpeed:18,maxFallSpeed:9,hoverStiffness:24,hoverDamping:9,groundSpeed:2.5,runSpeed:5.5,groundTurnThreshold:.70,groundTurnRate:1,groundYawRate:3,cameraDistance:4.6,cameraResponse:7,bodyIntensity:1}
+// Ground run matches roughly 2x the native Running support-foot cadence
+// (about 5.5 m/s at source speed), rather than speeding the feet in isolation.
+export const armorConfig={hoverHeight:.8,hoverSpeed:9,acceleration:30,braking:17,inertia:3.2,boostSpeed:32,boostAcceleration:64,boostBraking:30,boostInertia:1.5,boostCoastTime:.18,jumpImpulse:8,jumpAcceleration:22,jumpThrustDuration:.65,jumpMaxHeight:12,maxRiseSpeed:13,airGravity:5,descentAcceleration:32,diveImpulse:6,maxDiveSpeed:18,maxFallSpeed:9,hoverStiffness:24,hoverDamping:9,groundSpeed:2.5,runSpeed:11,groundTurnThreshold:.70,groundTurnRate:1,groundYawRate:3,cameraDistance:3.6,cameraResponse:7,bodyIntensity:1}
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n))
 const damp=(a,b,k,dt)=>a+(b-a)*(1-Math.exp(-k*dt))
 const wrap=n=>Math.atan2(Math.sin(n),Math.cos(n))
@@ -16,9 +19,21 @@ function advanceVertical(a,input,dt,c){
   if(input.descend&&!a.descendHeld&&air)a.vy=Math.min(a.vy,-c.diveImpulse)
   const pressed=!!input.rise&&!a.jumpHeld
   if(pressed&&!a.jump&&a.y<target+.3&&Math.abs(a.vy)<1.5){
-    a.jump={originY:a.y,ceilingY:a.y+c.jumpMaxHeight,elapsed:0,thrustEnded:false,phase:'powered'};a.jumpCount++;a.vy=Math.max(a.vy,c.jumpImpulse);a.groundTurn=null
+    a.jump={originY:a.y,ceilingY:a.y+c.jumpMaxHeight,elapsed:0,phaseTime:0,launched:false,supportClearance:Math.max(.025,a.y+a.soleOffset-a.ground),thrustEnded:false,phase:'compress'};a.jumpCount++;a.vy=0;a.groundTurn=null
   }
   a.jumpPowered=false
+  if(isJumpCharging(a)){
+    const j=a.jump;j.phaseTime+=dt
+    if(!input.rise)j.released=true
+    if(j.phase==='compress'&&j.phaseTime>=jumpTiming.compress){j.phase='pushOff';j.phaseTime=0}
+    if(j.phase==='pushOff'&&j.phaseTime>=jumpTiming.pushOff){
+      j.launched=true;j.phase='powered';j.elapsed=0;j.originY=a.y;j.ceilingY=a.y+c.jumpMaxHeight
+      a.vy=c.jumpImpulse;j.thrustEnded=!!j.released
+    }else{
+      a.vy=0;a.jumpHeld=!!input.rise;a.descendHeld=!!input.descend
+      return
+    }
+  }
   if(a.jump){
     const j=a.jump,remaining=Math.max(0,j.ceilingY-a.y)
     j.elapsed+=dt
@@ -48,7 +63,7 @@ export function advanceArmor(a,input,delta,sample,canMove=()=>true,c=armorConfig
   if(!dt)return a
   for(let i=0;i<steps;i++){
     const controlYaw=Number.isFinite(input.yaw)?input.yaw:a.yaw,forward=input.forward||0,side=input.side||0,length=Math.hypot(forward,side),moving=length>.001
-    const hover=a.mode==='ARMOR_HOVER'||!!a.jump,boost=hover&&!!input.boost&&moving
+    const hover=a.mode==='ARMOR_HOVER'||!!a.jump&&!isJumpCharging(a),boost=hover&&!!input.boost&&moving
     if(a.mode==='ARMOR_HOVER')a.groundTurn=null
     const oldX=a.vx,oldZ=a.vz,oldY=a.vy,wasGrounded=a.grounded
     // Screen-right is forward x world-up. Diagonal thrust has unit length.
@@ -81,7 +96,7 @@ export function advanceArmor(a,input,delta,sample,canMove=()=>true,c=armorConfig
     a.groundSmooth=damp(a.groundSmooth,a.ground,8,dt)
     advanceVertical(a,input,dt,c)
     a.ax=(a.vx-oldX)/dt;a.az=(a.vz-oldZ)/dt;a.ay=(a.vy-oldY)/dt
-    a.speed=Math.hypot(a.vx,a.vz);a.height=a.y+a.soleOffset-a.ground;a.grounded=a.mode==='ARMOR_GROUND'&&a.height<.12
+    a.speed=Math.hypot(a.vx,a.vz);a.height=a.y+a.soleOffset-a.ground;a.grounded=a.mode==='ARMOR_GROUND'&&(isJumpCharging(a)||a.height<.12)
     if(a.mode==='ARMOR_GROUND'&&!a.grounded)a.contactSpeed=Math.max(a.contactSpeed,-a.vy)
     if(a.grounded&&!wasGrounded){a.settle=Math.max(a.settle,clamp(a.contactSpeed/8,.12,1));a.contactSpeed=0}
     a.diving=!!input.descend&&a.height>.2&&a.vy< -1
@@ -90,7 +105,7 @@ export function advanceArmor(a,input,delta,sample,canMove=()=>true,c=armorConfig
     if(a.boostBlend<.001)a.thrustForward=a.thrustSide=a.thrustX=a.thrustZ=0
     a.localForward=Math.sin(a.yaw)*a.vx+Math.cos(a.yaw)*a.vz;a.localSide=Math.cos(a.yaw)*a.vx-Math.sin(a.yaw)*a.vz
     a.forwardAcceleration=Math.sin(a.yaw)*a.ax+Math.cos(a.yaw)*a.az;a.sideAcceleration=Math.cos(a.yaw)*a.ax-Math.sin(a.yaw)*a.az
-    a.lift=a.mode==='ARMOR_HOVER'||a.jump?clamp(.25+(a.jumpPowered?.65:0)+Math.max(0,a.ay)/c.jumpAcceleration+Math.max(0,a.vy)*.025,.1,1.8):a.grounded?a.settle*.35:.15
+    a.lift=isJumpCharging(a)?0:a.mode==='ARMOR_HOVER'||a.jump?clamp(.25+(a.jumpPowered?.65:0)+Math.max(0,a.ay)/c.jumpAcceleration+Math.max(0,a.vy)*.025,.1,1.8):a.grounded?a.settle*.35:.15
     a.pitch=damp(a.pitch,0,10,dt);a.bank=damp(a.bank,0,10,dt)
     a.settle=damp(a.settle,0,6,dt);a.stride+=a.speed*dt/(a.mode==='ARMOR_GROUND'&&input.boost?1.5:.9);a.time+=dt
   }

@@ -1,0 +1,5753 @@
+[
+  {
+    "name": "Bush_Common",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.9148447513580322,
+      1.5817856639623642,
+      1.9651408791542053
+    ],
+    "min": [
+      -0.9234761595726013,
+      -0.234694704413414,
+      -0.9743891954421997
+    ],
+    "max": [
+      0.9913685917854309,
+      1.3470909595489502,
+      0.9907516837120056
+    ],
+    "triangles": 900,
+    "primitives": [
+      {
+        "triangles": 900,
+        "vertices": 1800,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_TwistedTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Bush_Common",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_TwistedTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Bush_Common.bin",
+      "Leaves_TwistedTree_C.png"
+    ],
+    "bytes": 164254
+  },
+  {
+    "name": "Bush_Common_Flowers",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.9148447513580322,
+      1.5817856639623642,
+      1.9651408791542053
+    ],
+    "min": [
+      -0.9234761595726013,
+      -0.234694704413414,
+      -0.9743891954421997
+    ],
+    "max": [
+      0.9913685917854309,
+      1.3470909595489502,
+      0.9907516837120056
+    ],
+    "triangles": 1368,
+    "primitives": [
+      {
+        "triangles": 900,
+        "vertices": 1800,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_NormalTree"
+      },
+      {
+        "triangles": 468,
+        "vertices": 715,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Bush_Common_Flowers",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_NormalTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Bush_Common_Flowers.bin",
+      "Leaves_NormalTree_C.png",
+      "Flowers.png"
+    ],
+    "bytes": 735987
+  },
+  {
+    "name": "Clover_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.796289324760437,
+      1.1447324370965362,
+      0.7638857662677765
+    ],
+    "min": [
+      -0.5022982358932495,
+      -0.012792191468179226,
+      -0.39956197142601013
+    ],
+    "max": [
+      0.2939910888671875,
+      1.131940245628357,
+      0.36432379484176636
+    ],
+    "triangles": 379,
+    "primitives": [
+      {
+        "triangles": 379,
+        "vertices": 267,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Clover_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Clover_1.bin",
+      "Leaves.png"
+    ],
+    "bytes": 2601462
+  },
+  {
+    "name": "Clover_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.8511282801628113,
+      1.2637853054329753,
+      0.8366343677043915
+    ],
+    "min": [
+      -0.5022982358932495,
+      -0.0023507503792643547,
+      -0.47231054306030273
+    ],
+    "max": [
+      0.34883004426956177,
+      1.261434555053711,
+      0.36432382464408875
+    ],
+    "triangles": 615,
+    "primitives": [
+      {
+        "triangles": 615,
+        "vertices": 433,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Clover_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Clover_2.bin",
+      "Leaves.png"
+    ],
+    "bytes": 2609521
+  },
+  {
+    "name": "CommonTree_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      4.311422824859619,
+      7.264785200357437,
+      4.577713966369629
+    ],
+    "min": [
+      -2.1944587230682373,
+      -0.24277201294898987,
+      -2.2245190143585205
+    ],
+    "max": [
+      2.116964101791382,
+      7.022013187408447,
+      2.3531949520111084
+    ],
+    "triangles": 6265,
+    "primitives": [
+      {
+        "triangles": 4345,
+        "vertices": 5618,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 1920,
+        "vertices": 3840,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_NormalTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "CommonTree_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_NormalTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "CommonTree_1.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaves_NormalTree_C.png"
+    ],
+    "bytes": 8933525
+  },
+  {
+    "name": "CommonTree_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      4.464301586151123,
+      7.642995744943619,
+      4.27585244178772
+    ],
+    "min": [
+      -2.2230136394500732,
+      -0.24277201294898987,
+      -1.8514697551727295
+    ],
+    "max": [
+      2.24128794670105,
+      7.400223731994629,
+      2.4243826866149902
+    ],
+    "triangles": 5648,
+    "primitives": [
+      {
+        "triangles": 4310,
+        "vertices": 5431,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 1338,
+        "vertices": 2676,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_NormalTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "CommonTree_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_NormalTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "CommonTree_2.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaves_NormalTree_C.png"
+    ],
+    "bytes": 8864970
+  },
+  {
+    "name": "CommonTree_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      4.0628461837768555,
+      9.425189882516861,
+      4.241076946258545
+    ],
+    "min": [
+      -1.9864652156829834,
+      -0.24277201294898987,
+      -2.0609655380249023
+    ],
+    "max": [
+      2.076380968093872,
+      9.182417869567871,
+      2.1801114082336426
+    ],
+    "triangles": 3505,
+    "primitives": [
+      {
+        "triangles": 1705,
+        "vertices": 2149,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 1800,
+        "vertices": 3600,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_NormalTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "CommonTree_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_NormalTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "CommonTree_3.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaves_NormalTree_C.png"
+    ],
+    "bytes": 8738928
+  },
+  {
+    "name": "CommonTree_4",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      3.8255257606506348,
+      9.438381105661392,
+      3.755373477935791
+    ],
+    "min": [
+      -1.7970952987670898,
+      -0.24277201294898987,
+      -2.0796103477478027
+    ],
+    "max": [
+      2.028430461883545,
+      9.195609092712402,
+      1.6757631301879883
+    ],
+    "triangles": 4066,
+    "primitives": [
+      {
+        "triangles": 3280,
+        "vertices": 4328,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 786,
+        "vertices": 1572,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_NormalTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "CommonTree_4",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_NormalTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "CommonTree_4.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaves_NormalTree_C.png"
+    ],
+    "bytes": 8749541
+  },
+  {
+    "name": "CommonTree_5",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      3.671165347099304,
+      7.006239801645279,
+      4.219650030136108
+    ],
+    "min": [
+      -1.912354588508606,
+      -0.24277201294898987,
+      -2.162447929382324
+    ],
+    "max": [
+      1.7588107585906982,
+      6.763467788696289,
+      2.057202100753784
+    ],
+    "triangles": 3182,
+    "primitives": [
+      {
+        "triangles": 1882,
+        "vertices": 2273,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 1300,
+        "vertices": 2600,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_NormalTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "CommonTree_5",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_NormalTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "CommonTree_5.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaves_NormalTree_C.png"
+    ],
+    "bytes": 8694936
+  },
+  {
+    "name": "DeadTree_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      6.148936033248901,
+      9.495477199554443,
+      5.74866795539856
+    ],
+    "min": [
+      -2.5923237800598145,
+      -0.3355545997619629,
+      -2.9034998416900635
+    ],
+    "max": [
+      3.556612253189087,
+      9.15992259979248,
+      2.845168113708496
+    ],
+    "triangles": 6169,
+    "primitives": [
+      {
+        "triangles": 6169,
+        "vertices": 8036,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_DeadTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "DeadTree_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_DeadTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "DeadTree_1.bin",
+      "Bark_DeadTree_Normal.png",
+      "Bark_DeadTree.png"
+    ],
+    "bytes": 10382019
+  },
+  {
+    "name": "DeadTree_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      6.7296178340911865,
+      11.488231182098389,
+      6.378535985946655
+    ],
+    "min": [
+      -2.332343816757202,
+      -0.3355545997619629,
+      -2.522876024246216
+    ],
+    "max": [
+      4.397274017333984,
+      11.152676582336426,
+      3.8556599617004395
+    ],
+    "triangles": 6557,
+    "primitives": [
+      {
+        "triangles": 6557,
+        "vertices": 8635,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_DeadTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "DeadTree_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_DeadTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "DeadTree_2.bin",
+      "Bark_DeadTree_Normal.png",
+      "Bark_DeadTree.png"
+    ],
+    "bytes": 10413106
+  },
+  {
+    "name": "DeadTree_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      6.387573719024658,
+      13.280385494232178,
+      6.430059194564819
+    ],
+    "min": [
+      -3.847569704055786,
+      -0.3355545997619629,
+      -3.3867006301879883
+    ],
+    "max": [
+      2.540004014968872,
+      12.944830894470215,
+      3.043358564376831
+    ],
+    "triangles": 5802,
+    "primitives": [
+      {
+        "triangles": 5802,
+        "vertices": 7936,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_DeadTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "DeadTree_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_DeadTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "DeadTree_3.bin",
+      "Bark_DeadTree_Normal.png",
+      "Bark_DeadTree.png"
+    ],
+    "bytes": 10375020
+  },
+  {
+    "name": "DeadTree_4",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      7.960942029953003,
+      12.77097749710083,
+      7.732445240020752
+    ],
+    "min": [
+      -3.3627684116363525,
+      -0.3355545997619629,
+      -3.5989503860473633
+    ],
+    "max": [
+      4.59817361831665,
+      12.435422897338867,
+      4.133494853973389
+    ],
+    "triangles": 5702,
+    "primitives": [
+      {
+        "triangles": 5702,
+        "vertices": 7653,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_DeadTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "DeadTree_4",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_DeadTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "DeadTree_4.bin",
+      "Bark_DeadTree_Normal.png",
+      "Bark_DeadTree.png"
+    ],
+    "bytes": 10360836
+  },
+  {
+    "name": "DeadTree_5",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      8.356394290924072,
+      16.437382221221924,
+      8.413267612457275
+    ],
+    "min": [
+      -3.9705328941345215,
+      -0.3355545997619629,
+      -4.7972307205200195
+    ],
+    "max": [
+      4.385861396789551,
+      16.10182762145996,
+      3.616036891937256
+    ],
+    "triangles": 5648,
+    "primitives": [
+      {
+        "triangles": 5648,
+        "vertices": 7499,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_DeadTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "DeadTree_5",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_DeadTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "DeadTree_5.bin",
+      "Bark_DeadTree_Normal.png",
+      "Bark_DeadTree.png"
+    ],
+    "bytes": 10353120
+  },
+  {
+    "name": "Fern_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      9.046188354492188,
+      2.688778445124626,
+      8.48742389678955
+    ],
+    "min": [
+      -4.419975280761719,
+      -0.2474701851606369,
+      -4.091315746307373
+    ],
+    "max": [
+      4.626213073730469,
+      2.4413082599639893,
+      4.396108150482178
+    ],
+    "triangles": 288,
+    "primitives": [
+      {
+        "triangles": 288,
+        "vertices": 243,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Fern_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Fern_1.bin",
+      "Leaves.png"
+    ],
+    "bytes": 2599938
+  },
+  {
+    "name": "Flower_3_Group",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.488476574420929,
+      2.0548351034522057,
+      1.5911270380020142
+    ],
+    "min": [
+      -0.6136013269424438,
+      -0.03458359092473984,
+      -0.8017617464065552
+    ],
+    "max": [
+      0.8748752474784851,
+      2.020251512527466,
+      0.789365291595459
+    ],
+    "triangles": 755,
+    "primitives": [
+      {
+        "triangles": 710,
+        "vertices": 533,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      },
+      {
+        "triangles": 45,
+        "vertices": 48,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Flower_3_Group",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Flower_3_Group.bin",
+      "Leaves.png",
+      "Flowers.png"
+    ],
+    "bytes": 3062442
+  },
+  {
+    "name": "Flower_3_Single",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.9066098928451538,
+      2.068193631246686,
+      0.8775360584259033
+    ],
+    "min": [
+      -0.48073863983154297,
+      -0.018326954916119576,
+      -0.520720362663269
+    ],
+    "max": [
+      0.42587125301361084,
+      2.0498666763305664,
+      0.3568156957626343
+    ],
+    "triangles": 285,
+    "primitives": [
+      {
+        "triangles": 270,
+        "vertices": 211,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      },
+      {
+        "triangles": 15,
+        "vertices": 16,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Flower_3_Single",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Flower_3_Single.bin",
+      "Leaves.png",
+      "Flowers.png"
+    ],
+    "bytes": 3045465
+  },
+  {
+    "name": "Flower_4_Group",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.7805257439613342,
+      2.4867683202028275,
+      1.3675287365913391
+    ],
+    "min": [
+      -0.9313857555389404,
+      -0.05699761211872101,
+      -0.6361504197120667
+    ],
+    "max": [
+      0.8491399884223938,
+      2.4297707080841064,
+      0.7313783168792725
+    ],
+    "triangles": 1690,
+    "primitives": [
+      {
+        "triangles": 490,
+        "vertices": 302,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      },
+      {
+        "triangles": 1200,
+        "vertices": 1000,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Flower_4_Group",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Flower_4_Group.bin",
+      "Leaves.png",
+      "Flowers.png"
+    ],
+    "bytes": 3096906
+  },
+  {
+    "name": "Flower_4_Single",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.0722883939743042,
+      2.4191591013222933,
+      0.7728647589683533
+    ],
+    "min": [
+      -0.5050064325332642,
+      -0.03043048270046711,
+      -0.40180256962776184
+    ],
+    "max": [
+      0.56728196144104,
+      2.388728618621826,
+      0.37106218934059143
+    ],
+    "triangles": 642,
+    "primitives": [
+      {
+        "triangles": 162,
+        "vertices": 99,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      },
+      {
+        "triangles": 480,
+        "vertices": 400,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Flower_4_Single",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Flower_4_Single.bin",
+      "Leaves.png",
+      "Flowers.png"
+    ],
+    "bytes": 3058484
+  },
+  {
+    "name": "Grass_Common_Short",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.6388704776763916,
+      1.3341034408658743,
+      0.7372654974460602
+    ],
+    "min": [
+      -0.3556424081325531,
+      -0.022385215386748314,
+      -0.47937828302383423
+    ],
+    "max": [
+      0.2832280695438385,
+      1.311718225479126,
+      0.25788721442222595
+    ],
+    "triangles": 155,
+    "primitives": [
+      {
+        "triangles": 155,
+        "vertices": 153,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Grass"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Grass_Common_Short",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Grass",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Grass_Common_Short.bin",
+      "Grass.png"
+    ],
+    "bytes": 42680
+  },
+  {
+    "name": "Grass_Common_Tall",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.8950892686843872,
+      1.8726952821016312,
+      0.9931118488311768
+    ],
+    "min": [
+      -0.40356767177581787,
+      -0.031362250447273254,
+      -0.47903335094451904
+    ],
+    "max": [
+      0.49152159690856934,
+      1.841333031654358,
+      0.5140784978866577
+    ],
+    "triangles": 326,
+    "primitives": [
+      {
+        "triangles": 326,
+        "vertices": 303,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Grass"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Grass_Common_Tall",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Grass",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Grass_Common_Tall.bin",
+      "Grass.png"
+    ],
+    "bytes": 49706
+  },
+  {
+    "name": "Grass_Wispy_Short",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.32218599319458,
+      1.0718468874692917,
+      1.2097443342208862
+    ],
+    "min": [
+      -0.7280435562133789,
+      -0.08575008809566498,
+      -0.5828109979629517
+    ],
+    "max": [
+      0.5941424369812012,
+      0.9860967993736267,
+      0.6269333362579346
+    ],
+    "triangles": 494,
+    "primitives": [
+      {
+        "triangles": 494,
+        "vertices": 559,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Grass"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Grass_Wispy_Short",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Grass",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Grass_Wispy_Short.bin",
+      "Grass.png"
+    ],
+    "bytes": 60954
+  },
+  {
+    "name": "Grass_Wispy_Tall",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.5400726795196533,
+      1.6718023493885994,
+      1.5937159657478333
+    ],
+    "min": [
+      -0.7392446994781494,
+      -0.03605181723833084,
+      -0.8185906410217285
+    ],
+    "max": [
+      0.8008279800415039,
+      1.6357505321502686,
+      0.7751253247261047
+    ],
+    "triangles": 622,
+    "primitives": [
+      {
+        "triangles": 622,
+        "vertices": 644,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Grass"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Grass_Wispy_Tall",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Grass",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Grass_Wispy_Tall.bin",
+      "Grass.png"
+    ],
+    "bytes": 65120
+  },
+  {
+    "name": "Mushroom_Common",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.5637008845806122,
+      0.4634807240217924,
+      0.779112696647644
+    ],
+    "min": [
+      -0.33337587118148804,
+      -0.017470968887209892,
+      -0.44521069526672363
+    ],
+    "max": [
+      0.23032501339912415,
+      0.4460097551345825,
+      0.3339020013809204
+    ],
+    "triangles": 880,
+    "primitives": [
+      {
+        "triangles": 880,
+        "vertices": 555,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Mushrooms"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Mushroom_Common",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Mushrooms",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Mushroom_Common.bin",
+      "Mushrooms.png"
+    ],
+    "bytes": 1233522
+  },
+  {
+    "name": "Mushroom_Laetiporus",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.3660326600074768,
+      0.7669583261013031,
+      1.1031825244426727
+    ],
+    "min": [
+      -0.6498190760612488,
+      -0.16022536158561707,
+      -0.32830116152763367
+    ],
+    "max": [
+      0.716213583946228,
+      0.606732964515686,
+      0.7748813629150391
+    ],
+    "triangles": 3216,
+    "primitives": [
+      {
+        "triangles": 3216,
+        "vertices": 1806,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Mushrooms"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Mushroom_Laetiporus",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Mushrooms",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Mushroom_Laetiporus.bin",
+      "Mushrooms.png"
+    ],
+    "bytes": 1287581
+  },
+  {
+    "name": "Pebble_Round_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.500038743019104,
+      0.09547655284404755,
+      0.367022842168808
+    ],
+    "min": [
+      -0.21980905532836914,
+      -0.0077979713678359985,
+      -0.15961268544197083
+    ],
+    "max": [
+      0.28022968769073486,
+      0.08767858147621155,
+      0.20741015672683716
+    ],
+    "triangles": 136,
+    "primitives": [
+      {
+        "triangles": 136,
+        "vertices": 292,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Round_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Round_1.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 823742
+  },
+  {
+    "name": "Pebble_Round_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.4494768977165222,
+      0.09422973287291825,
+      0.4110587388277054
+    ],
+    "min": [
+      -0.21520347893238068,
+      -0.0029801998753100634,
+      -0.22227312624454498
+    ],
+    "max": [
+      0.23427341878414154,
+      0.09124953299760818,
+      0.1887856125831604
+    ],
+    "triangles": 114,
+    "primitives": [
+      {
+        "triangles": 114,
+        "vertices": 212,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Round_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Round_2.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 821048
+  },
+  {
+    "name": "Pebble_Round_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.4496912956237793,
+      0.09862238075584173,
+      0.4848102927207947
+    ],
+    "min": [
+      -0.22709830105304718,
+      -0.0017530163750052452,
+      -0.22148603200912476
+    ],
+    "max": [
+      0.22259299457073212,
+      0.09686936438083649,
+      0.2633242607116699
+    ],
+    "triangles": 128,
+    "primitives": [
+      {
+        "triangles": 128,
+        "vertices": 244,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Round_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Round_3.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 822156
+  },
+  {
+    "name": "Pebble_Round_4",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.40628112852573395,
+      0.09939864045009017,
+      0.4523976892232895
+    ],
+    "min": [
+      -0.2105470895767212,
+      -0.00563192879781127,
+      -0.23073677718639374
+    ],
+    "max": [
+      0.19573403894901276,
+      0.0937667116522789,
+      0.22166091203689575
+    ],
+    "triangles": 126,
+    "primitives": [
+      {
+        "triangles": 126,
+        "vertices": 266,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Round_4",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Round_4.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 822841
+  },
+  {
+    "name": "Pebble_Round_5",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.4185932129621506,
+      0.10082686180248857,
+      0.3462583124637604
+    ],
+    "min": [
+      -0.21657367050647736,
+      -0.00414585554972291,
+      -0.20099897682666779
+    ],
+    "max": [
+      0.20201954245567322,
+      0.09668100625276566,
+      0.1452593356370926
+    ],
+    "triangles": 124,
+    "primitives": [
+      {
+        "triangles": 124,
+        "vertices": 254,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Round_5",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Round_5.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 822450
+  },
+  {
+    "name": "Pebble_Square_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.43463730812072754,
+      0.12993089412339032,
+      0.4396430104970932
+    ],
+    "min": [
+      -0.23334957659244537,
+      -0.0022022530902177095,
+      -0.20187555253505707
+    ],
+    "max": [
+      0.20128773152828217,
+      0.1277286410331726,
+      0.23776745796203613
+    ],
+    "triangles": 104,
+    "primitives": [
+      {
+        "triangles": 104,
+        "vertices": 216,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Square_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Square_1.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 821118
+  },
+  {
+    "name": "Pebble_Square_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.39109599590301514,
+      0.1404439229518175,
+      0.2802542448043823
+    ],
+    "min": [
+      -0.2006315439939499,
+      -0.005164282396435738,
+      -0.11938932538032532
+    ],
+    "max": [
+      0.19046445190906525,
+      0.13527964055538177,
+      0.160864919424057
+    ],
+    "triangles": 78,
+    "primitives": [
+      {
+        "triangles": 78,
+        "vertices": 162,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Square_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Square_2.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 819231
+  },
+  {
+    "name": "Pebble_Square_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.37333619594573975,
+      0.15893334429711103,
+      0.31874918937683105
+    ],
+    "min": [
+      -0.18665164709091187,
+      -0.00811817031353712,
+      -0.16649161279201508
+    ],
+    "max": [
+      0.18668454885482788,
+      0.1508151739835739,
+      0.15225757658481598
+    ],
+    "triangles": 52,
+    "primitives": [
+      {
+        "triangles": 52,
+        "vertices": 108,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Square_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Square_3.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 817347
+  },
+  {
+    "name": "Pebble_Square_4",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.33994340896606445,
+      0.16829113056883216,
+      0.29082560539245605
+    ],
+    "min": [
+      -0.17121998965740204,
+      -0.0027762739919126034,
+      -0.15767109394073486
+    ],
+    "max": [
+      0.16872341930866241,
+      0.16551485657691956,
+      0.1331545114517212
+    ],
+    "triangles": 48,
+    "primitives": [
+      {
+        "triangles": 48,
+        "vertices": 96,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Square_4",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Square_4.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 816938
+  },
+  {
+    "name": "Pebble_Square_5",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.3520317077636719,
+      0.15215961635112762,
+      0.45043955743312836
+    ],
+    "min": [
+      -0.16856330633163452,
+      -0.00795699656009674,
+      -0.22753244638442993
+    ],
+    "max": [
+      0.18346840143203735,
+      0.14420261979103088,
+      0.22290711104869843
+    ],
+    "triangles": 72,
+    "primitives": [
+      {
+        "triangles": 72,
+        "vertices": 156,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Square_5",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Square_5.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 819005
+  },
+  {
+    "name": "Pebble_Square_6",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.4620286226272583,
+      0.13777477573603392,
+      0.26292208582162857
+    ],
+    "min": [
+      -0.21502231061458588,
+      -0.010146240703761578,
+      -0.12062107771635056
+    ],
+    "max": [
+      0.24700631201267242,
+      0.12762853503227234,
+      0.14230100810527802
+    ],
+    "triangles": 65,
+    "primitives": [
+      {
+        "triangles": 65,
+        "vertices": 139,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pebble_Square_6",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pebble_Square_6.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 818422
+  },
+  {
+    "name": "Petal_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.46023906767368317,
+      0.2436732572538176,
+      0.4549616575241089
+    ],
+    "min": [
+      -0.256916344165802,
+      0.000001184918232866039,
+      -0.22899580001831055
+    ],
+    "max": [
+      0.20332272350788116,
+      0.24367444217205048,
+      0.22596585750579834
+    ],
+    "triangles": 13,
+    "primitives": [
+      {
+        "triangles": 13,
+        "vertices": 14,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Petal_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Petal_1.bin",
+      "Flowers.png"
+    ],
+    "bytes": 446982
+  },
+  {
+    "name": "Petal_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.6732153296470642,
+      0.23606069386005402,
+      0.6310947239398956
+    ],
+    "min": [
+      -0.32067161798477173,
+      0,
+      -0.3291413486003876
+    ],
+    "max": [
+      0.3525437116622925,
+      0.23606069386005402,
+      0.30195337533950806
+    ],
+    "triangles": 15,
+    "primitives": [
+      {
+        "triangles": 15,
+        "vertices": 16,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Petal_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Petal_2.bin",
+      "Flowers.png"
+    ],
+    "bytes": 447038
+  },
+  {
+    "name": "Petal_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.6194837689399719,
+      0.18948498461540453,
+      0.6063659191131592
+    ],
+    "min": [
+      -0.31499457359313965,
+      2.0768348463207076e-7,
+      -0.27345067262649536
+    ],
+    "max": [
+      0.3044891953468323,
+      0.18948519229888916,
+      0.3329152464866638
+    ],
+    "triangles": 15,
+    "primitives": [
+      {
+        "triangles": 15,
+        "vertices": 16,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Petal_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Petal_3.bin",
+      "Flowers.png"
+    ],
+    "bytes": 447062
+  },
+  {
+    "name": "Petal_4",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.3290932923555374,
+      0.25205631886133517,
+      0.24445198476314545
+    ],
+    "min": [
+      -0.1433948129415512,
+      -1.3743051852088684e-7,
+      -0.12229615449905396
+    ],
+    "max": [
+      0.1856984794139862,
+      0.25205618143081665,
+      0.12215583026409149
+    ],
+    "triangles": 30,
+    "primitives": [
+      {
+        "triangles": 30,
+        "vertices": 25,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Petal_4",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Petal_4.bin",
+      "Flowers.png"
+    ],
+    "bytes": 447437
+  },
+  {
+    "name": "Petal_5",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.833962619304657,
+      0.2887718271231279,
+      0.7952134907245636
+    ],
+    "min": [
+      -0.40094661712646484,
+      0.0010437477612867951,
+      -0.4195518493652344
+    ],
+    "max": [
+      0.43301600217819214,
+      0.2898155748844147,
+      0.3756616413593292
+    ],
+    "triangles": 15,
+    "primitives": [
+      {
+        "triangles": 15,
+        "vertices": 16,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Flowers"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Petal_5",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Flowers",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Petal_5.bin",
+      "Flowers.png"
+    ],
+    "bytes": 447057
+  },
+  {
+    "name": "Pine_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      4.944698095321655,
+      7.316917672753334,
+      4.538403272628784
+    ],
+    "min": [
+      -2.448819160461426,
+      -0.23508860170841217,
+      -2.4769327640533447
+    ],
+    "max": [
+      2.4958789348602295,
+      7.081829071044922,
+      2.0614705085754395
+    ],
+    "triangles": 3947,
+    "primitives": [
+      {
+        "triangles": 3177,
+        "vertices": 4076,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 770,
+        "vertices": 1170,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_Pine"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pine_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_Pine",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pine_1.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaf_Pine_C.png"
+    ],
+    "bytes": 8628663
+  },
+  {
+    "name": "Pine_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      5.7280848026275635,
+      7.376238122582436,
+      5.221206903457642
+    ],
+    "min": [
+      -2.891958236694336,
+      -0.23508860170841217,
+      -2.6936988830566406
+    ],
+    "max": [
+      2.8361265659332275,
+      7.141149520874023,
+      2.527508020401001
+    ],
+    "triangles": 3648,
+    "primitives": [
+      {
+        "triangles": 2878,
+        "vertices": 3616,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 770,
+        "vertices": 1310,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_Pine"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pine_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_Pine",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pine_2.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaf_Pine_C.png"
+    ],
+    "bytes": 8611508
+  },
+  {
+    "name": "Pine_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      3.6113946437835693,
+      7.392198815941811,
+      3.9958035945892334
+    ],
+    "min": [
+      -2.113736867904663,
+      -0.23508860170841217,
+      -2.2923386096954346
+    ],
+    "max": [
+      1.4976577758789062,
+      7.157110214233398,
+      1.7034649848937988
+    ],
+    "triangles": 4964,
+    "primitives": [
+      {
+        "triangles": 4502,
+        "vertices": 5772,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 462,
+        "vertices": 801,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_Pine"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pine_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_Pine",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pine_3.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaf_Pine_C.png"
+    ],
+    "bytes": 8698454
+  },
+  {
+    "name": "Pine_4",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      5.8020243644714355,
+      10.236431390047073,
+      5.370845556259155
+    ],
+    "min": [
+      -2.8718371391296387,
+      -0.23508861660957336,
+      -2.9459073543548584
+    ],
+    "max": [
+      2.930187225341797,
+      10.0013427734375,
+      2.424938201904297
+    ],
+    "triangles": 3370,
+    "primitives": [
+      {
+        "triangles": 2160,
+        "vertices": 2978,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 1210,
+        "vertices": 1910,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_Pine"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pine_4",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_Pine",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pine_4.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaf_Pine_C.png"
+    ],
+    "bytes": 8608014
+  },
+  {
+    "name": "Pine_5",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      6.420140743255615,
+      8.723807603120804,
+      6.222001314163208
+    ],
+    "min": [
+      -2.987706422805786,
+      -0.23508861660957336,
+      -3.7784042358398438
+    ],
+    "max": [
+      3.432434320449829,
+      8.48871898651123,
+      2.4435970783233643
+    ],
+    "triangles": 1646,
+    "primitives": [
+      {
+        "triangles": 488,
+        "vertices": 542,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_NormalTree"
+      },
+      {
+        "triangles": 1158,
+        "vertices": 1773,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_Pine"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Pine_5",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Bark_NormalTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_Pine",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Pine_5.bin",
+      "Bark_NormalTree_Normal.png",
+      "Bark_NormalTree.png",
+      "Leaf_Pine_C.png"
+    ],
+    "bytes": 8474150
+  },
+  {
+    "name": "Plant_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.2733909487724304,
+      1.0135701447725296,
+      1.386027455329895
+    ],
+    "min": [
+      -0.7107237577438354,
+      -0.0350240021944046,
+      -0.7635920643806458
+    ],
+    "max": [
+      0.562667191028595,
+      0.978546142578125,
+      0.6224353909492493
+    ],
+    "triangles": 120,
+    "primitives": [
+      {
+        "triangles": 120,
+        "vertices": 120,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Plant_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Plant_1.bin",
+      "Leaves.png"
+    ],
+    "bytes": 2594009
+  },
+  {
+    "name": "Plant_1_Big",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      2.890458822250366,
+      3.7564256452023983,
+      3.1264467239379883
+    ],
+    "min": [
+      -1.394121527671814,
+      -0.05603840574622154,
+      -1.6583820581436157
+    ],
+    "max": [
+      1.4963372945785522,
+      3.7003872394561768,
+      1.4680646657943726
+    ],
+    "triangles": 360,
+    "primitives": [
+      {
+        "triangles": 360,
+        "vertices": 360,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Plant_1_Big",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Plant_1_Big.bin",
+      "Leaves.png"
+    ],
+    "bytes": 2605067
+  },
+  {
+    "name": "Plant_7",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.0478354692459106,
+      0.24951478838920593,
+      0.9621210098266602
+    ],
+    "min": [
+      -0.44815123081207275,
+      0.07910457253456116,
+      -0.46386587619781494
+    ],
+    "max": [
+      0.5996842384338379,
+      0.3286193609237671,
+      0.4982551336288452
+    ],
+    "triangles": 48,
+    "primitives": [
+      {
+        "triangles": 48,
+        "vertices": 54,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Plant_7",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Plant_7.bin",
+      "Leaves.png"
+    ],
+    "bytes": 2590292
+  },
+  {
+    "name": "Plant_7_Big",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.3108200430870056,
+      0.2534325495362282,
+      1.3621740341186523
+    ],
+    "min": [
+      -0.7010567784309387,
+      0.05031152814626694,
+      -0.8505279421806335
+    ],
+    "max": [
+      0.6097632646560669,
+      0.3037440776824951,
+      0.5116460919380188
+    ],
+    "triangles": 112,
+    "primitives": [
+      {
+        "triangles": 112,
+        "vertices": 126,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Plant_7_Big",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Plant_7_Big.bin",
+      "Leaves.png"
+    ],
+    "bytes": 2592993
+  },
+  {
+    "name": "RockPath_Round_Small_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.0565139055252075,
+      0.11283181235194206,
+      1.4763587713241577
+    ],
+    "min": [
+      -0.5380551815032959,
+      -0.008882608264684677,
+      -0.703344464302063
+    ],
+    "max": [
+      0.5184587240219116,
+      0.10394920408725739,
+      0.7730143070220947
+    ],
+    "triangles": 998,
+    "primitives": [
+      {
+        "triangles": 998,
+        "vertices": 2036,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Round_Small_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Round_Small_1.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 884743
+  },
+  {
+    "name": "RockPath_Round_Small_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.1395195126533508,
+      0.10466732829809189,
+      1.3542838096618652
+    ],
+    "min": [
+      -0.5602763891220093,
+      -0.0077979713678359985,
+      -0.7587976455688477
+    ],
+    "max": [
+      0.5792431235313416,
+      0.09686935693025589,
+      0.5954861640930176
+    ],
+    "triangles": 1126,
+    "primitives": [
+      {
+        "triangles": 1126,
+        "vertices": 2264,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Round_Small_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Round_Small_2.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 892809
+  },
+  {
+    "name": "RockPath_Round_Small_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.1790300011634827,
+      0.10927321389317513,
+      1.289994716644287
+    ],
+    "min": [
+      -0.5872809290885925,
+      -0.007797975093126297,
+      -0.6902713775634766
+    ],
+    "max": [
+      0.5917490720748901,
+      0.10147523880004883,
+      0.5997233390808105
+    ],
+    "triangles": 1002,
+    "primitives": [
+      {
+        "triangles": 1002,
+        "vertices": 2026,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Round_Small_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Round_Small_3.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 884448
+  },
+  {
+    "name": "RockPath_Round_Thin",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.4573510885238647,
+      0.11033729463815689,
+      2.0892062187194824
+    ],
+    "min": [
+      -0.6970729231834412,
+      -0.008862055838108063,
+      -1.0861014127731323
+    ],
+    "max": [
+      0.7602781653404236,
+      0.10147523880004883,
+      1.00310480594635
+    ],
+    "triangles": 2254,
+    "primitives": [
+      {
+        "triangles": 2254,
+        "vertices": 4556,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Round_Thin",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Round_Thin.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 972916
+  },
+  {
+    "name": "RockPath_Round_Wide",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      2.1106141805648804,
+      0.11283182352781296,
+      2.129036545753479
+    ],
+    "min": [
+      -1.0479755401611328,
+      -0.008882611989974976,
+      -1.125931739807129
+    ],
+    "max": [
+      1.0626386404037476,
+      0.10394921153783798,
+      1.00310480594635
+    ],
+    "triangles": 3500,
+    "primitives": [
+      {
+        "triangles": 3500,
+        "vertices": 7084,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Round_Wide",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Round_Wide.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 1061288
+  },
+  {
+    "name": "RockPath_Square_Small_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.018884301185608,
+      0.1498702121898532,
+      0.9738519787788391
+    ],
+    "min": [
+      -0.518924355506897,
+      -0.008622835390269756,
+      -0.4743192493915558
+    ],
+    "max": [
+      0.49995994567871094,
+      0.14124737679958344,
+      0.4995327293872833
+    ],
+    "triangles": 783,
+    "primitives": [
+      {
+        "triangles": 783,
+        "vertices": 1633,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Square_Small_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Square_Small_1.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 870562
+  },
+  {
+    "name": "RockPath_Square_Small_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.9927218556404114,
+      0.14933522511273623,
+      0.9660682082176208
+    ],
+    "min": [
+      -0.4975392818450928,
+      -0.013205458410084248,
+      -0.4939475357532501
+    ],
+    "max": [
+      0.4951825737953186,
+      0.13612976670265198,
+      0.4721206724643707
+    ],
+    "triangles": 559,
+    "primitives": [
+      {
+        "triangles": 559,
+        "vertices": 1165,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Square_Small_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Square_Small_2.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 854241
+  },
+  {
+    "name": "RockPath_Square_Small_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      0.8358605802059174,
+      0.17363302689045668,
+      1.0762888193130493
+    ],
+    "min": [
+      -0.3961157500743866,
+      -0.00811817031353712,
+      -0.5487543344497681
+    ],
+    "max": [
+      0.43974483013153076,
+      0.16551485657691956,
+      0.5275344848632812
+    ],
+    "triangles": 568,
+    "primitives": [
+      {
+        "triangles": 568,
+        "vertices": 1176,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Square_Small_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Square_Small_3.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 854645
+  },
+  {
+    "name": "RockPath_Square_Thin",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      1.559880554676056,
+      0.17634792253375053,
+      1.9869367480278015
+    ],
+    "min": [
+      -0.7681896090507507,
+      -0.010146241635084152,
+      -1.0022598505020142
+    ],
+    "max": [
+      0.7916909456253052,
+      0.16620168089866638,
+      0.9846768975257874
+    ],
+    "triangles": 1793,
+    "primitives": [
+      {
+        "triangles": 1793,
+        "vertices": 3727,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Square_Thin",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Square_Thin.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 943627
+  },
+  {
+    "name": "RockPath_Square_Wide",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      2.051580786705017,
+      0.17634792160242796,
+      1.9869367480278015
+    ],
+    "min": [
+      -1.0236998796463013,
+      -0.010146240703761578,
+      -0.9999311566352844
+    ],
+    "max": [
+      1.0278809070587158,
+      0.16620168089866638,
+      0.9870055913925171
+    ],
+    "triangles": 2256,
+    "primitives": [
+      {
+        "triangles": 2256,
+        "vertices": 4712,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "PathRocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "RockPath_Square_Wide",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "PathRocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "RockPath_Square_Wide.bin",
+      "PathRocks_Diffuse.png"
+    ],
+    "bytes": 977924
+  },
+  {
+    "name": "Rock_Medium_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      3.2251484394073486,
+      2.2597965598106384,
+      2.9891364574432373
+    ],
+    "min": [
+      -1.7272872924804688,
+      -0.27113133668899536,
+      -1.1498832702636719
+    ],
+    "max": [
+      1.4978611469268799,
+      1.988665223121643,
+      1.8392531871795654
+    ],
+    "triangles": 342,
+    "primitives": [
+      {
+        "triangles": 342,
+        "vertices": 351,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Rocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Rock_Medium_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Rocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Rock_Medium_1.bin",
+      "Rocks_Diffuse.png"
+    ],
+    "bytes": 2532513
+  },
+  {
+    "name": "Rock_Medium_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      3.048760414123535,
+      1.8989749141037464,
+      2.479071617126465
+    ],
+    "min": [
+      -1.713641881942749,
+      -0.05084158852696419,
+      -1.1591253280639648
+    ],
+    "max": [
+      1.3351185321807861,
+      1.8481333255767822,
+      1.3199462890625
+    ],
+    "triangles": 244,
+    "primitives": [
+      {
+        "triangles": 244,
+        "vertices": 249,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Rocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Rock_Medium_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Rocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Rock_Medium_2.bin",
+      "Rocks_Diffuse.png"
+    ],
+    "bytes": 2528655
+  },
+  {
+    "name": "Rock_Medium_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      3.4200847148895264,
+      2.3162826597690582,
+      3.476110100746155
+    ],
+    "min": [
+      -1.8242793083190918,
+      -0.31564441323280334,
+      -0.8904620409011841
+    ],
+    "max": [
+      1.5958054065704346,
+      2.000638246536255,
+      2.5856480598449707
+    ],
+    "triangles": 522,
+    "primitives": [
+      {
+        "triangles": 522,
+        "vertices": 531,
+        "attributes": [
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Rocks"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "Rock_Medium_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Rocks",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "Rock_Medium_3.bin",
+      "Rocks_Diffuse.png"
+    ],
+    "bytes": 2539354
+  },
+  {
+    "name": "TwistedTree_1",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      13.515754699707031,
+      16.725495845079422,
+      11.549364566802979
+    ],
+    "min": [
+      -2.174241065979004,
+      -0.20147469639778137,
+      -6.726779460906982
+    ],
+    "max": [
+      11.341513633728027,
+      16.52402114868164,
+      4.822585105895996
+    ],
+    "triangles": 9564,
+    "primitives": [
+      {
+        "triangles": 7212,
+        "vertices": 9360,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_TwistedTree"
+      },
+      {
+        "triangles": 2352,
+        "vertices": 4704,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_TwistedTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "TwistedTree_1",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_TwistedTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_TwistedTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "TwistedTree_1.bin",
+      "Bark_TwistedTree_Normal.png",
+      "Bark_TwistedTree.png",
+      "Leaves_TwistedTree_C.png"
+    ],
+    "bytes": 11165632
+  },
+  {
+    "name": "TwistedTree_2",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      10.562872409820557,
+      18.94920302927494,
+      9.202587842941284
+    ],
+    "min": [
+      -6.619970321655273,
+      -0.20147468149662018,
+      -5.540718078613281
+    ],
+    "max": [
+      3.942902088165283,
+      18.74772834777832,
+      3.661869764328003
+    ],
+    "triangles": 9134,
+    "primitives": [
+      {
+        "triangles": 6790,
+        "vertices": 8719,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_TwistedTree"
+      },
+      {
+        "triangles": 2344,
+        "vertices": 4688,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_TwistedTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "TwistedTree_2",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_TwistedTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_TwistedTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "TwistedTree_2.bin",
+      "Bark_TwistedTree_Normal.png",
+      "Bark_TwistedTree.png",
+      "Leaves_TwistedTree_C.png"
+    ],
+    "bytes": 11131512
+  },
+  {
+    "name": "TwistedTree_3",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      11.357495784759521,
+      16.072540774941444,
+      11.505619049072266
+    ],
+    "min": [
+      -4.49001932144165,
+      -0.20147468149662018,
+      -6.520090103149414
+    ],
+    "max": [
+      6.867476463317871,
+      15.871066093444824,
+      4.985528945922852
+    ],
+    "triangles": 10089,
+    "primitives": [
+      {
+        "triangles": 7389,
+        "vertices": 9405,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_TwistedTree"
+      },
+      {
+        "triangles": 2700,
+        "vertices": 5400,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_TwistedTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "TwistedTree_3",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_TwistedTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_TwistedTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "TwistedTree_3.bin",
+      "Bark_TwistedTree_Normal.png",
+      "Bark_TwistedTree.png",
+      "Leaves_TwistedTree_C.png"
+    ],
+    "bytes": 11204350
+  },
+  {
+    "name": "TwistedTree_4",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      10.38081169128418,
+      18.738235011696815,
+      11.293086051940918
+    ],
+    "min": [
+      -4.327320098876953,
+      -0.20147468149662018,
+      -7.142794609069824
+    ],
+    "max": [
+      6.053491592407227,
+      18.536760330200195,
+      4.150291442871094
+    ],
+    "triangles": 9600,
+    "primitives": [
+      {
+        "triangles": 6900,
+        "vertices": 9176,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_TwistedTree"
+      },
+      {
+        "triangles": 2700,
+        "vertices": 5400,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_TwistedTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "TwistedTree_4",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_TwistedTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_TwistedTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "TwistedTree_4.bin",
+      "Bark_TwistedTree_Normal.png",
+      "Bark_TwistedTree.png",
+      "Leaves_TwistedTree_C.png"
+    ],
+    "bytes": 11190422
+  },
+  {
+    "name": "TwistedTree_5",
+    "format": {
+      "generator": "Khronos glTF Blender I/O v4.0.44",
+      "version": "2.0"
+    },
+    "size": [
+      9.494712114334106,
+      15.662175670266151,
+      9.387028455734253
+    ],
+    "min": [
+      -3.7464373111724854,
+      -0.20147468149662018,
+      -6.338996887207031
+    ],
+    "max": [
+      5.748274803161621,
+      15.460700988769531,
+      3.0480315685272217
+    ],
+    "triangles": 10104,
+    "primitives": [
+      {
+        "triangles": 7082,
+        "vertices": 9603,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Bark_TwistedTree"
+      },
+      {
+        "triangles": 3022,
+        "vertices": 6044,
+        "attributes": [
+          "COLOR_0",
+          "POSITION",
+          "NORMAL",
+          "TEXCOORD_0"
+        ],
+        "material": "Leaves_TwistedTree"
+      }
+    ],
+    "transforms": [
+      {
+        "name": "TwistedTree_5",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "doubleSided": true,
+        "name": "Bark_TwistedTree",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0
+        }
+      },
+      {
+        "alphaCutoff": 0.20000000298023224,
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "name": "Leaves_TwistedTree",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0
+        }
+      }
+    ],
+    "dependencies": [
+      "TwistedTree_5.bin",
+      "Bark_TwistedTree_Normal.png",
+      "Bark_TwistedTree.png",
+      "Leaves_TwistedTree_C.png"
+    ],
+    "bytes": 11244859
+  }
+]

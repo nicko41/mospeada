@@ -5,7 +5,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
 import { timeOfDayState } from '../world/TimeOfDay'
 import { weatherState } from '../world/weatherState.js'
 
-export default function DrivingLighting() {
+export default function DrivingLighting({ manageFog = true }) {
   const { scene, gl } = useThree()
   const environment = useRef(null), vehicle = useRef(null), materials = useRef(new Set())
   useLayoutEffect(() => {
@@ -38,7 +38,7 @@ export default function DrivingLighting() {
     }
     for (const material of materials.current) material.envMapIntensity = 0.04 + timeOfDayState.value * 0.55
     // Weather keeps the original storm density and a lighter sunny haze.
-    scene.fog.density = weatherState.fogDensity
+    if (manageFog && scene.fog) scene.fog.density = weatherState.fogDensity
   })
   return null
 }

@@ -1,0 +1,474 @@
+{
+  "results": [
+    {
+      "name": "Scott idle",
+      "stats": {
+        "activeCells": 32,
+        "updatedCells": 32,
+        "cpuMs": 0,
+        "uploads": 67,
+        "maxBend": 0.5499999984504971
+      },
+      "speed": 0,
+      "rider": "onFoot",
+      "boosts": 0,
+      "sources": [
+        {
+          "active": true,
+          "x": 14,
+          "z": -7,
+          "speed": 0,
+          "radius": 1.6,
+          "strength": 0.55
+        },
+        {
+          "active": true,
+          "x": 13.98912667370993,
+          "z": -7.736533113992936,
+          "speed": 1.2340941595853618e-9,
+          "radius": 0.9,
+          "strength": 0.5
+        },
+        {
+          "active": true,
+          "x": 13.983276979007375,
+          "z": -6.256074563834146,
+          "speed": 1.612246131691226e-10,
+          "radius": 0.9,
+          "strength": 0.5
+        },
+        {
+          "active": true,
+          "x": 13.477143288565282,
+          "z": -6.493505609093176,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        },
+        {
+          "active": false,
+          "x": 14,
+          "z": -7,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        }
+      ],
+      "foot": {
+        "x": 13.477143288565282,
+        "z": -6.493505609093176,
+        "moving": false,
+        "run": 0
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "Scott walk",
+      "stats": {
+        "activeCells": 47,
+        "updatedCells": 47,
+        "cpuMs": 0.10000000149011612,
+        "uploads": 96,
+        "maxBend": 1.0373271761190095
+      },
+      "speed": 0,
+      "rider": "onFoot",
+      "boosts": 0,
+      "sources": [
+        {
+          "active": true,
+          "x": 14,
+          "z": -7,
+          "speed": 0,
+          "radius": 1.6,
+          "strength": 0.55
+        },
+        {
+          "active": true,
+          "x": 13.989126673615981,
+          "z": -7.7365331139293705,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.5
+        },
+        {
+          "active": true,
+          "x": 13.983276978992567,
+          "z": -6.2560745638336135,
+          "speed": 1.3376181018379472e-14,
+          "radius": 0.9,
+          "strength": 0.5
+        },
+        {
+          "active": true,
+          "x": 13.477143288565282,
+          "z": -9.525172275759841,
+          "speed": 1.7068273090836783,
+          "radius": 0.9,
+          "strength": 1.05
+        },
+        {
+          "active": false,
+          "x": 14,
+          "z": -7,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        }
+      ],
+      "foot": {
+        "x": 13.477143288565282,
+        "z": -9.525172275759841,
+        "moving": true,
+        "run": 0
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "Scott run",
+      "stats": {
+        "activeCells": 76,
+        "updatedCells": 76,
+        "cpuMs": 0.10000000149011612,
+        "uploads": 119,
+        "maxBend": 1.2853907281335935
+      },
+      "speed": 0,
+      "rider": "onFoot",
+      "boosts": 0,
+      "sources": [
+        {
+          "active": true,
+          "x": 14,
+          "z": -7,
+          "speed": 0,
+          "radius": 1.6,
+          "strength": 0.55
+        },
+        {
+          "active": true,
+          "x": 13.989126673615981,
+          "z": -7.7365331139293705,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.5
+        },
+        {
+          "active": true,
+          "x": 13.983276978992567,
+          "z": -6.2560745638336135,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.5
+        },
+        {
+          "active": true,
+          "x": 13.477143288565282,
+          "z": -12.997159726973024,
+          "speed": 5.2822906863231935,
+          "radius": 1.1499491329077471,
+          "strength": 1.3999287860708463
+        },
+        {
+          "active": false,
+          "x": 14,
+          "z": -7,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        }
+      ],
+      "foot": {
+        "x": 13.477143288565282,
+        "z": -12.997159726973024,
+        "moving": true,
+        "run": 0.9997965316309892
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "recovered trail",
+      "stats": {
+        "activeCells": 59,
+        "updatedCells": 59,
+        "cpuMs": 0,
+        "uploads": 173,
+        "maxBend": 0.550000002922516
+      },
+      "speed": 0,
+      "rider": "onFoot",
+      "boosts": 0,
+      "sources": [
+        {
+          "active": true,
+          "x": 14,
+          "z": -7,
+          "speed": 0,
+          "radius": 1.6,
+          "strength": 0.55
+        },
+        {
+          "active": true,
+          "x": 13.989126673615981,
+          "z": -7.7365331139293705,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.5
+        },
+        {
+          "active": true,
+          "x": 13.983276978992567,
+          "z": -6.2560745638336135,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.5
+        },
+        {
+          "active": true,
+          "x": 13.477143288565282,
+          "z": -14.1171143391081,
+          "speed": 0,
+          "radius": 0.9000004048934738,
+          "strength": 0.3
+        },
+        {
+          "active": false,
+          "x": 14,
+          "z": -7,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        }
+      ],
+      "foot": {
+        "x": 13.477143288565282,
+        "z": -14.1171143391081,
+        "moving": false,
+        "run": 0.000001619573894964166
+      },
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "Cyclone slow",
+      "stats": {
+        "activeCells": 80,
+        "updatedCells": 80,
+        "cpuMs": 0.10000000149011612,
+        "uploads": 196,
+        "maxBend": 0.7583166880339431
+      },
+      "speed": 8.888320516643205,
+      "rider": "mounted",
+      "boosts": 0,
+      "sources": [
+        {
+          "active": true,
+          "x": 8,
+          "z": -1.8994132679431532,
+          "speed": 9.235095384020262,
+          "radius": 1.6,
+          "strength": 0.8293472162373579
+        },
+        {
+          "active": true,
+          "x": 7.9997209330577155,
+          "z": -2.6339761030755326,
+          "speed": 9.25516371894155,
+          "radius": 0.9,
+          "strength": 0.728556813285111
+        },
+        {
+          "active": true,
+          "x": 7.995487684979314,
+          "z": -1.1330541517281831,
+          "speed": 9.200051793743802,
+          "radius": 0.9,
+          "strength": 0.728556813285111
+        },
+        {
+          "active": false,
+          "x": 8,
+          "z": -1.8994132679431532,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        },
+        {
+          "active": false,
+          "x": 8,
+          "z": -1.8994132679431532,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        }
+      ],
+      "foot": null,
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "Cyclone fast",
+      "stats": {
+        "activeCells": 210,
+        "updatedCells": 210,
+        "cpuMs": 0.20000000298023224,
+        "uploads": 209,
+        "maxBend": 1.35
+      },
+      "speed": 40.48122713987532,
+      "rider": "mounted",
+      "boosts": 0,
+      "sources": [
+        {
+          "active": true,
+          "x": 8,
+          "z": -16.561047651189828,
+          "speed": 37.90961052156051,
+          "radius": 1.6,
+          "strength": 1.65
+        },
+        {
+          "active": true,
+          "x": 7.999569541814234,
+          "z": -17.285638520246657,
+          "speed": 38.21706430397226,
+          "radius": 0.9,
+          "strength": 1.4
+        },
+        {
+          "active": true,
+          "x": 7.9935856860837475,
+          "z": -15.806919915304695,
+          "speed": 37.78428945335836,
+          "radius": 0.9,
+          "strength": 1.4
+        },
+        {
+          "active": false,
+          "x": 8,
+          "z": -16.561047651189828,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        },
+        {
+          "active": false,
+          "x": 8,
+          "z": -16.561047651189828,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        }
+      ],
+      "foot": null,
+      "gl": 0,
+      "error": ""
+    },
+    {
+      "name": "Cyclone boost",
+      "stats": {
+        "activeCells": 122,
+        "updatedCells": 122,
+        "cpuMs": 0.10000000149011612,
+        "uploads": 223,
+        "maxBend": 1.093507771953259
+      },
+      "speed": 27.171334009695556,
+      "rider": "mounted",
+      "boosts": 1,
+      "sources": [
+        {
+          "active": true,
+          "x": 8,
+          "z": -5.8762649213558635,
+          "speed": 30.087010695410715,
+          "radius": 1.6,
+          "strength": 1.4039562117332887
+        },
+        {
+          "active": true,
+          "x": 7.993452727835645,
+          "z": -6.602340794112141,
+          "speed": 30.036494611352243,
+          "radius": 0.9,
+          "strength": 1.1986914459636
+        },
+        {
+          "active": true,
+          "x": 7.986264291061657,
+          "z": -5.114340930004798,
+          "speed": 30.025043522292414,
+          "radius": 0.9,
+          "strength": 1.1986914459636
+        },
+        {
+          "active": false,
+          "x": 8,
+          "z": -5.8762649213558635,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        },
+        {
+          "active": false,
+          "x": 8,
+          "z": -5.8762649213558635,
+          "speed": 0,
+          "radius": 0.9,
+          "strength": 0.3
+        }
+      ],
+      "foot": null,
+      "gl": 0,
+      "error": ""
+    }
+  ],
+  "recovery": {
+    "early": {
+      "x": 0.18083672042538432,
+      "z": 0.018927533421887955
+    },
+    "late": {
+      "x": -0.00044655533923334005,
+      "z": 0.00042243899146804685
+    }
+  },
+  "performance": [
+    {
+      "enabled": true,
+      "medianMs": 48.5,
+      "meanMs": 46.1383333333831,
+      "p95Ms": 55.60000000000582,
+      "calls": 827,
+      "triangles": 2464160,
+      "width": 938,
+      "height": 530,
+      "cpu": 0
+    },
+    {
+      "enabled": false,
+      "medianMs": 48.59999999999127,
+      "meanMs": 45.4516666666915,
+      "p95Ms": 48.80000000000291,
+      "calls": 827,
+      "triangles": 2464160,
+      "width": 938,
+      "height": 530,
+      "cpu": 0
+    }
+  ],
+  "before": {
+    "medianMs": 41.70000000001164,
+    "meanMs": 43.37666666666628,
+    "p95Ms": 48.70000000001164,
+    "calls": 821,
+    "triangles": 2370560,
+    "width": 938,
+    "height": 570
+  },
+  "errors": []
+}

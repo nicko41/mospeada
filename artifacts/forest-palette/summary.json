@@ -1,0 +1,139 @@
+{
+  "pass": true,
+  "paletteVersion": "moss-olive-harmony-v4-grass-227a3f",
+  "palettes": {
+    "tree": [
+      "#294b43",
+      "#526c49",
+      "#7d935e",
+      "#b4bf86"
+    ],
+    "shrub": [
+      "#335a40",
+      "#548445",
+      "#80a553",
+      "#adbf72"
+    ],
+    "grass": [
+      "#174b2b",
+      "#1c6534",
+      "#227a3f",
+      "#398c51"
+    ],
+    "plant": [
+      "#284f39",
+      "#47763c",
+      "#6c9346",
+      "#93b15c"
+    ]
+  },
+  "grassBase": "#227a3f",
+  "method": "private leaf vertex colours, per-kind albedo grading, neutral bark, same graded source geometry baked into far atlases",
+  "shrubs": {
+    "burialFraction": 0.24,
+    "instanceBrightnessRange": [
+      0.7800724506378174,
+      1.2799108028411865
+    ],
+    "lodMismatches": 0,
+    "contactSamples": 30,
+    "contactValidated": true
+  },
+  "preservedHashes": {
+    "src/world/forest/forestGroundMaterial.js": "eb1aca72204ba7a564cbcbd11421b7536e3cf0b0d1e286fd764f71588273a88c",
+    "src/world/forest/forestTerrainGeometry.js": "a4670088399d81ede58ede59c607f72f80de48bf7803b1269e6e49cec46dbfc2",
+    "src/world/forest/ForestAtmosphere.jsx": "46079c53d0c2c2fe0e6a21e047a971c86dded8ddb156f7b785d2ed5fc8c0d91e",
+    "src/world/forest/forestAlpha.js": "84dd5f6d9a79a54c947aaadb1edc77385e2845156780b76799da8daf2c3b26b9",
+    "src/world/forest/forestCrashConfig.js": "ab8c16b87365748d37848241e489ab95dc012482642104f8c763ce335db62643",
+    "assets/texturas/pasto/grass-01.jpg": "a1c20c86cd1cd7af2df6ab71caa7a38c8d9b97b88988eda1cd58e6d27ae70bd7",
+    "assets/texturas/pasto/dirt01.jpg": "cc01b28fb808369ac7c1516df7cb7ca89d15f3f58494f7afc09ed1479d8e5049",
+    "src/vehicle/Motorcycle.jsx": "81aeb1507ba37ff1b307d4650e1c8067dbc4a113350b65e82e25a397cd055e79",
+    "src/vehicle/drivingCamera.js": "27af2ee5251c6ecb9fefbea5da1e31c8ad0d0c3a2c301780e1da2e067d288c78",
+    "src/vehicle/ArmorController.js": "0a5f39c84eda68a14c7a67b303f5ff01df60ca5ae6eccfbdb5b344751d828cdf",
+    "src/vehicle/OriginalScott.jsx": "2ccc3806771d40504c9e171c0770acc9bff42ffbe5c141c6c36cb8a7734fbed3",
+    "src/world/TimeOfDay.jsx": "c5a3984530e80dc1babe12e701d3c5defa9e5589b2293ffc36fa73896fd50864"
+  },
+  "forestLayoutSha256": "f3376f3490ce195a054ca23852a237377edd4bc99cd62184dc6cbf94045b6bc6",
+  "checks": {
+    "build": "passed",
+    "forestTests": 6,
+    "visualTrial": true,
+    "foliageAndDayNight": true,
+    "shaderErrors": "",
+    "webglErrors": 0,
+    "views": [
+      "scott-on-grass",
+      "cyclone-driving",
+      "scott-alpha-scale",
+      "dirt-path",
+      "forest-edge"
+    ],
+    "navigation": {
+      "frames": 321,
+      "metres": 320,
+      "missingFrames": 0,
+      "missing": 0,
+      "matrixWrites": 0,
+      "rebuilds": 0,
+      "failures": [],
+      "gl": 0,
+      "shader": ""
+    }
+  },
+  "performance": {
+    "baseline": {
+      "medianMs": 55.5,
+      "p95Ms": 62.599999999998545,
+      "drawCalls": 697,
+      "pixelRatio": 0.66,
+      "raster": [
+        950,
+        633
+      ],
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "shader": "",
+      "gl": 0
+    },
+    "firstHarmony": {
+      "medianMs": 55.599999999998545,
+      "p95Ms": 62.599999999998545,
+      "drawCalls": 697,
+      "pixelRatio": 0.66,
+      "raster": [
+        950,
+        633
+      ],
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "shader": "",
+      "gl": 0
+    },
+    "groundGreenTrial": {
+      "medianMs": 55.599999999998545,
+      "p95Ms": 62.599999999998545,
+      "drawCalls": 697,
+      "pixelRatio": 0.66,
+      "raster": [
+        950,
+        633
+      ],
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "shader": "",
+      "gl": 0
+    },
+    "grass227a3f": {
+      "medianMs": 62.30000000000291,
+      "p95Ms": 69.5,
+      "drawCalls": 696,
+      "pixelRatio": 0.66,
+      "raster": [
+        950,
+        633
+      ],
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "shader": "",
+      "gl": 0
+    },
+    "note": "Recorded frame times vary from 55.6 to 62.3 ms across these trials; no claim of unchanged FPS is made for the final measurement. Final draw calls: 696. No new passes or texture assets were added."
+  },
+  "images": "grass-227a3f/"
+}

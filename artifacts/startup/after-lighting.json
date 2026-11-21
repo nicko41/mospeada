@@ -1,0 +1,27 @@
+{
+  "preparation": {
+    "startMs": 13085.600000023842,
+    "initialMode": "ANIME",
+    "initialNight": false,
+    "initialGLError": 0,
+    "compileMs": 1313.6000000238419,
+    "primeMs": 3351.1999999284744,
+    "totalMs": 4664.799999952316,
+    "programs": 77,
+    "backgroundMs": 119911.29999995232
+  },
+  "programs": 153,
+  "state": {
+    "mode": "ANIME",
+    "ready": true,
+    "nightReady": true,
+    "error": "",
+    "cel": true,
+    "levels": 3,
+    "shadow": 0.72,
+    "outlines": true,
+    "width": 1.2,
+    "color": "#111b2e",
+    "highlights": 0.55
+  }
+}

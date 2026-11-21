@@ -11,8 +11,9 @@ export function ejectaResponse(wheel, state, side, config, rain, distance, frame
   return {
     water: config.waterEnabled && wheel.surface === 'asphalt' ? base * config.water * clamp(rain, 0, 1) : 0,
     earth: config.earthEnabled && wheel.surface === 'dirt' ? base * (1 - humidity) * .5 * config.earth : 0,
-    mud: config.mudEnabled && wheel.surface === 'dirt' ? base * humidity ** 1.35 * .72 * config.mud : 0,
+    mud: config.mudEnabled && wheel.surface === 'dirt' ? base * humidity ** 1.35 * .72 * config.mud * (config.forestWheelFX?config.mudEmission:1) : 0,
+    grass: config.forestWheelFX&&config.grassEnabled&&wheel.surface==='dirt'?base*.35*config.grassWeight*config.grassEmission:0,
     launch: 1.3 + Math.min(45, Math.max(rolling, speed * .5)) * .15 + force * 1.2,
-    slide, force, quota: Math.floor(Math.min(576, config.maximum * .6) * lod * performance / 6),
+    slide, force, quota: Math.floor(Math.min(576, config.maximum * .6) * lod * performance / (config.forestWheelFX?8:6)),
   }
 }

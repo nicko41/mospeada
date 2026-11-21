@@ -1,0 +1,197 @@
+{
+  "frames": [
+    {
+      "dt": 29.300000023838948,
+      "phase": "wheelie",
+      "programs": 152,
+      "ms": 50218.2
+    },
+    {
+      "dt": 340.3000000000029,
+      "phase": "wheelie",
+      "programs": 152,
+      "ms": 50558.5
+    },
+    {
+      "dt": 333.3000000000029,
+      "phase": "wheelie",
+      "programs": 152,
+      "ms": 50891.8
+    },
+    {
+      "dt": 159.6999999999971,
+      "phase": "boost",
+      "programs": 152,
+      "ms": 51051.5
+    },
+    {
+      "dt": 173.59999999999854,
+      "phase": "boost",
+      "programs": 152,
+      "ms": 51225.1
+    },
+    {
+      "dt": 159.70000000000437,
+      "phase": "airpose",
+      "programs": 152,
+      "ms": 51384.8
+    },
+    {
+      "dt": 166.79999999999563,
+      "phase": "airpose",
+      "programs": 154,
+      "ms": 51551.6
+    },
+    {
+      "dt": 1083.2000000000044,
+      "phase": "airpose",
+      "programs": 154,
+      "ms": 52634.8
+    },
+    {
+      "dt": 812.5,
+      "phase": "airpose",
+      "programs": 154,
+      "ms": 53447.3
+    },
+    {
+      "dt": 159.79999999999563,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 53607.1
+    },
+    {
+      "dt": 145.8000000000029,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 53752.9
+    },
+    {
+      "dt": 166.59999999999854,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 53919.5
+    },
+    {
+      "dt": 145.8000000000029,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 54065.3
+    },
+    {
+      "dt": 145.89999999999418,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 54211.2
+    },
+    {
+      "dt": 145.90000000000146,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 54357.1
+    },
+    {
+      "dt": 138.8000000000029,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 54495.9
+    },
+    {
+      "dt": 152.90000000000146,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 54648.8
+    },
+    {
+      "dt": 145.6999999999971,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 54794.5
+    },
+    {
+      "dt": 159.8000000000029,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 54954.3
+    },
+    {
+      "dt": 145.79999999999563,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 55100.1
+    },
+    {
+      "dt": 145.8000000000029,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 55245.9
+    },
+    {
+      "dt": 145.79999999999563,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 55391.7
+    },
+    {
+      "dt": 305.70000000000437,
+      "phase": "transforming",
+      "programs": 154,
+      "ms": 55697.4
+    },
+    {
+      "dt": 132,
+      "phase": "armorboost",
+      "programs": 154,
+      "ms": 55829.4
+    },
+    {
+      "dt": 27.69999999999709,
+      "phase": "armorboost",
+      "programs": 154,
+      "ms": 55857.1
+    },
+    {
+      "dt": 166.59999999999854,
+      "phase": "armorboost",
+      "programs": 154,
+      "ms": 56023.7
+    },
+    {
+      "dt": 152.8000000000029,
+      "phase": "armorboost",
+      "programs": 154,
+      "ms": 56176.5
+    },
+    {
+      "dt": 152.6999999999971,
+      "phase": "armorboost",
+      "programs": 154,
+      "ms": 56329.2
+    },
+    {
+      "dt": 159.70000000000437,
+      "phase": "armorboost",
+      "programs": 154,
+      "ms": 56488.9
+    },
+    {
+      "dt": 152.90000000000146,
+      "phase": "armorboost",
+      "programs": 154,
+      "ms": 56641.8
+    },
+    {
+      "dt": 152.6999999999971,
+      "phase": "armorboost",
+      "programs": 154,
+      "ms": 56794.5
+    },
+    {
+      "dt": 159.8000000000029,
+      "phase": "complete",
+      "programs": 154,
+      "ms": 56954.3
+    }
+  ],
+  "cpu": []
+}

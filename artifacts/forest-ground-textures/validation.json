@@ -1,0 +1,68 @@
+{
+  "pass": true,
+  "maps": {
+    "mapIsGrass": true,
+    "normalMap": false,
+    "roughnessMap": false,
+    "vertexColours": false,
+    "maps": [
+      {
+        "url": "http://127.0.0.1:5173/assets/texturas/pasto/grass-01.jpg",
+        "width": 512,
+        "height": 512,
+        "colorSpace": "srgb",
+        "anisotropy": 8,
+        "mipmaps": true,
+        "minFilter": 1008,
+        "wrapS": 1002,
+        "repeat": [
+          200,
+          200
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/texturas/pasto/dirt01.jpg",
+        "width": 512,
+        "height": 512,
+        "colorSpace": "srgb",
+        "anisotropy": 8,
+        "mipmaps": true,
+        "minFilter": 1008,
+        "wrapS": 1002,
+        "repeat": [
+          200,
+          200
+        ]
+      }
+    ]
+  },
+  "alpha": {
+    "length": 16,
+    "ratio": 1.6,
+    "scale": 8.409858661605545,
+    "y": 1.9689849756024234,
+    "colliders": 13,
+    "orientation": {
+      "yaw": 0.65,
+      "pitch": -0.045,
+      "roll": -0.14
+    }
+  },
+  "forestLayoutUnchanged": true,
+  "forestLayoutSha256": "f3376f3490ce195a054ca23852a237377edd4bc99cd62184dc6cbf94045b6bc6",
+  "originalMapsUnchanged": true,
+  "performance": {
+    "medianMs": 55.5,
+    "p95Ms": 62.599999999998545,
+    "drawCalls": 697,
+    "pixelRatio": 0.66,
+    "raster": [
+      950,
+      633
+    ],
+    "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "shader": "",
+    "gl": 0
+  },
+  "errors": []
+}

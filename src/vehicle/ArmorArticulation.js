@@ -7,6 +7,16 @@ export const caballerSettings={
 }
 const smooth=n=>{const t=Math.max(0,Math.min(1,n));return t*t*(3-2*t)}
 
+// The assembly is already complete during its departure boost, one phase
+// before the movement controller takes over. Attach in that phase as well;
+// use the entry itself as a stable presentation session, without activating
+// Armor physics or changing any mechanical transformation clocks.
+export function armorAttachmentTarget(armor,entry){
+  if(armor?.active)return armor
+  if(entry&&!entry.returnFlight&&['armorboost','complete'].includes(entry.phase))return{active:true,state:entry}
+  return armor
+}
+
 // Presentation-only attachments, evaluated AFTER Scott's final skeleton.
 // No reparenting, geometry edits, JSON edits or changes to mechanical clocks.
 export class ArmorArticulation{

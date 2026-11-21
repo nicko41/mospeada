@@ -34,7 +34,7 @@ export function registerRideSurfaces(scene) {
 // dirt road, embankment and recycled highway chunks. No invented terrain noise.
 export function sampleRideHeight(x, z, contact) {
   let highest = -Infinity
-  if (contact) contact.surface = null
+  if (contact) {contact.surface = null;contact.biome=null;contact.earthWeight=0}
   for (const mesh of surfaces) {
     mesh.updateWorldMatrix(true, false)
     point.set(x, 0, z); mesh.worldToLocal(point)
@@ -50,7 +50,11 @@ export function sampleRideHeight(x, z, contact) {
       const height = mesh.localToWorld(world).y
       if (height > highest) {
         highest = height
-        if (contact) contact.surface = mesh.userData.rideSurfaceType || 'dirt'
+        if (contact) {
+          contact.surface = mesh.userData.rideSurfaceType || 'dirt'
+          contact.biome=mesh.userData.rideSurfaceBiome||null
+          contact.earthWeight=mesh.userData.rideSurfaceEarthWeight?.(x,z)??(contact.surface==='dirt'?1:0)
+        }
       }
     }
   }

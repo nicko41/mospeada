@@ -1,0 +1,87 @@
+{
+  "scope": "Frozen identical gameplay frame: contact FX render cost only; movement/simulation and pool bounds validated separately.",
+  "population": {
+    "dust": 14,
+    "ejecta": [
+      {
+        "type": "water",
+        "active": 0
+      },
+      {
+        "type": "water",
+        "active": 0
+      },
+      {
+        "type": "earth",
+        "active": 16
+      },
+      {
+        "type": "earth",
+        "active": 15
+      },
+      {
+        "type": "mud",
+        "active": 9
+      },
+      {
+        "type": "mud",
+        "active": 7
+      },
+      {
+        "type": "grass",
+        "active": 12
+      },
+      {
+        "type": "grass",
+        "active": 11
+      }
+    ],
+    "batches": 4
+  },
+  "samples": [
+    {
+      "contactFX": false,
+      "mean": 43.37374999994408,
+      "median": 41.69999999999709,
+      "p95": 48.80000000000291,
+      "calls": 735,
+      "triangles": 1533984,
+      "width": 938,
+      "height": 570,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    {
+      "contactFX": true,
+      "mean": 42.323749999944084,
+      "median": 41.69999999999709,
+      "p95": 48.70000000001164,
+      "calls": 738,
+      "triangles": 1534152,
+      "width": 938,
+      "height": 570,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    {
+      "contactFX": true,
+      "mean": 42.24750000000004,
+      "median": 41.69999999999709,
+      "p95": 48.69999999999709,
+      "calls": 738,
+      "triangles": 1534152,
+      "width": 938,
+      "height": 570,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    {
+      "contactFX": false,
+      "mean": 42.56124999994408,
+      "median": 41.69999999999709,
+      "p95": 48.80000000000291,
+      "calls": 735,
+      "triangles": 1533984,
+      "width": 938,
+      "height": 570,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    }
+  ]
+}

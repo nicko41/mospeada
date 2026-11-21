@@ -1,0 +1,207 @@
+{
+  "preparation": {
+    "source": "assets/alpha-fighter/alpha-fighter-down.glb",
+    "output": "public/models/mospeada/alpha-fighter-down.glb",
+    "sourceSha256": "c9d433a50222e0730f2cceb13dd8d3f2edd6e3a43f54d7ce8555bebfc4ee6836",
+    "runtimeSha256": "636c08f790b359416837902aecd729c44c0e4325b780dac42eaeee23929bd819",
+    "sourceBytes": 38387840,
+    "runtimeBytes": 6311572,
+    "size": [
+      1.902529001235962,
+      0.5084750056266785,
+      1.1396620273590088
+    ],
+    "min": [
+      -0.9527580142021179,
+      -0.2546370029449463,
+      -0.5697420239448547
+    ],
+    "max": [
+      0.949770987033844,
+      0.2538380026817322,
+      0.569920003414154
+    ],
+    "orientation": {
+      "up": "+Y",
+      "nose": "-X",
+      "span": "Z"
+    },
+    "referenceLengthMetres": 10,
+    "scale": 5.256161663503465,
+    "parts": [
+      {
+        "sourceTriangles": 599874,
+        "runtimeTriangles": 104994,
+        "vertices": 73113,
+        "relativePositionError": 0.00039553450187668204,
+        "metresErrorAt10m": 0.00395534501876682
+      }
+    ],
+    "hierarchy": [
+      {
+        "id": 0,
+        "mesh": 0,
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "metallicFactor": 1,
+          "roughnessFactor": 1,
+          "baseColorTexture": {
+            "index": 0,
+            "texCoord": 0
+          },
+          "metallicRoughnessTexture": {
+            "index": 1,
+            "texCoord": 0
+          }
+        },
+        "normalTexture": {
+          "index": 2,
+          "texCoord": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true
+      }
+    ],
+    "texturesPreserved": 3,
+    "textureMaximumSize": 2048,
+    "animations": 0,
+    "skins": 0
+  },
+  "final": {
+    "length": 16,
+    "ratio": 1.6,
+    "scale": 8.409858661605545,
+    "y": 1.9689849756024234,
+    "colliders": 13,
+    "orientation": {
+      "yaw": 0.65,
+      "pitch": -0.045,
+      "roll": -0.14
+    },
+    "span": 9.584396572088096,
+    "sourceUnchanged": true,
+    "support": [
+      {
+        "minGap": -0.2999999956728987,
+        "buriedVertices": 329,
+        "vertices": 73113
+      }
+    ],
+    "minTreeClearance": 1.5950203073459324,
+    "collisionTest": {
+      "x": 5.688463246171906,
+      "z": -10,
+      "blocked": true
+    },
+    "scottCollision": {
+      "x": 6.596005609093257,
+      "z": -10.522856711434718,
+      "lastSecondTravel": 0
+    },
+    "armorAccess": {
+      "blockedInside": true,
+      "canApproach": true
+    },
+    "cameraClearance": {
+      "distanceFromScott": 4.1,
+      "position": [
+        2.496005609093257,
+        2.079675126246225,
+        -10.522856711434718
+      ]
+    }
+  },
+  "currentGroundTrial": "artifacts/forest-ground-textures/summary.json",
+  "navigation": {
+    "frames": 321,
+    "metres": 320,
+    "missingFrames": 0,
+    "missing": 0,
+    "matrixWrites": 0,
+    "rebuilds": 0,
+    "failures": [],
+    "gl": 0,
+    "shader": ""
+  },
+  "gameplay": "12 full cases passed before the final texture/scale trial; final native keyboard driving/walking and scaled collision checks passed in the texture/Alpha validators.",
+  "finalRotation": {
+    "results": [
+      {
+        "name": "audit",
+        "frames": 145,
+        "missingFrames": 0,
+        "missingInstances": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0,
+        "medianMs": 41.69999999998254,
+        "p95Ms": 48.70000000001164,
+        "maxDrawCalls": 242
+      },
+      {
+        "name": "performance",
+        "frames": 181,
+        "missingFrames": 0,
+        "missingInstances": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0,
+        "medianMs": 41.69999999998254,
+        "p95Ms": 48.70000000001164,
+        "maxDrawCalls": 242
+      },
+      {
+        "name": "mouse-clockwise",
+        "frames": 212,
+        "turns": 3.2959316487621475,
+        "missingFrames": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0
+      },
+      {
+        "name": "mouse-counterclockwise",
+        "frames": 212,
+        "turns": 3.2931417784874455,
+        "missingFrames": 0,
+        "matrixWriteFrames": 0,
+        "resourceRebuildFrames": 0
+      }
+    ],
+    "requests": [],
+    "errors": [],
+    "info": {
+      "pixelRatio": 1,
+      "width": 1440,
+      "height": 960,
+      "programsBefore": 90,
+      "programsAfter": 90,
+      "gl": 0
+    },
+    "note": "Rotation validates visibility/resources; its raster differs from the fixed-raster stationary comparison and its FPS is not used for that comparison."
+  }
+}

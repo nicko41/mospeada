@@ -13,7 +13,7 @@ export default function AmbienceAudio() {
   useEffect(() => {
     const createSound = (name, volume, loop = false) => {
       const sound = new Audio(`${import.meta.env.BASE_URL}sounds/ambience/${name}.mp3`)
-      sound.preload = 'auto'
+      sound.preload = 'metadata'
       sound.volume = volume
       sound.loop = loop
       sound.load()

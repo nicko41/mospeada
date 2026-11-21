@@ -104,6 +104,12 @@ test('Armor boost sweeps both feet behind the pelvis using native trailing strid
     assert.ok(flex>25&&flex<135,'Natural bent knee from Running')
   }
   for(const r of before){assert.deepEqual(r.b.position.toArray(),r.p);assert.deepEqual(r.b.scale.toArray(),r.s);if(!/(Left|Right)(UpLeg|Leg|Foot|ToeBase)$/.test(r.b.name))assert.deepEqual(r.b.quaternion.toArray(),r.q)}
+  const trailingWidth=Math.abs(point('LeftFoot').x-point('RightFoot').x)
+  boost.restore();for(const r of before)assert.deepEqual(r.b.quaternion.toArray(),r.q)
+  assert.ok(armorBoostLegWeight({phase:'armorboost',time:.10},{})<.25,'Departure eases in instead of snapping to full flexion in 100 ms')
+  boost.apply({phase:'armorboost',time:.35,returnFlight:false},{})
+  assert.ok(Math.abs(point('LeftFoot').x-point('RightFoot').x)>trailingWidth+.15,'Transformation departure opens both trailing legs')
+  for(const [i,side]of ['Left','Right'].entries())assert.ok(point(side+'Foot').z<feet[i].z-.10,'Opened legs still trail behind')
   boost.restore();for(const r of before)assert.deepEqual(r.b.quaternion.toArray(),r.q)
   assert.equal(armorBoostLegWeight(clock(.12),{}),1);assert.equal(armorBoostLegWeight(clock(.52),{}),0)
   boost.apply({phase:'idle'}, {boostBlend:1});assert.equal(boost.applied,false)

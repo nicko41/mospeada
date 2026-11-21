@@ -32,30 +32,18 @@ test('return boost uses the existing rear1 socket but expels downwards for the u
   }finally{effect.dispose()}
 })
 
-test('Armor wheel lift reuses the Quarks runtime and obeys hover, jump, direction, distance and particle quotas',()=>{
-  const runtime=new VFXRuntime(),effect=runtime.register('armor',new ArmorBoost()),rear={boostSocket(p,d){p.set(0,2,0);d.set(0,0,-1);return true}}
-  const scene=new Scene();scene.add(runtime.root)
-  const geometry=new BoxGeometry(1,1,1),wheels={groups:[-1,1].map(x=>{const mesh=new Mesh(geometry);mesh.userData.sourcePiece='Front_Tire_Rubber';mesh.position.set(x,2,0);mesh.updateMatrixWorld(true);return{parts:[{mesh}]}})}
-  const armor={active:true,state:{yaw:0,boostBlend:.8,thrustForward:1,thrustSide:0,thrustX:0,thrustZ:1,lift:1,sideAcceleration:12,ax:10,az:5}}
+test('Armor exposes only the original central rear1 booster: no wheel or side effect is registered',()=>{
+  const runtime=new VFXRuntime(),effect=runtime.register('armor',new ArmorBoost()),scene=new Scene();scene.add(runtime.root)
+  const rear={boostSocket(p,d){p.set(0,2,0);d.set(0,0,-1);return true}}
   try{
-    for(let i=0;i<50;i++){effect.prepare(1/60,{},rear,5,true,armor,wheels);runtime.update(1/60)}
-    assert.ok(effect.liftRecords.every(r=>r.system.particleNum>0&&r.system.particleNum<=70));assert.notEqual(effect.liftRecords[0].level,effect.liftRecords[1].level)
-    assert.ok(effect.direction.z<-.9);assert.ok(effect.liftRecords.every(r=>r.system.emitter.position.y<2))
-    armor.active=false;for(let i=0;i<90;i++){effect.prepare(1/60,{},rear,5,true,armor,wheels);runtime.update(1/60)}
-    assert.ok(effect.liftRecords.every(r=>r.system.particleNum===0))
-  }finally{runtime.dispose();geometry.dispose()}
-})
-
-test('backward and lateral boost use wheel jets opposite to thrust; only forward uses rear1, and Shift alone stays idle',()=>{
-  const effect=new ArmorBoost(),rear={boostSocket(p,d){p.set(0,2,0);d.set(0,0,-1);return true}},geometry=new BoxGeometry(1,1,1)
-  const wheels={groups:[-1,1].map(x=>{const mesh=new Mesh(geometry);mesh.userData.sourcePiece='Front_Tire_Rubber';mesh.position.set(x,2,0);mesh.updateMatrixWorld(true);return{parts:[{mesh}]}})}
-  try{
-    for(const [forward,side,x,z]of [[1,0,0,1],[-1,0,0,-1],[0,-1,1,0],[0,1,-1,0]]){
-      const state={yaw:0,boostBlend:1,thrustForward:forward,thrustSide:side,thrustX:x,thrustZ:z,lift:.25,sideAcceleration:0,ax:x*30,az:z*30}
-      effect.prepare(1/60,{},rear,5,true,{active:true,state},wheels)
-      if(forward>0)assert.equal(effect.level,1)
-      else{assert.equal(effect.level,0);assert.ok(effect.liftRecords.every(r=>r.level>1));assert.ok(effect.liftDirection.x*x+effect.liftDirection.z*z<-.3)}
+    assert.deepEqual(effect.liftRecords,[])
+    assert.equal(effect.trails,undefined)
+    assert.deepEqual(effect.systems.map(s=>s.emitter.name),['Quarks_armor_rear1_core','Quarks_armor_rear1_plume'])
+    for(const [forward,side]of [[0,0],[0,1],[0,-1],[-1,0]]){
+      for(let i=0;i<30;i++){effect.prepare(1/60,{},rear,5,true,{active:true,state:{yaw:0,boostBlend:side||forward?1:0,thrustForward:forward,thrustSide:side,lift:1}});runtime.update(1/60)}
+      assert.ok(effect.systems.every(s=>s.particleNum===0),'Hover, sideways and reverse thrust must not spawn replacement effects')
     }
-    effect.prepare(1/60,{},rear,5,true,{active:true,state:{yaw:0,boostBlend:0,lift:.25,ax:0,az:0,sideAcceleration:0}},wheels);assert.equal(effect.level,0);assert.ok(effect.liftRecords.every(r=>r.level===.25))
-  }finally{effect.dispose();geometry.dispose()}
+    for(let i=0;i<12;i++){effect.prepare(1/60,{},rear,5,true,{active:true,state:{yaw:0,boostBlend:1,thrustForward:1}});runtime.update(1/60)}
+    assert.ok(effect.systems.some(s=>s.particleNum>0),'The approved central booster remains active')
+  }finally{runtime.dispose()}
 })

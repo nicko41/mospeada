@@ -6,6 +6,7 @@ import { subscribeTouchAction } from '../player/touchInput'
 import { weatherState } from './weatherState.js'
 import {sampleRideHeight} from '../vehicle/rideSurface.js'
 import {followCharacterShadow} from './characterShadow.js'
+import {animeState} from '../rendering/animeState.js'
 
 export const timeOfDayState = { value: 0, target: 0 }
 
@@ -42,7 +43,8 @@ export default function TimeOfDay() {
 
   useFrame((_, delta) => {
     const blend = 1 - Math.exp(-delta * 2.2)
-    timeOfDayState.value = THREE.MathUtils.lerp(timeOfDayState.value, timeOfDayState.target, blend)
+    const renderReady=animeState.snapshot()
+    if(renderReady.nightReady||renderReady.error)timeOfDayState.value = THREE.MathUtils.lerp(timeOfDayState.value, timeOfDayState.target, blend)
     if (Math.abs(timeOfDayState.value - timeOfDayState.target) < 0.001) {
       timeOfDayState.value = timeOfDayState.target
     }

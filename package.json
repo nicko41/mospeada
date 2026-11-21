@@ -12,7 +12,9 @@
     "test:anime": "node scripts/validate-anime.mjs",
     "test:brush": "node scripts/validate-surface-brush.mjs",
     "assets:import": "node scripts/import-mospeada.mjs",
-    "assets:scott": "node scripts/import-scott.mjs"
+    "assets:scott": "node scripts/import-scott.mjs",
+    "assets:alpha": "node scripts/prepare-forest-alpha.mjs",
+    "assets:foliage": "node scripts/extract-forest-foliage.mjs"
   },
   "dependencies": {
     "@react-three/drei": "10.7.8",

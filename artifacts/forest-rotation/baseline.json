@@ -1,0 +1,3642 @@
+{
+  "baseline": true,
+  "results": [
+    {
+      "name": "audit",
+      "frames": 145,
+      "missingFrames": 144,
+      "missingInstances": 172890,
+      "matrixWriteFrames": 144,
+      "resourceRebuildFrames": 0,
+      "medianMs": 20.799999999999272,
+      "p95Ms": 34.80000000000291,
+      "maxDrawCalls": 696,
+      "rows": [
+        {
+          "angle": 0,
+          "expected": 1494,
+          "missing": 2,
+          "matrixWrites": 0,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_horizon_Pine_5_0",
+              "x": 146.81499695777893,
+              "z": -185.88864988088608
+            },
+            {
+              "mesh": "Forest_horizon_Pine_5_1",
+              "x": 146.81499695777893,
+              "z": -185.88864988088608
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 0,
+          "expected": 1494,
+          "missing": 2,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_horizon_Pine_5_0",
+              "x": 146.81499695777893,
+              "z": -185.88864988088608
+            },
+            {
+              "mesh": "Forest_horizon_Pine_5_1",
+              "x": 146.81499695777893,
+              "z": -185.88864988088608
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 0.2617993877991494,
+          "expected": 1499,
+          "missing": 178,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 62.90211281273514,
+              "z": -31.096107743214816
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 66.5606850804761,
+              "z": -36.09214621363208
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 0.5235987755982988,
+          "expected": 1530,
+          "missing": 407,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 0.7853981633974483,
+          "expected": 1647,
+          "missing": 714,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            }
+          ],
+          "calls": 590
+        },
+        {
+          "angle": 1.0471975511965976,
+          "expected": 1650,
+          "missing": 973,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 71.47535939700902,
+              "z": 12.17458072816953
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 1.3089969389957472,
+          "expected": 1557,
+          "missing": 1174,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 1.5707963267948966,
+          "expected": 1615,
+          "missing": 1483,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 1.832595714594046,
+          "expected": 1700,
+          "missing": 1694,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 2.0943951023931953,
+          "expected": 1653,
+          "missing": 1653,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 235
+        },
+        {
+          "angle": 2.356194490192345,
+          "expected": 1598,
+          "missing": 1598,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 234
+        },
+        {
+          "angle": 2.6179938779914944,
+          "expected": 1543,
+          "missing": 1543,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            }
+          ],
+          "calls": 235
+        },
+        {
+          "angle": 2.8797932657906435,
+          "expected": 1594,
+          "missing": 227,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -25.353027284145355,
+              "z": 61.834132249932736
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -36.76061064004898,
+              "z": 89.8745756149292
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.820202162954956,
+              "z": 92.5689816987142
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 3.141592653589793,
+          "expected": 1689,
+          "missing": 578,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -21.12681806087494,
+              "z": 16.467425286769867
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 3.4033920413889427,
+          "expected": 1695,
+          "missing": 929,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 3.665191429188092,
+          "expected": 1749,
+          "missing": 1196,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 3.926990816987241,
+          "expected": 1899,
+          "missing": 1557,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 4.1887902047863905,
+          "expected": 1997,
+          "missing": 1884,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 4.4505895925855405,
+          "expected": 2088,
+          "missing": 2084,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 239
+        },
+        {
+          "angle": 4.71238898038469,
+          "expected": 2010,
+          "missing": 2007,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 237
+        },
+        {
+          "angle": 4.974188368183839,
+          "expected": 1877,
+          "missing": 1877,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 237
+        },
+        {
+          "angle": 5.235987755982989,
+          "expected": 1778,
+          "missing": 1778,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            }
+          ],
+          "calls": 237
+        },
+        {
+          "angle": 5.497787143782138,
+          "expected": 1648,
+          "missing": 1648,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 662
+        },
+        {
+          "angle": 5.759586531581287,
+          "expected": 1567,
+          "missing": 1567,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 686
+        },
+        {
+          "angle": 6.021385919380436,
+          "expected": 1538,
+          "missing": 1538,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 686
+        },
+        {
+          "angle": 6.283185307179586,
+          "expected": 1494,
+          "missing": 1494,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 686
+        },
+        {
+          "angle": 6.544984694978736,
+          "expected": 1499,
+          "missing": 178,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 62.90211281273514,
+              "z": -31.096107743214816
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 66.5606850804761,
+              "z": -36.09214621363208
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 6.806784082777885,
+          "expected": 1530,
+          "missing": 407,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 7.0685834705770345,
+          "expected": 1647,
+          "missing": 714,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            }
+          ],
+          "calls": 590
+        },
+        {
+          "angle": 7.330382858376184,
+          "expected": 1650,
+          "missing": 973,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 71.47535939700902,
+              "z": 12.17458072816953
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 7.592182246175334,
+          "expected": 1557,
+          "missing": 1174,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 7.853981633974482,
+          "expected": 1615,
+          "missing": 1483,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 8.115781021773632,
+          "expected": 1700,
+          "missing": 1694,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 8.377580409572781,
+          "expected": 1653,
+          "missing": 1653,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 235
+        },
+        {
+          "angle": 8.639379797371932,
+          "expected": 1598,
+          "missing": 211,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -2.6143181920051575,
+              "z": 71.3116557598114
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 2.4045475479215384,
+              "z": 89.08147839596495
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_1",
+              "x": -2.6143181920051575,
+              "z": 71.3116557598114
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 8.901179185171081,
+          "expected": 1543,
+          "missing": 447,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -25.640576899051666,
+              "z": 96.03730916976929
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -2.6143181920051575,
+              "z": 71.3116557598114
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 9.16297857297023,
+          "expected": 1594,
+          "missing": 709,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -25.640576899051666,
+              "z": 96.03730916976929
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -25.353027284145355,
+              "z": 61.834132249932736
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 9.42477796076938,
+          "expected": 1689,
+          "missing": 1060,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 9.686577348568528,
+          "expected": 1695,
+          "missing": 1411,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 9.948376736367678,
+          "expected": 1749,
+          "missing": 1678,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            }
+          ],
+          "calls": 239
+        },
+        {
+          "angle": 10.210176124166827,
+          "expected": 1899,
+          "missing": 1897,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            }
+          ],
+          "calls": 236
+        },
+        {
+          "angle": 10.471975511965978,
+          "expected": 1997,
+          "missing": 1997,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            }
+          ],
+          "calls": 231
+        },
+        {
+          "angle": 10.733774899765125,
+          "expected": 2088,
+          "missing": 2088,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 230
+        },
+        {
+          "angle": 10.995574287564276,
+          "expected": 2010,
+          "missing": 2010,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 232
+        },
+        {
+          "angle": 11.257373675363425,
+          "expected": 1877,
+          "missing": 1877,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 231
+        },
+        {
+          "angle": 11.519173063162574,
+          "expected": 1778,
+          "missing": 1778,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            }
+          ],
+          "calls": 230
+        },
+        {
+          "angle": 11.780972450961725,
+          "expected": 1648,
+          "missing": 1648,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 652
+        },
+        {
+          "angle": 12.042771838760872,
+          "expected": 1567,
+          "missing": 1567,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 674
+        },
+        {
+          "angle": 12.304571226560023,
+          "expected": 1538,
+          "missing": 240,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 56.08814209699631,
+              "z": -87.97579407691956
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 17.43707661051303,
+              "z": -20.480611498933285
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_1",
+              "x": 56.08814209699631,
+              "z": -87.97579407691956
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 12.566370614359172,
+          "expected": 1494,
+          "missing": 487,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 43.35493333870545,
+              "z": -30.010117013007402
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 64.68943673372269,
+              "z": -74.02059710025787
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 12.828170002158322,
+          "expected": 1499,
+          "missing": 716,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 43.35493333870545,
+              "z": -30.010117013007402
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            }
+          ],
+          "calls": 694
+        },
+        {
+          "angle": 13.089969389957473,
+          "expected": 1530,
+          "missing": 945,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            }
+          ],
+          "calls": 692
+        },
+        {
+          "angle": 13.35176877775662,
+          "expected": 1647,
+          "missing": 1252,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            }
+          ],
+          "calls": 586
+        },
+        {
+          "angle": 13.61356816555577,
+          "expected": 1650,
+          "missing": 1511,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 13.87536755335492,
+          "expected": 1557,
+          "missing": 1547,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 239
+        },
+        {
+          "angle": 14.137166941154069,
+          "expected": 1615,
+          "missing": 1615,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 236
+        },
+        {
+          "angle": 14.39896632895322,
+          "expected": 1700,
+          "missing": 1700,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 234
+        },
+        {
+          "angle": 14.660765716752367,
+          "expected": 1653,
+          "missing": 126,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_1",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            },
+            {
+              "mesh": "Forest_horizon_CommonTree_3_0",
+              "x": 94.27738219499588,
+              "z": 264.89832866191864
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 14.922565104551516,
+          "expected": 1598,
+          "missing": 374,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -2.6143181920051575,
+              "z": 71.3116557598114
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 2.4045475479215384,
+              "z": 89.08147839596495
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 15.184364492350667,
+          "expected": 1543,
+          "missing": 610,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -25.640576899051666,
+              "z": 96.03730916976929
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 15.446163880149816,
+          "expected": 1594,
+          "missing": 872,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -25.640576899051666,
+              "z": 96.03730916976929
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 15.707963267948964,
+          "expected": 1689,
+          "missing": 1223,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 15.969762655748115,
+          "expected": 1695,
+          "missing": 1574,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 240
+        },
+        {
+          "angle": 16.231562043547264,
+          "expected": 1749,
+          "missing": 1749,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            }
+          ],
+          "calls": 237
+        },
+        {
+          "angle": 16.493361431346415,
+          "expected": 1899,
+          "missing": 1899,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            }
+          ],
+          "calls": 233
+        },
+        {
+          "angle": 16.755160819145562,
+          "expected": 1997,
+          "missing": 1997,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            }
+          ],
+          "calls": 229
+        },
+        {
+          "angle": 17.016960206944713,
+          "expected": 2088,
+          "missing": 2088,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 229
+        },
+        {
+          "angle": 17.278759594743864,
+          "expected": 2010,
+          "missing": 2010,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 231
+        },
+        {
+          "angle": 17.54055898254301,
+          "expected": 1877,
+          "missing": 1877,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 229
+        },
+        {
+          "angle": 17.802358370342162,
+          "expected": 1778,
+          "missing": 1778,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            }
+          ],
+          "calls": 229
+        },
+        {
+          "angle": 18.06415775814131,
+          "expected": 1648,
+          "missing": 1648,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 650
+        },
+        {
+          "angle": 18.32595714594046,
+          "expected": 1567,
+          "missing": 222,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.661514253355563,
+              "z": -93.41315903468058
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 18.58775653373961,
+          "expected": 1538,
+          "missing": 525,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.661514253355563,
+              "z": -93.41315903468058
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 18.84955592153876,
+          "expected": 1494,
+          "missing": 772,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 18.58775653373961,
+          "expected": 1538,
+          "missing": 525,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.661514253355563,
+              "z": -93.41315903468058
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 18.32595714594046,
+          "expected": 1567,
+          "missing": 222,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.661514253355563,
+              "z": -93.41315903468058
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 18.06415775814131,
+          "expected": 1648,
+          "missing": 0,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [],
+          "calls": 672
+        },
+        {
+          "angle": 17.802358370342162,
+          "expected": 1778,
+          "missing": 279,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -21.12681806087494,
+              "z": 16.467425286769867
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -33.763401419855654,
+              "z": 13.825889064464718
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 17.54055898254301,
+          "expected": 1877,
+          "missing": 551,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -81.27919672289863,
+              "z": 34.64909145142883
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 17.278759594743864,
+          "expected": 2010,
+          "missing": 914,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -81.27919672289863,
+              "z": 34.64909145142883
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 17.016960206944713,
+          "expected": 2088,
+          "missing": 277,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.820202162954956,
+              "z": 92.5689816987142
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 16.755160819145562,
+          "expected": 1997,
+          "missing": 514,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 16.493361431346415,
+          "expected": 1899,
+          "missing": 743,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 16.231562043547264,
+          "expected": 1749,
+          "missing": 954,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 15.969762655748115,
+          "expected": 1695,
+          "missing": 1167,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 15.707963267948964,
+          "expected": 1689,
+          "missing": 1512,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 239
+        },
+        {
+          "angle": 15.446163880149816,
+          "expected": 1594,
+          "missing": 1587,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 238
+        },
+        {
+          "angle": 15.184364492350667,
+          "expected": 1543,
+          "missing": 1541,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            }
+          ],
+          "calls": 235
+        },
+        {
+          "angle": 14.922565104551516,
+          "expected": 1598,
+          "missing": 1598,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 232
+        },
+        {
+          "angle": 14.660765716752367,
+          "expected": 1653,
+          "missing": 1653,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 235
+        },
+        {
+          "angle": 14.39896632895322,
+          "expected": 1700,
+          "missing": 1700,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 235
+        },
+        {
+          "angle": 14.137166941154069,
+          "expected": 1615,
+          "missing": 1615,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 232
+        },
+        {
+          "angle": 13.87536755335492,
+          "expected": 1557,
+          "missing": 209,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 56.08814209699631,
+              "z": -87.97579407691956
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_1",
+              "x": 56.08814209699631,
+              "z": -87.97579407691956
+            },
+            {
+              "mesh": "Forest_horizon_CommonTree_3_0",
+              "x": 75.61026081210002,
+              "z": -91.04746491182595
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 13.61356816555577,
+          "expected": 1650,
+          "missing": 503,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 56.08814209699631,
+              "z": -87.97579407691956
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.559085056651384,
+              "z": -69.37180305831134
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 13.35176877775662,
+          "expected": 1647,
+          "missing": 759,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -4.198134045582265,
+              "z": -99.49794852174819
+            }
+          ],
+          "calls": 590
+        },
+        {
+          "angle": 13.089969389957473,
+          "expected": 1530,
+          "missing": 949,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -4.198134045582265,
+              "z": -99.49794852174819
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 12.828170002158322,
+          "expected": 1499,
+          "missing": 1147,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 696
+        },
+        {
+          "angle": 12.566370614359172,
+          "expected": 1494,
+          "missing": 1371,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 692
+        },
+        {
+          "angle": 12.304571226560023,
+          "expected": 1538,
+          "missing": 1532,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 688
+        },
+        {
+          "angle": 12.042771838760872,
+          "expected": 1567,
+          "missing": 1567,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 684
+        },
+        {
+          "angle": 11.780972450961725,
+          "expected": 1648,
+          "missing": 1648,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 658
+        },
+        {
+          "angle": 11.519173063162574,
+          "expected": 1778,
+          "missing": 1778,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            }
+          ],
+          "calls": 234
+        },
+        {
+          "angle": 11.257373675363425,
+          "expected": 1877,
+          "missing": 245,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -29.086302638053894,
+              "z": 23.40159648656845
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -93.62362271547318,
+              "z": 40.69973015785217
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 10.995574287564276,
+          "expected": 2010,
+          "missing": 608,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -29.086302638053894,
+              "z": 23.40159648656845
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -93.62362271547318,
+              "z": 40.69973015785217
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 10.733774899765125,
+          "expected": 2088,
+          "missing": 946,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 10.471975511965978,
+          "expected": 1997,
+          "missing": 1184,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 10.210176124166827,
+          "expected": 1899,
+          "missing": 1413,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 9.948376736367678,
+          "expected": 1749,
+          "missing": 1624,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 9.686577348568528,
+          "expected": 1695,
+          "missing": 1691,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 238
+        },
+        {
+          "angle": 9.42477796076938,
+          "expected": 1689,
+          "missing": 1688,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 227
+        },
+        {
+          "angle": 9.16297857297023,
+          "expected": 1594,
+          "missing": 1594,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 222
+        },
+        {
+          "angle": 8.901179185171081,
+          "expected": 1543,
+          "missing": 1543,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            }
+          ],
+          "calls": 226
+        },
+        {
+          "angle": 8.639379797371932,
+          "expected": 1598,
+          "missing": 1598,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 226
+        },
+        {
+          "angle": 8.377580409572781,
+          "expected": 1653,
+          "missing": 1653,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 222
+        },
+        {
+          "angle": 8.115781021773632,
+          "expected": 1700,
+          "missing": 163,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 34.417488877661526,
+              "z": -19.751636150758713
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 7.853981633974482,
+          "expected": 1615,
+          "missing": 402,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 43.35493333870545,
+              "z": -30.010117013007402
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 7.592182246175334,
+          "expected": 1557,
+          "missing": 655,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 43.35493333870545,
+              "z": -30.010117013007402
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 7.330382858376184,
+          "expected": 1650,
+          "missing": 949,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 7.0685834705770345,
+          "expected": 1647,
+          "missing": 1205,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 590
+        },
+        {
+          "angle": 6.806784082777885,
+          "expected": 1530,
+          "missing": 1395,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 692
+        },
+        {
+          "angle": 6.544984694978736,
+          "expected": 1499,
+          "missing": 1495,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 678
+        },
+        {
+          "angle": 6.283185307179586,
+          "expected": 1494,
+          "missing": 1494,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 676
+        },
+        {
+          "angle": 6.021385919380436,
+          "expected": 1538,
+          "missing": 1538,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 672
+        },
+        {
+          "angle": 5.759586531581287,
+          "expected": 1567,
+          "missing": 1567,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            }
+          ],
+          "calls": 674
+        },
+        {
+          "angle": 5.497787143782138,
+          "expected": 1648,
+          "missing": 1648,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 652
+        },
+        {
+          "angle": 5.235987755982989,
+          "expected": 1778,
+          "missing": 1778,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.75773644447327,
+              "z": 28.044966280460358
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -79.8070516786538,
+              "z": -33.12113692983985
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -44.06201781705022,
+              "z": 9.36734878225252
+            }
+          ],
+          "calls": 230
+        },
+        {
+          "angle": 4.974188368183839,
+          "expected": 1877,
+          "missing": 245,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -29.086302638053894,
+              "z": 23.40159648656845
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -93.62362271547318,
+              "z": 40.69973015785217
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 4.71238898038469,
+          "expected": 2010,
+          "missing": 608,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -29.086302638053894,
+              "z": 23.40159648656845
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -93.62362271547318,
+              "z": 40.69973015785217
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 4.4505895925855405,
+          "expected": 2088,
+          "missing": 946,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 4.1887902047863905,
+          "expected": 1997,
+          "missing": 1184,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 3.926990816987241,
+          "expected": 1899,
+          "missing": 1413,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 3.665191429188092,
+          "expected": 1749,
+          "missing": 1624,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 3.4033920413889427,
+          "expected": 1695,
+          "missing": 1691,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -74.5359540428035,
+              "z": 40.67117680795491
+            }
+          ],
+          "calls": 238
+        },
+        {
+          "angle": 3.141592653589793,
+          "expected": 1689,
+          "missing": 1688,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -56.776971970684826,
+              "z": 80.3047701367177
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -64.04503509867936,
+              "z": 97.52664502942935
+            }
+          ],
+          "calls": 227
+        },
+        {
+          "angle": 2.8797932657906435,
+          "expected": 1594,
+          "missing": 1594,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 222
+        },
+        {
+          "angle": 2.6179938779914944,
+          "expected": 1543,
+          "missing": 1543,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -18.096816837787628,
+              "z": 73.25328469276428
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            }
+          ],
+          "calls": 226
+        },
+        {
+          "angle": 2.356194490192345,
+          "expected": 1598,
+          "missing": 1598,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 94.29268333129585,
+              "z": 48.29629951855168
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 88.32988316193223,
+              "z": 48.34438954247162
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 38.423827171325684,
+              "z": 98.22255402803421
+            }
+          ],
+          "calls": 226
+        },
+        {
+          "angle": 2.0943951023931953,
+          "expected": 1653,
+          "missing": 244,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 75.40163630247116,
+              "z": -6.03342604637146
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 84.97203562874347,
+              "z": -22.820791478734463
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 72.28860890865326,
+              "z": -21.956120789051056
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 1.832595714594046,
+          "expected": 1700,
+          "missing": 448,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 58.95929127931595,
+              "z": -36.109022323507816
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 1.5707963267948966,
+          "expected": 1615,
+          "missing": 687,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 43.35493333870545,
+              "z": -30.010117013007402
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 1.3089969389957472,
+          "expected": 1557,
+          "missing": 940,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 67.96024757623672,
+              "z": -79.60296142101288
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 1.0471975511965976,
+          "expected": 1650,
+          "missing": 1234,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 93.2076952457428,
+              "z": -31.770876824855804
+            }
+          ],
+          "calls": 242
+        },
+        {
+          "angle": 0.7853981633974483,
+          "expected": 1647,
+          "missing": 1490,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 586
+        },
+        {
+          "angle": 0.5235987755982988,
+          "expected": 1530,
+          "missing": 1527,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 80.2975982031785,
+              "z": -30.776580017991364
+            }
+          ],
+          "calls": 690
+        },
+        {
+          "angle": 0.2617993877991494,
+          "expected": 1499,
+          "missing": 1499,
+          "matrixWrites": 26,
+          "rebuilt": 0,
+          "examples": [
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 27.79620285378769,
+              "z": -95.87052474729717
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": 16.43648886680603,
+              "z": -104.06877654790878
+            },
+            {
+              "mesh": "Forest_detail_CommonTree_3_0",
+              "x": -40.9212484722957,
+              "z": -51.53907370520756
+            }
+          ],
+          "calls": 688
+        }
+      ]
+    },
+    {
+      "name": "performance",
+      "frames": 181,
+      "missingFrames": 1,
+      "missingInstances": 1494,
+      "matrixWriteFrames": 1,
+      "resourceRebuildFrames": 0,
+      "medianMs": 20.899999999997817,
+      "p95Ms": 41.599999999998545,
+      "maxDrawCalls": 696
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "http://127.0.0.1:5173/node_modules/three/build/three.module.js",
+    "http://127.0.0.1:5173/node_modules/three/build/three.core.js?v=6cb2a1ad",
+    "http://127.0.0.1:5173/src/world/forest/forestLayout.js"
+  ],
+  "info": {
+    "pixelRatio": 0.66,
+    "width": 950,
+    "height": 633,
+    "programsBefore": 77,
+    "programsAfter": 77,
+    "gl": 0
+  }
+}

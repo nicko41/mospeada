@@ -15,18 +15,24 @@ export default function FrontTransformation({ rig, runtime }) {
   const data = useRef(null), effect = useRef(null),rear=useRef(null),guards=useRef(null),wheels=useRef(null),suspension=useRef(null),frame=useRef(null)
   useEffect(() => {
     const controller = new AbortController()
+    // The renderer can prepare derived Armor meshes before the first T.
+    // Resolve after their construction, never by playing the transformation.
+    let prepared
+    const preparation = new Promise(resolve => { prepared = resolve })
+    rig.root.userData.armorPreparation = preparation
+    runtime.finishArmorPreparation = prepared
     store.reset(); store.set({ready:false,error:''})
     const read=url=>fetch(url,{signal:controller.signal}).then(r=>{if(!r.ok)throw Error('No se pudo cargar la configuración Battloid');return r.json()})
     Promise.all([read('/transformations/cyclone-front-battloid.json'),read('/transformations/cyclone-rear-battloid.json'),read('/transformations/cyclone-guard-battloid.json'),read('/transformations/cyclone-wheel-battloid.json'),read('/transformations/cyclone-suspension-hide.json')])
       .then(async([front,rear,guards,wheels,suspension])=>({front,rear,guards,wheels,suspension,geometry:(await new GLTFLoader().loadAsync(rear.geometryUrl)).scene}))
       .then(value=>{if(!controller.signal.aborted)data.current=value})
-      .catch(error=>{if(error.name!=='AbortError')store.set({error:error.message})})
+      .catch(error=>{prepared();if(error.name!=='AbortError')store.set({error:error.message})})
     const down = e => {
       if(e.code!=='KeyT'||e.repeat||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return
       e.preventDefault();store.request()
     }
     window.addEventListener('keydown',down)
-    return()=>{controller.abort();window.removeEventListener('keydown',down);frame.current?.dispose();frame.current=null;suspension.current?.dispose();suspension.current=null;wheels.current?.dispose();wheels.current=null;guards.current?.dispose();guards.current=null;rear.current?.dispose();rear.current=null;effect.current?.restore();runtime.transformEntry?.reset();store.bindEntry(null);effect.current=null;data.current=null;delete runtime.frontTransformation;delete runtime.rearTransformation;delete runtime.guardTransformation;delete runtime.wheelTransformation;delete runtime.suspensionTransformation;delete runtime.transformationFrame;delete runtime.transformEntry;store.set({ready:false});if(import.meta.env.DEV)delete window.__FRONT_BATTLOID__}
+    return()=>{prepared();if(rig.root.userData.armorPreparation===preparation)delete rig.root.userData.armorPreparation;delete runtime.finishArmorPreparation;controller.abort();window.removeEventListener('keydown',down);frame.current?.dispose();frame.current=null;suspension.current?.dispose();suspension.current=null;wheels.current?.dispose();wheels.current=null;guards.current?.dispose();guards.current=null;rear.current?.dispose();rear.current=null;effect.current?.restore();runtime.transformEntry?.reset();store.bindEntry(null);effect.current=null;data.current=null;delete runtime.frontTransformation;delete runtime.rearTransformation;delete runtime.guardTransformation;delete runtime.wheelTransformation;delete runtime.suspensionTransformation;delete runtime.transformationFrame;delete runtime.transformEntry;store.set({ready:false});if(import.meta.env.DEV)delete window.__FRONT_BATTLOID__}
   },[rig,runtime])
   // Restore before the unmodified vehicle articulation/suspension step.
   useFrame(()=>{frame.current?.restore();suspension.current?.restore();wheels.current?.restore();guards.current?.restore();rear.current?.restore();effect.current?.restore()},-2.1)
@@ -50,7 +56,8 @@ export default function FrontTransformation({ rig, runtime }) {
         runtime.transformEntry=new FrontTransformEntry(store,runtime);store.bindEntry(runtime.transformEntry)
         store.set({ready:true,surfaces:effect.current.parts.length+rear.current.parts.length+guards.current.parts.length+wheels.current.parts.length,warnings:data.current.front.issues})
         if(import.meta.env.DEV)window.__FRONT_BATTLOID__={effect:effect.current,rear:rear.current,guards:guards.current,wheels:wheels.current,suspension:suspension.current,frame:frame.current,wheelSettings:wheelArmorState,data:data.current.front,store,entry:runtime.transformEntry}
-      }catch(error){store.set({error:error.message});data.current=null}
+        runtime.finishArmorPreparation?.()
+      }catch(error){runtime.finishArmorPreparation?.();store.set({error:error.message});data.current=null}
     }
     if(!effect.current)return
     if(!runtime.paused)store.advance(Math.min(delta,.25),runtime.transformEntry?.assemblyDuration)

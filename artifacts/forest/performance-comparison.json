@@ -1,0 +1,21 @@
+{
+  "raster": {
+    "pixelRatio": 0.66,
+    "width": 938,
+    "height": 570
+  },
+  "results": [
+    {
+      "forest": true,
+      "medianMs": 34.900000000001455,
+      "p95Ms": 41.80000000000291,
+      "drawCalls": 696
+    },
+    {
+      "forest": false,
+      "medianMs": 20.80000000000291,
+      "p95Ms": 27.80000000000291,
+      "drawCalls": 642
+    }
+  ]
+}

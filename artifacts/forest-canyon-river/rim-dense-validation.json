@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "x": -65,
+      "visible": 3099,
+      "gl": 0,
+      "calls": 833
+    },
+    {
+      "x": -20,
+      "visible": 3150,
+      "gl": 0,
+      "calls": 821
+    },
+    {
+      "x": 20,
+      "visible": 3143,
+      "gl": 0,
+      "calls": 299
+    },
+    {
+      "x": 65,
+      "visible": 3077,
+      "gl": 0,
+      "calls": 296
+    }
+  ],
+  "performance": [
+    {
+      "visible": true,
+      "frameMs": 23.745161290322297,
+      "calls": 296,
+      "triangles": 815260
+    },
+    {
+      "visible": false,
+      "frameMs": 18.14516129032258,
+      "calls": 291,
+      "triangles": 808284
+    }
+  ]
+}

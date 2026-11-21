@@ -1,0 +1,58 @@
+{
+  "preserved": {
+    "terrainPositions": true,
+    "originalForestLayout": true,
+    "protectedFiles": {
+      "src/world/forest/forestCrashConfig.js": "f79a32b1ff205970762977885d428ccb237e9dbfc8b43d7ef46888c31263276c",
+      "src/world/forest/forestCrashSite.js": "baee48cba63536f376188461dfe0255756487f4dcb213dd25fcc72bd2a596077",
+      "src/world/forest/forestCrashDressing.js": "9807df57425f5acbcd8a14846f6aefd49da6720d94531c1541ee72c6bc8b56f2",
+      "src/world/forest/forestAlpha.js": "e8c1629e798e05877180dc22f61ecf4a15413587e62efae05aaec7effb38fc43",
+      "src/vehicle/Motorcycle.jsx": "81aeb1507ba37ff1b307d4650e1c8067dbc4a113350b65e82e25a397cd055e79",
+      "src/vehicle/drivingCamera.js": "27af2ee5251c6ecb9fefbea5da1e31c8ad0d0c3a2c301780e1da2e067d288c78",
+      "src/vehicle/bikePhysics.js": "48a3dcc0ba67f660937c735e60cbdef274854bd7f7cd71114a3fcffcd97a1a2f"
+    }
+  },
+  "audit": {
+    "trees": 79,
+    "rocks": 16,
+    "sprites": 1170,
+    "colliders": 327,
+    "logParts": 2,
+    "logTriangles": 2936,
+    "alphaMatrix": [
+      0.7819671281416554,
+      -0.1391508335677825,
+      -0.6075890519284259,
+      0,
+      0.15599078325166796,
+      0.9874323189390818,
+      -0.025382889022306204,
+      0,
+      0.6034851166734962,
+      -0.07492970727274235,
+      0.7938458621934097,
+      0,
+      -26,
+      0.8494483759883449,
+      4,
+      1
+    ],
+    "gl": 0,
+    "shader": "",
+    "render": 733
+  },
+  "drive": {
+    "x": -19.082677554613944,
+    "z": -72.16458805678639,
+    "speed": 21.3360541484988
+  },
+  "shots": [
+    "startup",
+    "elevated",
+    "forward",
+    "left",
+    "right",
+    "rear"
+  ],
+  "errors": []
+}

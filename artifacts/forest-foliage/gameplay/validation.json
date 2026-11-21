@@ -1,0 +1,1456 @@
+{
+  "pass": true,
+  "performance": {
+    "frames": 120,
+    "medianMs": 41.60000000000582,
+    "p95Ms": 41.80000000000291,
+    "drawCalls": 690,
+    "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "pixelRatio": 0.66,
+    "renderWidth": 950,
+    "renderHeight": 633
+  },
+  "stages": [
+    {
+      "name": "spawn",
+      "bike": {
+        "x": 0,
+        "z": 0,
+        "height": -0.11999999731779099,
+        "speed": 0,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": null,
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 20
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 19
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 389
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 26
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 23
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 260
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 1
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 63
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 9
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 8
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 96
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 132
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 870
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 271
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 278
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 17
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 26
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 29
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 16
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 8
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 11
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 7
+        }
+      ],
+      "drawCalls": 689,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "cyclone-driving",
+      "bike": {
+        "x": 1.087659399607593e-15,
+        "z": -8.881412994872184,
+        "height": -0.12367323246291084,
+        "speed": 12.881707215811666,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": null,
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 18
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 15
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 396
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 26
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 21
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 252
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 1
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 62
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 9
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 7
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 93
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 129
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 792
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 287
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 308
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 15
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 26
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 18
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 20
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 12
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 13
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 9
+        }
+      ],
+      "drawCalls": 692,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "cyclone-braking",
+      "bike": {
+        "x": 1.5230553849411024e-15,
+        "z": -12.436691019823122,
+        "height": -0.07957420559928023,
+        "speed": 0,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": null,
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 20
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 14
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 392
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 28
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 24
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 250
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 1
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 61
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 8
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 8
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 95
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 131
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 755
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 292
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 301
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 18
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 21
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 13
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 21
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 10
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 14
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 9
+        }
+      ],
+      "drawCalls": 692,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "armor-hover",
+      "bike": {
+        "x": 1.5287276600396205e-14,
+        "z": -124.83008660978653,
+        "height": 0.6080517322957375,
+        "speed": 0,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": {
+        "x": 1.5287276600396205e-14,
+        "y": 0.6080517322957375,
+        "z": -124.83008660978653,
+        "yaw": 3.13090903106505,
+        "pitch": 3.6251393653498844e-8,
+        "bank": 1.2730117336477467e-8,
+        "vx": 0,
+        "vz": 0,
+        "vy": -0.04829877765442576,
+        "ax": 0,
+        "az": 0,
+        "ay": 0.2953983335302346,
+        "speed": 0,
+        "mode": "ARMOR_HOVER",
+        "soleOffset": -0.11739210844833892,
+        "ground": -0.31566478385441316,
+        "groundSmooth": -0.31566478385441316,
+        "surface": "dirt",
+        "height": 0.8063244077018117,
+        "grounded": false,
+        "contactSpeed": 0,
+        "boostBlend": 0,
+        "boostRelease": 11.229499999992512,
+        "boosting": false,
+        "thrustForward": 0,
+        "thrustSide": 0,
+        "thrustX": 0,
+        "thrustZ": 0,
+        "lift": 0.263427196978647,
+        "time": 1.2294999999925489,
+        "stride": 0,
+        "localForward": 0,
+        "localSide": 0,
+        "forwardAcceleration": 0,
+        "sideAcceleration": 0,
+        "settle": 0,
+        "jumpHeld": false,
+        "jump": null,
+        "jumpCount": 0,
+        "jumpPowered": false,
+        "descendHeld": false,
+        "diving": false,
+        "diveBlend": 0,
+        "groundTurn": null,
+        "pelvisOffsetX": 0.0013143200323869788,
+        "pelvisOffsetZ": -0.2613012531495236
+      },
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 22
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 17
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 177
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 9
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 9
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 106
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 4
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 2
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 31
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 2
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 44
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 25
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 407
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 23
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 30
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 0
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 2
+        }
+      ],
+      "drawCalls": 652,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "armor-ground-walk",
+      "bike": {
+        "x": 0.016116572901614425,
+        "z": -126.3385593561344,
+        "height": -0.21037448525275265,
+        "speed": 2.495823197461582,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": {
+        "x": 0.016116572901614425,
+        "y": -0.21037448525275265,
+        "z": -126.3385593561344,
+        "yaw": 3.1309090268854187,
+        "pitch": 2.9762020629528796e-11,
+        "bank": 1.0451295153117429e-11,
+        "vx": 0.026663936118633824,
+        "vz": -2.495680762336805,
+        "vy": -0.04831045450234709,
+        "ax": 0.0004165562385643273,
+        "az": -0.03898866942941132,
+        "ay": -0.030558614647554574,
+        "speed": 2.495823197461582,
+        "mode": "ARMOR_GROUND",
+        "soleOffset": -0.0897908656603772,
+        "ground": -0.35105194879013635,
+        "groundSmooth": -0.34407240473672757,
+        "surface": "dirt",
+        "height": 0.0508865978770065,
+        "grounded": true,
+        "contactSpeed": 0,
+        "boostBlend": 0,
+        "boostRelease": 10.710500000000001,
+        "boosting": false,
+        "thrustForward": 0,
+        "thrustSide": 0,
+        "thrustX": 0,
+        "thrustZ": 0,
+        "lift": 0,
+        "time": 2.8833999999910604,
+        "stride": 1.6761764876567413,
+        "localForward": 2.495823197461582,
+        "localSide": -3.469446951953614e-18,
+        "forwardAcceleration": 0.03899089461625367,
+        "sideAcceleration": -6.993104012531504e-18,
+        "settle": 0,
+        "jumpHeld": false,
+        "jump": null,
+        "jumpCount": 0,
+        "jumpPowered": false,
+        "descendHeld": false,
+        "diving": false,
+        "diveBlend": 0,
+        "groundTurn": null,
+        "pelvisOffsetX": 0.001314361347328227,
+        "pelvisOffsetZ": -0.2613013708015668,
+        "groundLanding": null
+      },
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 22
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 16
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 175
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 9
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 9
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 104
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 2
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 31
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 2
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 43
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 23
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 402
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 17
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 24
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 0
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 1
+        }
+      ],
+      "drawCalls": 651,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "armor-jump",
+      "bike": {
+        "x": 0.023136048676081863,
+        "z": -126.99556553009478,
+        "height": 2.0055334672536307,
+        "speed": 0.36637371534286145,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": {
+        "x": 0.023136048676081863,
+        "y": 2.0055334672536307,
+        "z": -126.99556553009478,
+        "yaw": 3.1309090268854187,
+        "pitch": 7.406835507908295e-14,
+        "bank": 2.6010002817797807e-14,
+        "vx": 0.003914125548389914,
+        "vz": -0.3663528066158679,
+        "vy": 9.935364341756753,
+        "ax": -0.012690979225954043,
+        "az": 1.1878453566836873,
+        "ay": -5.010316638635591,
+        "speed": 0.36637371534286145,
+        "mode": "ARMOR_GROUND",
+        "soleOffset": -0.0897908656603772,
+        "ground": -0.3664646142811196,
+        "groundSmooth": -0.36479120341793947,
+        "surface": "dirt",
+        "height": 2.282207215874373,
+        "grounded": false,
+        "contactSpeed": 0,
+        "boostBlend": 0,
+        "boostRelease": 11.310100000001494,
+        "boosting": false,
+        "thrustForward": 0,
+        "thrustSide": 0,
+        "thrustX": 0,
+        "thrustZ": 0,
+        "lift": 1.1483841085439188,
+        "time": 3.4829999999925536,
+        "stride": 2.406225011041695,
+        "localForward": 0.3663737153428614,
+        "localSide": 2.6020852139652106e-18,
+        "forwardAcceleration": -1.1879131501707985,
+        "sideAcceleration": -3.9898639947466563e-17,
+        "settle": 0,
+        "jumpHeld": true,
+        "jump": {
+          "originY": -0.20479006000546487,
+          "ceilingY": 11.795209939994535,
+          "elapsed": 0.22634444444212637,
+          "phaseTime": 0.12742222222520247,
+          "launched": true,
+          "supportClearance": 0.0514463392821764,
+          "thrustEnded": false,
+          "phase": "powered"
+        },
+        "jumpCount": 1,
+        "jumpPowered": true,
+        "descendHeld": false,
+        "diving": false,
+        "diveBlend": 0,
+        "groundTurn": null,
+        "pelvisOffsetX": 0.0013143613710892284,
+        "pelvisOffsetZ": -0.2613013708692266,
+        "groundLanding": null
+      },
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 21
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 16
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 173
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 9
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 9
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 104
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 4
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 2
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 31
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 2
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 43
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 23
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 396
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 15
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 22
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 0
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 1
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 1
+        }
+      ],
+      "drawCalls": 653,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "cyclone-return",
+      "bike": {
+        "x": 0.024261872954042328,
+        "z": -127.10093999468158,
+        "height": -0.5379836654449202,
+        "speed": 0,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": null,
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 24
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 19
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 226
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 10
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 9
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 148
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 4
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 2
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 37
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 4
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 3
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 62
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 30
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 534
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 42
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 48
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 3
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 2
+        }
+      ],
+      "drawCalls": 689,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "trunk-collision",
+      "bike": {
+        "x": -15,
+        "z": -19.02545590696198,
+        "height": -0.5741515147204348,
+        "speed": 0,
+        "blocked": true,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": null,
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 20
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 18
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 352
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 13
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 13
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 260
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 4
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 3
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 53
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 8
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 8
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 101
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 136
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 799
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 187
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 168
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 17
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 16
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 22
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 11
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 12
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 10
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 8
+        }
+      ],
+      "drawCalls": 692,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "rock-collision",
+      "bike": {
+        "x": 68.7307292742527,
+        "z": 5.613165393792819,
+        "height": 1.7351228256244564,
+        "speed": 0,
+        "blocked": true,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": null,
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 38
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 32
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 385
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 35
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 29
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 300
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 6
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 5
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 56
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 14
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 13
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 101
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 207
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 568
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 270
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 242
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 24
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 27
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 20
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 21
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 11
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 12
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 9
+        }
+      ],
+      "drawCalls": 692,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "scott-on-foot",
+      "bike": {
+        "x": 0,
+        "z": 0,
+        "height": -0.11999999731779099,
+        "speed": 0,
+        "blocked": false,
+        "riderMode": "onFoot",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": null,
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 20
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 19
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 389
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 26
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 23
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 261
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 1
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 63
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 9
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 8
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 96
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 134
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 877
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 284
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 289
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 17
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 26
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 34
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 16
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 9
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 11
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 7
+        }
+      ],
+      "drawCalls": 692,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "reset-forest",
+      "bike": {
+        "x": 0,
+        "z": 0,
+        "height": -0.11999999731779099,
+        "speed": 0,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "dirt"
+        },
+        "rearContact": {
+          "surface": "dirt"
+        }
+      },
+      "armor": null,
+      "forest": [
+        {
+          "name": "Forest_detail_CommonTree_3_0",
+          "count": 20
+        },
+        {
+          "name": "Forest_detail_CommonTree_3_1",
+          "count": 19
+        },
+        {
+          "name": "Forest_horizon_CommonTree_3_0",
+          "count": 389
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_0",
+          "count": 26
+        },
+        {
+          "name": "Forest_detail_CommonTree_2_1",
+          "count": 23
+        },
+        {
+          "name": "Forest_horizon_CommonTree_2_0",
+          "count": 260
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_0",
+          "count": 2
+        },
+        {
+          "name": "Forest_detail_CommonTree_4_1",
+          "count": 1
+        },
+        {
+          "name": "Forest_horizon_CommonTree_4_0",
+          "count": 63
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_0",
+          "count": 9
+        },
+        {
+          "name": "Forest_detail_CommonTree_1_1",
+          "count": 8
+        },
+        {
+          "name": "Forest_horizon_CommonTree_1_0",
+          "count": 96
+        },
+        {
+          "name": "Forest_detail_Bush_Common_0",
+          "count": 132
+        },
+        {
+          "name": "Forest_horizon_Bush_Common_0",
+          "count": 870
+        },
+        {
+          "name": "Forest_detail_Grass_Common_Short_0",
+          "count": 271
+        },
+        {
+          "name": "Forest_detail_Grass_Wispy_Short_0",
+          "count": 280
+        },
+        {
+          "name": "Forest_detail_Fern_1_0",
+          "count": 17
+        },
+        {
+          "name": "Forest_detail_Plant_1_0",
+          "count": 27
+        },
+        {
+          "name": "Forest_detail_Plant_7_0",
+          "count": 29
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_1_0",
+          "count": 16
+        },
+        {
+          "name": "Forest_prop_Rock_Medium_2_0",
+          "count": 8
+        },
+        {
+          "name": "Forest_prop_Pebble_Round_2_0",
+          "count": 11
+        },
+        {
+          "name": "Forest_prop_Pebble_Square_3_0",
+          "count": 7
+        }
+      ],
+      "drawCalls": 690,
+      "shader": "",
+      "gl": 0
+    },
+    {
+      "name": "highway-preserved",
+      "bike": {
+        "x": 65,
+        "z": -78.25,
+        "height": 2.2168647044860395,
+        "speed": 0,
+        "blocked": false,
+        "riderMode": "mounted",
+        "frontContact": {
+          "surface": "asphalt"
+        },
+        "rearContact": {
+          "surface": "asphalt"
+        }
+      },
+      "armor": null,
+      "forest": [],
+      "drawCalls": 1029,
+      "shader": "",
+      "gl": 0
+    }
+  ],
+  "errors": [],
+  "failedAssets": []
+}

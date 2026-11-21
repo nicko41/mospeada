@@ -1,0 +1,33 @@
+{
+  "before": {
+    "medianMs": 41.70000000001164,
+    "meanMs": 43.37666666666628,
+    "p95Ms": 48.70000000001164,
+    "calls": 821,
+    "triangles": 2370560,
+    "width": 938,
+    "height": 570
+  },
+  "results": [
+    {
+      "enabled": true,
+      "medianMs": 48.59999999999127,
+      "meanMs": 45.08333333338305,
+      "p95Ms": 48.69999999999709,
+      "calls": 824,
+      "triangles": 2416028,
+      "width": 938,
+      "height": 570
+    },
+    {
+      "enabled": false,
+      "medianMs": 48.5,
+      "meanMs": 44.998333333333235,
+      "p95Ms": 48.70000000001164,
+      "calls": 824,
+      "triangles": 2416028,
+      "width": 938,
+      "height": 570
+    }
+  ]
+}

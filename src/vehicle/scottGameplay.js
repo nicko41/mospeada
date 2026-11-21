@@ -25,11 +25,20 @@ export function updateScottGameplay(instance, authored, clips, runtime, wrapper,
   instance.armorClipTransforms = null
   const s = runtime.state, p = s.pedestrian, mode = s.riderMode, dt = runtime.paused ? 0 : Math.min(delta, .1)
   const armor=runtime.armorController?.active?runtime.armorController:null
+  const armorReturn=!!runtime.transformEntry?.returnFlight
+  if(armorReturn){
+    // Armor already occupies the bike's control frame. This is not an
+    // on-foot mounting transition: no world-space wrapper tween or outgoing
+    // walk/run action may drag Scott sideways through the returning assembly.
+    instance.frameTransition=null
+    for(const retired of instance.retiredActions||[])retired.action.stop()
+    instance.retiredActions=[]
+  }
   if(armor&&!instance.armorLocomotion)instance.armorLocomotion=new ArmorLocomotion(instance,authored.data.actorScale)
   let name = 'Cyclone_RidingPose', time = 0, hold = true
-  if(armor?.state.mode==='ARMOR_GROUND'&&!armor.state.jump){
+  if(armor?.state.mode==='ARMOR_GROUND'&&!armor.state.jump&&!armor.state.groundLanding){
     if(armor.state.groundTurn){name=armor.state.groundTurn.name;time=armor.state.groundTurn.time}
-    else{name=armor.state.speed>3.5?'Armor_Run':'Armor_Walk';hold=false}
+    else{name=instance.armorLocomotion.groundGait(armor.state.speed);hold=false}
   }
   else if (mode === 'mounting') { name = 'Cyclone_Mount'; time = (1 - s.dismountBlend) * authored.data.duration }
   else if (mode === 'dismounting') { name = 'Cyclone_Dismount'; time = s.dismountBlend * authored.data.duration }
@@ -39,13 +48,16 @@ export function updateScottGameplay(instance, authored, clips, runtime, wrapper,
     else { name = 'Walking'; time = .12 }
   }
   if (name !== instance.clip) {
-    const previous = instance.action, changedFrame = previous && !armor && isCycloneAction(instance.clip) !== isCycloneAction(name)
+    const previous = instance.action, changedFrame = previous && !armor && !armorReturn && isCycloneAction(instance.clip) !== isCycloneAction(name)
     const nativeTransition=instance.clip?.startsWith('Armor_')&&name.startsWith('Armor_')
-    const blend = armor ? (nativeTransition ? (name.startsWith('Armor_Turn')?.10:.18) : 0) : (changedFrame || !isCycloneAction(name) ? .18 : 0)
+    const from=instance.armorLocomotion?.info.get(instance.clip),to=instance.armorLocomotion?.info.get(name)
+    const gaitPhase=nativeTransition&&from?.contactPhase!==undefined&&to?.contactPhase!==undefined?((previous.time/previous.getClip().duration-from.contactPhase+to.contactPhase)%1+1)%1:null
+    const blend = armor ? (nativeTransition ? (name.startsWith('Armor_Turn')?.10:name==='Armor_Run'?.12:.18) : 0) : (changedFrame || !isCycloneAction(name) ? .18 : 0)
     instance.clip = name
     const clip = instance.armorLocomotion?.clips.get(name)||clips.find(c => c.name === name)
     instance.action = instance.mixer.clipAction(clip).reset().setLoop(isCycloneAction(name) ? T.LoopOnce : T.LoopRepeat, Infinity).setEffectiveWeight(1).play()
     instance.action.clampWhenFinished = isCycloneAction(name)
+    if(gaitPhase!==null)instance.action.time=gaitPhase*clip.duration
     if (previous && blend) {
       instance.action.crossFadeFrom(previous, blend, false)
       instance.retiredActions ||= []; instance.retiredActions.push({ action: previous, remaining: blend })

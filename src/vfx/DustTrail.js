@@ -81,7 +81,7 @@ export class DustTrail {
     this.day.value = day
     this.frame += (Math.min(frameSeconds, .3) - this.frame) * .05
     this.response = dustResponse(wheel, state, config, distance, this.frame)
-    const { rate, budget, launch, persistence } = this.response
+    const { rate, budget, persistence } = this.response,launch=this.response.launch*(config.forestWheelFX?config.dustLaunch:1)
     this.normal.copy(wheel.normal)
     this.current.copy(wheel.position).addScaledVector(wheel.normal, .055)
     const sameSurface = this.surface === wheel.surface
@@ -124,4 +124,5 @@ export class DustTrail {
     this.batch.visible = config.enabled && ps.particleNum > 0
   }
   dispose() { this.material.dispose(); this.geometry.dispose(); this.atlas.dispose() }
+  clear(){this.system.particleNum=0;this.system.emissionState.waitEmiting=0;this.rate.value=0;this.batch?.update()}
 }

@@ -1,5 +1,7 @@
 import { MathUtils, MOUSE, Spherical, Vector3 } from 'three'
 import { queryColliders, overlapsFootprint } from '../player/collisionWorld.js'
+import {armorConfig} from './armorPhysics.js'
+import {armorCameraWeight,cameraFraming,setCameraFov,smoothCamera} from './cameraFraming.js'
 
 // Follow the vehicle's translation immediately; smooth the view angle instead.
 // Smoothing absolute position made camera lag grow by speed / response rate.
@@ -10,6 +12,7 @@ export class DrivingCamera {
     this.offset = new Vector3(); this.candidate = new Vector3(); this.probe = new Vector3()
     this.spherical = new Spherical(); this.colliders = []
     this.time = 0; this.lastInput = -Infinity; this.dragging = false; this.pointer = null; this.lastPullback = 0
+    this.frameWeight=0
     this.radius = Math.hypot(config.cameraDistance, config.cameraHeight - 1.05)
     this.collisionRadius = this.radius
     this.touchPointers = new Set()
@@ -38,12 +41,13 @@ export class DrivingCamera {
     orbit.domElement.addEventListener('pointerup', this.up); orbit.domElement.addEventListener('pointercancel', this.up)
   }
   center(s) {
-    this.nextAnchor.set(s.x, s.height + 1.05, s.z)
+    this.nextAnchor.set(s.x, s.height + MathUtils.lerp(1.05,cameraFraming.armorTargetHeight,this.frameWeight), s.z)
     if(this.runtime.transformEntry?.actorOffset)this.nextAnchor.add(this.runtime.transformEntry.actorOffset)
     return this.nextAnchor
   }
   reset(s) {
     const { config: c, camera, orbit } = this
+    this.finishTransformation();this.finishArmorReturn();this.frameWeight=0;setCameraFov(camera,cameraFraming.cycloneFov)
     this.anchor.copy(this.center(s)); orbit.target.copy(this.anchor)
     this.radius = Math.hypot(c.cameraDistance, c.cameraHeight - 1.05); this.collisionRadius = this.radius
     camera.position.set(s.x - Math.sin(s.yaw) * c.cameraDistance, s.height + c.cameraHeight, s.z - Math.cos(s.yaw) * c.cameraDistance)
@@ -73,12 +77,15 @@ export class DrivingCamera {
     const { camera, orbit, config: c, runtime } = this
     this.updating = true
     const dt = Math.min(Math.max(delta, 0), 0.1); this.time += dt
+    this.frameWeight=armorCameraWeight(runtime)
+    setCameraFov(camera,MathUtils.lerp(cameraFraming.cycloneFov,cameraFraming.armorFov,this.frameWeight)+(s.airBoostBlend||0)*1.2*(1-this.frameWeight))
     this.offset.copy(this.center(s)).sub(this.anchor)
     camera.position.add(this.offset); orbit.target.add(this.offset); this.anchor.copy(this.nextAnchor)
     if(this.updateTransformation(s)){this.updating=false;return}
     if (runtime.cameraMode === 3) { orbit.update(delta); this.updating = false; return }
     const yaw = s.travelYaw ?? s.yaw
-    this.target.set(s.x + Math.sin(yaw) * c.cameraLookAhead, s.height + 1.05, s.z + Math.cos(yaw) * c.cameraLookAhead)
+    const lookAhead=c.cameraLookAhead*(1-this.frameWeight),aimHeight=MathUtils.lerp(1.05,cameraFraming.armorTargetHeight,this.frameWeight)
+    this.target.set(s.x + Math.sin(yaw) * lookAhead, s.height + aimHeight, s.z + Math.cos(yaw) * lookAhead)
     if(runtime.transformEntry?.actorOffset)this.target.add(runtime.transformEntry.actorOffset)
     this.offset.copy(this.target).sub(orbit.target).multiplyScalar(1 - Math.exp(-dt * c.cameraTargetSmoothing))
     camera.position.add(this.offset); orbit.target.add(this.offset); orbit.update(delta)
@@ -88,10 +95,11 @@ export class DrivingCamera {
       const turn = Math.atan2(Math.sin(theta - this.spherical.theta), Math.cos(theta - this.spherical.theta))
       const blend = 1 - Math.exp(-dt * c.cameraSmoothing)
       this.spherical.theta += turn * blend
-      this.spherical.phi = MathUtils.lerp(this.spherical.phi, Math.atan2(c.cameraDistance, c.cameraHeight - 1.05), blend)
+      this.spherical.phi = MathUtils.lerp(this.spherical.phi, MathUtils.lerp(Math.atan2(c.cameraDistance,c.cameraHeight-1.05),Math.PI/2-cameraFraming.armorPitch,this.frameWeight), blend)
     }
-    this.lastPullback = Math.min(Math.abs(s.speed), 80) * c.cameraSpeedPullback + (s.boostTime || 0) / c.boostDuration * 0.10
-    this.spherical.radius = this.radius + this.lastPullback
+    this.lastPullback = (Math.min(Math.abs(s.speed), 80) * c.cameraSpeedPullback + (s.boostTime || 0) / c.boostDuration * 0.10+(s.airBoostBlend||0)*.08)*(1-this.frameWeight)
+    this.spherical.radius = MathUtils.lerp(this.radius,armorConfig.cameraDistance,this.frameWeight) + this.lastPullback
+    orbit.maxPolarAngle=MathUtils.lerp(Math.PI*.49,Math.PI*.60,this.frameWeight)
     this.candidate.copy(orbit.target).add(this.offset.setFromSpherical(this.spherical))
     const ground = this.sample(this.candidate.x, this.candidate.z)
     if (Number.isFinite(ground)) this.candidate.y = Math.max(this.candidate.y, ground + 0.35)
@@ -114,11 +122,22 @@ export class DrivingCamera {
   }
   updateTransformation(s){
     const {camera,orbit,runtime}=this,p=runtime.transformEntry?.cameraProgress
+    if(this.returnShot&&runtime.transformEntry?.returnFlight){
+      const shot=this.returnShot,t=smoothCamera(runtime.transformEntry.returnProgress??1),yaw=s.travelYaw??s.yaw
+      const theta=s.yaw+[Math.PI,Math.PI/2,-Math.PI/2,Math.PI][runtime.cameraMode],turn=Math.atan2(Math.sin(theta-shot.theta),Math.cos(theta-shot.theta))
+      this.spherical.set(MathUtils.lerp(shot.radius,this.radius,t),MathUtils.lerp(shot.phi,Math.atan2(this.config.cameraDistance,this.config.cameraHeight-1.05),t),shot.theta+turn*t)
+      this.target.set(Math.sin(yaw)*this.config.cameraLookAhead,1.05,Math.cos(yaw)*this.config.cameraLookAhead)
+      orbit.target.copy(shot.target).lerp(this.target,t).add(this.nextAnchor.set(s.x,s.height,s.z))
+      camera.position.copy(orbit.target).add(this.offset.setFromSpherical(this.spherical))
+      const floor=this.sample(camera.position.x,camera.position.z)
+      if(Number.isFinite(floor))camera.position.y=Math.max(camera.position.y,floor+.35)
+      orbit.maxPolarAngle=Math.PI*.60;orbit.update()
+      if(t===1)this.finishArmorReturn()
+      return true
+    }
+    this.finishArmorReturn()
     if(p==null||p>=1){
-      if(this.transformShot){
-        orbit.enabled=this.transformShot.enabled;orbit.enableDamping=this.transformShot.damping
-        this.transformShot=null;this.lastInput=this.time;this.collisionRadius=this.radius
-      }
+      this.finishTransformation()
       return false
     }
     if(!this.transformShot){
@@ -131,18 +150,38 @@ export class DrivingCamera {
     }
     const shot=this.transformShot,t=p*p*(3-2*p),arc=Math.sin(Math.PI*p)
     this.spherical.set(
-      MathUtils.lerp(shot.radius,this.radius,t)+.7*arc,
-      MathUtils.lerp(shot.phi,Math.atan2(this.config.cameraDistance,this.config.cameraHeight-1.05),t)-.08*arc,
+      MathUtils.lerp(shot.radius,armorConfig.cameraDistance,t),
+      MathUtils.lerp(shot.phi,Math.PI/2-cameraFraming.armorPitch,t),
       s.yaw+MathUtils.lerp(shot.theta,3*Math.PI,t))
-    orbit.target.set(s.x,s.height+1.05+.15*arc,s.z)
+    orbit.target.set(s.x,s.height+MathUtils.lerp(1.05,cameraFraming.armorTargetHeight,t)+.08*arc,s.z)
+    if(runtime.transformEntry?.actorOffset)orbit.target.add(runtime.transformEntry.actorOffset)
     camera.position.copy(orbit.target).add(this.offset.setFromSpherical(this.spherical))
     const floor=this.sample(camera.position.x,camera.position.z)
     if(Number.isFinite(floor))camera.position.y=Math.max(camera.position.y,floor+.35)
-    orbit.update();return true
+    orbit.maxPolarAngle=Math.PI*.60;orbit.update();return true
+  }
+  finishTransformation(){
+    if(!this.transformShot)return
+    this.orbit.enabled=this.transformShot.enabled;this.orbit.enableDamping=this.transformShot.damping
+    this.orbit.maxPolarAngle=this.runtime.cameraMode===3?Math.PI-.025:MathUtils.lerp(Math.PI*.49,Math.PI*.60,this.frameWeight)
+    this.transformShot=null;this.lastInput=this.time;this.collisionRadius=this.radius
+  }
+  beginArmorReturn(s){
+    this.finishTransformation()
+    this.spherical.setFromVector3(this.offset.copy(this.camera.position).sub(this.orbit.target))
+    this.returnShot={radius:this.spherical.radius,theta:this.spherical.theta,phi:this.spherical.phi,target:this.orbit.target.clone().sub(new Vector3(s.x,s.height,s.z)),enabled:true,damping:this.orbit.enableDamping}
+    this.frameWeight=1;this.anchor.copy(this.center(s));this.orbit.enableDamping=false;this.orbit.enabled=false
+  }
+  finishArmorReturn(){
+    if(!this.returnShot)return
+    this.orbit.enabled=this.returnShot.enabled;this.orbit.enableDamping=this.returnShot.damping
+    this.orbit.maxPolarAngle=this.runtime.cameraMode===3?Math.PI-.025:Math.PI*.49
+    this.returnShot=null;this.collisionRadius=this.radius;this.lastInput=this.time
   }
   dispose() {
     const { orbit } = this
     if(this.transformShot){orbit.enabled=this.transformShot.enabled;orbit.enableDamping=this.transformShot.damping}
+    if(this.returnShot){orbit.enabled=this.returnShot.enabled;orbit.enableDamping=this.returnShot.damping}
     orbit.removeEventListener('start', this.start); orbit.removeEventListener('end', this.end); orbit.removeEventListener('change', this.change)
     orbit.domElement.removeEventListener('wheel', this.zoom)
     orbit.domElement.removeEventListener('pointerdown', this.down, true)

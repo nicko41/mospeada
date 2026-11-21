@@ -10,7 +10,7 @@ export default function SurfaceBrushPanel() {
     <h2>Pincelada de luz</h2>
     <small>Carrocería completa · sólo Anime. Pinceladas transversales con desfase por pieza y orientación.</small>
     <label><input type="checkbox" checked={value.enabled} onChange={e => brush.set({ enabled: e.target.checked })} /> Reflejo habilitado</label>
-    <button disabled={!anime.ready || !!anime.error} onClick={() => { animeState.set({ mode: 'ANIME', compare: false }); brush.play() }}>Reproducir reflejo</button>
+    <button disabled={!anime.ready || !!anime.error} onClick={() => brush.play()}>Reproducir reflejo</button>
     <label><input type="checkbox" checked={value.automatic} onChange={e => brush.set({ automatic: e.target.checked })} /> Repetir según velocidad de la moto</label>
     <small>Detenido: sin pasadas automáticas. A mayor velocidad, menor pausa. La reproducción manual funciona también detenido.</small>
     <label><input type="checkbox" checked={value.slow} onChange={e => brush.set({ slow: e.target.checked })} /> Reproducción lenta (¼)</label>

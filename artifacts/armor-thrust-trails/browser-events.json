@@ -1,0 +1,3555 @@
+[
+  {
+    "method": "Runtime.executionContextCreated",
+    "params": {
+      "context": {
+        "id": 2,
+        "origin": "http://127.0.0.1:5174",
+        "name": "",
+        "uniqueId": "-2980981993320445075.3227501051963631774",
+        "auxData": {
+          "isDefault": true,
+          "type": "default",
+          "frameId": "8EAA216B071B6ED7344A3D1E3A567537"
+        }
+      }
+    }
+  },
+  {
+    "method": "Runtime.consoleAPICalled",
+    "params": {
+      "type": "debug",
+      "args": [
+        {
+          "type": "string",
+          "value": "[vite] connecting..."
+        }
+      ],
+      "executionContextId": 2,
+      "timestamp": 1795143427531.086,
+      "stackTrace": {
+        "callFrames": [
+          {
+            "functionName": "",
+            "scriptId": "3",
+            "url": "http://127.0.0.1:5174/@vite/client",
+            "lineNumber": 882,
+            "columnNumber": 8
+          }
+        ]
+      }
+    }
+  },
+  {
+    "method": "Runtime.consoleAPICalled",
+    "params": {
+      "type": "debug",
+      "args": [
+        {
+          "type": "string",
+          "value": "[vite] connected."
+        }
+      ],
+      "executionContextId": 2,
+      "timestamp": 1795143427605.618,
+      "stackTrace": {
+        "callFrames": [
+          {
+            "functionName": "handleMessage",
+            "scriptId": "3",
+            "url": "http://127.0.0.1:5174/@vite/client",
+            "lineNumber": 995,
+            "columnNumber": 11
+          }
+        ]
+      }
+    }
+  },
+  {
+    "method": "Runtime.consoleAPICalled",
+    "params": {
+      "type": "info",
+      "args": [
+        {
+          "type": "string",
+          "value": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools"
+        },
+        {
+          "type": "string",
+          "value": "font-weight:bold"
+        }
+      ],
+      "executionContextId": 2,
+      "timestamp": 1795143428894.765,
+      "stackTrace": {
+        "callFrames": [
+          {
+            "functionName": "",
+            "scriptId": "11",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/client-WfgQwnm4.js?v=6cb2a1ad",
+            "lineNumber": 13425,
+            "columnNumber": 48
+          }
+        ]
+      }
+    }
+  },
+  {
+    "method": "Runtime.consoleAPICalled",
+    "params": {
+      "type": "log",
+      "args": [
+        {
+          "type": "string",
+          "value": "%c Particle system powered by three.quarks. https://quarks.art/"
+        },
+        {
+          "type": "string",
+          "value": "font-size: 14px; font-weight: bold;"
+        }
+      ],
+      "executionContextId": 2,
+      "timestamp": 1795143428960.096,
+      "stackTrace": {
+        "callFrames": [
+          {
+            "functionName": "",
+            "scriptId": "131",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three__quarks.js?v=6cb2a1ad",
+            "lineNumber": 8960,
+            "columnNumber": 8
+          }
+        ]
+      }
+    }
+  },
+  {
+    "method": "Runtime.consoleAPICalled",
+    "params": {
+      "type": "warning",
+      "args": [
+        {
+          "type": "string",
+          "value": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        }
+      ],
+      "executionContextId": 2,
+      "timestamp": 1795143429327.517,
+      "stackTrace": {
+        "callFrames": [
+          {
+            "functionName": "console.<computed>",
+            "scriptId": "3",
+            "url": "http://127.0.0.1:5174/@vite/client",
+            "lineNumber": 298,
+            "columnNumber": 3
+          }
+        ]
+      }
+    }
+  },
+  {
+    "method": "Runtime.consoleAPICalled",
+    "params": {
+      "type": "warning",
+      "args": [
+        {
+          "type": "string",
+          "value": "THREE.WebGLProgram: Program Info Log:"
+        },
+        {
+          "type": "string",
+          "value": "(210,91-147): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,41-69): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,92-120): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,41-69): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,92-120): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision"
+        }
+      ],
+      "executionContextId": 2,
+      "timestamp": 1795143448478.709,
+      "stackTrace": {
+        "callFrames": [
+          {
+            "functionName": "console.<computed>",
+            "scriptId": "3",
+            "url": "http://127.0.0.1:5174/@vite/client",
+            "lineNumber": 298,
+            "columnNumber": 3
+          },
+          {
+            "functionName": "warn",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 1748,
+            "columnNumber": 15
+          },
+          {
+            "functionName": "onFirstUse",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 46385,
+            "columnNumber": 33
+          },
+          {
+            "functionName": "WebGLProgram.getUniforms",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 46407,
+            "columnNumber": 33
+          },
+          {
+            "functionName": "setProgram",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 52840,
+            "columnNumber": 30
+          },
+          {
+            "functionName": "WebGLRenderer.renderBufferDirect",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 52235,
+            "columnNumber": 19
+          },
+          {
+            "functionName": "renderObject",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 52670,
+            "columnNumber": 16
+          },
+          {
+            "functionName": "renderObjects",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 52653,
+            "columnNumber": 43
+          },
+          {
+            "functionName": "renderScene",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 52576,
+            "columnNumber": 33
+          },
+          {
+            "functionName": "WebGLRenderer.render",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 52503,
+            "columnNumber": 5
+          },
+          {
+            "functionName": "_applyGGXFilter",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 44123,
+            "columnNumber": 11
+          },
+          {
+            "functionName": "_applyPMREM",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 44090,
+            "columnNumber": 35
+          },
+          {
+            "functionName": "fromScene",
+            "scriptId": "14",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/three.module-CwO0auyC.js?v=6cb2a1ad",
+            "lineNumber": 43873,
+            "columnNumber": 7
+          },
+          {
+            "functionName": "",
+            "scriptId": "40",
+            "url": "http://127.0.0.1:5174/src/vehicle/DrivingLighting.jsx?t=1795138248048",
+            "lineNumber": 11,
+            "columnNumber": 27
+          },
+          {
+            "functionName": "react_stack_bottom_frame",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 8035,
+            "columnNumber": 27
+          },
+          {
+            "functionName": "B",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 2973,
+            "columnNumber": 54
+          },
+          {
+            "functionName": "ca",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 5854,
+            "columnNumber": 79
+          },
+          {
+            "functionName": "Pf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 5842,
+            "columnNumber": 19
+          },
+          {
+            "functionName": "ih",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 6528,
+            "columnNumber": 19
+          },
+          {
+            "functionName": "Gr",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 6571,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "ih",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 6528,
+            "columnNumber": 6
+          },
+          {
+            "functionName": "Gr",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 6571,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "ih",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 6563,
+            "columnNumber": 34
+          },
+          {
+            "functionName": "Gt",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7566,
+            "columnNumber": 19
+          },
+          {
+            "functionName": "B",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 2973,
+            "columnNumber": 89
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 140
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "B",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 2973,
+            "columnNumber": 89
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 186
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "jf",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7560,
+            "columnNumber": 75
+          },
+          {
+            "functionName": "Df",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7573,
+            "columnNumber": 37
+          },
+          {
+            "functionName": "Eh",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7470,
+            "columnNumber": 38
+          },
+          {
+            "functionName": "",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 7325,
+            "columnNumber": 43
+          },
+          {
+            "functionName": "performWorkUntilDeadline",
+            "scriptId": "13",
+            "url": "http://127.0.0.1:5174/node_modules/.vite/deps/react-three-fiber.esm-BPKHNuEL.js?v=6cb2a1ad",
+            "lineNumber": 276,
+            "columnNumber": 37
+          }
+        ]
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453061.34,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.095,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.112,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.134,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.147,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.157,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.179,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.193,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.217,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453062.233,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.591,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.658,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.725,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.737,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.746,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.757,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.783,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.794,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.807,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.817,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.83,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.84,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453066.953,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.002,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.021,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.046,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.056,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.068,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.084,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.096,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.111,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.158,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.175,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.187,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.198,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.212,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.233,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.243,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.254,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.267,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.278,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.29,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.304,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.314,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.328,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.34,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.351,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.366,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.53,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.541,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.552,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.563,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.572,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.581,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.707,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.725,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.743,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.76,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.77,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.787,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.804,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.812,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.822,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.84,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.85,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.869,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.896,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.907,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.925,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.937,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.947,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.965,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453067.997,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.008,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.017,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.027,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.038,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.048,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.062,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.073,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.086,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.098,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.108,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.12,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.136,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.145,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.154,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.163,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.173,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.183,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.196,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.208,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.221,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.237,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.247,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.259,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.287,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.299,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.308,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.319,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.328,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.337,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.351,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.361,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.378,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.388,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.398,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.412,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.428,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.438,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.448,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.46,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.475,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.484,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.506,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.515,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.527,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.537,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.546,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453068.559,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.059,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.109,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.119,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.133,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.145,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.156,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.736,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.781,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.799,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.824,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.836,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.85,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.864,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.873,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.883,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.892,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.901,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.91,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.923,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.932,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.944,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.973,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.982,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453071.994,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.01,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.024,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.032,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.041,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.053,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.063,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.075,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.084,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.095,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.105,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.115,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.128,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.142,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.151,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.16,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.169,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.177,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.188,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.208,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.217,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.23,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.239,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.248,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.26,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.291,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.303,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.315,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.325,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.334,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.343,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.355,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.365,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.378,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.387,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.405,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.418,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.435,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.444,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.455,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.466,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.477,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.487,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.502,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.513,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.531,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.544,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.555,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.57,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.587,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.598,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.608,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.625,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.635,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.645,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.66,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.668,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.683,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.694,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.704,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.718,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.927,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.941,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.955,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.967,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.98,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453072.992,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.015,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.032,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.059,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.069,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.09,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.104,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.121,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.131,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.158,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.17,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.183,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.194,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.207,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.216,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.228,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.239,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.249,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.262,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.292,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.304,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.316,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.327,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.337,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.346,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.361,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.37,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.384,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.395,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.403,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.415,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.429,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.439,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.449,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.46,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.469,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.481,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.494,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.503,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.515,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.525,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.534,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.553,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.569,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.578,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.588,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "[.WebGL-0x32ec0062b200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+        "timestamp": 1795143453073.598,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "rendering",
+        "level": "warning",
+        "text": "WebGL: too many errors, no more errors will be reported to the console for this context.",
+        "timestamp": 1795143453073.604,
+        "url": "http://127.0.0.1:5174/?qa=armor-ribbons"
+      }
+    }
+  },
+  {
+    "method": "Page.frameResized",
+    "params": {}
+  }
+]

@@ -11,7 +11,7 @@ export default function WeatheringPanel() {
     <aside className="anime-settings weathering-settings" aria-label="Suciedad del Cyclone" onKeyDown={e => e.stopPropagation()}>
       <h2>Suciedad acumulativa</h2>
       <div className="weathering-surfaces" role="status"><span>Delantera: <b>{surface(value.front, value.frontGrounded)}</b></span><span>Trasera: <b>{surface(value.rear, value.rearGrounded)}</b></span></div>
-      <small>El barro queda adherido al cambiar de terreno. Los ajustes funcionan en Anime y PBR.</small>
+      <small>El barro queda adherido al cambiar de terreno y conserva el estilo Anime.</small>
       {check('enabled', 'Efecto habilitado')}{check('accumulation', 'Suciedad acumulativa')}
       {range('buildup', 'Acumulación de suciedad', 4)}{range('maximum', 'Suciedad máxima', 1, .02)}{range('cleaning', 'Limpieza por lluvia', 4)}
       <div className="weathering-buttons"><button onClick={() => store.clean()}>Limpiar Cyclone</button><button onClick={() => store.soil()}>Ensuciar Cyclone</button></div>

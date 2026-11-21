@@ -1,0 +1,177 @@
+{
+  "pass": true,
+  "sourceMaps": [
+    {
+      "source": "assets/texturas/pasto/grass-01.jpg",
+      "built": "dist/assets/grass-01-BS-zutJV.jpg",
+      "sha256": "a1c20c86cd1cd7af2df6ab71caa7a38c8d9b97b88988eda1cd58e6d27ae70bd7",
+      "bytes": 368020,
+      "buildIsExactCopy": true
+    },
+    {
+      "source": "assets/texturas/pasto/dirt01.jpg",
+      "built": "dist/assets/dirt01-Z3GgFyhG.jpg",
+      "sha256": "cc01b28fb808369ac7c1516df7cb7ca89d15f3f58494f7afc09ed1479d8e5049",
+      "bytes": 377132,
+      "buildIsExactCopy": true
+    }
+  ],
+  "material": {
+    "type": "MeshLambertMaterial",
+    "colourMaps": "original grass map + original dirt sampler",
+    "colourSpace": "SRGBColorSpace",
+    "tileMetres": 4,
+    "filter": "LinearMipmapLinearFilter / anisotropy 8",
+    "seams": "three image samples with mirrored wrapping, randomized UV orientation/offset and explicit gradients",
+    "proceduralColourStains": false
+  },
+  "alpha": {
+    "length": 16,
+    "ratio": 1.6,
+    "scale": 8.409858661605545,
+    "y": 1.9689849756024234,
+    "colliders": 13,
+    "orientation": {
+      "yaw": 0.65,
+      "pitch": -0.045,
+      "roll": -0.14
+    },
+    "span": 9.584396572088096,
+    "sourceUnchanged": true,
+    "support": [
+      {
+        "minGap": -0.2999999956728987,
+        "buriedVertices": 329,
+        "vertices": 73113
+      }
+    ],
+    "minTreeClearance": 1.5950203073459324,
+    "collisionTest": {
+      "x": 5.688463246171906,
+      "z": -10,
+      "blocked": true
+    },
+    "scottCollision": {
+      "x": 6.596005609093257,
+      "z": -10.522856711434718,
+      "lastSecondTravel": 0
+    },
+    "armorAccess": {
+      "blockedInside": true,
+      "canApproach": true
+    },
+    "cameraClearance": {
+      "distanceFromScott": 4.1,
+      "position": [
+        2.496005609093257,
+        2.079675126246225,
+        -10.522856711434718
+      ]
+    }
+  },
+  "forestLayoutUnchanged": true,
+  "forestLayoutSha256": "f3376f3490ce195a054ca23852a237377edd4bc99cd62184dc6cbf94045b6bc6",
+  "checks": {
+    "unitTests": 228,
+    "build": "passed",
+    "visualViews": [
+      "cyclone-driving.png",
+      "scott-on-grass.png",
+      "scott-alpha-scale.png",
+      "dirt-path.png"
+    ],
+    "webglErrors": 0,
+    "shaderError": "",
+    "navigation": {
+      "frames": 321,
+      "metres": 320,
+      "missingFrames": 0,
+      "missing": 0,
+      "matrixWrites": 0,
+      "rebuilds": 0,
+      "failures": [],
+      "gl": 0,
+      "shader": ""
+    },
+    "rotation": {
+      "results": [
+        {
+          "name": "audit",
+          "frames": 145,
+          "missingFrames": 0,
+          "missingInstances": 0,
+          "matrixWriteFrames": 0,
+          "resourceRebuildFrames": 0,
+          "medianMs": 41.69999999998254,
+          "p95Ms": 48.70000000001164,
+          "maxDrawCalls": 242
+        },
+        {
+          "name": "performance",
+          "frames": 181,
+          "missingFrames": 0,
+          "missingInstances": 0,
+          "matrixWriteFrames": 0,
+          "resourceRebuildFrames": 0,
+          "medianMs": 41.69999999998254,
+          "p95Ms": 48.70000000001164,
+          "maxDrawCalls": 242
+        },
+        {
+          "name": "mouse-clockwise",
+          "frames": 212,
+          "turns": 3.2959316487621475,
+          "missingFrames": 0,
+          "matrixWriteFrames": 0,
+          "resourceRebuildFrames": 0
+        },
+        {
+          "name": "mouse-counterclockwise",
+          "frames": 212,
+          "turns": 3.2931417784874455,
+          "missingFrames": 0,
+          "matrixWriteFrames": 0,
+          "resourceRebuildFrames": 0
+        }
+      ],
+      "requests": [],
+      "errors": [],
+      "info": {
+        "pixelRatio": 1,
+        "width": 1440,
+        "height": 960,
+        "programsBefore": 90,
+        "programsAfter": 90,
+        "gl": 0
+      },
+      "note": "Rotation validates visibility/resources; its raster differs from the fixed-raster stationary comparison and its FPS is not used for that comparison."
+    }
+  },
+  "performance": {
+    "before": {
+      "frames": 120,
+      "medianMs": 55.5,
+      "p95Ms": 62.59999999999127,
+      "drawCalls": 697,
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "pixelRatio": 0.66,
+      "renderWidth": 950,
+      "renderHeight": 633
+    },
+    "after": {
+      "medianMs": 55.5,
+      "p95Ms": 62.599999999998545,
+      "drawCalls": 697,
+      "pixelRatio": 0.66,
+      "raster": [
+        950,
+        633
+      ],
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "shader": "",
+      "gl": 0
+    },
+    "medianDeltaMs": 0,
+    "limitation": "Integrated Intel UHD is about 18 FPS here; the texture/scale trial adds no median regression to the immediately preceding crash-site build at the same raster."
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "pass": true,
+  "catalogue": {
+    "species": [
+      "CommonTree_3",
+      "CommonTree_2",
+      "CommonTree_4",
+      "CommonTree_1"
+    ],
+    "meshes": [
+      {
+        "name": "Forest_detail_CommonTree_3_0",
+        "vertices": 2149,
+        "indices": 5115,
+        "card": false
+      },
+      {
+        "name": "Forest_detail_CommonTree_3_1",
+        "vertices": 3600,
+        "indices": 3546,
+        "card": false
+      },
+      {
+        "name": "Forest_horizon_CommonTree_3_0",
+        "vertices": 4,
+        "indices": 6,
+        "card": true
+      },
+      {
+        "name": "Forest_detail_CommonTree_2_0",
+        "vertices": 5431,
+        "indices": 12930,
+        "card": false
+      },
+      {
+        "name": "Forest_detail_CommonTree_2_1",
+        "vertices": 2676,
+        "indices": 1872,
+        "card": false
+      },
+      {
+        "name": "Forest_horizon_CommonTree_2_0",
+        "vertices": 4,
+        "indices": 6,
+        "card": true
+      },
+      {
+        "name": "Forest_detail_CommonTree_4_0",
+        "vertices": 4328,
+        "indices": 9840,
+        "card": false
+      },
+      {
+        "name": "Forest_detail_CommonTree_4_1",
+        "vertices": 1572,
+        "indices": 1962,
+        "card": false
+      },
+      {
+        "name": "Forest_horizon_CommonTree_4_0",
+        "vertices": 4,
+        "indices": 6,
+        "card": true
+      },
+      {
+        "name": "Forest_detail_CommonTree_1_0",
+        "vertices": 5618,
+        "indices": 13035,
+        "card": false
+      },
+      {
+        "name": "Forest_detail_CommonTree_1_1",
+        "vertices": 3840,
+        "indices": 2430,
+        "card": false
+      },
+      {
+        "name": "Forest_horizon_CommonTree_1_0",
+        "vertices": 4,
+        "indices": 6,
+        "card": true
+      },
+      {
+        "name": "Forest_detail_Bush_Common_0",
+        "vertices": 1800,
+        "indices": 2700,
+        "card": false
+      },
+      {
+        "name": "Forest_horizon_Bush_Common_0",
+        "vertices": 4,
+        "indices": 6,
+        "card": true
+      },
+      {
+        "name": "Forest_detail_Grass_Common_Short_0",
+        "vertices": 153,
+        "indices": 465,
+        "card": false
+      },
+      {
+        "name": "Forest_detail_Grass_Wispy_Short_0",
+        "vertices": 559,
+        "indices": 1482,
+        "card": false
+      },
+      {
+        "name": "Forest_detail_Fern_1_0",
+        "vertices": 243,
+        "indices": 864,
+        "card": false
+      },
+      {
+        "name": "Forest_detail_Plant_1_0",
+        "vertices": 120,
+        "indices": 360,
+        "card": false
+      },
+      {
+        "name": "Forest_detail_Plant_7_0",
+        "vertices": 54,
+        "indices": 144,
+        "card": false
+      },
+      {
+        "name": "Forest_prop_Rock_Medium_1_0",
+        "vertices": 351,
+        "indices": 1026,
+        "card": false
+      },
+      {
+        "name": "Forest_prop_Rock_Medium_2_0",
+        "vertices": 249,
+        "indices": 732,
+        "card": false
+      },
+      {
+        "name": "Forest_prop_Pebble_Round_2_0",
+        "vertices": 212,
+        "indices": 342,
+        "card": false
+      },
+      {
+        "name": "Forest_prop_Pebble_Square_3_0",
+        "vertices": 108,
+        "indices": 156,
+        "card": false
+      }
+    ],
+    "loadedTreeUrls": [
+      "http://127.0.0.1:5173/models/glTF/CommonTree_3.gltf",
+      "http://127.0.0.1:5173/models/glTF/CommonTree_2.gltf",
+      "http://127.0.0.1:5173/models/glTF/CommonTree_4.gltf",
+      "http://127.0.0.1:5173/models/glTF/CommonTree_1.gltf"
+    ]
+  },
+  "atlases": [
+    {
+      "name": "CommonTree_3",
+      "width": 1024,
+      "height": 1024,
+      "views": [
+        {
+          "view": 0,
+          "opaqueFraction": 0.269134521484375,
+          "interiorGapFraction": 0.124320987654321,
+          "paintedColorBins": 160
+        },
+        {
+          "view": 1,
+          "opaqueFraction": 0.2603302001953125,
+          "interiorGapFraction": 0.06554153694904145,
+          "paintedColorBins": 148
+        },
+        {
+          "view": 2,
+          "opaqueFraction": 0.26969146728515625,
+          "interiorGapFraction": 0.04949592449592449,
+          "paintedColorBins": 145
+        },
+        {
+          "view": 3,
+          "opaqueFraction": 0.280853271484375,
+          "interiorGapFraction": 0.09325611072936095,
+          "paintedColorBins": 146
+        },
+        {
+          "view": 4,
+          "opaqueFraction": 0.2690887451171875,
+          "interiorGapFraction": 0.12470384995064165,
+          "paintedColorBins": 156
+        },
+        {
+          "view": 5,
+          "opaqueFraction": 0.26053619384765625,
+          "interiorGapFraction": 0.06530879702943264,
+          "paintedColorBins": 156
+        },
+        {
+          "view": 6,
+          "opaqueFraction": 0.2696533203125,
+          "interiorGapFraction": 0.04959253699335192,
+          "paintedColorBins": 143
+        },
+        {
+          "view": 7,
+          "opaqueFraction": 0.28081512451171875,
+          "interiorGapFraction": 0.0929844371348618,
+          "paintedColorBins": 158
+        }
+      ]
+    },
+    {
+      "name": "CommonTree_2",
+      "width": 1024,
+      "height": 1024,
+      "views": [
+        {
+          "view": 0,
+          "opaqueFraction": 0.2079925537109375,
+          "interiorGapFraction": 0.10713245054553695,
+          "paintedColorBins": 119
+        },
+        {
+          "view": 1,
+          "opaqueFraction": 0.19927215576171875,
+          "interiorGapFraction": 0.1956291109696584,
+          "paintedColorBins": 123
+        },
+        {
+          "view": 2,
+          "opaqueFraction": 0.19066619873046875,
+          "interiorGapFraction": 0.12926644646297825,
+          "paintedColorBins": 123
+        },
+        {
+          "view": 3,
+          "opaqueFraction": 0.2102813720703125,
+          "interiorGapFraction": 0.0789045643153527,
+          "paintedColorBins": 132
+        },
+        {
+          "view": 4,
+          "opaqueFraction": 0.20775604248046875,
+          "interiorGapFraction": 0.10767386867934307,
+          "paintedColorBins": 122
+        },
+        {
+          "view": 5,
+          "opaqueFraction": 0.19902801513671875,
+          "interiorGapFraction": 0.19626677979455168,
+          "paintedColorBins": 122
+        },
+        {
+          "view": 6,
+          "opaqueFraction": 0.1907501220703125,
+          "interiorGapFraction": 0.1287524098044616,
+          "paintedColorBins": 121
+        },
+        {
+          "view": 7,
+          "opaqueFraction": 0.2102203369140625,
+          "interiorGapFraction": 0.07872029735829018,
+          "paintedColorBins": 116
+        }
+      ]
+    },
+    {
+      "name": "CommonTree_4",
+      "width": 1024,
+      "height": 1024,
+      "views": [
+        {
+          "view": 0,
+          "opaqueFraction": 0.208404541015625,
+          "interiorGapFraction": 0.21417456500212195,
+          "paintedColorBins": 135
+        },
+        {
+          "view": 1,
+          "opaqueFraction": 0.18495941162109375,
+          "interiorGapFraction": 0.17515302347481,
+          "paintedColorBins": 134
+        },
+        {
+          "view": 2,
+          "opaqueFraction": 0.2056427001953125,
+          "interiorGapFraction": 0.1517200732078047,
+          "paintedColorBins": 135
+        },
+        {
+          "view": 3,
+          "opaqueFraction": 0.20117950439453125,
+          "interiorGapFraction": 0.259983970372827,
+          "paintedColorBins": 135
+        },
+        {
+          "view": 4,
+          "opaqueFraction": 0.2083892822265625,
+          "interiorGapFraction": 0.2144653199604464,
+          "paintedColorBins": 148
+        },
+        {
+          "view": 5,
+          "opaqueFraction": 0.1852264404296875,
+          "interiorGapFraction": 0.17372282425792557,
+          "paintedColorBins": 145
+        },
+        {
+          "view": 6,
+          "opaqueFraction": 0.205535888671875,
+          "interiorGapFraction": 0.1523626441771053,
+          "paintedColorBins": 138
+        },
+        {
+          "view": 7,
+          "opaqueFraction": 0.20136260986328125,
+          "interiorGapFraction": 0.25970867077586446,
+          "paintedColorBins": 136
+        }
+      ]
+    },
+    {
+      "name": "CommonTree_1",
+      "width": 1024,
+      "height": 1024,
+      "views": [
+        {
+          "view": 0,
+          "opaqueFraction": 0.219573974609375,
+          "interiorGapFraction": 0.1062124248496994,
+          "paintedColorBins": 124
+        },
+        {
+          "view": 1,
+          "opaqueFraction": 0.23395538330078125,
+          "interiorGapFraction": 0.11436116772397165,
+          "paintedColorBins": 131
+        },
+        {
+          "view": 2,
+          "opaqueFraction": 0.22953033447265625,
+          "interiorGapFraction": 0.06434723340975278,
+          "paintedColorBins": 132
+        },
+        {
+          "view": 3,
+          "opaqueFraction": 0.21945953369140625,
+          "interiorGapFraction": 0.0511444096821999,
+          "paintedColorBins": 135
+        },
+        {
+          "view": 4,
+          "opaqueFraction": 0.21955108642578125,
+          "interiorGapFraction": 0.10597742273764728,
+          "paintedColorBins": 113
+        },
+        {
+          "view": 5,
+          "opaqueFraction": 0.233978271484375,
+          "interiorGapFraction": 0.11409704277921333,
+          "paintedColorBins": 120
+        },
+        {
+          "view": 6,
+          "opaqueFraction": 0.2296142578125,
+          "interiorGapFraction": 0.06424632922371601,
+          "paintedColorBins": 115
+        },
+        {
+          "view": 7,
+          "opaqueFraction": 0.21964263916015625,
+          "interiorGapFraction": 0.0509333947914266,
+          "paintedColorBins": 120
+        }
+      ]
+    },
+    {
+      "name": "Bush_Common",
+      "width": 1024,
+      "height": 512,
+      "views": [
+        {
+          "view": 0,
+          "opaqueFraction": 0.4177703857421875,
+          "interiorGapFraction": 0.060275663443735854,
+          "paintedColorBins": 69
+        },
+        {
+          "view": 1,
+          "opaqueFraction": 0.4268951416015625,
+          "interiorGapFraction": 0.046676433511635036,
+          "paintedColorBins": 70
+        },
+        {
+          "view": 2,
+          "opaqueFraction": 0.4302978515625,
+          "interiorGapFraction": 0.05312908524117588,
+          "paintedColorBins": 74
+        },
+        {
+          "view": 3,
+          "opaqueFraction": 0.4183807373046875,
+          "interiorGapFraction": 0.06593406593406594,
+          "paintedColorBins": 77
+        },
+        {
+          "view": 4,
+          "opaqueFraction": 0.417694091796875,
+          "interiorGapFraction": 0.05860126408353943,
+          "paintedColorBins": 67
+        },
+        {
+          "view": 5,
+          "opaqueFraction": 0.4268035888671875,
+          "interiorGapFraction": 0.04564527683962747,
+          "paintedColorBins": 57
+        },
+        {
+          "view": 6,
+          "opaqueFraction": 0.4304046630859375,
+          "interiorGapFraction": 0.05321002546575526,
+          "paintedColorBins": 64
+        },
+        {
+          "view": 7,
+          "opaqueFraction": 0.4183502197265625,
+          "interiorGapFraction": 0.06553637694481326,
+          "paintedColorBins": 73
+        }
+      ]
+    }
+  ]
+}
