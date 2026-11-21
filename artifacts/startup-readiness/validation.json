@@ -1,0 +1,56 @@
+{
+  "entry": {
+    "readyMs": 48460.20000000298,
+    "stateAtEntry": {
+      "mode": "ANIME",
+      "ready": true,
+      "openingReady": true,
+      "nightReady": false,
+      "error": "",
+      "cel": true,
+      "levels": 3,
+      "shadow": 0.72,
+      "outlines": true,
+      "width": 1.2,
+      "color": "#111b2e",
+      "highlights": 0.55
+    },
+    "current": {
+      "mode": "ANIME",
+      "ready": true,
+      "openingReady": true,
+      "nightReady": false,
+      "error": "",
+      "cel": true,
+      "levels": 3,
+      "shadow": 0.72,
+      "outlines": true,
+      "width": 1.2,
+      "color": "#111b2e",
+      "highlights": 0.55
+    },
+    "phase": "lead",
+    "preparation": {
+      "startMs": 27330.59999999404,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 5077.600000008941,
+      "primeMs": 14503.20000000298,
+      "totalMs": 19580.90000000596,
+      "programs": 90,
+      "startupViews": 10,
+      "startupViewsMs": 1472,
+      "openingMs": 1478.300000011921
+    }
+  },
+  "combat": {
+    "phase": "active",
+    "time": 1.6506999999880794,
+    "visibleDrones": 1,
+    "nightReady": false,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

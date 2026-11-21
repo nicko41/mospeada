@@ -48,13 +48,13 @@ test('real driving runs wheelie, one native boost, launch, T-pose, then transfor
     max.height=Math.max(max.height,f.s.height);max.wheelie=Math.max(max.wheelie,f.s.wheelieAngle)
     if(f.entry.poseBlend>0&&f.entry.phase==='airpose'){poseStartedInAir=true;assert.equal(f.s.airborne,true);assert.equal(store.snapshot().progress,0)}
     if(store.snapshot().progress>0&&f.entry.phase==='transforming')assert.equal(f.entry.poseBlend,1)
-    if(f.entry.phase==='armorboost'&&f.s.airborne)completeInAir=true
+    if(f.entry.phase==='complete'&&f.s.airborne)completeInAir=true
   }
-  assert.deepEqual(phases.slice(0,6),['wheelie','boost','airpose','transforming','armorboost','complete'])
+  assert.deepEqual(phases.slice(0,5),['wheelie','boost','airpose','transforming','complete'])
   assert.equal(f.s.boostCount,1);assert.ok(max.wheelie>.42&&max.height>3&&max.height<5)
   assert.ok(poseStartedInAir&&completeInAir)
   assert.equal(store.snapshot().progress,1);assert.equal(f.entry.poseBlend,1)
-  assert.equal(f.entry.armorBoostCount,1);assert.ok(f.entry.actorOffset.y>2);assert.ok(f.entry.actorOffset.z>7)
+  assert.equal(f.entry.armorBoostCount,0);assert.equal(f.entry.actorOffset.length(),0)
   assert.equal(f.s.airborne,false);assert.equal(f.entry.physicsConfig,null)
   // Returning from Armor launches the same physical supports, assembles all
   // parts in their original order, then hands the impact to the landing solver.
@@ -265,15 +265,15 @@ test('covers finish before arms lower, then original legs straighten apart witho
   pose.restore();for(const r of base)assert.deepEqual(r.bone.quaternion.toArray(),r.q)
 })
 
-test('rear1 impulse fires only on completed playback, pauses, reverses and never triggers from manual seeking',async()=>{
+test('completed assembly releases controls without a departure boost or leg-opening animation',async()=>{
   const f=await fixture();f.entry.request()
-  for(let i=0;i<360&&f.entry.phase!=='armorboost';i++)f.tick()
-  assert.equal(store.snapshot().progress,1);assert.equal(f.entry.armorBoostCount,1);assert.equal(f.entry.actorPose.legs,1);assert.equal(f.entry.actorPose.arms,1)
-  for(let i=0;i<8;i++)f.tick()
-  assert.ok(f.entry.actorOffset.length()>1);f.entry.pause();const offset=f.entry.actorOffset.clone(),level=f.entry.armorBoostLevel
-  for(let i=0;i<20;i++)f.tick()
-  assert.deepEqual(f.entry.actorOffset,offset);assert.equal(f.entry.armorBoostLevel,level)
-  f.entry.resume();for(let i=0;i<60;i++)f.tick();assert.equal(f.entry.phase,'complete');assert.equal(f.entry.armorBoostLevel,0)
+  for(let i=0;i<360&&store.snapshot().progress<1;i++){f.tick();assert.notEqual(f.entry.phase,'armorboost')}
+  f.tick()
+  assert.equal(f.entry.phase,'complete');assert.equal(store.snapshot().entryRunning,false)
+  assert.equal(store.snapshot().progress,1);assert.equal(f.entry.armorBoostCount,0);assert.equal(f.entry.actorPose.legs,1);assert.equal(f.entry.actorPose.arms,1)
+  assert.equal(f.entry.actorPose.departureBoost,0);assert.equal(f.entry.actorOffset.length(),0);assert.equal(f.entry.armorBoostLevel,0)
+  const input={throttle:1,steer:.5,boost:true};assert.equal(f.entry.beforePhysics(input,1/60),input,'Player input is released as soon as assembly completes')
+  for(let i=0;i<60;i++)f.tick();assert.equal(f.entry.actorOffset.length(),0);assert.equal(f.entry.armorBoostCount,0)
   f.entry.request();for(let i=0;i<180;i++)f.tick();assert.equal(f.entry.actorOffset.length(),0)
   const count=f.entry.armorBoostCount;f.entry.scrub(1);f.tick();assert.equal(f.entry.armorBoostCount,count)
 })

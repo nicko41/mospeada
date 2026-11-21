@@ -9,6 +9,8 @@ import { ArmorLocomotion } from './ArmorLocomotion.js'
 // Complete source clips drive locomotion and the corrected mount crossing.
 // A separate, reset-every-frame posture layer runs only while riding/seating.
 export function updateScottGameplay(instance, authored, clips, runtime, wrapper, delta) {
+  instance.armorGallantPose?.restore()
+  instance.shooterPose?.restore()
   instance.armorArms?.restore()
   instance.armorLanding?.restore()
   instance.armorLocomotion?.restore()

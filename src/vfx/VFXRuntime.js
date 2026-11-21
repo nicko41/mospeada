@@ -12,6 +12,10 @@ export class VFXRuntime {
   register(name, effect) {
     if (this.effects.has(name)) throw Error('Duplicate VFX: ' + name)
     this.effects.set(name, effect)
+    if(effect.root)this.root.add(effect.root)
+    // Fixed light pools stay outside effect roots whose visibility changes.
+    // Idle intensity is zero; the scene light count remains stable in combat.
+    if(effect.lightingRoot)this.root.add(effect.lightingRoot)
     for (const system of effect.systems) { this.root.add(system.emitter); this.renderer.addSystem(system) }
     effect.configureBatches?.(this.renderer)
     return effect

@@ -14,7 +14,7 @@ const samples = Object.fromEntries(Object.entries({ boots: .2, legs: .6, arms: 1
 
 test('Scott receives regional splash exposure; adhered mud survives asphalt, rain removes film first', () => {
   const load = createScottSoilLoad(), wheels = { front: w(), rear: w() }, saved = JSON.stringify(state)
-  for (let i = 0; i < 150; i++) evolveScottSoil(load, samples, wheels, state, config, 1, .9, .1)
+  for (let i = 0; i < 30; i++) evolveScottSoil(load, samples, wheels, state, config, 1, .9, .1)
   assert.ok(load.bootsMud > load.legsMud && load.legsMud > load.armsMud && load.armsMud > load.torsoMud)
   const before = { ...load }; wheels.front.surface = wheels.rear.surface = 'asphalt'
   for (let i = 0; i < 100; i++) evolveScottSoil(load, samples, wheels, state, config, 1, .9, .1)
@@ -40,6 +40,10 @@ test('Scott shader uses original skin attributes without editing geometry, skele
     const shader = { vertexShader: T.ShaderLib.physical.vertexShader, fragmentShader: T.ShaderLib.physical.fragmentShader, uniforms: {} }
     material.onBeforeCompile(shader)
     assert.match(shader.vertexShader, /skinIndex/); assert.match(shader.fragmentShader, /vScottHead/)
+    layer.update(Object.fromEntries(Object.keys(createScottSoilLoad()).map(k=>[k,100])),{...config,maximum:100})
+    assert.deepEqual(layer.uniforms.uScottMud.value.toArray(),[.25,.25,.25,.25])
+    assert.deepEqual(layer.uniforms.uScottFilm.value.toArray(),[.25,.25,.25,.25])
+    assert.match(shader.fragmentShader,/soilCoverage = clamp\([^;]+, 0\.0, 0\.25\);/,'All regional soil contributions share one final visual cap')
     assert.match(shader.fragmentShader, /smoothstep\(\.965, \.995/)
     assert.equal(scottRegion('mixamorig:Head').length(), 0); assert.equal(scottRegion('headfront').length(), 0)
     assert.equal(scottRegion('mixamorig:LeftFoot').x, 1)

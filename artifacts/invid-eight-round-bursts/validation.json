@@ -1,0 +1,140 @@
+{
+  "blink": {
+    "charging": true,
+    "seconds": 0.06,
+    "shots": 0,
+    "discs": 2,
+    "offsets": [
+      0.054938378047987485,
+      0.0549726090494902
+    ],
+    "programsAdded": 0
+  },
+  "projectile": {
+    "shots": 1,
+    "sourceError": 0,
+    "speed": 41.99999999999999,
+    "halos": 1,
+    "cores": 1,
+    "beamStreaks": 0,
+    "discs": 0,
+    "programsAdded": 0
+  },
+  "burst": {
+    "rounds": [
+      {
+        "time": 10.074999999999996,
+        "side": 0,
+        "round": 0,
+        "burst": 1,
+        "vy": -14.318565459043889
+      },
+      {
+        "time": 10.19999999999999,
+        "side": 1,
+        "round": 1,
+        "burst": 1,
+        "vy": -14.654060799033285
+      },
+      {
+        "time": 10.324999999999983,
+        "side": 0,
+        "round": 2,
+        "burst": 1,
+        "vy": -13.379149458228097
+      },
+      {
+        "time": 10.449999999999976,
+        "side": 1,
+        "round": 3,
+        "burst": 1,
+        "vy": -12.342432917655314
+      },
+      {
+        "time": 10.574999999999969,
+        "side": 0,
+        "round": 4,
+        "burst": 1,
+        "vy": -10.969684289372475
+      },
+      {
+        "time": 10.699999999999962,
+        "side": 1,
+        "round": 5,
+        "burst": 1,
+        "vy": -12.402096786032438
+      },
+      {
+        "time": 10.824999999999955,
+        "side": 0,
+        "round": 6,
+        "burst": 1,
+        "vy": -11.11848779936594
+      },
+      {
+        "time": 10.949999999999948,
+        "side": 1,
+        "round": 7,
+        "burst": 1,
+        "vy": -11.32095040827782
+      }
+    ],
+    "groundHits": 3,
+    "liveBolts": 4,
+    "terrainSprites": 2,
+    "programsAdded": 0
+  },
+  "pause": {
+    "rounds": 9,
+    "seconds": 2.3749999999998703
+  },
+  "impact": {
+    "hit": true,
+    "terrain": 1,
+    "fire": 0,
+    "rings": 0,
+    "hitSparks": 0,
+    "atlas": [
+      1448,
+      1086
+    ]
+  },
+  "animation": {
+    "frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "programsAdded": 0,
+    "remaining": 0,
+    "terrainRemaining": 0
+  },
+  "cadence": {
+    "seconds": 29.999999999999577,
+    "shots": 360,
+    "perScout": [
+      73,
+      72,
+      72,
+      72,
+      71
+    ],
+    "minSpacing": 0.01666666666666572,
+    "maxBolts": 64
+  },
+  "integrity": {
+    "gl": 0,
+    "error": "",
+    "sceneLights": 0
+  },
+  "errors": []
+}

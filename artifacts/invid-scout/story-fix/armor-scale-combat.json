@@ -1,0 +1,31 @@
+{
+  "scale": {
+    "scottHeight": 2.1132614601039137,
+    "scoutHeight": 5.225195309887958,
+    "ratio": 0.4044368362853077,
+    "distance": 2184.237076194476
+  },
+  "combat": {
+    "active": true,
+    "phase": "active",
+    "distance": 2184.237076194476,
+    "shots": 2,
+    "hits": 1,
+    "enemyShots": 0,
+    "gl": 0
+  },
+  "defeated": {
+    "dead": true,
+    "health": 0
+  },
+  "retry": {
+    "distance": 550,
+    "health": 100,
+    "dead": false,
+    "armor": false,
+    "phase": "sighting",
+    "scoutDistance": 840.0144468243666,
+    "gl": 0
+  },
+  "errors": []
+}

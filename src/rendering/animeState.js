@@ -1,5 +1,5 @@
 const defaults = Object.freeze({ cel: true, levels: 3, shadow: 0.72, outlines: true, width: 1.2, color: '#111b2e', highlights: 0.55 })
-let snapshot = { mode: 'ANIME', ready: false, nightReady: false, error: '', ...defaults }
+let snapshot = { mode: 'ANIME', ready: false, openingReady: false, nightReady: false, error: '', ...defaults }
 const listeners = new Set()
 export const animeState = {
   defaults,

@@ -74,7 +74,7 @@ export default function ForestStage2({assets}){
     <primitive object={rim.group} dispose={null}/>
     <ForestCanyonSides sides={sides} assets={assets} distant={distant} ground={ground} cliff={cliff} river={river}/>
     {assets.filter(a=>stage2Layout.layout[a.name].length).map(asset=><group key={asset.name}>
-      {asset.parts.map((part,i)=><ForestInstances key={i} part={part} bounds={asset.bounds} placements={stage2Layout.layout[asset.name]} kind={asset.kind} distance={forestLodRange(asset.kind).max} heightAt={stage2SurfaceHeight} name={'Forest_Plano_2_detail_'+asset.name+i}/>)}
+      {[...asset.parts,...(asset.midParts||[])].map((part,i)=><ForestInstances key={i} part={part} bounds={asset.bounds} placements={stage2Layout.layout[asset.name]} kind={asset.kind} distance={forestLodRange(asset.kind).max} heightAt={stage2SurfaceHeight} name={'Forest_Plano_2_detail_'+asset.name+i}/>)}
       {distant.get(asset.name)?.parts.map((part,i)=><ForestInstances key={'far'+i} part={part} bounds={asset.bounds} placements={stage2Layout.layout[asset.name]} kind={asset.kind} distance={340} minimum={forestLodRange('tree',true).start} heightAt={stage2SurfaceHeight} name={'Forest_Plano_2_horizon_'+asset.name+i}/>)}
     </group>)}
     <primitive object={plants} dispose={null}/>

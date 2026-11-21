@@ -1,0 +1,17 @@
+{
+  "phase": "active",
+  "time": 12.27850000000001,
+  "distance": 818.7362512092141,
+  "airborne": true,
+  "entering": true,
+  "scoutIds": [
+    "42e40c79-98bd-4834-8dab-5a1d9c8743d4",
+    "34b98a8d-0505-4cea-8eee-7ebac13ba752",
+    "3ac1b29a-69dc-42dd-8f6d-90680e14ed44",
+    "5dbab165-8445-4484-8837-74ef4627d2be",
+    "87b8cf80-810d-4357-91a0-4c92e416f1f9"
+  ],
+  "shots": 1,
+  "instances": 5,
+  "gl": 0
+}

@@ -1,0 +1,66 @@
+{
+  "soil": {
+    "pixels": 5879,
+    "total": 179034,
+    "load": {
+      "frontMud": 0.25,
+      "rearMud": 0.25,
+      "frontFilm": 0.25,
+      "rearFilm": 0.25
+    },
+    "maxUniform": 0.25,
+    "gl": 0
+  },
+  "stages": [
+    {
+      "name": "plano1",
+      "frames": 49,
+      "missing": 0,
+      "matrixWrites": 0,
+      "rebuilds": 0,
+      "unpaired": 0,
+      "maxCalls": 854,
+      "maxTriangles": 2124426,
+      "medianMs": 27.800000000017462,
+      "p95Ms": 41.70000000001164
+    },
+    {
+      "name": "plano2",
+      "frames": 49,
+      "missing": 0,
+      "matrixWrites": 0,
+      "rebuilds": 0,
+      "unpaired": 0,
+      "maxCalls": 818,
+      "maxTriangles": 2020074,
+      "medianMs": 27.79999999998836,
+      "p95Ms": 41.80000000001746
+    },
+    {
+      "name": "plano3",
+      "frames": 49,
+      "missing": 0,
+      "matrixWrites": 0,
+      "rebuilds": 0,
+      "unpaired": 0,
+      "maxCalls": 738,
+      "maxTriangles": 1196732,
+      "medianMs": 20.900000000023283,
+      "p95Ms": 34.80000000001746
+    }
+  ],
+  "drive": {
+    "x": -11.24465152696942,
+    "z": -245.3670399738839,
+    "speed": 36.95994544270274,
+    "boostCount": 1,
+    "load": {
+      "frontMud": 0.03519151431869679,
+      "rearMud": 0.038370235751787364,
+      "frontFilm": 0.07221115925135185,
+      "rearFilm": 0.07873373050366757
+    },
+    "gl": 0
+  },
+  "errors": []
+}

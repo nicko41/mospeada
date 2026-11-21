@@ -1,0 +1,64 @@
+{
+  "dirt": {
+    "maximum": 1,
+    "bikeLoads": [
+      1,
+      1,
+      0.7,
+      0.7
+    ],
+    "bikeCoverage": 0.79,
+    "scottMud": [
+      0.25,
+      0.2125,
+      0.125,
+      0.075
+    ],
+    "scottFilm": [
+      0.1625,
+      0.138125,
+      0.08125,
+      0.04875
+    ]
+  },
+  "armorCoverage": 0.25,
+  "falls": [
+    {
+      "id": 1,
+      "hits": 10,
+      "health": 0,
+      "dead": true,
+      "face": "up",
+      "mode": "downed",
+      "enabled": false,
+      "visible": true,
+      "position": [
+        18.12924931767037,
+        -15.19446016431228,
+        -3067.0806166230427
+      ],
+      "armorCoverage": 0.25,
+      "instances": 5,
+      "gl": 0
+    },
+    {
+      "id": 3,
+      "hits": 10,
+      "health": 0,
+      "dead": true,
+      "face": "down",
+      "mode": "downed",
+      "enabled": false,
+      "visible": true,
+      "position": [
+        11.198418964186072,
+        -15.27870975385771,
+        -3076.5668376695894
+      ],
+      "armorCoverage": 0.25,
+      "instances": 5,
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

@@ -24,7 +24,7 @@ export default function ForestVegetation({ assets }) {
   return assets.filter(a=>['tree','shrub','grass','plant'].includes(a.kind)&&layout[a.name].length).map(asset=>{
     const range=forestLodRange(asset.kind),farRange=forestLodRange(asset.kind,true),distance=range.max
     return <group key={asset.name} name={`Forest_${asset.name}`}>
-      {asset.parts.map((part,i)=><ForestInstances key={i} part={part} placements={layout[asset.name]}
+      {[...asset.parts,...(asset.midParts||[])].map((part,i)=><ForestInstances key={i} part={part} placements={layout[asset.name]}
         bounds={asset.bounds} kind={asset.kind} distance={distance} name={`Forest_detail_${asset.name}_${i}`}/>)}
       {distant.get(asset.name)?.parts.map((part,i)=><ForestInstances key={`far${i}`} part={part} placements={layout[asset.name]}
         bounds={asset.bounds} kind={asset.kind} distance={asset.kind==='tree'?FOREST.treeDistance:FOREST.shrubFarDistance}

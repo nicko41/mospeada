@@ -1,0 +1,52 @@
+{
+  "source": "assets/invid/scout/invid-scout.glb",
+  "output": "public/models/mospeada/invid-scout.glb",
+  "sourceSha256": "e029714b87b6c2a3b7d9e8f3273ad1b80a4a3cdb565801c59859744cbe86d934",
+  "runtimeSha256": "3e6e7c4ad75b92e5e31e2afe52c4a8f8d2f96ba75068e3649af39b359ace5f5a",
+  "sourceBytes": 86362304,
+  "runtimeBytes": 13933968,
+  "parts": [
+    {
+      "sourceTriangles": 2689334,
+      "runtimeTriangles": 79986,
+      "vertices": 55557,
+      "relativePositionError": 0.0027619446627795696
+    }
+  ],
+  "lods": [
+    {
+      "level": 0,
+      "triangles": 79986,
+      "vertices": 55557,
+      "relativePositionError": 0.0027619446627795696
+    },
+    {
+      "level": 1,
+      "triangles": 38746,
+      "vertices": 31035,
+      "relativePositionError": 0.006761480588465929
+    },
+    {
+      "level": 2,
+      "triangles": 18604,
+      "vertices": 17758,
+      "relativePositionError": 0.012720757629722357
+    }
+  ],
+  "materialsUnchanged": true,
+  "embeddedImagesPreserved": 3,
+  "sourceBounds": {
+    "min": [
+      -0.8345590233802795,
+      -0.953902006149292,
+      -0.5982149839401245
+    ],
+    "max": [
+      0.8375530242919922,
+      0.949567973613739,
+      0.6133720278739929
+    ]
+  },
+  "animations": 0,
+  "skins": 0
+}

@@ -1,0 +1,152 @@
+{
+  "single": {
+    "id": 2,
+    "hits": 1,
+    "health": 9,
+    "destroyed": false,
+    "contact": [
+      -0.015249796435350755,
+      -22.059401382677773,
+      -3318.881369998303
+    ],
+    "normal": [
+      0.027152804025214524,
+      -0.45234155247422436,
+      0.8914313462846013
+    ],
+    "visiblePixels": 118
+  },
+  "airborne": {
+    "id": 2,
+    "hits": 10,
+    "health": 0,
+    "destroyed": true,
+    "contact": [
+      -0.015249796435350755,
+      -22.059401382677773,
+      -3318.881369998303
+    ],
+    "normal": [
+      0.027152804025214524,
+      -0.45234155247422436,
+      0.8914313462846013
+    ]
+  },
+  "ignition": {
+    "hitAt": 1.9249999999999956,
+    "hitSeen": 10,
+    "deathAt": 1.9249999999999956,
+    "dead": true,
+    "visible": true,
+    "emissive": 5.206431307595878,
+    "opacity": 1
+  },
+  "overlap": {
+    "visible": true,
+    "opacity": 1,
+    "batches": 5,
+    "fire": 1
+  },
+  "hidden": {
+    "visible": false,
+    "batches": 4
+  },
+  "smokeTail": {
+    "air": 0,
+    "smoke": 5,
+    "pointLights": [
+      0,
+      0
+    ]
+  },
+  "cleared": {
+    "active": 0,
+    "particles": 0,
+    "lights": [
+      0,
+      0
+    ]
+  },
+  "ground": {
+    "id": 1,
+    "hits": 10,
+    "health": 0,
+    "destroyed": true,
+    "contact": [
+      -6.296459396146859,
+      -25.277158517540585,
+      -3323.0048316152333
+    ],
+    "normal": [
+      -0.23554306380346962,
+      -0.6936300201272625,
+      0.680732590869813
+    ]
+  },
+  "realLighting": {
+    "powers": [
+      20.524133845316115,
+      20.524133845316115
+    ],
+    "pixels": 56008,
+    "pooled": 2,
+    "allNative": true
+  },
+  "simultaneous": {
+    "explosions": 5,
+    "active": 21,
+    "fragments": 25,
+    "smoke": 5,
+    "particles": [
+      8,
+      19
+    ]
+  },
+  "laser": {
+    "hit": true,
+    "active": 1
+  },
+  "movingBoost": {
+    "speed": 24.694164083606186,
+    "boostCount": 1,
+    "boostBlend": 0.7047796854727155,
+    "active": 1
+  },
+  "animation": {
+    "frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "programsAdded": 0,
+    "airSize": [
+      2172,
+      724
+    ],
+    "groundSize": [
+      2172,
+      724
+    ],
+    "rings": 0,
+    "groundSprites": 0,
+    "airSprites": 0
+  },
+  "integrity": {
+    "gl": 0,
+    "shader": "",
+    "systems": 2,
+    "bursts": 24,
+    "lights": 2,
+    "remaining": 0
+  },
+  "errors": []
+}

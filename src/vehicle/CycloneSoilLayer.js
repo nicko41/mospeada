@@ -1,5 +1,6 @@
 import { Box3, Color, Matrix4, Vector2, Vector4 } from 'three'
 import { patchSoilShader } from './soilShader.js'
+import { bikeSoil,BIKE_SOIL_COVERAGE_MAX,EQUIPMENT_SOIL_MAX } from './equipmentSoilLimit.js'
 
 const excluded = /Headlight|faro|Display|Windshield|Pieza 30|rear_sit|black-interior|Silenciador|Salida posterior|Button|Lever|Grip|Control_|Central_Shaft|Collar de transición/i
 export function soilEligible(mesh, material, bounds) {
@@ -13,7 +14,7 @@ export function soilEligible(mesh, material, bounds) {
 export class CycloneSoilLayer {
   constructor(rig) {
     this.rig = rig; this.records = []
-    this.uniforms = { uSoilEnabled: { value: 1 }, uSoilLoad: { value: new Vector4() }, uSoilAxles: { value: new Vector2(rig.metrics.frontZ, rig.metrics.rearZ) }, uSoilDark: { value: new Color('#503d2c') }, uSoilLight: { value: new Color('#987c55') } }
+    this.uniforms = { uSoilEnabled: { value: 1 }, uSoilLoad: { value: new Vector4() }, uBikeSoilCoverageMax:{value:BIKE_SOIL_COVERAGE_MAX}, uSoilAxles: { value: new Vector2(rig.metrics.frontZ, rig.metrics.rearZ) }, uSoilDark: { value: new Color('#503d2c') }, uSoilLight: { value: new Color('#987c55') } }
     rig.body.updateWorldMatrix(true, true)
     const inverse = rig.body.matrixWorld.clone().invert()
     rig.body.traverse(mesh => {
@@ -31,16 +32,17 @@ export class CycloneSoilLayer {
         const gain = /Tire|Rubber/.test(name) ? .42 : original.metalness > .4 ? .75 : 1
         const uniforms = { ...this.uniforms, uSoilBind: { value: bind }, uSoilGain: { value: gain }, uSoilSeed: { value: seed % 173 / 13 } }
         copy.onBeforeCompile = (shader, renderer) => { compile.call(original, shader, renderer); Object.assign(shader.uniforms, uniforms); patchSoilShader(shader) }
-        copy.customProgramCacheKey = () => key + '|mospeada-soil-v2'
+        copy.customProgramCacheKey = () => key + '|mospeada-soil-v5'
         return copy
       })
       if (changed) this.records.push({ mesh, source, coated: Array.isArray(source) ? coated : coated[0], owned: coated.filter((m, i) => m !== materials[i]) })
     })
   }
   install() { for (const r of this.records) { r.mesh.material = r.coated; r.owned.forEach(m => { m.needsUpdate = true }) } }
-  update(load, config) {
+  update(load, config, armorWeight=0) {
     this.uniforms.uSoilEnabled.value = config.enabled && config.accumulation ? 1 : 0
-    this.uniforms.uSoilLoad.value.set(...[load.frontMud, load.rearMud, load.frontFilm, load.rearFilm].map(v => Math.min(v, config.maximum)))
+    this.uniforms.uSoilLoad.value.set(...[load.frontMud, load.rearMud, load.frontFilm, load.rearFilm].map(v => bikeSoil(v, config.maximum)))
+    this.uniforms.uBikeSoilCoverageMax.value=BIKE_SOIL_COVERAGE_MAX+(EQUIPMENT_SOIL_MAX-BIKE_SOIL_COVERAGE_MAX)*Math.max(0,Math.min(1,armorWeight))
   }
   dispose() {
     for (const r of this.records) { if (r.mesh.material === r.coated) r.mesh.material = r.source; r.owned.forEach(m => m.dispose()) }

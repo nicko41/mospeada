@@ -1,0 +1,297 @@
+{
+  "hits": [
+    {
+      "time": 1.5607999999970197,
+      "id": 0,
+      "hp": 3,
+      "locked": false
+    },
+    {
+      "time": 1.96069999999553,
+      "id": 0,
+      "hp": 2,
+      "locked": false
+    },
+    {
+      "time": 2.1126999999955296,
+      "id": 0,
+      "hp": 2,
+      "locked": false
+    },
+    {
+      "time": 2.3885,
+      "id": 0,
+      "hp": 1,
+      "locked": false
+    },
+    {
+      "time": 6.095399999991056,
+      "id": 1,
+      "hp": 3,
+      "locked": false
+    },
+    {
+      "time": 6.275899999991055,
+      "id": 1,
+      "hp": 2,
+      "locked": false
+    },
+    {
+      "time": 6.415899999991056,
+      "id": 1,
+      "hp": 2,
+      "locked": false
+    },
+    {
+      "time": 6.658799999989566,
+      "id": 1,
+      "hp": 1,
+      "locked": false
+    },
+    {
+      "time": 11.124299999989564,
+      "id": 2,
+      "hp": 3,
+      "locked": true
+    },
+    {
+      "time": 11.345799999997014,
+      "id": 2,
+      "hp": 3,
+      "locked": true
+    },
+    {
+      "time": 11.489699999995524,
+      "id": 2,
+      "hp": 3,
+      "locked": true
+    },
+    {
+      "time": 11.733799999997014,
+      "id": 2,
+      "hp": 3,
+      "locked": true
+    },
+    {
+      "time": 11.886299999997014,
+      "id": 2,
+      "hp": 2,
+      "locked": false
+    },
+    {
+      "time": 12.142899999998503,
+      "id": 2,
+      "hp": 1,
+      "locked": false
+    },
+    {
+      "time": 12.301399999998502,
+      "id": 2,
+      "hp": 1,
+      "locked": false
+    }
+  ],
+  "samples": [
+    {
+      "time": 0,
+      "phase": "idle",
+      "remaining": 3,
+      "shots": 0,
+      "lock": 0,
+      "reason": "",
+      "canShoot": false,
+      "speed": 0,
+      "z": -1084,
+      "x": 0.5954012162074003,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "exit": null
+    },
+    {
+      "time": 1.4910999999940395,
+      "phase": "entering",
+      "remaining": 3,
+      "shots": 0,
+      "lock": 0,
+      "reason": "",
+      "canShoot": false,
+      "speed": 13.479840834302292,
+      "z": -1095.6946116487313,
+      "x": 0.9617971253903564,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "pose": 0,
+      "exit": null
+    },
+    {
+      "time": 3.35319999999553,
+      "phase": "active",
+      "remaining": 2,
+      "shots": 6,
+      "lock": 0,
+      "reason": "",
+      "canShoot": true,
+      "speed": 14.220811372723412,
+      "z": -1122.0192823476668,
+      "x": 1.199562727760589,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "pose": 0.9999999998024838,
+      "exit": null
+    },
+    {
+      "time": 4.984899999991058,
+      "phase": "active",
+      "remaining": 2,
+      "shots": 11,
+      "lock": 0,
+      "reason": "",
+      "canShoot": true,
+      "speed": 14.199553173722975,
+      "z": -1145.227691436073,
+      "x": 0.8842080293343461,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "pose": 1,
+      "exit": null
+    },
+    {
+      "time": 6.658799999989566,
+      "phase": "active",
+      "remaining": 2,
+      "shots": 17,
+      "lock": 0,
+      "reason": "",
+      "canShoot": true,
+      "speed": 14.194457486585502,
+      "z": -1168.988930790929,
+      "x": 0.05372292417108681,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "pose": 1,
+      "exit": null
+    },
+    {
+      "time": 8.356199999988076,
+      "phase": "active",
+      "remaining": 1,
+      "shots": 23,
+      "lock": 0,
+      "reason": "",
+      "canShoot": true,
+      "speed": 14.211364379226834,
+      "z": -1192.986459893639,
+      "x": -1.092550813146478,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "pose": 1,
+      "exit": null
+    },
+    {
+      "time": 9.977799999989564,
+      "phase": "active",
+      "remaining": 1,
+      "shots": 29,
+      "lock": 0,
+      "reason": "",
+      "canShoot": true,
+      "speed": 14.201037015634268,
+      "z": -1216.0612966294334,
+      "x": -2.205422989277547,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "pose": 1,
+      "exit": null
+    },
+    {
+      "time": 11.733799999997014,
+      "phase": "active",
+      "remaining": 1,
+      "shots": 30,
+      "lock": 0.14219999999552937,
+      "reason": "Terreno irregular",
+      "canShoot": false,
+      "speed": 14.341492389017924,
+      "z": -1240.9491971982707,
+      "x": -3.05812201075584,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "pose": 1.0639689507037461e-13,
+      "exit": null
+    },
+    {
+      "time": 13.474100000001483,
+      "phase": "exiting",
+      "remaining": 0,
+      "shots": 33,
+      "lock": 0,
+      "reason": "Terreno irregular",
+      "canShoot": false,
+      "speed": 14.200937647217415,
+      "z": -1265.6801151862296,
+      "x": -3.1949016495095055,
+      "blocked": false,
+      "hitsTaken": 0,
+      "recycles": 0,
+      "pose": 1.9652847720917856e-10,
+      "exit": {
+        "x": -2.6403910888914854,
+        "z": -1286.2167157394429,
+        "yaw": 3.0925334268673397,
+        "label": "Salida Plano 3"
+      }
+    }
+  ],
+  "final": {
+    "time": 13.604300000004462,
+    "phase": "complete",
+    "remaining": 0,
+    "shots": 33,
+    "lock": 0,
+    "reason": "Terreno irregular",
+    "canShoot": false,
+    "speed": 14.148763763739536,
+    "z": -1267.5713324095095,
+    "x": -3.1671115014368163,
+    "blocked": false,
+    "hitsTaken": 0,
+    "recycles": 0,
+    "pose": 0,
+    "exit": {
+      "x": -2.6403910888914854,
+      "z": -1286.2167157394429,
+      "yaw": 3.0925334268673397,
+      "label": "Salida Plano 3"
+    }
+  },
+  "render": {
+    "stats": {
+      "materials": 275,
+      "renderCalls": 731,
+      "mode": "ANIME",
+      "preparation": {
+        "startMs": 21543.90000000596,
+        "initialMode": "ANIME",
+        "initialNight": false,
+        "initialGLError": 1281,
+        "compileMs": 1087.6999999955297,
+        "primeMs": 9899.39999999851,
+        "totalMs": 10987.09999999404,
+        "programs": 62
+      },
+      "renderTriangles": 1127302
+    },
+    "programs": 106,
+    "ui": "MOSPEADA / LEVEL 01 · FOREST\nVR-052F CYCLONE\nScott Bernard · Nivel 01 · Plano 3 · Despejado\nPausa · P\nVista · C\nRecentrar\nAjustes\n51\nKM/H · D\nSHIFT · BOOST LISTO\nLEAN\n2°\nHORQUILLA\n-13 mm\nTRASERA\n-14 mm\nMantener botón derecho para mirar · rueda zoom · C vista · W acelerar · S frenar / atrás · SHIFT boost · ESPACIO freno de mano · CTRL wheelie · F bajar · A D girar · M noche · N día",
+    "orbit": true
+  },
+  "errors": []
+}

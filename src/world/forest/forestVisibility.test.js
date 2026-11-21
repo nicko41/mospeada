@@ -1,8 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { Box3, BoxGeometry, Color, Frustum, Matrix4, MeshLambertMaterial, PerspectiveCamera, Sphere, Vector3 } from 'three'
+import { Box3, BoxGeometry, Color, Frustum, Matrix4, MeshLambertMaterial, PerspectiveCamera, ShaderLib, Sphere, Vector3 } from 'three'
 import { ForestBatch } from './ForestBatch.js'
 import { forestSurfaceHeight } from './forestLayout.js'
+import { forestLodRange,withForestLod } from './forestLod.js'
 
 function fixture() {
   const geometry = new BoxGeometry(2, 6, 2), material = new MeshLambertMaterial()
@@ -93,4 +94,31 @@ test('shrubs intersect the ground and keep identical contact and varied tints at
     }
     assert.ok(Math.max(...brightness)/Math.min(...brightness)>1.5,'Keep distinguishable light and dark specimens')
   }finally{detail.dispose();far.dispose();geometry.dispose();material.dispose()}
+})
+
+test('trees retain exactly one complete LOD when stationary, crossing the transition, rotating or recycling a sector',()=>{
+  const g=new BoxGeometry(2,8,2),m=new MeshLambertMaterial(),part={geometry:g,material:m,transform:new Matrix4()},bounds=new Box3(new Vector3(-1,0,-1),new Vector3(1,8,1))
+  const placements=Array.from({length:16},(_,i)=>({x:i*.8,z:i*.4,scale:1,yaw:i,tint:1})),detail=forestLodRange('tree'),far=forestLodRange('tree',true)
+  const bark=new ForestBatch(part,placements,bounds,'tree',detail.max),leaves=new ForestBatch(part,placements,bounds,'tree',detail.max),card=new ForestBatch(part,placements,bounds,'tree',far.max,far.start),camera=new PerspectiveCamera()
+  try{
+    const version=bark._matricesTexture.version
+    for(const offset of [0,-1800,-2600])for(const sign of [1,-1])for(let step=0;step<200;step++){
+      const distance=sign>0?40+step*1.3:300-step*1.3
+      camera.position.set(0,4,distance+offset);camera.rotation.y=step*.6
+      for(const batch of [bark,leaves,card])batch.updateDistance(camera,offset)
+      for(let i=0;i<placements.length;i++){
+        assert.equal(bark.getVisibleAt(i),leaves.getVisibleAt(i),'Bark and crown must switch together')
+        assert.equal(Number(bark.getVisibleAt(i))+Number(card.getVisibleAt(i)),1,'No holes or double LODs anywhere in the transition')
+      }
+    }
+    assert.equal(bark._matricesTexture.version,version)
+    for(const isFar of [false,true]){
+      const material=withForestLod(new MeshLambertMaterial(), 'tree',isFar),shader={uniforms:{},vertexShader:ShaderLib.lambert.vertexShader,fragmentShader:ShaderLib.lambert.fragmentShader}
+      material.onBeforeCompile(shader)
+      assert.doesNotMatch(shader.fragmentShader,/forestDither|gl_FragCoord|discard/,'A tree cannot remain a screen-door silhouette')
+      assert.equal(material.transparent,false);assert.equal(material.depthWrite,true)
+      if(isFar)assert.match(shader.fragmentShader,/mix\(gl_FragColor.rgb,fogColor/)
+      material.dispose()
+    }
+  }finally{for(const batch of [bark,leaves,card])batch.dispose();g.dispose();m.dispose()}
 })

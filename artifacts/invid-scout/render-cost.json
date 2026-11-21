@@ -1,0 +1,20 @@
+{
+  "base": {
+    "meanMs": 81.66500000019866,
+    "p95Ms": 180.5,
+    "drawCalls": 684,
+    "triangles": 664080
+  },
+  "scouts": {
+    "meanMs": 90.89500000014898,
+    "p95Ms": 173.5,
+    "drawCalls": 686,
+    "triangles": 1051540
+  },
+  "count": 5,
+  "visible": 5,
+  "bolts": 1,
+  "ovals": 1,
+  "sourceLoads": 0,
+  "gl": 0
+}

@@ -1,4 +1,4 @@
-import { PLAYER_MAX_HEALTH } from './meleeConfig'
+import { PLAYER_MAX_HEALTH } from './meleeConfig.js'
 
 export const playerCombat = {
   playerHealth: PLAYER_MAX_HEALTH, playerMaxHealth: PLAYER_MAX_HEALTH,
@@ -12,6 +12,10 @@ export const subscribePlayerHealth = (listener) => {
   return () => listeners.delete(listener)
 }
 export const getPlayerHealth = () => playerCombat.playerHealth
+export function resetPlayerCombat(){
+  playerCombat.playerHealth=playerCombat.playerMaxHealth;playerCombat.dead=false;playerCombat.hasHitSource=false
+  listeners.forEach(listener=>listener())
+}
 
 export function damagePlayer(damage, attackerPosition) {
   if (playerCombat.dead) return

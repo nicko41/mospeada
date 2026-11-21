@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react'
 import { weatheringState as store } from './weatheringState.js'
+import { BIKE_SOIL_MAX } from './equipmentSoilLimit.js'
 import './weathering.css'
 
 export default function WeatheringPanel() {
@@ -13,7 +14,7 @@ export default function WeatheringPanel() {
       <div className="weathering-surfaces" role="status"><span>Delantera: <b>{surface(value.front, value.frontGrounded)}</b></span><span>Trasera: <b>{surface(value.rear, value.rearGrounded)}</b></span></div>
       <small>El barro queda adherido al cambiar de terreno y conserva el estilo Anime.</small>
       {check('enabled', 'Efecto habilitado')}{check('accumulation', 'Suciedad acumulativa')}
-      {range('buildup', 'Acumulación de suciedad', 4)}{range('maximum', 'Suciedad máxima', 1, .02)}{range('cleaning', 'Limpieza por lluvia', 4)}
+      {range('buildup', 'Acumulación de suciedad', 4)}{range('maximum', 'Suciedad máxima de la moto', BIKE_SOIL_MAX, .01)}{range('cleaning', 'Limpieza por lluvia', 4)}
       <div className="weathering-buttons"><button onClick={() => store.clean()}>Limpiar Cyclone</button><button onClick={() => store.soil()}>Ensuciar Cyclone</button></div>
       <small>Depósito: {Math.round(value.dirt * 100)}%<br />La limpieza rápida es manual; la lluvia elimina primero la película superficial.</small>
     </aside>

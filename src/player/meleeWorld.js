@@ -1,7 +1,7 @@
 import * as THREE from 'three'
-import { emitEntityImpact } from '../world/entityImpactState'
-import { queryColliders, overlapsFootprint } from './collisionWorld'
-import { MELEE_RANGE, MELEE_RADIUS, MELEE_DAMAGE, ENTITY_STATE } from './meleeConfig'
+import { emitEntityImpact } from '../world/entityImpactState.js'
+import { queryColliders, overlapsFootprint } from './collisionWorld.js'
+import { MELEE_RANGE, MELEE_RADIUS, MELEE_DAMAGE, ENTITY_STATE } from './meleeConfig.js'
 
 const targets = new Set()
 const blockers = []
@@ -20,6 +20,8 @@ export function registerMeleeTarget(target) {
   targets.add(target)
   return () => targets.delete(target)
 }
+// Ranged weapons share the same live target registrations as melee.
+export function combatTargets() { return targets.values() }
 
 // Segment/primitive intersection; no visual mesh raycasting.
 function blocksSegment(collider, origin, end) {

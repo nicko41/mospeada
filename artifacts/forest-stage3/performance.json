@@ -1,0 +1,47 @@
+{
+  "plano2": {
+    "medianMs": 48.5,
+    "p95Ms": 55.60000000000582,
+    "meanMs": 46.114606741573,
+    "drawCalls": 790,
+    "triangles": 1738958,
+    "programs": 119,
+    "width": 1044,
+    "height": 530,
+    "z": -1086.7856222250225
+  },
+  "plano3": {
+    "medianMs": 42,
+    "p95Ms": 48.80000000000291,
+    "meanMs": 45.41123595505624,
+    "drawCalls": 724,
+    "triangles": 1194965,
+    "programs": 119,
+    "width": 1044,
+    "height": 530,
+    "z": -1184.7777516010888
+  },
+  "lock": {
+    "shots": 0,
+    "maneuver": 1.0686000000014901,
+    "pose": 0.00025166794953616596,
+    "hitsTaken": 1,
+    "reason": "Terreno irregular",
+    "drones": [
+      {
+        "hp": 3,
+        "spawned": true
+      },
+      {
+        "hp": 3,
+        "spawned": true
+      },
+      {
+        "hp": 3,
+        "spawned": false
+      }
+    ],
+    "before": 0
+  },
+  "errors": []
+}

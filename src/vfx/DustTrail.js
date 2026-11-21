@@ -32,23 +32,25 @@ class DustContact {
 function colorVector(hex, alpha) { const c = new Color(hex); return new QVec4(c.r, c.g, c.b, alpha) }
 
 export class DustTrail {
-  constructor() {
-    this.atlas = createDustAtlas(); this.geometry = new PlaneGeometry(1, 1)
-    this.material = new MeshBasicMaterial({ name: 'Cyclone dust source', map: this.atlas, transparent: true, depthWrite: false, alphaTest: .001 })
+  constructor({shared=null}={}) {
+    this.ownsResources=!shared
+    this.atlas = shared?.atlas||createDustAtlas(); this.geometry = shared?.geometry||new PlaneGeometry(1, 1)
+    this.material = shared?.material||new MeshBasicMaterial({ name: 'Cyclone dust source', map: this.atlas, transparent: true, depthWrite: false, alphaTest: .001 })
     this.normal = new Vector3(0, 1, 0); this.inertia = new Vector3(); this.direction = new Vector3(); this.previous = new Vector3(); this.current = new Vector3()
     this.axis = new Vector3(0, 0, 1); this.initialized = false; this.emitted = 0; this.frame = 1 / 60
-    this.day = { value: 1 }; this.rate = new ConstantValue(0)
+    this.day = shared?.day||{ value: 1 }; this.rate = new ConstantValue(0)
     this.speed = new IntervalValue(1, 2); this.life = new IntervalValue(1.8, 2.8); this.size = new IntervalValue(.22, .48)
     this.gravity = new ApplyForce(new QVec3(0, -1, 0), new ConstantValue(.65))
     this.drag = new LimitSpeedOverLife(new ConstantValue(0), 1.35 / 20)
     this.turbulence = new TurbulenceField(new QVec3(2.8, 2.1, 2.8), 1, new QVec3(.55, .16, .55), new QVec3(.15, .12, .17))
     this.wind = new ApplyForce(new QVec3(-.95, 0, .3).normalize(), new ConstantValue(.35))
     this.shape = new ConeEmitter({ radius: .065, angle: .48, thickness: 1 })
+    this.colors=new ColorRange(colorVector('#b2a087', .24), colorVector('#d1bfa2', .42));this.palette=null
     this.system = new ParticleSystem({
       duration: 30, looping: true, prewarm: false, autoDestroy: false, worldSpace: true,
       startLife: this.life, startSpeed: this.speed, startSize: this.size,
       startRotation: new IntervalValue(-Math.PI, Math.PI), startTileIndex: new IntervalValue(0, 4),
-      startColor: new ColorRange(colorVector('#b2a087', .24), colorVector('#d1bfa2', .42)),
+      startColor: this.colors,
       emissionOverTime: this.rate, emissionOverDistance: new ConstantValue(0), emissionBursts: [], shape: this.shape,
       material: this.material, instancingGeometry: this.geometry, renderMode: RenderMode.BillBoard,
       uTileCount: 2, vTileCount: 2, blendTiles: false, renderOrder: 3,
@@ -64,6 +66,7 @@ export class DustTrail {
     // Keep Quarks' instanced shader, add the world's fog and output transform.
     // Anime sees an unlit transparent surface and adds no black contour to it.
     const batch = renderer.batches[renderer.systemToBatchIndex.get(this.system)]
+    if(batch.userData.vfx==='dust'){this.batch=batch;return}
     const material = batch.material
     material.name = 'Quarks organic dust'; material.fog = true
     Object.assign(material.uniforms, UniformsUtils.clone(UniformsLib.fog), { uDustDay: this.day })
@@ -76,12 +79,20 @@ export class DustTrail {
     batch.name = 'Quarks_dust_batch'; batch.userData.vfx = 'dust'
     this.batch = batch
   }
-  update(dt, wheel, state, config, distance, day, frameSeconds, runtime) {
-    const ps = this.system
+  prepare(wheel, state, config, distance, day, frameSeconds) {
+    this.config=config
+    const palette=config.dustPalette||null
+    if(palette!==this.palette){
+      this.palette=palette
+      // Change only newly emitted particles, preserving the pooled system and
+      // the colors of dust already left behind on the previous surface.
+      this.colors.a.copy(colorVector(palette?.low||'#b2a087',palette?.lowOpacity??.24))
+      this.colors.b.copy(colorVector(palette?.high||'#d1bfa2',palette?.highOpacity??.42))
+    }
     this.day.value = day
     this.frame += (Math.min(frameSeconds, .3) - this.frame) * .05
     this.response = dustResponse(wheel, state, config, distance, this.frame)
-    const { rate, budget, persistence } = this.response,launch=this.response.launch*(config.forestWheelFX?config.dustLaunch:1)
+    const { persistence } = this.response,launch=this.response.launch*(config.forestWheelFX?config.dustLaunch:1)
     this.normal.copy(wheel.normal)
     this.current.copy(wheel.position).addScaledVector(wheel.normal, .055)
     const sameSurface = this.surface === wheel.surface
@@ -103,26 +114,33 @@ export class DustTrail {
     this.gravity.magnitude.value = config.gravity; this.drag.dampen = config.drag / 20
     this.wind.magnitude.value = config.wind * .35
     this.turbulence.velocityMultiplier.set(config.turbulence, config.turbulence * .28, config.turbulence)
-    const steps = Math.max(1, Math.ceil(Math.min(dt, .25) / (1 / 30))), step = Math.min(dt, .25) / steps
-    for (let i = 0; i < steps; i++) {
-      ps.emitter.position.lerpVectors(this.previous, this.current, (i + 1) / steps)
+  }
+  stepEmitter(step,t){
+      // Quarks retains negative fractional emission debt. Clamp only the next
+      // credit and live count; this also bounds each companion independently.
+      const ps=this.system,{rate,budget}=this.response
+      ps.emitter.position.lerpVectors(this.previous, this.current,t)
       ps.emitter.quaternion.setFromUnitVectors(this.axis, this.direction); ps.emitter.updateWorldMatrix(true, false)
-      // Quarks 0.18 pools particles but doesn't expose a maxParticle option.
-      // Bound both pending emissions and the next credit before its own update.
       const trimmed = ps.particleNum > budget
       if (trimmed) ps.particleNum = budget
       const remaining = Math.max(0, budget - ps.particleNum)
-      // Quarks uses ceil(credit), retaining a negative fractional debt after
-      // spawning. Preserve that debt: zeroing it creates 30 particles/s even
-      // when wet-ground emission is below one particle/s.
       ps.emissionState.waitEmiting = rate > 0 ? Math.min(ps.emissionState.waitEmiting, remaining) : 0
       this.rate.value = step > 0 ? Math.min(rate, Math.max(0, remaining - Math.ceil(ps.emissionState.waitEmiting)) / step) : 0
+      if(step===0&&trimmed)this.batch.update()
+  }
+  stopEmission(){this.response.rate=0;this.rate.value=0;this.system.emissionState.waitEmiting=0;this.initialized=false}
+  update(dt, wheel, state, config, distance, day, frameSeconds, runtime,companion=null) {
+    this.prepare(wheel,state,config,distance,day,frameSeconds)
+    const ps=this.system
+    const steps = Math.max(1, Math.ceil(Math.min(dt, .25) / (1 / 30))), step = Math.min(dt, .25) / steps
+    for (let i = 0; i < steps; i++) {
+      this.stepEmitter(step,(i+1)/steps);companion?.stepEmitter(step,(i+1)/steps)
       if (step > 0) runtime.update(step)
-      else if (trimmed) this.batch.update()
     }
     this.previous.copy(this.current)
-    this.batch.visible = config.enabled && ps.particleNum > 0
+    if(companion)companion.previous.copy(companion.current)
+    this.batch.visible = config.enabled && (ps.particleNum > 0||(companion?.system.particleNum||0)>0)
   }
-  dispose() { this.material.dispose(); this.geometry.dispose(); this.atlas.dispose() }
-  clear(){this.system.particleNum=0;this.system.emissionState.waitEmiting=0;this.rate.value=0;this.batch?.update()}
+  dispose() { if(this.ownsResources){this.material.dispose(); this.geometry.dispose(); this.atlas.dispose()} }
+  clear(){this.initialized=false;this.system.particleNum=0;this.system.emissionState.waitEmiting=0;this.rate.value=0;this.batch?.update()}
 }

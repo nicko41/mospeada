@@ -8,8 +8,8 @@ export function createRelaxedScottHands(mesh) {
   if (!mesh.isSkinnedMesh || Object.keys(source.morphAttributes).length) return null
   const p = source.attributes.position, n = source.attributes.normal
   const joints = source.attributes.skinIndex, weights = source.attributes.skinWeight
-  const deltas = [new Float32Array(p.count * 3), new Float32Array(p.count * 3)]
-  const normalDeltas = [new Float32Array(p.count * 3), new Float32Array(p.count * 3)], affected = []
+  const deltas = Array.from({length:3},()=>new Float32Array(p.count * 3))
+  const normalDeltas = Array.from({length:3},()=>new Float32Array(p.count * 3)), affected = []
   const a = new Vector3(), b = new Vector3(), normal = new Vector3(), tangent = new Vector3(), bitangent = new Vector3()
   const sides = ['Left', 'Right'].map(side => {
     const joint = mesh.skeleton.bones.findIndex(bone => bone.name.endsWith(side + 'Hand'))
@@ -67,6 +67,12 @@ export function createRelaxedScottHands(mesh) {
         bitangent.copy(deform(a.clone().addScaledVector(bitangent, .00001), hand, amount, grip)).sub(base)
         b.crossVectors(tangent, bitangent).normalize().sub(normal).toArray(normalDeltas[pose], i * 3)
       }
+      // Release only the right glove while aiming. Built during loading so
+      // the encounter needs no geometry upload or new shader on its first shot.
+      if(hand.sign<0)for(let k=0;k<3;k++){
+        deltas[2][i*3+k]=-deltas[1][i*3+k]
+        normalDeltas[2][i*3+k]=-normalDeltas[1][i*3+k]
+      }
     }
   }
   if (!affected.length) return null
@@ -76,7 +82,7 @@ export function createRelaxedScottHands(mesh) {
   geometry.setIndex(source.index)
   geometry.name = source.name + '_relaxed_hands_variant'
   geometry.morphTargetsRelative = true
-  geometry.morphAttributes.position = deltas.map((delta, i) => { const attribute = new Float32BufferAttribute(delta, 3); attribute.name = ['RelaxedHands', 'HandlebarGrip'][i]; return attribute })
+  geometry.morphAttributes.position = deltas.map((delta, i) => { const attribute = new Float32BufferAttribute(delta, 3); attribute.name = ['RelaxedHands', 'HandlebarGrip', 'RightAimingHand'][i]; return attribute })
   geometry.morphAttributes.normal = normalDeltas.map(delta => new Float32BufferAttribute(delta, 3))
   const variant = { source, geometry, affected, sides, influence: 0,
     attach() { mesh.geometry = geometry; mesh.updateMorphTargets(); this.influence = 0 },
@@ -85,6 +91,7 @@ export function createRelaxedScottHands(mesh) {
       this.influence = target ? MathUtils.damp(this.influence, 1, 14, dt) : 0
       mesh.morphTargetInfluences[0] = this.influence
       mesh.morphTargetInfluences[1] = mode === 'mounted' || mode === 'stopping' ? 1 : contactBlend
+      mesh.morphTargetInfluences[2] = 0
     },
     dispose() { mesh.geometry = source; mesh.updateMorphTargets(); geometry.dispose() },
   }

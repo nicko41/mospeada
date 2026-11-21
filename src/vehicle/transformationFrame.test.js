@@ -96,7 +96,7 @@ test('real T sequence reverses after boost, pauses and restores at moving Motorc
     if(entry.phase==='reversing')rows.push({progress:p,offset:offset.toArray(),hydraulicLengths:moved.lengths,maxFrameError:error})
   }
   entry.request();for(let i=0;i<360&&entry.phase!=='complete';i++)tick()
-  assert.equal(entry.phase,'complete');assert.ok(entry.actorOffset.length()>7)
+  assert.equal(entry.phase,'complete');assert.equal(entry.actorOffset.length(),0)
   entry.request();assert.equal(entry.phase,'returnboost')
   for(let i=0;i<28;i++)tick()
   entry.pause();const before=JSON.stringify(f.state),offset=entry.actorOffset.clone(),p=store.snapshot().progress

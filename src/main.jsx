@@ -110,8 +110,7 @@ function EntryPreloader({ sceneReady }) {
   const { active, progress } = useProgress()
   const renderState = useSyncExternalStore(animeState.subscribe, animeState.snapshot)
   const opening = useSyncExternalStore(forestOpeningState.subscribe, forestOpeningState.snapshot)
-  // Finish GPU preparation behind the loader, before music/fade/camera begin.
-  // Otherwise night-program reflection competes with the visible cinematic.
+  // Wait for the current frame and opening views, never for alternate lighting.
   const renderReady = startupRenderReady(renderState,opening.phase)
   const highestProgress = useRef(0)
   const revealed = useRef(false)

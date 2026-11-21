@@ -1,3 +1,4 @@
+import { bikeSoil } from './equipmentSoilLimit.js'
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v))
 
 // Visual state only. Neither wheel contacts nor any vehicle state are written.
@@ -21,8 +22,8 @@ export function evolveSoil(load, wheels, state, config, rain, dt, metrics, humid
     // Surface film washes away over minutes; adhered mud takes much longer.
     load[side + 'Film'] *= Math.exp(-water * config.cleaning * .017 * dt)
     load[side + 'Mud'] *= Math.exp(-water * config.cleaning * .0014 * dt)
-    load[side + 'Film'] = Math.min(config.maximum, load[side + 'Film'] + rate * (1 - .3 * wet) * dt)
-    load[side + 'Mud'] = Math.min(config.maximum, load[side + 'Mud'] + rate * wet * .55 * dt)
+    load[side + 'Film'] = bikeSoil(load[side + 'Film'] + rate * (1 - .3 * wet) * dt, config.maximum)
+    load[side + 'Mud'] = bikeSoil(load[side + 'Mud'] + rate * wet * .55 * dt, config.maximum)
   }
 }
 

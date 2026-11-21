@@ -1,0 +1,72 @@
+{
+  "blink": {
+    "charging": true,
+    "seconds": 0.06251491594590766,
+    "shots": 0,
+    "discs": 2,
+    "offsets": [
+      0.05492024948498979,
+      0.05489638265558624
+    ],
+    "programsAdded": 0
+  },
+  "projectile": {
+    "shots": 1,
+    "sourceError": 0,
+    "speed": 42.00000000000001,
+    "halos": 1,
+    "cores": 1,
+    "beamStreaks": 0,
+    "discs": 0,
+    "programsAdded": 0
+  },
+  "impact": {
+    "hit": true,
+    "terrain": 1,
+    "fire": 0,
+    "rings": 0,
+    "hitSparks": 0,
+    "atlas": [
+      1448,
+      1086
+    ]
+  },
+  "animation": {
+    "frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "programsAdded": 0,
+    "remaining": 0,
+    "terrainRemaining": 0
+  },
+  "cadence": {
+    "seconds": 29.999999999999577,
+    "shots": 66,
+    "perScout": [
+      15,
+      15,
+      13,
+      12,
+      11
+    ],
+    "minSpacing": 0.3499999999999801,
+    "maxBolts": 24
+  },
+  "integrity": {
+    "gl": 0,
+    "error": "",
+    "sceneLights": 0
+  },
+  "errors": []
+}

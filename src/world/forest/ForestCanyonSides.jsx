@@ -11,7 +11,7 @@ export default function ForestCanyonSides({sides,assets,distant,ground,cliff,riv
       <mesh geometry={tile.river} material={river.material} userData={{forest:true}}/>
     </group>)}
     {assets.filter(a=>a.kind==='tree').map(asset=><group key={asset.name}>
-      {asset.parts.map((part,i)=><ForestInstances key={i} part={part} placements={sides.byName[asset.name]} bounds={asset.bounds} kind="tree" distance={forestLodRange('tree').max} heightAt={canyonSideHeight} name={'Forest_side_detail_'+asset.name+i}/>)}
+      {[...asset.parts,...(asset.midParts||[])].map((part,i)=><ForestInstances key={i} part={part} placements={sides.byName[asset.name]} bounds={asset.bounds} kind="tree" distance={forestLodRange('tree').max} heightAt={canyonSideHeight} name={'Forest_side_detail_'+asset.name+i}/>)}
       {distant.get(asset.name).parts.map((part,i)=><ForestInstances key={'far'+i} part={part} placements={sides.byName[asset.name]} bounds={asset.bounds} kind="tree" distance={340} minimum={forestLodRange('tree',true).start} heightAt={canyonSideHeight} name={'Forest_side_horizon_'+asset.name+i}/>)}
     </group>)}
   </group>

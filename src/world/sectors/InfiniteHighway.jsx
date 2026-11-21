@@ -498,7 +498,7 @@ export default function InfiniteHighway({ asphaltMaterial, embankmentMaterial, m
     {Array.from({ length: ACTIVE_CHUNKS }, (_, slot) => <group key={slot}
       ref={(group) => { chunks.current[slot] = group }}
       position-x={INFINITE_HIGHWAY_START_X - slot * CHUNK_LENGTH}>
-      <mesh userData={{ rideSurface: true, rideSurfaceType: 'dirt' }} geometry={geometry.field} material={fieldMaterial} receiveShadow />
+      <mesh userData={{ rideSurface: true, rideSurfaceType: 'dirt', rideSurfaceBiome: 'grass' }} geometry={geometry.field} material={fieldMaterial} receiveShadow />
       <mesh userData={{ rideSurface: true, rideSurfaceType: 'dirt' }} geometry={geometry.embankment} material={embankmentMaterial} receiveShadow />
       {geometry.asphalt.map((strip, index) => <mesh userData={{ rideSurface: true, rideSurfaceType: 'asphalt' }} key={index} geometry={strip}
         material={asphaltMaterial} receiveShadow renderOrder={1} />)}

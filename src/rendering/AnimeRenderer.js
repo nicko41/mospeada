@@ -5,13 +5,14 @@ import { SurfaceBrush } from './SurfaceBrush.js'
 import { patchSurfaceBrush } from './surfaceBrushShader.js'
 import { animeProgramKey, createPreparationTargets } from './renderPreparation.js'
 import { publishRenderMetrics } from './renderMetrics.js'
+import {combatFlashUniforms,patchCombatFlashLighting,syncCombatFlashLighting} from '../vfx/combatFlashLighting.js'
 
 const dynamic = ['color', 'emissive', 'emissiveIntensity', 'opacity', 'roughness', 'metalness', 'envMapIntensity', 'normalScale', 'clearcoat', 'clearcoatRoughness', 'transmission', 'thickness', 'ior', 'specularIntensity', 'specularColor', 'attenuationColor', 'attenuationDistance']
 const textureKeys = ['map', 'alphaMap', 'normalMap', 'roughnessMap', 'metalnessMap', 'emissiveMap', 'envMap']
 
 export function materialProfile(object, material) {
   let parent = object, hero = object.isSkinnedMesh ? 1 : 0
-  while (parent) { if (parent.name === 'Cyclone_riding_vehicle') hero = 1; parent = parent.parent }
+  while (parent) { if (parent.name === 'Cyclone_riding_vehicle'||parent.userData.animeHero) hero = 1; parent = parent.parent }
   const grass = /^Grass_/.test(object.name)
   const glass = (material.transmission || 0) > 0 || material.transparent && material.opacity < 0.95
   const lit = material.isMeshStandardMaterial || material.isMeshLambertMaterial || material.isMeshPhongMaterial
@@ -24,7 +25,7 @@ export class AnimeRenderer {
   constructor(renderer, scene, camera) {
     Object.assign(this, { renderer, scene, camera })
     this.records = new Map(); this.sources = new Map(); this.bindings = []
-    this.ready = false; this.warming = null; this.disposed = false
+    this.ready = false; this.openingReady=false; this.warming = null; this.disposed = false
     this.brush = new SurfaceBrush()
     this.uniforms = { uAnimeCel: { value: 1 }, uAnimeLevels: { value: 3 }, uAnimeShadow: { value: 0.72 }, uAnimeHighlights: { value: 0.55 }, uAnimeDay: { value: 1 } }
     this.target = new T.WebGLRenderTarget(1, 1, { count: 2, type: T.HalfFloatType, samples: Math.min(4, renderer.capabilities.maxSamples), depthTexture: new T.DepthTexture(1, 1, T.UnsignedIntType) })
@@ -65,8 +66,8 @@ export class AnimeRenderer {
     variant.name = `ANIME / ${source.name || source.type}`
     variant.onBeforeCompile = (shader, renderer) => {
       record.capture(shader, renderer)
-      Object.assign(shader.uniforms, this.uniforms, { uAnimeSurfaceShine: { value: profile.surfaceShine ?? 1 }, uAnimeHero: { value: profile.hero }, uAnimeGlass: { value: profile.glass }, uAnimeMask: { value: profile.mask } })
-      shader.fragmentShader = patchAnimeShader(shader.fragmentShader, profile)
+      Object.assign(shader.uniforms, this.uniforms, combatFlashUniforms, { uAnimeSurfaceShine: { value: profile.surfaceShine ?? 1 }, uAnimeHero: { value: profile.hero }, uAnimeGlass: { value: profile.glass }, uAnimeMask: { value: profile.mask } })
+      shader.fragmentShader = patchCombatFlashLighting(patchAnimeShader(shader.fragmentShader, profile))
       if (profile.brush) { Object.assign(shader.uniforms, profile.brush.uniforms); patchSurfaceBrush(shader) }
     }
     variant.customProgramCacheKey = () => `${record.key}|${animeProgramKey(profile)}`
@@ -161,6 +162,14 @@ export class AnimeRenderer {
   withDormantArmor(work) {
     const root=this.scene.getObjectByName('Cyclone_rear_transformation'),saved=[],batches=[]
     root?.traverse(object=>{saved.push({object,visible:object.visible,culled:object.frustumCulled});object.visible=true;object.frustumCulled=false})
+    const pooled=[]
+    this.scene.traverse(group=>{
+      if(!group.userData.prewarmVFX)return
+      group.traverse(object=>{
+        saved.push({object,visible:object.visible,culled:object.frustumCulled});object.visible=true;object.frustumCulled=false
+        if(object.isInstancedMesh){pooled.push({object,count:object.count});object.count=Math.max(1,object.count)}
+      })
+    })
     // Upload the empty Quarks buffers/atlases without spawning particles or
     // advancing any emitter. Zero-sized entries stay in this offscreen draw.
     this.scene.getObjectByName('MOSPEADA_Quarks_batches')?.traverse(object=>{
@@ -172,6 +181,7 @@ export class AnimeRenderer {
     finally{
       for(const {object,visible,culled} of saved){object.visible=visible;object.frustumCulled=culled}
       for(const {object,count,visible,culled} of batches){object.geometry.instanceCount=count;object.visible=visible;object.frustumCulled=culled}
+      for(const {object,count} of pooled)object.count=count
     }
   }
   primeVariant(night,initial=false) {
@@ -232,15 +242,28 @@ export class AnimeRenderer {
     // Reuse the existing distance/LOD selectors; keep all normal culling.
     this.scene.traverse(object=>{object.updateDistance?.(camera);object.updateVisibility?.(camera)})
   }
-  async waitForPreparedGpu(){
-    const gl=this.renderer.getContext?.();if(!gl?.fenceSync||gl.isContextLost())return
+  async waitForPreparedGpu(timeoutMs=3000){
+    const gl=this.renderer.getContext?.();if(!gl?.fenceSync||gl.isContextLost())return true
     const fence=gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE,0);if(!fence)return
+    const deadline=performance.now()+timeoutMs
     gl.flush()
     try{while(!this.disposed&&!gl.isContextLost()){
       const result=gl.clientWaitSync(fence,0,0)
-      if(result!==gl.TIMEOUT_EXPIRED)break
+      if(result!==gl.TIMEOUT_EXPIRED)return true
+      // This fence only prewarms future views. An unresponsive driver must not
+      // keep the loader alive forever after the current frame already drew.
+      if(performance.now()>=deadline){if(this.stats.preparation)this.stats.preparation.gpuFenceDeferred=true;return false}
       await this.idleTurn()
     }}finally{if(!gl.isContextLost())gl.deleteSync(fence)}
+  }
+  prepareOpening(){
+    if(this.openingWork||!this.ready||this.disposed)return this.openingWork
+    const start=performance.now()
+    this.openingWork=Promise.resolve().then(()=>this.prepareStartupViews()).then(()=>{
+      if(this.disposed)return
+      this.openingReady=true;this.stats.preparation.openingMs=performance.now()-start
+    }).catch(error=>{if(!this.disposed)this.error=error.message})
+    return this.openingWork
   }
   async prepareStartupViews(){
     const views=this.startupViews?.()||[];if(!views.length)return
@@ -252,7 +275,7 @@ export class AnimeRenderer {
       // Initial lighting preparation already rendered the static shadow maps.
       try{
         if(shadows){shadows.autoUpdate=false;shadows.needsUpdate=false}
-        this.prepareViewVisibility(view);this.camera=view;this.sync()
+        this.prepareViewVisibility(view);this.camera=view;this.collect();this.sync()
         this.withPreparationVariant(this.initialNight,()=>this.drawSceneTarget(this.preparationTargets.anime))
       }finally{
         this.camera=camera;this.prepareViewVisibility(camera)
@@ -262,25 +285,36 @@ export class AnimeRenderer {
     await this.waitForPreparedGpu()
     this.stats.preparation.startupViews=views.length;this.stats.preparation.startupViewsMs=performance.now()-start
   }
-  prepareNight() {
+  prepareNight(underLoader=false) {
     if(this.backgroundWork||!this.ready||this.disposed)return this.backgroundWork
     this.backgroundWork=(async()=>{
+      if(this.openingWork)await this.openingWork
+      if(this.disposed)return
       const start=performance.now(),jobs=[false,true]
+      this.collect();this.sync()
       for(const night of jobs){
         if(this.preparedLighting.has(night))continue
-        // Submit one distinct shader at a time. Queuing the whole night scene
-        // monopolized the driver just as the player pressed T after loading.
-        for(const object of this.preparationObjects()){
+        if(underLoader){
+          // Nothing is playable behind the opaque loader. Submit the lighting
+          // variant once so KHR parallel compilation can run all programs
+          // together, rather than waiting for ~90 individual GPU jobs in turn.
           await this.idleTurn();if(this.disposed)return
           const existing=new Set(this.renderer.info.programs)
-          await this.compileVariant(night,object);if(this.disposed)return
+          await this.compileVariant(night);if(this.disposed)return
           await this.prepareProgramBindings(this.renderer.info.programs.filter(p=>!existing.has(p)));if(this.disposed)return
+        }else{
+          // During gameplay, small submissions still yield to transformation.
+          for(const object of this.preparationObjects()){
+            await this.idleTurn();if(this.disposed)return
+            const existing=new Set(this.renderer.info.programs)
+            await this.compileVariant(night,object);if(this.disposed)return
+            await this.prepareProgramBindings(this.renderer.info.programs.filter(p=>!existing.has(p)));if(this.disposed)return
+          }
         }
         await this.idleTurn();if(this.disposed)return
         this.primeVariant(night)
         this.preparedLighting.add(night)
       }
-      await this.prepareStartupViews();if(this.disposed)return
       this.nightReady=true;this.stats.preparation.backgroundMs=performance.now()-start
       this.preparationTargets?.dispose();this.preparationTargets=null
     })().catch(error=>{if(!this.disposed)this.error=error.message})
@@ -288,6 +322,7 @@ export class AnimeRenderer {
   }
   drawSceneTarget(target = this.target) {
     const { renderer, scene, camera } = this
+    camera.updateMatrixWorld();syncCombatFlashLighting(camera)
     const previous = renderer.getRenderTarget(), background = scene.background, clearColor = renderer.getClearColor(new T.Color()), clearAlpha = renderer.getClearAlpha(), autoClear = renderer.autoClear
     try {
       this.apply()

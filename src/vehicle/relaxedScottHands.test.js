@@ -49,6 +49,6 @@ test('relaxed hand variant changes only gloves and preserves original skinning a
   assert.equal(Object.keys(source.morphAttributes).length, 0)
   hand.dispose(); assert.equal(mesh.geometry, source)
   hand.attach(); assert.equal(mesh.geometry, hand.geometry, 'Effect replay reinstalls the variant in React StrictMode')
-  hand.update('mounted', .1); assert.deepEqual(mesh.morphTargetInfluences, [0, 1])
+  hand.update('mounted', .1); assert.deepEqual(mesh.morphTargetInfluences, [0, 1, 0])
   hand.dispose()
 })

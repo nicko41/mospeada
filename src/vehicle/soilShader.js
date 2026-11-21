@@ -1,3 +1,4 @@
+import { BIKE_SOIL_MAX, BIKE_SOIL_COVERAGE_MAX } from './equipmentSoilLimit.js'
 export const soilDeclarations = /* glsl */`
 #define MOSPEADA_SOIL
 uniform float uSoilEnabled;
@@ -36,7 +37,7 @@ float soilPattern(vec3 p, vec3 n, float scale) {
 
 export function patchSoilShader(shader) {
   shader.vertexShader = 'uniform mat4 uSoilBind;\nvarying vec3 vSoilPosition;\nvarying vec3 vSoilNormal;\n' + shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvSoilPosition = (uSoilBind * vec4(position, 1.0)).xyz;\nvSoilNormal = normalize(mat3(uSoilBind) * normal);')
-  shader.fragmentShader = soilDeclarations + shader.fragmentShader.replace('#include <color_fragment>', /* glsl */`
+  shader.fragmentShader = 'uniform float uBikeSoilCoverageMax;\n' + soilDeclarations + shader.fragmentShader.replace('#include <color_fragment>', /* glsl */`
     #include <color_fragment>
     float soilCoverage = 0.0;
     if (uSoilEnabled > .5 && dot(uSoilLoad, vec4(1.0)) > .001) {
@@ -47,12 +48,14 @@ export function patchSoilShader(shader) {
       soilWeights /= max(soilWeights.x + soilWeights.y, .001);
       float soilMud = dot(soilWeights, uSoilLoad.xy);
       float soilFilm = dot(soilWeights, uSoilLoad.zw);
+      float soilSaturation = clamp(soilMud / ${BIKE_SOIL_MAX.toFixed(2)}, 0.0, 1.0);
       vec3 soilWarp = vSoilPosition + .024 * sin(vSoilPosition.yzx * vec3(8.1, 6.4, 7.7) + uSoilSeed);
       float soilFine = soilPattern(soilWarp, soilN, 23.0);
       float soilCoarse = soilNoise(soilWarp * 7.0 + uSoilSeed);
       float soilMottle = soilNoise(soilWarp * 15.0 + uSoilSeed);
-      float soilPatch = smoothstep(.75 - soilMud * .48, .88 - soilMud * .48, soilCoarse);
-      soilCoverage = clamp((soilMud * soilPatch * 1.6 + soilMud * soilFine * .42 + soilFilm * soilFine * .4) * soilLower * soilFacing * uSoilGain, 0.0, .79);
+      float soilPatch = smoothstep(.75 - soilSaturation * .48, .88 - soilSaturation * .48, soilCoarse);
+      float soilDust = .18 + soilMottle * .55 + soilFine * .4;
+      soilCoverage = clamp((soilMud * soilPatch * 1.6 + soilMud * soilFine * .42 + soilFilm * soilDust) * soilLower * soilFacing * uSoilGain, 0.0, min(${BIKE_SOIL_COVERAGE_MAX}, uBikeSoilCoverageMax));
       vec3 soilColor = mix(uSoilDark, uSoilLight, soilMottle * .65 + soilN.y * .12 + .12);
       diffuseColor.rgb = mix(diffuseColor.rgb, soilColor, soilCoverage);
     }

@@ -1,0 +1,56 @@
+{
+  "ready": {
+    "mode": "ANIME",
+    "ready": true,
+    "nightReady": true,
+    "error": "",
+    "cel": true,
+    "levels": 3,
+    "shadow": 0.72,
+    "outlines": true,
+    "width": 1.2,
+    "color": "#111b2e",
+    "highlights": 0.55
+  },
+  "preparation": {
+    "startMs": 19907.79999999702,
+    "initialMode": "ANIME",
+    "initialNight": false,
+    "initialGLError": 0,
+    "compileMs": 886.7999999970198,
+    "primeMs": 897.8000000119209,
+    "totalMs": 1784.6000000089407,
+    "programs": 85,
+    "backgroundMs": 71703
+  },
+  "samples": [
+    {
+      "visible": false,
+      "lights": 0,
+      "ms": 75.3999999910593,
+      "before": 205,
+      "after": 205
+    },
+    {
+      "visible": true,
+      "lights": 2,
+      "ms": 483.3999999910593,
+      "before": 205,
+      "after": 206
+    },
+    {
+      "visible": false,
+      "lights": 0,
+      "ms": 24.19999998807907,
+      "before": 206,
+      "after": 206
+    },
+    {
+      "visible": true,
+      "lights": 2,
+      "ms": 26.399999991059303,
+      "before": 206,
+      "after": 206
+    }
+  ]
+}

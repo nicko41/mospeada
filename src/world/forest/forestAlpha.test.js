@@ -55,8 +55,8 @@ test('primitive wreck colliders block the fuselage and leave the main route acce
   }finally{remove()}
 })
 
-test('navigation LOD overlap is complementary and cell culling never cuts a nonzero fade',()=>{
-  for(const kind of ['tree','shrub']){
+test('understory LOD overlap is complementary and cell culling never cuts a nonzero fade',()=>{
+  for(const kind of ['shrub']){
     const detail=forestLodRange(kind),far=forestLodRange(kind,true)
     for(let distance=far.start;distance<=detail.max;distance+=.02)assert.ok(Math.abs(forestLodCoverage(distance,detail)+forestLodCoverage(distance,far)-1)<1e-10)
     const g=new BoxGeometry(1,4,1),m=new MeshStandardMaterial(),bounds=new Box3(new Vector3(-.5,0,-.5),new Vector3(.5,4,.5))

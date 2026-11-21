@@ -1,0 +1,142 @@
+{
+  "load": {
+    "frontMud": 0,
+    "rearMud": 0,
+    "frontFilm": 0,
+    "rearFilm": 0
+  },
+  "records": 125,
+  "installed": 125,
+  "sourceMaterials": [
+    {
+      "name": "CommonTree_3",
+      "parts": [
+        {
+          "name": "Forest / Bark_NormalTree",
+          "alphaTest": 0.20000000298023224,
+          "transparent": false,
+          "depthWrite": true,
+          "alphaHash": false,
+          "lod": {
+            "start": 0,
+            "end": 0,
+            "fade": 68,
+            "max": 82
+          }
+        },
+        {
+          "name": "Forest / Leaves_NormalTree",
+          "alphaTest": 0.20000000298023224,
+          "transparent": false,
+          "depthWrite": true,
+          "alphaHash": false,
+          "lod": {
+            "start": 0,
+            "end": 0,
+            "fade": 68,
+            "max": 82
+          }
+        }
+      ]
+    },
+    {
+      "name": "CommonTree_2",
+      "parts": [
+        {
+          "name": "Forest / Bark_NormalTree",
+          "alphaTest": 0.20000000298023224,
+          "transparent": false,
+          "depthWrite": true,
+          "alphaHash": false,
+          "lod": {
+            "start": 0,
+            "end": 0,
+            "fade": 68,
+            "max": 82
+          }
+        },
+        {
+          "name": "Forest / Leaves_NormalTree",
+          "alphaTest": 0.20000000298023224,
+          "transparent": false,
+          "depthWrite": true,
+          "alphaHash": false,
+          "lod": {
+            "start": 0,
+            "end": 0,
+            "fade": 68,
+            "max": 82
+          }
+        }
+      ]
+    },
+    {
+      "name": "CommonTree_4",
+      "parts": [
+        {
+          "name": "Forest / Bark_NormalTree",
+          "alphaTest": 0.20000000298023224,
+          "transparent": false,
+          "depthWrite": true,
+          "alphaHash": false,
+          "lod": {
+            "start": 0,
+            "end": 0,
+            "fade": 68,
+            "max": 82
+          }
+        },
+        {
+          "name": "Forest / Leaves_NormalTree",
+          "alphaTest": 0.20000000298023224,
+          "transparent": false,
+          "depthWrite": true,
+          "alphaHash": false,
+          "lod": {
+            "start": 0,
+            "end": 0,
+            "fade": 68,
+            "max": 82
+          }
+        }
+      ]
+    },
+    {
+      "name": "CommonTree_1",
+      "parts": [
+        {
+          "name": "Forest / Bark_NormalTree",
+          "alphaTest": 0.20000000298023224,
+          "transparent": false,
+          "depthWrite": true,
+          "alphaHash": false,
+          "lod": {
+            "start": 0,
+            "end": 0,
+            "fade": 68,
+            "max": 82
+          }
+        },
+        {
+          "name": "Forest / Leaves_NormalTree",
+          "alphaTest": 0.20000000298023224,
+          "transparent": false,
+          "depthWrite": true,
+          "alphaHash": false,
+          "lod": {
+            "start": 0,
+            "end": 0,
+            "fade": 68,
+            "max": 82
+          }
+        }
+      ]
+    }
+  ],
+  "trees": [],
+  "maxSoilDifference": {
+    "pixels": 1400,
+    "total": 23383
+  },
+  "gl": 0
+}

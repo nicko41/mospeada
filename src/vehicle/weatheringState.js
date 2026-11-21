@@ -1,5 +1,6 @@
-const defaults = Object.freeze({ enabled: true, accumulation: true, buildup: 1, maximum: .78, cleaning: 1, scottEnabled: true, scottBuildup: 1 })
-const limits = { buildup: [0, 4], maximum: [0, 1], cleaning: [0, 4], scottBuildup: [0, 4] }
+import { BIKE_SOIL_MAX } from './equipmentSoilLimit.js'
+const defaults = Object.freeze({ enabled: true, accumulation: true, buildup: 1, maximum: BIKE_SOIL_MAX, cleaning: 1, scottEnabled: true, scottBuildup: 1 })
+const limits = { buildup: [0, 4], maximum: [0, BIKE_SOIL_MAX], cleaning: [0, 4], scottBuildup: [0, 4] }
 let snapshot = { ...defaults, cleanRequest: 0, soilRequest: 0, bothCleanRequest: 0, bothSoilRequest: 0, front: null, rear: null, frontGrounded: false, rearGrounded: false, dirt: 0, scottDirt: 0 }
 const listeners = new Set()
 export const weatheringState = {

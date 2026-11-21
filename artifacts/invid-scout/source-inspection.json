@@ -1,0 +1,79 @@
+{
+  "source": "assets/invid/scout/invid-scout.glb",
+  "bytes": 86362304,
+  "size": [
+    1.6721120476722717,
+    1.903469979763031,
+    1.2115870118141174
+  ],
+  "min": [
+    -0.8345590233802795,
+    -0.953902006149292,
+    -0.5982149839401245
+  ],
+  "max": [
+    0.8375530242919922,
+    0.949567973613739,
+    0.6133720278739929
+  ],
+  "meshes": [
+    {
+      "name": "Mesh_0",
+      "parent": "Scene",
+      "triangles": 2689334,
+      "material": "Material_0",
+      "min": [
+        -0.8345590233802795,
+        -0.953902006149292,
+        -0.5982149839401245
+      ],
+      "max": [
+        0.8375530242919922,
+        0.949567973613739,
+        0.6133720278739929
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material_0",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "name": "Image_2",
+      "mimeType": "image/jpeg",
+      "bytes": 2182724
+    },
+    {
+      "name": "texture",
+      "mimeType": "image/png",
+      "bytes": 5081140
+    },
+    {
+      "name": "Image_1",
+      "mimeType": "image/jpeg",
+      "bytes": 1679255
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Mesh_0",
+      "mesh": 0
+    }
+  ],
+  "animations": 0,
+  "skins": 0
+}

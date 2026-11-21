@@ -1,6 +1,34 @@
 import * as THREE from 'three'
 
 const CELL_SIZE = 8
+const rayBox = new THREE.Box3(), rayPoint = new THREE.Vector3()
+
+// Distance to existing solid primitives, including cylinder end caps. Used by
+// hitscan weapons; the character and vehicle collision solvers are unchanged.
+export function rayColliderDistance(ray, collider) {
+  if (collider.type !== 'cylinder') {
+    rayBox.min.set(collider.minX, collider.minY, collider.minZ)
+    rayBox.max.set(collider.maxX, collider.maxY, collider.maxZ)
+    if (rayBox.containsPoint(ray.origin)) return 0
+    return ray.intersectBox(rayBox, rayPoint) ? ray.origin.distanceTo(rayPoint) : Infinity
+  }
+  const o = ray.origin, d = ray.direction, x = o.x - collider.x, z = o.z - collider.z
+  const a = d.x*d.x + d.z*d.z, b = x*d.x + z*d.z, c = x*x + z*z - collider.radius**2
+  let near = 0, far = Infinity
+  if (a < 1e-12) { if (c > 0) return Infinity }
+  else {
+    const discriminant = b*b-a*c
+    if (discriminant < 0) return Infinity
+    const root = Math.sqrt(discriminant)
+    near = Math.max(near, (-b-root)/a); far = Math.min(far, (-b+root)/a)
+  }
+  if (Math.abs(d.y) < 1e-12) { if (o.y < collider.minY || o.y > collider.maxY) return Infinity }
+  else {
+    const lo = (collider.minY-o.y)/d.y, hi = (collider.maxY-o.y)/d.y
+    near = Math.max(near, Math.min(lo,hi)); far = Math.min(far, Math.max(lo,hi))
+  }
+  return near <= far ? near : Infinity
+}
 const cells = new Map()
 const colliders = new Set()
 const dynamicColliders = new Set()

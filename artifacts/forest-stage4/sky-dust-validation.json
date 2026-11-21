@@ -1,0 +1,95 @@
+{
+  "dust": {
+    "active": 433,
+    "budget": 448,
+    "rate": 465.38246280525686,
+    "palette": {
+      "low": "#b77b49",
+      "high": "#e1b57b",
+      "lowOpacity": 0.32,
+      "highOpacity": 0.5
+    },
+    "colorA": {
+      "x": 0.4735314961384573,
+      "y": 0.19806931954941637,
+      "z": 0.06662593863608139,
+      "w": 0.32
+    },
+    "colorB": {
+      "x": 0.7529422167708612,
+      "y": 0.46207699964472876,
+      "z": 0.19806931954941637,
+      "w": 0.5
+    }
+  },
+  "skyCoverage": 1,
+  "sky": [],
+  "config": {
+    "enabled": true,
+    "emission": 2.4,
+    "size": 1.4,
+    "life": 1.05,
+    "gravity": 0.65,
+    "drag": 1.35,
+    "turbulence": 0.55,
+    "spread": 1,
+    "wind": 0.35,
+    "humidity": 0.08,
+    "maximum": 640,
+    "waterEnabled": true,
+    "earthEnabled": true,
+    "mudEnabled": false,
+    "water": 1,
+    "earth": 1,
+    "mud": 1,
+    "active": 433,
+    "budget": 448,
+    "rate": 465.38246280525686,
+    "rearSurface": "dirt",
+    "grounded": true,
+    "grassActive": 0,
+    "ejectaActive": 74,
+    "ejectaBudget": 384,
+    "forestWheelFX": false,
+    "grassWeight": 0,
+    "grassEnabled": false,
+    "surfaceName": "dirt",
+    "dustPalette": {
+      "low": "#b77b49",
+      "high": "#e1b57b",
+      "lowOpacity": 0.32,
+      "highOpacity": 0.5
+    },
+    "dustEmission": 0.35,
+    "dustSize": 0.65,
+    "dustLife": 0.7,
+    "dustLaunch": 0.8,
+    "mudEmission": 1.45,
+    "mudSize": 1.8,
+    "mudLife": 1.05,
+    "mudLaunch": 1.1,
+    "grassEmission": 1,
+    "grassSize": 1,
+    "grassLife": 0.45,
+    "grassLaunch": 0.65,
+    "grassGravity": 10
+  },
+  "gl": 0,
+  "render": {
+    "materials": 290,
+    "renderCalls": 712,
+    "mode": "ANIME",
+    "preparation": {
+      "startMs": 42186.09999999404,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 889.7999999970198,
+      "primeMs": 599.1000000089407,
+      "totalMs": 1488.9000000059605,
+      "programs": 68
+    },
+    "renderTriangles": 755264
+  },
+  "errors": []
+}

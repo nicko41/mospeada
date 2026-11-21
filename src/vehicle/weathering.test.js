@@ -23,7 +23,7 @@ test('wet asphalt produces water only; mud accumulates per wheel and remains aft
   assert.deepEqual(load, createSoilLoad())
   wheels.front.surface = 'dirt'
   for (let i = 0; i < 200; i++) evolveSoil(load, wheels, state, config, 1, .1, metrics)
-  assert.ok(load.frontMud > .25 && load.frontFilm > .4)
+  assert.ok(load.frontMud>.25&&load.frontMud<=1); assert.ok(load.frontFilm>.25&&load.frontFilm<=1)
   assert.equal(load.rearMud, 0); assert.equal(load.rearFilm, 0)
   const mud = load.frontMud, film = load.frontFilm
   wheels.front.surface = 'asphalt'
@@ -36,9 +36,9 @@ test('wet asphalt produces water only; mud accumulates per wheel and remains aft
 })
 
 test('rain removes film gradually, adhered mud persists, and independent toggles preserve stored dirt', () => {
-  const load = { frontMud: .6, rearMud: .6, frontFilm: .6, rearFilm: .6 }, wheels = { front: wheel('asphalt'), rear: wheel('asphalt') }
+  const load = { frontMud: .25, rearMud: .25, frontFilm: .25, rearFilm: .25 }, wheels = { front: wheel('asphalt'), rear: wheel('asphalt') }
   for (let i = 0; i < 600; i++) evolveSoil(load, wheels, { ...state, speed: 0 }, config, 1, .1, metrics)
-  assert.ok(load.frontMud > .54 && load.frontFilm < .23)
+  assert.ok(load.frontMud > .225 && load.frontFilm < .10)
   const before = { ...load }
   evolveSoil(load, wheels, state, { ...config, enabled: false }, 1, 60, metrics)
   evolveSoil(load, wheels, state, { ...config, accumulation: false }, 1, 60, metrics)
@@ -100,6 +100,11 @@ test('soil is a reversible per-piece shader layer: geometry/maps survive, lamps/
     assert.match(patched.fragmentShader, /soilCoverage/); assert.match(patched.fragmentShader, /animeBand/)
     layer.update({ frontMud: 1, rearMud: 1, frontFilm: 1, rearFilm: 1 }, { ...config, maximum: .4 })
     assert.deepEqual(layer.uniforms.uSoilLoad.value.toArray(), [.4, .4, .4, .4])
+    assert.match(shader.fragmentShader, /soilCoverage = clamp\([^;]+, 0\.0, min\(0\.79, uBikeSoilCoverageMax\)\);/, 'The bike retains the original strong coverage while transformed Armor stays independently limited')
+    layer.update({frontMud:1,rearMud:1,frontFilm:1,rearFilm:1},config,1);assert.equal(layer.uniforms.uBikeSoilCoverageMax.value,.25)
+    layer.update({frontMud:1,rearMud:1,frontFilm:1,rearFilm:1},config,0);assert.equal(layer.uniforms.uBikeSoilCoverageMax.value,.79);assert.deepEqual(layer.uniforms.uSoilLoad.value.toArray(),[1,1,1,1])
+    assert.match(shader.fragmentShader,/soilSaturation = clamp\(soilMud \/ 1\.00/)
+    assert.match(shader.fragmentShader,/soilFilm \* soilDust/,'Dry dirt must remain visible between individual splats')
     layer.update(createSoilLoad(), { ...config, accumulation: false }); assert.equal(layer.uniforms.uSoilEnabled.value, 0)
     rig.surfaces.forEach(m => assert.equal(m.geometry, geometries.get(m)))
     anime.dispose()

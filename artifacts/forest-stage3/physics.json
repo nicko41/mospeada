@@ -1,0 +1,33 @@
+{
+  "report": [
+    {
+      "fps": 30,
+      "distance": 1760.9947491351686,
+      "maxPathError": 0.11768288777684788,
+      "speed": 14.250835427293584,
+      "maneuvers": 12,
+      "lockedFraction": 0.16533333333333333,
+      "airFrames": 0
+    },
+    {
+      "fps": 60,
+      "distance": 1760.9686164202844,
+      "maxPathError": 0.11791798251901398,
+      "speed": 14.250748544976183,
+      "maneuvers": 12,
+      "lockedFraction": 0.1656,
+      "airFrames": 0
+    },
+    {
+      "fps": 120,
+      "distance": 1760.9555643606204,
+      "maxPathError": 0.11803625239754112,
+      "speed": 14.250704645620456,
+      "maneuvers": 12,
+      "lockedFraction": 0.1652,
+      "airFrames": 0
+    }
+  ],
+  "residentChunks": 8,
+  "recycles": 72
+}

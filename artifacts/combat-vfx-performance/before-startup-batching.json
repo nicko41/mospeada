@@ -1,0 +1,15 @@
+{
+  "description": "Measured in the same local test browser with local combat illumination, before batching startup preparation and removing per-frame loader material scans.",
+  "readyMs": 92917.70000000298,
+  "preparation": {
+    "startMs": 19837.90000000596,
+    "compileMs": 1448.7000000029802,
+    "primeMs": 13987.29999999702,
+    "totalMs": 15436,
+    "backgroundMs": 57552.5,
+    "startupViews": 10,
+    "startupViewsMs": 20843.10000000894
+  },
+  "globalPointLightsDuringCombat": 0,
+  "shaderError": ""
+}

@@ -8,19 +8,19 @@ async function until(code){for(let i=0;i<800;i++){if(await c.evaluate(code))retu
 try{
   if(!process.argv.includes('--reuse'))await c.send('Page.navigate',{url:'http://127.0.0.1:5173/?environment=forest'})
   await until(`!!window.__FOREST_FOLIAGE__&&!!window.__ANIME__?.state.snapshot().nightReady&&!document.querySelector('#entry-preloader')`)
-  const catalogue=await c.evaluate(`(()=>{const f=__FOREST_FOLIAGE__,meshes=[];__MOSPEADA__.scene.traverse(o=>{if(o.userData.forest&&o.isBatchedMesh)meshes.push({name:o.name,vertices:o.geometry.attributes.position.count,indices:o.geometry.index?.count,card:!!o.material.userData.forestAuthoredCard})});return{species:f.assets.filter(a=>a.kind==='tree').map(a=>a.name),meshes,loadedTreeUrls:performance.getEntriesByType('resource').map(e=>e.name).filter(n=>/models\\/glTF\\/.*Tree.*gltf|models\\/glTF\\/Pine.*gltf/.test(n))}})()`)
+  const catalogue=await c.evaluate(`(()=>{const f=__FOREST_FOLIAGE__,meshes=[];__MOSPEADA__.scene.traverse(o=>{if(o.userData.forest&&o.isBatchedMesh)meshes.push({name:o.name,vertices:o.geometry.attributes.position.count,indices:o.geometry.index?.count,variants:o.geometryVariants||1,card:!!o.material.userData.forestAuthoredCard})});return{species:f.assets.filter(a=>a.kind==='tree').map(a=>a.name),meshes,loadedTreeUrls:performance.getEntriesByType('resource').map(e=>e.name).filter(n=>/models\\/glTF\\/.*Tree.*gltf|models\\/glTF\\/Pine.*gltf/.test(n))}})()`)
   assert.ok(catalogue.species.length>=3&&catalogue.species.every(n=>/^CommonTree_[1-4]$/.test(n)))
   assert.ok(catalogue.loadedTreeUrls.every(n=>!/Pine|TwistedTree.*gltf/.test(n)))
   const far=catalogue.meshes.filter(m=>m.name.startsWith('Forest_horizon_'))
-  assert.ok(far.length>=4&&far.length<=5);assert.ok(far.every(m=>m.card&&m.vertices===4&&m.indices===6),'Every far tree/bush uses an authored alpha card, never a solid crown primitive')
+  assert.ok(far.length>=4&&far.length<=5);assert.ok(far.every(m=>m.card&&m.vertices===4*m.variants&&m.indices===6*m.variants),'Every far tree/bush uses authored alpha cards with shared recipe geometry')
   const atlases=[]
   for(const name of await c.evaluate('Array.from(__FOREST_FOLIAGE__.atlases.keys())')) {
     const result=await c.evaluate(`(()=>{
       const atlas=__FOREST_FOLIAGE__.atlases.get(${JSON.stringify(name)}),target=atlas.target,w=target.width,h=target.height,pixels=new Uint8Array(w*h*4);
       __ANIME__.renderer.readRenderTargetPixels(target,0,0,w,h,pixels);
-      const tileW=w/4,tileH=h/2,views=[],srgb=Uint8Array.from({length:256},(_,i)=>{const v=i/255;return Math.round(255*(v<=.0031308?v*12.92:1.055*Math.pow(v,1/2.4)-.055))});
-      for(let view=0;view<8;view++){
-        const x0=(view%4)*tileW,y0=Math.floor(view/4)*tileH;let opaque=0,holes=0,span=0;const colors=new Set();
+      const variants=atlas.variants||1,columns=variants>1?8:4,tileW=w/columns,tileH=h/(variants>1?variants:2),views=[],srgb=Uint8Array.from({length:256},(_,i)=>{const v=i/255;return Math.round(255*(v<=.0031308?v*12.92:1.055*Math.pow(v,1/2.4)-.055))});
+      for(let view=0;view<8*variants;view++){
+        const x0=(view%columns)*tileW,y0=Math.floor(view/columns)*tileH;let opaque=0,holes=0,span=0;const colors=new Set();
         for(let y=y0;y<y0+tileH;y++){
           let first=-1,last=-1;
           for(let x=x0;x<x0+tileW;x++){const i=(y*w+x)*4;if(pixels[i+3]>160){opaque++;if(first<0)first=x;last=x;colors.add((srgb[pixels[i]]>>2)+','+(srgb[pixels[i+1]]>>2)+','+(srgb[pixels[i+2]]>>2))}}

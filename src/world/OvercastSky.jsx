@@ -21,6 +21,9 @@ uniform float uLightning;
 uniform float uDay;
 uniform float uHighwayHaze;
 uniform float uClear;
+uniform float uIllustratedClear;
+uniform float uCoverage;
+uniform vec3 uBackdrop;
 varying vec3 vDirection;
 
 float hash(vec2 point) {
@@ -68,9 +71,12 @@ void main() {
   vec3 overcastDay = mix(dayBase, dayCloud, clouds * 0.78);
   color = mix(color, overcastDay, uDay);
   vec3 clearDay = mix(vec3(0.16, 0.38, 0.67), vec3(0.40, 0.65, 0.86), horizon);
+  vec3 illustratedBlue = mix(vec3(0.075, 0.31, 0.65), vec3(0.32, 0.61, 0.86), horizon);
+  clearDay = mix(clearDay, illustratedBlue, uIllustratedClear);
   float cloudBody = uClear > 0.5 ? fbm(cloudUv * 0.7 + vec2(uTime * 0.002, -uTime * 0.001)) : 0.0;
-  float whiteClouds = smoothstep(0.52, 0.65, cloudBody) * smoothstep(0.0, 0.08, direction.y);
+  float whiteClouds = smoothstep(mix(0.52, 0.54, uIllustratedClear), mix(0.65, 0.59, uIllustratedClear), cloudBody) * smoothstep(0.0, 0.08, direction.y);
   vec3 cloudWhite = mix(vec3(0.72, 0.81, 0.90), vec3(1.0), smoothstep(0.53, 0.72, cloudBody));
+  cloudWhite = mix(cloudWhite, mix(vec3(0.79, 0.87, 0.96), vec3(1.0), smoothstep(0.55, 0.64, cloudBody)), uIllustratedClear);
   clearDay = mix(clearDay, cloudWhite, whiteClouds);
   float sunAlignment = max(dot(direction, normalize(vec3(-25.0, 35.0, 20.0))), 0.0);
   clearDay += vec3(0.32, 0.23, 0.10) * pow(sunAlignment, 128.0);
@@ -78,32 +84,36 @@ void main() {
   color = mix(color, mix(base, clearDay, uDay), uClear);
   color += mix(vec3(0.3, 0.36, 0.4), vec3(0.19, 0.22, 0.24), uDay)
     * uLightning * (0.3 + clouds * 0.7);
-  gl_FragColor = vec4(color, 1.0);
+  gl_FragColor = vec4(mix(uBackdrop, color, uCoverage), 1.0);
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
 }
 `
 
-export default function OvercastSky() {
+export default function OvercastSky({clearSky=false,coverage=null,priority=0}) {
   const mesh = useRef()
-  const { camera } = useThree()
+  const { camera,scene } = useThree()
   const material = useMemo(() => new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
     side: THREE.BackSide,
     depthWrite: false,
     fog: false,
-    uniforms: { uTime: { value: 0 }, uLightning: { value: 0 }, uDay: { value: 0 }, uHighwayHaze: { value: 0 }, uClear: { value: 0 } },
-  }), [])
+    toneMapped: !clearSky,
+    uniforms: { uTime: { value: 0 }, uLightning: { value: 0 }, uDay: { value: 0 }, uHighwayHaze: { value: 0 }, uClear: { value: 0 },uIllustratedClear:{value:clearSky?1:0},uCoverage:{value:1},uBackdrop:{value:new THREE.Color()} },
+  }), [clearSky])
 
   useFrame((state) => {
+    mesh.current.visible=!coverage||coverage.value>.001
     mesh.current.position.copy(camera.position)
     material.uniforms.uTime.value = state.clock.elapsedTime
-    material.uniforms.uLightning.value = lightningState.flash
+    material.uniforms.uLightning.value = clearSky?0:lightningState.flash
     material.uniforms.uDay.value = timeOfDayState.value
-    material.uniforms.uClear.value = weatherState.clear
-    material.uniforms.uHighwayHaze.value = highwayFogState.darkness * (1 - timeOfDayState.value)
-  })
+    material.uniforms.uClear.value = clearSky?1:weatherState.clear
+    material.uniforms.uHighwayHaze.value = clearSky?0:highwayFogState.darkness * (1 - timeOfDayState.value)
+    material.uniforms.uCoverage.value=coverage?.value??1
+    if(scene.background?.isColor)material.uniforms.uBackdrop.value.copy(scene.background)
+  },priority)
 
   return (
     <mesh ref={mesh} material={material} renderOrder={-10} frustumCulled={false}>

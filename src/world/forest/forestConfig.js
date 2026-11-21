@@ -3,7 +3,8 @@ export const FOREST = Object.freeze({
   seed: 19830902, size: 800, segments: 200,
   clearingRadius: 13, pathHalfWidth: 4.6,
   trees: 4200, shrubs: 11000, grass: 58000, plants: 6500, rocks: 480, pebbles: 1800,
-  treeDetailFadeStart: 68, treeDetailDistance: 82, treeFadeStart: 300, treeDistance: 340,
+  canopyFullDetailStart:130,canopyFullDetailDistance:150,
+  treeDetailFadeStart: 230, treeDetailDistance: 260,treeLodHysteresis:10, treeFadeStart: 300, treeDistance: 340,
   shrubDetailFadeStart: 50, shrubDistance: 62, shrubFarFadeStart: 145, shrubFarDistance: 175, grassDistance: 48, propDistance: 105,
   groveBands: [
     { layer: 'foreground', count: 200, radius: [20, 95], groves: 20, spread: [6, 16] },

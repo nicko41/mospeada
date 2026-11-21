@@ -1,5 +1,6 @@
 import { Box3, Color, Vector3, Vector4 } from 'three'
 import { soilDeclarations } from './soilShader.js'
+import { EQUIPMENT_SOIL_MAX, equipmentSoil } from './equipmentSoilLimit.js'
 
 export function scottRegion(name) {
   if (/Foot|ToeBase/.test(name)) return new Vector4(1, 0, 0, 0)
@@ -52,7 +53,7 @@ if (uSoilEnabled > .5) {
     float fine = soilPattern(p, n, 38.0);
     float noise = soilNoise(p * 12.0 + 4.1);
     float scottPatch = smoothstep(.76 - mud * .43, .9 - mud * .43, noise);
-    soilCoverage = clamp((mud * scottPatch * 1.45 + mud * fine * .52 + film * fine * .48), 0.0, .76);
+    soilCoverage = clamp((mud * scottPatch * 1.45 + mud * fine * .52 + film * fine * .48), 0.0, ${EQUIPMENT_SOIL_MAX});
     diffuseColor.rgb = mix(diffuseColor.rgb, mix(uSoilDark, uSoilLight, soilNoise(p * 26.0) * .8), soilCoverage);
   }
 }
@@ -72,7 +73,7 @@ export class ScottSoilLayer {
       for (const source of new Set([skin.original, skin.clean])) {
         const material = source.clone(), compile = source.onBeforeCompile, key = source.customProgramCacheKey()
         material.onBeforeCompile = (shader, renderer) => { compile.call(source, shader, renderer); Object.assign(shader.uniforms, uniforms); patchScottSoilShader(shader, bones.length) }
-        material.customProgramCacheKey = () => key + '|mospeada-scott-soil-v1-' + bones.length
+        material.customProgramCacheKey = () => key + '|mospeada-scott-soil-v2-' + bones.length
         variants.set(source, material)
       }
       this.records.push({ mesh: skin.mesh, variants, uniforms })
@@ -88,8 +89,8 @@ export class ScottSoilLayer {
     this.install()
     this.uniforms.uSoilEnabled.value = config.enabled && config.scottEnabled ? 1 : 0
     const keys = ['boots', 'legs', 'arms', 'torso']
-    this.uniforms.uScottMud.value.set(...keys.map(k => Math.min(config.maximum, load[k + 'Mud'])))
-    this.uniforms.uScottFilm.value.set(...keys.map(k => Math.min(config.maximum, load[k + 'Film'])))
+    this.uniforms.uScottMud.value.set(...keys.map(k => equipmentSoil(load[k + 'Mud'], config.maximum)))
+    this.uniforms.uScottFilm.value.set(...keys.map(k => equipmentSoil(load[k + 'Film'], config.maximum)))
   }
   dispose() {
     for (const r of this.records) for (const [source, material] of r.variants) { if (r.mesh.material === material) r.mesh.material = source; material.dispose() }

@@ -1,0 +1,153 @@
+{
+  "dirt": {
+    "kind": "dirt",
+    "stats": {
+      "active": 346,
+      "emitted": 346,
+      "recycled": 0
+    },
+    "cpuMsPerUpdate": 0.5526666664083799,
+    "speed": 30.355423495554806,
+    "boostCount": 1,
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": "forest",
+        "earthWeight": 1
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": "forest",
+        "earthWeight": 1
+      }
+    },
+    "position": [
+      -16.454659883177737,
+      -0.17487241884218974,
+      -54.801627093940965
+    ],
+    "buffers": 16384,
+    "triangles": 692,
+    "visiblePixels": 20622
+  },
+  "mud": {
+    "kind": "mud",
+    "stats": {
+      "active": 346,
+      "emitted": 692,
+      "recycled": 0
+    },
+    "cpuMsPerUpdate": 0.5006666668256123,
+    "speed": 30.355423495554806,
+    "boostCount": 1,
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": "forest",
+        "earthWeight": 1
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": "forest",
+        "earthWeight": 1
+      }
+    },
+    "position": [
+      -16.454659883177737,
+      -0.17487241884218974,
+      -54.801627093940965
+    ],
+    "buffers": 16384,
+    "triangles": 692,
+    "visiblePixels": 21040
+  },
+  "grass": {
+    "kind": "grass",
+    "stats": {
+      "active": 346,
+      "emitted": 1038,
+      "recycled": 0
+    },
+    "cpuMsPerUpdate": 0.537333333392938,
+    "speed": 30.009570763512656,
+    "boostCount": 1,
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": "forest",
+        "earthWeight": 0
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": "forest",
+        "earthWeight": 0
+      }
+    },
+    "position": [
+      10,
+      0.23749069682938767,
+      -37.473989373797124
+    ],
+    "buffers": 16384,
+    "triangles": 692,
+    "visiblePixels": 27532
+  },
+  "sand": {
+    "kind": "sand",
+    "stats": {
+      "active": 346,
+      "emitted": 1384,
+      "recycled": 0
+    },
+    "cpuMsPerUpdate": 0.9993333328763644,
+    "speed": 30.354354064555398,
+    "boostCount": 1,
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": "desert",
+        "earthWeight": 1
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": "desert",
+        "earthWeight": 1
+      }
+    },
+    "position": [
+      4.6597256373504155e-15,
+      -28.19758478731639,
+      -3338.049547351897
+    ],
+    "buffers": 16384,
+    "triangles": 692,
+    "visiblePixels": 24108
+  },
+  "persistence": {
+    "before": {
+      "active": 346,
+      "emitted": 1384,
+      "recycled": 0
+    },
+    "after": {
+      "active": 346,
+      "emitted": 1384,
+      "recycled": 0
+    },
+    "historyBroken": true
+  },
+  "live": {
+    "active": 144,
+    "speed": 24.029705518347658
+  },
+  "transformation": {
+    "phase": "wheelie",
+    "active": 144,
+    "broken": true
+  },
+  "integrity": {
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

@@ -9,6 +9,7 @@ import { weatherState } from '../world/weatherState.js'
 import { ScottSoilLayer } from './ScottSoilLayer.js'
 import { createScottSoilLoad, evolveScottSoil, scottSoilRegions } from './scottSoilModel.js'
 import { vfxState } from '../vfx/vfxState.js'
+import { equipmentSoil } from './equipmentSoilLimit.js'
 
 export default function CycloneWeathering({ rig, runtime }) {
   const effect = useMemo(() => ({ layer: new CycloneSoilLayer(rig), contacts: new WheelContacts(rig, sampleRideHeight), load: createSoilLoad(), accumulationTime: 0, publishTime: 0, cleanRequest: store.snapshot().cleanRequest, soilRequest: store.snapshot().soilRequest }), [rig])
@@ -30,7 +31,7 @@ export default function CycloneWeathering({ rig, runtime }) {
     if (config.bothSoilRequest !== effect.bothSoilRequest) {
       effect.bothSoilRequest = config.bothSoilRequest
       const gains = { boots: 1, legs: .85, arms: .5, torso: .3 }
-      for (const key of scottSoilRegions) { effect.scottLoad[key + 'Mud'] = config.maximum * gains[key]; effect.scottLoad[key + 'Film'] = config.maximum * gains[key] * .65 }
+      for (const key of scottSoilRegions) { effect.scottLoad[key + 'Mud'] = equipmentSoil(config.maximum) * gains[key]; effect.scottLoad[key + 'Film'] = equipmentSoil(config.maximum) * gains[key] * .65 }
     }
     if (config.cleanRequest !== effect.cleanRequest) { effect.cleanRequest = config.cleanRequest; Object.assign(effect.load, createSoilLoad()) }
     if (config.soilRequest !== effect.soilRequest) {
@@ -44,7 +45,7 @@ export default function CycloneWeathering({ rig, runtime }) {
       if (effect.scottLayer) evolveScottSoil(effect.scottLoad, effect.scottLayer.sampleBody(), wheels, state, config, weatherState.rainIntensity, humidity, effect.accumulationTime)
       effect.accumulationTime = 0
     }
-    effect.layer.update(effect.load, config)
+    effect.layer.update(effect.load, config,runtime.armorController?.active?1:runtime.transformEntry?.poseBlend||0)
     effect.scottLayer?.update(effect.scottLoad, config)
     effect.publishTime += delta
     if (effect.publishTime > .15) {

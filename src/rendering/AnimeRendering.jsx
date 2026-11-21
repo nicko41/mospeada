@@ -12,7 +12,7 @@ import {canPrepareLighting} from './renderPreparation.js'
 export default function AnimeRendering() {
   const { gl, scene, camera } = useThree(), controller = useRef(null)
   useLayoutEffect(() => {
-    animeState.set({ ready: false, nightReady: false, error: '' })
+    animeState.set({ ready: false, openingReady: false, nightReady: false, error: '' })
     const effect = new AnimeRenderer(gl, scene, camera); controller.current = effect
     effect.allowBackgroundWork=()=>!frontTransformState.snapshot().entryRunning&&forestOpeningState.snapshot().phase!=='playing'
     effect.startupViews=()=>forestOpeningState.startupViews()
@@ -37,17 +37,17 @@ export default function AnimeRendering() {
     const config = animeState.snapshot()
     const openingPhase=forestOpeningState.snapshot().phase
     effect.brush.tick(delta, true, timeOfDayState.value, rideMotion.speed, rideMotion.paused)
-    const hiddenPreparation=openingPhase==='loading'&&!desktopInput.ready&&effect.ready&&!effect.nightReady&&!effect.error
-    if(hiddenPreparation){
-      // The loader is opaque. Leave the first frame intact and let the tiny
-      // preparation draws use the GPU instead of competing with full frames.
-      effect.collect();effect.sync()
-    }else effect.render(config, timeOfDayState.value)
-    // Forest's opening waits for both lighting variants. Start this under the
-    // loader too; waiting for game-ready here would deadlock that readiness.
+    const hiddenPreparation=openingPhase==='loading'&&!desktopInput.ready&&effect.ready&&!effect.openingReady&&!effect.error
+    // The opaque loader retains the first frame. Preparation refreshes its own
+    // bindings; traversing all materials at 60 Hz here starves compilation.
+    if(!hiddenPreparation)effect.render(config, timeOfDayState.value)
+    // Only the current lighting/cinematic views belong to the loading gate.
+    // Alternate lighting is optional background work after the opening ends.
+    if(effect.ready&&!effect.openingReady&&!effect.error)effect.prepareOpening()
     if(canPrepareLighting(effect.ready,desktopInput.ready,openingPhase))effect.prepareNight()
     if (effect.error && !animeState.snapshot().error) animeState.set({ error: 'No se pudo preparar el renderizado Anime.' })
     if (effect.ready !== animeState.snapshot().ready) animeState.set({ ready: effect.ready })
+    if (!!effect.openingReady !== animeState.snapshot().openingReady) animeState.set({ openingReady: !!effect.openingReady })
     if (!!effect.nightReady !== animeState.snapshot().nightReady) animeState.set({ nightReady: !!effect.nightReady })
   }, 1)
   return null

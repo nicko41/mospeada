@@ -1,0 +1,95 @@
+{
+  "source": "assets/scott-cyclone/weapons/mars-gallant.glb",
+  "output": "public/models/mospeada/mars-gallant.glb",
+  "sourceSha256": "de97af4d69e3f1311ec36bea6eeec040e450b5d97533839426bf0467319aee4b",
+  "runtimeSha256": "5fc7a610b5c94b71c95a5d0f8cd9a867e03b69c1c7dec82086d0c195ec6da277",
+  "sourceBytes": 25178756,
+  "runtimeBytes": 3299312,
+  "size": [
+    1.9033389687538147,
+    1.5434210300445557,
+    0.3641660064458847
+  ],
+  "min": [
+    -0.9522809982299805,
+    -0.7735610008239746,
+    -0.18213200569152832
+  ],
+  "max": [
+    0.9510579705238342,
+    0.769860029220581,
+    0.18203400075435638
+  ],
+  "orientation": {
+    "up": "+Y",
+    "barrel": "-X",
+    "thickness": "Z"
+  },
+  "referenceLengthMetres": 0.34,
+  "scale": 0.17863344658077926,
+  "parts": [
+    {
+      "sourceTriangles": 271874,
+      "runtimeTriangles": 29998,
+      "vertices": 22519,
+      "relativePositionError": 0.0008097061654552817,
+      "metresErrorAt34cm": 0.00027530008763354405
+    }
+  ],
+  "hierarchy": [
+    {
+      "id": 0,
+      "mesh": 0,
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "baseColorTexture": {
+          "index": 0,
+          "texCoord": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1,
+          "texCoord": 0
+        }
+      },
+      "normalTexture": {
+        "index": 2,
+        "texCoord": 0
+      },
+      "alphaMode": "OPAQUE",
+      "doubleSided": true
+    }
+  ],
+  "texturesPreserved": 3,
+  "textureMaximumSize": 2048,
+  "animations": 0,
+  "skins": 0
+}

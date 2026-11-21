@@ -33,6 +33,7 @@ export class FrontTransformEntry {
   }
   stage(phase){this.phase=phase;this.time=0;this.publish()}
   request() {
+    if(this.runtime.stage3?.encounter.active)return
     if(!this.store.snapshot().ready)return
     const s=this.runtime.state
     if(this.returnFlight)return
@@ -189,15 +190,10 @@ export class FrontTransformEntry {
       if(this.time>=POSE_TIME){this.poseBlend=1;this.store.set({progress:0,direction:1,playing:true});this.stage('transforming')}
     }
     else if(this.phase==='transforming'&&this.store.snapshot().progress>=1){
-      // A second, presentation-only impulse launches Scott and his armor.
-      // The unfinished wheels/chassis and ordinary driving physics stay put.
-      this.departure.set(Math.sin(s.yaw)*7.5,2.4,Math.cos(s.yaw)*7.5)
-      this.armorBoostCount++;this.stage('armorboost')
-    }
-    else if(this.phase==='armorboost'){
-      const t=clamp(this.time/.65),travel=(1-Math.exp(-3*t))/(1-Math.exp(-3))
-      this.actorOffset.copy(this.departure).multiplyScalar(travel)
-      if(t>=1)this.stage('complete')
+      // Assembly completion releases Armor controls immediately. No final
+      // cinematic boost, leg-opening gesture or presentation-only travel.
+      this.actorOffset.set(0,0,0);this.departure.set(0,0,0)
+      this.stage('complete')
     }
     else if(this.phase==='reversing'){
       const p=this.store.snapshot().progress

@@ -1,0 +1,60 @@
+{
+  "pose": {
+    "mode": "ARMOR_GROUND",
+    "visible": true,
+    "sameWeapon": true,
+    "wrist": 0,
+    "aimBlend": 0.9999921782324526,
+    "drawCalls": 718
+  },
+  "hit": {
+    "enemyHits": 1,
+    "health": 75,
+    "shots": 3,
+    "vfx": {
+      "shots": 3,
+      "hits": 3,
+      "explosions": 0
+    },
+    "flash": 4
+  },
+  "cover": {
+    "hits": 1,
+    "shots": 4
+  },
+  "hurt": {
+    "health": 90,
+    "hitVersion": 1,
+    "moved": 1.3547124918701703,
+    "hurt": 0,
+    "active": true
+  },
+  "soil": {
+    "maximum": 0.25,
+    "gear": [
+      0.25,
+      0.25,
+      0.175,
+      0.175
+    ],
+    "scottMud": [
+      0.25,
+      0.2125,
+      0.125,
+      0.075
+    ],
+    "scottFilm": [
+      0.1625,
+      0.138125,
+      0.08125,
+      0.04875
+    ]
+  },
+  "returned": {
+    "phase": "idle",
+    "armor": false,
+    "weapon": false,
+    "gl": 0
+  },
+  "errors": []
+}

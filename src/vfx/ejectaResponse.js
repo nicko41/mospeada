@@ -3,7 +3,7 @@ const clamp = (x, a, b) => Math.max(a, Math.min(b, x))
 export function ejectaResponse(wheel, state, side, config, rain, distance, frameSeconds) {
   const speed = Math.abs(state.speed || 0), rolling = Math.abs(state[side + 'AngularSpeed'] || 0) * wheel.radius
   const slide = Math.min(2, Math.abs(state.slip || 0) + Math.abs(state.rearLateralVelocity || 0) / 12)
-  const force = Math.min(1.5, Math.abs(state.acceleration || 0) / 16 + (state.brakeBlend || 0) * .5 + (state.handbrake || 0) * .8)
+  const force = Math.min(1.5, Math.abs(state.acceleration || 0) / 16 + (state.brakeBlend || 0) * .5 + (state.handbrake || 0) * .8 + (state.boostBlend || 0) * .8)
   const moving = clamp((speed - .2) / 1.8, 0, 1), humidity = config.humidity
   const lod = distance > 75 ? 0 : distance > 40 ? .2 : distance > 22 ? .5 : 1
   const performance = frameSeconds > .085 ? .55 : frameSeconds > .045 ? .75 : 1

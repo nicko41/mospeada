@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {
+      "name": "late-right",
+      "distance": 1730.8207603410665,
+      "offsetX": 700,
+      "phase": "active",
+      "time": 4.30840000000596,
+      "count": 5,
+      "instances": 5,
+      "shots": 3,
+      "onScreen": 5,
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

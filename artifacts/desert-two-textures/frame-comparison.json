@@ -1,0 +1,16 @@
+{
+  "before": {
+    "meanMs": 40.78133333341296,
+    "p95Ms": 55.60000000000582,
+    "drawCalls": 709,
+    "triangles": 701594
+  },
+  "after": {
+    "meanMs": 42.84800000007963,
+    "p95Ms": 48.79999999998836,
+    "drawCalls": 709,
+    "triangles": 701594
+  },
+  "edgeSoftness": 0.14,
+  "gl": 0
+}

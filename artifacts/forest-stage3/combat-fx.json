@@ -1,0 +1,101 @@
+{
+  "firstHit": {
+    "stats": {
+      "shots": 1,
+      "hits": 1,
+      "explosions": 0
+    },
+    "hp": [
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "flashCount": 4,
+    "beams": 1
+  },
+  "death": {
+    "stats": {
+      "shots": 3,
+      "hits": 3,
+      "explosions": 1
+    },
+    "drones": [
+      {
+        "hp": 0,
+        "dead": true
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      },
+      {
+        "hp": 3,
+        "dead": false
+      }
+    ],
+    "sparks": [
+      0,
+      28
+    ],
+    "blasts": 1,
+    "render": {
+      "materials": 291,
+      "renderCalls": 723,
+      "mode": "ANIME",
+      "preparation": {
+        "startMs": 18848.09999999404,
+        "initialMode": "ANIME",
+        "initialNight": false,
+        "initialGLError": 0,
+        "compileMs": 710.2000000029802,
+        "primeMs": 2266.0999999940395,
+        "totalMs": 2976.2999999970198,
+        "programs": 67,
+        "backgroundMs": 24121.29999999702
+      },
+      "renderTriangles": 1278882
+    },
+    "glError": ""
+  },
+  "errors": []
+}

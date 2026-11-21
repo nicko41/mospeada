@@ -1,0 +1,82 @@
+{
+  "handoff": {
+    "phase": "complete",
+    "kills": 11,
+    "worldBound": true,
+    "anchor": {
+      "x": 24,
+      "y": 8.899579048156738,
+      "z": -1504
+    },
+    "preparationPeakMs": 11.399999991059303,
+    "speed": 14.089827933106777,
+    "z": -1324.1986434677926,
+    "yaw": 3.0239774357229847,
+    "orbit": true,
+    "gallant": false
+  },
+  "airborne": {
+    "x": 21.421974285875102,
+    "z": -2125.4947088482227,
+    "height": 10.234676310136862,
+    "airborne": true,
+    "vy": -0.9156,
+    "d": 621.4947088482227,
+    "speed": 29.965564893449095
+  },
+  "landing": {
+    "height": -19.112435151844135,
+    "speed": 33.59249159571074,
+    "airborne": false,
+    "front": true,
+    "rear": true,
+    "vy": 0.022842081631006345,
+    "d": 700.2892833469491,
+    "recoveries": 0,
+    "fx": {
+      "enabled": true,
+      "emission": 1,
+      "size": 1,
+      "life": 1,
+      "gravity": 0.65,
+      "drag": 1.35,
+      "turbulence": 0.55,
+      "spread": 1,
+      "wind": 0.35,
+      "humidity": 0.7,
+      "maximum": 640,
+      "waterEnabled": true,
+      "earthEnabled": true,
+      "mudEnabled": true,
+      "water": 1,
+      "earth": 1,
+      "mud": 1,
+      "active": 291,
+      "budget": 640,
+      "rate": 297.51353566321654,
+      "rearSurface": "dirt",
+      "grounded": true,
+      "grassActive": 0,
+      "ejectaActive": 75,
+      "ejectaBudget": 512
+    },
+    "render": {
+      "materials": 291,
+      "renderCalls": 731,
+      "mode": "ANIME",
+      "preparation": {
+        "startMs": 41871,
+        "initialMode": "ANIME",
+        "initialNight": false,
+        "initialGLError": 0,
+        "compileMs": 843.5,
+        "primeMs": 2550.5,
+        "totalMs": 3394,
+        "programs": 67,
+        "backgroundMs": 23611.79999999702
+      },
+      "renderTriangles": 754374
+    }
+  },
+  "errors": []
+}

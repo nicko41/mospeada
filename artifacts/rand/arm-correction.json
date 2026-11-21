@@ -1,0 +1,33 @@
+{
+  "source": "assets/rand-cyclone/rand-casual-rigged.glb",
+  "output": "assets/rand-cyclone/rand-casual-rigged-adjusted.glb",
+  "lengthFactor": 1.18,
+  "radialFactor": 0.94,
+  "changes": [
+    {
+      "name": "mixamorigLeftForeArm",
+      "oldLength": 14.791894912802857,
+      "newLength": 17.45443599710737
+    },
+    {
+      "name": "mixamorigLeftHand",
+      "oldLength": 14.10997200012207,
+      "newLength": 16.649766960144042
+    },
+    {
+      "name": "mixamorigRightForeArm",
+      "oldLength": 13.693155288887578,
+      "newLength": 16.157923240887342
+    },
+    {
+      "name": "mixamorigRightHand",
+      "oldLength": 15.802228927925404,
+      "newLength": 18.646630134951977
+    }
+  ],
+  "affected": 4045,
+  "untouched": 11432,
+  "weightsPreserved": true,
+  "materialsAndImagesPreserved": true,
+  "sourceSha256": "e000f81dd1ca83153a897865220c7b94b92d711036b635acf26e4f47dfc6b32d"
+}

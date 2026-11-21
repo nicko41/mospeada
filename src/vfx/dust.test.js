@@ -18,6 +18,38 @@ function fixture() {
 }
 function tick(f, w, s = state, c = config, dt = 1 / 60, distance = 3, frame = dt) { f.dust.update(dt, w, s, c, distance, 1, frame, f.runtime) }
 
+test('Scott and Rand share one dust atlas/material/geometry/buffer and integrate each particle only once',()=>{
+  const f=fixture(),rand=f.runtime.register('rand',new DustTrail({shared:f.dust})),sw=wheel(),rw=wheel(),sc={...config,maximum:90},rc={...config,maximum:38}
+  rw.position.x=30
+  try{
+    assert.equal(rand.atlas,f.dust.atlas);assert.equal(rand.material,f.dust.material);assert.equal(rand.geometry,f.dust.geometry)
+    assert.equal(rand.batch,f.dust.batch);assert.equal(f.runtime.renderer.batches.length,1)
+    const buffer=rand.batch.instanceBuffer
+    for(let i=0;i<180;i++){
+      sw.position.z+=.3;rw.position.z+=.3
+      rand.prepare(rw,state,rc,3,1,1/60);f.dust.update(1/60,sw,state,sc,3,1,1/60,f.runtime,rand)
+      assert.ok(rand.system.particleNum<=38&&f.dust.system.particleNum<=90)
+      assert.ok(rand.system.particleNum+f.dust.system.particleNum<=128)
+    }
+    assert.ok(rand.emitted>30&&f.dust.emitted>30)
+    const scottStopped={...state,speed:0,rearAngularSpeed:0},scottEmitted=f.dust.emitted,randEmitted=rand.emitted
+    for(let i=0;i<120;i++){rand.prepare(rw,state,rc,3,1,1/60);f.dust.update(1/60,sw,scottStopped,sc,3,1,1/60,f.runtime,rand)}
+    assert.equal(f.dust.emitted,scottEmitted);assert.ok(rand.emitted>randEmitted)
+    assert.equal(f.dust.batch.visible,true,'Scott stopping must not hide Rand’s shared dust batch')
+    const particle=rand.system.particles[0],age=particle.age,position=particle.position.clone(),emitted=rand.emitted
+    const stopped={...state,speed:0,rearAngularSpeed:0}
+    rand.prepare(rw,stopped,rc,3,1,.01);f.dust.update(.01,sw,stopped,sc,3,1,.01,f.runtime,rand)
+    assert.ok(Math.abs(particle.age-age-.01)<1e-6,'Second emitter never advances the shared runtime again')
+    assert.ok(particle.position.x>20,'Rand particles originate at his own wheel, not Scott’s')
+    assert.ok(particle.position.distanceTo(position)>0);assert.equal(rand.emitted,emitted)
+    const paused=particle.position.clone();rand.prepare(rw,stopped,rc,3,1,.01);f.dust.update(0,sw,stopped,sc,3,1,.01,f.runtime,rand);assert.deepEqual(particle.position,paused)
+    rand.stopEmission()
+    for(let i=0;i<480;i++)f.dust.update(1/60,sw,stopped,sc,3,1,1/60,f.runtime,rand)
+    assert.equal(rand.system.particleNum+f.dust.system.particleNum,0);assert.equal(f.dust.batch.visible,false)
+    assert.equal(rand.batch.instanceBuffer,buffer);assert.equal(f.runtime.renderer.batches.length,1)
+  }finally{f.runtime.dispose()}
+})
+
 test('dust uses tagged dry dirt, independent humidity and real rear-wheel contact; driving inputs remain unchanged', () => {
   const w = wheel(), saved = JSON.stringify(state)
   const dry = dustResponse(w, state, config, 3)

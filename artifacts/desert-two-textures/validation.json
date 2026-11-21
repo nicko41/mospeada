@@ -1,0 +1,45 @@
+{
+  "settings": {
+    "sandShare": 0.6,
+    "detailTileMetres": 12,
+    "sandTileMetres": 8.8,
+    "maskMetres": 32,
+    "edgeSoftness": 0.075
+  },
+  "sandShare": 0.6,
+  "primary": {
+    "name": "",
+    "width": 1774,
+    "height": 887,
+    "colorSpace": "srgb",
+    "mipmaps": true,
+    "anisotropy": 8
+  },
+  "sand": {
+    "name": "",
+    "width": 1672,
+    "height": 941,
+    "colorSpace": "srgb",
+    "mipmaps": true,
+    "anisotropy": 8
+  },
+  "transparent": false,
+  "render": {
+    "materials": 290,
+    "renderCalls": 710,
+    "mode": "ANIME",
+    "preparation": {
+      "startMs": 20598.29999999702,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 987.7000000029802,
+      "primeMs": 970,
+      "totalMs": 1957.7000000029802,
+      "programs": 68
+    },
+    "renderTriangles": 698594
+  },
+  "gl": 0,
+  "errors": []
+}

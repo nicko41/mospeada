@@ -1,0 +1,61 @@
+{
+  "startup": {
+    "readyMs": 22903.5,
+    "preparation": {
+      "startMs": 17469,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 1054.7000000029802,
+      "primeMs": 1019.3999999910593,
+      "totalMs": 2074.0999999940395,
+      "programs": 85,
+      "startupViews": 10,
+      "startupViewsMs": 1811.7000000029802,
+      "backgroundMs": 3291.5
+    },
+    "programs": 169,
+    "preparationObjects": 79,
+    "maxTaskMs": 7780,
+    "tasks": 21
+  },
+  "activation": [
+    {
+      "visible": false,
+      "lights": 0,
+      "ms": 22.299999997019768,
+      "programsAdded": 0
+    },
+    {
+      "visible": true,
+      "lights": 0,
+      "ms": 24.900000005960464,
+      "programsAdded": 0
+    },
+    {
+      "visible": false,
+      "lights": 0,
+      "ms": 22,
+      "programsAdded": 0
+    },
+    {
+      "visible": true,
+      "lights": 0,
+      "ms": 24.399999991059303,
+      "programsAdded": 0
+    }
+  ],
+  "encounter": {
+    "phase": "active",
+    "time": 3.6658999999910598,
+    "frames": 65,
+    "p95Ms": 131.90000000000146,
+    "maxFrameMs": 215.29999999999927,
+    "shots": 8,
+    "enemyShots": 6,
+    "maxTaskMs": 218,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

@@ -1,0 +1,52 @@
+{
+  "bike": {
+    "source": "assets/rand-cyclone/cyclone-rand.glb",
+    "output": "public/models/mospeada/rand-cyclone.glb",
+    "sha256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c"
+  },
+  "rider": {
+    "source": "C:\\IT-UP\\MOSPEADA\\assets\\rand-cyclone\\rand-casual-rigged-adjusted.glb",
+    "output": "public/models/mospeada/rand-casual-rigged.glb",
+    "sha256": "86f3c52ffad57b6d54106282bcce91613ee2bfccc3d4c7b5fafe309e17ed5f4f",
+    "bones": [
+      [
+        "mixamorig:Hips",
+        "mixamorig:Spine",
+        "mixamorig:Spine1",
+        "mixamorig:Spine2",
+        "mixamorig:Neck",
+        "mixamorig:Head",
+        "mixamorig:HeadTop_End",
+        "headfront",
+        "mixamorig:LeftShoulder",
+        "mixamorig:LeftArm",
+        "mixamorig:LeftForeArm",
+        "mixamorig:LeftHand",
+        "mixamorig:RightShoulder",
+        "mixamorig:RightArm",
+        "mixamorig:RightForeArm",
+        "mixamorig:RightHand",
+        "mixamorig:LeftUpLeg",
+        "mixamorig:LeftLeg",
+        "mixamorig:LeftFoot",
+        "mixamorig:LeftToeBase",
+        "mixamorig:RightUpLeg",
+        "mixamorig:RightLeg",
+        "mixamorig:RightFoot",
+        "mixamorig:RightToeBase"
+      ]
+    ],
+    "animations": [
+      "Running",
+      "Walking",
+      "Catching_Breath",
+      "Crouch_and_Step_Back",
+      "Walk_Slowly_and_Look_Around",
+      "walking_2",
+      "walking_2_inplace"
+    ],
+    "materials": [
+      "BakedMaterial"
+    ]
+  }
+}

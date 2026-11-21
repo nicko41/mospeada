@@ -1,4 +1,5 @@
 import { wheelActivity } from './weatheringModel.js'
+import { equipmentSoil } from './equipmentSoilLimit.js'
 
 export const scottSoilRegions = ['boots', 'legs', 'arms', 'torso']
 export function createScottSoilLoad() { return Object.fromEntries(scottSoilRegions.flatMap(k => [[k + 'Mud', 0], [k + 'Film', 0]])) }
@@ -24,7 +25,7 @@ export function evolveScottSoil(load, samples, wheels, state, config, rain, humi
       rate += a.moving * (.013 + Math.min(40, a.speed) * .001) * (1 + a.slip * .55 + a.force * .35) * exposure * gains[region] * config.scottBuildup
     }
     const wet = Math.max(0, Math.min(1, humidity)), water = Math.max(0, Math.min(1, rain))
-    load[region + 'Mud'] = Math.min(config.maximum, load[region + 'Mud'] * Math.exp(-water * config.cleaning * .0014 * dt) + rate * wet * .65 * dt)
-    load[region + 'Film'] = Math.min(config.maximum, load[region + 'Film'] * Math.exp(-water * config.cleaning * .017 * dt) + rate * (1 - wet * .3) * dt)
+    load[region + 'Mud'] = equipmentSoil(load[region + 'Mud'] * Math.exp(-water * config.cleaning * .0014 * dt) + rate * wet * .65 * dt, config.maximum)
+    load[region + 'Film'] = equipmentSoil(load[region + 'Film'] * Math.exp(-water * config.cleaning * .017 * dt) + rate * (1 - wet * .3) * dt, config.maximum)
   }
 }

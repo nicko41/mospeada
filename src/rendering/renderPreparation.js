@@ -1,10 +1,10 @@
 import { HalfFloatType, LinearSRGBColorSpace, NoColorSpace, RedFormat, UnsignedByteType, WebGLRenderTarget } from 'three'
 
 export function startupRenderReady(render,openingPhase){
-  return !!render.error||!!render.ready&&(openingPhase==='done'||!!render.nightReady)
+  return !!render.error||!!render.ready&&(openingPhase==='done'||!!render.openingReady)
 }
 export function canPrepareLighting(ready,gameReady,openingPhase){
-  return !!ready&&openingPhase!=='playing'&&(gameReady||openingPhase==='loading')
+  return !!ready&&!!gameReady&&openingPhase==='done'
 }
 
 // These targets are only for hidden preparation draws. The live render target,
@@ -21,5 +21,5 @@ export function createPreparationTargets(samples = 0) {
 // Hero, glass, shadow mask and upholstery shine are uniforms. Their values
 // require separate material instances, but not separately compiled programs.
 export function animeProgramKey(profile) {
-  return `mospeada-anime-v2|grass:${!!profile.grass}|brush:${!!profile.brush}${profile.natural ? '|natural:true' : ''}`
+  return `mospeada-anime-v3-combat-flash|grass:${!!profile.grass}|brush:${!!profile.brush}${profile.natural ? '|natural:true' : ''}`
 }
