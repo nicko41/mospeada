@@ -7,8 +7,13 @@ import {worldFoliageSector} from './forestFoliageWorldRendering.js'
 import {FOLIAGE_CATALOG} from './foliageCatalog.js'
 import {forestRandom} from './forestLayout.js'
 import {forestLodRange} from './forestLod.js'
-import {registerRideSurfaces,refreshRideSurfaceGeometry} from '../../vehicle/rideSurface.js'
+import {registerRideSurfaces,refreshRideSurfaceGeometry,sampleRideHeight} from '../../vehicle/rideSurface.js'
 import {registerColliders,cylinderCollider} from '../../player/collisionWorld.js'
+import {DESERT_CLIMAX} from './forestClimaxConfig.js'
+import {DesertClimaxPlain} from './DesertClimaxPlain.js'
+import {createForestSideLayout,createSideBoundaryLibrary,createSideBoundaryColliders,forestPerimeterExtent,ForestSideBoundaryBand} from './forestSideBoundaries.js'
+
+function boundaryWidth(z,side,anchor=null){const t=smooth4(0,260,-z),at=(anchor?.z||0)+z,extent=forestPerimeterExtent(at,side,256)*(1-t)+forestPerimeterExtent(at,side,S.halfWidth)*t;return extent-side*(stage4Path(z,anchor)+(1-t)*(anchor?.x||0))}
 
 export class ForestStage4World extends Group{
   constructor(assets,materials,distant){
@@ -44,8 +49,19 @@ export class ForestStage4World extends Group{
       const a=rocks[Math.floor(random()*rocks.length)],p={x,z,scale:.25+random()*.65,yaw:random()*Math.PI*2,tint:.92+random()*.15,kind:'rock'};layouts.get(a.name).push(p);this.colliderData.push({x,z,radius:p.scale*.7,height:p.scale,forest:false})
     }
     for(const a of rocks)for(const part of a.parts){const b=new ForestBatch({...part,material:materials.rocks.get(a.name+part.material.uuid)||part.material},layouts.get(a.name),a.bounds,'rock',125,0,stage4DesertHeight);this.add(b);this.batches.push(b)}
+    this.sideLibrary=createSideBoundaryLibrary(assets,materials.foliage.near.map)
+    const sideLayout=createForestSideLayout({minZ:-600,maxZ:0,pathAt:stage4Path,heightAt:stage4ForestHeight,widthAt:boundaryWidth,trees:this.sideLibrary.trees,seed:S.seed+1122,allowed:(x,z,r)=>-z<stage4Edge(x)-12-r})
+    this.sideBoundary=new ForestSideBoundaryBand(sideLayout,this.sideLibrary,stage4ForestHeight);this.add(this.sideBoundary)
   }
   register(){this.removeSurfaces=registerRideSurfaces(this);return()=>{this.removeSurfaces?.();this.removeSurfaces=null;this.removeColliders?.();this.removeColliders=null}}
+  requestClimax(){if(!this.climaxPlain)this.climaxPlain=new DesertClimaxPlain(this);return this.climaxPlain}
+  updateClimax(scottDistance,randDistance){this.climaxPlain?.update(scottDistance,randDistance)}
+  prepareClimaxRetry(metrics){
+    const distance=DESERT_CLIMAX.start+30;this.requestClimax();this.updateClimax(distance,distance+55)
+    const start=this.startAt(distance)
+    for(const z of [metrics.frontZ,metrics.rearZ])if(!Number.isFinite(sampleRideHeight(start.x+Math.sin(start.yaw)*z,start.z+Math.cos(start.yaw)*z)))return null
+    return start
+  }
   *bindingSteps(anchor){
     if(this.bound)return
     this.anchor={...anchor};this.position.set(anchor.x,anchor.y,anchor.z);this.materials.origin.copy(this.position)
@@ -59,8 +75,9 @@ export class ForestStage4World extends Group{
       tile.grass.near.instanceMatrix.needsUpdate=true
       this.patchedGrass.add(tile);yield
     }
+    yield* this.sideBoundary.repositionSteps(z=>stage4Path(z,anchor),(x,z)=>stage4ForestHeight(x,z,anchor),(z,side)=>boundaryWidth(z,side,anchor))
     this.bound=true;this.visible=true;this.surfaces.forEach(m=>m.userData.rideSurfaceActive=true);this.updateMatrixWorld(true)
-    this.removeColliders=registerColliders(this.colliderData.map(p=>{const y=anchor.y+(p.forest?stage4ForestHeight(p.x,p.z,anchor):stage4DesertHeight(p.x,p.z));return cylinderCollider(p.x+anchor.x,p.z+anchor.z,p.radius,y-.15,y+p.height)}))
+    this.removeColliders=registerColliders([...this.colliderData.map(p=>{const y=anchor.y+(p.forest?stage4ForestHeight(p.x,p.z,anchor):stage4DesertHeight(p.x,p.z));return cylinderCollider(p.x+anchor.x,p.z+anchor.z,p.radius,y-.15,y+p.height)}),...createSideBoundaryColliders(this.sideBoundary.layout,this.position)])
     stage3World.get()?.setEnd(anchor.z)
     this.checkpoint=this.startAt(100)
   }
@@ -68,9 +85,10 @@ export class ForestStage4World extends Group{
   prepare(encounter,state){
     if(!this.bound&&!this.pending&&encounter?.phase==='exiting')this.pending=this.bindingSteps(stage4Anchor(state.z))
     if(this.pending){const start=performance.now();do{if(this.pending.next().done){this.pending=null;break}}while(performance.now()-start<3);this.preparationPeakMs=Math.max(this.preparationPeakMs,performance.now()-start)}
-    if(this.bound&&this.distance(state.z)>550)this.checkpoint=this.startAt(550)
+    if(this.bound&&this.distance(state.z)>550)this.checkpoint=this.startAt(this.climaxPlain&&this.distance(state.z)>DESERT_CLIMAX.start?DESERT_CLIMAX.start+30:550)
   }
   reset(){
+    this.climaxPlain?.dispose();this.climaxPlain=null
     this.removeColliders?.();this.removeColliders=null;this.surfaces.forEach(m=>m.userData.rideSurfaceActive=false);this.bound=false;this.visible=false
     this.pending=null
     // Restore the source templates before a later encounter chooses its exit.
@@ -80,13 +98,14 @@ export class ForestStage4World extends Group{
       for(const tile of this.tiles)if(tile.origin>=-96){for(const batch of tile.batches){if(!this.patchedBatches.has(batch))continue;for(let i=0;i<batch.placements.length;i++){const p=batch.placements[i],z=tile.origin+p.z;if(z<=-96)continue;batch.getMatrixAt(i,matrix);matrix.elements[13]-=stage4ForestHeight(p.x,z,this.anchor)-stage4ForestHeight(p.x,z);batch.setMatrixAt(i,matrix)}batch.computeBoundingBox();batch.computeBoundingSphere()}
         if(this.patchedGrass.has(tile)){for(let i=0;i<tile.plants.length;i++){const p=tile.plants[i],z=tile.origin+p.z;if(z>-96)tile.grass.data.matrices[i*16+13]-=stage4ForestHeight(p.x,z,this.anchor)-stage4ForestHeight(p.x,z)}tile.grass.near.instanceMatrix.needsUpdate=true}}
     }
+    for(const step of this.sideBoundary.repositionSteps(stage4Path,stage4ForestHeight,boundaryWidth))void step
     this.patchedBatches.clear();this.patchedGrass.clear();this.anchor=null;this.checkpoint=null;stage3World.get()?.setEnd(null)
   }
   distance(z){return this.bound?this.position.z-z:-Infinity}
-  contains(x,z){return this.bound&&z<=this.position.z+.1&&z>=this.position.z-2400&&Math.abs(x-this.position.x)<=2400}
+  contains(x,z){return this.bound&&z<=this.position.z+.1&&(this.climaxPlain||z>=this.position.z-2400)&&Math.abs(x-this.position.x)<=(this.climaxPlain?DESERT_CLIMAX.halfWidth:2400)}
   airEnabled(s,phase='idle'){return phase==='idle'&&this.contains(s.x,s.z)}
-  startAt(d){const z=-d,x=stage4Path(z,this.anchor),yaw=Math.atan2(stage4Path(z-2,this.anchor)-stage4Path(z+2,this.anchor),-4);return {x:x+this.position.x,z:z+this.position.z,yaw,label:'Nivel 01 · Plano 4 · Descenso',stage4:true}}
+  startAt(d){const z=-d,x=stage4Path(z,this.anchor),yaw=Math.atan2(stage4Path(z-2,this.anchor)-stage4Path(z+2,this.anchor),-4);return {x:x+this.position.x,z:z+this.position.z,yaw,label:d>=DESERT_CLIMAX.start?'Nivel 01 · Plano 5 · Llanura Invid':'Nivel 01 · Plano 4 · Descenso',stage4:true,climax:d>=DESERT_CLIMAX.start}}
   needsRecovery(s){return this.bound&&(s.height<this.position.y-85||!Number.isFinite(s.height))}
-  update(camera){if(!this.bound)return;for(const b of this.batches)b.updateDistance(camera,this.position.z+(b.userData.stage4Offset||0),this.position.x);for(const tile of this.tiles){const z=camera.position.z-this.position.z-tile.origin,d=Math.max(z,0,-96-z);tile.grass.near.visible=d<30;tile.grass.far.visible=d<114}}
-  dispose(){this.removeSurfaces?.();this.removeColliders?.();for(const g of [...this.terrain.forest,...this.terrain.desert,this.terrain.cliff])g.dispose();this.batches.forEach(b=>b.dispose());for(const tile of this.tiles)for(const m of [tile.grass.near,tile.grass.far]){for(const key of ['position','normal','uv'])m.geometry.deleteAttribute(key);m.geometry.index=null;m.geometry.dispose();m.dispose()}}
+  update(camera){if(!this.bound)return;for(const b of this.batches)b.updateDistance(camera,this.position.z+(b.userData.stage4Offset||0),this.position.x);this.sideBoundary.update(camera);for(const tile of this.tiles){const z=camera.position.z-this.position.z-tile.origin,d=Math.max(z,0,-96-z);tile.grass.near.visible=d<30;tile.grass.far.visible=d<114}}
+  dispose(){this.climaxPlain?.dispose();this.removeSurfaces?.();this.removeColliders?.();for(const g of [...this.terrain.forest,...this.terrain.desert,this.terrain.cliff])g.dispose();this.batches.forEach(b=>b.dispose());this.sideBoundary.dispose();this.sideLibrary.dispose();for(const tile of this.tiles)for(const m of [tile.grass.near,tile.grass.far]){for(const key of ['position','normal','uv'])m.geometry.deleteAttribute(key);m.geometry.index=null;m.geometry.dispose();m.dispose()}}
 }

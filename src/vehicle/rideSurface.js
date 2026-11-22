@@ -1,4 +1,4 @@
-import { Matrix4, Ray, Vector3 } from 'three'
+import { Matrix3, Matrix4, Ray, Vector3 } from 'three'
 
 const surfaces = new Set(), geometryGrids = new WeakMap()
 const point = new Vector3(), world = new Vector3()
@@ -6,6 +6,7 @@ const CELL = 4
 
 const shotInverse=new Matrix4(),shotRay=new Ray(),shotEnd=new Vector3(),shotHit=new Vector3()
 const shotA=new Vector3(),shotB=new Vector3(),shotC=new Vector3(),shotWorld=new Vector3(),shotVisited=new Set()
+const shotNormal=new Vector3(),shotEdge=new Vector3(),shotNormalMatrix=new Matrix3()
 // Shots traverse only the existing contact-grid cells crossed by the ray.
 // No full terrain mesh scans, new acceleration structures or geometry copies.
 export function raycastRideSurfaces(raycaster) {
@@ -30,7 +31,10 @@ export function raycastRideSurfaces(raycaster) {
         if(!shotRay.intersectTriangle(shotA.fromArray(t[0]),shotB.fromArray(t[1]),shotC.fromArray(t[2]),false,shotHit))continue
         shotWorld.copy(shotHit).applyMatrix4(mesh.matrixWorld)
         const distance=shotWorld.distanceTo(raycaster.ray.origin)
-        if(distance>=raycaster.near&&distance<=raycaster.far&&(!nearest||distance<nearest.distance))nearest={distance,point:shotWorld.clone(),object:mesh}
+        if(distance>=raycaster.near&&distance<=raycaster.far&&(!nearest||distance<nearest.distance)){
+          shotNormal.subVectors(shotB,shotA).cross(shotEdge.subVectors(shotC,shotA)).applyNormalMatrix(shotNormalMatrix.getNormalMatrix(mesh.matrixWorld));if(shotNormal.dot(raycaster.ray.direction)>0)shotNormal.negate()
+          nearest={distance,point:shotWorld.clone(),normal:shotNormal.clone(),object:mesh}
+        }
       }
       if(x===ex&&z===ez)break
       if(tx<tz){x+=sx;tx+=dx}else{z+=sz;tz+=dz}

@@ -18,7 +18,7 @@ export function resetPlayerCombat(){
 }
 
 export function damagePlayer(damage, attackerPosition) {
-  if (playerCombat.dead) return
+  if (playerCombat.dead||!Number.isFinite(damage)||damage<=0) return
   playerCombat.hasHitSource = !!attackerPosition
   if (attackerPosition) {
     playerCombat.hitSource.x = attackerPosition.x

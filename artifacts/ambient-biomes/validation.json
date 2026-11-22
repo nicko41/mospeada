@@ -1,0 +1,68 @@
+{
+  "forest": {
+    "motes": 48,
+    "leaves": 8,
+    "gusts": 0,
+    "birds": 0,
+    "active": 56,
+    "biome": "forest",
+    "quality": 1,
+    "canyonEvents": 0,
+    "skyEvents": 0,
+    "visiblePixels": 186,
+    "leafPixels": 177
+  },
+  "quality": {
+    "low": 17,
+    "high": 48
+  },
+  "sky": {
+    "motes": 48,
+    "leaves": 7,
+    "gusts": 0,
+    "birds": 6,
+    "active": 61,
+    "biome": "forest",
+    "quality": 1,
+    "canyonEvents": 0,
+    "skyEvents": 1,
+    "visiblePixels": 95
+  },
+  "canyon": {
+    "z": -835.9058861319236,
+    "y": 13.811183291778502,
+    "air": true,
+    "airBoosts": 1,
+    "events": 1,
+    "birds": 12,
+    "below": 12,
+    "onScreen": 12,
+    "flockAge": 0.4648000000119209,
+    "visiblePixels": 716
+  },
+  "desert": {
+    "motes": 0,
+    "leaves": 0,
+    "gusts": 0,
+    "birds": 0,
+    "active": 0,
+    "biome": "desert",
+    "quality": 1,
+    "canyonEvents": 1,
+    "skyEvents": 1,
+    "visiblePixels": 0,
+    "gustPixels": 0
+  },
+  "cost": {
+    "cpuMs": 0.005666666626930237,
+    "extraDrawCalls": 0,
+    "poolSize": 178,
+    "reused": true,
+    "programsAdded": 0,
+    "geometriesAdded": 0,
+    "texturesAdded": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

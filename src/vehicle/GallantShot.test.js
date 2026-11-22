@@ -19,7 +19,7 @@ test('Gallant uses live compatible targets, actual terrain and nearest solid obs
     assert.equal(shot.hit,enemy);assert.equal(enemy.health,100-GALLANT_FIRE.damage);assert.equal(enemy.hits,1)
     assert.ok(Math.abs(shot.point.z-7.6)<1e-8)
     const wall=registerColliders([boxCollider(new Box3(new Vector3(-1,0,3),new Vector3(1,3,4)))])
-    try{const blocked=weapon.fire(ray);assert.equal(blocked.hit,null);assert.equal(blocked.solid,true);assert.equal(blocked.point.z,3);assert.equal(enemy.hits,1)}finally{wall()}
+    try{const blocked=weapon.fire(ray);assert.equal(blocked.hit,null);assert.equal(blocked.solid,true);assert.equal(blocked.point.z,3);assert.ok(blocked.normal.equals(new Vector3(0,0,-1)));assert.equal(enemy.hits,1)}finally{wall()}
     const tree=registerColliders([cylinderCollider(0,4,.5,0,5)])
     try{assert.equal(weapon.fire(ray).point.z,3.5);assert.equal(enemy.hits,1)}finally{tree()}
     const scene=new Scene(),terrain=new Mesh(new PlaneGeometry(20,20).rotateX(-Math.PI/2),new MeshBasicMaterial())
@@ -27,7 +27,7 @@ test('Gallant uses live compatible targets, actual terrain and nearest solid obs
     const unregister=registerRideSurfaces(scene)
     try{
       ray.direction.set(0,-1,1).normalize()
-      const ground=weapon.fire(ray);assert.equal(ground.hit,null);assert.equal(ground.solid,true);assert.ok(Math.abs(ground.point.y)<1e-7);assert.equal(enemy.hits,1)
+      const ground=weapon.fire(ray);assert.equal(ground.hit,null);assert.equal(ground.solid,true);assert.ok(Math.abs(ground.point.y)<1e-7);assert.equal(ground.object,terrain);assert.ok(ground.normal.y>.99);assert.equal(enemy.hits,1)
       terrain.userData.rideSurfaceActive=false;assert.equal(weapon.cast(ray).solid,false)
     }finally{unregister();terrain.geometry.dispose();terrain.material.dispose()}
     ray.direction.set(0,0,1);enemy.health=0;enemy.state='DEAD'

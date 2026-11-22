@@ -1,0 +1,13 @@
+{
+  "shots": 9,
+  "activeProjectiles": 9,
+  "poolCapacity": 64,
+  "cannonFlashCount": 4,
+  "cannonFlashCapacity": 10,
+  "scoutDrawCalls": 12,
+  "scoutTriangles": 1116240,
+  "sharedVertices": true,
+  "sharedTextures": true,
+  "glError": 0,
+  "errors": []
+}

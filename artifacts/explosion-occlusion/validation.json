@@ -1,0 +1,23 @@
+{
+  "fixedIgnition": {
+    "interiorPixels": 193015,
+    "leakedPixels": 3,
+    "visibleExplosionPixels": 281441
+  },
+  "previousIgnition": {
+    "interiorPixels": 193053,
+    "leakedPixels": 174039,
+    "visibleExplosionPixels": 388695
+  },
+  "fixedFire": {
+    "interiorPixels": 193076,
+    "leakedPixels": 8,
+    "visibleExplosionPixels": 306819
+  },
+  "fixedSmoke": {
+    "interiorPixels": 193077,
+    "leakedPixels": 13,
+    "visibleExplosionPixels": 307749
+  },
+  "errors": []
+}

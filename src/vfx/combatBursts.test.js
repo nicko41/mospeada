@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import {DataTexture,Group,Matrix4,Mesh,MeshBasicMaterial,PerspectiveCamera,Scene,SphereGeometry,Vector3} from 'three'
+import {AdditiveBlending,DataTexture,Group,Matrix4,Mesh,MeshBasicMaterial,PerspectiveCamera,Scene,SphereGeometry,Vector3} from 'three'
 import {VFXRuntime} from './VFXRuntime.js'
 import {Plano3CombatVFX} from './Plano3CombatVFX.js'
 import {COMBAT_VFX_LIMITS,COMBAT_VFX_PRESETS} from './combatVFXPresets.js'
@@ -45,10 +45,11 @@ test('Gallant impacts resolve the Scout skin, emit outward and leave gameplay/mu
     for(let i=0;i<fx.systems[0].particleNum;i++)assert.ok(fx.systems[0].particles[i].velocity.z>0,'Sparks leave the outward-facing surface cone')
     assert.equal(logical.z,2.5);assert.deepEqual(root.matrixWorld,before);assert.equal(target.health,9)
     assert.ok(fx.traces[0].from.distanceTo(muzzle)<1e-8)
-    assert.ok(fx.scoutVisual(target).tint.r>1)
+    assert.equal(fx.scoutVisual(target).tint.r,1);assert.equal(fx.scoutVisual(target).emissive,0)
+    assert.ok(fx.scoutVisual(target).scorches.some(m=>m.radius>0))
     tick(.06);assert.ok(fx.scoutVisual(target).recoil.length()>.01)
-    const anchored=hit.position.clone();muzzle.set(30,20,40);target.position.x=20;tick(.05)
-    assert.deepEqual(hit.position,anchored,'Movement/boost cannot drag a world-space impact')
+    const anchored=hit.position.clone();muzzle.set(30,20,40);root.position.x=20;root.updateMatrixWorld(true);tick(.05)
+    assert.ok(hit.position.distanceTo(anchored.clone().add(new Vector3(20,0,0)))<1e-6,'The impact follows the struck model, independently of the muzzle')
     tick(.3);assert.equal(fx.impacts.stats.active,0);assert.equal(fx.systems[0].particleNum,0)
   }finally{runtime.dispose();mesh.geometry.dispose();mesh.material.dispose()}
 })
@@ -68,7 +69,7 @@ test('airborne and grounded Scouts explode once at body height, disappear on cue
       for(let i=0;i<20;i++)fx.scoutVisual(target)
       assert.equal(fx.stats.explosions,1,'Observing a defeated target cannot replay its explosion')
       assert.ok(death.size<target.height,'Explosion size is proportional to the Scout')
-      tick(1.2)
+      tick(2.1)
       assert.equal(fx.impacts.stats.active,0);assert.equal(fx.systems.reduce((n,p)=>n+p.particleNum,0),0)
       for(const mesh of fx.impacts.meshes)assert.equal(mesh.count,0)
       assert.ok(fx.impacts.lights.every(l=>l.intensity===0))
@@ -90,12 +91,12 @@ test('consecutive hits, five Scout explosions and saturated pools reuse bounded 
     assert.ok(fx.impacts.stats.recycled>0);assert.ok(fx.impacts.stats.active<=COMBAT_VFX_LIMITS.bursts)
     assert.equal(fx.impacts.records.filter(r=>r.name==='invidExplosion'&&r.age<r.life).length,5,'Impact saturation cannot evict any of five simultaneous Scout explosions')
     for(const mesh of [fx.impacts.fire,fx.impacts.rings,fx.impacts.smoke,fx.impacts.fragments])assert.ok(mesh.count<=mesh.instanceMatrix.count)
-    assert.ok(fx.systems[0].particleNum<=48&&fx.systems[1].particleNum<=96)
+    assert.ok(fx.systems[0].particleNum<=48&&fx.systems[1].particleNum<=COMBAT_VFX_LIMITS.sparksPerExplosion)
     const ages=fx.impacts.records.map(r=>r.age),matrix=fx.impacts.fire.instanceMatrix.array.slice()
     fx.update(0,e,weapon,camera);assert.deepEqual(fx.impacts.records.map(r=>r.age),ages);assert.deepEqual(fx.impacts.fire.instanceMatrix.array,matrix)
     assert.deepEqual([fx.impacts.fire.instanceMatrix,fx.impacts.smoke.instanceMatrix,fx.impacts.fragments.instanceMatrix],buffers)
     assert.deepEqual(fx.root.children.filter(m=>m.isMesh).map(m=>m.geometry),geometries)
-    tick(1.4);assert.equal(fx.impacts.stats.active,0);assert.equal(fx.systems.reduce((n,p)=>n+p.particleNum,0),0)
+    tick(2.1);assert.equal(fx.impacts.stats.active,0);assert.equal(fx.systems.reduce((n,p)=>n+p.particleNum,0),0)
     fx.clear();assert.ok(fx.impacts.lights.every(l=>l.intensity===0))
   }finally{runtime.dispose()}
 })
@@ -125,7 +126,7 @@ test('real explosion lights keep a fixed scene topology through combat, idle, pa
   const peak=lights[0].intensity;assert.ok(peak>0);assert.equal(count(),2)
   tick(.15);assert.ok(lights[0].intensity>0&&lights[0].intensity<peak)
   const paused=lights[0].intensity;fx.update(0,e,weapon,camera);assert.equal(lights[0].intensity,paused)
-  tick(.08);assert.ok(lights.every(l=>l.intensity===0));assert.equal(count(),2)
+  tick(fx.presets.invidExplosion.lightDuration-.15+.01);assert.ok(lights.every(l=>l.intensity===0));assert.equal(count(),2)
   e.active=false;fx.update(.01,e,weapon,camera)
   assert.equal(fx.root.visible,false);assert.equal(count(),2)
   assert.ok(lights.every(l=>l.intensity===0&&l.visible));assert.deepEqual(fx.impacts.deathLights,lights)
@@ -133,16 +134,19 @@ test('real explosion lights keep a fixed scene topology through combat, idle, pa
   runtime.dispose();assert.equal(count(),0)
 })
 
-test('the approved Invid hit keeps its timing, palette, sparks, flash and pulse',()=>{
-  const {runtime,fx,camera,e,weapon}=fixture(),target={position:new Vector3(0,0,-6),height:5.2,radius:2.3,dead:false,health:9,hitVersion:1}
+test('Gallant contact uses the existing small air sheet and growing yellow glow without stars or whole-body flash',()=>{
+  const sheet=new DataTexture(new Uint8Array([255,255,255,255]),1,1),{runtime,fx,camera,e,weapon}=fixture({explosionAtlases:{air:sheet}}),target={position:new Vector3(0,0,-6),height:5.2,radius:2.3,dead:false,health:9,hitVersion:1}
   try{
-    assert.deepEqual([fx.presets.invidHit.size,fx.presets.invidHit.duration,fx.presets.invidHit.particles,fx.presets.invidHit.lightIntensity],[1,.26,11,6])
-    assert.deepEqual([fx.presets.invidHit.core,fx.presets.invidHit.color,fx.presets.invidHit.residual],['#fffce5','#ffe44b','#bd54ff'])
     fx.shot(weapon,{hit:target,point:new Vector3(0,2.6,-4),destroyed:false},e);fx.update(0,e,weapon,camera)
-    assert.equal(fx.impacts.fire.count,5);assert.equal(fx.impacts.rings.count,1);assert.equal(fx.flashMesh.count,4)
-    assert.equal(fx.systems[0].particleNum,11);assert.equal(fx.sparkMaterial.map,fx.star)
+    assert.equal(fx.impacts.fire.count,0);assert.equal(fx.impacts.rings.count,0);assert.equal(fx.flashMesh.count,2);assert.equal(fx.contactFlashes.count,0)
+    assert.equal(fx.impacts.hitSprites.count,1);assert.equal(fx.impacts.hitGlows.count,1);assert.equal(fx.impacts.hitSprites.material.map,sheet)
+    assert.equal(fx.impacts.hitSprites.material.depthTest,true);assert.equal(fx.impacts.hitGlows.material.depthTest,true)
+    assert.equal(fx.scoutVisual(target).emissive,0);assert.equal(fx.scoutVisual(target).tint.getHex(),0xffffff)
+    assert.equal(fx.systems[0].particleNum,0,'No star-shaped hit sparks are emitted')
+    const matrix=new Matrix4();fx.impacts.hitGlows.getMatrixAt(0,matrix);const small=new Vector3().setFromMatrixScale(matrix).x
+    fx.update(.12,e,weapon,camera);fx.impacts.hitGlows.getMatrixAt(0,matrix);assert.ok(new Vector3().setFromMatrixScale(matrix).x>small*2,'The yellow halo grows before fading')
     assert.equal(fx.impacts.groundSprites.count+fx.impacts.airSprites.count,0);assert.equal(fx.stats.explosions,0)
-  }finally{runtime.dispose()}
+  }finally{runtime.dispose();sheet.dispose()}
 })
 
 test('ground and airborne deaths animate independent sheet frames without death stars/rings or new resources',()=>{
@@ -153,11 +157,11 @@ test('ground and airborne deaths animate independent sheet frames without death 
     try{
       fx.destroyTarget(target);fx.update(0,e,weapon,camera)
       const r=fx.impacts.records.find(r=>r.name==='invidExplosion'),sprite=grounded?fx.impacts.groundSprites:fx.impacts.airSprites,buffer=sprite.instanceMatrix,material=sprite.material
-      assert.equal(sprite.count,0,'The internal emissive ignition precedes the main sheet');assert.equal(r.grounded,grounded);assert.equal(r.frame,0)
-      assert.equal(fx.impacts.hotCore.count,3);assert.equal(fx.impacts.halos.count,1)
+      assert.equal(sprite.count,1,'The sheet starts on the same visible frame as the internal flash and Quarks');assert.equal(r.grounded,grounded);assert.equal(r.frame,0)
+      assert.equal(fx.impacts.hotCore.count,3);assert.equal(fx.impacts.halos.count,2)
       tick(.05);assert.equal(sprite.count,1)
       assert.equal(sprite.material.map,grounded?groundTexture:airTexture)
-      assert.ok(r.fireLife>=.35&&r.fireLife<=.7);assert.ok(r.life>r.fireLife+.4);assert.equal(fx.flashMesh.count,0);assert.equal(fx.impacts.rings.count,0)
+      assert.ok(r.fireLife>=.35&&r.fireLife<=.7);assert.ok(r.life>r.fireLife+.25&&r.life<=1.4);assert.equal(fx.flashMesh.count,0);assert.equal(fx.impacts.rings.count,0)
       assert.notEqual(fx.deathSparkMaterial.map,fx.star)
       const before=sprite.geometry.attributes.aCombatFrame.array.slice(0,4)
       tick(.19);assert.ok(r.frame>=3);assert.notDeepEqual(sprite.geometry.attributes.aCombatFrame.array.slice(0,4),before)
@@ -168,10 +172,105 @@ test('ground and airborne deaths animate independent sheet frames without death 
         assert.ok(fx.impacts.smoke.count>0)
       }else assert.equal(fx.impacts.smoke.count,0,'Air animation does not create a floating floor-dust sheet')
       tick(.6);assert.equal(sprite.count,0);assert.ok(fx.impacts.residualSmoke.count>0,'Residual smoke outlives the fire sheet')
-      tick(.4);assert.equal(fx.impacts.stats.active,0);assert.equal(fx.impacts.residualSmoke.count,0)
+      tick(r.life-r.age+.01);assert.equal(fx.impacts.stats.active,0);assert.equal(fx.impacts.residualSmoke.count,0)
     }finally{runtime.dispose()}
   }
   groundTexture.dispose();airTexture.dispose()
+})
+
+test('Quarks adds a white-hot fireball, warm halo and delayed black smoke over the unchanged sheet, then fully dissipates',()=>{
+ const sheet=new DataTexture(new Uint8Array([255,255,255,255]),1,1),{runtime,fx,camera,e,weapon,tick}=fixture({explosionAtlases:{air:sheet},sampleGround:()=>0})
+ const target={position:new Vector3(0,4,-8),height:5.2,dead:true},buffers=fx.systems.map(ps=>ps.particles.slice()),materials=fx.systems.map(ps=>ps.material),point=target.position.clone().add(new Vector3(0,5.2*.48,0))
+ try{
+  fx.destroyTarget(target);fx.update(0,e,weapon,camera)
+  const [hit,burst,flash,smoke,fireball,,volume]=fx.systems
+  assert.equal(hit.particleNum,0,'Destruction does not use or change approved hit sparks')
+  assert.ok(burst.particleNum>0&&burst.particleNum<=20);assert.equal(flash.particleNum,3);assert.equal(smoke.particleNum,16);assert.equal(fireball.particleNum,9);assert.equal(volume.particleNum,4)
+  assert.ok(fireball.particles.slice(0,fireball.particleNum).every(p=>p.life>=.4&&p.life<=.65&&p.size.x>2.5))
+  assert.ok(fx.volumeGeometry.isSphereGeometry||fx.volumeGeometry.type==='SphereGeometry','The core uses actual three-dimensional geometry')
+  assert.ok(smoke.particles.slice(0,smoke.particleNum).every(p=>p.color.w===0),'Smoke appears after ignition, including on the birth frame')
+  assert.ok(fx.systemBatches[1].geometry.instanceCount>0&&fx.systemBatches[2].geometry.instanceCount>0,'Newborn Quarks particles are uploaded before the next simulation tick')
+  assert.equal(fx.deathSparkMaterial.blending,AdditiveBlending);assert.equal(fx.deathFlashMaterial.blending,AdditiveBlending)
+  assert.equal(fx.deathFlashMaterial.map,fx.impacts.haloTexture);assert.equal(fx.deathSmokeMaterial.map,fx.impacts.smokeBallTexture)
+  assert.equal(fx.impacts.airSprites.material.map,sheet);assert.equal(fx.scoutVisual(target).visible,true);assert.ok(fx.scoutVisual(target).emissive>0)
+  for(let i=0;i<burst.particleNum;i++){const p=burst.particles[i];assert.ok(p.life<=.65);assert.ok(p.position.distanceTo(point)<.32);assert.ok(p.startColor.x>p.startColor.z,'Energy remains warm rather than violet')}
+  tick(.06);assert.equal(fx.impacts.airSprites.count,1);assert.ok(fx.impacts.deathLights.some(l=>l.intensity>0))
+  assert.ok(fx.impacts.records.find(r=>r.name==='invidExplosion').size<target.height)
+  tick(.09);assert.ok(flash.particleNum>0&&fireball.particleNum>0,'Fireball and halo stay visible across several combat frames');assert.ok(fx.scoutVisual(target).opacity<1)
+  tick(.08)
+  let min=Infinity,max=-Infinity
+  for(const p of fireball.particles.slice(0,fireball.particleNum)){min=Math.min(min,p.position.x-p.size.x*.5);max=Math.max(max,p.position.x+p.size.x*.5)}
+  assert.ok(max-min>target.height*1.2,'The actual expanding fire particles exceed the Scout size')
+  assert.ok(burst.particles.slice(0,burst.particleNum).some(p=>p.position.distanceTo(point)>1.4),'Hot debris is thrown outside the core')
+  tick(.5);assert.equal(burst.particleNum,0);assert.equal(flash.particleNum,0);assert.equal(fireball.particleNum,0);assert.equal(volume.particleNum,0);assert.equal(fx.impacts.airSprites.count,0);assert.equal(fx.scoutVisual(target).visible,false)
+  assert.ok(smoke.particles.slice(0,smoke.particleNum).some(p=>p.color.w>.55&&Math.max(p.color.x,p.color.y,p.color.z)<.06),'Dense charcoal smoke follows the main fireball')
+  tick(.3);assert.ok(smoke.particleNum>0);assert.equal(fx.impacts.airSprites.count,0)
+  assert.ok(smoke.particleNum>0,'Black smoke outlives the approved fire sheet')
+  tick(1.2);assert.equal(fx.systems.reduce((n,ps)=>n+ps.particleNum,0),0);assert.equal(fx.impacts.stats.active,0)
+  assert.deepEqual(fx.systems.map(ps=>ps.material),materials)
+  for(const [i,ps]of fx.systems.entries())assert.ok(ps.particles.every(p=>buffers[i].includes(p)),'All layers reuse preallocated Quarks particles')
+ }finally{runtime.dispose();sheet.dispose()}
+})
+
+test('many simultaneous death reinforcements stay bounded, preserve hit capacity and clear on checkpoint reset',()=>{
+ const {runtime,fx,camera,e,weapon,tick}=fixture(),caps=[COMBAT_VFX_LIMITS.sparksPerHit,COMBAT_VFX_LIMITS.sparksPerExplosion,COMBAT_VFX_LIMITS.deathFlashes,COMBAT_VFX_LIMITS.deathSmoke,COMBAT_VFX_LIMITS.deathFireballs,COMBAT_VFX_LIMITS.muzzleSparks,COMBAT_VFX_LIMITS.deathVolumes],pools=fx.systems.map(ps=>ps.particles.slice())
+ try{
+  for(let i=0;i<30;i++)fx.destroyTarget({position:new Vector3(i,2,-8),height:5.2,dead:true})
+  fx.update(0,e,weapon,camera)
+  for(const [i,ps]of fx.systems.entries()){assert.ok(ps.particleNum<=caps[i]);assert.ok(ps.particles.every(p=>pools[i].includes(p)))}
+  fx.enemyImpact(new Vector3(0,1,-5));assert.ok(fx.systems[0].particleNum>0,'Death saturation cannot take the approved hit pool')
+  const ages=fx.systems.map(ps=>ps.particles.slice(0,ps.particleNum).map(p=>p.age));runtime.update(0);fx.update(0,e,weapon,camera)
+  assert.deepEqual(fx.systems.map(ps=>ps.particles.slice(0,ps.particleNum).map(p=>p.age)),ages,'Pause freezes every Quarks layer')
+  tick(.1);fx.clear();assert.ok(fx.systems.every(ps=>ps.particleNum===0));assert.ok(fx.impacts.deathLights.every(l=>l.intensity===0))
+ }finally{runtime.dispose()}
+})
+
+test('all destruction layers and generated Quarks batches respect opaque character depth without writing it',()=>{
+ const {runtime,fx}=fixture()
+ try{
+  for(const index of[1,2,3,4,6]){
+   assert.equal(fx.systems[index].material.depthTest,true)
+   assert.equal(fx.systemBatches[index].material.depthTest,true,'Quarks generated materials retain occlusion')
+   assert.equal(fx.systemBatches[index].material.depthWrite,false,'Particles never overwrite character depth')
+  }
+  for(const mesh of[fx.impacts.halos,fx.impacts.hotCore,fx.impacts.airSprites,fx.impacts.groundSprites,fx.impacts.residualSmoke]){
+   assert.equal(mesh.material.depthTest,true);assert.equal(mesh.material.depthWrite,false)
+  }
+ }finally{runtime.dispose()}
+})
+
+test('each accepted hit draws local feedback immediately and combat-context handoffs preserve it',()=>{
+ const {runtime,fx,camera,e,weapon,tick}=fixture(),target={position:new Vector3(0,2,-8),height:5.2,dead:false,health:10,hitVersion:0}
+ try{
+  fx.update(0,e,weapon,camera)
+  for(let hit=1;hit<=4;hit++){
+   target.hitVersion=hit;target.health--
+   fx.shot(weapon,{hit:target,point:new Vector3(0,4,-7),destroyed:false},e);fx.update(0,e,weapon,camera)
+   assert.equal(fx.stats.hits,hit);assert.equal(fx.contactFlashes.count,0);assert.ok(fx.impacts.hitGlows.count>0);assert.equal(fx.scoutVisual(target).emissive,0)
+   assert.ok(target.health>0&&fx.scoutVisual(target).visible)
+   tick(.28)
+  }
+  fx.destroyTarget({...target,dead:true});const explosions=fx.stats.explosions
+  fx.update(.016,{active:true,time:0,bolts:[]},weapon,camera)
+  assert.equal(fx.stats.explosions,explosions);assert.ok(fx.systems[1].particleNum>0,'Switching from the five Scouts to another combat clock cannot clear a death effect')
+  assert.ok(fx.impacts.lights.some(l=>l.intensity>0),'Pooled PointLight pulse also reaches the existing per-fragment lighting slots')
+  fx.clear(true);e.time=0;target.hitVersion++
+  fx.shot(weapon,{hit:target,point:new Vector3(0,4,-7),destroyed:false},e);fx.update(0,e,weapon,camera)
+  assert.equal(fx.stats.hits,1);assert.equal(fx.impacts.hitGlows.count,1,'The first hit after an explicit reset is not erased by the old combat clock')
+ }finally{runtime.dispose()}
+})
+
+test('a slow combat frame cannot consume an unseen hit flash or the initial sprite/Quarks overlap',()=>{
+ const sheet=new DataTexture(new Uint8Array([255,255,255,255]),1,1),{runtime,fx,camera,e,weapon}=fixture({explosionAtlases:{air:sheet},sampleGround:()=>0}),target={position:new Vector3(0,3,-8),height:5.2,dead:false,health:10,hitVersion:1}
+ try{
+  fx.shot(weapon,{hit:target,point:new Vector3(0,5,-6),destroyed:false},e)
+  fx.update(.1,e,weapon,camera)
+  assert.equal(fx.contactFlashes.count,0);assert.equal(fx.impacts.hitGlows.count,1);assert.equal(fx.impacts.hitSprites.count,1,'The atlas starts on its birth frame even at 10 FPS');assert.equal(fx.scoutVisual(target).emissive,0)
+  target.dead=true;target.health=0;fx.destroyTarget(target);fx.update(.1,e,weapon,camera)
+  assert.equal(fx.impacts.airSprites.count,1);assert.equal(fx.scoutVisual(target).opacity,1);assert.ok(fx.scoutVisual(target).emissive>5)
+  assert.ok(fx.systemBatches[1].geometry.instanceCount>0&&fx.systemBatches[2].geometry.instanceCount>0)
+  assert.ok(fx.impacts.deathLights.some(l=>l.intensity>=80));assert.ok(fx.impacts.lights.some(l=>l.intensity>15))
+ }finally{runtime.dispose();sheet.dispose()}
 })
 
 test('atlas UVs cover all twelve authored frames with padding and independent mirroring',()=>{

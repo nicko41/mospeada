@@ -1,0 +1,55 @@
+{
+  "segments": 40,
+  "path": "M190,316 L349.7605983222347,111.51575902329603 A82,82 0 0 1 414.37748011798595,80 H632",
+  "centerlineLength": 551.5380249023438,
+  "minArea": 508.5534179687529,
+  "convex": true,
+  "minGap": 2.799999999999927,
+  "maxGap": 2.8000000000000376,
+  "tangentJoinError": 0.001906938954731084,
+  "referenceEmbedded": true,
+  "selfContained": true,
+  "referenceWidth": 741,
+  "demoWidth": 741,
+  "terminationWidths": {
+    "lowerLeft": 180,
+    "upperRight": 44
+  },
+  "closedInnerGap": {
+    "base": [
+      310,
+      316
+    ],
+    "path": "M310,316 L375.07628961196076,123.74038430125836 A32,32 0 0 1 405.3870184998337,102 H632"
+  },
+  "roundedGeometry": {
+    "frame": true,
+    "segments": true,
+    "upperLeftShoulder": [
+      262.4307309184186,
+      58
+    ],
+    "insideHousing": true
+  },
+  "digitalDisplay": {
+    "color": "rgb(201, 255, 245)",
+    "glow": "url(\"#ice-glow\")",
+    "framed": false
+  },
+  "mobile": {
+    "overflow": false,
+    "active": 6,
+    "progress": "13"
+  },
+  "api": {
+    "zero": 0,
+    "partial": {
+      "active": 17,
+      "value": "41.5",
+      "message": "CARGANDO TERRENO"
+    },
+    "full": 40,
+    "leds": 6
+  },
+  "errors": []
+}

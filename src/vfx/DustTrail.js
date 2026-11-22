@@ -110,6 +110,9 @@ export class DustTrail {
     this.shape.angle = .32 + config.spread * .2; this.shape.radius = .045 + config.spread * .025
     this.speed.a = launch * .65; this.speed.b = launch * 1.2
     this.life.a = 1.5 * config.life * persistence; this.life.b = 2.5 * config.life * persistence
+    // Leave room for fresh wheel contact throughout a longer trail; filling
+    // the pool immediately would cause emission gaps while old puffs expire.
+    if(config.continuousTrail)this.response.rate=Math.min(this.response.rate,this.response.budget/((this.life.a+this.life.b)*.5)*.9)
     this.size.a = .4 * config.size; this.size.b = .9 * config.size
     this.gravity.magnitude.value = config.gravity; this.drag.dampen = config.drag / 20
     this.wind.magnitude.value = config.wind * .35

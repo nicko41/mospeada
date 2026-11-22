@@ -34,6 +34,8 @@ import { weatherState } from './world/weatherState.js'
 import {ForestOpeningOverlay} from './world/forest/ForestOpening.jsx'
 import {forestOpeningState} from './world/forest/forestOpeningState.js'
 import {startupRenderReady} from './rendering/renderPreparation.js'
+import {updateEntryPreloader} from './ui/entryPreloader.js'
+import {entryLoadingMessage} from './ui/cycloneInstrumentModel.js'
 timeOfDayState.value = 1
 timeOfDayState.target = 1
 if (activeEnvironment === 'forest') weatherState.setPreset('sunny')
@@ -107,7 +109,7 @@ function SceneReady({ onReady }) {
 }
 
 function EntryPreloader({ sceneReady }) {
-  const { active, progress } = useProgress()
+  const { active, progress, item } = useProgress()
   const renderState = useSyncExternalStore(animeState.subscribe, animeState.snapshot)
   const opening = useSyncExternalStore(forestOpeningState.subscribe, forestOpeningState.snapshot)
   // Wait for the current frame and opening views, never for alternate lighting.
@@ -117,26 +119,21 @@ function EntryPreloader({ sceneReady }) {
 
   useEffect(() => {
     const overlay = document.getElementById('entry-preloader')
-    const fill = document.getElementById('entry-progress-fill')
-    if (!overlay || !fill) return
+    if (!overlay) return
     if(revealed.current){overlay.remove();return}
 
     highestProgress.current = Math.max(highestProgress.current, Math.min(progress, 95))
-    fill.style.width = `${highestProgress.current}%`
-    fill.parentElement.setAttribute('aria-valuenow', Math.round(highestProgress.current))
-    const status = document.getElementById('entry-loading-status')
-    if (status) status.textContent = active || !sceneReady ? 'Cargando escenario…' : !renderReady ? 'Preparando iluminación y estilos…' : 'Listo'
+    updateEntryPreloader(highestProgress.current,entryLoadingMessage({active,sceneReady,renderReady,item}))
     if (active || !sceneReady || !renderReady) return
 
-    fill.style.width = '100%'
-    fill.parentElement.setAttribute('aria-valuenow', '100')
+    updateEntryPreloader(100,'SYSTEM READY')
     overlay.classList.add('is-ready')
     revealed.current=true
     desktopInput.ready = true
     window.dispatchEvent(new Event('game-ready'))
     const removeTimer=window.setTimeout(()=>overlay.remove(),180)
     return()=>window.clearTimeout(removeTimer)
-  }, [active, progress, sceneReady, renderReady])
+  }, [active, progress, sceneReady, renderReady, item])
 
   return null
 }

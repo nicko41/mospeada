@@ -1,0 +1,20 @@
+@font-face{font-family:'Open 24 Display ST';src:url('/fonts/mospeada/Open24DisplayST.ttf') format('truetype');font-weight:400;font-style:normal;font-display:block}
+.cyclone-instrument{--ice:#c9fff5;display:block;width:100%;height:auto;overflow:visible}
+.cyclone-instrument .instrument-font,.cyclone-instrument .percent-sign{font-family:'Open 24 Display ST',monospace;font-weight:400;font-style:normal;letter-spacing:0}
+.cyclone-instrument .frame{fill:#142733;stroke:#b4dbea;stroke-width:2.5}
+.cyclone-instrument .face{fill:#07141e;stroke:#4d7e94;stroke-width:1.6}
+.cyclone-instrument .bezel{fill:#0a1b28;stroke:#89c2db;stroke-width:2}
+.cyclone-instrument .lcd{fill:#b4dce9;stroke:#416a7e;stroke-width:2}
+.cyclone-instrument .ink{fill:#142f40}
+.cyclone-instrument .label,.cyclone-instrument .loading-label{fill:#a3e1f1}
+.cyclone-instrument .segment{stroke-width:.65;stroke:#365464;fill:#142936}
+.cyclone-instrument .segment.on{fill:var(--lamp);stroke:var(--lamp)}
+#entry-segment-glow{filter:url(#entry-lamp-glow);opacity:.55}
+#entry-digits,.cyclone-instrument .percent-sign{filter:url(#entry-ice-glow);fill:var(--ice)}
+.cyclone-instrument .status-window{fill:#183342;stroke:#5e9ab6;stroke-width:1.8}
+.cyclone-instrument .status-window.on{fill:#b4dce9;stroke:#d2f4ff}
+.cyclone-instrument .status-label{fill:#c5eaf8}
+#entry-leds .status-window.on+.status-label,#entry-weapon-led.on~.status-label{fill:#143144}
+.cyclone-speedometer{filter:drop-shadow(0 2px 5px #000c)}
+.cyclone-speedometer .speed-readout{fill:#c9fff5}
+.cyclone-speedometer .speed-unit,.cyclone-speedometer .speed-mode{fill:#b9e7f5;font-family:'Open 24 Display ST',monospace;font-weight:400}

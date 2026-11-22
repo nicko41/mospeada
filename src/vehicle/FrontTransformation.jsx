@@ -10,6 +10,7 @@ import { SuspensionHideTransform } from './SuspensionHideTransform.js'
 import { TransformationFrame } from './TransformationFrame.js'
 import { wheelArmorState } from './wheelArmorState.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import {playerCombat} from '../player/playerCombat.js'
 
 export default function FrontTransformation({ rig, runtime }) {
   const data = useRef(null), effect = useRef(null),rear=useRef(null),guards=useRef(null),wheels=useRef(null),suspension=useRef(null),frame=useRef(null)
@@ -28,7 +29,7 @@ export default function FrontTransformation({ rig, runtime }) {
       .then(value=>{if(!controller.signal.aborted)data.current=value})
       .catch(error=>{prepared();if(error.name!=='AbortError')store.set({error:error.message})})
     const down = e => {
-      if(e.code!=='KeyT'||e.repeat||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return
+      if(playerCombat.dead||e.code!=='KeyT'||e.repeat||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return
       e.preventDefault();store.request()
     }
     window.addEventListener('keydown',down)
@@ -60,13 +61,12 @@ export default function FrontTransformation({ rig, runtime }) {
       }catch(error){runtime.finishArmorPreparation?.();store.set({error:error.message});data.current=null}
     }
     if(!effect.current)return
-    if(!runtime.paused)store.advance(Math.min(delta,.25),runtime.transformEntry?.assemblyDuration)
     // Scott has already received actorOffset at -1. Move Motorcycle's source
     // frame by that same world offset once, before posing every component.
     frame.current.apply(runtime.transformEntry?.actorOffset)
     const choreography=runtime.transformEntry?.choreography
     const mechanical=choreography?.mechanicalProgress??store.snapshot().progress
-    const assembly=runtime.transformEntry?.returnFlight?mechanical:store.snapshot().progress
+    const assembly=runtime.transformEntry?.assemblyProgress??store.snapshot().progress
     effect.current.apply(assembly,choreography)
     rear.current?.apply(mechanical,choreography)
     guards.current?.apply(assembly,choreography)

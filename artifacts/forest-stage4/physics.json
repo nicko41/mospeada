@@ -210,8 +210,8 @@
     },
     "duration": 2.075
   },
-  "preparationFrames": 5,
-  "preparationPeakMs": 11.120300000000043,
+  "preparationFrames": 7,
+  "preparationPeakMs": 24.36070000000018,
   "anchor": {
     "x": 24,
     "y": 8.899579048156738,

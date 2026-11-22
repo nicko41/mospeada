@@ -85,9 +85,9 @@ export class ScottSoilLayer {
   }
   install() { for (const r of this.records) if (r.variants.has(r.mesh.material)) r.mesh.material = r.variants.get(r.mesh.material) }
   sampleBody() { for (const samples of Object.values(this.samples)) for (const sample of samples) sample.bone.getWorldPosition(sample.position); return this.samples }
-  update(load, config) {
+  update(load, config, armor=false) {
     this.install()
-    this.uniforms.uSoilEnabled.value = config.enabled && config.scottEnabled ? 1 : 0
+    this.uniforms.uSoilEnabled.value = config.enabled && config.scottEnabled && !armor ? 1 : 0
     const keys = ['boots', 'legs', 'arms', 'torso']
     this.uniforms.uScottMud.value.set(...keys.map(k => equipmentSoil(load[k + 'Mud'], config.maximum)))
     this.uniforms.uScottFilm.value.set(...keys.map(k => equipmentSoil(load[k + 'Film'], config.maximum)))

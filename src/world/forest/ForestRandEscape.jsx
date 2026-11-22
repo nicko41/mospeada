@@ -14,6 +14,7 @@ import {createSoilLoad,evolveSoil} from '../../vehicle/weatheringModel.js'
 import {weatheringState} from '../../vehicle/weatheringState.js'
 import {weatherState} from '../weatherState.js'
 import {vfxState} from '../../vfx/vfxState.js'
+import {playerCombat} from '../../player/playerCombat.js'
 
 const SCOTT_URL='/models/mospeada/scott-bernard-animated-original.glb',ACTIONS_URL='/animations/scott-cyclone-actions.json'
 useGLTF.preload(RAND_CYCLONE_URL);useGLTF.preload(RAND_RIDER_URL)
@@ -35,11 +36,12 @@ export default function ForestRandEscape({runtime}){
   useFrame((_,delta)=>{
     const s=runtime.state;if(!s)return
     if(resources.actorState!==s){resources.actorState=s;resources.escape.reset();Object.assign(resources.weathering.load,createSoilLoad());resources.weathering.accumulationTime=0}
-    const dt=runtime.paused?0:Math.min(delta,.1),{escape,rig,rider,weathering}=resources,config=weatheringState.snapshot()
+    const dt=runtime.paused||playerCombat.dead?0:Math.min(delta,.1),{escape,rig,rider,weathering}=resources,config=weatheringState.snapshot()
     if(config.cleanRequest!==weathering.cleanRequest){weathering.cleanRequest=config.cleanRequest;Object.assign(weathering.load,createSoilLoad())}
     if(config.soilRequest!==weathering.soilRequest){weathering.soilRequest=config.soilRequest;Object.assign(weathering.load,{frontMud:config.maximum,rearMud:config.maximum,frontFilm:config.maximum*.7,rearFilm:config.maximum*.7})}
     weathering.layer.update(weathering.load,config)
-    escape.update(dt,s,stage4World.get(),!!runtime.desertPatrol?.active);rig.root.visible=escape.active
+    if(runtime.climaxSequence?.phase==='resume'){rig.root.visible=false;return}
+    escape.update(dt,s,stage4World.get(),!!runtime.desertPatrol?.active||!!runtime.climaxSequence?.active);rig.root.visible=escape.active
     if(!escape.active)return
     rig.update(escape.state,sampleRideHeight,bikeConfig);rider.update(escape.state,dt,bikeConfig,sampleRideHeight)
     const wheels=weathering.contacts.update(escape.state)

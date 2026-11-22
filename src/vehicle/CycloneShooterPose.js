@@ -24,6 +24,7 @@ export class CycloneShooterPose{
     this.saved=[limb.a,limb.b,limb.c].map(bone=>({bone,q:bone.quaternion.clone()}))
     limb.a.getWorldPosition(this.shoulder);this.direction.copy(point).sub(this.shoulder).normalize()
     this.target.copy(this.shoulder).addScaledVector(this.direction,(limb.l1+limb.l2)*(options?.reach??1)-.025)
+    if(options?.target)this.target.lerp(options.target,options.targetBlend??1)
     if(options?.pole)this.pole.copy(options.pole)
     else this.pole.copy(motion.body.localToWorld(this.pole.set(-.7,.5,.6)))
     limb.c.getWorldQuaternion(this.orientation)

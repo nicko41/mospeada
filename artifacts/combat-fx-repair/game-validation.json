@@ -1,0 +1,228 @@
+{
+  "A": {
+    "id": 2,
+    "hits": 1,
+    "health": 9,
+    "dead": false,
+    "contact": 2,
+    "emissive": 2.8,
+    "visible": true,
+    "particles": [
+      11,
+      0,
+      0,
+      0
+    ],
+    "uploaded": [
+      11,
+      0,
+      0,
+      0
+    ],
+    "sprites": 0
+  },
+  "hitPixels": {
+    "changed": 102,
+    "floor": 0,
+    "delta": 2735,
+    "glError": 0
+  },
+  "B": [
+    {
+      "id": 2,
+      "hits": 2,
+      "health": 8,
+      "dead": false,
+      "contact": 2,
+      "emissive": 2.8,
+      "visible": true,
+      "particles": [
+        11,
+        0,
+        0,
+        0
+      ],
+      "uploaded": [
+        11,
+        0,
+        0,
+        0
+      ],
+      "sprites": 0
+    },
+    {
+      "id": 2,
+      "hits": 3,
+      "health": 7,
+      "dead": false,
+      "contact": 2,
+      "emissive": 2.8,
+      "visible": true,
+      "particles": [
+        11,
+        0,
+        0,
+        0
+      ],
+      "uploaded": [
+        11,
+        0,
+        0,
+        0
+      ],
+      "sprites": 0
+    }
+  ],
+  "programsBefore": 186,
+  "C": {
+    "id": 2,
+    "hits": 10,
+    "health": 0,
+    "dead": true,
+    "contact": 14,
+    "emissive": 6,
+    "visible": true,
+    "particles": [
+      48,
+      17,
+      3,
+      3
+    ],
+    "uploaded": [
+      48,
+      17,
+      3,
+      3
+    ],
+    "sprites": 1
+  },
+  "glowPixels": {
+    "changed": 1174,
+    "floor": 0,
+    "delta": 78392,
+    "glError": 0
+  },
+  "lightPixels": {
+    "changed": 147075,
+    "floor": 122746,
+    "delta": 5605520,
+    "glError": 0
+  },
+  "D": [
+    {
+      "id": 0,
+      "hits": 10,
+      "health": 0,
+      "dead": true,
+      "contact": 20,
+      "emissive": 6,
+      "visible": true,
+      "particles": [
+        48,
+        18,
+        3,
+        6
+      ],
+      "uploaded": [
+        48,
+        18,
+        3,
+        6
+      ],
+      "sprites": 2
+    },
+    {
+      "id": 1,
+      "hits": 10,
+      "health": 0,
+      "dead": true,
+      "contact": 32,
+      "emissive": 6,
+      "visible": true,
+      "particles": [
+        48,
+        34,
+        6,
+        9
+      ],
+      "uploaded": [
+        48,
+        34,
+        6,
+        9
+      ],
+      "sprites": 3
+    },
+    {
+      "id": 3,
+      "hits": 10,
+      "health": 0,
+      "dead": true,
+      "contact": 32,
+      "emissive": 6,
+      "visible": true,
+      "particles": [
+        48,
+        50,
+        7,
+        12
+      ],
+      "uploaded": [
+        48,
+        50,
+        7,
+        12
+      ],
+      "sprites": 4
+    },
+    {
+      "id": 4,
+      "hits": 10,
+      "health": 0,
+      "dead": true,
+      "contact": 32,
+      "emissive": 6,
+      "visible": true,
+      "particles": [
+        48,
+        62,
+        8,
+        15
+      ],
+      "uploaded": [
+        48,
+        62,
+        8,
+        15
+      ],
+      "sprites": 5
+    }
+  ],
+  "cleanup": {
+    "active": 0,
+    "particles": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "lights": [
+      0,
+      0
+    ],
+    "programs": 186,
+    "gl": 0,
+    "error": ""
+  },
+  "networkWarnings": [
+    {
+      "source": "network",
+      "level": "error",
+      "text": "Failed to load resource: net::ERR_CACHE_OPERATION_NOT_SUPPORTED",
+      "timestamp": 1795322542283.901,
+      "url": "http://127.0.0.1:5175/assets/sound/02-Robotech-Lifeline.mp3",
+      "networkRequestId": "24648.4590"
+    }
+  ],
+  "errors": []
+}

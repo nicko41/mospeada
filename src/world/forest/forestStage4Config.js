@@ -1,4 +1,5 @@
 import {stage3Height,stage3PathX,FOREST_STAGE3} from './forestStage3Config.js'
+import {DESERT_CLIMAX,climaxPathX,climaxTerrainHeight} from './forestClimaxConfig.js'
 
 export const FOREST_STAGE4=Object.freeze({seed:19831001,connector:96,forestLength:620,halfWidth:1024,desertHalfWidth:2400,desertEnd:2400,drop:28,
   jumps:Object.freeze([{start:145,crest:172,end:205,height:2.8},{start:285,crest:322,end:366,height:4},{start:431,crest:454,end:486,height:3.2}])})
@@ -8,7 +9,7 @@ function entryHeight(x,z){
   return u+v<=1?a+(b-a)*u+(c-a)*v:d+(c-d)*(1-u)+(b-d)*(1-v)
 }
 export function stage4Anchor(z){const index=Math.ceil((FOREST_STAGE3.startZ-z+160)/FOREST_STAGE3.chunkLength),at=FOREST_STAGE3.startZ-index*FOREST_STAGE3.chunkLength,x=Math.round(stage3PathX(at)/4)*4;return {x,y:entryHeight(x,at),z:at}}
-export function stage4Path(z,anchor=null){const d=-z,t=smooth4(0,96,d),path=(12*Math.sin(d*.012)+5*Math.sin(d*.026))*(1-smooth4(490,600,d));return anchor&&d<96?(stage3PathX(anchor.z+z)-anchor.x)*(1-t)+path*t:path}
+export function stage4Path(z,anchor=null){const d=-z,t=smooth4(0,96,d),path=(12*Math.sin(d*.012)+5*Math.sin(d*.026))*(1-smooth4(490,600,d));if(d>=DESERT_CLIMAX.start)return climaxPathX(d);return anchor&&d<96?(stage3PathX(anchor.z+z)-anchor.x)*(1-t)+path*t:path}
 export const stage4Edge=x=>620+(8*Math.sin(x*.018)+4*Math.sin(x*.051))*smooth4(4,40,Math.abs(x))
 export function stage4ForestHeight(x,z,anchor=null){
   const d=-z,cross=x-stage4Path(z,anchor),off=smooth4(6,24,Math.abs(cross))
@@ -25,9 +26,12 @@ export function stage4DesertHeight(x,z){
   const d=-z,landing=smooth4(790,1150,d),side=smooth4(350,650,Math.abs(x))
   let h=-FOREST_STAGE4.drop+landing*(1.2*Math.sin(x*.009+d*.013)+.65*Math.sin(d*.037-x*.021))
   h+=side*(2*Math.sin(x*.006+d*.007)+1.3*Math.cos(x*.013-d*.009))
-  const rim=Math.max(smooth4(750,1800,Math.abs(x)),smooth4(1400,2300,d))
+  // Open one central pass between the existing mountains, continuing -Z.
+  const pass=(1-smooth4(95,290,Math.abs(x)))*smooth4(1100,1450,d)
+  const rim=Math.max(smooth4(750,1800,Math.abs(x)),smooth4(1400,2300,d)*(1-pass))
   const ridge=75+100*(.5+.5*Math.sin(x*.006+d*.002))**2+80*(.5+.5*Math.sin(x*.015-d*.004))**4
-  return h+rim*ridge
+  const oldHeight=h+rim*ridge
+  return d>DESERT_CLIMAX.start?climaxTerrainHeight(x,z,oldHeight):oldHeight
 }
 export const stage4EarthWeight=(x,z,anchor=null)=>Math.max(1-smooth4(1.3,4.5,Math.abs(x-stage4Path(z,anchor))),smooth4(520,620,-z+4*Math.sin(x*.13)),smooth4(800,1024,Math.abs(x)))
 

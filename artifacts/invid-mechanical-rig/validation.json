@@ -1,0 +1,65 @@
+{
+  "workingAsset": "public/models/mospeada/invid-scout-rigged.glb",
+  "source": "public/models/mospeada/invid-scout.glb",
+  "sourceUnchanged": true,
+  "joints": [
+    "body_root",
+    "arm_L",
+    "arm_R",
+    "leg_L",
+    "leg_R"
+  ],
+  "triangles": [
+    79986,
+    38746,
+    18604
+  ],
+  "clips": [
+    "Hover",
+    "Idle",
+    "Landing",
+    "Takeoff",
+    "Walk",
+    "Claw_L",
+    "Claw_R"
+  ],
+  "checks": {
+    "testsPassed": 34,
+    "testsFailed": 0,
+    "productionBuild": "passed",
+    "originalUvNormalsIndicesPositionsAndImages": "preserved",
+    "fourLimbsIndependent": true,
+    "fiveScoutsIndependent": true,
+    "hitAndExplosionRegression": "passed",
+    "eightRoundBursts": "preserved"
+  },
+  "gpu": {
+    "anime": {
+      "drawCalls": 4,
+      "triangles": 256069,
+      "targets": 2,
+      "gl": 0
+    },
+    "nativeGpuComparison": {
+      "changedPixels": 2,
+      "totalPixels": 300000,
+      "maxDifference": 39
+    },
+    "drawCalls": 3,
+    "triangles": 256068,
+    "states": [
+      "Hover",
+      "Landing",
+      "Walk",
+      "Claw_L",
+      "Takeoff",
+      "Idle"
+    ],
+    "programsAdded": 0,
+    "geometriesAdded": 0,
+    "unchanged": true,
+    "gl": 0,
+    "errors": []
+  },
+  "scope": "Isolated model and actual Anime renderer; full game demo was not launched."
+}

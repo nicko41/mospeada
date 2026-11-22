@@ -1,4 +1,4 @@
-import {Color} from 'three'
+import {Color,Vector3} from 'three'
 import {createForestGroundMaterial} from './forestGroundMaterial.js'
 import {stage2PathX} from './forestStage2Config.js'
 import {FOREST_STAGE3 as S} from './forestStage3Config.js'
@@ -30,7 +30,7 @@ export function stage4CliffMaterial(texture){
   return material
 }
 
-export function stage4DesertMaterial(detail,sand,settings={}){
+export function stage4DesertMaterial(detail,sand,settings={},origin=new Vector3()){
   const config={...DESERT_BLEND_DEFAULTS,...settings},material=canyonEarthMaterial(detail),compile=material.onBeforeCompile
   const uniforms={
     uDesertSand:{value:sand},
@@ -39,6 +39,7 @@ export function stage4DesertMaterial(detail,sand,settings={}){
     uDesertSandMetres:{value:config.sandTileMetres},
     uDesertMaskMetres:{value:config.maskMetres},
     uDesertEdgeSoftness:{value:config.edgeSoftness},
+    uDesertOrigin:{value:origin},
   }
   material.name='Plano 4 / original illustrated earth + illustrated sand'
   // Shared uniform objects also let the author compare/tune the balance live.
@@ -48,7 +49,7 @@ export function stage4DesertMaterial(detail,sand,settings={}){
     compile(shader,renderer);Object.assign(shader.uniforms,uniforms)
     // All desert tiles already use this same local coordinate frame. Sampling
     // it directly avoids tile seams and any camera/time-dependent distribution.
-    shader.vertexShader='varying vec2 vDesertGround;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvDesertGround=transformed.xz;')
+    shader.vertexShader='uniform vec3 uDesertOrigin;varying vec2 vDesertGround;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvDesertGround=(modelMatrix*vec4(transformed,1.0)).xz-uDesertOrigin.xz;')
     shader.fragmentShader=`
       varying vec2 vDesertGround;
       uniform sampler2D uDesertSand;
@@ -79,10 +80,17 @@ export function stage4DesertMaterial(detail,sand,settings={}){
         // across mask boundaries, keeping mip transitions clean at speed.
         desertPaint=mix(canyonPaint(canyonDirt,earthUv),canyonPaint(uDesertSand,sandUv),sandWeight);
       }
+      // A restrained central trail continues through the pass and broad plain.
+      // Shared world-relative coordinates keep recycled tiles seamless.
+      float routeDepth=-vDesertGround.y;
+      float routeAge=max(0.0,routeDepth-2400.0);
+      float routeX=(38.0*sin(routeAge*.0022)+16.0*sin(routeAge*.0041))*smoothstep(0.0,350.0,routeAge);
+      float routeMark=(1.0-smoothstep(8.0,18.0,abs(vDesertGround.x-routeX)))*smoothstep(1150.0,1450.0,routeDepth);
+      desertPaint.rgb*=mix(1.0,.84,routeMark);
       diffuseColor*=desertPaint;
     `)
   }
-  material.customProgramCacheKey=()=> 'stage4-two-original-desert-images-v1'
+  material.customProgramCacheKey=()=> 'stage4-two-original-desert-images-climax-v2'
   return material
 }
 

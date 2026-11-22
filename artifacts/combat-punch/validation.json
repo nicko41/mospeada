@@ -1,0 +1,92 @@
+{
+  "airKill": {
+    "destroyed": true,
+    "hits": 10,
+    "health": 0
+  },
+  "fireball": {
+    "changed": 465,
+    "bright": 330,
+    "dark": 0,
+    "particles": 3
+  },
+  "halo": {
+    "changed": 1527,
+    "bright": 1402,
+    "dark": 0,
+    "particles": 3
+  },
+  "sparks": {
+    "changed": 0,
+    "bright": 0,
+    "dark": 0,
+    "particles": 11
+  },
+  "sparksAfter": {
+    "changed": 29,
+    "bright": 29,
+    "dark": 0,
+    "particles": 5
+  },
+  "smoke": {
+    "changed": 3122,
+    "bright": 2,
+    "dark": 3094,
+    "particles": 6
+  },
+  "groundKill": {
+    "destroyed": true,
+    "hits": 10,
+    "health": 0
+  },
+  "pools": {
+    "particles": [
+      6,
+      25,
+      10,
+      30,
+      11,
+      0
+    ],
+    "capacities": [
+      48,
+      96,
+      24,
+      48,
+      24,
+      32
+    ],
+    "explosions": 5,
+    "lights": 2
+  },
+  "muzzle": {
+    "error": 0.0000936954017997569,
+    "sparks": 8,
+    "flash": 2,
+    "halo": 1
+  },
+  "resources": {
+    "programsAdded": 0,
+    "geometriesAdded": 0,
+    "texturesAdded": 0,
+    "pools": [
+      48,
+      96,
+      24,
+      48,
+      24,
+      32
+    ],
+    "particles": [
+      0,
+      33,
+      9,
+      18,
+      9,
+      0
+    ],
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

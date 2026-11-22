@@ -3,7 +3,7 @@ import zlib from 'node:zlib'
 
 // Lossless asset extraction, not image synthesis. Source is RGBA8 PNG.
 export function readRgbaPng(file) {
-  const input=fs.readFileSync(file),chunks=[];let width,height,depth,type
+  const input=Buffer.isBuffer(file)?file:fs.readFileSync(file),chunks=[];let width,height,depth,type
   for(let offset=8;offset<input.length;){const size=input.readUInt32BE(offset),name=input.toString('ascii',offset+4,offset+8),data=input.subarray(offset+8,offset+8+size);if(name==='IHDR'){width=data.readUInt32BE(0);height=data.readUInt32BE(4);depth=data[8];type=data[9];if(data[12])throw Error('Interlaced PNG not supported')}if(name==='IDAT')chunks.push(data);offset+=size+12}
   if(depth!==8||type!==6)throw Error(`Expected RGBA8 PNG; got ${depth}/${type}`)
   const raw=zlib.inflateSync(Buffer.concat(chunks)),stride=width*4,pixels=new Uint8Array(width*height*4)

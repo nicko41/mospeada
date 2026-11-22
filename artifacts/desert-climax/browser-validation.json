@@ -1,0 +1,44 @@
+{
+  "opening": {
+    "count": 5,
+    "phase": "opening"
+  },
+  "battle": {
+    "phase": "battle",
+    "count": 30,
+    "visible": 30,
+    "ground": 9,
+    "squads": 7,
+    "bolts": 64,
+    "sharedBolts": true,
+    "terrainRows": 12,
+    "terrainMeshes": 36,
+    "shots": 0,
+    "randHealth": 100,
+    "drawCalls": 468,
+    "triangles": 1574024,
+    "glError": 0,
+    "programs": 47
+  },
+  "pause": "[8.601393706357621,-33.610083769830496,-2511.9264940665353]",
+  "victory": {
+    "eventCount": 1,
+    "kills": 30,
+    "objective": {
+      "phase": "victory",
+      "kills": 30,
+      "total": 30,
+      "randHealth": 100,
+      "victory": true,
+      "text": "Nivel 1 completado · Rand protegido"
+    }
+  },
+  "retry": {
+    "phase": "battle",
+    "randHealth": 100,
+    "kills": 0,
+    "openingHidden": true,
+    "climaxCount": 30
+  },
+  "errors": []
+}

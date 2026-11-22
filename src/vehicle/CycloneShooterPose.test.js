@@ -11,7 +11,8 @@ import {createBikeState} from './bikePhysics.js'
 import {bikeConfig} from './bikeConfig.js'
 import {updateScottGameplay} from './scottGameplay.js'
 import {CycloneShooterPose} from './CycloneShooterPose.js'
-import {MarsGallant,GALLANT_MOUNT} from './MarsGallant.js'
+import {MountedGallantPose} from './MountedGallantPose.js'
+import {MarsGallant,GALLANT_MOUNT,ARMOR_GALLANT_BIND_OFFSET} from './MarsGallant.js'
 import {ArmorGallantPose} from './ArmorGallantPose.js'
 import {ArmorController} from './ArmorController.js'
 import {ArmorArmMotion} from './ArmorArmMotion.js'
@@ -48,6 +49,26 @@ test('aim extends the original right arm/hand while the left grip remains fixed,
   for(let i=0;i<30;i++){step();instance.shooterPose.apply(point,false,1/60,true);weapon.update(instance,encounter,runtime.state)}
   assert.equal(weapon.root.visible,false,'Weapon clears both handlebar grips during maneuvers')
   encounter.active=false;weapon.update(instance,encounter,runtime.state);assert.equal(weapon.root.visible,false)
+  // Mounted RMB chooses one stable grip per hold, without changing physics.
+  instance.shooterPose.restore();let randomCalls=0
+  const mounted=instance.shooterPose=new MountedGallantPose(instance,()=>[.1,.9][randomCalls++%2])
+  const protectedBones=[...bones.values()].filter(b=>!/mixamorig(Left|Right)(Arm|ForeArm|Hand)$/.test(b.name))
+  const runMounted=enabled=>{
+    step();const native=protectedBones.map(b=>({b,p:b.position.toArray(),q:b.quaternion.toArray(),s:b.scale.toArray()})),control=JSON.stringify(runtime.state)
+    mounted.applyMounted(point,enabled,1/60,weapon)
+    assert.equal(JSON.stringify(runtime.state),control,'Two hands never change steering, speed or input state')
+    for(const r of native){assert.deepEqual(r.b.position.toArray(),r.p);assert.deepEqual(r.b.quaternion.toArray(),r.q);assert.deepEqual(r.b.scale.toArray(),r.s)}
+  }
+  for(let i=0;i<60;i++)runMounted(true)
+  assert.equal(mounted.twoHanded,true);assert.equal(randomCalls,1,'Do not reroll while aiming or shooting')
+  const support=left.c.localToWorld(mounted.supportPalm.clone())
+  assert.ok(support.distanceTo(mounted.supportPoint)<.025,`Left glove cups the weapon grip: ${support.distanceTo(mounted.supportPoint)} m`)
+  assert.ok(left.a.quaternion.angleTo(leftQ[0])>.1,'The supporting hand leaves the handlebar')
+  for(let i=0;i<60;i++)runMounted(false)
+  step();const nativeLeft=[left.a,left.b,left.c].map(b=>b.quaternion.clone());mounted.applyMounted(point,false,1/60,weapon);
+  [left.a,left.b,left.c].forEach((b,i)=>assert.ok(b.quaternion.angleTo(nativeLeft[i])<.001,'Release returns the support hand to its normal handlebar grip'))
+  for(let i=0;i<60;i++){step();const base=[left.a,left.b,left.c].map(b=>b.quaternion.clone());mounted.applyMounted(point,true,1/60,weapon);[left.a,left.b,left.c].forEach((b,n)=>assert.ok(b.quaternion.angleTo(base[n])<.001,'One-handed aiming preserves the normal left grip'))}
+  assert.equal(mounted.twoHanded,false);assert.equal(randomCalls,2)
   // The same weapon/IK must also sit above native free Armor locomotion,
   // preserving the left arm, lower body and the original hand/forearm frame.
   instance.shooterPose.restore();instance.shooterPose.blend=0
@@ -77,6 +98,20 @@ test('aim extends the original right arm/hand while the left grip remains fixed,
   const restingBarrel=new Vector3(-1,0,0).applyQuaternion(weapon.root.getWorldQuaternion(new Quaternion())).normalize()
   assert.ok(restingFinger.dot(restingBarrel)>.99999,'Barrel follows the actual relaxed hand rather than an independent target')
   assert.ok(weapon.root.localToWorld(new Vector3(...GALLANT_MOUNT.grip)).distanceTo(right.c.localToWorld(weapon.palm.clone()))<1e-7,'Grip stays in the palm after the aim-to-rest transition')
+  weapon.present(instance,true,null,1,true)
+  const armorMount=weapon.root.matrix.clone(),handBefore=right.c.quaternion.clone()
+  const fixedRotation=weapon.rotation.clone().multiply(new Quaternion().fromArray(ARMOR_GALLANT_BIND_OFFSET))
+  assert.deepEqual(weapon.root.quaternion.toArray(),fixedRotation.toArray(),'Use the approved fixed Armor orientation')
+  for(const axis of [new Vector3(1,0,0),new Vector3(0,1,0),new Vector3(0,0,1)]){
+    right.c.quaternion.copy(handBefore).multiply(new Quaternion().setFromAxisAngle(axis,.7));wrapper.updateMatrixWorld(true)
+    weapon.present(instance,true,point,1,true)
+    assert.equal(weapon.root.parent,right.c,'Gallant remains a direct child of the hand')
+    assert.deepEqual(weapon.root.matrix.toArray(),armorMount.toArray(),'Hand rotation or aim targets cannot change the local Armor mount')
+    const expected=right.c.matrixWorld.clone().multiply(armorMount)
+    assert.ok(expected.elements.every((v,i)=>Math.abs(v-weapon.root.matrixWorld.elements[i])<1e-7),'World pose inherits the hand exactly')
+    assert.ok(weapon.root.localToWorld(new Vector3(...GALLANT_MOUNT.grip)).distanceTo(right.c.localToWorld(weapon.palm.clone()))<1e-7,'Pivot stays at the same grip in every hand rotation')
+  }
+  right.c.quaternion.copy(handBefore);wrapper.updateMatrixWorld(true)
   step()
   const nativeRest=[right.a,right.b,right.c,...combatPose.spines].map(b=>({b,q:b.quaternion.toArray()}))
   combatPose.applyArmor(point,false,armor.state,1/60)

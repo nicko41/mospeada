@@ -1,0 +1,62 @@
+{
+  "shadow": {
+    "pixels": 1413,
+    "dark": 1395,
+    "contrast": 134272
+  },
+  "previousCounts": {
+    "scott": 444,
+    "rand": 191,
+    "scout": 91,
+    "scottLife": [
+      2.012696566082561,
+      3.354494276804268
+    ],
+    "randLife": [
+      2.0130668908014266,
+      3.3551114846690444
+    ],
+    "sizeRatio": 3
+  },
+  "previousDust": {
+    "pixels": 140738,
+    "dark": 5,
+    "contrast": 5067056
+  },
+  "counts": {
+    "scott": 403,
+    "rand": 170,
+    "scout": 97,
+    "scottLife": [
+      3.1628088895583093,
+      5.27134814926385
+    ],
+    "randLife": [
+      3.163390828402241,
+      5.27231804733707
+    ],
+    "sizeRatio": 3
+  },
+  "dust": {
+    "pixels": 133429,
+    "dark": 0,
+    "contrast": 5913349
+  },
+  "tail": [
+    208,
+    95,
+    46
+  ],
+  "resources": {
+    "shadowCount": 30,
+    "cpuMs": 2.088888888888889,
+    "maxQueries": 48,
+    "reused": true,
+    "geometriesAdded": 0,
+    "texturesAdded": 0,
+    "programsAdded": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

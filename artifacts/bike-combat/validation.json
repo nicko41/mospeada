@@ -1,0 +1,68 @@
+{
+  "noAim": {
+    "x": 2.3463934732417446e-16,
+    "z": -1101.9159756714141,
+    "yaw": 3.141592653589793,
+    "speed": 6.337699110013649,
+    "shots": 0,
+    "aiming": false,
+    "pov": false,
+    "canShoot": true,
+    "kills": 0
+  },
+  "aim": {
+    "x": 7.52716204517e-16,
+    "z": -1106.146394250497,
+    "yaw": 3.141592653589793,
+    "speed": 11.067582696809659,
+    "shots": 2,
+    "aiming": true,
+    "pov": true,
+    "canShoot": true,
+    "kills": 0
+  },
+  "steering": {
+    "x": -1.201905575244574,
+    "z": -1116.8922356117291,
+    "yaw": 3.3935018985280103,
+    "speed": 18.039785123570656,
+    "shots": 4,
+    "aiming": true,
+    "pov": true,
+    "canShoot": true,
+    "kills": 0
+  },
+  "fighting": {
+    "x": -16.438235703517524,
+    "z": -1162.5907335558848,
+    "yaw": 3.4686773325827613,
+    "speed": 33.07421249858381,
+    "shots": 12,
+    "aiming": true,
+    "pov": true,
+    "canShoot": true,
+    "kills": 2
+  },
+  "released": {
+    "x": -22.418199587155645,
+    "z": -1180.2166334718083,
+    "yaw": 3.4686781221572436,
+    "speed": 36.60737129714692,
+    "shots": 13,
+    "aiming": false,
+    "pov": false,
+    "canShoot": true,
+    "kills": 2
+  },
+  "defeat": {
+    "dead": true,
+    "ready": true,
+    "age": 2.7133999999761587,
+    "z": -1212.0433141870117,
+    "shots": 13,
+    "headY": 9.25049421091979,
+    "hipY": 9.268557312082946
+  },
+  "retryHealth": 100,
+  "errors": []
+}

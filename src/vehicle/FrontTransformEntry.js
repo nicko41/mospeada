@@ -20,8 +20,9 @@ export function canStartFrontTransformation(state) {
 // ordinary wheelie/boost inputs, then one explicit launch of the axle supports.
 // Regular driving, wheelie, jump and boost implementations stay untouched.
 export class FrontTransformEntry {
-  constructor(store,runtime) {
+  constructor(store,runtime,random=Math.random) {
     this.store=store;this.runtime=runtime;this.state=null;this.phase='idle';this.time=0
+    this.random=random;this.transformationCount=0;this.orbitCamera=true
     this.poseBlend=0;this.paused=false;this.flightActive=false;this.messageTime=0;this.elapsed=0;this.returnMotion=null
     this.actorOffset=new Vector3();this.departure=new Vector3();this.returnOffset=new Vector3();this.armorBoostCount=0
     this.returnFlight=false;this.returnLaunchPending=false
@@ -63,6 +64,8 @@ export class FrontTransformEntry {
     if(!canStartFrontTransformation(s)){
       this.messageTime=2.5;this.publish('Avanzá para transformar · no se activa detenido ni en reversa');return
     }
+    this.orbitCamera=this.transformationCount===0||this.random()<.5
+    this.transformationCount++
     this.state=s;this.paused=false;this.boostCount=s.boostCount;this.boostAge=-1;this.elapsed=0;this.reverseMotion=null;this.returnMotion=null
     this.actorOffset.set(0,0,0)
     this.returnFlight=false;this.returnLaunchPending=false
@@ -70,6 +73,7 @@ export class FrontTransformEntry {
     s.wheelieTime=0;s.wheelieExhausted=false
     this.store.reset();this.stage('wheelie')
   }
+  resetLevelCamera(){this.transformationCount=0;this.orbitCamera=true}
   reset() {
     this.phase='idle';this.time=0;this.poseBlend=0;this.paused=false;this.flightActive=false;this.state=null;this.elapsed=0;this.reverseMotion=null;this.returnMotion=null
     this.actorOffset.set(0,0,0);this.departure.set(0,0,0);this.returnOffset.set(0,0,0)
@@ -93,7 +97,15 @@ export class FrontTransformEntry {
     this.phase=this.store.snapshot().progress>=1?'complete':'transforming';this.publish()
   }
   get blocksRiderChange(){return this.phase!=='idle'}
+  completeAssembly(){
+    if(this.paused||this.returnFlight||this.phase!=='transforming'||this.assemblyProgress<1)return false
+    // The mechanical clock starts during torso rise. Its completed animation
+    // must not wait for the slower inspection clock to catch up afterwards.
+    if(this.store.snapshot().progress<1)this.store.seek(1)
+    this.actorOffset.set(0,0,0);this.departure.set(0,0,0);this.stage('complete');return true
+  }
   get returnProgress(){return returnProgress(this)}
+  get assemblyProgress(){return this.mechanicalStarted?this.mechanicalProgress:this.store.snapshot().progress}
   get mechanicalProgress(){
     const p=this.store.snapshot().progress
     if(this.returnFlight)return sampleReturnPhases(this.returnProgress).mechanical
@@ -115,7 +127,7 @@ export class FrontTransformEntry {
       const tuck=this.phase==='returnboost'?smooth(this.time/.18):1
       return{arms:1,legs:1,returnTuck:tuck,leftToeDown:1-tuck,rightToeDown:1-tuck}
     }
-    const sequence=sampleFrontSequence(this.store.snapshot().progress)
+    const sequence=sampleFrontSequence(this.assemblyProgress)
     if(!this.mechanicalStarted)return sequence
     const p=this.mechanicalProgress
     return{...sequence,departureBoost:this.phase==='armorboost'?ramp(0,.10,this.time)*(1-ramp(.30,.65,this.time)):0,legs:Math.max(sequence.legs,ramp(.22,.4,p)),legLift:ramp(.22,.4,p)*(1-ramp(.7,.88,p)),leftToeDown:ramp(.7,.88,p),rightToeDown:ramp(.22,.64,p)}
@@ -131,13 +143,15 @@ export class FrontTransformEntry {
   }
   get armorBoostLevel(){return this.phase==='returnboost'?Math.max(0,1-this.time/RETURN_BOOST_TIME):this.phase==='armorboost'?Math.max(0,1-this.time/.42):0}
   get upwardBoost(){return this.phase==='returnboost'}
-  get cameraProgress(){
+  get cameraProgress(){return this.orbitCamera?this.framingProgress:null}
+  get framingProgress(){
     if(['idle','reversing','returning','returnboost','returnpose','falling'].includes(this.phase))return null
+    if(this.mechanicalStarted)return this.assemblyProgress
     return ['complete','armorboost'].includes(this.phase)?1:clamp(this.elapsed/(this.store.snapshot().duration+.8))
   }
   get choreography(){
     if(this.phase==='idle')return null
-    const sequence=sampleFrontSequence(this.store.snapshot().progress)
+    const sequence=sampleFrontSequence(this.assemblyProgress)
     if(this.phase==='returning'){
       const fade=1-smooth(this.time/RETURN_TIME),from=this.returnMotion
       if(!from)return null
@@ -189,11 +203,10 @@ export class FrontTransformEntry {
       this.poseBlend=smooth(this.time/POSE_TIME);this.publish()
       if(this.time>=POSE_TIME){this.poseBlend=1;this.store.set({progress:0,direction:1,playing:true});this.stage('transforming')}
     }
-    else if(this.phase==='transforming'&&this.store.snapshot().progress>=1){
+    else if(this.phase==='transforming'&&this.assemblyProgress>=1){
       // Assembly completion releases Armor controls immediately. No final
       // cinematic boost, leg-opening gesture or presentation-only travel.
-      this.actorOffset.set(0,0,0);this.departure.set(0,0,0)
-      this.stage('complete')
+      this.completeAssembly()
     }
     else if(this.phase==='reversing'){
       const p=this.store.snapshot().progress

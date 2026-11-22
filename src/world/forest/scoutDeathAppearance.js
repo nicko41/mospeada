@@ -1,9 +1,14 @@
-import {DynamicDrawUsage,InstancedBufferAttribute} from 'three'
+import {BufferGeometry,DynamicDrawUsage,InstancedBufferAttribute} from 'three'
 
 // Only runtime copies receive the death attributes/material. Original GLB
 // geometry, maps and the approved surviving-hit appearance stay unchanged.
 export function createScoutDeathGeometry(source,capacity){
-  const geometry=source.clone(),values=new Float32Array(capacity*2)
+  const geometry=new BufferGeometry(),values=new Float32Array(capacity*2)
+  // All squads share immutable source vertex/index buffers. Only the tiny
+  // per-instance death/rig attributes belong to the individual batch.
+  geometry.setIndex(source.index)
+  for(const [name,attribute] of Object.entries(source.attributes))geometry.setAttribute(name,attribute)
+  geometry.groups=source.groups.map(g=>({...g}));geometry.boundingBox=source.boundingBox?.clone()||null;geometry.boundingSphere=source.boundingSphere?.clone()||null
   for(let i=0;i<capacity;i++)values[i*2+1]=1
   geometry.setAttribute('aScoutDeath',new InstancedBufferAttribute(values,2).setUsage(DynamicDrawUsage))
   return geometry

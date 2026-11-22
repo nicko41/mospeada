@@ -1,0 +1,155 @@
+{
+  "rows": [
+    [
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      }
+    ],
+    [
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      },
+      {
+        "width": 23,
+        "height": 28,
+        "shape": "#side-stripe"
+      }
+    ]
+  ],
+  "labels": [
+    {
+      "text": "LOADING",
+      "width": 91.84906005859375,
+      "height": 12.376007080078125
+    },
+    {
+      "text": "W S W",
+      "width": 72.5357666015625,
+      "height": 19.447998046875
+    },
+    {
+      "text": "PREPARING SCENE",
+      "width": 117.18295288085938,
+      "height": 8.84002685546875
+    },
+    {
+      "text": "TURBO",
+      "width": 52.49530029296875,
+      "height": 13.259994506835938
+    },
+    {
+      "text": "WEAP",
+      "width": 40.1824951171875,
+      "height": 9.7239990234375
+    },
+    {
+      "text": "VR-052F",
+      "width": 55.8585205078125,
+      "height": 9.7239990234375
+    },
+    {
+      "text": "PWR",
+      "width": 31.747940063476562,
+      "height": 9.225341796875
+    },
+    {
+      "text": "ENG",
+      "width": 29.89556884765625,
+      "height": 9.7239990234375
+    },
+    {
+      "text": "SENS",
+      "width": 37.770050048828125,
+      "height": 9.7239990234375
+    },
+    {
+      "text": "COMM",
+      "width": 42.712799072265625,
+      "height": 9.7239990234375
+    },
+    {
+      "text": "NAV",
+      "width": 27.6441650390625,
+      "height": 9.225341796875
+    }
+  ],
+  "dynamic": "CARGANDO TERRENO",
+  "counterInside": true,
+  "lowerRow": {
+    "inside": true,
+    "bottom": 396.0000154972077,
+    "clearance": 11.999984502792302
+  },
+  "backgroundRibs": false,
+  "progress": "78",
+  "errors": []
+}

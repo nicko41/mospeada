@@ -1,0 +1,21 @@
+{
+  "component": "ForestDesertScouts",
+  "renderer": "AnimeRenderer",
+  "states": [
+    "Landing",
+    "Walk",
+    "Claw_R"
+  ],
+  "modes": [
+    "descending",
+    "ground"
+  ],
+  "walkMetres": 4.151233568221974,
+  "flightUniformChange": 0.042284587827588205,
+  "boneOnlyChangedPixels": 1782,
+  "drawCalls": 4,
+  "scouts": 5,
+  "landings": 1,
+  "takeoffs": 1,
+  "gl": 0
+}

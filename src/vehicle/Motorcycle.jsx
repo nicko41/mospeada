@@ -30,6 +30,7 @@ import ForestRandEscape from '../world/forest/ForestRandEscape.jsx'
 import {playerCombat,resetPlayerCombat} from '../player/playerCombat.js'
 import {stage3World} from '../world/forest/forestStage3World.js'
 import {stage4World} from '../world/forest/forestStage4Config.js'
+import {BikeDefeatMotion} from './BikeDefeatMotion.js'
 
 const CYCLONE_MODEL='/models/mospeada/cyclone-vr052f.glb'
 useGLTF.preload(CYCLONE_MODEL)
@@ -63,8 +64,11 @@ export default function Motorcycle() {
     const levelProgress=activeEnvironment==='forest'?new ForestStage2Progress():null
     runtime.levelProgress=levelProgress
     const resetAt=start=>{
+      runtime.scottInstance?.defeatMotion?.reset();runtime.defeat=null;runtime.pendingDefeatRetry=false
+      runtime.bikeDefeatMotion?.reset()
+      runtime.resumeClimaxCheckpoint=!!start.climax
       resetPlayerCombat()
-      runtime.stage3?.camera.finish(runtime.state||{x:start.x,height:0,z:start.z})
+      runtime.gallant?.bikeCamera.finish(runtime.state||{x:start.x,height:0,z:start.z})
       runtime.stage3?.encounter.reset();runtime.scottInstance?.shooterPose?.restore()
       const stage4=stage4World.get()
       if(start.stage4&&stage4?.bound){if(runtime.stage3)runtime.stage3.encounter.phase='complete'}else stage4?.reset()
@@ -74,21 +78,36 @@ export default function Motorcycle() {
       runtime.keys={};runtime.input={};runtime.boostQueued=false;runtime.paused=false
       rig.update(runtime.state,sampleRideHeight,getConfig());drivingCamera.reset(runtime.state)
       rideMotion.speed=0;rideMotion.paused=false
-      rideUI.publish({shooter:null,scottPreview:false,paused:false,location:start.label,riderMode:'mounted',wheelieAngle:0,wheelieRemaining:0,controlMode:'MOTORCYCLE',speed:0,airborne:false,boost:false,boostCooldown:0,blocked:false,slip:0,handbrake:false})
+      rideUI.publish({shooter:null,scottPreview:false,paused:false,defeat:null,location:start.label,riderMode:'mounted',wheelieAngle:0,wheelieRemaining:0,controlMode:'MOTORCYCLE',speed:0,airborne:false,boost:false,boostCooldown:0,blocked:false,slip:0,handbrake:false})
     }
     runtime.resetAt=resetAt
     const reset = (name = defaultStart) => {
       if ((name === 'forest') !== (activeEnvironment === 'forest')) { selectEnvironment(name); return }
       const start = TEST_STARTS[name] || TEST_STARTS.highway
+      runtime.transformEntry?.resetLevelCamera()
       levelProgress?.reset();resetAt(start)
     }
     reset(activeEnvironment === 'forest' ? 'forest' : new URLSearchParams(location.search).get('start') || 'highway')
+    runtime.retryDefeat=()=>{
+      if(!playerCombat.dead)return
+      const world=stage4World.get()
+      if(world?.bound){
+        if(runtime.climaxSequence?.active)runtime.pendingDefeatRetry=true
+        else resetAt(world.checkpoint||world.startAt(550))
+      }else if(levelProgress?.checkpoint)resetAt(levelProgress.checkpoint)
+      else reset()
+    }
     const clear = () => { runtime.keys = {}; runtime.input = {}; runtime.boostQueued = false;if(runtime.stage3)runtime.stage3.encounter.firing=false }
     const pause = () => { clear(); runtime.paused = !runtime.paused; rideUI.publish({ paused: runtime.paused }) }
     const down = event => {
       if(runtime.opening?.active)return
-      if(runtime.stage3?.encounter.active&&!['KeyP','Escape','KeyR'].includes(event.code))return
       if (/INPUT|SELECT|TEXTAREA/.test(event.target.tagName)) return
+      if(playerCombat.dead){
+        event.preventDefault();if(event.repeat)return
+        if(event.code==='KeyR')runtime.retryDefeat()
+        else if(event.code==='KeyP'||event.code==='Escape')pause()
+        return
+      }
       if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ControlLeft', 'ControlRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF'].includes(event.code)) event.preventDefault()
       runtime.keys[event.code] = true
       if (event.repeat) return
@@ -97,7 +116,7 @@ export default function Motorcycle() {
       if (event.code === 'KeyR') reset()
       if (event.code === 'KeyP' || event.code === 'Escape') pause()
       if (event.code === 'KeyC'&&!armor.active) setCameraMode((runtime.cameraMode + 1) % 4)
-      if (event.code === 'KeyF' && !runtime.paused && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
+      if (event.code === 'KeyF' && !runtime.paused && !runtime.stage3?.encounter.active && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
       const starts = { Digit1: 'highway', Digit2: 'curves', Digit3: 'slope', Digit4: 'rough', Digit5: 'jump', Digit6: 'forest' }
       if (starts[event.code]) reset(starts[event.code])
     }
@@ -108,14 +127,14 @@ export default function Motorcycle() {
     document.addEventListener('visibilitychange', visibility)
     const command = event => {
       if(runtime.opening?.active)return
+      if(playerCombat.dead){if(event.detail.retryDefeat)runtime.retryDefeat();else if(event.detail.pause)pause();return}
       if (event.detail.start) reset(event.detail.start)
       if (event.detail.pause) pause()
-      if(runtime.stage3?.encounter.active)return
       if (event.detail.camera&&!armor.active) setCameraMode((runtime.cameraMode + 1) % 4)
       if (event.detail.freeCamera&&!armor.active) setCameraMode(runtime.cameraMode === 3 ? 0 : 3)
       if (event.detail.centerCamera){if(armor.active)armorCamera.yaw=armor.state.yaw;else setCameraMode(0)}
       if(event.detail.armorGround)armor.toggle()
-      if (event.detail.rider && !runtime.paused && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
+      if (event.detail.rider && !runtime.paused && !runtime.stage3?.encounter.active && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
       if (event.detail.touch) Object.assign(runtime.keys, event.detail.touch)
     }
     window.addEventListener('ride-command', command)
@@ -125,7 +144,7 @@ export default function Motorcycle() {
       snapshot: () => ({ ...runtime.state, ...rig.articulation, handErrors: rig.arms.map(a => a.error), hydraulics: rig.hydraulics.map(link => ({ ...link.state })), cameraMode: runtime.cameraMode, metrics: rig.metrics, render: gl.info.render }),
     }
     return () => {
-      armorCamera.dispose();delete runtime.armorController
+      armorCamera.dispose();delete runtime.armorController;delete runtime.retryDefeat
       unregister(); clear(); window.removeEventListener('keydown', down); window.removeEventListener('keyup', up); window.removeEventListener('blur', blur)
       drivingCamera.dispose(); runtime.cameraController = null; orbit.dispose(); runtime.orbit = null
       document.removeEventListener('visibilitychange', visibility); window.removeEventListener('ride-command', command)
@@ -134,6 +153,7 @@ export default function Motorcycle() {
   }, [rig, runtime, camera, scene, gl])
 
   useFrame((_, delta) => {
+    if(runtime.pendingDefeatRetry){const start=stage4World.get()?.prepareClimaxRetry(rig.metrics);if(start)runtime.resetAt(start)}
     let s = runtime.state
     if (!s) return
     const k = runtime.keys
@@ -179,15 +199,24 @@ export default function Motorcycle() {
       queryColliders(x - 0.3, z - 0.3, x + 0.3, z + 0.3, runtime.nearby)
       return !runtime.nearby.some(item => item.maxY > y + 0.2 && item.minY < y + 1.9 && overlapsFootprint(item, x, z, 0.23))
     }
-    if (!runtime.paused&&!runtime.opening?.holding&&!(playerCombat.dead&&runtime.desertPatrol?.active)) {
+    if(playerCombat.dead){
+      runtime.bikeDefeatMotion ||=new BikeDefeatMotion(rig,runtime)
+      runtime.bikeDefeatMotion.advance(runtime.paused?0:Math.min(delta,.1),sampleRideHeight,canMove)
+      runtime.keys={};runtime.input={};runtime.boostQueued=false;s.acceleration=0;s.boostTime=s.boostBlend=s.boostKick=0
+      if(runtime.armorController?.active){const a=runtime.armorController.state;a.speed=a.vx=a.vz=a.boostBlend=0;a.boosting=false}
+    }
+    if (!runtime.paused&&!runtime.opening?.holding&&!playerCombat.dead) {
       const dt=Math.min(delta,.1),entry=runtime.transformEntry
       const armor=runtime.armorController
       stage3World.get()?.ensureAround(s.z)
       const encounter=runtime.stage3?.encounter
-      if(encounter?.observe(s,!armor.active&&(!entry||entry.phase==='idle'))){runtime.keys={};runtime.boostQueued=false;runtime.cameraController?.end()}
-      const autopilot=encounter?.drive(s,dt)
-      if(autopilot)runtime.input=autopilot
+      encounter?.observe(s,!armor.active&&(!entry||entry.phase==='idle'))
+      encounter?.drive(s,dt)
       const stage4=stage4World.get();stage4?.prepare(encounter,s)
+      // Advance the assembly before choosing the control mode. The frame that
+      // reaches 100% consumes the player's Armor input immediately.
+      entry?.store.advance(dt,entry.assemblyDuration)
+      entry?.completeAssembly()
       if(entry?.phase==='complete'&&!entry.returnFlight&&!armor.active)armor.activate()
       if(armor.active){
         armor.update({forward:runtime.input.walkForward,side:runtime.input.walkSide,yaw:armor.camera.yaw,boost:runtime.input.run,rise:!!k.Space,descend:!!(k.ControlLeft||k.ControlRight)},dt)
@@ -209,6 +238,7 @@ export default function Motorcycle() {
     }
     if (s.boostPressed || s.riderMode !== 'mounted') runtime.boostQueued = false
     rig.update(s, sampleRideHeight, getConfig(),runtime.transformEntry?.returnTilt)
+    if(playerCombat.dead)runtime.bikeDefeatMotion?.apply(sampleRideHeight)
     rig.sunlight.intensity = 0.015 + timeOfDayState.value * 0.6
     rig.lighting.update(timeOfDayState.value)
     rideMotion.speed = s.speed; rideMotion.paused = runtime.paused
@@ -220,10 +250,16 @@ export default function Motorcycle() {
       if(encounter?.active)rideUI.publish({location:'Nivel 01 · Plano 3 · Reconocimiento Invid',shooter:{active:true,remaining:encounter.remaining,blocked:!encounter.canShoot}})
       else if(encounter?.phase==='complete')rideUI.publish({location:'Nivel 01 · Plano 3 · Despejado',shooter:{active:false,remaining:0,blocked:false}})
       const stage4=stage4World.get()
-      if(stage4?.contains(s.x,s.z))rideUI.publish({location:stage4.distance(s.z)>620?'Nivel 01 · Plano 4 · Desierto':'Nivel 01 · Plano 4 · Salida del bosque'})
+      if(stage4?.contains(s.x,s.z))rideUI.publish({location:stage4.distance(s.z)>=2400?'Nivel 01 · Plano 5 · Llanura Invid':stage4.distance(s.z)>620?'Nivel 01 · Plano 4 · Desierto':'Nivel 01 · Plano 4 · Salida del bosque'})
       rideUI.publish({ speed: Math.abs(s.speed) * 3.6, lean: s.lean * 180 / Math.PI, frontTravel: rig.articulation.frontTravel, rearTravel: rig.articulation.rearTravel, blocked: s.blocked, reverse: !active&&s.speed < -0.1, airborne: active?!a.grounded:s.airborne, slip: s.slip * 180 / Math.PI, handbrake: s.handbrake > 0.15, boost: active?a.boostBlend>.15:s.boostTime > 0, boostCooldown: s.boostCooldown, cameraMode: runtime.cameraMode, riderMode: s.riderMode, wheelieAngle: s.wheelieAngle, wheelieRemaining: s.wheelieRemaining,controlMode:encounter?.active?'CYCLONE_SHOOTER':active?a.mode:runtime.transformEntry?.phase&&runtime.transformEntry.phase!=='idle'?'TRANSFORMING':'MOTORCYCLE',armorHeight:active?a.height:0,verticalSpeed:active?a.vy:0 })
     }
   }, -2)
-  useFrame((_, delta) => { if(runtime.opening?.update(delta))return;if(runtime.state&&runtime.stage3?.camera.update(runtime.stage3.encounter,runtime.state,runtime.paused?0:delta))return;if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta);else if (runtime.state) runtime.cameraController?.update(riderCameraState(runtime.state), delta) })
+  useFrame((_, delta) => {
+    if(runtime.opening?.update(delta))return
+    if(playerCombat.dead){runtime.gallant?.bikeCamera.finish(runtime.state);if(runtime.cameraController?.updateDefeat(delta))return}
+    if(runtime.state&&runtime.gallant?.bikeCamera.update(runtime.gallant,runtime.state,runtime.paused?0:delta))return
+    if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta)
+    else if(runtime.state)runtime.cameraController?.update(riderCameraState(runtime.state),delta)
+  })
   return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} /><GallantCombat runtime={runtime}/>{activeEnvironment==='forest'&&<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><ForestStage3Encounter runtime={runtime}/><ForestRandEscape runtime={runtime}/><ForestDesertScouts runtime={runtime}/></>}</>
 }

@@ -25,6 +25,10 @@ export default function CycloneWeathering({ rig, runtime }) {
   useFrame((_, delta) => {
     const state = runtime.state
     if (!state) return
+    if(effect.rear!==runtime.rearTransformation){
+      effect.rear=runtime.rearTransformation
+      if(effect.rear)effect.layer.inheritParts(effect.rear.parts)
+    }
     const config = store.snapshot(), dt = runtime.paused ? 0 : Math.min(delta, .25)
     const wheels = effect.contacts.update(state)
     if (config.bothCleanRequest !== effect.bothCleanRequest) { effect.bothCleanRequest = config.bothCleanRequest; Object.assign(effect.scottLoad, createScottSoilLoad()) }
@@ -45,8 +49,11 @@ export default function CycloneWeathering({ rig, runtime }) {
       if (effect.scottLayer) evolveScottSoil(effect.scottLoad, effect.scottLayer.sampleBody(), wheels, state, config, weatherState.rainIntensity, humidity, effect.accumulationTime)
       effect.accumulationTime = 0
     }
-    effect.layer.update(effect.load, config,runtime.armorController?.active?1:runtime.transformEntry?.poseBlend||0)
-    effect.scottLayer?.update(effect.scottLoad, config)
+    // Hide body dirt throughout assembly/Armor and its reverse without
+    // clearing either stored load or changing the motorcycle's coating.
+    const armor=!!runtime.armorController?.active||(runtime.transformEntry?.assemblyProgress??0)>0
+    effect.layer.update(effect.load, config, armor)
+    effect.scottLayer?.update(effect.scottLoad, config, armor)
     effect.publishTime += delta
     if (effect.publishTime > .15) {
       effect.publishTime = 0

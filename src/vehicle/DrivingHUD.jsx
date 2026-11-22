@@ -11,6 +11,8 @@ import { timeOfDayState } from '../world/TimeOfDay.jsx'
 import FrontTransformControls, { FrontTransformStatus } from './FrontTransformControls.jsx'
 import ArmorControls from './ArmorControls.jsx'
 import { activeEnvironment } from '../world/environmentConfig.js'
+import CycloneSpeedometer from './CycloneSpeedometer.jsx'
+import ScottHealthHUD from './ScottHealthHUD.jsx'
 
 const tuning = [
   ['acceleration', 'Aceleración', 2, 24, 0.2], ['braking', 'Frenado', 4, 30, 0.5],
@@ -31,12 +33,16 @@ export default function DrivingHUD() {
   const weather = useSyncExternalStore(weatherState.subscribe, weatherState.snapshot)
   const [flight, setFlight] = useState(bikeConfig.flightEnabled)
   const armor=data.controlMode?.startsWith('ARMOR_')
-  return <div className="driving-hud camera-active">
+  return <div className={`driving-hud camera-active${data.paused?' is-paused':''}`}>
+    <CycloneSpeedometer speed={data.speed} maximum={bikeConfig.maxSpeed*3.6} reverse={data.reverse} armor={armor}/>
+    <ScottHealthHUD defeat={data.defeat}/>
+    <div className="ride-pause-ui" hidden={!data.paused}>
     <AnimeOverlay />
     <FrontTransformStatus />
+    {data.climax&&<section className="ride-climax-objective" aria-label="Objetivo del clímax"><strong>{data.climax.text}</strong><span>Invid abatidos: {data.climax.kills} / {data.climax.total} · Rand: {data.climax.randHealth}%</span></section>}
     <header><span className="ride-label">MOSPEADA / {activeEnvironment === 'forest' ? 'LEVEL 01 · FOREST' : armor?'ARMOR · DEMO DE MOVIMIENTO':'PRUEBA DE CONDUCCIÓN'}</span><strong>VR-052F <span>{armor?'ARMOR':'CYCLONE'}</span></strong><small>Scott Bernard · {armor?data.controlMode==='ARMOR_HOVER'?'HOVER':'GROUND':data.location}</small></header>
     <div className="ride-actions"><button onClick={() => rideCommand({ pause: true })}>{data.paused ? 'Continuar · P' : 'Pausa · P'}</button><button onClick={() => rideCommand({ camera: true })}>Vista · C</button><button onClick={() => rideCommand({ centerCamera: true })}>Recentrar</button><button onClick={() => setOpen(!open)} aria-expanded={open}>Ajustes</button></div>
-    {open && <aside className="ride-settings" aria-label="Ajustes del juego" onKeyDown={e => e.stopPropagation()} onPointerDown={e => e.stopPropagation()} onContextMenu={e => e.preventDefault()}>
+    {data.paused && open && <aside className="ride-settings" aria-label="Ajustes del juego" onKeyDown={e => e.stopPropagation()} onPointerDown={e => e.stopPropagation()} onContextMenu={e => e.preventDefault()}>
       <div className="ride-settings-heading"><h2>Ajustes</h2><button aria-label="Cerrar ajustes" onClick={() => setOpen(false)}>×</button></div>
       <div className="ride-settings-tabs" role="group" aria-label="Categorías de ajustes">{[['weather', 'Clima'], ['driving', 'Conducción'],['armor','Armor'], ['anime', 'Anime'], ['brush', 'Reflejo'], ['soil', 'Suciedad'], ['vfx', 'VFX · terreno'], ['transform', 'Transformación']].map(([key, label]) => <button key={key} aria-pressed={section === key} onClick={() => setSection(key)}>{label}</button>)}</div>
       <div className="ride-settings-body">
@@ -54,13 +60,13 @@ export default function DrivingHUD() {
         {section === 'armor' && <ArmorControls/>}
       </div>
     </aside>}
-    <div className="ride-speed"><strong>{Math.round(data.speed).toString().padStart(2, '0')}</strong><span>KM/H · {data.reverse ? 'A PIE' : 'D'}</span><div className="ride-meter"><i style={{ width: `${Math.min(100, data.speed / (bikeConfig.maxSpeed * 3.6) * 100)}%` }} /></div></div>
     <div className={`ride-boost ${data.boost ? 'active' : ''}`} role="status">{data.boost ? 'BOOST · EMPUJE DE TURBINA' : data.boostCooldown > 0 ? `BOOST · RECARGA ${data.boostCooldown.toFixed(1)} s` : 'SHIFT · BOOST LISTO'}<div className="ride-meter"><i style={{ width: `${Math.max(0, 1 - (data.boostCooldown || 0) / bikeConfig.boostCooldown) * 100}%` }} /></div></div>
     <div className="ride-telemetry">{armor?<><span>{data.controlMode} <button onClick={()=>rideCommand({armorGround:true})}>G · cambiar</button></span><span>ALTURA <b>{(data.armorHeight||0).toFixed(1)} m</b></span><span>VERTICAL <b>{(data.verticalSpeed||0).toFixed(1)} m/s</b></span></>:<><span>LEAN <b>{Math.abs(data.lean).toFixed(0)}°</b></span><span>HORQUILLA <b>{(data.frontTravel * 1000).toFixed(0)} mm</b></span><span>TRASERA <b>{(data.rearTravel * 1000).toFixed(0)} mm</b></span></>}</div>
-    <footer>{armor?'ARMOR · WASD mover · Mouse mirar / clic capturar · SHIFT + WASD boost (Ground: correr) · ESPACIO salto · CTRL descender · G Hover/Ground · T transformar':data.riderMode === 'onFoot' ? 'Scott a pie · WASD caminar · SHIFT correr · CTRL agacharse · F subir cerca · mantener botón derecho para mirar' : 'Mantener botón derecho para mirar · rueda zoom · C vista · W acelerar · S frenar / atrás · SHIFT boost · ESPACIO freno de mano · CTRL wheelie · F bajar · A D girar · M noche · N día'}</footer>
+    <footer>{armor?'ARMOR · WASD mover · Mouse mirar / clic capturar · SHIFT + WASD boost (Ground: correr) · ESPACIO salto · CTRL descender · G Hover/Ground · T transformar':data.riderMode === 'onFoot' ? 'Scott a pie · WASD caminar · SHIFT correr · CTRL agacharse · F subir cerca · mantener botón derecho para mirar' : 'Clic derecho: POV y apuntar · clic izquierdo: disparar mientras apuntás · rueda zoom · C vista · W acelerar · S frenar / atrás · SHIFT boost · ESPACIO freno de mano · CTRL wheelie · F bajar · A D girar · M noche · N día'}</footer>
     {(data.airborne || data.handbrake || data.wheelieAngle > 0.05 || data.riderMode && data.riderMode !== 'mounted') && <div className="ride-motion-status">{data.riderMode === 'stopping' ? 'FRENANDO PARA BAJAR · F CANCELAR' : data.riderMode === 'dismounting' ? 'BAJANDO DEL CYCLONE' : data.riderMode === 'mounting' || data.riderMode === 'approaching' ? 'SUBIENDO AL CYCLONE' : data.riderMode === 'onFoot' ? 'A PIE · F CERCA DE LA MOTO PARA SUBIR' : data.wheelieAngle > 0.05 ? data.wheelieRemaining > 0 ? `WHEELIE · ${data.wheelieRemaining.toFixed(1)} s · CTRL` : 'BAJANDO EL FRENTE' : data.airborne ? 'EN AIRE' : `FRENO DE MANO · DERRAPE ${Math.abs(data.slip || 0).toFixed(0)}°`}</div>}
     {data.paused && <div className="ride-paused"><strong>EN PAUSA</strong><button onClick={() => rideCommand({ pause: true })}>Continuar conducción</button></div>}
-    {data.blocked && !data.paused && <p className="ride-blocked">Obstáculo o límite del terreno · Mantener S para retroceder · R para reiniciar</p>}
+    {data.blocked && <p className="ride-blocked">Obstáculo o límite del terreno · Mantener S para retroceder · R para reiniciar</p>}
     <div className="ride-touch">{[['KeyA', '←'], ['KeyD', '→'], ['KeyS', 'FRENO\nATRÁS'], ['Space', 'MANO'], ['KeyW', 'GAS'], ['ShiftLeft', 'BOOST']].map(([code, label]) => <button key={code} style={{ whiteSpace: 'pre-line' }} onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); rideCommand({ touch: { [code]: true } }) }} onPointerUp={() => rideCommand({ touch: { [code]: false } })} onPointerCancel={() => rideCommand({ touch: { [code]: false } })}>{label}</button>)}</div>
+    </div>
   </div>
 }

@@ -1,0 +1,17 @@
+{
+  "two-hands": {
+    "twoHanded": true,
+    "blend": 1,
+    "contact": 8.92550067720218e-9,
+    "shots": 6,
+    "glError": 0
+  },
+  "one-hand": {
+    "twoHanded": false,
+    "blend": 3.16166684455318e-47,
+    "contact": 0.8360030246924156,
+    "shots": 14,
+    "glError": 0
+  },
+  "errors": []
+}

@@ -1,0 +1,45 @@
+import fs from 'node:fs'
+import assert from 'node:assert/strict'
+import {connect} from './browser-cdp.mjs'
+const c=await connect(),dir='artifacts/invid-blood',report={},ev=code=>c.evaluate(code),wait=ms=>new Promise(resolve=>setTimeout(resolve,ms))
+fs.mkdirSync(dir,{recursive:true})
+async function capture(name){const url=await ev('__BLOOD_QA__.render();__ANIME__.renderer.domElement.toDataURL()');fs.writeFileSync(`${dir}/${name}.png`,Buffer.from(url.split(',')[1],'base64'))}
+try{
+ await c.send('Emulation.setDeviceMetricsOverride',{width:1200,height:900,deviceScaleFactor:1,mobile:false})
+ let ready=false
+ for(let i=0;i<480;i++){if(await ev('!!window.__MOSPEADA__?.runtime.combatVFX?.impacts.atlases.blood?.[1]&&!!window.__DESERT_SCOUTS__&&window.__ANIME__?.state.snapshot().ready&&!document.querySelector("#entry-preloader")').catch(()=>false)){ready=true;break}await wait(250)}
+ assert.ok(ready,'Both blood atlases have loaded in the full game')
+ await ev(`(async()=>{
+  window.__FOREST_OPENING__?.finish();const T=await import('/node_modules/.vite/deps/three.js'),{renderScoutSquad}=await import('/src/world/forest/scoutSquadRendering.js'),{SCOUT_ASSET}=await import('/src/world/forest/invidScoutAsset.js'),d=__MOSPEADA__,r=d.runtime,w=__FOREST_STAGE4__.world
+  if(!w.bound)w.bind({x:0,y:0,z:-2400});r.resetAt(w.startAt(900));r.paused=true;window.__BLOOD_QA__={T,renderScoutSquad,SCOUT_ASSET}
+ })()`)
+ await ev('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))')
+ await ev(`(()=>{
+  const q=__BLOOD_QA__,d=__MOSPEADA__,r=d.runtime,T=q.T;q.p=__DESERT_SCOUTS__.patrol;q.fx=r.combatVFX;q.p.reset();q.p.phase='active';q.p.time=10;q.target=q.p.scouts[2];const t=q.target
+  t.position.set(r.state.x,d.sample(r.state.x,r.state.z-14)+1,r.state.z-14);t.mode='flight';t.yaw=t.pitch=t.bank=0;t.view.root.visible=true
+  for(const other of q.p.scouts)if(other!==t)other.view.root.visible=false
+  d.setCameraMode(3);r.orbit.enableDamping=false;r.orbit.target.copy(t.position).add(new T.Vector3(0,2.7,0));d.camera.position.copy(t.position).add(new T.Vector3(1.5,3.3,11));r.orbit.update();d.camera.fov=50;d.camera.updateProjectionMatrix()
+  q.from=new T.Vector3();q.weapon={root:{visible:false},getMuzzle:p=>p.copy(q.from)};q.random=q.fx.impacts.bloodRandom
+  q.render=()=>{for(const squad of __DESERT_SCOUTS__.squads)q.renderScoutSquad(squad,d.camera.position,q.fx);__ANIME__.effect.render(__ANIME__.state.snapshot(),1)}
+  q.reset=()=>{q.fx.clear(true);Object.assign(t,{dead:false,health:10,hits:0,hitVersion:0,state:'IDLE',mode:'flight',meleeEnabled:true});t.view.root.visible=true;t.view.motion.reset();q.p.applyView(t);t.view.motion.update(t,1/60,d.sample)}
+  q.surface=()=>{const mesh=t.view.levels[0],g=mesh.geometry,j=g.attributes.skinIndex,n=g.attributes.normal,p=g.attributes.position,index=g.index,a=new T.Vector3(),b=new T.Vector3(),c=new T.Vector3(),center=new T.Vector3(),best=new T.Vector3();let score=-Infinity;for(let f=0;f<index.count;f+=3){const ia=index.getX(f),ib=index.getX(f+1),ic=index.getX(f+2);if(j.getX(ia)!==1||j.getX(ib)!==1||j.getX(ic)!==1||(n.getZ(ia)+n.getZ(ib)+n.getZ(ic))/3<.15)continue;center.fromBufferAttribute(p,ia).add(b.fromBufferAttribute(p,ib)).add(c.fromBufferAttribute(p,ic)).divideScalar(3);const value=center.z*3+center.x*.2;if(value>score){score=value;best.copy(mesh.getVertexPosition(ia,a)).add(mesh.getVertexPosition(ib,b)).add(mesh.getVertexPosition(ic,c)).divideScalar(3)}}return mesh.localToWorld(best)}
+  q.fire=(variant,death=false)=>{q.reset();if(variant<0)q.fx.impacts.bloodRandom=()=>.99;else{const values=[.1,variant===0?.1:.9];q.fx.impacts.bloodRandom=()=>values.shift()??.99}const point=q.surface();q.from.copy(point).add(new T.Vector3(0,0,8));if(death){t.hits=9;t.health=1}q.p.receiveHit(t,new T.Vector3(0,0,-1));q.fx.shot(q.weapon,{hit:t,point,destroyed:death},q.p);q.fx.update(0,q.p,q.weapon,d.camera);return true}
+  q.tick=seconds=>{for(let time=0;time<seconds;time+=1/120){t.view.motion.update(t,1/120,d.sample);__MOSPEADA_VFX__.vfx.update(1/120);q.fx.update(1/120,q.p,q.weapon,d.camera)}q.render()}
+  q.snapshot=()=>{const records=q.fx.impacts.bloodRecords.filter(b=>b.age<b.life),head=new T.Vector3().fromArray(q.SCOUT_ASSET.head).applyMatrix4(t.view.motion.matrices[0]).applyMatrix4(t.view.levels[0].matrixWorld),headWidth=q.SCOUT_ASSET.headWidth*t.view.levels[0].getWorldScale(new T.Vector3()).x;return{blood:q.fx.impacts.stats.blood,records:records.map(b=>({death:b.deathSlot,variant:b.variant,size:b.size,frame:b.frame,y:b.position.y,headError:b.deathSlot?b.position.distanceTo(head):null,widthVsHead:b.deathSlot?b.size/headWidth:null})),airSheet:q.fx.impacts.airSprites.count,approvedSheet:q.fx.impacts.airSprites.material.map.image.src,textureUrls:q.fx.impacts.bloodSprites.map(m=>m.material.map.image.src)}}
+  q.pixels=()=>{const a=__ANIME__,g=a.renderer.getContext(),w=g.drawingBufferWidth,h=g.drawingBufferHeight,read=()=>{q.render();const data=new Uint8Array(w*h*4);g.readPixels(0,0,w,h,g.RGBA,g.UNSIGNED_BYTE,data);return data},on=read();q.fx.impacts.bloodSprites.forEach(m=>m.visible=false);const off=read();q.fx.impacts.bloodSprites.forEach(m=>m.visible=true);let changed=0;q.greenPixels=0;for(let i=0;i<on.length;i+=4)if(Math.abs(on[i]-off[i])+Math.abs(on[i+1]-off[i+1])+Math.abs(on[i+2]-off[i+2])>12){changed++;if(on[i+1]>on[i]+2&&on[i+2]<on[i+1]+20&&on[i]+on[i+1]+on[i+2]<600)q.greenPixels++}return changed}
+  q.reset();q.render();return true
+ })()`)
+ await capture('01-intact-scout')
+ await ev('__BLOOD_QA__.fire(-1);__BLOOD_QA__.tick(.14);true');report.hitNone=await ev('__BLOOD_QA__.snapshot()');assert.equal(report.hitNone.blood,0);await capture('02-hit-without-liquid')
+ for(const variant of[0,1]){
+  await ev(`__BLOOD_QA__.fire(${variant});__BLOOD_QA__.tick(.14);true`);const result=await ev('__BLOOD_QA__.snapshot()');result.visiblePixels=await ev('__BLOOD_QA__.pixels()');assert.equal(result.blood,1);assert.equal(result.records[0].variant,variant);assert.ok(result.visiblePixels>50);report['hit0'+(variant+1)]=result;await capture('03-hit-blood0'+(variant+1));await ev('__BLOOD_QA__.tick(.17);true');await capture('03-hit-blood0'+(variant+1)+'-tail')
+ }
+ await ev('__BLOOD_QA__.fire(-1,true);__BLOOD_QA__.tick(.13);true');report.deathNone=await ev('__BLOOD_QA__.snapshot()');assert.equal(report.deathNone.blood,0);assert.equal(report.deathNone.airSheet,1);await capture('04-explosion-without-liquid')
+ for(const variant of[0,1]){
+  await ev(`__BLOOD_QA__.fire(${variant},true);__BLOOD_QA__.tick(.15);true`);const result=await ev('__BLOOD_QA__.snapshot()');result.visiblePixels=await ev('__BLOOD_QA__.pixels()');assert.equal(result.blood,1);assert.equal(result.records[0].variant,variant);assert.ok(result.records[0].death&&result.records[0].headError<1e-5&&result.records[0].widthVsHead>.95&&result.records[0].widthVsHead<=1);assert.ok(result.visiblePixels>100);assert.equal(result.airSheet,1);assert.ok(result.approvedSheet.includes('explosion-aire.png'));report['death0'+(variant+1)]=result;await capture('05-head-liquid-in-explosion0'+(variant+1));await ev('__BLOOD_QA__.tick(.12);__BLOOD_QA__.pixels();true');result.greenPixels=await ev('__BLOOD_QA__.greenPixels');assert.ok(result.greenPixels>10,'Viscous green-grey fluid keeps its own colour over the hot explosion');await capture('05-head-liquid-in-explosion0'+(variant+1)+'-mixed')
+ }
+ report.randomAndResources=await ev(`(()=>{const q=__BLOOD_QA__,a=__ANIME__,renderer=a.renderer,g=renderer.info.memory.geometries,t=renderer.info.memory.textures,p=renderer.info.programs.length,counts={none:0,one:0,two:0};q.fx.impacts.bloodRandom=q.random;for(let i=0;i<200;i++){const b=q.fx.impacts.spawnBlood(q.target.position,new q.T.Vector3(0,0,1),1,i%2===0);if(!b)counts.none++;else counts[b.variant===0?'one':'two']++}q.fx.update(0,q.p,q.weapon,__MOSPEADA__.camera);q.render();const active=q.fx.impacts.stats.blood,resources={geometriesAdded:renderer.info.memory.geometries-g,texturesAdded:renderer.info.memory.textures-t,programsAdded:renderer.info.programs.length-p};q.tick(1.5);return{counts,active,afterFade:q.fx.impacts.stats.blood,...resources,gl:renderer.getContext().getError(),shader:a.state.snapshot().error}})()`)
+ const rr=report.randomAndResources;assert.ok(rr.counts.none>0&&rr.counts.one>0&&rr.counts.two>0);assert.ok(rr.active<=20);assert.equal(rr.afterFade,0);assert.equal(rr.geometriesAdded,0);assert.equal(rr.texturesAdded,0);assert.equal(rr.programsAdded,0);assert.equal(rr.gl,0);assert.equal(rr.shader,'')
+ report.errors=c.events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);assert.deepEqual(report.errors,[])
+ fs.writeFileSync(`${dir}/validation.json`,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2))
+}finally{await ev('if(window.__BLOOD_QA__)__BLOOD_QA__.fx.impacts.bloodRandom=__BLOOD_QA__.random;if(window.__MOSPEADA__){__MOSPEADA__.runtime.paused=true;__MOSPEADA__.runtime.keys={}};true').catch(()=>{});c.close()}

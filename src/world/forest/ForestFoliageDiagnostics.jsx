@@ -1,11 +1,14 @@
 import {useState,useSyncExternalStore} from 'react'
 import {Html} from '@react-three/drei'
 import {foliageTelemetryStore,foliageRecording} from './forestFoliageTelemetry.js'
+import {rideUI} from '../../vehicle/rideUI.js'
 
 export default function ForestFoliageDiagnostics({manager}){
   const [open,setOpen]=useState(()=>new URLSearchParams(location.search).has('foliageDebug'))
   const stats=useSyncExternalStore(foliageTelemetryStore.subscribe,foliageTelemetryStore.snapshot)
+  const {paused}=useSyncExternalStore(rideUI.subscribe,rideUI.snapshot)
   const exportReport=()=>{const url=URL.createObjectURL(new Blob([foliageRecording.export()],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='mospeada-foliage-metrics.json';a.click();URL.revokeObjectURL(url)}
+  if(!paused)return null
   return <Html fullscreen zIndexRange={[18,0]} style={{pointerEvents:'none'}}>
     <section aria-label="Diagnóstico de foliage" style={{position:'absolute',right:20,top:88,width:285,color:'#e0eadc',background:'#102c24e8',border:'1px solid #668474',font:'12px system-ui',pointerEvents:'auto',padding:9,borderRadius:4}}>
       <button onClick={()=>setOpen(!open)} style={{width:'100%',background:'transparent',color:'inherit',border:0,textAlign:'left',cursor:'pointer'}}>Foliage · métricas {open?'▾':'▸'}</button>

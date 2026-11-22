@@ -1,0 +1,145 @@
+{
+  "preloader": {
+    "number": "78",
+    "caption": "PREPARING SCENE",
+    "active": 32,
+    "total": 40,
+    "font": true,
+    "color": "rgb(201, 255, 245)",
+    "leds": 6,
+    "glows": 40,
+    "rootChildren": 0,
+    "screen": {
+      "x": 300,
+      "y": 270,
+      "width": 1000,
+      "height": 460,
+      "top": 270,
+      "right": 1300,
+      "bottom": 730,
+      "left": 300
+    }
+  },
+  "speeds": [
+    {
+      "number": "00",
+      "mode": "D",
+      "lit": 0,
+      "bounds": {
+        "left": 485.95415449142456,
+        "top": 139.00000143051147,
+        "right": 625.9999860674143,
+        "bottom": 253
+      }
+    },
+    {
+      "number": "78",
+      "mode": "D",
+      "lit": 15,
+      "bounds": {
+        "left": 485.95415449142456,
+        "top": 139.00000143051147,
+        "right": 625.9999860674143,
+        "bottom": 253
+      }
+    },
+    {
+      "number": "108",
+      "mode": "D",
+      "lit": 20,
+      "bounds": {
+        "left": 437.8208231925965,
+        "top": 139.00000143051147,
+        "right": 625.9999874979258,
+        "bottom": 253
+      }
+    },
+    {
+      "number": "216",
+      "mode": "D",
+      "lit": 40,
+      "bounds": {
+        "left": 437.8208231925965,
+        "top": 139.00000143051147,
+        "right": 625.9999874979258,
+        "bottom": 253
+      }
+    },
+    {
+      "number": "288",
+      "mode": "D",
+      "lit": 40,
+      "bounds": {
+        "left": 414.3083415031433,
+        "top": 139.00000143051147,
+        "right": 626.0000055134296,
+        "bottom": 253
+      }
+    },
+    {
+      "number": "18",
+      "mode": "R",
+      "lit": 4,
+      "bounds": {
+        "left": 509.4666666984558,
+        "top": 139.00000143051147,
+        "right": 625.9999985694885,
+        "bottom": 253
+      }
+    },
+    {
+      "number": "115",
+      "mode": "ARMOR",
+      "lit": 22,
+      "bounds": {
+        "left": 461.3333353996277,
+        "top": 139.00000143051147,
+        "right": 626,
+        "bottom": 253
+      }
+    }
+  ],
+  "mobile": {
+    ".ride-speed": {
+      "x": 16,
+      "y": 560,
+      "width": 240,
+      "height": 134,
+      "top": 560,
+      "right": 256,
+      "bottom": 694,
+      "left": 16
+    },
+    ".ride-boost": {
+      "x": 28,
+      "y": 507,
+      "width": 216,
+      "height": 39,
+      "top": 507,
+      "right": 244,
+      "bottom": 546,
+      "left": 28
+    },
+    ".ride-telemetry": {
+      "x": 174,
+      "y": 418,
+      "width": 200,
+      "height": 75,
+      "top": 418,
+      "right": 374,
+      "bottom": 493,
+      "left": 174
+    },
+    ".ride-touch": {
+      "x": 20,
+      "y": 712,
+      "width": 350,
+      "height": 52,
+      "top": 712,
+      "right": 370,
+      "bottom": 764,
+      "left": 20
+    }
+  },
+  "errors": []
+}

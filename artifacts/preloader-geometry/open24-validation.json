@@ -1,0 +1,16 @@
+{
+  "fontReady": true,
+  "font": "\"Open 24 Display ST\", monospace",
+  "counter": "05124",
+  "counterInside": true,
+  "caption": {
+    "text": "LOADING VEHICLES",
+    "top": 134.10000151395798,
+    "bottom": 146,
+    "width": 108.97588891349727
+  },
+  "percentColor": "rgb(201, 255, 245)",
+  "number": "78",
+  "activityNodes": 1,
+  "errors": []
+}

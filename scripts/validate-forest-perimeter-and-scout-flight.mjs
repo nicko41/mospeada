@@ -1,0 +1,44 @@
+import fs from 'node:fs'
+import assert from 'node:assert/strict'
+import {connect} from './browser-cdp.mjs'
+const c=await connect(),dir='artifacts/forest-perimeter-and-scout-flight',report={},wait=ms=>new Promise(resolve=>setTimeout(resolve,ms)),ev=code=>c.evaluate(code)
+fs.mkdirSync(dir,{recursive:true})
+const frames=()=>ev('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))')
+async function capture(name){const data=await ev('if(__PERIMETER_FLIGHT_QA__.render)__PERIMETER_FLIGHT_QA__.render();else __ANIME__.effect.render(__ANIME__.state.snapshot(),1);__ANIME__.renderer.domElement.toDataURL()');fs.writeFileSync(`${dir}/${name}.png`,Buffer.from(data.split(',')[1],'base64'))}
+try{
+ await c.send('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false})
+ let ready=false
+ for(let i=0;i<720;i++){if(await ev('!!window.__MOSPEADA__?.runtime.scoutFlightVFX&&!!window.__FOREST_BOUNDARIES__?.sides&&window.__ANIME__?.state.snapshot().ready&&!document.querySelector("#entry-preloader")').catch(()=>false)){ready=true;break}await wait(250)}
+ assert.ok(ready,'Perimeter and flight VFX loaded in the full game');console.log('Scene ready')
+ await ev(`(async()=>{window.__FOREST_OPENING__?.finish();const T=await import('/node_modules/.vite/deps/three.js'),{forestPathX}=await import('/src/world/forest/forestLayout.js'),{forestRouteDistance}=await import('/src/world/forest/forestSurface.js'),{renderScoutSquad}=await import('/src/world/forest/scoutSquadRendering.js'),d=__MOSPEADA__;window.__PERIMETER_FLIGHT_QA__={T,forestPathX,forestRouteDistance,renderScoutSquad};d.runtime.resetAt({x:forestPathX(-200),z:-200,yaw:Math.PI});d.runtime.paused=true;d.setCameraMode(0);return true})()`)
+ await frames();await capture('01-road-without-new-nearby-hedges')
+ report.perimeter=await ev(`(()=>{const q=__PERIMETER_FLIGHT_QA__,b=__FOREST_BOUNDARIES__.sides;return{thickets:b.layout.thickets.length,trunks:b.layout.trunks.length,layers:new Set(b.layout.trunks.map(p=>p.layer)).size,minimumDistanceFromRoute:Math.min(...b.layout.thickets.map(p=>q.forestRouteDistance(p.x,p.z))),minX:Math.min(...b.layout.thickets.map(p=>p.x)),maxX:Math.max(...b.layout.thickets.map(p=>p.x)),minZ:Math.min(...b.layout.thickets.map(p=>p.z)),maxZ:Math.max(...b.layout.thickets.map(p=>p.z))}})()`)
+ assert.ok(report.perimeter.minimumDistanceFromRoute>140&&report.perimeter.layers===5&&report.perimeter.maxX>300&&report.perimeter.minX< -300&&report.perimeter.maxZ>300)
+ for(const side of[-1,1]){
+  await ev(`(()=>{const q=__PERIMETER_FLIGHT_QA__,d=__MOSPEADA__,points=__FOREST_BOUNDARIES__.sides.layout.thickets.filter(p=>p.side===${side}&&p.layer===0),p=points.reduce((a,b)=>Math.abs(a.z+170)<Math.abs(b.z+170)?a:b);q.edge=p;d.runtime.resetAt({x:p.x-(${side})*14,z:p.z,yaw:(${side})*Math.PI/2});d.runtime.paused=true;d.setCameraMode(0);return true})()`)
+  await frames();await capture(side<0?'02-left-outer-forest-blockers':'03-right-outer-forest-blockers')
+ }
+ await ev(`(()=>{const q=__PERIMETER_FLIGHT_QA__,d=__MOSPEADA__,p=q.edge;d.runtime.resetAt({x:p.x-p.radius-1.6,z:p.z,yaw:Math.PI/2});d.runtime.state.speed=5;d.runtime.state.parked=false;d.runtime.keys={KeyW:true};d.runtime.paused=false;return true})()`)
+ report.collision=await ev(`new Promise(resolve=>{let time=0,blocked=0,last=performance.now();function frame(){const now=performance.now(),r=__MOSPEADA__.runtime;time+=(now-last)/1000;last=now;if(r.state.blocked)blocked++;if(time>1.6){r.paused=true;r.keys={};resolve({blockedFrames:blocked,x:r.state.x,borderX:__PERIMETER_FLIGHT_QA__.edge.x,source:r.nearby.filter(c=>c.source==='forest-side-thicket').length})}else requestAnimationFrame(frame)}requestAnimationFrame(frame)})`)
+ assert.ok(report.collision.blockedFrames>2&&report.collision.source>0&&report.collision.x<report.collision.borderX-1,'The native bike collision actually stops at visible outer thickets')
+ await ev(`(()=>{const d=__MOSPEADA__,w=__FOREST_STAGE4__.world;if(!w.bound)w.bind({x:0,y:0,z:-2400});d.runtime.resetAt(w.startAt(900));d.runtime.paused=true;d.setCameraMode(3);return true})()`)
+ await frames()
+ await ev(`(()=>{
+  const q=__PERIMETER_FLIGHT_QA__,d=__MOSPEADA__,T=q.T,r=d.runtime;q.fx=r.scoutFlightVFX;q.p=__DESERT_SCOUTS__.patrol;q.p.reset();q.p.phase='active';q.scout=q.p.scouts[4];const s=q.scout;s.position.set(r.state.x,d.sample(r.state.x,r.state.z-15)+2.8,r.state.z-15);s.velocity.set(0,0,-19);s.yaw=Math.PI;s.pitch=s.bank=0;s.mode='flight';s.focus='rand';s.meleeEnabled=true;s.view.root.visible=true;s.view.motion.reset();q.p.applyView(s);s.view.motion.update(s,.016,d.sample);for(const other of q.p.scouts)if(other!==s)other.view.root.visible=false
+  r.combatVFX.clear();__MOSPEADA_VFX__.dust.clear();__MOSPEADA_VFX__.randDust.clear();q.fx.clear();q.config={...__MOSPEADA_VFX__.store.snapshot(),enabled:true,earthEnabled:true}
+  q.camera=()=>{r.orbit.enableDamping=false;r.orbit.target.copy(s.position).add(new T.Vector3(0,2,0));d.camera.position.copy(s.position).add(new T.Vector3(3,3,14));r.orbit.update();d.camera.updateMatrixWorld(true)}
+  q.render=()=>{for(const squad of __DESERT_SCOUTS__.squads)q.renderScoutSquad(squad,d.camera.position,r.combatVFX);__ANIME__.effect.render(__ANIME__.state.snapshot(),1)}
+  q.tick=(seconds,move=true)=>{for(let t=0;t<seconds;t+=1/120){if(move)s.position.addScaledVector(s.velocity,1/120);q.p.applyView(s);s.view.motion.update(s,1/120,d.sample);q.camera();q.fx.prepare(1/120,q.p,d.camera,q.config,1,r.state);__MOSPEADA_VFX__.vfx.update(1/120);q.fx.updateGlow(d.camera,q.p)}q.render();return{...q.fx.stats}}
+  q.dustPixels=()=>{const a=__ANIME__,g=a.renderer.getContext(),w=g.drawingBufferWidth,h=g.drawingBufferHeight,read=()=>{q.render();const p=new Uint8Array(w*h*4);g.readPixels(0,0,w,h,g.RGBA,g.UNSIGNED_BYTE,p);return p},batch=q.fx.dust.batch,on=read();batch.visible=false;const off=read();batch.visible=true;let changed=0;for(let i=0;i<on.length;i+=4)if(Math.abs(on[i]-off[i])+Math.abs(on[i+1]-off[i+1])+Math.abs(on[i+2]-off[i+2])>6)changed++;return changed}
+  q.camera();return true
+ })()`)
+ report.lowFlight=await ev('__PERIMETER_FLIGHT_QA__.tick(2.4)');report.lowFlight.visibleDustPixels=await ev('__PERIMETER_FLIGHT_QA__.dustPixels()');assert.ok(report.lowFlight.visibleDustPixels>200);await capture('04-low-flight-large-ground-dust-and-rear-ignition')
+ assert.ok(report.lowFlight.particles>15&&report.lowFlight.ignitions===1&&report.lowFlight.emitters===1)
+ report.shared=await ev(`(()=>{const q=__PERIMETER_FLIGHT_QA__,d=__MOSPEADA_VFX__.dust;return{sameDraw:q.fx.dust.batch===d.batch,sameTexture:q.fx.dust.atlas===d.atlas,sizeScale:q.fx.dust.size.a/(.4*1.4),floorMax:Math.max(...q.fx.dust.system.particles.slice(0,q.fx.dust.system.particleNum).map(p=>p.dustFloor))}})()`);assert.ok(report.shared.sameDraw&&report.shared.sameTexture&&Math.abs(report.shared.sizeScale-3)<1e-6)
+ const emitted=await ev('__PERIMETER_FLIGHT_QA__.fx.dust.emitted')
+ report.highFlight=await ev(`(()=>{const q=__PERIMETER_FLIGHT_QA__;q.scout.position.y+=12;return q.tick(6)})()`);await capture('05-high-flight-no-new-ground-dust');assert.equal(report.highFlight.emitters,0);assert.equal(report.highFlight.particles,0);assert.equal(await ev('__PERIMETER_FLIGHT_QA__.fx.dust.emitted'),emitted)
+ report.resources=await ev(`(()=>{const q=__PERIMETER_FLIGHT_QA__,a=__ANIME__,r=a.renderer,g=r.info.memory.geometries,t=r.info.memory.textures,p=r.info.programs.length,particles=q.fx.dust.system.particles.slice(),start=performance.now();q.scout.position.y-=12;for(let i=0;i<180;i++){q.fx.prepare(1/60,q.p,__MOSPEADA__.camera,q.config,1,__MOSPEADA__.runtime.state);__MOSPEADA_VFX__.vfx.update(1/60);q.fx.updateGlow(__MOSPEADA__.camera,q.p)}const cpuMs=(performance.now()-start)/180;a.effect.render(a.state.snapshot(),1);return{cpuMs,particles:q.fx.dust.system.particleNum,poolReused:q.fx.dust.system.particles.every(p=>particles.includes(p)),geometriesAdded:r.info.memory.geometries-g,texturesAdded:r.info.memory.textures-t,programsAdded:r.info.programs.length-p,gl:r.getContext().getError(),shader:a.state.snapshot().error}})()`)
+ assert.ok(report.resources.poolReused&&report.resources.particles<=192);assert.equal(report.resources.geometriesAdded,0);assert.equal(report.resources.texturesAdded,0);assert.equal(report.resources.programsAdded,0);assert.equal(report.resources.gl,0);assert.equal(report.resources.shader,'')
+ report.errors=c.events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);assert.deepEqual(report.errors,[])
+ fs.writeFileSync(`${dir}/validation.json`,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2))
+}finally{await ev('if(window.__MOSPEADA__){__MOSPEADA__.runtime.paused=true;__MOSPEADA__.runtime.keys={}};true').catch(()=>{});c.close()}

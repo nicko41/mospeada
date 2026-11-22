@@ -1,4 +1,4 @@
-import {Group,Mesh,BufferGeometry,Float32BufferAttribute} from 'three'
+import {Group,Mesh,BufferGeometry,Float32BufferAttribute,Vector3} from 'three'
 import {FOREST_STAGE3 as S,stage3Height,stage3PathX,stage3EarthWeight} from './forestStage3Config.js'
 import {forestRandom} from './forestLayout.js'
 import {ForestBatch} from './ForestBatch.js'
@@ -6,6 +6,7 @@ import {worldFoliageSector} from './forestFoliageWorldRendering.js'
 import {FOLIAGE_CATALOG} from './foliageCatalog.js'
 import {forestLodRange} from './forestLod.js'
 import {registerColliders,cylinderCollider} from '../../player/collisionWorld.js'
+import {createForestSideLayout,createSideBoundaryLibrary,createSideBoundaryColliders,forestSideWidth,ForestSideBoundaryBand} from './forestSideBoundaries.js'
 
 let current=null
 export const stage3World={get:()=>current,set:world=>{current=world},clear:world=>{if(current===world)current=null}}
@@ -29,6 +30,7 @@ export function foliageData(plants,height,id,bounds=[-256,0,-96,256,30,0]){
 export class ForestStage3World extends Group{
   constructor(assets,ground,foliage,distant){
     super();this.name='Forest_Plano_3_recycled_route';this.tiles=[];this.owned=[];this.batches=[];this.recycles=0
+    this.sideLibrary=createSideBoundaryLibrary(assets,foliage.near.map)
     const trees=assets.filter(a=>a.kind==='tree'),sprites=FOLIAGE_CATALOG.entries.filter(e=>['pasto','hierbas','helechos','arbustos'].includes(e.category))
     for(let phase=0;phase<S.chunks;phase++){
       const group=new Group(),origin=S.startZ-phase*S.chunkLength,height=(x,z)=>stage3Height(x,origin+z),random=forestRandom(S.seed+phase*191),between=(a,b)=>a+(b-a)*random(),layout=new Map(trees.map(a=>[a.name,[]])),anchors=[]
@@ -49,7 +51,9 @@ export class ForestStage3World extends Group{
       }
       const grass=worldFoliageSector(foliageData(plants,height,phase),foliage);group.add(grass.near,grass.far)
       const colliders=anchors.map(p=>{const a=trees.find(a=>a.name===p.name),y=height(p.x,p.z);return cylinderCollider(p.x,p.z+origin,Math.max(.3,(a.bounds.max.x-a.bounds.min.x)*p.scale*.035),y-.15,y+(a.bounds.max.y-a.bounds.min.y)*p.scale*.7)})
-      group.position.z=origin;this.add(group);this.tiles.push({group,batches,phase,index:phase,trees:anchors,mesh,colliders,grass,remove:null});this.batches.push(...batches)
+      const sideLayout=createForestSideLayout({minZ:-96,maxZ:0,pathAt:z=>stage3PathX(origin+z),heightAt:height,widthAt:(z,side)=>forestSideWidth(origin+z,side)-side*stage3PathX(origin+z),trees:this.sideLibrary.trees,seed:S.seed+phase*191+122}),boundary=new ForestSideBoundaryBand(sideLayout,this.sideLibrary,height)
+      group.add(boundary);colliders.push(...createSideBoundaryColliders(sideLayout,new Vector3(0,0,origin)))
+      group.position.z=origin;this.add(group);this.tiles.push({group,batches,phase,index:phase,trees:anchors,mesh,colliders,grass,boundary,remove:null});this.batches.push(...batches)
     }
   }
   ensureAround(z){
@@ -66,6 +70,6 @@ export class ForestStage3World extends Group{
   setEnd(z=null){this.endZ=z;this.syncEnd()}
   syncEnd(){for(const tile of this.tiles){const active=this.endZ==null||tile.group.position.z>this.endZ+.001;tile.group.visible=active;tile.mesh.userData.rideSurfaceActive=active;if(!active&&tile.remove){tile.remove();tile.remove=null}else if(active&&this.registered&&!tile.remove)tile.remove=registerColliders(tile.colliders)}}
   register(){this.registered=true;this.syncEnd();return()=>{this.registered=false;for(const tile of this.tiles){tile.remove?.();tile.remove=null}}}
-  update(camera){for(const tile of this.tiles){for(const batch of tile.batches)batch.updateDistance(camera,tile.group.position.z);const z=camera.position.z-tile.group.position.z,d=Math.max(z,0,-96-z);tile.grass.near.visible=d<30;tile.grass.far.visible=d<114}}
-  dispose(){this.owned.forEach(g=>g.dispose());this.batches.forEach(b=>b.dispose());for(const tile of this.tiles)for(const mesh of [tile.grass.near,tile.grass.far]){for(const key of ['position','normal','uv'])mesh.geometry.deleteAttribute(key);mesh.geometry.index=null;mesh.geometry.dispose();mesh.dispose()}}
+  update(camera){for(const tile of this.tiles){for(const batch of tile.batches)batch.updateDistance(camera,tile.group.position.z);tile.boundary.update(camera);const z=camera.position.z-tile.group.position.z,d=Math.max(z,0,-96-z);tile.grass.near.visible=d<30;tile.grass.far.visible=d<114}}
+  dispose(){this.owned.forEach(g=>g.dispose());this.batches.forEach(b=>b.dispose());for(const tile of this.tiles){tile.boundary.dispose();for(const mesh of [tile.grass.near,tile.grass.far]){for(const key of ['position','normal','uv'])mesh.geometry.deleteAttribute(key);mesh.geometry.index=null;mesh.geometry.dispose();mesh.dispose()}}this.sideLibrary.dispose()}
 }

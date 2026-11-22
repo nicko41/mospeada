@@ -7,6 +7,7 @@ import { VFXRuntime } from './VFXRuntime.js'
 import { dustResponse } from './dustResponse.js'
 import { createDustAtlas } from './dustAtlas.js'
 import { vfxState } from './vfxState.js'
+import {DESERT_WHEEL_FX} from '../world/forest/forestWheelFX.js'
 
 const config = { ...vfxState.defaults, humidity: 0 }
 const wheel = () => ({ position: new Vector3(4, 0, 3), normal: new Vector3(0, 1, 0), forward: new Vector3(0, 0, 1), surface: 'dirt', grounded: true, radius: .4 })
@@ -142,4 +143,15 @@ test('fractional Quarks emission preserves its debt, so wet dirt cannot emit a p
     for (let i = 0; i < 60; i++) tick(f, w, state, wet)
     assert.equal(f.dust.emitted, emitted, 'Pending fractional emissions must stop at the surface boundary')
   } finally { f.runtime.dispose() }
+})
+test('desert dust forms a continuous suspended trail while keeping fresh emission inside the original budget',()=>{
+ const f=fixture(),w=wheel(),c={...config,...DESERT_WHEEL_FX,maximum:160},dt=1/60
+ try{
+  let recent=0;for(let i=0;i<360;i++){w.position.z+=state.speed*dt;const before=f.dust.emitted;tick(f,w,state,c,dt);if(i>300)recent+=f.dust.emitted-before;assert.ok(f.dust.system.particleNum<=160)}
+  assert.ok(recent>20,'The wheel still emits continuously after the cloud is fully established')
+  assert.ok(f.dust.life.a>3);assert.ok(f.dust.colors.a.w>=.5);assert.ok(f.dust.colors.b.w>=.7)
+  const particles=f.dust.system.particles.slice(0,f.dust.system.particleNum),span=Math.max(...particles.map(p=>p.position.z))-Math.min(...particles.map(p=>p.position.z));assert.ok(span>45,'Suspended puffs remain behind in world space as a visible thread')
+  const born=f.dust.emitted;for(let i=0;i<120;i++)tick(f,w,{...state,speed:0,rearAngularSpeed:0},c);assert.equal(f.dust.emitted,born);assert.ok(f.dust.system.particleNum>0)
+  for(let i=0;i<360;i++)tick(f,w,{...state,speed:0,rearAngularSpeed:0},c);assert.equal(f.dust.system.particleNum,0)
+ }finally{f.runtime.dispose()}
 })

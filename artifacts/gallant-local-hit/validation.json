@@ -1,0 +1,50 @@
+{
+  "arm": {
+    "requested": 1,
+    "resolved": 1,
+    "health": 9,
+    "lastReaction": 1,
+    "sprites": 1,
+    "glows": 1,
+    "stars": 0,
+    "emissive": 0,
+    "tint": 16777215
+  },
+  "armPose": {
+    "bodyYaw": 0.06673611111111112,
+    "leftArm": -0.3276626321414905,
+    "rightArm": -0.38403489647133804,
+    "bodyBack": -0.012534341208051733
+  },
+  "armScorchPixels": 143,
+  "leg": {
+    "requested": 3,
+    "resolved": 3,
+    "health": 8,
+    "lastReaction": 3,
+    "sprites": 1,
+    "glows": 1,
+    "stars": 0,
+    "emissive": 0,
+    "tint": 16777215
+  },
+  "attachment": {
+    "distanceMoved": 2.561041418662373,
+    "error": 0,
+    "sprite": "http://127.0.0.1:5174/assets/texturas/impascto-invid-suelo.png",
+    "tint": {
+      "0": 1.350000023841858,
+      "1": 0.5426700115203857,
+      "2": 0.47456902265548706
+    }
+  },
+  "resources": {
+    "geometriesAdded": 0,
+    "texturesAdded": 0,
+    "programsAdded": 0,
+    "scorchSlots": 4,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

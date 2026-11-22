@@ -1,0 +1,28 @@
+{
+  "anime": {
+    "drawCalls": 4,
+    "triangles": 256069,
+    "targets": 2,
+    "gl": 0
+  },
+  "nativeGpuComparison": {
+    "changedPixels": 2,
+    "totalPixels": 300000,
+    "maxDifference": 39
+  },
+  "drawCalls": 3,
+  "triangles": 256068,
+  "states": [
+    "Hover",
+    "Landing",
+    "Walk",
+    "Claw_L",
+    "Takeoff",
+    "Idle"
+  ],
+  "programsAdded": 0,
+  "geometriesAdded": 0,
+  "unchanged": true,
+  "gl": 0,
+  "errors": []
+}

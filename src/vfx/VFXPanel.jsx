@@ -3,6 +3,7 @@ import { vfxState as store } from './vfxState.js'
 import { weatheringState as soil } from '../vehicle/weatheringState.js'
 import EngineVFXControls from './EngineVFXControls.jsx'
 import ForestWheelFXControls from './ForestWheelFXControls.jsx'
+import AmbientVFXControls from './AmbientVFXControls.jsx'
 import {activeEnvironment} from '../world/environmentConfig.js'
 import {forestWheelFXState} from '../world/forest/forestWheelFX.js'
 import './vfx.css'
@@ -18,6 +19,7 @@ export default function VFXPanel() {
   return <>
     <aside className="anime-settings vfx-settings" aria-label="VFX de terreno" onKeyDown={e => e.stopPropagation()}>
       <h2>VFX del Cyclone · Quarks</h2>
+      {forest&&<AmbientVFXControls/>}
       <EngineVFXControls />
       <small>Rueda trasera: {value.rearSurface==='grass'?'Pasto':value.rearSurface === 'dirt' ? 'Tierra' : value.rearSurface === 'asphalt' ? 'Asfalto' : 'Sin superficie'}{value.grounded ? '' : ' · sin contacto'}<br />La humedad es experimental; no cambia el terreno ni la lluvia.</small>
       <label><input type="checkbox" checked={value.enabled} onChange={e => store.set({ enabled: e.target.checked })} />Partículas de polvo habilitadas</label>

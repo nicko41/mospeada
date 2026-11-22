@@ -19,6 +19,9 @@ import {ArmorLandingMotion} from './ArmorLandingMotion.js'
 import {ArmorArmMotion} from './ArmorArmMotion.js'
 import { armorIdleState } from './armorIdleState.js'
 import {isJumpCharging} from './armorJumpMotion.js'
+import {ScottDefeatMotion} from './ScottDefeatMotion.js'
+import {playerCombat} from '../player/playerCombat.js'
+import {rideUI} from './rideUI.js'
 
 // Start the rider and its maps alongside the motorcycle request. Without this,
 // Suspense discovers GLB -> action data -> shoulder maps in separate retries.
@@ -122,12 +125,18 @@ export default function OriginalScott({ runtime }) {
   }, -1)
   useFrame(()=>{
     const armor=armorAttachmentTarget(runtime.armorController,runtime.transformEntry)
-    if(!runtime.gameplay||!armor?.active||!runtime.guardTransformation||!runtime.rearTransformation)return
+    if(!runtime.gameplay||!runtime.guardTransformation||!runtime.rearTransformation)return
     instance.armorArticulation ||=new ArmorArticulation(runtime)
     instance.armorArticulation.prepare(armor)
   },-.65)
   useFrame((_,delta)=>{
     if(!runtime.gameplay||!wrapper.current)return
+    if(playerCombat.dead){
+      instance.defeatMotion ||=new ScottDefeatMotion(instance,wrapper.current,runtime)
+      instance.defeatMotion.apply(runtime.paused?0:Math.min(.1,delta),sampleRideHeight)
+      return
+    }
+    if(instance.defeatMotion?.active){instance.defeatMotion.reset();rideUI.publish({defeat:null})}
     const entry=runtime.transformEntry
     if(entry?.returnFlight&&entry.poseBlend>0){
       instance.returnMotion ||= new ScottReturnMotion(instance,wrapper.current)
@@ -139,7 +148,7 @@ export default function OriginalScott({ runtime }) {
       instance.armorReaction.apply(armor.state,Math.min(.1,delta),runtime.paused)
     }
     instance.armorBoostMotion ||= new ScottArmorBoostMotion(instance,wrapper.current)
-    instance.armorBoostMotion.apply(entry,armor?.active?armor.state.groundLanding||armor.state.jump?{boostBlend:0,reverseBlend:0}:{boostBlend:instance.armorReaction.diagnostics.boost,reverseBlend:instance.armorReaction.diagnostics.reverse}:runtime.state)
+    instance.armorBoostMotion.apply(entry,armor?.active?armor.state.groundLanding||armor.state.jump?{disabled:true}:{boostBlend:instance.armorReaction.diagnostics.boost,reverseBlend:instance.armorReaction.diagnostics.reverse,boosting:armor.state.boosting,thrustForward:armor.state.thrustForward}:runtime.state,Math.min(.1,delta),runtime.paused)
     instance.armorIdle ||= new ScottArmorIdleMotion(instance,wrapper.current)
     if(!armor?.state?.groundLanding&&!armor?.state?.jump)instance.armorIdle.apply(entry,delta,runtime.paused,armorIdleState.snapshot(),!!entry?.actorOffset.y||runtime.state?.airborne)
     instance.armorLocomotion?.apply(armor,Math.min(.1,delta),runtime.paused)
@@ -154,5 +163,11 @@ export default function OriginalScott({ runtime }) {
     if(!runtime.gameplay)return
     instance.armorArticulation?.apply(armorAttachmentTarget(runtime.armorController,runtime.transformEntry),runtime.transformEntry,runtime.paused?0:Math.min(.1,delta))
   },-.45)
+  useFrame((_,delta)=>{
+    if(!runtime.gameplay||!playerCombat.dead||!instance.defeatMotion?.active)return
+    instance.defeatMotion.groundArmor(instance.armorArticulation)
+    instance.defeatMotion.publishAge+=delta
+    if(instance.defeatMotion.publishAge>.1){instance.defeatMotion.publishAge=0;rideUI.publish({defeat:{...runtime.defeat}})}
+  },-.4)
   return <group ref={wrapper} name="Scott_original_playback"><primitive object={instance.model} dispose={null} /></group>
 }

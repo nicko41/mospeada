@@ -1,0 +1,102 @@
+{
+  "airKill": {
+    "destroyed": true,
+    "hits": 10,
+    "health": 0
+  },
+  "fireball": {
+    "changed": 3410,
+    "bright": 3017,
+    "dark": 2,
+    "particles": 9
+  },
+  "halo": {
+    "changed": 21984,
+    "bright": 20335,
+    "dark": 0,
+    "particles": 3
+  },
+  "sparks": {
+    "changed": 0,
+    "bright": 0,
+    "dark": 0,
+    "particles": 16
+  },
+  "sparksAfter": {
+    "changed": 253,
+    "bright": 174,
+    "dark": 0,
+    "particles": 14
+  },
+  "scale": {
+    "scoutHeight": 5.2,
+    "fireWidth": 9.213335929493486,
+    "meshCoreParticles": 4,
+    "volumeGeometry": "SphereGeometry"
+  },
+  "smoke": {
+    "changed": 35563,
+    "bright": 386,
+    "dark": 34175,
+    "particles": 16
+  },
+  "groundKill": {
+    "destroyed": true,
+    "hits": 10,
+    "health": 0
+  },
+  "pools": {
+    "particles": [
+      4,
+      62,
+      15,
+      80,
+      45,
+      0,
+      20
+    ],
+    "capacities": [
+      48,
+      192,
+      24,
+      128,
+      72,
+      32,
+      32
+    ],
+    "explosions": 5,
+    "lights": 2
+  },
+  "muzzle": {
+    "error": 0.00006828583829396971,
+    "sparks": 8,
+    "flash": 2,
+    "halo": 1
+  },
+  "resources": {
+    "programsAdded": 0,
+    "geometriesAdded": 0,
+    "texturesAdded": 0,
+    "pools": [
+      48,
+      192,
+      24,
+      128,
+      72,
+      32,
+      32
+    ],
+    "particles": [
+      0,
+      48,
+      9,
+      48,
+      27,
+      0,
+      12
+    ],
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

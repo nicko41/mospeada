@@ -17,6 +17,11 @@ import {FrontBattloidTransform} from './FrontBattloidTransform.js'
 import {RearBattloidTransform} from './RearBattloidTransform.js'
 import {GuardBattloidTransform} from './GuardBattloidTransform.js'
 import {kneeSocketPoint,readKneeSocket} from './scottKneeSockets.js'
+import {armorGallantVisible} from './armorHandoff.js'
+import {FrontTransformEntry} from './FrontTransformEntry.js'
+import {frontTransformState as store} from './frontTransformState.js'
+import {WheelBattloidTransform} from './WheelBattloidTransform.js'
+import {wheelEndProgress} from './wheelMotion.js'
 
 globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:1,height:1,close(){}})
 const read=p=>JSON.parse(fs.readFileSync(p)),data=read('public/animations/scott-cyclone-actions.json'),flat=()=>0
@@ -236,4 +241,57 @@ test('caballer and cuffs follow the completed assembly during its departure boos
   layer.restore();assert.ok(maxError(binding.mesh.matrix,canonical)<1e-7)
   assert.equal(armorAttachmentTarget(f.controller,{phase:'transforming',returnFlight:false}).active,false)
   assert.equal(armorAttachmentTarget(f.controller,{phase:'returnboost',returnFlight:true}).active,false)
+})
+
+test('Gallant and knee coupling finish before wheels and reuse their bindings on the first controllable frame',async()=>{
+ const f=await fixture(),layer=f.articulation;let progress=.42
+ layer.restore();f.controller.active=false;Object.assign(f.entry,{phase:'transforming',store:{snapshot:()=>({progress})}})
+ let target=armorAttachmentTarget(f.controller,f.entry);layer.prepare(target)
+ layer.records.forEach(r=>r.mesh.updateWorldMatrix(true,false))
+ const bindings=layer.bindings,canonical=layer.records.map(r=>r.mesh.matrixWorld.clone())
+ layer.apply(target,f.entry,1/60)
+ layer.records.forEach((r,i)=>assert.ok(maxError(r.mesh.matrixWorld,canonical[i])<1e-7,'Start coupling without a snap'))
+ assert.equal(armorGallantVisible(f.controller,f.entry),true)
+ progress=.60;layer.restore();target=armorAttachmentTarget(f.controller,f.entry);layer.prepare(target);layer.apply(target,f.entry,1/60)
+ assert.equal(armorGallantVisible(f.controller,f.entry),true);assert.equal(target.weight,1)
+ assert.ok(progress<wheelEndProgress);assert.ok(layer.diagnostics.legs.every(l=>l.error<1e-6),'Both knees coupled before wheels finish')
+ assert.equal(layer.bindings,bindings)
+ layer.restore();progress=1;f.entry.phase='complete';f.controller.active=true
+ target=armorAttachmentTarget(f.controller,f.entry);layer.prepare(target);layer.apply(target,f.entry,1/60)
+ assert.equal(layer.bindings,bindings,'No expensive geometry/socket rebinding after control release')
+ f.controller.update({forward:1,yaw:f.controller.state.yaw},1/60)
+ assert.ok(f.controller.state.speed>0,'First complete frame accepts movement')
+})
+
+test('real assembly couples caballers to raised knees before wheels finish, lowers arms early and releases controls without the slower clock tail',async()=>{
+ const f=await fixture(),runtime=f.controller.runtime,front=f.rear.front
+ f.articulation.restore();f.guards.restore();f.rear.restore();front.restore();f.controller.active=false
+ const wheels=new WheelBattloidTransform(f.rig,front,f.rear,read('public/transformations/cyclone-wheel-battloid.json'))
+ runtime.wheelTransformation=wheels
+ store.reset();store.set({ready:true,duration:2});const entry=new FrontTransformEntry(store,runtime)
+ runtime.transformEntry=entry;entry.phase='transforming';entry.poseBlend=1;entry.mechanicalStarted=true
+ const layer=new ArmorArticulation(runtime),clips=[...f.source.animations,...parseCycloneScottActions(data)]
+ let coupled=false,earlyGallant=false,bindings,lastLegs,releaseAt=Infinity,releaseJump=Infinity
+ for(let frame=0;frame<=58;frame++){
+  layer.restore();wheels.restore();f.guards.restore();f.rear.restore();front.restore()
+  const main=frame/100;store.seek(main)
+  if(entry.completeAssembly()){releaseAt=main;f.controller.activate()}
+  f.rig.update(runtime.state,flat,bikeConfig);updateScottGameplay(f.instance,{data},clips,runtime,f.wrapper,1/60)
+  const p=entry.assemblyProgress,ch=entry.choreography
+  front.apply(p,ch);f.rear.apply(entry.mechanicalProgress);f.guards.apply(p,ch);wheels.apply(entry.mechanicalProgress)
+  const target=armorAttachmentTarget(f.controller,entry);layer.prepare(target);layer.apply(target,entry,1/60)
+  if(p>=.60&&p<wheelEndProgress){
+   coupled=true;assert.ok(layer.diagnostics.legs.every(l=>l.error<1e-6),'Caballer must already track the actual raised knee surface')
+   earlyGallant=armorGallantVisible(f.controller,entry);bindings=layer.bindings
+  }
+  if(p>=.62)assert.equal(entry.actorPose.arms,1,'No arm/weapon lowering after wheel coupling')
+  if(p>=.60)assert.equal(layer.bindings,bindings,'Keep the same final-frame bindings through lowering and control handoff')
+  const current=layer.bindings?.map(b=>b.mesh.matrixWorld.clone())
+  if(f.controller.active)releaseJump=Math.max(...current.map((m,i)=>maxError(m,lastLegs[i])))
+  lastLegs=current
+ }
+ assert.ok(coupled&&earlyGallant);assert.ok(releaseAt<.60,'Do not wait another 0.84 seconds for the inspection clock')
+ assert.ok(releaseJump<1e-6,'No final caballer placement when control activates');assert.equal(f.controller.active,true)
+ f.controller.update({forward:1,yaw:f.controller.state.yaw},1/60);assert.ok(f.controller.state.speed>0)
+ wheels.dispose()
 })

@@ -120,6 +120,24 @@ export class DrivingCamera {
     orbit.update(delta)
     orbit.minDistance = minimum; this.updating = false
   }
+  updateDefeat(delta){
+    const {runtime,camera,orbit}=this,fall=runtime.scottInstance?.defeatMotion
+    if(!fall?.active)return false
+    this.finishTransformation();this.finishArmorReturn()
+    const dt=Math.min(.1,Math.max(0,delta)),hip=fall.hip.bone.getWorldPosition(this.probe),bike=runtime.vehicleRig.root.position
+    this.target.copy(hip)
+    if(runtime.bikeDefeatMotion?.active)this.target.lerp(bike,.5)
+    this.target.y=hip.y+.4
+    this.spherical.setFromVector3(this.offset.copy(camera.position).sub(orbit.target))
+    const distance=runtime.bikeDefeatMotion?.active?hip.distanceTo(bike):0
+    this.spherical.radius=MathUtils.damp(this.spherical.radius,Math.max(this.radius,4+distance*.65),5,dt)
+    if(!this.dragging)this.spherical.phi=MathUtils.damp(this.spherical.phi,1.05,5,dt)
+    orbit.target.lerp(this.target,1-Math.exp(-dt*6))
+    camera.position.copy(orbit.target).add(this.offset.setFromSpherical(this.spherical))
+    const floor=this.sample(camera.position.x,camera.position.z)
+    if(Number.isFinite(floor))camera.position.y=Math.max(camera.position.y,floor+.35)
+    setCameraFov(camera,cameraFraming.cycloneFov);orbit.update(delta);return true
+  }
   updateTransformation(s){
     const {camera,orbit,runtime}=this,p=runtime.transformEntry?.cameraProgress
     if(this.returnShot&&runtime.transformEntry?.returnFlight){

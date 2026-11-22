@@ -24,11 +24,17 @@ export class RandRider{
     const hip=bones.get('mixamorigHips'),position=rig.body.worldToLocal(hip.getWorldPosition(new Vector3())),seat=new Vector3().fromArray(data.measuredTargets.seat.pelvis)
     this.wrapper.position.copy(seat.sub(position));this.wrapper.updateMatrixWorld(true);hands.forEach(h=>h.update('mounted',0))
     this.motion=new MountedScottMotion(this.instance,this.wrapper,rig,data.measuredTargets.grips)
+    this.head=bones.get('mixamorigHead');this.lookPosition=new Vector3()
     this.base=[...bones.values()].map(b=>({b,p:b.position.clone(),q:b.quaternion.clone(),s:b.scale.clone()}));mixer.stopAllAction();mixer.uncacheRoot(source)
   }
   update(state,dt,config,sample){
     this.motion.restore();for(const {b,p,q,s}of this.base){b.position.copy(p);b.quaternion.copy(q);b.scale.copy(s)}
     this.wrapper.updateMatrixWorld(true);this.instance.hands.forEach(h=>h.update('mounted',dt));this.motion.apply(state,sample,config,dt)
+    if(this.head&&state.randLook>0&&state.randLookAt){
+      this.head.getWorldPosition(this.lookPosition)
+      const yaw=Math.atan2(state.randLookAt.x-this.lookPosition.x,state.randLookAt.z-this.lookPosition.z)-state.yaw
+      this.head.rotateY(Math.max(-1.05,Math.min(1.05,Math.atan2(Math.sin(yaw),Math.cos(yaw))))*state.randLook)
+    }
     for(const {mesh}of this.instance.skins)mesh.skeleton.update()
   }
   dispose(){this.instance.hands.forEach(h=>h.dispose());this.instance.skins.forEach(s=>s.original.dispose());this.wrapper.removeFromParent()}

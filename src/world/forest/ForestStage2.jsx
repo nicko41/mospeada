@@ -15,7 +15,8 @@ import {canyonEarthMaterial,canyonRiverMaterial,canyonShoreMaterial} from './for
 import {createCanyonDressing} from './forestCanyonDressing.js'
 import {createCanyonFoliage} from './forestCanyonFoliage.js'
 import {stage2Layout} from './forestStage2Layout.js'
-import {stage2PathX,stage2EarthWeight} from './forestStage2Config.js'
+import {stage2PathX,stage2EarthWeight,stage2Void,stage2LipZ,FOREST_STAGE2} from './forestStage2Config.js'
+import {createForestSideLayout,createSideBoundaryLibrary,createSideBoundaryColliders,forestSideWidth,ForestSideBoundaryBand} from './forestSideBoundaries.js'
 import {registerColliders,cylinderCollider} from '../../player/collisionWorld.js'
 import {getForestImpostor} from './forestImpostors.js'
 import {forestLodRange} from './forestLod.js'
@@ -57,14 +58,15 @@ export default function ForestStage2({assets}){
     return new ForestFoliageWorldManager(world,materials,gl,camera)
   },[world,atlas,gl,camera])
   const rim=useMemo(()=>createCanyonFoliage(atlas,terrain,sides),[atlas,terrain,sides])
-  const actor=useRef(),position=useMemo(()=>new Vector3(),[]),lifetime=useMemo(()=>({refs:0}),[terrain,ground,cliff,plants,canyon,river,sides,rim])
-  useFrame((_,dt)=>{river.time.value+=Math.min(dt,.1);if(!actor.current?.parent)actor.current=scene.getObjectByName('Scott_original_playback')||scene.getObjectByName('Cyclone_riding_vehicle');if(actor.current)actor.current.getWorldPosition(position);plants.update(position,camera,dt);rim.update(camera)},.6)
+  const boundary=useMemo(()=>{const library=createSideBoundaryLibrary(assets,atlas),layout=createForestSideLayout({minZ:FOREST_STAGE2.endZ,maxZ:FOREST_STAGE2.startZ,pathAt:stage2PathX,heightAt:stage2SurfaceHeight,widthAt:(z,side)=>forestSideWidth(z,side)-side*stage2PathX(z),seed:19831124,trees:library.trees,allowed:(x,z,r)=>!stage2Void(x,z)&&Math.min(Math.abs(z-stage2LipZ(x)),Math.abs(z-stage2LipZ(x,true)))>4+r});return{library,layout,band:new ForestSideBoundaryBand(layout,library,stage2SurfaceHeight)}},[assets,atlas])
+  const actor=useRef(),position=useMemo(()=>new Vector3(),[]),lifetime=useMemo(()=>({refs:0}),[terrain,ground,cliff,plants,canyon,river,sides,rim,boundary])
+  useFrame((_,dt)=>{river.time.value+=Math.min(dt,.1);if(!actor.current?.parent)actor.current=scene.getObjectByName('Scott_original_playback')||scene.getObjectByName('Cyclone_riding_vehicle');if(actor.current)actor.current.getWorldPosition(position);plants.update(position,camera,dt);rim.update(camera);boundary.band.update(camera)},.6)
   useLayoutEffect(()=>{
     lifetime.refs++
-    const colliders=assets.flatMap(a=>stage2Layout.layout[a.name].map(p=>{const y=stage2SurfaceHeight(p.x,p.z);return cylinderCollider(p.x,p.z,p.kind==='tree'?p.trunkRadius:p.scale*.7,y-.15,y+(p.kind==='tree'?a.bounds.max.y*p.scale*.78:p.scale))})),remove=registerColliders(colliders)
-    if(import.meta.env.DEV)window.__FOREST_STAGE2__={terrain,ground,plants,layout:stage2Layout,colliders,river,canyon,cliff,sides,rim}
-    return()=>{remove();if(import.meta.env.DEV)delete window.__FOREST_STAGE2__;lifetime.refs--;setTimeout(()=>{if(!lifetime.refs){terrain.tops.forEach(g=>g.dispose());terrain.cliffs.dispose();terrain.bed.dispose();ground.dispose();cliff.wall.dispose();cliff.bed.dispose();plants.dispose();river.geometry.dispose();river.material.dispose();canyon.dispose();sides.dispose();rim.dispose()}},0)}
-  },[assets,terrain,ground,cliff,plants,lifetime,canyon,river,sides,rim])
+    const colliders=[...assets.flatMap(a=>stage2Layout.layout[a.name].map(p=>{const y=stage2SurfaceHeight(p.x,p.z);return cylinderCollider(p.x,p.z,p.kind==='tree'?p.trunkRadius:p.scale*.7,y-.15,y+(p.kind==='tree'?a.bounds.max.y*p.scale*.78:p.scale))})),...createSideBoundaryColliders(boundary.layout)],remove=registerColliders(colliders)
+    if(import.meta.env.DEV)window.__FOREST_STAGE2__={terrain,ground,plants,layout:stage2Layout,colliders,river,canyon,cliff,sides,rim,boundary}
+    return()=>{remove();if(import.meta.env.DEV)delete window.__FOREST_STAGE2__;lifetime.refs--;setTimeout(()=>{if(!lifetime.refs){terrain.tops.forEach(g=>g.dispose());terrain.cliffs.dispose();terrain.bed.dispose();ground.dispose();cliff.wall.dispose();cliff.bed.dispose();plants.dispose();river.geometry.dispose();river.material.dispose();canyon.dispose();sides.dispose();rim.dispose();boundary.band.dispose();boundary.library.dispose()}},0)}
+  },[assets,terrain,ground,cliff,plants,lifetime,canyon,river,sides,rim,boundary])
   return <group name="MOSPEADA_Level_01_Forest_Plano_2">
     {terrain.tops.map((geometry,i)=><mesh key={i} name={'Forest_Plano_2_ground_'+i} geometry={geometry} material={ground} receiveShadow userData={{forest:true,rideSurface:true,rideSurfaceType:'dirt',rideSurfaceBiome:'forest',rideSurfaceEarthWeight:stage2EarthWeight}}/>)}
     <mesh name="Forest_Plano_2_canyon_cliffs" geometry={terrain.cliffs} material={cliff.wall} userData={{forest:true}}/>
@@ -72,6 +74,7 @@ export default function ForestStage2({assets}){
     <mesh name="Forest_canyon_flowing_river" geometry={river.geometry} material={river.material} userData={{forest:true}}/>
     <primitive object={canyon.group} dispose={null}/>
     <primitive object={rim.group} dispose={null}/>
+    <primitive object={boundary.band} dispose={null}/>
     <ForestCanyonSides sides={sides} assets={assets} distant={distant} ground={ground} cliff={cliff} river={river}/>
     {assets.filter(a=>stage2Layout.layout[a.name].length).map(asset=><group key={asset.name}>
       {[...asset.parts,...(asset.midParts||[])].map((part,i)=><ForestInstances key={i} part={part} bounds={asset.bounds} placements={stage2Layout.layout[asset.name]} kind={asset.kind} distance={forestLodRange(asset.kind).max} heightAt={stage2SurfaceHeight} name={'Forest_Plano_2_detail_'+asset.name+i}/>)}

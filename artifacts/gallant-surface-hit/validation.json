@@ -1,0 +1,39 @@
+{
+  "log": {
+    "solid": true,
+    "hit": false,
+    "surface": "Forest_crash_fallen_tree_Forest / Bark_NormalTree",
+    "markCount": 1,
+    "sprites": 1,
+    "stars": 0,
+    "rings": 0,
+    "sparks": 0,
+    "cpuMs": 4.5,
+    "texture": "http://127.0.0.1:5174/assets/texturas/impascto-invid-suelo.png",
+    "markPixels": 355
+  },
+  "ground": {
+    "solid": true,
+    "hit": false,
+    "surface": "Forest_organic_ground",
+    "markCount": 2,
+    "sprites": 1,
+    "stars": 0,
+    "rings": 0,
+    "sparks": 0,
+    "cpuMs": 0.4000000059604645,
+    "texture": "http://127.0.0.1:5174/assets/texturas/impascto-invid-suelo.png",
+    "markPixels": 320
+  },
+  "resources": {
+    "cpuMsPerShot": 2.5600000000916996,
+    "geometriesAdded": 0,
+    "texturesAdded": 0,
+    "programsAdded": 0,
+    "markCount": 48,
+    "reused": true,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

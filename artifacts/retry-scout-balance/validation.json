@@ -1,0 +1,39 @@
+{
+  "before": {
+    "dead": true,
+    "ready": false,
+    "paused": true
+  },
+  "immediate": {
+    "newState": true,
+    "health": 100,
+    "dead": false,
+    "paused": false,
+    "checkpoint": true
+  },
+  "command": {
+    "health": 100,
+    "dead": false
+  },
+  "liveReset": {
+    "newState": true,
+    "health": 100,
+    "paused": false
+  },
+  "climaxRequested": true,
+  "balance": {
+    "damage": 8,
+    "health": 16,
+    "cooldown": 0.45,
+    "aimLead": 0.72,
+    "attackInterval": 2.6,
+    "shotSpacing": 0.13
+  },
+  "climax": {
+    "health": 100,
+    "paused": false,
+    "resume": true,
+    "z": -4830
+  },
+  "errors": []
+}

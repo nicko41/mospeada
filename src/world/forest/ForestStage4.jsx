@@ -23,7 +23,7 @@ export default function ForestStage4({assets}){
     const anisotropy=gl.capabilities.getMaxAnisotropy(),origin=new Vector3(),density={value:1}
     for(const t of [atlas,desertTexture,desertSand]){t.colorSpace=SRGBColorSpace;t.minFilter=LinearMipmapLinearFilter;t.magFilter=LinearFilter;t.generateMipmaps=true;t.anisotropy=Math.min(t===atlas?4:8,anisotropy);t.needsUpdate=true}
     for(const t of [desertTexture,desertSand])t.wrapS=t.wrapT=MirroredRepeatWrapping
-    const ground=stage4GroundMaterial(grass,dirt,anisotropy,origin),desert=stage4DesertMaterial(desertTexture,desertSand),cliff=stage4CliffMaterial(desertTexture),foliage={density,near:worldFoliageMaterial(atlas,'near',density),far:worldFoliageMaterial(atlas,'far',density)},rocks=new Map()
+    const ground=stage4GroundMaterial(grass,dirt,anisotropy,origin),desert=stage4DesertMaterial(desertTexture,desertSand,{},origin),cliff=stage4CliffMaterial(desertTexture),foliage={density,near:worldFoliageMaterial(atlas,'near',density),far:worldFoliageMaterial(atlas,'far',density)},rocks=new Map()
     for(const a of assets.filter(a=>a.kind==='rock'))for(const p of a.parts)rocks.set(a.name+p.material.uuid,stage4RockMaterial(p.material))
     const distant=new Map(assets.filter(a=>a.kind==='tree').map(a=>[a.name,getForestImpostor(gl,a)])),materials={origin,ground,desert,cliff,foliage,rocks}
     return {world:new ForestStage4World(assets,materials,distant),materials,skyCoverage:{value:0},refs:0}

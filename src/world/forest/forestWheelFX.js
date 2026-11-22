@@ -1,7 +1,7 @@
 const dirt=Object.freeze({humidity:.30,dustEmission:1.70,dustSize:1.25,dustLife:1,dustLaunch:1,mudEmission:1,mudSize:1,mudLife:1,mudLaunch:1,grassEmission:0,grassSize:1,grassLife:.45,grassLaunch:.65,grassGravity:10})
 const grass=Object.freeze({humidity:.30,dustEmission:.35,dustSize:.65,dustLife:.7,dustLaunch:.8,mudEmission:1.45,mudSize:1.8,mudLife:1.05,mudLaunch:1.1,grassEmission:1,grassSize:1,grassLife:.45,grassLaunch:.65,grassGravity:10})
-const desertDust=Object.freeze({low:'#b77b49',high:'#e1b57b',lowOpacity:.32,highOpacity:.50})
-export const DESERT_WHEEL_FX=Object.freeze({humidity:.08,emission:2.4,size:1.4,life:1.05,dustPalette:desertDust,mudEnabled:false,grassEnabled:false,surfaceName:'dirt'})
+const desertDust=Object.freeze({low:'#ca9869',high:'#efce9b',lowOpacity:.50,highOpacity:.70})
+export const DESERT_WHEEL_FX=Object.freeze({humidity:.08,emission:2.8,size:1.4,life:1.65,gravity:.22,drag:1.8,wind:.55,turbulence:.32,continuousTrail:true,dustPalette:desertDust,mudEnabled:false,grassEnabled:false,surfaceName:'dirt'})
 export const FOREST_WHEEL_FX_DEFAULTS=Object.freeze({transitionSeconds:.22,grassEnabled:true,dirt,grass})
 const presetKeys=Object.keys(dirt)
 let value={...FOREST_WHEEL_FX_DEFAULTS},listeners=new Set()
@@ -21,7 +21,7 @@ export class ForestWheelFX{
       if(Math.abs(target-this.blend[side])<.001)this.blend[side]=target
       const t=Math.max(0,Math.min(1,this.blend[side])),config=this.configs[side],view=this.wheels[side]
       Object.assign(view,contact,{grounded:contact.grounded&&enabled})
-      Object.assign(config,base,{forestWheelFX:forest,grassWeight:forest?t:0,grassEnabled:forest&&settings.grassEnabled,surfaceName:contact.surface,dustPalette:null})
+      Object.assign(config,base,{forestWheelFX:forest,grassWeight:forest?t:0,grassEnabled:forest&&settings.grassEnabled,surfaceName:contact.surface,dustPalette:null,continuousTrail:false})
       if(forest){for(const key of presetKeys)config[key]=t===0?settings.dirt[key]:t===1?settings.grass[key]:settings.dirt[key]+(settings.grass[key]-settings.dirt[key])*t;config.emission=config.dustEmission;config.size=config.dustSize;config.life=config.dustLife;config.surfaceName=t>.5?'grass':'dirt'}
       else if(contact.biome==='desert')Object.assign(config,DESERT_WHEEL_FX)
     }

@@ -1,0 +1,50 @@
+{
+  "perimeter": {
+    "thickets": 1384,
+    "trunks": 2180,
+    "layers": 5,
+    "minimumDistanceFromRoute": 171.88899235363007,
+    "minX": -341.12911282684007,
+    "maxX": 323.9659830258642,
+    "minZ": -398.9204006885198,
+    "maxZ": 330.61542354826906
+  },
+  "collision": {
+    "blockedFrames": 16,
+    "x": 252.8714954065607,
+    "borderX": 256.9596115613642,
+    "source": 1
+  },
+  "lowFlight": {
+    "particles": 34,
+    "emitters": 1,
+    "ignitions": 1,
+    "groundQueries": 1,
+    "sizeScale": 2,
+    "visibleDustPixels": 30670
+  },
+  "shared": {
+    "sameDraw": true,
+    "sameTexture": true,
+    "sizeScale": 2,
+    "floorMax": -28.03584653377533
+  },
+  "highFlight": {
+    "particles": 0,
+    "emitters": 0,
+    "ignitions": 1,
+    "groundQueries": 1,
+    "sizeScale": 2
+  },
+  "resources": {
+    "cpuMs": 0.28499999990065894,
+    "particles": 41,
+    "poolReused": true,
+    "geometriesAdded": 0,
+    "texturesAdded": 0,
+    "programsAdded": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

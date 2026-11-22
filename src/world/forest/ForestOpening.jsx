@@ -8,13 +8,22 @@ import {FOREST_CRASH} from './forestCrashConfig.js'
 import {forestOpeningState as store} from './forestOpeningState.js'
 import {ForestOpeningShot,FOREST_OPENING} from './forestOpeningShot.js'
 import musicUrl from '../../../assets/sound/01-intro-Robotech-Roy-Fokker-s-Theme.mp3'
+import lifelineUrl from '../../../assets/sound/02-Robotech-Lifeline.mp3'
+import cycloneUrl from '../../../assets/sound/03-Robotech-Cyclone.mp3'
+import {ForestMusic} from './ForestMusic.js'
+import {stage4World} from './forestStage4Config.js'
 import './forestOpening.css'
 
 class OpeningController{
   constructor(runtime,camera,scene){
     Object.assign(this,{runtime,camera,scene});this.active=store.snapshot().phase!=='done';this.holding=false;this.phase='loading';this.elapsed=0;this.suspended=document.hidden;this.disposed=false
-    if(!this.active)return
-    this.audio=new Audio(musicUrl);this.audio.preload='auto';this.audio.volume=0;this.audio.loop=false;this.audio.load()
+    this.music=new ForestMusic({intro:musicUrl,lifeline:lifelineUrl,cyclone:cycloneUrl},{volume:FOREST_OPENING.volume});this.audio=this.music.tracks.intro
+    this.music.suspend(document.hidden)
+    this.unlockMusic=()=>this.music.unlock()
+    this.musicVisibility=()=>this.music.suspend(document.hidden||!this.active&&runtime.paused)
+    window.addEventListener('pointerdown',this.unlockMusic);window.addEventListener('keydown',this.unlockMusic)
+    document.addEventListener('visibilitychange',this.musicVisibility)
+    if(!this.active){this.music.startLifeline().catch(()=>{});return}
     this.audio.addEventListener('error',()=>{this.audioFailed=true;if(this.phase==='starting'||this.phase==='blocked')this.begin()})
     this.key=event=>{
       if(!this.active||event.ctrlKey||event.metaKey||event.code==='Tab'||event.code==='F5')return
@@ -25,8 +34,6 @@ class OpeningController{
     }
     this.visibility=()=>{
       this.suspended=document.hidden
-      if(this.suspended){this.resumeAudio=!this.audio.paused;this.audio.pause()}
-      else if(this.resumeAudio)this.audio.play().catch(()=>{this.resumeAudio=false})
     }
     window.addEventListener('keydown',this.key,true);window.addEventListener('keyup',this.key,true)
     document.addEventListener('visibilitychange',this.visibility)
@@ -54,21 +61,21 @@ class OpeningController{
   play(){
     if(this.disposed||!this.active||this.phase==='starting'||this.phase==='lead'||this.phase==='playing')return
     this.prepare();if(!this.shot)return
-    if(this.audioFailed){this.begin();return}
+    if(this.audioFailed){this.music.startLifeline().catch(()=>{});this.begin();return}
     this.phase='starting'
-    this.audio.play().then(()=>{if(!this.disposed&&this.active)this.begin()}).catch(error=>{
+    this.music.startIntro().then(()=>{if(!this.disposed&&this.active)this.begin()}).catch(error=>{
       if(this.disposed||!this.active)return
       if(error.name==='NotAllowedError'){this.phase='blocked';store.set('blocked')}
       else{this.audioFailed=true;this.begin()}
     })
   }
   update(delta){
+    this.music.update(delta,{paused:document.hidden||!this.active&&this.runtime.paused,state:this.runtime.state,world:stage4World.get()})
     if(!this.active)return false
     if(this.phase==='loading'&&desktopInput.ready)this.play()
     if(!this.shot)return false
     const dt=Math.min(Math.max(delta,0),.1)
     if(!this.suspended){
-      this.audio.volume=Math.min(FOREST_OPENING.volume,this.audio.volume+dt*.5)
       if(this.phase==='lead'){
         this.elapsed+=dt
         const lead=this.audioFailed?this.elapsed:this.audio.currentTime-this.musicStart
@@ -96,12 +103,14 @@ class OpeningController{
   }
   finish(){
     if(!this.active)return
+    if(!this.music.started)this.music.startIntro().catch(()=>{})
     this.prepare();this.restore();this.active=false;this.holding=false;this.phase='done';store.opacity(0);store.set('done')
   }
   dispose(){
     this.disposed=true;this.restore();this.active=false;this.holding=false
     if(this.key){window.removeEventListener('keydown',this.key,true);window.removeEventListener('keyup',this.key,true);document.removeEventListener('visibilitychange',this.visibility)}
-    if(this.audio){this.audio.pause();this.audio.removeAttribute('src');this.audio.load()}
+    window.removeEventListener('pointerdown',this.unlockMusic);window.removeEventListener('keydown',this.unlockMusic);document.removeEventListener('visibilitychange',this.musicVisibility)
+    this.music.dispose()
   }
 }
 

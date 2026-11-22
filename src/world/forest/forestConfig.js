@@ -14,7 +14,7 @@ export const FOREST = Object.freeze({
   fogDensity: .0047,
   foliageAtlas: { views: 8, columns: 4, tileWidth: 256, treeTileHeight: 512, shrubTileHeight: 256 },
   clearingPatches: { count: 12, radius: [8, 14], grass: 28, plants: 6 },
-  performance: { adaptiveResolution: true, minPixelRatio: .65, targetFrameMs: 33.3 },
+  performance: { adaptiveResolution: false, minPixelRatio: .65, targetFrameMs: 33.3 },
   palette: { sky: '#8dcbea', fog: '#4c7c8a', ground: '#517f76', path: '#889b88',
     foliageLight: '#75b4a1', foliageShade: '#244f5f', bark: '#4b6c73', rock: '#849e9b' },
 })

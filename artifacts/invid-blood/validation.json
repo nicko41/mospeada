@@ -1,0 +1,123 @@
+{
+  "hitNone": {
+    "blood": 0,
+    "records": [],
+    "airSheet": 0,
+    "approvedSheet": "http://127.0.0.1:5174/assets/texturas/explosion-aire.png",
+    "textureUrls": [
+      "http://127.0.0.1:5174/assets/texturas/invid-blood01.png",
+      "http://127.0.0.1:5174/assets/texturas/invid-blood02.png"
+    ]
+  },
+  "hit01": {
+    "blood": 1,
+    "records": [
+      {
+        "death": false,
+        "variant": 0,
+        "size": 0.5281368952816352,
+        "frame": 3,
+        "y": -24.479746395792084,
+        "headError": null,
+        "widthVsHead": null
+      }
+    ],
+    "airSheet": 0,
+    "approvedSheet": "http://127.0.0.1:5174/assets/texturas/explosion-aire.png",
+    "textureUrls": [
+      "http://127.0.0.1:5174/assets/texturas/invid-blood01.png",
+      "http://127.0.0.1:5174/assets/texturas/invid-blood02.png"
+    ],
+    "visiblePixels": 220
+  },
+  "hit02": {
+    "blood": 1,
+    "records": [
+      {
+        "death": false,
+        "variant": 1,
+        "size": 0.43629994229692964,
+        "frame": 3,
+        "y": -24.479746395792084,
+        "headError": null,
+        "widthVsHead": null
+      }
+    ],
+    "airSheet": 0,
+    "approvedSheet": "http://127.0.0.1:5174/assets/texturas/explosion-aire.png",
+    "textureUrls": [
+      "http://127.0.0.1:5174/assets/texturas/invid-blood01.png",
+      "http://127.0.0.1:5174/assets/texturas/invid-blood02.png"
+    ],
+    "visiblePixels": 172
+  },
+  "deathNone": {
+    "blood": 0,
+    "records": [],
+    "airSheet": 1,
+    "approvedSheet": "http://127.0.0.1:5174/assets/texturas/explosion-aire.png",
+    "textureUrls": [
+      "http://127.0.0.1:5174/assets/texturas/invid-blood01.png",
+      "http://127.0.0.1:5174/assets/texturas/invid-blood02.png"
+    ]
+  },
+  "death01": {
+    "blood": 1,
+    "records": [
+      {
+        "death": true,
+        "variant": 0,
+        "size": 0.9814879730818007,
+        "frame": 3,
+        "y": -23.642556363868785,
+        "headError": 0,
+        "widthVsHead": 0.9632052444822693
+      }
+    ],
+    "airSheet": 1,
+    "approvedSheet": "http://127.0.0.1:5174/assets/texturas/explosion-aire.png",
+    "textureUrls": [
+      "http://127.0.0.1:5174/assets/texturas/invid-blood01.png",
+      "http://127.0.0.1:5174/assets/texturas/invid-blood02.png"
+    ],
+    "visiblePixels": 622,
+    "greenPixels": 945
+  },
+  "death02": {
+    "blood": 1,
+    "records": [
+      {
+        "death": true,
+        "variant": 1,
+        "size": 0.9798752041644022,
+        "frame": 3,
+        "y": -23.642556363868785,
+        "headError": 0,
+        "widthVsHead": 0.9616225175187401
+      }
+    ],
+    "airSheet": 1,
+    "approvedSheet": "http://127.0.0.1:5174/assets/texturas/explosion-aire.png",
+    "textureUrls": [
+      "http://127.0.0.1:5174/assets/texturas/invid-blood01.png",
+      "http://127.0.0.1:5174/assets/texturas/invid-blood02.png"
+    ],
+    "visiblePixels": 676,
+    "greenPixels": 964
+  },
+  "randomAndResources": {
+    "counts": {
+      "none": 69,
+      "one": 61,
+      "two": 70
+    },
+    "active": 20,
+    "afterFade": 0,
+    "geometriesAdded": 0,
+    "texturesAdded": 0,
+    "programsAdded": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

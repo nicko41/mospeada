@@ -1,0 +1,11 @@
+{
+  "health": [
+    100,
+    80,
+    0,
+    100
+  ],
+  "retryGated": true,
+  "retryRequests": 1,
+  "errors": []
+}

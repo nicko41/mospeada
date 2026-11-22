@@ -40,6 +40,29 @@ test('T is rejected at rest, in reverse and on foot; forward creeping can enter 
   assert.equal(f.entry.phase,'boost');assert.ok(f.s.wheelieAngle>=.42)
 })
 
+test('first level transformation orbits; subsequent entries choose once, including after retry, until a new level',async()=>{
+  const f=await fixture(),choices=[.9,.1,.8];let draws=0
+  f.entry.random=()=>{draws++;return choices.shift()}
+  f.s.speed=0;f.entry.request();assert.equal(f.entry.transformationCount,0)
+  f.s.speed=12;f.entry.request();assert.equal(f.entry.orbitCamera,true);assert.equal(draws,0)
+  f.entry.reset();f.entry.request();assert.equal(f.entry.orbitCamera,false);assert.equal(f.entry.cameraProgress,null);assert.equal(draws,1)
+  for(let i=0;i<240&&f.entry.phase!=='complete';i++){
+    f.tick();assert.equal(f.entry.cameraProgress,null);assert.equal(draws,1,'A camera choice persists for the entire sequence')
+  }
+  f.entry.reset();f.entry.request();assert.equal(f.entry.orbitCamera,true);assert.equal(draws,2)
+  f.entry.reset();f.entry.request();assert.equal(f.entry.orbitCamera,false)
+  f.entry.reset();f.entry.resetLevelCamera();f.entry.request();assert.equal(f.entry.orbitCamera,true);assert.equal(draws,3)
+})
+
+test('assembly clock reaching 100% releases the director before that same physics frame chooses Armor controls',async()=>{
+ const f=await fixture();f.entry.phase='transforming';f.entry.poseBlend=1;store.set({progress:.995,playing:true,direction:1})
+ store.advance(1/60,f.entry.assemblyDuration)
+ assert.equal(f.entry.completeAssembly(),true);assert.equal(f.entry.phase,'complete')
+ const input={walkForward:1,walkSide:1,run:true}
+ assert.equal(f.entry.beforePhysics(input,1/60),input);assert.equal(f.entry.armorBoostLevel,0)
+ assert.equal(f.entry.completeAssembly(),false,'Completion is one-shot')
+})
+
 test('real driving runs wheelie, one native boost, launch, T-pose, then transformation while airborne',async()=>{
   const f=await fixture(),phases=[],max={height:0,wheelie:0};f.entry.request()
   let completeInAir=false,poseStartedInAir=false
@@ -162,7 +185,7 @@ test('headlights turn and CHEST opens while covers and tank wait for placement; 
   for(let i=0;i<12;i++)f.tick()
   assert.equal(f.entry.choreography.turn,1);assert.equal(f.entry.choreography.covers,0);assert.ok(f.entry.choreography.separate>0);assert.equal(f.entry.choreography.fold,0)
   for(let i=0;i<12;i++)f.tick()
-  assert.equal(f.entry.choreography.covers,0);assert.equal(f.entry.choreography.separate,1);assert.equal(f.entry.choreography.fold,0)
+  assert.equal(f.entry.choreography.covers,sampleFrontSequence(f.entry.assemblyProgress).covers);assert.equal(f.entry.choreography.separate,1);assert.equal(f.entry.choreography.fold,sampleFrontSequence(f.entry.assemblyProgress).fold)
   f.entry.pause();const before={elapsed:f.entry.elapsed,camera:f.entry.cameraProgress,...f.entry.choreography}
   for(let i=0;i<30;i++)f.tick()
   assert.deepEqual({elapsed:f.entry.elapsed,camera:f.entry.cameraProgress,...f.entry.choreography},before)
@@ -192,7 +215,7 @@ test('cuffs start just after CHEST settles and finish during torso rise before t
     if(f.entry.phase==='wheelie'||f.entry.phase==='boost')assert.equal(f.entry.choreography.cuffs,0)
     if(f.entry.phase==='airpose'){
       assert.equal(f.entry.choreography.chestLift,1);assert.equal(store.snapshot().progress,0)
-      assert.equal(f.entry.choreography.covers,0);assert.equal(f.entry.choreography.fold,0)
+      assert.equal(f.entry.choreography.covers,sampleFrontSequence(f.entry.assemblyProgress).covers);assert.equal(f.entry.choreography.fold,sampleFrontSequence(f.entry.assemblyProgress).fold)
       if(f.entry.time>.04&&f.entry.time<.24){moving=true;assert.ok(f.entry.choreography.cuffs>0&&f.entry.choreography.cuffs<1)}
       if(f.entry.time>=.26)assert.equal(f.entry.choreography.cuffs,1)
       if(f.entry.time>=.26&&f.entry.time<.35){earlyFit=true;assert.ok(f.entry.poseBlend<1)}

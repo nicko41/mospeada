@@ -1,0 +1,32 @@
+{
+  "asset": "public/models/mospeada/invid-scout-rigged.glb",
+  "runtimeSha256": "a9e2a2e510645e4aebabcdc4d44fba0f7c4b8878da44a11a453fbb5294bfb35c",
+  "sourceUnchanged": true,
+  "correction": "Complete hand pincers follow their corresponding arm rigidly; cyan foot spikes remain on the legs.",
+  "lods": [
+    {
+      "level": 0,
+      "clawVertices": 4588,
+      "correctedVertices": 449,
+      "triangles": 79986
+    },
+    {
+      "level": 1,
+      "clawVertices": 2732,
+      "correctedVertices": 255,
+      "triangles": 38746
+    },
+    {
+      "level": 2,
+      "clawVertices": 1556,
+      "correctedVertices": 155,
+      "triangles": 18604
+    }
+  ],
+  "targetedRigTests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "video": "artifacts/invid-mechanical-rig/preview-claws-fixed.mp4",
+  "runtimeUrl": "/models/mospeada/invid-scout-rigged.glb?rig=claws-v2"
+}

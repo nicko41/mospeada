@@ -1,0 +1,210 @@
+{
+  "ground": [
+    {
+      "at": 0.025,
+      "particles": [
+        0,
+        17,
+        2,
+        3
+      ],
+      "spriteFrames": [
+        0
+      ],
+      "body": true,
+      "glError": 0
+    },
+    {
+      "at": 0.06,
+      "particles": [
+        0,
+        17,
+        0,
+        3
+      ],
+      "spriteFrames": [
+        0
+      ],
+      "body": true,
+      "glError": 0
+    },
+    {
+      "at": 0.12,
+      "particles": [
+        0,
+        11,
+        0,
+        3
+      ],
+      "spriteFrames": [
+        1
+      ],
+      "body": true,
+      "glError": 0
+    },
+    {
+      "at": 0.3,
+      "particles": [
+        0,
+        1,
+        0,
+        3
+      ],
+      "spriteFrames": [
+        5
+      ],
+      "body": false,
+      "glError": 0
+    },
+    {
+      "at": 0.65,
+      "particles": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "spriteFrames": [
+        11
+      ],
+      "body": false,
+      "glError": 0
+    },
+    {
+      "at": 0.96,
+      "particles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "spriteFrames": [
+        11
+      ],
+      "body": false,
+      "glError": 0
+    }
+  ],
+  "air": [
+    {
+      "at": 0.025,
+      "particles": [
+        0,
+        17,
+        2,
+        3
+      ],
+      "spriteFrames": [
+        0
+      ],
+      "body": true,
+      "glError": 0
+    },
+    {
+      "at": 0.06,
+      "particles": [
+        0,
+        17,
+        1,
+        3
+      ],
+      "spriteFrames": [
+        0
+      ],
+      "body": true,
+      "glError": 0
+    },
+    {
+      "at": 0.12,
+      "particles": [
+        0,
+        9,
+        0,
+        3
+      ],
+      "spriteFrames": [
+        1
+      ],
+      "body": true,
+      "glError": 0
+    },
+    {
+      "at": 0.3,
+      "particles": [
+        0,
+        1,
+        0,
+        3
+      ],
+      "spriteFrames": [
+        5
+      ],
+      "body": false,
+      "glError": 0
+    },
+    {
+      "at": 0.65,
+      "particles": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "spriteFrames": [
+        11
+      ],
+      "body": false,
+      "glError": 0
+    },
+    {
+      "at": 0.96,
+      "particles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "spriteFrames": [
+        11
+      ],
+      "body": false,
+      "glError": 0
+    }
+  ],
+  "comparisons": [
+    {
+      "at": 0.025,
+      "changed": 1244,
+      "glError": 0
+    },
+    {
+      "at": 0.06,
+      "changed": 6126,
+      "glError": 0
+    },
+    {
+      "at": 0.1,
+      "changed": 98,
+      "glError": 0
+    },
+    {
+      "at": 0.12,
+      "changed": 70,
+      "glError": 0
+    }
+  ],
+  "resources": {
+    "programsBefore": 13,
+    "programsAfter": 13,
+    "lights": 2,
+    "systems": 4,
+    "capacities": [
+      48,
+      96,
+      16,
+      24
+    ],
+    "glError": 0
+  },
+  "errors": []
+}

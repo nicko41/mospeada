@@ -1,21 +1,12 @@
 import {Euler,Matrix4,Quaternion,Vector3} from 'three'
 import {readKneeSocket,kneeSocketPoint} from './scottKneeSockets.js'
+export {armorAttachmentTarget} from './armorHandoff.js'
 
 export const caballerSettings={
   Left:{length:0,longitudinalScale:1,pitch:0,yaw:0,roll:0},
   Right:{length:0,longitudinalScale:1,pitch:0,yaw:0,roll:0},
 }
 const smooth=n=>{const t=Math.max(0,Math.min(1,n));return t*t*(3-2*t)}
-
-// The assembly is already complete during its departure boost, one phase
-// before the movement controller takes over. Attach in that phase as well;
-// use the entry itself as a stable presentation session, without activating
-// Armor physics or changing any mechanical transformation clocks.
-export function armorAttachmentTarget(armor,entry){
-  if(armor?.active)return armor
-  if(entry&&!entry.returnFlight&&['armorboost','complete'].includes(entry.phase))return{active:true,state:entry}
-  return armor
-}
 
 // Presentation-only attachments, evaluated AFTER Scott's final skeleton.
 // No reparenting, geometry edits, JSON edits or changes to mechanical clocks.
@@ -41,40 +32,53 @@ export class ArmorArticulation{
     this.inverse=new Matrix4();this.world=new Matrix4();this.candidate=new Matrix4();this.delta=new Matrix4();this.stretch=new Matrix4();this.adjust=new Matrix4();this.translation=new Matrix4();this.bodyInverse=new Matrix4()
     this.top=new Vector3();this.bottom=new Vector3();this.goal=new Vector3();this.direction=new Vector3();this.targetDirection=new Vector3();this.position=new Vector3();this.scale=new Vector3();this.quaternion=new Quaternion();this.turn=new Quaternion();this.euler=new Euler()
     this.diagnostics={legs:[],cuffs:[],release:0}
+    this.blendPosition=new Vector3();this.blendQuaternion=new Quaternion();this.blendScale=new Vector3()
+    // Immutable source measurements are prepared before the first T, rather
+    // than raycasting the complete character when control is handed over.
+    this.sockets=Object.fromEntries(['Left','Right'].map(side=>[side,readKneeSocket(this.instance.sourceScene,side)]))
   }
   // Called AFTER the canonical Armor reference skeleton/assembly, BEFORE
   // locomotion/secondary animation. Thus the authored rest placement is exact.
   prepare(armor){
-    if(!armor?.active||this.session===armor.state)return
-    this.session=armor.state;this.releaseTime=0
+    if(!armor?.active)return
+    if(this.session===armor.state&&!armor.assembling)return
     this.instance.model.updateWorldMatrix(true,true)
+    // The tank/backpack can still be travelling. Refresh these offsets until
+    // the very last assembly frame, without freezing their canonical motion.
     this.torsoBindings=this.torso.map(mesh=>({mesh,inBone:this.spine.matrixWorld.clone().invert().multiply(mesh.matrixWorld)}))
+    const reuse=this.bindings&&this.sessionEntry===(armor.entry||armor.state)
+    this.session=armor.state;this.sessionEntry=armor.entry||armor.state;this.releaseTime=0
+    if(reuse)return
     const knees=['Left','Right'].map(side=>({side,bone:this.instance.bones.get(`mixamorig${side}Leg`),thigh:this.instance.bones.get(`mixamorig${side}UpLeg`)}))
     if(knees.some(k=>!k.bone||!k.thigh))throw Error('Faltan los huesos originales de rodilla/muslo de Scott')
     // Both source meshes have the SAME name. Match spatially against the
     // actual anatomical knees, with a one-to-one assignment, never mesh order.
-    const centers=this.legs.map(p=>{p.mesh.geometry.computeBoundingBox();return p.mesh.geometry.boundingBox.getCenter(new Vector3()).applyMatrix4(p.mesh.matrixWorld)})
+    // Early coupling starts while the canonical rear pieces are still moving.
+    // Bind their final authored frame, never an intermediate travelling pose.
+    const frames=this.legs.map(p=>armor.assembling?this.runtime.frontTransformation.anchorWorld.clone().multiply(p.target):p.mesh.matrixWorld.clone())
+    const centers=this.legs.map((p,i)=>{p.mesh.geometry.computeBoundingBox();return p.mesh.geometry.boundingBox.getCenter(new Vector3()).applyMatrix4(frames[i])})
     const cost=(i,j)=>centers[i].distanceToSquared(knees[j].bone.getWorldPosition(new Vector3()))
     const order=cost(0,0)+cost(1,1)<=cost(0,1)+cost(1,0)?[0,1]:[1,0]
     this.bindings=this.legs.map((part,i)=>{
       const {side,bone:knee,thigh}=knees[order[i]],mesh=part.mesh
-      const axis=this.hips.getWorldPosition(new Vector3()).sub(knee.getWorldPosition(new Vector3())).normalize()
-      const positions=mesh.geometry.attributes.position,vertices=[]
+      // A lifted knee cannot define the longitudinal ends of an unbent piece.
+      const axis=armor.assembling?new Vector3(0,1,0).transformDirection(this.instance.model.matrixWorld):this.hips.getWorldPosition(new Vector3()).sub(knee.getWorldPosition(new Vector3())).normalize()
+      const positions=mesh.geometry.attributes.position,local=new Vector3(),point=new Vector3();let min=Infinity,max=-Infinity
       for(let j=0;j<positions.count;j++){
-        const local=new Vector3().fromBufferAttribute(positions,j),point=local.clone().applyMatrix4(mesh.matrixWorld)
-        vertices.push({local,projection:point.dot(axis)})
+        point.fromBufferAttribute(positions,j).applyMatrix4(frames[i]);const projection=point.dot(axis)
+        min=Math.min(min,projection);max=Math.max(max,projection)
       }
-      vertices.sort((a,b)=>a.projection-b.projection)
-      const span=vertices.at(-1).projection-vertices[0].projection
-      const end=upper=>{
-        const limit=upper?vertices.at(-1).projection-span*.025:vertices[0].projection+span*.025
-        const cap=vertices.filter(v=>upper?v.projection>=limit:v.projection<=limit)
-        return cap.reduce((p,v)=>p.add(v.local),new Vector3()).multiplyScalar(1/cap.length)
+      const top=new Vector3(),bottom=new Vector3(),span=max-min;let tops=0,bottoms=0
+      for(let j=0;j<positions.count;j++){
+        local.fromBufferAttribute(positions,j);const projection=point.copy(local).applyMatrix4(frames[i]).dot(axis)
+        if(projection>=max-span*.025){top.add(local);tops++}
+        if(projection<=min+span*.025){bottom.add(local);bottoms++}
       }
-      const top=end(true),bottom=end(false),socket=readKneeSocket(this.instance.sourceScene,side)
+      top.divideScalar(tops);bottom.divideScalar(bottoms)
+      const socket=this.sockets[side]
       const skin=this.instance.skins.find(s=>s.mesh.name===socket.meshName)?.mesh
       if(!skin)throw Error('Falta la malla original de rodilla '+side)
-      return{part,mesh,side,knee,thigh,top,bottom,socket,skin,meshInPelvis:this.hips.matrixWorld.clone().invert().multiply(mesh.matrixWorld)}
+      return{part,mesh,side,knee,thigh,top,bottom,socket,skin,meshInPelvis:this.hips.matrixWorld.clone().invert().multiply(frames[i])}
     })
   }
   restore(){
@@ -83,11 +87,18 @@ export class ArmorArticulation{
     this.applied=false
   }
   write(mesh,world){
+    if(this.weight===0)return
+    if(this.weight<1){
+      mesh.matrixWorld.decompose(this.blendPosition,this.blendQuaternion,this.blendScale)
+      world.decompose(this.position,this.quaternion,this.scale)
+      world.compose(this.blendPosition.lerp(this.position,this.weight),this.blendQuaternion.slerp(this.quaternion,this.weight),this.blendScale.lerp(this.scale,this.weight))
+    }
     mesh.parent.updateWorldMatrix(true,false)
     mesh.matrix.copy(this.inverse.copy(mesh.parent.matrixWorld).invert()).multiply(world)
     mesh.matrixAutoUpdate=false;mesh.matrixWorldNeedsUpdate=true;mesh.updateWorldMatrix(false,false)
   }
   apply(armor,entry,dt){
+    this.weight=armor?.weight??1
     const active=!!armor?.active
     if(!active&&!this.active)return
     this.body.updateWorldMatrix(true,false);this.bodyInverse.copy(this.body.matrixWorld).invert()
@@ -95,7 +106,7 @@ export class ArmorArticulation{
     if(active){
       this.instance.model.updateWorldMatrix(true,true)
       this.diagnostics.legs=[];this.diagnostics.cuffs=[]
-      for(const b of this.torsoBindings)this.write(b.mesh,this.world.copy(this.spine.matrixWorld).multiply(b.inBone))
+      if(!armor.assembling)for(const b of this.torsoBindings)this.write(b.mesh,this.world.copy(this.spine.matrixWorld).multiply(b.inBone))
       this.diagnostics.torso={bone:this.spine.name,parts:this.torso.length,matrix:this.spine.matrixWorld.toArray()}
       for(const g of this.guards){
         // The original 3D LAB offset is already expressed in THIS forearm.

@@ -4,7 +4,7 @@ import {GALLANT_FIRE} from '../../vehicle/GallantShot.js'
 
 export const FOREST_STAGE3=Object.freeze({startZ:FOREST_STAGE2.endZ,triggerZ:FOREST_STAGE2.endZ+38,chunkLength:96,chunks:8,halfWidth:256,speed:14,entryTime:1.5,exitTime:1.1,fireInterval:GALLANT_FIRE.interval,droneHealth:3,
   waves:Object.freeze([2,3,3,2,1]),waveBreak:.8,spawnStagger:.18,
-  firstAttack:.65,attackInterval:1.55,burstShots:3,burstInterval:.16,boltSpeed:52,boltLifetime:1.5,maxEnemyBolts:24,
+  firstAttack:.65,attackInterval:1.55,burstShots:3,burstInterval:.16,boltSpeed:52,boltLifetime:1.5,maxEnemyBolts:24,boltDamageFraction:.01,
   seed:19830930})
 const period=FOREST_STAGE3.chunkLength*FOREST_STAGE3.chunks,baseX=stage2PathX(FOREST_STAGE3.startZ),k=Math.PI*2/period
 export const stage3Phase=z=>((FOREST_STAGE3.startZ-z)%period+period)%period

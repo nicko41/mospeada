@@ -43,6 +43,13 @@ test('Scott shader uses original skin attributes without editing geometry, skele
     layer.update(Object.fromEntries(Object.keys(createScottSoilLoad()).map(k=>[k,100])),{...config,maximum:100})
     assert.deepEqual(layer.uniforms.uScottMud.value.toArray(),[.25,.25,.25,.25])
     assert.deepEqual(layer.uniforms.uScottFilm.value.toArray(),[.25,.25,.25,.25])
+    const dirt=Object.fromEntries(Object.keys(createScottSoilLoad()).map(k=>[k,1])),stored={...dirt}
+    layer.update(dirt,config,true)
+    assert.equal(shader.uniforms.uSoilEnabled.value,0,'Scott body and armor stay clean while transformed')
+    assert.deepEqual(dirt,stored)
+    layer.update(dirt,config,false)
+    assert.equal(shader.uniforms.uSoilEnabled.value,1,'Character dirt returns outside Armor')
+    assert.deepEqual(layer.uniforms.uScottMud.value.toArray(),[.25,.25,.25,.25],'Scott retains the global 25 percent cap')
     assert.match(shader.fragmentShader,/soilCoverage = clamp\([^;]+, 0\.0, 0\.25\);/,'All regional soil contributions share one final visual cap')
     assert.match(shader.fragmentShader, /smoothstep\(\.965, \.995/)
     assert.equal(scottRegion('mixamorig:Head').length(), 0); assert.equal(scottRegion('headfront').length(), 0)

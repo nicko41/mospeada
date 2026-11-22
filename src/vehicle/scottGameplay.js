@@ -5,10 +5,13 @@ import { MountedScottMotion, riderFootTransition } from './mountedScottMotion.js
 import { bikeConfig } from './bikeConfig.js'
 import { TransformationScottPose } from './TransformationScottPose.js'
 import { ArmorLocomotion } from './ArmorLocomotion.js'
+import {playerCombat} from '../player/playerCombat.js'
 
 // Complete source clips drive locomotion and the corrected mount crossing.
 // A separate, reset-every-frame posture layer runs only while riding/seating.
 export function updateScottGameplay(instance, authored, clips, runtime, wrapper, delta) {
+  instance.defeatMotion?.restore()
+  instance.armorHands?.restore()
   instance.armorGallantPose?.restore()
   instance.shooterPose?.restore()
   instance.armorArms?.restore()
@@ -25,7 +28,7 @@ export function updateScottGameplay(instance, authored, clips, runtime, wrapper,
   // across both modes, so Three's unchanged-value cache won't write them again.
   for (const ref of instance.armorClipTransforms || []) { ref.bone.position.copy(ref.position); ref.bone.scale.copy(ref.scale) }
   instance.armorClipTransforms = null
-  const s = runtime.state, p = s.pedestrian, mode = s.riderMode, dt = runtime.paused ? 0 : Math.min(delta, .1)
+  const s = runtime.state, p = s.pedestrian, mode = s.riderMode, dt = runtime.paused||playerCombat.dead ? 0 : Math.min(delta, .1)
   const armor=runtime.armorController?.active?runtime.armorController:null
   const armorReturn=!!runtime.transformEntry?.returnFlight
   if(armorReturn){

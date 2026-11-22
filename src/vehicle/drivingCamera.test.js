@@ -110,3 +110,26 @@ test('transformation camera makes a full orbit, passes the front and returns beh
   assert.equal(orbit.enabled,true);assert.equal(orbit.enableDamping,true)
   controller.dispose()
 })
+
+test('non-orbit transformation keeps its viewing angle and smooth Armor framing',()=>{
+  const {camera,orbit,runtime,s,controller}=setup()
+  orbit.enableDamping=true;runtime.transformEntry={cameraProgress:null,framingProgress:0};s.speed=14
+  for(let i=0;i<=120;i++){
+    runtime.transformEntry.framingProgress=i/120;s.z+=s.speed/60
+    controller.update(s,1/60)
+    assert.equal(controller.transformShot,undefined);assert.equal(orbit.enabled,true)
+    assert.ok(Math.abs(camera.position.x-s.x)<1e-7,'The camera stays behind instead of circling')
+  }
+  assert.equal(camera.fov,50);controller.dispose()
+})
+
+test('defeat camera keeps the fallen rider and the separated bike inside the frame',()=>{
+  const {camera,orbit,runtime,s,controller}=setup();controller.setMode(1,s)
+  runtime.scottInstance={defeatMotion:{active:true,hip:{bone:{getWorldPosition:p=>p.set(0,.2,-4)}}}}
+  runtime.vehicleRig={root:{position:new Vector3(0,0,2)}};runtime.bikeDefeatMotion={active:true}
+  for(let i=0;i<120;i++)assert.equal(controller.updateDefeat(1/60),true)
+  camera.updateMatrixWorld(true)
+  for(const z of[-5,3]){const p=new Vector3(0,.2,z).project(camera);assert.ok(Math.abs(p.x)<.95&&Math.abs(p.y)<.95,'Both bodies fit inside the screen')}
+  assert.ok(orbit.target.distanceTo(new Vector3(0,.6,-1))<.001)
+  controller.reset(s);assert.equal(controller.radius,Math.hypot(bikeConfig.cameraDistance,bikeConfig.cameraHeight-1.05));controller.dispose()
+})

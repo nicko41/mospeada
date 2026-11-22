@@ -7,3 +7,4 @@ export function explosionFrameRect(frame,mirror=false,atlas=EXPLOSION_ATLAS){
   return [(f%a.columns)/a.columns+du+(mirror?w:0),1-(Math.floor(f/a.columns)+1)/a.rows+dv,mirror?-w:w,h]
 }
 export const INVID_GROUND_ATLAS=Object.freeze({columns:4,rows:3,frames:12,width:1448,height:1086,inset:2})
+export const INVID_BLOOD_ATLAS=Object.freeze({columns:4,rows:3,frames:12,width:1448,height:1086,inset:2})

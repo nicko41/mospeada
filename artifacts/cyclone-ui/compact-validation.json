@@ -1,0 +1,28 @@
+{
+  "playing": {
+    "paused": false,
+    "visibleButtons": [],
+    "speed": 210,
+    "number": "78",
+    "boostVisible": false,
+    "blockedVisible": false,
+    "telemetryVisible": false
+  },
+  "paused": {
+    "paused": true,
+    "visibleButtons": [
+      "Continuar · P",
+      "Vista · C",
+      "Recentrar",
+      "Ajustes",
+      "Continuar conducción"
+    ],
+    "speed": 210,
+    "number": "78",
+    "boostVisible": true,
+    "blockedVisible": true,
+    "telemetryVisible": true
+  },
+  "settingsHiddenAfterResume": true,
+  "errors": []
+}

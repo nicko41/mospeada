@@ -76,6 +76,32 @@ test('lateral boost moves BOTH feet opposite the impulse and mildly bends only t
   }
 })
 
+test('forward and reverse boosts each choose a stable current/open stance per impulse, with smooth opening and unchanged leg chains',async()=>{
+ for(const forward of [1,-1]){
+  const f=await fixture();let rolls=0
+  const legs=new ScottArmorBoostMotion(f.instance,f.wrapper,()=>++rolls===1?.8:.2)
+  const state={boostBlend:forward>0?1:0,reverseBlend:forward<0?1:0,boosting:true,thrustForward:forward}
+  const base=legs.records.map(r=>({r,p:r.bone.position.toArray(),q:r.bone.quaternion.clone(),s:r.bone.scale.toArray()}))
+  const step=(s=state,paused=false)=>{legs.restore();legs.apply(f.entry,s,1/60,paused)}
+  const feet=()=>['Left','Right'].map(side=>f.bones.get(`mixamorig${side}Foot`).getWorldPosition(new T.Vector3()))
+  for(let i=0;i<60;i++)step()
+  assert.equal(rolls,1,'Holding thrust never rerolls each frame');assert.equal(legs.variant,'current')
+  const closed=feet(),closedWidth=closed[0].distanceTo(closed[1]),closedPose=legs.records.map(r=>r.bone.quaternion.clone())
+  step({...state,boosting:false});assert.equal(rolls,1,'The coast tail retains its choice')
+  step();assert.equal(rolls,2);assert.equal(legs.variant,'open');assert.ok(legs.opening>0&&legs.opening<.25,'Blend into the new opening')
+  const held=legs.opening;for(let i=0;i<10;i++)step(state,true)
+  assert.equal(legs.opening,held);assert.equal(rolls,2,'Pause freezes the pose choice and opening')
+  for(let i=0;i<90;i++)step()
+  const open=feet();assert.ok(open[0].distanceTo(open[1])>closedWidth+.15,'Both forward and reverse variants visibly spread the feet')
+  for(const [i,r]of legs.records.entries()){
+   if(r.thigh)assert.ok(r.bone.quaternion.angleTo(closedPose[i])>.4)
+   else assert.ok(r.bone.quaternion.angleTo(closedPose[i])<1e-6,'Preserve the approved knee/ankle flexion')
+  }
+  step({disabled:true});assert.equal(legs.applied,false);assert.equal(legs.opening,0,'Jump and landing retain full ownership immediately')
+  for(const {r,p,q,s}of base){assert.deepEqual(r.bone.position.toArray(),p);assert.deepEqual(r.bone.scale.toArray(),s);assert.ok(r.bone.quaternion.angleTo(q)<1e-6)}
+ }
+})
+
 test('Ground weight/landing is a reversible original squat response; idle soles face forward and align to the actual ground normal',async()=>{
   const f=await fixture(),landing=new ArmorLandingMotion(f.instance),a=createArmorState({x:0,z:0,height:.025,yaw:0,speed:0});a.mode='ARMOR_GROUND';a.grounded=true
   const armor={active:true,state:a,sample:(x,z)=>.08*x},base=[...f.bones.values()].map(b=>({b,p:b.position.clone(),q:b.quaternion.clone()}))
