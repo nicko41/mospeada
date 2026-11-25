@@ -1,0 +1,45 @@
+{
+  "source": "public/models/mospeada/scott-shoulders-color.png",
+  "output": "public/models/mospeada/scott-shoulders-color-clean-v2.png",
+  "method": "Built-in imagegen edits composited only inside shoulder-owned stain texels",
+  "patches": [
+    {
+      "id": "A",
+      "box": [
+        654,
+        2010,
+        706,
+        2031
+      ],
+      "changed": 1040
+    },
+    {
+      "id": "B",
+      "box": [
+        1270,
+        874,
+        1317,
+        916
+      ],
+      "changed": 1508
+    },
+    {
+      "id": "C",
+      "box": [
+        1179,
+        767,
+        1207,
+        790
+      ],
+      "changed": 382
+    }
+  ],
+  "changedTexels": 2927,
+  "outsideShoulders": 0,
+  "outsideMask": 0,
+  "preserved": {
+    "public/models/mospeada/scott-bernard-animated-original.glb": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+    "public/models/mospeada/scott-shoulders-normal.png": "2db4c3942a59f76c8c390ef9f3ffa8144cfc6e83e930755a6422f10fc8bba2ed",
+    "public/models/mospeada/scott-shoulders-roughness.png": "c74a4db4c200362c85ebb6bddbc558fc8dc3ea95379e2b258c0cd3d91262c3e8"
+  }
+}

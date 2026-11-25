@@ -10,6 +10,8 @@ uniform float uAnimeDay;
 uniform float uAnimeGlass;
 uniform float uAnimeHero;
 uniform float uAnimeMask;
+uniform float uDistanceHaze;
+uniform vec2 uDistanceHazeRange;
 layout(location = 1) out highp vec4 animeMaskOutput;
 float animeLuma(vec3 c) { return dot(c, vec3(0.2126, 0.7152, 0.0722)); }
 float animeStep(float threshold, float value) {
@@ -84,6 +86,16 @@ export function insertAtMainEnd(shader, code) {
 export function patchAnimeShader(shader, profile) {
   const lit = shader.includes('#include <lights_fragment_end>')
   let result = animeUniformsGLSL + shader
+  result=result.replace('#include <fog_fragment>',`
+    #ifdef USE_FOG
+      if(uDistanceHaze>.5){
+        float hazeFactor=smoothstep(uDistanceHazeRange.x,uDistanceHazeRange.y,vFogDepth);
+        gl_FragColor.rgb=mix(gl_FragColor.rgb,fogColor,hazeFactor);
+      }else{
+        #include <fog_fragment>
+      }
+    #endif
+  `)
   if (lit && !profile.natural) result = result.replace('#include <lights_fragment_end>', '#include <lights_fragment_end>\n' + animeLightingGLSL)
   if (profile.grass) result = result.replace(
     'mix(vColor * 0.55, vColor, smoothstep(0.05, 0.8, vUv.y))',
@@ -108,6 +120,9 @@ uniform float uWidth;
 uniform float uOutlines;
 uniform vec3 uOutlineColor;
 uniform float uFogDensity;
+uniform float uFogLinear;
+uniform vec2 uFogRange;
+uniform float uHazeBlur;
 varying vec2 vUv;
 float viewDepth(vec2 uv) {
   float d = texture2D(uDepth, uv).r;
@@ -132,9 +147,28 @@ void main() {
     // triangle outlines; panel detail stays in the existing textures/lighting.
     edge = max(edge, silhouette); edgeDepth = min(edgeDepth, nearest);
   }
-  edge *= exp(-uFogDensity * uFogDensity * edgeDepth * edgeDepth) * uOutlines;
+  float fogVisibility=uFogLinear>.5?1.0-smoothstep(uFogRange.x,uFogRange.y,edgeDepth):exp(-uFogDensity*uFogDensity*edgeDepth*edgeDepth);
+  edge *= fogVisibility * uOutlines;
   }
-  gl_FragColor = vec4(texture2D(uBeauty, vUv).rgb, 1.0);
+  vec3 beauty=texture2D(uBeauty,vUv).rgb;
+  if(uHazeBlur>.001){
+    float hazeDepth=viewDepth(vUv);
+    float softDistance=smoothstep(0.0,.5,smoothstep(uFogRange.x,uFogRange.y,hazeDepth));
+    // The sky already has a smooth haze gradient and needs no depth blur.
+    if(softDistance>.001&&hazeDepth<uFar*.999){
+      vec3 softened=beauty*4.0;float totalWeight=4.0;
+      for(int i=0;i<8;i++){
+        float angle=float(i)*.78539816339;
+        vec2 sampleUv=clamp(vUv+vec2(cos(angle),sin(angle))*uPixel*uHazeBlur*softDistance,vec2(0.0),vec2(1.0));
+        // Never pull Scott, Rand or a nearby enemy into a background blur.
+        float weight=smoothstep(uFogRange.x,uFogRange.x+250.0,viewDepth(sampleUv));
+        softened+=texture2D(uBeauty,sampleUv).rgb*weight;totalWeight+=weight;
+      }
+      beauty=softened/totalWeight;
+      edge*=1.0-softDistance*.65;
+    }
+  }
+  gl_FragColor = vec4(beauty, 1.0);
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
   gl_FragColor.rgb = mix(gl_FragColor.rgb, uOutlineColor, edge * 0.92);

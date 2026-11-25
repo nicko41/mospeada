@@ -1,0 +1,106 @@
+{
+  "wins": 1,
+  "ends": 1,
+  "phase": "done",
+  "opacity": 1,
+  "paused": true,
+  "sameState": true,
+  "health": 4,
+  "hudHidden": "hidden",
+  "frames": 629,
+  "maxWheelie": 0.8599999992094357,
+  "fixedDirection": true,
+  "programsBefore": 162,
+  "programsAfter": 163,
+  "gl": 0,
+  "shader": "",
+  "fromArmor": true,
+  "mountedAtEnd": true,
+  "typing": {
+    "letters": "VIC",
+    "band": "1",
+    "panel": "1"
+  },
+  "blackHold": {
+    "age": 4.591100000023837,
+    "opacity": 1,
+    "volume": 0.48,
+    "playing": true,
+    "completed": 0
+  },
+  "victory": {
+    "frames": 83,
+    "firstHeight": -15.878535129224629,
+    "lastHeight": -27.519906914770864,
+    "cameraMoved": 13.876483291185352,
+    "rotationChanged": 1.4089914729056157,
+    "landingPhases": [
+      "prepare",
+      "descend",
+      "impact",
+      "recover"
+    ],
+    "landed": true
+  },
+  "banner": {
+    "text": "VICTORIA",
+    "bandColor": "rgb(152, 210, 225)",
+    "blend": "normal",
+    "playing": true,
+    "source": "http://127.0.0.1:5174/assets/sound/04-Robotech-Mission-Accomplished.mp3",
+    "volume": 0.48,
+    "base": 0.48
+  },
+  "audioOnBlack": {
+    "opacity": 1,
+    "volume": 0.3269764643043883,
+    "base": 0.48,
+    "completed": 0
+  },
+  "audio": {
+    "fullVolumeThroughVisualFade": true,
+    "fadeOnlyOnBlack": true,
+    "finalVolume": 0,
+    "finalPaused": true,
+    "finalMusicPhase": "complete"
+  },
+  "shots": [
+    {
+      "age": 0.8556999999880791,
+      "wheelie": 0,
+      "scottX": -0.3812289801285891,
+      "randX": 0.41872362856202566,
+      "distance": 2.618695170720386,
+      "opacity": 0,
+      "randHealth": 4
+    },
+    {
+      "age": 3.847199999988078,
+      "wheelie": 0,
+      "scottX": -0.09922164999181224,
+      "randX": 0.176356414652202,
+      "distance": 10.061538880715808,
+      "opacity": 0,
+      "randHealth": 4
+    },
+    {
+      "age": 5.949300000011921,
+      "wheelie": 0.8291131532866698,
+      "scottX": 0.6792621665861723,
+      "randX": 0.7747514574298007,
+      "distance": 11.436734000004527,
+      "opacity": 0,
+      "randHealth": 4
+    },
+    {
+      "age": 7.427199999988079,
+      "wheelie": 0.8599888350019367,
+      "scottX": 6.975368315968226,
+      "randX": 5.87137505501322,
+      "distance": 11.998335999995469,
+      "opacity": 0,
+      "randHealth": 4
+    }
+  ],
+  "errors": []
+}

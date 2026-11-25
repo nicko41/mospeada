@@ -1,0 +1,12 @@
+{
+  "source": "assets/01-SCOTT/scott-bernard-gear-v2.glb",
+  "sourceSha256": "56fce64c8ce04bcd3768190b0c5c2d06bcf4cacb936724e51267a0515f6321aa",
+  "output": "public/models/mospeada/scott-original-rigid-chest.glb",
+  "outputSha256": "cf953ef0f42cfe91298c77037c74b869d29a3038594df40f7612e018b2c1d49c",
+  "triangles": 54601,
+  "vertices": 30302,
+  "positionsNormalsUVsByteCopied": true,
+  "imagesMaterialsUnchanged": true,
+  "rigidObjectTransformOnly": true,
+  "replacedTriangles": 17221
+}

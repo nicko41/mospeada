@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "bones": 24,
+      "clips": 16,
+      "vertices": 15429,
+      "triangles": 10334
+    },
+    {
+      "bones": 24,
+      "clips": 16,
+      "vertices": 160268,
+      "triangles": 240489
+    },
+    {
+      "bones": 24,
+      "clips": 16,
+      "vertices": 160268,
+      "triangles": 240489
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

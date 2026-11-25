@@ -1,0 +1,66 @@
+{
+  "status": "implemented-and-tested",
+  "activeVariant": "gear-v2",
+  "output": "public/models/mospeada/scott-bernard-gear-v2-animated.glb",
+  "configuration": {
+    "file": "src/vehicle/scottModelConfig.js",
+    "setting": "SCOTT_MODEL_VARIANT",
+    "currentValue": "gear-v2",
+    "returnToOriginalValue": "original",
+    "fallbackVerifiedInBrowser": true
+  },
+  "originalsUnchanged": {
+    "animatedOriginalSha256": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+    "gearV2DonorSha256": "56fce64c8ce04bcd3768190b0c5c2d06bcf4cacb936724e51267a0515f6321aa"
+  },
+  "rig": {
+    "bones": 24,
+    "originalAnimations": 16,
+    "boneNamesHierarchyAndInverseBindMatricesUnchanged": true,
+    "armsAlignedBeforeSkinning": true,
+    "method": "Barycentric transfer from the original surface, UV-seam regularization, explicit rigid armor cores and continuous junction bands. No nearest-bone blanket binding.",
+    "sourceTopologyPreservedAfterReduction": true
+  },
+  "geometry": {
+    "sourceTriangles": 801630,
+    "renderedTriangles": 240489,
+    "reductionPercent": 70,
+    "renderedVertices": 144839,
+    "unrenderedReferenceVertices": 15429,
+    "reductionSurfaceErrorP95Meters": 0.00010668483118934088,
+    "reductionSurfaceErrorMaxMeters": 0.00022075229207985103
+  },
+  "appearance": {
+    "donorEmbeddedImagesCopiedByteForByte": true,
+    "donorMaterialParametersPreserved": true,
+    "visorAndDecalsNotRepainted": true,
+    "originalShoulderMapOverrideDisabledForGearV2": true
+  },
+  "validation": {
+    "all16SourceClipsSampled": true,
+    "nativePoses": ["rest", "driving", "transform", "combat"],
+    "existingRigAndHandTestsPassed": 5,
+    "browserTransformationCompleted": true,
+    "browserAimRecognized": true,
+    "browserGallantShotsFired": 1,
+    "browserWebGLError": 0,
+    "browserUncaughtErrors": 0,
+    "productionBuild": "passed",
+    "details": ["alignment.json", "skin.json", "validation.json", "browser.json", "browser-original.json"]
+  },
+  "notes": [
+    "Only donor triangles are rendered. The reference vertices preserve existing hand, sole and knee measurements without changing gameplay or transformation mechanics.",
+    "Do not strip unused reference vertices from the derived GLB with a generic optimizer; regenerate through the preparation pipeline instead.",
+    "Rigid plate cores retain their joint transforms. The fused model's junction bands remain blended to avoid tearing; not every border vertex is rigid.",
+    "Mechanical knee attachment points are unchanged. The new visible cap surface sits approximately 7.3 mm left / 14.3 mm right inside the original outer attachment surface.",
+    "Despite the donor reduction, this variant costs more to render than the 10334-triangle original."
+  ],
+  "rebuild": [
+    "node scripts/inspect-scott-gear-v2.mjs",
+    "blender --background --threads 6 --python scripts/prepare-scott-gear-v2.blender.py",
+    "blender --background --threads 6 --python scripts/skin-scott-gear-v2.blender.py",
+    "node scripts/pack-scott-gear-v2.mjs",
+    "node scripts/validate-scott-gear-v2.mjs",
+    "npm run build"
+  ]
+}

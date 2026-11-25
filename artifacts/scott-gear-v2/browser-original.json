@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "loaded": {
+    "vertices": 15429,
+    "triangles": 10334,
+    "bones": 24,
+    "referenceVertices": 15429,
+    "sourceAnimations": 16,
+    "morphs": 3,
+    "material": "BakedMaterial",
+    "shaderError": ""
+  },
+  "uncaughtErrors": []
+}

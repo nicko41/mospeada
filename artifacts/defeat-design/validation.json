@@ -1,0 +1,68 @@
+{
+  "layout": {
+    "title": "DERROTADO",
+    "band": {
+      "x": 0,
+      "y": 140.203125,
+      "width": 1366,
+      "height": 106.671875
+    },
+    "titleBox": {
+      "x": 491.1369934082031,
+      "y": 164.71875,
+      "width": 383.7103576660156,
+      "height": 57.640625
+    },
+    "button": {
+      "x": 601.1132202148438,
+      "y": 262.875,
+      "width": 163.7579345703125,
+      "height": 52.453125
+    },
+    "font": "\"Open 24 Display ST\", monospace",
+    "color": "rgb(180, 223, 234)",
+    "weight": "400",
+    "style": "normal",
+    "reset": "RRESET",
+    "pauseUI": "none"
+  },
+  "alignment": {
+    "key": {
+      "x": 634.3671875,
+      "y": 289.1015625
+    },
+    "r": {
+      "x": 634.36146930205,
+      "y": 289.09374895060193
+    },
+    "panel": {
+      "x": 683,
+      "y": 193.5390625
+    },
+    "title": {
+      "x": 682.9921900128691,
+      "y": 193.53906207054388
+    },
+    "red": "rgb(255, 52, 52)",
+    "blend": "multiply",
+    "titleSlope": -0.2679491924311227,
+    "keySlope": -0.2679491924311227,
+    "resetSlope": -0.2679491924311227,
+    "panelSlope": -0.267949
+  },
+  "mobile": {
+    "viewport": 390,
+    "titleLeft": 99.14404296875,
+    "titleRight": 290.8601379394531,
+    "buttonBottom": 331.03125,
+    "scrollWidth": 390
+  },
+  "click": {
+    "health": 100,
+    "overlay": false,
+    "z": -655,
+    "orbit": true
+  },
+  "keyboard": true,
+  "errors": []
+}

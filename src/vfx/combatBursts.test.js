@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import {AdditiveBlending,DataTexture,Group,Matrix4,Mesh,MeshBasicMaterial,PerspectiveCamera,Scene,SphereGeometry,Vector3} from 'three'
 import {VFXRuntime} from './VFXRuntime.js'
 import {Plano3CombatVFX} from './Plano3CombatVFX.js'
+import {INVID_IMPACT_DUST} from './InvidImpactDust.js'
 import {COMBAT_VFX_LIMITS,COMBAT_VFX_PRESETS} from './combatVFXPresets.js'
 import {INVID_GROUND_ATLAS,explosionFrame,explosionFrameRect} from './explosionAtlas.js'
 
@@ -213,7 +214,7 @@ test('Quarks adds a white-hot fireball, warm halo and delayed black smoke over t
 })
 
 test('many simultaneous death reinforcements stay bounded, preserve hit capacity and clear on checkpoint reset',()=>{
- const {runtime,fx,camera,e,weapon,tick}=fixture(),caps=[COMBAT_VFX_LIMITS.sparksPerHit,COMBAT_VFX_LIMITS.sparksPerExplosion,COMBAT_VFX_LIMITS.deathFlashes,COMBAT_VFX_LIMITS.deathSmoke,COMBAT_VFX_LIMITS.deathFireballs,COMBAT_VFX_LIMITS.muzzleSparks,COMBAT_VFX_LIMITS.deathVolumes],pools=fx.systems.map(ps=>ps.particles.slice())
+ const {runtime,fx,camera,e,weapon,tick}=fixture(),caps=[COMBAT_VFX_LIMITS.sparksPerHit,COMBAT_VFX_LIMITS.sparksPerExplosion,COMBAT_VFX_LIMITS.deathFlashes,COMBAT_VFX_LIMITS.deathSmoke,COMBAT_VFX_LIMITS.deathFireballs,COMBAT_VFX_LIMITS.muzzleSparks,COMBAT_VFX_LIMITS.deathVolumes,INVID_IMPACT_DUST.capacity],pools=fx.systems.map(ps=>ps.particles.slice())
  try{
   for(let i=0;i<30;i++)fx.destroyTarget({position:new Vector3(i,2,-8),height:5.2,dead:true})
   fx.update(0,e,weapon,camera)

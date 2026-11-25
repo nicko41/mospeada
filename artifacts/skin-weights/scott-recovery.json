@@ -1,0 +1,45 @@
+{
+  "approvedPoseAndGameCode": [
+    {
+      "file": "src/vehicle/OriginalScott.jsx",
+      "unchanged": true
+    },
+    {
+      "file": "src/vehicle/scottGameplay.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/vehicle/ScottAirSquatRidingPose.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/vehicle/scottV2RidingConfig.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/vehicle/scottModelConfig.js",
+      "unchanged": true
+    }
+  ],
+  "functionalGlbMatchesBeforeChestCheckpoint": true,
+  "assets": [
+    {
+      "file": "public/models/mospeada/scott-bernard-gear-v2-animated.glb",
+      "sha256": "b93178cafed8f57104135ae034b4523cc85cb570cd44964203aef38f36b7635a"
+    },
+    {
+      "file": "assets/01-SCOTT/scott-bernard-gear-v2.glb",
+      "sha256": "56fce64c8ce04bcd3768190b0c5c2d06bcf4cacb936724e51267a0515f6321aa"
+    },
+    {
+      "file": "public/models/mospeada/scott-bernard-animated-original.glb",
+      "sha256": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961"
+    }
+  ],
+  "rejectedPrototypeQuarantined": [
+    ".local/rejected-chest/ScottSourceChest.js",
+    ".local/rejected-chest/scott-original-rigid-chest.glb"
+  ],
+  "automaticScottCorrectionsExecuted": false,
+  "sourceAssetsOverwritten": false
+}

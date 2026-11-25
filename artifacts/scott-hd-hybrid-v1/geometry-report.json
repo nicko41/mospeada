@@ -1,0 +1,176 @@
+{
+  "alignment": {
+    "donorWaist": [
+      0,
+      -0.75,
+      0
+    ],
+    "donorNeck": [
+      0,
+      0.17,
+      0
+    ],
+    "donorHeadCenter": [
+      0,
+      0.49,
+      0.04
+    ],
+    "headUniformScale": 0.48,
+    "targetHeadCenter": [
+      0.00394,
+      1.545,
+      -0.005
+    ],
+    "bodyScale": [
+      0.4,
+      0.4,
+      0.32
+    ],
+    "bodyOffset": [
+      0.00394,
+      1.32,
+      -0.018
+    ],
+    "armAnchors": {
+      "Left": {
+        "donor": [
+          [
+            0.5400000214576721,
+            0.12999999523162842,
+            -0.019999999552965164
+          ],
+          [
+            0.6949999928474426,
+            -0.3700000047683716,
+            0.0
+          ],
+          [
+            0.8399999737739563,
+            -0.8399999737739563,
+            0.009999999776482582
+          ]
+        ],
+        "receiver": [
+          [
+            0.1866762489080429,
+            1.3535642623901367,
+            -0.04657614603638649
+          ],
+          [
+            0.4249930679798126,
+            1.3178229331970215,
+            -0.04445631802082062
+          ],
+          [
+            0.6951091289520264,
+            1.309895634651184,
+            -0.03339453041553497
+          ]
+        ]
+      },
+      "Right": {
+        "donor": [
+          [
+            -0.5400000214576721,
+            0.12999999523162842,
+            -0.019999999552965164
+          ],
+          [
+            -0.6949999928474426,
+            -0.3700000047683716,
+            0.0
+          ],
+          [
+            -0.8399999737739563,
+            -0.8399999737739563,
+            0.009999999776482582
+          ]
+        ],
+        "receiver": [
+          [
+            -0.18273501098155975,
+            1.3535640239715576,
+            -0.04660143330693245
+          ],
+          [
+            -0.39722469449043274,
+            1.317823052406311,
+            -0.043277010321617126
+          ],
+          [
+            -0.6673410534858704,
+            1.32180917263031,
+            -0.033183686435222626
+          ]
+        ]
+      }
+    }
+  },
+  "parts": [
+    {
+      "name": "HD_face",
+      "sourceTriangles": 40938,
+      "beforeOptimization": 40938,
+      "triangles": 40938,
+      "vertices": 20935
+    },
+    {
+      "name": "HD_helmet",
+      "sourceTriangles": 193667,
+      "beforeOptimization": 193667,
+      "triangles": 49998,
+      "vertices": 25870
+    },
+    {
+      "name": "HD_torso_neck",
+      "sourceTriangles": 269278,
+      "beforeOptimization": 269278,
+      "triangles": 41999,
+      "vertices": 22126
+    },
+    {
+      "name": "HD_Left_arm",
+      "sourceTriangles": 96190,
+      "beforeOptimization": 96402,
+      "triangles": 22000,
+      "vertices": 11384
+    },
+    {
+      "name": "HD_Right_arm",
+      "sourceTriangles": 84796,
+      "beforeOptimization": 84988,
+      "triangles": 22000,
+      "vertices": 11273
+    }
+  ],
+  "repairs": {
+    "helmet": {
+      "donorSide": "anatomical right (-X)",
+      "sourceBounds": [
+        [
+          Infinity,
+          Infinity,
+          Infinity
+        ],
+        [
+          -Infinity,
+          -Infinity,
+          -Infinity
+        ]
+      ],
+      "sourceTriangles": 0,
+      "wholeHelmetMirrored": false
+    },
+    "LeftWrist": {
+      "extendedVertices": 107,
+      "originalDistalForearmSupport": true,
+      "newDesign": false
+    },
+    "RightWrist": {
+      "extendedVertices": 97,
+      "originalDistalForearmSupport": true,
+      "newDesign": false
+    }
+  },
+  "weights": {}
+}

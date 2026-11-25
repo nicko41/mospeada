@@ -13,6 +13,7 @@ export async function stage2PhysicsFixture(){
   const b=fs.readFileSync('public/models/mospeada/cyclone-vr052f.glb'),g=await new GLTFLoader().parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.length),'')
   const rig=createDrivingCyclone(g.scene),scene=new Group(),terrain=createStage2Terrain(),material=new MeshLambertMaterial()
   for(const geometry of terrain.tops){const mesh=new Mesh(geometry,material);mesh.userData={rideSurface:true,rideSurfaceType:'dirt',rideSurfaceBiome:'forest',rideSurfaceEarthWeight:stage2EarthWeight};scene.add(mesh)}
+  const wall=new Mesh(terrain.cliffs,material);wall.userData.rideBarrier=true;scene.add(wall)
   const remove=registerRideSurfaces(scene)
   return {rig,scene,terrain,sample:sampleRideHeight,dispose(){remove();terrain.tops.forEach(g=>g.dispose());terrain.cliffs.dispose();terrain.bed.dispose();material.dispose()}}
 }

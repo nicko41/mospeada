@@ -1,0 +1,52 @@
+{
+  "output": "public/models/mospeada/scott-bernard-hd-hybrid-v2.glb",
+  "bytes": 31674476,
+  "triangles": 231836,
+  "originalRetainedTriangles": 8946,
+  "originalRemovedHeadTriangles": 1388,
+  "parts": [
+    {
+      "name": "HD2_HeadHelmet",
+      "joint": 5,
+      "jointName": "mixamorig:Head",
+      "scale": [
+        0.48,
+        0.48,
+        0.48
+      ],
+      "offset": [
+        0.0039413,
+        1.3097999999999999,
+        -0.0242
+      ],
+      "vertices": 109179,
+      "triangles": 200080
+    },
+    {
+      "name": "HD2_ChestPlate",
+      "joint": 3,
+      "jointName": "mixamorig:Spine2",
+      "scale": [
+        0.4,
+        0.4,
+        0.34
+      ],
+      "offset": [
+        0.0039413,
+        1.32,
+        0.025
+      ],
+      "vertices": 12330,
+      "triangles": 22810
+    }
+  ],
+  "sourceSha256": {
+    "receiver": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+    "donor": "42c4fa77f5821df0a9688c3b95bbaeb4bd713a93db27a0ef45813d82bb193ca6"
+  },
+  "skeletonJoints": 24,
+  "originalAnimations": 16,
+  "noProximityTransfer": true,
+  "noRemeshing": true,
+  "noHelmetRepair": true
+}

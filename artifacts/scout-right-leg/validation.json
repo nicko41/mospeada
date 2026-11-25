@@ -1,0 +1,161 @@
+{
+  "stats": [
+    {
+      "angle": [
+        -6,
+        1,
+        7
+      ],
+      "changed": 2669
+    },
+    {
+      "angle": [
+        6,
+        1,
+        7
+      ],
+      "changed": 1225
+    },
+    {
+      "angle": [
+        -8,
+        1,
+        0
+      ],
+      "changed": 7458
+    }
+  ],
+  "gl": 0,
+  "shader": "",
+  "errors": [],
+  "rigManifest": {
+    "source": "public/models/mospeada/invid-scout.glb",
+    "output": "public/models/mospeada/invid-scout-rigged.glb",
+    "sourceSha256": "3e6e7c4ad75b92e5e31e2afe52c4a8f8d2f96ba75068e3649af39b359ace5f5a",
+    "sourceUnchanged": true,
+    "runtimeSha256": "9dabb493f8f1d1c22cb4d47fa1e615de25110fd48dca32c00ab7afb7f1fb1b7d",
+    "joints": [
+      {
+        "name": "body_root",
+        "pivot": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "arm_L",
+        "pivot": [
+          0.36,
+          0.36,
+          0.075
+        ]
+      },
+      {
+        "name": "arm_R",
+        "pivot": [
+          -0.34,
+          0.31,
+          0.065
+        ]
+      },
+      {
+        "name": "leg_L",
+        "pivot": [
+          0.18,
+          0.18,
+          -0.045
+        ]
+      },
+      {
+        "name": "leg_R",
+        "pivot": [
+          -0.18,
+          0.16,
+          -0.045
+        ]
+      }
+    ],
+    "animations": [
+      "Hover",
+      "Idle",
+      "Landing",
+      "Takeoff",
+      "Walk",
+      "Claw_L",
+      "Claw_R"
+    ],
+    "lods": [
+      {
+        "level": 0,
+        "triangles": 79986,
+        "vertices": 55557,
+        "jointVertices": [
+          20275,
+          6106,
+          8131,
+          11873,
+          9172
+        ],
+        "collarVertices": 2840,
+        "welded": 39764,
+        "clawVertices": 4588,
+        "correctedClawVertices": 449,
+        "clawComponents": 11,
+        "legRepairs": [
+          {
+            "position": [
+              -0.36591601371765137,
+              -0.3714219927787781,
+              0.3849579989910126
+            ],
+            "vertices": [
+              13443
+            ],
+            "neighbors": 9,
+            "joint": 4
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "triangles": 38746,
+        "vertices": 31035,
+        "jointVertices": [
+          11114,
+          3424,
+          4691,
+          6809,
+          4997
+        ],
+        "collarVertices": 1668,
+        "welded": 19155,
+        "clawVertices": 2732,
+        "correctedClawVertices": 255,
+        "clawComponents": 9,
+        "legRepairs": []
+      },
+      {
+        "level": 2,
+        "triangles": 18604,
+        "vertices": 17758,
+        "jointVertices": [
+          6214,
+          1881,
+          2832,
+          4065,
+          2766
+        ],
+        "collarVertices": 983,
+        "welded": 9098,
+        "clawVertices": 1556,
+        "correctedClawVertices": 155,
+        "clawComponents": 7,
+        "legRepairs": []
+      }
+    ],
+    "bytes": 14784808,
+    "originalAttributesAndImagesPreserved": true
+  },
+  "originalHash": "e029714b87b6c2a3b7d9e8f3273ad1b80a4a3cdb565801c59859744cbe86d934"
+}

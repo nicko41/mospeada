@@ -2,8 +2,9 @@ import {MathUtils,Quaternion,Vector3} from 'three'
 import {CycloneShooterPose} from './CycloneShooterPose.js'
 
 // Native Armor animation owns the arm unless the player explicitly aims.
-// Jump/descent/landing always retain their original complete arm gestures.
-export const armorWeaponAvailable=state=>!state.jump&&!state.groundLanding&&!(state.diveBlend>.001)
+// The arm can aim over walk/run and every vertical-strafe phase. Explicit
+// ground landings/dives keep their own full-body impact choreography.
+export const armorWeaponAvailable=state=>!state.knockedDown&&!state.groundLanding&&(!(state.diveBlend>.001)||!!state.jump)
 export class ArmorGallantPose extends CycloneShooterPose{
   constructor(instance){
     super(instance);this.aimBlend=0;this.point=new Vector3();this.elbow=new Vector3();this.torso=[]

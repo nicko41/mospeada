@@ -1,0 +1,58 @@
+{
+  "ambush": {
+    "count": 15,
+    "activated": [
+      true,
+      true,
+      false
+    ],
+    "reserve": [
+      {
+        "shots": 0,
+        "focus": null,
+        "damage": false
+      },
+      {
+        "shots": 0,
+        "focus": null,
+        "damage": false
+      },
+      {
+        "shots": 0,
+        "focus": null,
+        "damage": false
+      },
+      {
+        "shots": 0,
+        "focus": null,
+        "damage": false
+      },
+      {
+        "shots": 0,
+        "focus": null,
+        "damage": false
+      }
+    ],
+    "secondTravel": [
+      290.0303027575842,
+      290.0224511624089,
+      290.03196735491235,
+      290.01971391345955,
+      290.02622467389295
+    ],
+    "batches": 4,
+    "instanced": true,
+    "far": 4000,
+    "gl": 0
+  },
+  "drone": {
+    "locked": true,
+    "marker": "true",
+    "trackingError": 0,
+    "health": 0,
+    "shots": 3,
+    "kills": 1,
+    "cleared": true
+  },
+  "errors": []
+}

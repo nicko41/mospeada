@@ -1,0 +1,25 @@
+import fs from 'node:fs'
+import assert from 'node:assert/strict'
+import {connect} from './browser-cdp.mjs'
+await import('./validate-cuff-missiles.mjs')
+const c=await connect(),dir='artifacts/boost-missile-release',wait=ms=>new Promise(resolve=>setTimeout(resolve,ms)),ev=code=>c.evaluate(code),report={}
+fs.mkdirSync(dir,{recursive:true})
+async function until(code,seconds=20){for(let i=0;i<seconds*20;i++){if(await ev(code))return;await wait(50)}throw Error('Timed out: '+code)}
+async function capture(name){fs.writeFileSync(dir+'/'+name+'.png',Buffer.from((await c.send('Page.captureScreenshot',{format:'png'})).data,'base64'))}
+try{
+ await ev(`(()=>{const r=__MOSPEADA__.runtime,q=__MISSILE_QA__;window.__BOOST_MISSILE_QA__={q,oldUpdate:q.p.update,oldLaunch:q.m.launch,oldApply:q.pose.apply,oldStep:q.m.step};const b=__BOOST_MISSILE_QA__;q.m.reset();q.m.remaining=3;q.pose.cancel();q.v.clear();q.select(6);q.p.update=()=>{const a=r.armorController.state,s=q.target;s.position.set(a.x,__MOSPEADA__.sample(a.x,a.z-32)+1,a.z-32);s.position.y=Math.max(s.position.y,a.y+1.5-s.height*.55);q.p.applyView(s);s.view.motion.update(s,.016,__MOSPEADA__.sample);s.view.motion.sync()};q.pose.apply=function(...args){const out=b.oldApply.apply(this,args);if(this.active&&this.fired&&this.age-this.firedAt>=.23&&!b.open){b.open=true;b.pauseAfterStep=true}return out};q.m.step=function(...args){const out=b.oldStep.apply(this,args);if(b.pauseAfterStep){b.pauseAfterStep=false;r.paused=true}return out};q.m.launch=function(...args){const ok=b.oldLaunch.apply(this,args);if(ok){const l=this.launchers[1];b.birth={speed:r.armorController.state.speed,boosting:r.armorController.state.boosting,side:l.side,error:this.records[1].position.distanceTo(l.mesh.localToWorld(l.local.clone())),matrix:l.mesh.matrixWorld.toArray(),origin:this.records[1].position.toArray(),inherited:this.records[1].inheritedVelocity.toArray()};r.paused=true}return ok};r.keys={KeyW:true,ShiftLeft:true};r.paused=false;r.gallant.aiming=true;return true})()`)
+ await until('__MOSPEADA__.runtime.armorController.state.boosting&&__MOSPEADA__.runtime.armorController.state.speed>18')
+ await until('__MOSPEADA__.runtime.gallant.aimLock.target===__MISSILE_QA__.target')
+ await c.send('Input.dispatchKeyEvent',{type:'keyDown',key:'q',code:'KeyQ'});await c.send('Input.dispatchKeyEvent',{type:'keyUp',key:'q',code:'KeyQ'})
+ await until('!!__BOOST_MISSILE_QA__.birth&&__MOSPEADA__.runtime.paused')
+ report.birth=await ev(`(()=>{const b=__BOOST_MISSILE_QA__,q=b.q,r=q.m.records[1],cap=q.v.caps[1];return{...b.birth,age:r.age,frameError:Math.max(...cap.matrix.elements.map((x,i)=>Math.abs(x-b.birth.matrix[i]))),originalGeometry:cap.geometry===q.m.launchers[1].mesh.geometry,originalMaterial:cap.material===q.m.launchers[1].mesh.material,smoke:q.v.system.particleNum,smallestPuff:q.v.size.a}})()`)
+ assert.ok(report.birth.speed>18&&report.birth.boosting);assert.equal(report.birth.side,'Left');assert.ok(report.birth.error<1e-7&&report.birth.frameError<1e-7);assert.equal(report.birth.age,0);assert.ok(report.birth.originalGeometry&&report.birth.originalMaterial);assert.ok(report.birth.smoke>=34)
+ await capture('01-left-cuff-exact-birth-and-white-smoke-ball')
+ await ev('__MOSPEADA__.runtime.paused=false;__MOSPEADA__.runtime.gallant.aiming=true;true')
+ await until('__BOOST_MISSILE_QA__.open&&__MOSPEADA__.runtime.paused')
+ report.pose=await ev(`(()=>{const p=__MISSILE_QA__.pose;return{side:p.diagnostics.side,opening:p.diagnostics.opening,ankles:p.legPoses.filter(r=>/Foot|ToeBase/.test(r.bone.name)).map(r=>({bone:r.bone.name,error:r.bone.quaternion.angleTo(r.reverse)})),smoke:__MISSILE_QA__.v.system.particleNum,ammoUI:!!document.querySelector('.cuff-missile-ammo')}})()`);assert.ok(report.pose.opening>.99);assert.ok(report.pose.ankles.every(b=>b.error<1e-6));assert.equal(report.pose.ammoUI,false)
+ await capture('02-reverse-boost-power-pose-feet-and-smoke')
+ await ev('__MOSPEADA__.runtime.paused=false;__MOSPEADA__.runtime.gallant.aiming=true;true');await until('__MISSILE_QA__.target.dead',10)
+ report.impact=await ev('({hits:__MISSILE_QA__.target.hits,health:__MISSILE_QA__.target.health,missileHits:__MISSILE_QA__.m.stats.hits,blocked:__MISSILE_QA__.m.stats.blocked,gl:__ANIME__.renderer.getContext().getError(),shader:__ANIME__.state.snapshot().error})');assert.equal(report.impact.hits,1);assert.equal(report.impact.health,0);assert.equal(report.impact.blocked,0);assert.equal(report.impact.gl,0);assert.equal(report.impact.shader,'')
+ report.errors=c.events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails.exception?.description||e.params.exceptionDetails.text);assert.deepEqual(report.errors,[]);fs.writeFileSync(dir+'/validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2))
+}finally{await ev('if(window.__BOOST_MISSILE_QA__){const b=__BOOST_MISSILE_QA__,r=__MOSPEADA__.runtime;b.q.p.update=b.oldUpdate;b.q.m.launch=b.oldLaunch;b.q.pose.apply=b.oldApply;if(b.oldStep)b.q.m.step=b.oldStep;r.keys={};r.gallant.aiming=false;r.paused=true};true').catch(()=>{});c.close()}

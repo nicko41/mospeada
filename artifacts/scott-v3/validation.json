@@ -1,0 +1,128 @@
+{
+  "asset": {
+    "source": "assets/01-SCOTT/scott-gear-v3.glb",
+    "output": "assets/01-SCOTT/scott-gear-v3-animated.glb",
+    "publicOutput": "public/models/mospeada/scott-gear-v3-animated.glb",
+    "sourceSha256": "74e05d816cff3ca5cf1447187c5437d4e9a05d8bb038d745d519e70ce46a4370",
+    "outputSha256": "89c9c9bf87093083b7a376157a74875610834f9b3bdb862068224efd59da4b34",
+    "nativeBones": 28,
+    "mappedBones": 24,
+    "weightedVertices": 126423,
+    "maxWeightError": 1.471489667892456e-7,
+    "triangles": 198571,
+    "preserved": [
+      "geometry",
+      "hierarchy",
+      "bind pose",
+      "inverse bind matrices",
+      "skin weights",
+      "materials",
+      "textures",
+      "UVs",
+      "native clips"
+    ],
+    "animations": [
+      "Meshy_Running",
+      "Meshy_Walking",
+      "Running",
+      "Walking",
+      "One_Arm_Handstand",
+      "Roll_Dodge_4",
+      "Run_Turn_Right",
+      "Stand_Up1",
+      "Stand_Up10",
+      "Stand_Up4",
+      "Standard_Forward_Charge",
+      "Standard_Forward_Charge_inplace",
+      "Walk_Left_with_Gun",
+      "Walk_Turn_Left",
+      "Walk_Turn_Right_Idle_Style",
+      "air_squat",
+      "walking_2",
+      "walking_2_inplace",
+      "Cyclone_Mount",
+      "Cyclone_Dismount",
+      "Cyclone_RidingPose"
+    ]
+  },
+  "defaultSelection": "v3",
+  "selectorCycle": [
+    "v3",
+    "v1",
+    "v2",
+    "v3"
+  ],
+  "integrationTests": {
+    "passed": 18,
+    "failed": 0,
+    "log": "artifacts/scott-v3/integration-tests.log"
+  },
+  "productionBuild": "passed",
+  "fullSuite": {
+    "passed": 449,
+    "failed": 6,
+    "total": 455,
+    "log": "artifacts/scott-v3/test-suite.log",
+    "baselineAudit": "The same six failures reproduce with the pre-V3 attachment expression and no V3 activation.",
+    "baselineLog": "artifacts/scott-v3/pre-integration-failures.log"
+  },
+  "contacts": {
+    "stationary": {
+      "mappedBones": 24,
+      "nativeBones": 28,
+      "extraTorsoLean": 0.25432128906250007,
+      "contacts": {
+        "LeftHand": 2.830524433501838e-16,
+        "LeftFoot": 4.458205583648681e-16,
+        "RightHand": 1.6653345369377348e-16,
+        "RightFoot": 2.8785957662940594e-16
+      }
+    },
+    "moving": {
+      "mappedBones": 24,
+      "nativeBones": 28,
+      "extraTorsoLean": 0.25432128906250007,
+      "contacts": {
+        "LeftHand": 2.830524433501838e-16,
+        "LeftFoot": 1.3668035872266426e-16,
+        "RightHand": 1.6653345369377348e-16,
+        "RightFoot": 2.8785957662940594e-16
+      }
+    }
+  },
+  "visualReview": {
+    "offlineRuntimePoseRenders": [
+      "stationary-profile.png",
+      "stationary-front.png",
+      "stationary-rear.png",
+      "moving-profile.png",
+      "moving-front.png",
+      "moving-rear.png",
+      "armor-profile.png",
+      "armor-front.png",
+      "armor-rear.png"
+    ],
+    "inGameBrowser": "PENDING: Computer Use stopped because it could not confidently determine the Windows browser URL. The in-app browser could not reach the local Vite server."
+  },
+  "constraints": {
+    "originalGlbsWritten": false,
+    "rigRegenerated": false,
+    "weightsTransferred": false,
+    "nativeWeightsModified": false,
+    "geometryEdited": false,
+    "polygonReduction": false,
+    "cycloneGeometryEdited": false,
+    "scottSoilMaximum": 0.25,
+    "cycloneWeatheringChanged": false
+  },
+  "ridingAdjustment": {
+    "report": "artifacts/scott-v3/riding-adjustment/comparison.json",
+    "priority": "body silhouette over exact hand contacts",
+    "testsPassed": 17,
+    "build": "passed",
+    "previews": [
+      "riding-adjustment/after/moving-profile.png",
+      "riding-adjustment/after/moving-three-quarter.png"
+    ]
+  }
+}

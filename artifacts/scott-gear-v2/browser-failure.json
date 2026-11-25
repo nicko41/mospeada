@@ -1,0 +1,5 @@
+{
+  "error": "{\"exceptionId\":1,\"text\":\"Uncaught\",\"lineNumber\":0,\"columnNumber\":50,\"scriptId\":\"1455\",\"stackTrace\":{\"callFrames\":[{\"functionName\":\"\",\"scriptId\":\"1455\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":50},{\"functionName\":\"\",\"scriptId\":\"1455\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":117}]},\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"ReferenceError\",\"description\":\"ReferenceError: __MOSPEADA__ is not defined\\n    at <anonymous>:1:51\\n    at <anonymous>:1:118\",\"objectId\":\"2991522093381062417.7.2\"}}",
+  "errors": [],
+  "status": "{\"body\":\"INITIALIZING\\n00\\n%\\nW S W\\nTURBO\\n05124\\nWEAP\\nVR-052F\\nPWR\\nENG\\nSENS\\nCOMM\\nNAV\\nINITIALIZING\",\"scott\":false}"
+}

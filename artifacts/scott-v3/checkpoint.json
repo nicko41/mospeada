@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-24",
+  "scope": "Current game checkpoint with approved Scott V3 native rig, V1 arm opening, anchored hands, speed lean and cornering response",
+  "baseCommit": "30c4420bb192c1fb3080e754966f94be534cde4c",
+  "branch": "main",
+  "build": "passed",
+  "scottTests": {
+    "passed": 32,
+    "failed": 0,
+    "visibleGlovesPassed": 6
+  },
+  "fullSuite": {
+    "passed": 467,
+    "failed": 6,
+    "total": 473,
+    "failures": [
+      "Scouts respect sloped real-height samples during landing and body-only movement",
+      "a full moving escort can defeat all fifteen with ranged Gallant hits while Rand survives",
+      "a jump lowers the actual pelvis over planted soles, extends the knees, then flies with straight legs",
+      "editable presets keep violet actor contact separate from earth impacts",
+      "gameplay rig test reuses one Scout, lands within sight, walks into real claw reach, then takes off",
+      "real T sequence reverses after boost, pauses and restores at moving Motorcycle without separated source frames"
+    ],
+    "sameFailuresAsPreV3": true
+  },
+  "nativeSourceSha256": "74e05d816cff3ca5cf1447187c5437d4e9a05d8bb038d745d519e70ce46a4370",
+  "derivedSha256": "89c9c9bf87093083b7a376157a74875610834f9b3bdb862068224efd59da4b34",
+  "riding": {
+    "torsoAdvanceMaximumDegrees": 12,
+    "corneringTorsoMaximumDegrees": 8,
+    "elbowReference": "V1 intro",
+    "hands": "fixed bike-local wrist contacts; native elbows articulate",
+    "nativeGeometryAndSkinningPreserved": true,
+    "variantsSelectable": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  "measurements": "artifacts/scott-v3/ride-dynamics/final/measurements.json",
+  "excluded": "Local browser profiles, renders, logs, caches and generated inspection GLBs"
+}

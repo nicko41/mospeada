@@ -1,6 +1,6 @@
 import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF,useTexture } from '@react-three/drei'
 import * as T from 'three'
 import { bikeConfig, TEST_STARTS } from './bikeConfig.js'
 import { createBikeState, advanceBike } from './bikePhysics.js'
@@ -27,18 +27,24 @@ import ForestStage3Encounter from '../world/forest/ForestStage3Encounter.jsx'
 import GallantCombat from './GallantCombat.jsx'
 import ForestDesertScouts from '../world/forest/ForestDesertScouts.jsx'
 import ForestRandEscape from '../world/forest/ForestRandEscape.jsx'
-import {playerCombat,resetPlayerCombat} from '../player/playerCombat.js'
+import ForestEnding from '../world/forest/ForestEnding.jsx'
+import {playerCombat,resetPlayerCombat,damagePlayer} from '../player/playerCombat.js'
 import {stage3World} from '../world/forest/forestStage3World.js'
 import {stage4World} from '../world/forest/forestStage4Config.js'
 import {BikeDefeatMotion} from './BikeDefeatMotion.js'
+import {COVER_DECALS} from './coverDecalData.js'
+import {applyCoverDecals} from './coverDecals.js'
 
 const CYCLONE_MODEL='/models/mospeada/cyclone-vr052f.glb'
 useGLTF.preload(CYCLONE_MODEL)
+const COVER_TEXTURES=COVER_DECALS.map(d=>d.texture)
+useTexture.preload(COVER_TEXTURES)
 
 export default function Motorcycle() {
   const { scene, camera, gl } = useThree()
   const bike = useGLTF(CYCLONE_MODEL)
-  const rig = useMemo(() => createDrivingCyclone(bike.scene), [bike])
+  const coverTextures=useTexture(COVER_TEXTURES)
+  const rig = useMemo(() => {const rig=createDrivingCyclone(bike.scene);rig.coverDecals=applyCoverDecals(rig,coverTextures);return rig}, [bike,coverTextures[0],coverTextures[1]])
   const runtime = useRef({ state: null, keys: {}, input: {}, paused: false, cameraMode: 0, stamp: 0, nearby: [], cameraNearby: [], cameraTarget: new T.Vector3(), desired: new T.Vector3(), probe: new T.Vector3() }).current
 
   runtime.gameplay = true; runtime.scottBikeBody = rig.body; runtime.vehicleRig = rig
@@ -64,8 +70,9 @@ export default function Motorcycle() {
     const levelProgress=activeEnvironment==='forest'?new ForestStage2Progress():null
     runtime.levelProgress=levelProgress
     const resetAt=start=>{
+      runtime.ending?.reset()
       runtime.scottInstance?.defeatMotion?.reset();runtime.defeat=null;runtime.pendingDefeatRetry=false
-      runtime.bikeDefeatMotion?.reset()
+      runtime.bikeDefeatMotion?.reset();runtime.canyonCrash=null
       runtime.resumeClimaxCheckpoint=!!start.climax
       resetPlayerCombat()
       runtime.gallant?.bikeCamera.finish(runtime.state||{x:start.x,height:0,z:start.z})
@@ -97,7 +104,7 @@ export default function Motorcycle() {
       }else if(levelProgress?.checkpoint)resetAt(levelProgress.checkpoint)
       else reset()
     }
-    const clear = () => { runtime.keys = {}; runtime.input = {}; runtime.boostQueued = false;if(runtime.stage3)runtime.stage3.encounter.firing=false }
+    const clear = () => { runtime.keys = {}; runtime.input = {}; runtime.boostQueued = false;runtime.armorJumpQueued=false;if(runtime.stage3)runtime.stage3.encounter.firing=false }
     const pause = () => { clear(); runtime.paused = !runtime.paused; rideUI.publish({ paused: runtime.paused }) }
     const down = event => {
       if(runtime.opening?.active)return
@@ -111,6 +118,7 @@ export default function Motorcycle() {
       if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ControlLeft', 'ControlRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF'].includes(event.code)) event.preventDefault()
       runtime.keys[event.code] = true
       if (event.repeat) return
+      if(event.code==='Space'&&armor.active&&!runtime.paused)runtime.armorJumpQueued=true
       if(event.code==='KeyG'&&armor.active){event.preventDefault();armor.toggle()}
       if (['ShiftLeft', 'ShiftRight'].includes(event.code) && runtime.state.riderMode === 'mounted') runtime.boostQueued = true
       if (event.code === 'KeyR') reset()
@@ -172,6 +180,10 @@ export default function Motorcycle() {
       crouch: !!(k.ControlLeft || k.ControlRight),
     }
     const canMove = (x, z, yaw) => {
+      if(!playerCombat.dead&&!runtime.canyonCrash&&!runtime.armorController?.active){
+        const hit=runtime.levelProgress?.sweepWall(s,x,z,yaw)
+        if(hit){runtime.canyonCrash=hit;return false}
+      }
       const y = sampleRideHeight(x, z)
       if (!Number.isFinite(y)&&!runtime.levelProgress?.allowsVoid(x,z)) return false
       // An airborne bike that arrives below the far lip hits the cliff; it
@@ -205,7 +217,7 @@ export default function Motorcycle() {
       runtime.keys={};runtime.input={};runtime.boostQueued=false;s.acceleration=0;s.boostTime=s.boostBlend=s.boostKick=0
       if(runtime.armorController?.active){const a=runtime.armorController.state;a.speed=a.vx=a.vz=a.boostBlend=0;a.boosting=false}
     }
-    if (!runtime.paused&&!runtime.opening?.holding&&!playerCombat.dead) {
+    if (!runtime.paused&&!runtime.opening?.holding&&!runtime.ending?.holding&&!playerCombat.dead) {
       const dt=Math.min(delta,.1),entry=runtime.transformEntry
       const armor=runtime.armorController
       stage3World.get()?.ensureAround(s.z)
@@ -219,7 +231,9 @@ export default function Motorcycle() {
       entry?.completeAssembly()
       if(entry?.phase==='complete'&&!entry.returnFlight&&!armor.active)armor.activate()
       if(armor.active){
-        armor.update({forward:runtime.input.walkForward,side:runtime.input.walkSide,yaw:armor.camera.yaw,boost:runtime.input.run,rise:!!k.Space,descend:!!(k.ControlLeft||k.ControlRight)},dt)
+        const down=!!armor.state.knockedDown
+        armor.update({forward:down?0:runtime.input.walkForward,side:down?0:runtime.input.walkSide,yaw:down?armor.state.yaw:armor.camera.yaw,aiming:!down&&!!(runtime.gallant?.aimInput?.held||runtime.gallant?.firing),boost:!down&&runtime.input.run,rise:!down&&!!k.Space,risePressed:!down&&!!runtime.armorJumpQueued,descend:!down&&!!(k.ControlLeft||k.ControlRight)},dt)
+        runtime.armorJumpQueued=false
       }else{
         if(entry&&entry.phase!=='idle'&&entry.phase!=='complete')runtime.input={throttle:0,steer:0,boost:false,handbrake:false,brake:0}
         if(entry)runtime.input=entry.beforePhysics(runtime.input,dt)
@@ -232,6 +246,11 @@ export default function Motorcycle() {
       runtime.levelProgress?.observe(runtime.state)
       if(stage4?.contains(s.x,s.z)){
         if(stage4.needsRecovery(s)){runtime.resetAt(stage4.checkpoint);s=runtime.state}
+      }else if(runtime.canyonCrash){
+        const hit=runtime.canyonCrash
+        s.x=hit.point.x+hit.normal.x*1.4;s.z=hit.point.z+hit.normal.z*1.4;s.height=hit.height;s.speed=0
+        s.boostTime=s.boostBlend=s.boostKick=0;runtime.keys={};runtime.input={};runtime.boostQueued=false
+        damagePlayer(playerCombat.playerMaxHealth)
       }else if(runtime.levelProgress?.needsRecovery(runtime.state)){
         runtime.levelProgress.recover(runtime.resetAt);s=runtime.state
       }
@@ -256,10 +275,11 @@ export default function Motorcycle() {
   }, -2)
   useFrame((_, delta) => {
     if(runtime.opening?.update(delta))return
+    if(runtime.ending?.holding){runtime.ending.presentCamera(camera);return}
     if(playerCombat.dead){runtime.gallant?.bikeCamera.finish(runtime.state);if(runtime.cameraController?.updateDefeat(delta))return}
-    if(runtime.state&&runtime.gallant?.bikeCamera.update(runtime.gallant,runtime.state,runtime.paused?0:delta))return
+    if(!runtime.cameraController?.middleLook.active&&runtime.state&&runtime.gallant?.bikeCamera.update(runtime.gallant,runtime.state,runtime.paused?0:delta))return
     if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta)
     else if(runtime.state)runtime.cameraController?.update(riderCameraState(runtime.state),delta)
   })
-  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} /><GallantCombat runtime={runtime}/>{activeEnvironment==='forest'&&<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><ForestStage3Encounter runtime={runtime}/><ForestRandEscape runtime={runtime}/><ForestDesertScouts runtime={runtime}/></>}</>
+  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} /><GallantCombat runtime={runtime}/>{activeEnvironment==='forest'&&<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><ForestStage3Encounter runtime={runtime}/><ForestRandEscape runtime={runtime}/><ForestDesertScouts runtime={runtime}/><ForestEnding runtime={runtime}/></>}</>
 }

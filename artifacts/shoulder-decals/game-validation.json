@@ -1,0 +1,15 @@
+{
+  "shots": [
+    {
+      "x": 1.15
+    },
+    {
+      "x": -1.15
+    }
+  ],
+  "map": "http://127.0.0.1:5174/models/mospeada/scott-shoulders-decals.png",
+  "normal": "http://127.0.0.1:5174/models/mospeada/scott-shoulders-normal.png",
+  "gl": 0,
+  "shader": "",
+  "errors": []
+}

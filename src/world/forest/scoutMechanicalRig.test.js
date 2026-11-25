@@ -56,6 +56,22 @@ test('walk alternates hips, retains every rigid limb length and has a small stab
  for(const v of views)v.motion.dispose()
 })
 
+test('right shin has no body-pinned vertex or stretched triangle while flying, landing, walking or striking',async()=>{
+ const {views}=await fixture(),v=views[0],mesh=v.levels[0],g=mesh.geometry,p=g.attributes.position,j=g.attributes.skinIndex,w=g.attributes.skinWeight,point=new Vector3(),a=new Vector3(),b=new Vector3(),restA=new Vector3(),restB=new Vector3()
+ let repaired=-1
+ for(let i=0;i<p.count;i++)if(Math.hypot(p.getX(i)+.365916,p.getY(i)+.371422,p.getZ(i)-.384958)<.00001)repaired=i
+ assert.ok(repaired>=0);assert.equal(j.getX(repaired),4);assert.equal(w.getX(repaired),1)
+ const edges=[]
+ for(let t=0;t<g.index.count;t+=3){const ids=[0,1,2].map(n=>g.index.getX(t+n));if(ids.includes(repaired))for(let n=0;n<3;n++)edges.push([ids[n],ids[(n+1)%3]])}
+ assert.equal(edges.length,27,'The nine incident faces stay in the original mesh')
+ for(const clip of ['Hover','Landing','Takeoff','Walk','Claw_L','Claw_R'])for(const fraction of [0,.25,.5,.75,1]){
+  v.motion.reset();const action=v.motion.select(clip,true);action.time=action.getClip().duration*fraction;v.motion.mixer.update(0);v.motion.sync()
+  for(const [ia,ib]of edges){mesh.getVertexPosition(ia,a);mesh.getVertexPosition(ib,b);restA.fromBufferAttribute(p,ia);restB.fromBufferAttribute(p,ib);assert.ok(Math.abs(a.distanceTo(b)-restA.distanceTo(restB))<.000001,`${clip}: right leg face stretched`)}
+  mesh.getVertexPosition(repaired,point);assert.ok(point.toArray().every(Number.isFinite))
+ }
+ for(const other of views)other.motion.dispose()
+})
+
 test('cyan claw tips and inner hooks follow their arm rigidly and never get pulled by either leg, at all three LODs',async()=>{
  const {views}=await fixture(),v=views[0],source=glb('public/models/mospeada/invid-scout.glb'),image=source.doc.images[source.doc.textures[source.doc.materials[0].pbrMetallicRoughness.baseColorTexture.index].source],bv=source.doc.bufferViews[image.bufferView],paint=readRgbaPng(source.binary.subarray(bv.byteOffset||0,(bv.byteOffset||0)+bv.byteLength)),point=new Vector3(),expected=new Vector3()
  for(const mesh of v.levels){
@@ -80,6 +96,9 @@ test('the five Scouts independently hover, land, walk and take off while the eig
  for(const state of ['Hover','Landing','Walk','Takeoff'])assert.ok(names.has(state),'Missing '+state)
  assert.ok(patrol.shots>40);assert.ok(patrol.scouts.some(r=>r.landings>0&&r.takeoffs>0));assert.ok(patrol.scouts.some(r=>r.landings===0));assert.ok(patrol.bolts.filter(b=>b.active).length<=SCOUT_PATROL.projectiles)
  const geometry=views[0].levels[0].geometry;assert.equal(geometry.index.count/3,79986)
+ // Isolate the claw contact from other Scouts' projectile hits sharing Scott's
+ // hurt cooldown; the full sustained-fire scenario above remains exercised.
+ patrol.stopCombat();patrol.playerHurtCooldown=0;for(const scout of patrol.scouts)scout.cooldown=Infinity
  const r=patrol.scouts[0];r.mode='ground';r.modeTime=0;r.position.set(0,.025,player.z-2);r.velocity.set(0,0,0);r.yaw=0;r.clawCooldown=0;r.clawAge=Infinity;let hits=0
  for(let i=0;i<15;i++)patrol.update(.05,player,camera,world,{onPlayerHit:b=>{if(b===r.clawContact)hits++}})
  assert.equal(hits,1,'One contact per committed claw strike');assert.ok(r.clawCooldown>0);assert.ok(r.clawHit)

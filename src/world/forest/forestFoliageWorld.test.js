@@ -22,7 +22,7 @@ test('world foliage is reproducible, covers the existing forest and leaves paths
     const x=s.x+s.matrices[i*16+12],z=s.z+s.matrices[i*16+14],y=s.matrices[i*16+13]
     assert.ok(Number.isFinite(y));assert.ok(forestRouteDistance(x,z)>1.3999)
     assert.ok(Math.abs(y-forestSurfaceHeight(x,z)+.025)<.00001)
-    assert.ok(foliageWorldDensity(x,z)>0);species.add(s.fades[i*4+3])
+    if(s.fades[i*4+2]>=0)assert.ok(foliageWorldDensity(x,z)>0);species.add(s.fades[i*4+3])
     assert.equal(crashSiteSample(x,z).destroyed,false,'No intact sprite may regrow in the destroyed channel')
   }
   assert.equal(species.size,24)

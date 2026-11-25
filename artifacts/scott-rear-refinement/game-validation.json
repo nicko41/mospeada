@@ -1,0 +1,11 @@
+{
+  "model": "/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+  "bones": 24,
+  "clips": 16,
+  "triangles": 240489,
+  "shaderError": "",
+  "material": "Scott_V2_ClassicPalette",
+  "gl": 0,
+  "uncaughtErrors": [],
+  "passed": true
+}

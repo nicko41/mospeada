@@ -1,0 +1,108 @@
+{
+  "scope": "Scott V3 standard Cyclone riding",
+  "changes": {
+    "sharedApprovedFootSupports": true,
+    "standardElbowOpeningIncreased": true,
+    "speedDrivenTorsoLeanMaximumDegrees": 4,
+    "smoothedResponse": true,
+    "pauseAndDecelerationCovered": true
+  },
+  "preserved": {
+    "nativeGeometryRigAndSkinning": true,
+    "originalGlbs": true,
+    "approvedArmorPose": true,
+    "caballerAttachments": true,
+    "airbornePose": true
+  },
+  "poses": [
+    {
+      "name": "standard-slow",
+      "speed": 3,
+      "torsoPitchDegrees": 49.49424339140514,
+      "response": {
+        "speed": 3,
+        "blend": 0.001597343630120618,
+        "torsoLean": 0.00011151562252545301,
+        "elbowOpening": 0.00015973436301206182,
+        "elbowBend": 0.00008363671689408976
+      },
+      "feet": [
+        [
+          0.4761647665820676,
+          0.4240570255125217,
+          -0.21739973437301796
+        ],
+        [
+          -0.47354454339527036,
+          0.4291924341694825,
+          -0.20685110116862734
+        ]
+      ]
+    },
+    {
+      "name": "standard-medium",
+      "speed": 18,
+      "torsoPitchDegrees": 50.737152820763626,
+      "response": {
+        "speed": 18,
+        "blend": 0.3123247009697259,
+        "torsoLean": 0.021804377468913776,
+        "elbowOpening": 0.031232470096972595,
+        "elbowBend": 0.01635328310168533
+      },
+      "feet": [
+        [
+          0.4761647665820676,
+          0.4240570255125217,
+          -0.21739973437301796
+        ],
+        [
+          -0.47354454339527036,
+          0.4291924341694825,
+          -0.20685110116862734
+        ]
+      ]
+    },
+    {
+      "name": "standard-fast",
+      "speed": 45,
+      "torsoPitchDegrees": 53.48785401688487,
+      "response": {
+        "speed": 45,
+        "blend": 1,
+        "torsoLean": 0.06981317007977318,
+        "elbowOpening": 0.1,
+        "elbowBend": 0.05235987755982988
+      },
+      "feet": [
+        [
+          0.4761647665820676,
+          0.4240570255125217,
+          -0.21739973437301796
+        ],
+        [
+          -0.47354454339527036,
+          0.4291924341694825,
+          -0.20685110116862734
+        ]
+      ]
+    }
+  ],
+  "validation": {
+    "testsPassed": 27,
+    "testsFailed": 0,
+    "productionBuild": "passed",
+    "responseFrameRates": [
+      30,
+      60,
+      120
+    ],
+    "visualReview": "Offline runtime pose renders at low and high speed: front, profile and rear"
+  },
+  "previews": [
+    "after/standard-slow-front.png",
+    "after/standard-slow-profile.png",
+    "after/standard-fast-front.png",
+    "after/standard-fast-profile.png"
+  ]
+}

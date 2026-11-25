@@ -1,0 +1,30 @@
+{
+  "forward": {
+    "foregroundDifference": 0.0006166666666666666,
+    "horizonDifference": 6.131261160714286
+  },
+  "mountains": {
+    "foregroundDifference": 0.050866666666666664,
+    "horizonDifference": 0
+  },
+  "fog": {
+    "type": "FogExp2",
+    "distanceHaze": true,
+    "start": 850,
+    "end": 3500,
+    "color": "d5d1c1",
+    "blur": 4.5
+  },
+  "clip": 4000,
+  "outline": {
+    "linear": 1,
+    "range": [
+      850,
+      3500
+    ]
+  },
+  "gl": 0,
+  "shader": "",
+  "earlierDesertFog": "FogExp2",
+  "errors": []
+}

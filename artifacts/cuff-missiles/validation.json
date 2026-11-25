@@ -1,0 +1,96 @@
+{
+  "shots": [
+    {
+      "health": 0,
+      "hits": 1,
+      "remaining": 3,
+      "smoke": 69,
+      "explosions": 2
+    },
+    {
+      "health": 0,
+      "hits": 1,
+      "remaining": 2,
+      "smoke": 72,
+      "explosions": 3
+    },
+    {
+      "health": 0,
+      "hits": 1,
+      "remaining": 1,
+      "smoke": 71,
+      "explosions": 4
+    },
+    {
+      "health": 0,
+      "hits": 1,
+      "remaining": 0,
+      "smoke": 72,
+      "explosions": 5
+    }
+  ],
+  "empty": {
+    "launched": 4,
+    "health": 16,
+    "noAmmoUI": true
+  },
+  "resources": {
+    "births": [
+      {
+        "slot": 0,
+        "error": 0,
+        "name": "Arm_Guard_Cap_Upper_1",
+        "side": "Right",
+        "alignment": 0.9999999942122269,
+        "origin": [
+          0.4160740449750271,
+          -30.154143249251923,
+          -4903.116472846073
+        ]
+      },
+      {
+        "slot": 1,
+        "error": 0,
+        "name": "Arm_Guard_Cap_Upper",
+        "side": "Left",
+        "alignment": 0.9999999944447376,
+        "origin": [
+          -0.28799410506529677,
+          -30.166998695678352,
+          -4903.123124775918
+        ]
+      },
+      {
+        "slot": 2,
+        "error": 0,
+        "name": "Arm_Guard_Cap_Lower_1",
+        "side": "Right",
+        "alignment": 0.9999999941465868,
+        "origin": [
+          0.5208851748752052,
+          -30.195777309922722,
+          -4903.116750706361
+        ]
+      },
+      {
+        "slot": 3,
+        "error": 0,
+        "name": "Arm_Guard_Cap_Lower",
+        "side": "Left",
+        "alignment": 0.999999994341582,
+        "origin": [
+          -0.3790643500674816,
+          -30.231114157640505,
+          -4903.122725347522
+        ]
+      }
+    ],
+    "poolReused": true,
+    "bufferReused": true,
+    "materialReused": true,
+    "particles": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

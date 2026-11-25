@@ -7,6 +7,7 @@ import {FOLIAGE_CATALOG} from './foliageCatalog.js'
 import {forestLodRange} from './forestLod.js'
 import {registerColliders,cylinderCollider} from '../../player/collisionWorld.js'
 import {createForestSideLayout,createSideBoundaryLibrary,createSideBoundaryColliders,forestSideWidth,ForestSideBoundaryBand} from './forestSideBoundaries.js'
+import {createTreeBasePlants} from './forestTreeBasePlants.js'
 
 let current=null
 export const stage3World={get:()=>current,set:world=>{current=world},clear:world=>{if(current===world)current=null}}
@@ -49,6 +50,7 @@ export class ForestStage3World extends Group{
         if(Math.abs(x-stage3PathX(origin+z))<1.7||Math.abs(x)>254)continue
         const e=sprites[Math.floor(random()*sprites.length)];plants.push({x,z,scale:between(...e.heightRange),sprite:e.id,yaw:between(0,Math.PI*2),mirror:random()<.5,tint:between(.95,1.03)})
       }
+      plants.push(...createTreeBasePlants(anchors,{seed:S.seed+phase*191}))
       const grass=worldFoliageSector(foliageData(plants,height,phase),foliage);group.add(grass.near,grass.far)
       const colliders=anchors.map(p=>{const a=trees.find(a=>a.name===p.name),y=height(p.x,p.z);return cylinderCollider(p.x,p.z+origin,Math.max(.3,(a.bounds.max.x-a.bounds.min.x)*p.scale*.035),y-.15,y+(a.bounds.max.y-a.bounds.min.y)*p.scale*.7)})
       const sideLayout=createForestSideLayout({minZ:-96,maxZ:0,pathAt:z=>stage3PathX(origin+z),heightAt:height,widthAt:(z,side)=>forestSideWidth(origin+z,side)-side*stage3PathX(origin+z),trees:this.sideLibrary.trees,seed:S.seed+phase*191+122}),boundary=new ForestSideBoundaryBand(sideLayout,this.sideLibrary,height)

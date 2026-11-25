@@ -1,6 +1,6 @@
 import { Matrix3, Matrix4, Ray, Vector3 } from 'three'
 
-const surfaces = new Set(), geometryGrids = new WeakMap()
+const surfaces = new Set(), barriers = new Set(), geometryGrids = new WeakMap()
 const point = new Vector3(), world = new Vector3()
 const CELL = 4
 
@@ -10,8 +10,12 @@ const shotNormal=new Vector3(),shotEdge=new Vector3(),shotNormalMatrix=new Matri
 // Shots traverse only the existing contact-grid cells crossed by the ray.
 // No full terrain mesh scans, new acceleration structures or geometry copies.
 export function raycastRideSurfaces(raycaster) {
+  return raycastRegistered(raycaster,surfaces)
+}
+export function raycastRideBarriers(raycaster){return raycastRegistered(raycaster,barriers)}
+function raycastRegistered(raycaster,collection){
   let nearest = null
-  for (const mesh of surfaces) {
+  for (const mesh of collection) {
     if (mesh.userData.rideSurfaceActive === false) continue
     mesh.updateWorldMatrix(true, false)
     shotInverse.copy(mesh.matrixWorld).invert();shotRay.copy(raycaster.ray).applyMatrix4(shotInverse)
@@ -75,9 +79,9 @@ export function refreshRideSurfaceGeometry(geometry){
 export function registerRideSurfaces(scene) {
   const owned = []
   scene.traverse(mesh => {
-    if (mesh.isMesh && mesh.userData.rideSurface) { surfaces.add(mesh); gridFor(mesh.geometry); owned.push(mesh) }
+    if (mesh.isMesh && (mesh.userData.rideSurface||mesh.userData.rideBarrier)) { (mesh.userData.rideBarrier?barriers:surfaces).add(mesh); gridFor(mesh.geometry); owned.push(mesh) }
   })
-  return () => owned.forEach(mesh => surfaces.delete(mesh))
+  return () => owned.forEach(mesh => {surfaces.delete(mesh);barriers.delete(mesh)})
 }
 
 // Barycentric height of the actual rendered triangles, including asphalt crowns,

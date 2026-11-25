@@ -15,6 +15,17 @@ globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:1,heigh
 const bytes=fs.readFileSync('public/models/mospeada/invid-scout.glb'),asset=new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.length),'')
 async function fixture(sample=()=>0,random=Math.random){const source=await asset,views=Array.from({length:5},(_,i)=>createScoutView(source.scene,i)),patrol=new DesertScoutPatrol(views,sample,random),s={x:0,z:-SCOUT_PATROL.desertDistance-20,height:sample(0,-SCOUT_PATROL.desertDistance-20),speed:0},camera=new PerspectiveCamera(70,16/9,.1,4000);camera.position.set(s.x,s.height+2.2,s.z+5);camera.lookAt(s.x,s.height+1.1,s.z-8);camera.updateMatrixWorld(true);const world={bound:true,position:new Vector3(),distance:z=>-z,contains:(x,z)=>Math.abs(x)<=2400&&z<=0&&z>=-2400};return {source,views,patrol,s,camera,world}}
 
+test('Scouts fly continuously into front and rear positions and keep both fronts after Scott turns',async()=>{
+ const {patrol:p,s,camera,world}=await fixture(()=>0,()=>.5);s.yaw=Math.PI
+ p.update(1/60,s,camera,world,{allowAttack:false})
+ const previous=p.scouts.map(r=>r.position.clone());let maxStep=0
+ const advance=seconds=>{for(let i=0;i<seconds*60;i++){p.update(1/60,s,camera,world,{allowAttack:false});for(const r of p.scouts){maxStep=Math.max(maxStep,r.position.distanceTo(previous[r.id]));previous[r.id].copy(r.position)}}}
+ const bothFronts=()=>{const forward=new Vector3(Math.sin(s.yaw),0,Math.cos(s.yaw)),along=p.scouts.map(r=>r.position.clone().sub(new Vector3(s.x,s.height,s.z)).dot(forward));assert.ok(along.some(d=>d>12)&&along.some(d=>d< -12),`Both fronts are covered: ${along}`)}
+ advance(25);bothFronts();s.yaw=0;advance(12);bothFronts()
+ assert.ok(maxStep<1.5,`No frame relocates a visible Scout: max ${maxStep}m`);assert.equal(p.rigTestStarted,false)
+ const frozen=p.scouts.map(r=>r.position.toArray());p.update(0,s,camera,world,{allowAttack:false});assert.deepEqual(p.scouts.map(r=>r.position.toArray()),frozen)
+})
+
 test('the distant right-to-left pursuit is visible from the overlook before the same five Scouts approach Scott',async()=>{
  const {patrol:p,s,camera,world}=await fixture();s.z=-SCOUT_PATROL.triggerDistance;p.update(.1,s,camera,world)
  assert.equal(p.phase,'sighting');assert.equal(p.scouts.filter(s=>s.view.root.visible).length,5)

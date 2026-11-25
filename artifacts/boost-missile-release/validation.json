@@ -1,0 +1,75 @@
+{
+  "birth": {
+    "speed": 31.699390070462986,
+    "boosting": true,
+    "side": "Left",
+    "error": 0,
+    "matrix": [
+      -0.52238253152927,
+      0.8165339030534082,
+      -0.030505041675025032,
+      0,
+      0.8168589848945955,
+      0.5227478697464206,
+      0.004212229740889473,
+      0,
+      0.019989244145333207,
+      -0.02342499879879381,
+      -0.9693262509856917,
+      0,
+      0.16885945919979725,
+      -30.61770674422118,
+      -4917.655919339739,
+      1
+    ],
+    "origin": [
+      -0.2893724269400689,
+      -30.50057704035652,
+      -4918.635444254028
+    ],
+    "inherited": [
+      3.882055658471589e-15,
+      -1.4783593719907602,
+      -31.699390070462986
+    ],
+    "age": 0,
+    "frameError": 2.7755575615628914e-17,
+    "originalGeometry": true,
+    "originalMaterial": true,
+    "smoke": 36,
+    "smallestPuff": 0.5
+  },
+  "pose": {
+    "side": "Left",
+    "opening": 1,
+    "ankles": [
+      {
+        "bone": "mixamorigLeftFoot",
+        "error": 4.2146848510894035e-8
+      },
+      {
+        "bone": "mixamorigLeftToeBase",
+        "error": 0
+      },
+      {
+        "bone": "mixamorigRightFoot",
+        "error": 0
+      },
+      {
+        "bone": "mixamorigRightToeBase",
+        "error": 0
+      }
+    ],
+    "smoke": 68,
+    "ammoUI": false
+  },
+  "impact": {
+    "hits": 1,
+    "health": 0,
+    "missileHits": 1,
+    "blocked": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

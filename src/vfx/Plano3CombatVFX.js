@@ -7,6 +7,7 @@ import {SCOUT_PROJECTILE_CAPACITY} from '../vehicle/EnergyProjectiles.js'
 import {SCOUT_SCORCH_SLOTS} from '../world/forest/scoutHitAppearance.js'
 import {SurfaceImpactMarks} from './SurfaceImpactMarks.js'
 import {SCOUT_ASSET} from '../world/forest/invidScoutAsset.js'
+import {InvidImpactDust} from './InvidImpactDust.js'
 
 const rgba=hex=>{const c=new Color(hex);return new QVec4(c.r,c.g,c.b,1)}
 const MathUtilsSmooth=t=>{const x=Math.max(0,Math.min(1,t));return x*x*(3-2*x)}
@@ -26,7 +27,7 @@ function energyTexture(blast=false){
 // Contact flashes and laser geometry are pooled; sparks use the game's shared
 // Quarks registry, particle integration and renderer. No postprocessing/bloom.
 export class Plano3CombatVFX{
-  constructor({explosionAtlases={},sampleGround=null,impactScene=null,bloodRandom=Math.random}={}){
+  constructor({explosionAtlases={},sampleGround=null,impactScene=null,bloodRandom=Math.random,sharedDust=null}={}){
     this.root=new Group();this.root.name='Plano3_combat_energy';this.root.visible=false
     this.star=energyTexture();this.blast=energyTexture(true);this.plane=new PlaneGeometry(1,1);this.box=new BoxGeometry(1,1,1)
     this.muzzleTexture=combatEnergyTexture(true);this.fireballTexture=combatEnergyTexture()
@@ -117,11 +118,13 @@ export class Plano3CombatVFX{
       emissionOverTime:new ConstantValue(0),emissionOverDistance:new ConstantValue(0),emissionBursts:[],material:this.volumeMaterial,instancingGeometry:this.volumeGeometry,renderMode:RenderMode.Mesh,renderOrder:5,
       behaviors:[new SizeOverLife(new PiecewiseBezier([[new Bezier(.6,1.5,1.8,.4),0]])),new ColorOverLife(new Gradient([[new QVec3(1,1,1),0],[new QVec3(1,.7,.25),.5],[new QVec3(1,.08,.01),1]],[[.7,0],[.65,.4],[0,1]]))]})
     volume.emitter.name='Quarks_Invid_expanding_fire_volume';volume.emissionState.waitEmiting=COMBAT_VFX_LIMITS.deathVolumes;volume.emit(0,volume.emissionState,volume.emitter.matrixWorld);volume.restart();this.systems.push(volume)
+    this.impactDust=new InvidImpactDust(sharedDust,sampleGround);this.systems.push(...this.impactDust.systems)
   }
   mesh(geometry,material,capacity,name){const m=new InstancedMesh(geometry,material,capacity);m.name=name;m.count=0;m.instanceMatrix.setUsage(DynamicDrawUsage);for(let i=0;i<capacity;i++)m.setColorAt(i,colors.white);m.frustumCulled=false;m.castShadow=false;m.renderOrder=5;this.root.add(m);return m}
   configureBatches(renderer){
+    this.impactDust.configureBatches(renderer)
     this.systemBatches=this.systems.map(ps=>renderer.batches[renderer.systemToBatchIndex.get(ps)]);this.batches=new Set(this.systemBatches)
-    for(const batch of this.batches)batch.material.toneMapped=false
+    for(const batch of this.batches)if(batch!==this.impactDust.dust.batch)batch.material.toneMapped=false
   }
   uploadBirths(...indices){for(const i of indices)this.systemBatches?.[i]?.update()}
   emitParticles(system,point,count,capacity){
@@ -187,11 +190,17 @@ export class Plano3CombatVFX{
     this.uploadBirths(1,2,3,4,6)
   }
   enemyImpact(point,velocity=null){this.contactNormal.copy(velocity||this.axis).normalize().negate();this.emit(point,false,this.contactNormal,'invidLaserImpact')}
+  clawGroundImpact(point){
+    this.contactNormal.set(0,1,0);this.hasEffects=true
+    this.impacts.spawn('invidClawImpact',point,this.contactNormal,1,{grounded:true,groundY:point.y})
+    this.impactDust.burst(point)
+  }
   enemyWorldImpact(point,velocity=null){
     const ground=this.sampleGround?.(point.x,point.z)
     if(Number.isFinite(ground)&&Math.abs(point.y-ground)>.8){this.enemyImpact(point,velocity);return}
     this.contactNormal.set(0,1,0);this.hasEffects=true
     this.impacts.spawn('invidGroundImpact',point,this.contactNormal,1,{grounded:true,groundY:point.y})
+    this.impactDust.burst(point)
   }
   visualFor(target){
     let v=this.visuals.get(target)
@@ -201,7 +210,7 @@ export class Plano3CombatVFX{
   }
   destroyTarget(target){
     const v=this.visualFor(target);if(v.dead)return
-    v.dead=true;v.deathAt=this.clock;this.stats.explosions++
+    v.dead=true;v.deathAt=this.clock;v.hitSeen=target.hitVersion||0;this.stats.explosions++
     target.view?.motion?.hitReaction.reset();target.view?.motion?.sync()
     const preset=this.presets.invidExplosion,groundY=this.sampleGround?.(target.position.x,target.position.z)
     const grounded=Number.isFinite(groundY)?target.position.y-groundY<=preset.groundGap:target.mode==='ground'||target.grounded===true
@@ -295,6 +304,7 @@ export class Plano3CombatVFX{
     this.object.scale.x=this.object.scale.y=enemy?.028:.021;this.object.updateMatrix();this.core.setMatrixAt(index,this.object.matrix);this.core.setColorAt(index,enemy?colors.violetCore:colors.white);return true
   }
   update(dt,encounter,weapon,camera){
+    this.impactDust.ensureVisible()
     this.surfaceMarks.update(dt)
     if(this.encounter===encounter&&encounter.time<this.previousTime)this.clear(true);this.encounter=encounter;this.previousTime=encounter.time
     if(!encounter.active){if(this.hasEffects||this.root.visible)this.clear(false,true,true);return}
@@ -349,5 +359,5 @@ export class Plano3CombatVFX{
     this.cannonFlashes.count=this.cannonHalos.count=cannons
     for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.blastMesh,this.shell,this.core,this.ovals,this.ovalCores,this.cannonFlashes,this.cannonHalos])if(mesh.count){mesh.instanceMatrix.needsUpdate=true;mesh.instanceColor.needsUpdate=true}
   }
-  dispose(){this.root.removeFromParent();this.surfaceMarks.dispose();this.impacts.dispose();for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.shell,this.core,this.ovals,this.ovalCores,this.cannonFlashes,this.cannonHalos])mesh.dispose();for(const resource of [this.volumeGeometry,this.volumeMaterial,this.plane,this.box,this.star,this.blast,this.muzzleTexture,this.fireballTexture,this.flashMaterial,this.muzzleHaloMaterial,this.fireballMaterial,this.muzzleSparkMaterial,this.hitFlashMaterial,this.shellMaterial,this.coreMaterial,this.sparkMaterial,this.deathSparkMaterial,this.deathFlashMaterial,this.deathSmokeMaterial,this.ovalGeometry,this.ovalMaterial,this.ovalCoreMaterial,this.cannonGeometry,this.cannonMaterial,this.cannonHaloMaterial])resource.dispose()}
+  dispose(){this.root.removeFromParent();this.impactDust.dispose();this.surfaceMarks.dispose();this.impacts.dispose();for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.shell,this.core,this.ovals,this.ovalCores,this.cannonFlashes,this.cannonHalos])mesh.dispose();for(const resource of [this.volumeGeometry,this.volumeMaterial,this.plane,this.box,this.star,this.blast,this.muzzleTexture,this.fireballTexture,this.flashMaterial,this.muzzleHaloMaterial,this.fireballMaterial,this.muzzleSparkMaterial,this.hitFlashMaterial,this.shellMaterial,this.coreMaterial,this.sparkMaterial,this.deathSparkMaterial,this.deathFlashMaterial,this.deathSmokeMaterial,this.ovalGeometry,this.ovalMaterial,this.ovalCoreMaterial,this.cannonGeometry,this.cannonMaterial,this.cannonHaloMaterial])resource.dispose()}
 }

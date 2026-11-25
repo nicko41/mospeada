@@ -13,6 +13,7 @@ import ArmorControls from './ArmorControls.jsx'
 import { activeEnvironment } from '../world/environmentConfig.js'
 import CycloneSpeedometer from './CycloneSpeedometer.jsx'
 import ScottHealthHUD from './ScottHealthHUD.jsx'
+import ScottModelToggle from './ScottModelToggle.jsx'
 
 const tuning = [
   ['acceleration', 'Aceleración', 2, 24, 0.2], ['braking', 'Frenado', 4, 30, 0.5],
@@ -36,6 +37,7 @@ export default function DrivingHUD() {
   return <div className={`driving-hud camera-active${data.paused?' is-paused':''}`}>
     <CycloneSpeedometer speed={data.speed} maximum={bikeConfig.maxSpeed*3.6} reverse={data.reverse} armor={armor}/>
     <ScottHealthHUD defeat={data.defeat}/>
+    <ScottModelToggle/>
     <div className="ride-pause-ui" hidden={!data.paused}>
     <AnimeOverlay />
     <FrontTransformStatus />

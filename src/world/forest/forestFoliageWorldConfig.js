@@ -1,5 +1,5 @@
 export const FOLIAGE_WORLD=Object.freeze({
-  version:'world-foliage-forward-route-v5',seed:19830924,sectorSize:32,worldSize:800,candidateStep:.7,
+  version:'world-foliage-forward-route-v6-roots',seed:19830924,sectorSize:32,worldSize:800,candidateStep:.7,
   nearFadeStart:18,nearFadeEnd:27,maxDistance:112,
   initialRadius:176,residentRadius:240,evictRadius:288,translationStep:8,
   preparationBudgetMs:2.5,maxSectorsPerFrame:3,

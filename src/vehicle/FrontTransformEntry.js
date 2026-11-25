@@ -192,7 +192,10 @@ export class FrontTransformEntry {
       }
       if(this.time>=RETURN_BOOST_TIME){this.store.set({direction:-1,playing:true});this.stage('reversing')}
     }
-    else if(this.phase==='wheelie'&&this.time>=.4&&s.wheelieAngle>=.42){this.boostCount=s.boostCount;this.stage('boost')}
+    // Descending terrain can unload the rear wheel, so its exhibition wheelie
+    // cannot reach the supported angle. Continue the cinematic from that real
+    // airborne frame instead of waiting for flat ground to regain traction.
+    else if(this.phase==='wheelie'&&this.time>=.4&&(s.wheelieAngle>=.42||!s.rearGrounded)){this.boostCount=s.boostCount;this.stage('boost')}
     else if(this.phase==='boost'){
       if(this.boostAge<0&&s.boostCount>this.boostCount)this.boostAge=0
       if(this.boostAge>=0)this.boostAge+=dt

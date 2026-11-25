@@ -1,6 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { Box3, MOUSE, PerspectiveCamera, Vector3 } from 'three'
+import { Box3, Group, Mesh, MeshBasicMaterial, MOUSE, PerspectiveCamera, PlaneGeometry, Vector3 } from 'three'
+import {registerRideSurfaces,raycastRideBarriers} from './rideSurface.js'
 import { DrivingCamera } from './drivingCamera.js'
 import { bikeConfig } from './bikeConfig.js'
 import { boxCollider, registerColliders } from '../player/collisionWorld.js'
@@ -41,7 +42,7 @@ test('right-drag controls the camera without hover/left-drag look and works whil
   assert.equal(orbit.enabled, true)
   assert.equal(orbit.mouseButtons.RIGHT, MOUSE.ROTATE)
   assert.equal(orbit.mouseButtons.LEFT, null)
-  assert.equal(listeners.has('pointermove'), false)
+  assert.equal(listeners.has('pointermove'), true)
   controller.start()
   camera.position.sub(orbit.target).applyAxisAngle(new Vector3(0, 1, 0), .9).add(orbit.target)
   controller.end()
@@ -51,8 +52,22 @@ test('right-drag controls the camera without hover/left-drag look and works whil
   assert.ok(Math.abs(Math.atan2(camera.position.x - orbit.target.x, camera.position.z - orbit.target.z) - angle) < 1e-9)
   controller.setMode(3, s)
   assert.equal(orbit.mouseButtons.RIGHT, MOUSE.ROTATE)
-  assert.equal(orbit.mouseButtons.MIDDLE, MOUSE.PAN)
+  assert.equal(orbit.mouseButtons.MIDDLE, null)
   controller.dispose()
+})
+
+test('middle mouse looks behind, held dragging orbits freely, and release restores the translated driving view',()=>{
+ const {camera,orbit,runtime,s,controller}=setup();runtime.state=s
+ const middle=controller.middleLook,event=(x=0,y=0)=>({button:1,pointerId:7,clientX:x,clientY:y,preventDefault(){},stopImmediatePropagation(){}})
+ controller.update(s,1/60);const before=camera.position.clone().sub(orbit.target),radius=controller.radius
+ middle.down(event());controller.update(s,1/60)
+ assert.ok(camera.position.z>orbit.target.z+3,'The camera moves in front of Scott to see behind him');assert.equal(orbit.enabled,false)
+ middle.move(event(130,40));controller.update(s,1/60)
+ assert.ok(middle.gesture.dragged);assert.ok(Math.abs(camera.position.x-orbit.target.x)>1)
+ s.x+=8;s.z+=12;controller.update(s,1/60);middle.up({...event(),type:'pointerup'})
+ assert.ok(camera.position.clone().sub(orbit.target).distanceTo(before)<1e-9);assert.equal(s.yaw,0);assert.equal(controller.radius,radius);assert.equal(orbit.enabled,true)
+ middle.down(event());middle.up({type:'blur'});assert.equal(middle.active,false)
+ runtime.canyonCrash={};middle.down(event());assert.equal(middle.active,false,'A locked defeat camera cannot be rotated');controller.dispose()
 })
 
 test('manual view is held briefly before smooth recentering, and chosen zoom survives acceleration', () => {
@@ -132,4 +147,24 @@ test('defeat camera keeps the fallen rider and the separated bike inside the fra
   for(const z of[-5,3]){const p=new Vector3(0,.2,z).project(camera);assert.ok(Math.abs(p.x)<.95&&Math.abs(p.y)<.95,'Both bodies fit inside the screen')}
   assert.ok(orbit.target.distanceTo(new Vector3(0,.6,-1))<.001)
   controller.reset(s);assert.equal(controller.radius,Math.hypot(bikeConfig.cameraDistance,bikeConfig.cameraHeight-1.05));controller.dispose()
+})
+
+test('canyon defeat locks a safe view outside the cliff while Scott falls and restores orbit on retry',()=>{
+ const {camera,orbit,runtime,s,controller}=setup(),wall=new Mesh(new PlaneGeometry(20,20),new MeshBasicMaterial()),scene=new Group()
+ wall.position.set(0,2,-4);wall.userData.rideBarrier=true;scene.add(wall);const remove=registerRideSurfaces(scene)
+ Object.assign(orbit,{enableDamping:true,enableRotate:true,enableZoom:true})
+ const hip=new Vector3(0,2,-3.5);runtime.scottInstance={defeatMotion:{active:true,hip:{bone:{getWorldPosition:p=>p.copy(hip)}}}};runtime.vehicleRig={root:{position:new Vector3(0,1,-3)}}
+ runtime.canyonCrash={point:new Vector3(0,2,-4),normal:new Vector3(0,0,1)}
+ try{
+  // Begin with a bad orbit on the far side of the rock.
+  camera.position.set(0,3,-7);controller.updateDefeat(1/60)
+  assert.ok(camera.position.z>-3.7,'Capture moves out of the cliff before locking')
+  const position=camera.position.clone(),rotation=camera.quaternion.clone(),target=orbit.target.clone()
+  for(let i=0;i<180;i++){hip.y-=.2;runtime.paused=i%2===0;controller.updateDefeat(1/60)}
+  assert.ok(camera.position.distanceTo(position)<1e-9);assert.ok(camera.quaternion.angleTo(rotation)<1e-7);assert.ok(orbit.target.distanceTo(target)<1e-9)
+  for(const key of ['enabled','enableDamping','enableRotate','enablePan','enableZoom'])assert.equal(orbit[key],false)
+  camera.position.set(0,-10,-10);orbit.target.set(0,-20,-20);controller.updateDefeat(1/60);assert.ok(camera.position.distanceTo(position)<1e-9,'View cannot be moved through rock after locking')
+  controller.cliffRay.ray.origin.copy(target);controller.cliffRay.ray.direction.subVectors(position,target).normalize();controller.cliffRay.far=target.distanceTo(position);assert.equal(raycastRideBarriers(controller.cliffRay),null)
+  runtime.canyonCrash=null;controller.reset(s);assert.equal(orbit.enabled,true);assert.equal(orbit.enableDamping,true);assert.equal(orbit.enableRotate,true);assert.equal(orbit.enableZoom,true);assert.equal(controller.canyonShot,null)
+ }finally{remove();wall.geometry.dispose();wall.material.dispose();controller.dispose()}
 })

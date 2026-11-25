@@ -19,7 +19,7 @@ function crossings(colliders,pathAt,minZ,maxZ){
 test('rounded perimeter is deterministic, stays far from the road and closes lateral exits near the terrain edge',()=>{
  const layout=createOpeningSideLayout(),colliders=[...createBoundaryColliders(),...createSideBoundaryColliders(layout)]
  assert.deepEqual(layout,createOpeningSideLayout());crossings(colliders,forestPathX,-390,-88)
- assert.ok(layout.thickets.length<2000);assert.ok(layout.trunks.length<3000);assert.ok(layout.sprites.length<8000)
+ assert.ok(layout.thickets.length<2000);assert.ok(layout.trunks.length<3000);assert.ok(layout.sprites.filter(p=>!p.treeBase).length<8000);assert.ok(layout.sprites.filter(p=>p.treeBase).length<=layout.trunks.length*12)
  for(const p of[...layout.thickets,...layout.trunks])assert.ok(forestRouteDistance(p.x,p.z)>140,'No new hedge or trunk corridor alongside the road')
  for(const side of[-1,1]){const positions=layout.thickets.filter(p=>p.side===side&&p.layer===0).map(p=>Math.abs(p.x-forestPathX(p.z)));assert.ok(Math.max(...positions)-Math.min(...positions)>12,'Each side advances and recedes, instead of a straight hedge');assert.ok(new Set(layout.trunks.filter(p=>p.side===side).map(p=>p.layer)).size===5)}
  for(const c of colliders.filter(c=>c.source==='forest-side-thicket'))assert.equal(c.walkable,false)

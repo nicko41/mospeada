@@ -24,6 +24,9 @@ uniform float uClear;
 uniform float uIllustratedClear;
 uniform float uCoverage;
 uniform vec3 uBackdrop;
+uniform vec3 uHazeColor;
+uniform float uHazeStrength;
+uniform float uHazeHeight;
 varying vec3 vDirection;
 
 float hash(vec2 point) {
@@ -75,6 +78,9 @@ void main() {
   clearDay = mix(clearDay, illustratedBlue, uIllustratedClear);
   float cloudBody = uClear > 0.5 ? fbm(cloudUv * 0.7 + vec2(uTime * 0.002, -uTime * 0.001)) : 0.0;
   float whiteClouds = smoothstep(mix(0.52, 0.54, uIllustratedClear), mix(0.65, 0.59, uIllustratedClear), cloudBody) * smoothstep(0.0, 0.08, direction.y);
+  // Clouds above the desert remain; the dusty horizon itself is clear.
+  float cloudFreeHorizon = 1.0-smoothstep(uHazeHeight*.65,uHazeHeight*2.5,max(direction.y,0.0));
+  whiteClouds *= 1.0-cloudFreeHorizon*min(1.0,uHazeStrength*2.0);
   vec3 cloudWhite = mix(vec3(0.72, 0.81, 0.90), vec3(1.0), smoothstep(0.53, 0.72, cloudBody));
   cloudWhite = mix(cloudWhite, mix(vec3(0.79, 0.87, 0.96), vec3(1.0), smoothstep(0.55, 0.64, cloudBody)), uIllustratedClear);
   clearDay = mix(clearDay, cloudWhite, whiteClouds);
@@ -84,13 +90,15 @@ void main() {
   color = mix(color, mix(base, clearDay, uDay), uClear);
   color += mix(vec3(0.3, 0.36, 0.4), vec3(0.19, 0.22, 0.24), uDay)
     * uLightning * (0.3 + clouds * 0.7);
+  float dustBand = (1.0-smoothstep(0.0,uHazeHeight,abs(direction.y)))*uHazeStrength;
+  color = mix(color,uHazeColor,dustBand);
   gl_FragColor = vec4(mix(uBackdrop, color, uCoverage), 1.0);
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
 }
 `
 
-export default function OvercastSky({clearSky=false,coverage=null,priority=0}) {
+export default function OvercastSky({clearSky=false,coverage=null,haze=null,priority=0}) {
   const mesh = useRef()
   const { camera,scene } = useThree()
   const material = useMemo(() => new THREE.ShaderMaterial({
@@ -100,7 +108,7 @@ export default function OvercastSky({clearSky=false,coverage=null,priority=0}) {
     depthWrite: false,
     fog: false,
     toneMapped: !clearSky,
-    uniforms: { uTime: { value: 0 }, uLightning: { value: 0 }, uDay: { value: 0 }, uHighwayHaze: { value: 0 }, uClear: { value: 0 },uIllustratedClear:{value:clearSky?1:0},uCoverage:{value:1},uBackdrop:{value:new THREE.Color()} },
+    uniforms: { uTime: { value: 0 }, uLightning: { value: 0 }, uDay: { value: 0 }, uHighwayHaze: { value: 0 }, uClear: { value: 0 },uIllustratedClear:{value:clearSky?1:0},uCoverage:{value:1},uBackdrop:{value:new THREE.Color()},uHazeColor:{value:new THREE.Color()},uHazeStrength:{value:0},uHazeHeight:{value:.1} },
   }), [clearSky])
 
   useFrame((state) => {
@@ -112,6 +120,9 @@ export default function OvercastSky({clearSky=false,coverage=null,priority=0}) {
     material.uniforms.uClear.value = clearSky?1:weatherState.clear
     material.uniforms.uHighwayHaze.value = clearSky?0:highwayFogState.darkness * (1 - timeOfDayState.value)
     material.uniforms.uCoverage.value=coverage?.value??1
+    material.uniforms.uHazeStrength.value=haze?.strength??0
+    material.uniforms.uHazeHeight.value=haze?.height??.1
+    if(haze)material.uniforms.uHazeColor.value.copy(haze.color)
     if(scene.background?.isColor)material.uniforms.uBackdrop.value.copy(scene.background)
   },priority)
 

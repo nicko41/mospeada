@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "source": "public/models/mospeada/scott-bernard-gear-v2-classic-palette.glb",
+  "result": "public/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+  "bones": 24,
+  "clips": 16,
+  "animatedFramesChecked": 48,
+  "changedVertices": 6470,
+  "totalVertices": 160268,
+  "maximumAnimatedDifference": 0.018801154247340107,
+  "protectedTexelSamples": 410928,
+  "approvedRidingMeasurementsIdentical": true,
+  "frontTorsoArmsLegsAndReferenceAnchorsProtected": true,
+  "weightsUVTopologyAndRigUnchanged": true
+}

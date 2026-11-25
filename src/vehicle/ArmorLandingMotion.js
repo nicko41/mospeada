@@ -2,7 +2,7 @@ import {AnimationMixer,Quaternion,Vector3} from 'three'
 import {clone} from 'three/addons/utils/SkeletonUtils.js'
 import {groundFootOrientation} from './riderFootSupport.js'
 import {sampleGroundLanding} from './armorGroundLanding.js'
-import {sampleArmorJump} from './armorJumpMotion.js'
+import {jumpUsesStrafePose,sampleArmorJump} from './armorJumpMotion.js'
 
 export function landingArmSamples(instance){
   if(instance.armorArmSamples)return instance.armorArmSamples
@@ -45,10 +45,14 @@ export function landingArmSamples(instance){
 // Ground contact/landing response from the EXISTING air_squat. No gait cycle,
 // foot IK or changes to the rig/attachments; restore before next evaluation.
 export class ArmorLandingMotion{
-  constructor(instance){
-    this.instance=instance;this.records=[];this.applied=false;this.weight=0;this.velocity=0;this.flatWeight=0;this.delta=new Quaternion();this.identity=new Quaternion();this.hipDelta=new Vector3()
+  constructor(instance,random=Math.random){
+    this.instance=instance;this.random=random;this.records=[];this.applied=false;this.weight=0;this.velocity=0;this.flatWeight=0;this.delta=new Quaternion();this.identity=new Quaternion();this.hipDelta=new Vector3()
     instance.sourceScene.updateWorldMatrix(true,true)
     const inverse=instance.sourceScene.getWorldQuaternion(new Quaternion()).invert()
+    this.jumpLegs=['Left','Right'].flatMap(side=>['UpLeg','Leg','Foot','ToeBase'].map(suffix=>{
+      const name=`mixamorig${side}${suffix}`,source=instance.sourceScene.getObjectByName(name)
+      return{bone:instance.bones.get(name),side,thigh:suffix==='UpLeg',rest:source.quaternion.clone(),inModel:inverse.clone().multiply(source.getWorldQuaternion(new Quaternion()))}
+    }))
     this.feet=['Left','Right'].map(side=>({bone:instance.bones.get(`mixamorig${side}Foot`),toe:instance.bones.get(`mixamorig${side}ToeBase`),reference:inverse.clone().multiply(instance.sourceScene.getObjectByName(`mixamorig${side}Foot`).getWorldQuaternion(new Quaternion())),toeRest:instance.sourceScene.getObjectByName(`mixamorig${side}ToeBase`).quaternion.clone()}))
     const clip=instance.sourceClips.find(c=>c.name==='air_squat')
     if(!clip)return
@@ -86,14 +90,20 @@ export class ArmorLandingMotion{
     this.diagnostics={phase:armor.state.groundLanding.phase,...score};this.applied=true
   }
   applyJump(armor){
-    const score=sampleArmorJump(armor.state)
-    this.activeRecords=score.supported?this.cinematicRecords:this.records
+    const jump=armor.state.jump,score=sampleArmorJump(armor.state)
+    jump.stance??=this.random()<.5?'closed':'open'
     this.weight=this.velocity=this.flatWeight=0
+    if(jumpUsesStrafePose(armor.state)){
+      // Nothing from jump (including knees/ankles) may alter the native strafe.
+      this.diagnostics={phase:jump.phase,stance:jump.stance,pose:armor.state.boosting?'strafe':'regular'}
+      return
+    }
+    this.activeRecords=score.supported?this.cinematicRecords:this.records
     for(const r of this.activeRecords){
       r.q.copy(r.bone.quaternion);r.p.copy(r.bone.position)
       const lower=/(Hips|(Left|Right)(UpLeg|Leg|Foot|ToeBase))$/.test(r.bone.name)
-      if(lower&&r.squat&&r.bone.name!=='mixamorigHips')r.bone.quaternion.slerp(r.squat,score.bend)
-      else if(r.delta&&(lower||score.supported&&/Spine/.test(r.bone.name)))r.bone.quaternion.multiply(this.delta.copy(this.identity).slerp(r.delta,lower?score.bend:score.lean))
+      if(score.supported&&lower&&r.squat&&r.bone.name!=='mixamorigHips')r.bone.quaternion.slerp(r.squat,score.bend)
+      else if(score.supported&&r.delta&&(lower||/Spine/.test(r.bone.name)))r.bone.quaternion.multiply(this.delta.copy(this.identity).slerp(r.delta,lower?score.bend:score.lean))
       if(score.supported){
         if(r.arm)r.bone.quaternion.slerp(r.arm.back,score.back)
         if(r.bone.name==='mixamorigHips')r.bone.position.addScaledVector(this.hipDelta,score.bend)
@@ -101,7 +111,29 @@ export class ArmorLandingMotion{
     }
     this.instance.model.updateWorldMatrix(true,true)
     if(score.supported)this.flattenFeet(armor,1)
-    this.diagnostics={phase:armor.state.jump.phase,...score};this.applied=true
+    else this.airborneLegs(armor,jump.stance)
+    this.diagnostics={phase:jump.phase,stance:jump.stance,pose:'jump',...score};this.applied=true
+  }
+  airborneLegs(armor,stance){
+    const modelQ=this.instance.model.getWorldQuaternion(new Quaternion())
+    // Start from the original straight leg chain, never from the jump squat.
+    for(const leg of this.jumpLegs)leg.bone.quaternion.copy(leg.rest)
+    for(const leg of this.jumpLegs)if(leg.thigh){
+      leg.bone.parent.updateWorldMatrix(true,false)
+      const opening=(leg.side==='Left'?1:-1)*(stance==='open'?.38:-.06)
+      const desired=modelQ.clone().multiply(new Quaternion().setFromAxisAngle(new Vector3(0,0,1),opening)).multiply(leg.inModel)
+      leg.bone.quaternion.copy(leg.bone.parent.getWorldQuaternion(new Quaternion()).invert().multiply(desired))
+    }
+    for(const foot of this.feet){
+      // Orient the boot itself: the source ankle-to-toe bone points down even
+      // when the mesh's sole is flat. Keep tips down independently of knee pose.
+      foot.bone.parent.updateWorldMatrix(true,false)
+      const desired=new Quaternion().setFromAxisAngle(new Vector3(0,1,0),armor.state.yaw)
+        .multiply(new Quaternion().setFromAxisAngle(new Vector3(1,0,0),1.15)).multiply(foot.reference)
+      foot.bone.quaternion.copy(foot.bone.parent.getWorldQuaternion(new Quaternion()).invert().multiply(desired))
+      foot.toe.quaternion.copy(foot.toeRest)
+    }
+    this.instance.model.updateWorldMatrix(true,true)
   }
   flattenFeet(armor,weight){
     if(weight<=1e-5)return

@@ -4,6 +4,7 @@ import {Euler,Matrix4,Quaternion} from 'three'
 import {SCOUT_JOINTS,SCOUT_MOTION} from '../src/world/forest/scoutMechanicalConfig.js'
 import {readRgbaPng} from './foliage-png.mjs'
 import {scoutClawRegions} from './scout-claw-regions.mjs'
+import {repairScoutLegWeights} from './scout-leg-regions.mjs'
 
 // Work exclusively on the already optimized, unchanged runtime copy.
 const source='public/models/mospeada/invid-scout.glb',output='public/models/mospeada/invid-scout-rigged.glb'
@@ -53,13 +54,15 @@ function weightsFor(primitive){
   joints[i*4]=joint;weights[i*4]=joint?w:255
   if(joint&&w<255){joints[i*4+1]=0;weights[i*4+1]=255-w;collars++}
  }
- return {joints,weights,counts,collars,welded:points.length,clawVertices,correctedClawVertices,clawComponents:claws.handComponents}
+ const legRepairs=repairScoutLegWeights({points,ids,edges,joints,weights})
+ for(const repair of legRepairs){counts[0]-=repair.vertices.length;counts[4]+=repair.vertices.length}
+ return {joints,weights,counts,collars,welded:points.length,clawVertices,correctedClawVertices,clawComponents:claws.handComponents,legRepairs}
 }
 for(const [level,mesh]of doc.meshes.entries()){
  const primitive=mesh.primitives[0],result=weightsFor(primitive)
  primitive.attributes.JOINTS_0=accessor(result.joints,'VEC4',5121)
  primitive.attributes.WEIGHTS_0=accessor(result.weights,'VEC4',5121,{normalized:true})
- lods.push({level,triangles:doc.accessors[primitive.indices].count/3,vertices:result.joints.length/4,jointVertices:result.counts,collarVertices:result.collars,welded:result.welded,clawVertices:result.clawVertices,correctedClawVertices:result.correctedClawVertices,clawComponents:result.clawComponents})
+ lods.push({level,triangles:doc.accessors[primitive.indices].count/3,vertices:result.joints.length/4,jointVertices:result.counts,collarVertices:result.collars,welded:result.welded,clawVertices:result.clawVertices,correctedClawVertices:result.correctedClawVertices,clawComponents:result.clawComponents,legRepairs:result.legRepairs})
 }
 const inverse=new Float32Array(5*16);SCOUT_JOINTS.forEach((j,i)=>new Matrix4().makeTranslation(...j.pivot.map(v=>-v)).toArray(inverse,i*16))
 doc.nodes=[{name:'Scout_mechanical_rig',children:[1,6,7,8]},{name:'body_root',children:[2,3,4,5]},...SCOUT_JOINTS.slice(1).map(j=>({name:j.name,translation:j.pivot})),...doc.meshes.map((_,i)=>({name:'Scout_LOD'+i,mesh:i,skin:0}))]

@@ -1,7 +1,10 @@
 const clamp=n=>Math.max(0,Math.min(1,n))
 const smooth=n=>{const t=clamp(n);return t*t*(3-2*t)}
-export const jumpTiming={compress:.18,pushOff:.12}
+export const jumpTiming={compress:.04,pushOff:.04}
 export const isJumpCharging=a=>a.jump?.launched===false
+// Once horizontal boost replaces the jump pose, keep Hover's normal pose
+// pipeline for the rest of this flight, including after releasing boost.
+export const jumpUsesStrafePose=a=>!!a.jump&&!isJumpCharging(a)&&(!!a.boosting||!!a.jump.poseCancelled)
 
 export function sampleArmorJump(a){
   const j=a.jump
@@ -14,7 +17,5 @@ export function sampleArmorJump(a){
     const t=smooth(j.phaseTime/jumpTiming.pushOff)
     return{supported:true,bend:.66*(1-t)+.06*t,lean:.22*(1-t),back:.85}
   }
-  const gather=smooth((j.elapsed||0)/.22)
-  const reach=a.vy<0?smooth((a.height-.05)/.9):1
-  return{supported:false,bend:(.06+.54*gather)*reach,lean:0,back:.85}
+  return{supported:false,bend:0,lean:0,back:.85}
 }

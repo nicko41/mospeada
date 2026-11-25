@@ -105,11 +105,12 @@ export class CombatBursts {
     if(record.age<record.life)this.stats.recycled++
     record.anchor=null;record.position.copy(point);record.normal.copy(normal||axis).normalize();if(record.normal.lengthSq()<.1)record.normal.copy(axis)
     record.grounded=!!context.grounded;record.groundY=Number.isFinite(context.groundY)?context.groundY:point.y
-    record.age=0;record.pendingFirstFrame=true;record.life=clamp(death&&!record.grounded?preset.airDuration||preset.duration:preset.duration,.08,death?.7:name==='invidGroundImpact'?.45:.3)
+    record.age=0;record.pendingFirstFrame=true;record.life=clamp(death&&!record.grounded?preset.airDuration||preset.duration:preset.duration,.08,death?.7:name==='invidClawImpact'?.6:name==='invidGroundImpact'?.45:.3)
     record.fireLife=record.life;record.ignition=death?preset.ignition:0
     if(death)record.life+=clamp(preset.smokeTail||0,0,.7)
     record.name=name;record.seed=++this.sequence;record.frame=0;record.mirror=noise(record.seed)>.5
     record.size=clamp(preset.size,.1,4)*clamp(scale,.25,1.25);record.intensity=clamp(preset.intensity,0,3)
+    record.widthScale=preset.widthScale||1;record.heightScale=preset.heightScale||1
     record.expansion=clamp(preset.expansion,.2,2);record.smoke=clamp(Math.floor(preset.smoke),0,LIMITS.smokePerBurst);record.fragments=clamp(Math.floor(preset.fragments),0,LIMITS.fragmentsPerBurst)
     record.lightIntensity=clamp(preset.lightIntensity,0,death?100:24);record.lightDistance=clamp(preset.lightDistance,0,death?16:10)*scale;record.lightDuration=clamp(preset.lightDuration,0,death?.25:.18)
     for(const key of ['core','color','edge','residual','smokeColor'])record[key].set(preset[key])
@@ -167,7 +168,7 @@ export class CombatBursts {
       if(r.pendingFirstFrame)r.pendingFirstFrame=false
       else r.age=Math.min(r.life,r.age+Math.max(0,dt))
       if(r.age>=r.life)continue
-      active++;const death=r.name==='invidExplosion',t=death?clamp((r.age-r.ignition)/(r.fireLife-r.ignition)):r.age/r.life,terrain=r.name==='invidGroundImpact',groundEffect=death||terrain,power=r.intensity
+      active++;const death=r.name==='invidExplosion',t=death?clamp((r.age-r.ignition)/(r.fireLife-r.ignition)):r.age/r.life,terrain=r.name==='invidGroundImpact'||r.name==='invidClawImpact',groundEffect=death||terrain,power=r.intensity
       const localHit=r.name==='invidHit',surfaceHit=r.name==='gallantImpact'
       if(localHit&&r.anchor){
         const mesh=r.anchor.levels[0],joint=r.anchor.motion?.matrices[r.joint]
@@ -179,9 +180,9 @@ export class CombatBursts {
       if(terrain){
         r.frame=explosionFrame(t,INVID_GROUND_ATLAS)
         this.groundRotation.setFromAxisAngle(up,Math.atan2(camera.position.x-r.position.x,camera.position.z-r.position.z))
-        const height=r.size
+        const height=r.size*r.heightScale,width=r.size*r.widthScale
         this.point.copy(r.position);this.point.y=r.groundY+height*.5+.025
-        if(this.atlases.terrain)this.put(this.terrainSprites,this.point,height,white,Math.min(1,(1-t)*5)*power,this.groundRotation,height,1,r.frame,r.mirror,INVID_GROUND_ATLAS)
+        if(this.atlases.terrain)this.put(this.terrainSprites,this.point,width,white,Math.min(1,(1-t)*5)*power,this.groundRotation,height,1,r.frame,r.mirror,INVID_GROUND_ATLAS)
       }else if(surfaceHit){
         r.frame=explosionFrame(t,INVID_GROUND_ATLAS)
         this.hotTint.copy(r.color).multiplyScalar(1.25)

@@ -29,7 +29,7 @@ export default function FrontTransformation({ rig, runtime }) {
       .then(value=>{if(!controller.signal.aborted)data.current=value})
       .catch(error=>{prepared();if(error.name!=='AbortError')store.set({error:error.message})})
     const down = e => {
-      if(playerCombat.dead||e.code!=='KeyT'||e.repeat||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return
+      if(playerCombat.dead||runtime.scottInstance?.hitMotion?.knockedDown||e.code!=='KeyT'||e.repeat||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return
       e.preventDefault();store.request()
     }
     window.addEventListener('keydown',down)

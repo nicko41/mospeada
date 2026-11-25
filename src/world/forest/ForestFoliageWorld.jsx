@@ -31,7 +31,7 @@ export default function ForestFoliageWorld(){
     manager.update(position,camera,delta)
   },.6)
   useFrame((_,delta)=>{
-    if(!animeState.snapshot().nightReady||forestOpeningState.snapshot().phase!=='done')return
+    if(!animeState.snapshot().openingReady||forestOpeningState.snapshot().phase!=='done')return
     const state=timing.current;state.frames.push(delta*1000);if(state.frames.length>180)state.frames.shift();state.seconds+=delta;state.sinceMetric+=delta
     Object.assign(foliageTelemetry,{drawCalls:renderFrameMetrics.drawCalls+manager.warmCalls,triangles:renderFrameMetrics.triangles+manager.warmTriangles,width:renderFrameMetrics.width,height:renderFrameMetrics.height,pixelRatio:renderFrameMetrics.pixelRatio,profile:manager.profile})
     if(state.sinceMetric>.8){state.sinceMetric=0;const counts=manager.visibleGroups(camera),ordered=state.frames.slice().sort((a,b)=>a-b),mean=state.frames.reduce((n,v)=>n+v,0)/state.frames.length;Object.assign(foliageTelemetry,{fps:1000/mean,frameMs:mean,p95Ms:ordered[Math.floor(ordered.length*.95)],visibleGroups:manager.enabled?counts.groups:0,nearGroups:counts.crossed,farGroups:counts.billboards,residentSectors:counts.residentSectors,pendingSectors:counts.pendingSectors,gpuMB:counts.gpuMB,worldGroups:counts.worldGroups,latePrepares:counts.latePrepares,projectedScreenArea:counts.projectedScreenArea,preparationMs:manager.preparationMs});foliageRecording.sample();foliageTelemetryStore.publish()}

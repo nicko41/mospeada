@@ -17,10 +17,20 @@ export class BikeDefeatMotion{
       this.active=s.riderMode==='mounted'&&!this.runtime.armorController?.active&&(!this.runtime.transformEntry||this.runtime.transformEntry.phase==='idle')
       this.age=0;this.distance=0;this.height=s.height;this.vy=Math.min(0,s.verticalVelocity||0);this.pitch=s.pitch;this.lean=s.lean;this.bank=s.bank;this.wheelie=s.wheelieAngle
       this.speed=Math.max(2.4,Math.min(6,Math.abs(s.speed)*.35));this.blocked=false
+      this.crash=this.runtime.canyonCrash;this.originX=s.x;this.originZ=s.z
     }
     if(!this.active){s.speed=0;return}
     dt=Math.max(0,Math.min(.1,dt));this.age+=dt
     if(this.settled){s.speed=0;return}
+    if(this.crash){
+      const drift=1-Math.exp(-this.age*2),n=this.crash.normal
+      s.x=this.originX+n.x*drift;s.z=this.originZ+n.z*drift;s.speed=0
+      this.vy-=BIKE_DEFEAT.gravity*dt;this.height+=this.vy*dt;s.height=this.height
+      this.crash.constrainBike?.(s)
+      s.pitch=this.pitch*(1-smooth(this.age/.4))+.6*smooth(this.age/1.2)
+      s.lean=s.bank=s.wheelieAngle=s.steer=s.yawRate=s.slip=s.idleBlend=s.airBoostBlend=0
+      return
+    }
     const u=Math.min(1,this.age/BIKE_DEFEAT.coastSeconds),distance=this.speed*BIKE_DEFEAT.coastSeconds*(u-u*u/2),travel=distance-this.distance
     const x=s.x+Math.sin(s.yaw)*travel,z=s.z+Math.cos(s.yaw)*travel
     if(!this.blocked&&canMove(x,z,s.yaw)&&Number.isFinite(sample(x,z))){
@@ -56,6 +66,7 @@ export class BikeDefeatMotion{
   }
   apply(sample){
     if(!this.active)return
+    if(this.crash)sample=this.crash.floorAt
     if(!this.probes)this.prepareProbes()
     const {rig}=this
     // +Z is forward and -X is the rider's right in the imported Cyclone.

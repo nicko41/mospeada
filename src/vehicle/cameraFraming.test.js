@@ -47,6 +47,13 @@ test('Armor has the larger heroic projection; both transformation handoffs chang
   assert.ok(camera.position.y>=.35,'Expanded upward aim still respects the terrain floor')
   armor.move({movementX:0,movementY:10000});assert.equal(armor.pitch,1.25)
   armor.move({movementX:0,movementY:-10000});assert.equal(armor.pitch,-1.1)
+  armor.pitch=cameraFraming.armorPitch;for(let i=0;i<90;i++)armor.update(a,1/60)
+  const yawBefore=armor.yaw,look=driver.middleLook,event={button:1,pointerId:5,clientX:0,clientY:0,preventDefault(){},stopImmediatePropagation(){}}
+  look.down(event);for(let i=0;i<90;i++)armor.update(a,1/60)
+  assert.ok(camera.position.z>armor.target.z+2,'Middle button gives a rear view in Armor too')
+  look.move({...event,clientX:120,clientY:30});armor.move({movementX:120,movementY:30});for(let i=0;i<90;i++)armor.update(a,1/60)
+  assert.equal(armor.yaw,yawBefore,'Free look must not steer Armor or overwrite its aim yaw');assert.equal(a.yaw,0)
+  look.up({...event,type:'pointerup'});assert.equal(look.active,false);assert.equal(orbit.enabled,false,'Armor keeps ownership of its normal mouse camera')
   runtime.armorController.active=false;armor.deactivate();entry.returnFlight=true;entry.returnProgress=0;entry.cameraProgress=null
   const start=camera.position.clone();driver.update(s,0);assert.ok(camera.position.distanceTo(start)<1e-8,'The reverse shot starts from the exact current Armor view')
   fov=camera.fov

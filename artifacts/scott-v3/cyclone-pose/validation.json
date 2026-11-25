@@ -1,0 +1,36 @@
+{
+  "scope": "Scott V3 mounted on the Cyclone, including bike jump/hover; no Armor pose changes",
+  "reversion": {
+    "incorrectArmorPoseLayerRemoved": true,
+    "approvedArmorNativePoseExact": true,
+    "approvedCaballerWaistAndKneeAttachmentsPreserved": true
+  },
+  "changes": {
+    "footSupportRearwardMetres": 0.1,
+    "elbowsDegrees": 26,
+    "cycloneJumpKneesDegrees": {
+      "Left": {
+        "knee": 33.96784748542301,
+        "elbow": 25.99999999999991
+      },
+      "Right": {
+        "knee": 29.99999999999998,
+        "elbow": 25.99999999999994
+      }
+    },
+    "cycloneJumpHipDropMetres": 0.052793150686347934
+  },
+  "nativeModelAndSourceGlbsUnchanged": true,
+  "validation": {
+    "testsPassed": 22,
+    "testsFailed": 0,
+    "productionBuild": "passed",
+    "visualReview": "Offline renders of the evaluated mounted Cyclone pose: ground riding, bike jump and bike hover, including profile and rear views"
+  },
+  "previews": [
+    "after/riding-profile.png",
+    "after/cyclone-jump-profile.png",
+    "after/cyclone-jump-rear.png",
+    "after/cyclone-hover-rear.png"
+  ]
+}

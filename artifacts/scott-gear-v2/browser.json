@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "loaded": {
+    "vertices": 160268,
+    "triangles": 240489,
+    "bones": 24,
+    "referenceVertices": 15429,
+    "sourceAnimations": 16,
+    "morphs": 3,
+    "material": "Material_0",
+    "shaderError": ""
+  },
+  "armor": {
+    "active": true,
+    "phase": "complete",
+    "mode": "ARMOR_HOVER",
+    "aiming": true,
+    "vertices": 160268,
+    "bones": 24,
+    "glError": 0,
+    "shaderError": "",
+    "shotsFired": 1
+  },
+  "uncaughtErrors": []
+}

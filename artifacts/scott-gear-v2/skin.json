@@ -1,0 +1,33 @@
+{
+  "vertices": 144839,
+  "triangles": 240489,
+  "separatedFusionFaces": 0,
+  "jointsOffset": 0,
+  "weightsOffset": 579356,
+  "rigidLabelsOffset": 2896780,
+  "method": "Barycentric nearest original surface; anatomically constrained rigid armor and cloth boundary diffusion",
+  "rigidVertices": 73469,
+  "flexibleVertices": 71370,
+  "surfaceDistanceMedian": 0.01737811043858528,
+  "surfaceDistanceP95": 0.053371820598840714,
+  "reductionSurfaceErrorP95": 0.00010668483118934088,
+  "reductionSurfaceErrorMax": 0.00022075229207985103,
+  "weightsNormalized": true,
+  "rigidOwners": {
+    "mixamorigHips": 12993,
+    "mixamorigSpine2": 13476,
+    "mixamorigHead": 3326,
+    "mixamorigLeftArm": 1390,
+    "mixamorigLeftForeArm": 3590,
+    "mixamorigLeftHand": 1993,
+    "mixamorigRightArm": 1195,
+    "mixamorigRightForeArm": 3413,
+    "mixamorigRightHand": 2203,
+    "mixamorigLeftUpLeg": 1965,
+    "mixamorigLeftLeg": 5599,
+    "mixamorigLeftFoot": 7607,
+    "mixamorigRightUpLeg": 1959,
+    "mixamorigRightLeg": 5290,
+    "mixamorigRightFoot": 7470
+  }
+}

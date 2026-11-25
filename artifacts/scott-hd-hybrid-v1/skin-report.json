@@ -1,0 +1,77 @@
+{
+  "method": "nearest receiver surface triangle + barycentric original skin weights; semantic rigid armor plates",
+  "parts": [
+    {
+      "mesh": 0,
+      "primitive": 0,
+      "name": "HD_face",
+      "vertices": 22388,
+      "jointsOffset": 0,
+      "weightsOffset": 89552,
+      "rigidVertices": 22388,
+      "blendedVertices": 0,
+      "surfaceDistanceMedian": 0.01741151697933674,
+      "surfaceDistanceMax": 0.0685945376753807
+    },
+    {
+      "mesh": 1,
+      "primitive": 0,
+      "name": "HD_helmet",
+      "vertices": 31132,
+      "jointsOffset": 447760,
+      "weightsOffset": 572288,
+      "rigidVertices": 31132,
+      "blendedVertices": 0,
+      "surfaceDistanceMedian": 0.015573757700622082,
+      "surfaceDistanceMax": 0.09096632152795792
+    },
+    {
+      "mesh": 2,
+      "primitive": 0,
+      "name": "HD_helmet_left_repair",
+      "vertices": 1823,
+      "jointsOffset": 1070400,
+      "weightsOffset": 1077692,
+      "rigidVertices": 1823,
+      "blendedVertices": 0,
+      "surfaceDistanceMedian": 0.023329157382249832,
+      "surfaceDistanceMax": 0.04456949234008789
+    },
+    {
+      "mesh": 3,
+      "primitive": 0,
+      "name": "HD_Left_arm",
+      "vertices": 13689,
+      "jointsOffset": 1106860,
+      "weightsOffset": 1161616,
+      "rigidVertices": 9970,
+      "blendedVertices": 3698,
+      "surfaceDistanceMedian": 0.025575853884220123,
+      "surfaceDistanceMax": 0.2134103775024414
+    },
+    {
+      "mesh": 4,
+      "primitive": 0,
+      "name": "HD_Right_arm",
+      "vertices": 13183,
+      "jointsOffset": 1380640,
+      "weightsOffset": 1433372,
+      "rigidVertices": 10189,
+      "blendedVertices": 2992,
+      "surfaceDistanceMedian": 0.01902015507221222,
+      "surfaceDistanceMax": 0.16394193470478058
+    },
+    {
+      "mesh": 5,
+      "primitive": 0,
+      "name": "HD_torso_neck",
+      "vertices": 26833,
+      "jointsOffset": 1644300,
+      "weightsOffset": 1751632,
+      "rigidVertices": 17100,
+      "blendedVertices": 9733,
+      "surfaceDistanceMedian": 0.015665901824831963,
+      "surfaceDistanceMax": 0.21920742094516754
+    }
+  ]
+}

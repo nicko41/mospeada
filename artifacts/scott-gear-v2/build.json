@@ -1,0 +1,32 @@
+{
+  "output": "public/models/mospeada/scott-bernard-gear-v2-animated.glb",
+  "bytes": 33570096,
+  "sourceTriangles": 801630,
+  "triangles": 240489,
+  "renderedVertices": 144839,
+  "referenceVertices": 15429,
+  "rigBones": 24,
+  "animations": [
+    "Running",
+    "Walking",
+    "One_Arm_Handstand",
+    "Roll_Dodge_4",
+    "Run_Turn_Right",
+    "Stand_Up1",
+    "Stand_Up10",
+    "Stand_Up4",
+    "Standard_Forward_Charge",
+    "Standard_Forward_Charge_inplace",
+    "Walk_Left_with_Gun",
+    "Walk_Turn_Left",
+    "Walk_Turn_Right_Idle_Style",
+    "air_squat",
+    "walking_2",
+    "walking_2_inplace"
+  ],
+  "sha256": {
+    "original": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+    "donor": "56fce64c8ce04bcd3768190b0c5c2d06bcf4cacb936724e51267a0515f6321aa",
+    "output": "b93178cafed8f57104135ae034b4523cc85cb570cd44964203aef38f36b7635a"
+  }
+}

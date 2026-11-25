@@ -69,7 +69,7 @@ export default function ForestStage2({assets}){
   },[assets,terrain,ground,cliff,plants,lifetime,canyon,river,sides,rim,boundary])
   return <group name="MOSPEADA_Level_01_Forest_Plano_2">
     {terrain.tops.map((geometry,i)=><mesh key={i} name={'Forest_Plano_2_ground_'+i} geometry={geometry} material={ground} receiveShadow userData={{forest:true,rideSurface:true,rideSurfaceType:'dirt',rideSurfaceBiome:'forest',rideSurfaceEarthWeight:stage2EarthWeight}}/>)}
-    <mesh name="Forest_Plano_2_canyon_cliffs" geometry={terrain.cliffs} material={cliff.wall} userData={{forest:true}}/>
+    <mesh name="Forest_Plano_2_canyon_cliffs" geometry={terrain.cliffs} material={cliff.wall} userData={{forest:true,rideBarrier:true}}/>
     <mesh name="Forest_Plano_2_deep_ravine_bed" geometry={terrain.bed} material={cliff.bed} userData={{forest:true}}/>
     <mesh name="Forest_canyon_flowing_river" geometry={river.geometry} material={river.material} userData={{forest:true}}/>
     <primitive object={canyon.group} dispose={null}/>

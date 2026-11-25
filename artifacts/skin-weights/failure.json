@@ -1,0 +1,33 @@
+{
+  "error": "{\"exceptionId\":2,\"text\":\"Uncaught\",\"lineNumber\":0,\"columnNumber\":23,\"scriptId\":\"1822\",\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"SyntaxError\",\"description\":\"SyntaxError: missing ) after argument list\",\"objectId\":\"93018460805365084.8.2\"}}",
+  "errors": [],
+  "report": {
+    "import": {
+      "meshes": 1,
+      "bones": 24,
+      "clips": 16,
+      "dirty": false,
+      "gl": 0,
+      "names": [
+        "Running",
+        "Walking",
+        "One_Arm_Handstand",
+        "Roll_Dodge_4",
+        "Run_Turn_Right",
+        "Stand_Up1",
+        "Stand_Up10",
+        "Stand_Up4",
+        "Standard_Forward_Charge",
+        "Standard_Forward_Charge_inplace",
+        "Walk_Left_with_Gun",
+        "Walk_Turn_Left",
+        "Walk_Turn_Right_Idle_Style",
+        "air_squat",
+        "walking_2",
+        "walking_2_inplace"
+      ]
+    },
+    "brushFaces": 263,
+    "rectangleFaces": 11622
+  }
+}

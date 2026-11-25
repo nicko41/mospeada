@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "patches": [
+    {
+      "id": "A",
+      "prompt": "Edit target: the provided square close-up of a 3D character UV albedo texture. Precise texture repair only. Fill and remove ONLY the unnatural thick BLACK CRESCENT blotch in the lower center, around pixel x=130..355, y=350..455 of this 512x512 reference, continuing the surrounding pale gray-green armor paint smoothly across the black stain. This is NOT a deliberate hole; remove the dark crescent and its white triangular speck. Preserve the exact pixel registration, the shape and position of the gray recessed relief line in the upper half, the pale green painted gradients, all other panels and blue areas. Keep the black atlas background outside the repaired small crescent area. Flat game texture, same dimensions and composition, no new objects, no shading redesign, no outline or badge. Output just the repaired square UV texture crop."
+    },
+    {
+      "id": "B",
+      "prompt": "Precise local edit of this square 3D game UV albedo texture crop. Remove the black diamond-like blotch and its small white inset, centered at approximately x=190..350, y=220..390 on the 512x512 reference. Fill that diamond-shaped defect with continuous pale gray-green armor paint matching the immediately surrounding painted panel to its right and above. It is texture contamination, not an intentional cutout. IMPORTANT keep the thin diagonal recessed panel/relief line near the UPPER RIGHT entirely unchanged and continuous. Preserve the exact alignment, scale and location of every other texture detail, the black outside-atlas areas, brown lower-right fragment and existing subtle painted gradients. Do not add an emblem, highlight or seam in the repaired area. Output the same square texture crop, without reframing."
+    },
+    {
+      "id": "C",
+      "prompt": "Precise local UV albedo repair in a 512x512 game texture crop. The tiny dark contaminated area at the CENTER, specifically x=175..290,y=210..305 of the reference, wrongly contains dark gray/black mechanical detail on what should be pale gray-green shoulder armor. Replace ONLY that central small zone with the pale gray-green paint color from the broad armor island immediately to the right. Smoothly continue that armor paint over the tiny black contamination. The very long fine recessed panel line running down the RIGHT SIDE must remain unbroken and unchanged, as must the white body fragment below-left and all other unrelated atlas areas. Exact UV registration, no reframing, no new motifs or details, same square dimensions. Output only the locally repaired texture crop."
+    }
+  ]
+}

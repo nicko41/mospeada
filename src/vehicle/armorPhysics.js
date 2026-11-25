@@ -4,22 +4,23 @@ import {isJumpCharging,jumpTiming} from './armorJumpMotion.js'
 // Armour-only arcade propulsion; the Motorcycle solver remains independent.
 // Ground run matches roughly 2x the native Running support-foot cadence
 // (about 5.5 m/s at source speed), rather than speeding the feet in isolation.
-export const armorConfig={hoverHeight:.8,hoverSpeed:9,acceleration:30,braking:17,inertia:3.2,boostSpeed:32,boostAcceleration:64,boostBraking:30,boostInertia:1.5,boostCoastTime:.18,jumpImpulse:8,jumpAcceleration:22,jumpThrustDuration:.65,jumpMaxHeight:12,maxRiseSpeed:13,airGravity:5,descentAcceleration:32,diveImpulse:6,maxDiveSpeed:18,maxFallSpeed:9,hoverStiffness:24,hoverDamping:9,groundSpeed:2.5,runSpeed:11,groundTurnThreshold:.70,groundTurnRate:1,groundYawRate:3,cameraDistance:3.6,cameraResponse:7,bodyIntensity:1}
+export const armorConfig={hoverHeight:.8,hoverSpeed:9,acceleration:30,braking:17,inertia:3.2,boostSpeed:52,boostAcceleration:180,boostResponse:18,boostBraking:70,boostInertia:3,boostCoastTime:.12,jumpImpulse:18,jumpAcceleration:70,jumpThrustDuration:.7,jumpMaxHeight:36,maxRiseSpeed:36,airGravity:18,descentAcceleration:56,diveImpulse:10,maxDiveSpeed:28,maxFallSpeed:18,hoverStiffness:24,hoverDamping:9,groundSpeed:2.5,runSpeed:11,groundTurnThreshold:.70,groundTurnRate:1,groundYawRate:3,cameraDistance:3.6,cameraResponse:7,bodyIntensity:1}
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n))
 const damp=(a,b,k,dt)=>a+(b-a)*(1-Math.exp(-k*dt))
 const wrap=n=>Math.atan2(Math.sin(n),Math.cos(n))
 export function createArmorState(source,soleOffset=0){
   const speed=clamp(source.speed||0,-12,12),yaw=source.travelYaw??source.yaw
-  return{x:source.x,y:source.height,z:source.z,yaw:source.yaw,pitch:source.pitch||0,bank:(source.lean||0)+(source.bank||0),vx:Math.sin(yaw)*speed,vz:Math.cos(yaw)*speed,vy:clamp(source.verticalVelocity||0,-1,1),ax:0,az:0,ay:0,speed:Math.abs(speed),mode:'ARMOR_HOVER',soleOffset,ground:0,groundSmooth:NaN,surface:'dirt',height:0,grounded:false,contactSpeed:0,boostBlend:0,boostRelease:10,boosting:false,thrustForward:0,thrustSide:0,thrustX:0,thrustZ:0,lift:.25,time:0,stride:0,localForward:0,localSide:0,forwardAcceleration:0,sideAcceleration:0,settle:0,jumpHeld:false,jump:null,jumpCount:0,jumpPowered:false,descendHeld:false,diving:false,diveBlend:0,groundTurn:null,pelvisOffsetX:0,pelvisOffsetZ:0}
+  return{x:source.x,y:source.height,z:source.z,yaw:source.yaw,pitch:source.pitch||0,bank:(source.lean||0)+(source.bank||0),vx:Math.sin(yaw)*speed,vz:Math.cos(yaw)*speed,vy:clamp(source.verticalVelocity||0,-1,1),ax:0,az:0,ay:0,speed:Math.abs(speed),mode:'ARMOR_HOVER',aiming:false,soleOffset,ground:0,groundSmooth:NaN,surface:'dirt',height:0,grounded:false,contactSpeed:0,boostBlend:0,boostRelease:10,boosting:false,thrustForward:0,thrustSide:0,thrustX:0,thrustZ:0,lift:.25,time:0,stride:0,localForward:0,localSide:0,forwardAcceleration:0,sideAcceleration:0,settle:0,jumpHeld:false,jump:null,jumpCount:0,jumpPowered:false,descendHeld:false,diving:false,diveBlend:0,groundTurn:null,pelvisOffsetX:0,pelvisOffsetZ:0}
 }
 function advanceVertical(a,input,dt,c){
   const floor=a.ground-a.soleOffset+.025
-  let target=a.groundSmooth-a.soleOffset+(a.mode==='ARMOR_HOVER'?c.hoverHeight:.025)
+  const returnMode=a.jump?.returnMode??a.mode
+  let target=a.groundSmooth-a.soleOffset+(returnMode==='ARMOR_HOVER'?c.hoverHeight:.025)
   const air=!!a.jump||a.y>target+.25
   if(input.descend&&!a.descendHeld&&air)a.vy=Math.min(a.vy,-c.diveImpulse)
-  const pressed=!!input.rise&&!a.jumpHeld
-  if(pressed&&!a.jump&&a.y<target+.3&&Math.abs(a.vy)<1.5){
-    a.jump={originY:a.y,ceilingY:a.y+c.jumpMaxHeight,elapsed:0,phaseTime:0,launched:false,supportClearance:Math.max(.025,a.y+a.soleOffset-a.ground),thrustEnded:false,phase:'compress'};a.jumpCount++;a.vy=0;a.groundTurn=null
+  const pressed=!!input.risePressed||!!input.rise&&!a.jumpHeld
+  if(pressed&&!a.jump&&a.y<target+.3&&(a.grounded||Math.abs(a.vy)<1.5)){
+    a.jump={returnMode:a.mode,originY:a.y,ceilingY:a.y+c.jumpMaxHeight,elapsed:0,phaseTime:0,launched:false,supportClearance:Math.max(.025,a.y+a.soleOffset-a.ground),thrustEnded:false,phase:'compress'};a.jumpCount++;a.vy=0;a.groundTurn=null
   }
   a.jumpPowered=false
   if(isJumpCharging(a)){
@@ -38,9 +39,10 @@ function advanceVertical(a,input,dt,c){
     const j=a.jump,remaining=Math.max(0,j.ceilingY-a.y)
     j.elapsed+=dt
     if(!input.rise||input.descend||j.elapsed>=c.jumpThrustDuration||remaining<.002)j.thrustEnded=true
-    const recovering=j.phase==='recover'||j.thrustEnded&&a.y<target+(a.mode==='ARMOR_GROUND'?.08:1.6)&&a.vy<=0
+    const recoveryDistance=returnMode==='ARMOR_GROUND'?.08:Math.max(1.6,a.vy*a.vy/(2*c.jumpAcceleration)+.5)
+    const recovering=j.phase==='recover'||j.thrustEnded&&a.y<target+recoveryDistance&&a.vy<=0
     a.jumpPowered=!j.thrustEnded
-    if(recovering)a.vy+=clamp((target-a.y)*c.hoverStiffness-a.vy*c.hoverDamping,-24,32)*dt
+    if(recovering)a.vy+=clamp((target-a.y)*c.hoverStiffness-a.vy*c.hoverDamping,-c.jumpAcceleration,c.jumpAcceleration)*dt
     else if(a.jumpPowered)a.vy=Math.min(c.maxRiseSpeed,a.vy+c.jumpAcceleration*dt)
     else a.vy=Math.max(-(input.descend?c.maxDiveSpeed:c.maxFallSpeed),a.vy-c.airGravity*dt)
     if(a.vy>0)a.vy=Math.min(a.vy,Math.sqrt(2*c.airGravity*remaining))
@@ -53,7 +55,7 @@ function advanceVertical(a,input,dt,c){
   a.y+=a.vy*dt
   if(a.jump&&a.y>a.jump.ceilingY&&a.y>floor){a.y=Math.max(floor,a.jump.ceilingY);a.vy=Math.min(0,a.vy);a.jump.thrustEnded=true;a.jumpPowered=false}
   if(a.y<floor){a.settle=Math.max(a.settle,Math.min(1,Math.abs(a.vy)/8));a.y=floor;a.vy=Math.max(0,a.vy)}
-  if(a.jump?.thrustEnded&&Math.abs(a.y-target)<.08&&Math.abs(a.vy)<.35){a.jump=null;a.jumpPowered=false}
+  if(a.jump?.thrustEnded&&Math.abs(a.y-target)<.08&&Math.abs(a.vy)<.35){a.mode=a.jump.returnMode??a.mode;a.jump=null;a.jumpPowered=false}
   a.jumpHeld=!!input.rise;a.descendHeld=!!input.descend
 }
 export function advanceArmor(a,input,delta,sample,canMove=()=>true,c=armorConfig,turnProfiles=null){
@@ -64,20 +66,21 @@ export function advanceArmor(a,input,delta,sample,canMove=()=>true,c=armorConfig
   for(let i=0;i<steps;i++){
     const controlYaw=Number.isFinite(input.yaw)?input.yaw:a.yaw,forward=input.forward||0,side=input.side||0,length=Math.hypot(forward,side),moving=length>.001
     const hover=a.mode==='ARMOR_HOVER'||!!a.jump&&!isJumpCharging(a),boost=hover&&!!input.boost&&moving
-    if(a.mode==='ARMOR_HOVER')a.groundTurn=null
+    a.aiming=!!input.aiming
+    if(hover||a.aiming)a.groundTurn=null
     const oldX=a.vx,oldZ=a.vz,oldY=a.vy,wasGrounded=a.grounded
     // Screen-right is forward x world-up. Diagonal thrust has unit length.
     const nx=moving?(Math.sin(controlYaw)*forward-Math.cos(controlYaw)*side)/length:0
     const nz=moving?(Math.cos(controlYaw)*forward+Math.sin(controlYaw)*side)/length:0
     const speed=hover?(boost?c.boostSpeed:c.hoverSpeed):input.boost?c.runSpeed:c.groundSpeed
     const heading=moving?Math.atan2(nx,nz):a.yaw
-    const turning=!hover&&!input.rise&&advanceGroundTurn(a,heading,moving,dt,canMove,turnProfiles,c)
+    const turning=!hover&&!a.aiming&&!input.rise&&advanceGroundTurn(a,heading,moving,dt,canMove,turnProfiles,c)
     if(!turning){
-      if(hover)a.yaw+=wrap(controlYaw-a.yaw)*(1-Math.exp(-dt*12))
+      if(hover||a.aiming)a.yaw+=wrap(controlYaw-a.yaw)*(1-Math.exp(-dt*12))
       else if(moving&&a.speed>.05)a.yaw+=clamp(wrap(heading-a.yaw),-c.groundYawRate*dt,c.groundYawRate*dt)
       const desiredX=nx*speed,desiredZ=nz*speed,recentBoost=a.boostRelease<2
       const coasting=!boost&&recentBoost&&a.boostRelease<c.boostCoastTime
-      const response=coasting?c.boostInertia:moving?9:c.inertia
+      const response=boost?c.boostResponse:coasting?c.boostInertia:moving?9:c.inertia
       let dx=(desiredX-a.vx)*(1-Math.exp(-dt*response)),dz=(desiredZ-a.vz)*(1-Math.exp(-dt*response))
       const slowing=dx*a.vx+dz*a.vz<0,brake=recentBoost?c.boostBraking:c.braking
       const limit=(boost?c.boostAcceleration:coasting?brake*.25:slowing?brake:c.acceleration)*dt,distance=Math.hypot(dx,dz)
@@ -95,6 +98,7 @@ export function advanceArmor(a,input,delta,sample,canMove=()=>true,c=armorConfig
     if(!Number.isFinite(a.groundSmooth))a.groundSmooth=a.ground
     a.groundSmooth=damp(a.groundSmooth,a.ground,8,dt)
     advanceVertical(a,input,dt,c)
+    if(a.jump&&boost&&!isJumpCharging(a))a.jump.poseCancelled=true
     a.ax=(a.vx-oldX)/dt;a.az=(a.vz-oldZ)/dt;a.ay=(a.vy-oldY)/dt
     a.speed=Math.hypot(a.vx,a.vz);a.height=a.y+a.soleOffset-a.ground;a.grounded=a.mode==='ARMOR_GROUND'&&(isJumpCharging(a)||a.height<.12)
     if(a.mode==='ARMOR_GROUND'&&!a.grounded)a.contactSpeed=Math.max(a.contactSpeed,-a.vy)

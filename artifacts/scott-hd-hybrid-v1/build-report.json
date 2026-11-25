@@ -1,0 +1,62 @@
+{
+  "output": "public/models/mospeada/scott-bernard-hd-hybrid-v1.glb",
+  "bytes": 29552004,
+  "triangles": 185410,
+  "originalRetainedTriangles": 5359,
+  "parts": [
+    {
+      "name": "HD_face",
+      "vertices": 22388,
+      "triangles": 40938
+    },
+    {
+      "name": "HD_helmet",
+      "vertices": 31132,
+      "triangles": 49998
+    },
+    {
+      "name": "HD_helmet_left_repair",
+      "vertices": 1823,
+      "triangles": 3117
+    },
+    {
+      "name": "HD_Left_arm",
+      "vertices": 13689,
+      "triangles": 21999
+    },
+    {
+      "name": "HD_Right_arm",
+      "vertices": 13183,
+      "triangles": 21999
+    },
+    {
+      "name": "HD_torso_neck",
+      "vertices": 26833,
+      "triangles": 42000
+    }
+  ],
+  "bones": 24,
+  "animations": [
+    "Running",
+    "Walking",
+    "One_Arm_Handstand",
+    "Roll_Dodge_4",
+    "Run_Turn_Right",
+    "Stand_Up1",
+    "Stand_Up10",
+    "Stand_Up4",
+    "Standard_Forward_Charge",
+    "Standard_Forward_Charge_inplace",
+    "Walk_Left_with_Gun",
+    "Walk_Turn_Left",
+    "Walk_Turn_Right_Idle_Style",
+    "air_squat",
+    "walking_2",
+    "walking_2_inplace"
+  ],
+  "sha256": {
+    "receiver": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+    "donor": "42c4fa77f5821df0a9688c3b95bbaeb4bd713a93db27a0ef45813d82bb193ca6",
+    "hybrid": "85a2ab563e2d0b870fb3b1b528f87c945f99895104d3267fa5da95d0b8a42d87"
+  }
+}

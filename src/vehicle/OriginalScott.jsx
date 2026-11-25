@@ -18,22 +18,32 @@ import {ArmorArticulation,armorAttachmentTarget} from './ArmorArticulation.js'
 import {ArmorLandingMotion} from './ArmorLandingMotion.js'
 import {ArmorArmMotion} from './ArmorArmMotion.js'
 import { armorIdleState } from './armorIdleState.js'
-import {isJumpCharging} from './armorJumpMotion.js'
+import {isJumpCharging,jumpUsesStrafePose} from './armorJumpMotion.js'
 import {ScottDefeatMotion} from './ScottDefeatMotion.js'
+import {ScottHitMotion} from './ScottHitMotion.js'
 import {playerCombat} from '../player/playerCombat.js'
 import {rideUI} from './rideUI.js'
+import {SCOTT_MODEL,SCOTT_RIG_REFERENCE,SCOTT_V2_MODEL,SCOTT_V3_MODEL,SCOTT_ORIGINAL_SHOULDER_MAPS,SCOTT_MODEL_VARIANT} from './scottModelConfig.js'
+import {createScottRidingPose} from './ScottAirSquatRidingPose.js'
+import {ScottModelComparison} from './ScottModelComparison.js'
+import {scottModelSelection} from './scottModelSelection.js'
 
 // Start the rider and its maps alongside the motorcycle request. Without this,
 // Suspense discovers GLB -> action data -> shoulder maps in separate retries.
-const SCOTT_MODEL='/models/mospeada/scott-bernard-animated-original.glb'
 const SCOTT_ACTIONS='/animations/scott-cyclone-actions.json'
-const SCOTT_MAPS=['/models/mospeada/scott-shoulders-color.png', '/models/mospeada/scott-shoulders-normal.png', '/models/mospeada/scott-shoulders-roughness.png']
+const SCOTT_MAPS=['/models/mospeada/scott-shoulders-decals.png', '/models/mospeada/scott-shoulders-normal.png', '/models/mospeada/scott-shoulders-roughness.png']
 useGLTF.preload(SCOTT_MODEL)
+useGLTF.preload(SCOTT_RIG_REFERENCE)
+useGLTF.preload(SCOTT_V2_MODEL)
+useGLTF.preload(SCOTT_V3_MODEL)
 useLoader.preload(T.FileLoader,SCOTT_ACTIONS)
 useTexture.preload(SCOTT_MAPS)
 
 export default function OriginalScott({ runtime }) {
   const asset = useGLTF(SCOTT_MODEL)
+  const reference = useGLTF(SCOTT_RIG_REFERENCE)
+  const v2Asset = useGLTF(SCOTT_V2_MODEL)
+  const v3Asset = useGLTF(SCOTT_V3_MODEL)
   const actionData = useLoader(T.FileLoader, SCOTT_ACTIONS)
   const authored = useMemo(() => { const data = JSON.parse(actionData); return { data, clips: parseCycloneScottActions(data) } }, [actionData])
   const clips = useMemo(() => [...asset.animations, ...authored.clips], [asset.animations, authored])
@@ -50,32 +60,36 @@ export default function OriginalScott({ runtime }) {
         if (relaxed) hands.push(relaxed)
       }
     })
-    return { model, sourceScene: asset.scene, sourceClips:asset.animations, hands, mixer: new T.AnimationMixer(model), skins, bones, action: null, clip: null, lastSeek: -1, clean: null, stamp: 0, anchor: new T.Vector3() }
-  }, [asset.scene])
+    return { model, sourceScene: reference.scene, sourceClips:reference.animations, hands, mixer: new T.AnimationMixer(model), skins, bones, action: null, clip: null, lastSeek: -1, clean: null, stamp: 0, anchor: new T.Vector3() }
+  }, [asset.scene,reference.scene])
   useLayoutEffect(() => {
     // StrictMode replays effect setup/cleanup; reinstall the private variant.
     instance.hands.forEach(hand => hand.attach())
     maps.forEach((map, i) => { map.flipY = false; map.colorSpace = i === 0 ? T.SRGBColorSpace : T.NoColorSpace; map.needsUpdate = true })
-    for (const skin of instance.skins) { skin.clean.map = maps[0]; skin.clean.normalMap = maps[1]; skin.clean.roughnessMap = maps[2]; skin.clean.metalnessMap = maps[2] }
+    if(SCOTT_ORIGINAL_SHOULDER_MAPS)for (const skin of instance.skins) { skin.clean.map = maps[0]; skin.clean.normalMap = maps[1]; skin.clean.roughnessMap = maps[2]; skin.clean.metalnessMap = maps[2] }
+    instance.modelComparison=new ScottModelComparison(instance,{v1:reference.scene,v2:v2Asset.scene,v3:v3Asset.scene},SCOTT_MODEL_VARIANT==='original'?'v1':'v2',maps)
+    instance.modelComparison.select(scottModelSelection.snapshot().variant)
+    scottModelSelection.ready(true)
     playback.set({ clips: clips.map(c => ({ name: c.name, duration: c.duration })), ready: true })
     runtime.scottData = authored.data
     runtime.scottInstance = instance
+    if(SCOTT_MODEL_VARIANT==='gear-v2')instance.v2RidingPose ||=createScottRidingPose(instance,authored.data)
     // Sample/measure original clips during loading, not on the first T or
     // the first Armor frame. These constructors do not apply a body pose.
     instance.armorLocomotion ||= new ArmorLocomotion(instance,authored.data.actorScale)
     instance.transformationPose ||= new TransformationScottPose(instance,wrapper.current)
-    if (import.meta.env.DEV) window.__SCOTT_ORIGINAL__ = { instance, source: asset, playback, wrapper, authored, statement: 'Original GLB and 16 unchanged clips. Mounted posture layer; corrected Roll_Dodge_4 crossing and original locomotion run without rider IK.' }
-    return () => { delete runtime.scottInstance; instance.mixer.stopAllAction(); instance.mixer.uncacheRoot(instance.model); instance.clip = null; instance.action = null; instance.lastSeek = -1; instance.hands.forEach(h => h.dispose()); instance.skins.forEach(s => s.clean.dispose()); if (import.meta.env.DEV) delete window.__SCOTT_ORIGINAL__ }
-  }, [instance, asset.animations, clips, authored, maps[0], maps[1], maps[2]])
+    if (import.meta.env.DEV) window.__SCOTT_ORIGINAL__ = { instance, source: asset, reference, playback, wrapper, authored, model:SCOTT_MODEL, statement: 'Selected visual skin; original 24-bone rig, 16 unchanged clips and reference anchor topology.' }
+    return () => { scottModelSelection.ready(false);instance.modelComparison.dispose();delete instance.modelComparison;delete runtime.scottInstance; instance.mixer.stopAllAction(); instance.mixer.uncacheRoot(instance.model); instance.clip = null; instance.action = null; instance.lastSeek = -1; instance.hands.forEach(h => h.dispose()); instance.skins.forEach(s => s.clean.dispose()); if (import.meta.env.DEV) delete window.__SCOTT_ORIGINAL__ }
+  }, [instance, asset.animations, clips, authored, reference.scene, v2Asset.scene, v3Asset.scene, maps[0], maps[1], maps[2]])
   useLayoutEffect(()=>()=>{instance.armorArticulation?.dispose();delete instance.armorArticulation},[instance])
   // Restore ONLY the four attachment assemblies before the normal mechanics.
-  useFrame(()=>instance.armorArticulation?.restore(),-2.15)
+  useFrame(()=>{instance.modelComparison?.v3?.restoreAttachments();instance.armorArticulation?.restore()},-2.15)
   useFrame((_, delta) => {
     const s = runtime.state
     if (!s || !wrapper.current) return
     const p = playback.snapshot()
     if (runtime.gameplay) {
-      if (instance.clean !== p.cleanShoulders) { instance.clean = p.cleanShoulders; instance.skins.forEach(skin => { skin.mesh.material = p.cleanShoulders ? skin.clean : skin.original }) }
+      if (instance.clean !== p.cleanShoulders) { instance.clean = p.cleanShoulders; (instance.modelComparison?.skins||instance.skins).forEach(skin => { skin.mesh.material = p.cleanShoulders ? skin.clean : skin.original }) }
       updateScottGameplay(instance, authored, clips, runtime, wrapper.current, delta)
       return
     }
@@ -92,7 +106,7 @@ export default function OriginalScott({ runtime }) {
     }
     if (p.cleanShoulders !== instance.clean) {
       instance.clean = p.cleanShoulders
-      instance.skins.forEach(skin => { skin.mesh.material = p.cleanShoulders ? skin.clean : skin.original })
+      ;(instance.modelComparison?.skins||instance.skins).forEach(skin => { skin.mesh.material = p.cleanShoulders ? skin.clean : skin.original })
     }
     if (p.seekRequest !== instance.lastSeek) {
       instance.lastSeek = p.seekRequest
@@ -143,14 +157,15 @@ export default function OriginalScott({ runtime }) {
       instance.returnMotion.apply(entry,runtime.frontTransformation)
     }
     const armor=runtime.armorController
+    const jumpStrafe=armor?.active&&jumpUsesStrafePose(armor.state)
     if(armor?.active&&!armor.state.groundLanding&&!isJumpCharging(armor.state)){
       instance.armorReaction ||=new ArmorReactiveMotion(instance,wrapper.current)
       instance.armorReaction.apply(armor.state,Math.min(.1,delta),runtime.paused)
     }
     instance.armorBoostMotion ||= new ScottArmorBoostMotion(instance,wrapper.current)
-    instance.armorBoostMotion.apply(entry,armor?.active?armor.state.groundLanding||armor.state.jump?{disabled:true}:{boostBlend:instance.armorReaction.diagnostics.boost,reverseBlend:instance.armorReaction.diagnostics.reverse,boosting:armor.state.boosting,thrustForward:armor.state.thrustForward}:runtime.state,Math.min(.1,delta),runtime.paused)
+    instance.armorBoostMotion.apply(entry,armor?.active?armor.state.groundLanding||armor.state.jump&&!jumpStrafe?{disabled:true}:{boostBlend:instance.armorReaction.diagnostics.boost,reverseBlend:instance.armorReaction.diagnostics.reverse,boosting:armor.state.boosting,thrustForward:armor.state.thrustForward}:runtime.state,Math.min(.1,delta),runtime.paused)
     instance.armorIdle ||= new ScottArmorIdleMotion(instance,wrapper.current)
-    if(!armor?.state?.groundLanding&&!armor?.state?.jump)instance.armorIdle.apply(entry,delta,runtime.paused,armorIdleState.snapshot(),!!entry?.actorOffset.y||runtime.state?.airborne)
+    if(!armor?.state?.groundLanding&&(!armor?.state?.jump||jumpStrafe))instance.armorIdle.apply(entry,delta,runtime.paused,armorIdleState.snapshot(),!!entry?.actorOffset.y||runtime.state?.airborne)
     instance.armorLocomotion?.apply(armor,Math.min(.1,delta),runtime.paused)
     instance.armorLanding ||= new ArmorLandingMotion(instance)
     instance.armorLanding.apply(armor,Math.min(.1,delta),runtime.paused)
@@ -160,14 +175,26 @@ export default function OriginalScott({ runtime }) {
     if(armor?.active)armor.guardFloor(instance,wrapper.current)
   },-.5)
   useFrame((_,delta)=>{
+    if(!runtime.gameplay||!wrapper.current||!instance.mountedMotion)return
+    instance.hitMotion ||=new ScottHitMotion(instance,wrapper.current,runtime)
+    instance.hitMotion.apply(runtime.paused?0:Math.min(.1,delta),sampleRideHeight)
+    wrapper.current.updateMatrixWorld(true)
+  },-.455)
+  useFrame((_,delta)=>{
     if(!runtime.gameplay)return
     instance.armorArticulation?.apply(armorAttachmentTarget(runtime.armorController,runtime.transformEntry),runtime.transformEntry,runtime.paused?0:Math.min(.1,delta))
   },-.45)
   useFrame((_,delta)=>{
+    if(runtime.gameplay&&!playerCombat.dead)instance.hitMotion?.groundArmor(instance.armorArticulation)
     if(!runtime.gameplay||!playerCombat.dead||!instance.defeatMotion?.active)return
     instance.defeatMotion.groundArmor(instance.armorArticulation)
     instance.defeatMotion.publishAge+=delta
     if(instance.defeatMotion.publishAge>.1){instance.defeatMotion.publishAge=0;rideUI.publish({defeat:{...runtime.defeat}})}
   },-.4)
+  useFrame((_,delta)=>{
+    const visual=instance.modelComparison;if(!visual)return
+    visual.select(scottModelSelection.snapshot().variant);visual.syncHands()
+    if(visual.variant==='v3'){visual.v3.apply(runtime,runtime.paused?0:Math.min(.1,delta));visual.v3.fitArmor(runtime)}
+  },-.35)
   return <group ref={wrapper} name="Scott_original_playback"><primitive object={instance.model} dispose={null} /></group>
 }

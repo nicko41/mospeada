@@ -1,0 +1,84 @@
+{
+  "source": "public/models/mospeada/scott-shoulders-color-clean-v2.png",
+  "output": "public/models/mospeada/scott-shoulders-decals.png",
+  "decals": [
+    {
+      "side": "Right",
+      "file": "assets/texturas/decals/rango.png",
+      "center": [
+        -0.2515,
+        1.41,
+        -0.045
+      ],
+      "normal": [
+        -0.35,
+        0.94,
+        -0.05
+      ],
+      "up": [
+        1,
+        0,
+        0
+      ],
+      "width": 0.075,
+      "height": 0.07206521739130435,
+      "trim": [
+        120,
+        44,
+        1269,
+        1148
+      ],
+      "texels": 3540,
+      "uvBounds": [
+        1205,
+        590,
+        1393,
+        857
+      ]
+    },
+    {
+      "side": "Left",
+      "file": "assets/texturas/decals/21.png",
+      "center": [
+        0.2515,
+        1.41,
+        -0.045
+      ],
+      "normal": [
+        0.35,
+        0.94,
+        -0.05
+      ],
+      "up": [
+        -1,
+        0,
+        0
+      ],
+      "width": 0.075,
+      "height": 0.06578947368421052,
+      "trim": [
+        70,
+        122,
+        1209,
+        1121
+      ],
+      "texels": 3798,
+      "uvBounds": [
+        1,
+        448,
+        1939,
+        1844
+      ]
+    }
+  ],
+  "changedTexels": 7338,
+  "outsideDecals": 0,
+  "preserved": {
+    "public/models/mospeada/scott-shoulders-color-clean-v2.png": "cba13ad1c0646bbde2a3dbce082127fda1083b8946b855d6672cec5deb8f4c6d",
+    "public/models/mospeada/scott-bernard-animated-original.glb": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+    "public/models/mospeada/scott-shoulders-normal.png": "2db4c3942a59f76c8c390ef9f3ffa8144cfc6e83e930755a6422f10fc8bba2ed",
+    "public/models/mospeada/scott-shoulders-roughness.png": "c74a4db4c200362c85ebb6bddbc558fc8dc3ea95379e2b258c0cd3d91262c3e8",
+    "assets/texturas/decals/rango.png": "723d7ee68a7118249ae1ceced517350b7fa7189f2468eb2f5a91016397cdb49e",
+    "assets/texturas/decals/21.png": "2cfbda7acf69e7850ba6410bcc5baf5337a48d9712f40bb488af79326ebea662"
+  }
+}

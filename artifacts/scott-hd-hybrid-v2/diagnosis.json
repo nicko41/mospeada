@@ -1,0 +1,119 @@
+{
+  "originalRigAndAnimationBinaryPrefixUnchanged": true,
+  "jointNodesPreserved": true,
+  "inverseBindAccessorPreserved": true,
+  "originalAnimationsPreserved": true,
+  "donorRoot": {
+    "mesh": 0,
+    "matrix": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "receiverRootScale": [
+    0.01,
+    0.01,
+    0.01
+  ],
+  "parts": [
+    {
+      "name": "char1",
+      "vertices": 15429,
+      "triangles": 5359,
+      "badIndices": 0,
+      "badNormals": 0,
+      "badWeights": 0,
+      "maxBindEdgeMeters": 0.21123579722881303,
+      "edgesLongerThan10cm": 438
+    },
+    {
+      "name": "HD_face",
+      "vertices": 22388,
+      "triangles": 40938,
+      "badIndices": 0,
+      "badNormals": 0,
+      "badWeights": 0,
+      "maxBindEdgeMeters": 0.022837296322164705,
+      "edgesLongerThan10cm": 0
+    },
+    {
+      "name": "HD_helmet",
+      "vertices": 31132,
+      "triangles": 49998,
+      "badIndices": 0,
+      "badNormals": 0,
+      "badWeights": 0,
+      "maxBindEdgeMeters": 0.054861145278501784,
+      "edgesLongerThan10cm": 0
+    },
+    {
+      "name": "HD_helmet_left_repair",
+      "vertices": 1823,
+      "triangles": 3117,
+      "badIndices": 0,
+      "badNormals": 0,
+      "badWeights": 0,
+      "maxBindEdgeMeters": 0.02595855592903975,
+      "edgesLongerThan10cm": 0
+    },
+    {
+      "name": "HD_Left_arm",
+      "vertices": 13689,
+      "triangles": 21999,
+      "badIndices": 0,
+      "badNormals": 0,
+      "badWeights": 0,
+      "maxBindEdgeMeters": 0.1963307477955487,
+      "edgesLongerThan10cm": 89
+    },
+    {
+      "name": "HD_Right_arm",
+      "vertices": 13183,
+      "triangles": 21999,
+      "badIndices": 0,
+      "badNormals": 0,
+      "badWeights": 0,
+      "maxBindEdgeMeters": 0.21445805111122804,
+      "edgesLongerThan10cm": 97
+    },
+    {
+      "name": "HD_torso_neck",
+      "vertices": 26833,
+      "triangles": 42000,
+      "badIndices": 0,
+      "badNormals": 0,
+      "badWeights": 0,
+      "maxBindEdgeMeters": 0.169793661726992,
+      "edgesLongerThan10cm": 165
+    }
+  ],
+  "causes": [
+    "El donante es una sola superficie fusionada en A-pose. La división por centroides y regiones de distancia cortó placas y uniones anatómicas; no equivalía a extraer piezas independientes.",
+    "La alineación de brazos interpoló regiones del torso con los segmentos de brazo. Eso estiró geometría de la axila y bordes de la pechera incluso en bind pose.",
+    "La elección de dueño rígido según color de textura y umbrales espaciales asignó vértices vecinos de una misma cubierta a torso/brazo/antebrazo diferentes. En animación aparecieron picos y desgarros.",
+    "Los índices no están fuera de rango; el rig, las matrices inversas y los canales originales se conservaron. Eso descarta corrupción de índices o sustitución del esqueleto como causa principal.",
+    "El ensayo de render inicial limpiaba la acción importada sin restaurar las matrices de pose: no representaba reposo real. La V2 verificará bind pose explícita y muestras del runtime."
+  ],
+  "v2Constraints": [
+    "Reconstruir desde ambos originales",
+    "Sólo cabeza/casco y pechera",
+    "Sin decimación, soldadura, extensión de brazos ni transferencia automática",
+    "Piezas rígidas con dueño explícito Head y Spine2",
+    "Conservar brazos/manos/cuerpo inferior y animaciones originales",
+    "Original seleccionado por defecto"
+  ]
+}

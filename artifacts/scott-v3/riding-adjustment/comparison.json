@@ -1,0 +1,51 @@
+{
+  "scope": "Adjust existing V3 riding pose; body silhouette takes priority over exact grip contact.",
+  "poses": {
+    "stationary": {
+      "pelvisAdvance": 0.04999999999999999,
+      "chestPitchDegrees": {
+        "before": 68.05939052049334,
+        "after": 49.487854016884654
+      },
+      "footShift": {
+        "Left": -0.009610136531707753,
+        "Right": -0.07000000000000031
+      },
+      "kneeShiftRelativeToPelvis": {
+        "Left": -0.03714973850654235,
+        "Right": -0.012958201317232687
+      },
+      "handGripGap": {
+        "Left": 0.0870259939321108,
+        "Right": 0.08424234993645965
+      },
+      "chestLocalRotationsPreserved": true
+    },
+    "moving": {
+      "pelvisAdvance": 0.04999999999999999,
+      "chestPitchDegrees": {
+        "before": 68.05939052049334,
+        "after": 49.487854016884654
+      },
+      "footShift": {
+        "Left": -0.07000000000000015,
+        "Right": -0.07000000000000031
+      },
+      "kneeShiftRelativeToPelvis": {
+        "Left": -0.016304216163438245,
+        "Right": -0.012958201317232687
+      },
+      "handGripGap": {
+        "Left": 0.0870259939321108,
+        "Right": 0.08424234993645965
+      },
+      "chestLocalRotationsPreserved": true
+    }
+  },
+  "validation": {
+    "testsPassed": 17,
+    "build": "passed",
+    "visualReview": "Offline renders of runtime-evaluated pose: profile and three-quarter, moving and stationary."
+  },
+  "originalAndAnimatedGlbsUnchanged": true
+}

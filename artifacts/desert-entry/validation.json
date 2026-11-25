@@ -1,0 +1,18 @@
+{
+  "frames": 66,
+  "start": 2325.319985104139,
+  "end": 2649.1413495283778,
+  "entryFrames": 14,
+  "entryMaxRenderMs": 40,
+  "entryMaxIntervalMs": 209.69999998807907,
+  "entryMaxTerrainMs": 0.19999998807907104,
+  "p95FrameMs": 205.30000001192093,
+  "maxFrameMs": 213.70000004768372,
+  "programsCreated": [],
+  "entryShaderCompiles": 0,
+  "hazeBefore": true,
+  "hazeAfter": true,
+  "gl": 0,
+  "shader": "",
+  "errors": []
+}

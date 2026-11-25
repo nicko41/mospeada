@@ -1,0 +1,24 @@
+{
+  "stationary": {
+    "mappedBones": 24,
+    "nativeBones": 28,
+    "extraTorsoLean": 0.25432128906250007,
+    "contacts": {
+      "LeftHand": 2.830524433501838e-16,
+      "LeftFoot": 4.458205583648681e-16,
+      "RightHand": 1.6653345369377348e-16,
+      "RightFoot": 2.8785957662940594e-16
+    }
+  },
+  "moving": {
+    "mappedBones": 24,
+    "nativeBones": 28,
+    "extraTorsoLean": 0.25432128906250007,
+    "contacts": {
+      "LeftHand": 2.830524433501838e-16,
+      "LeftFoot": 1.3668035872266426e-16,
+      "RightHand": 1.6653345369377348e-16,
+      "RightFoot": 2.8785957662940594e-16
+    }
+  }
+}

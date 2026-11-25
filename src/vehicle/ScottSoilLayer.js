@@ -66,7 +66,7 @@ export class ScottSoilLayer {
   constructor(instance) {
     this.instance = instance; this.records = []
     this.uniforms = { uSoilEnabled: { value: 1 }, uScottMud: { value: new Vector4(0, 0, 0, 0) }, uScottFilm: { value: new Vector4(0, 0, 0, 0) }, uSoilDark: { value: new Color('#503d2c') }, uSoilLight: { value: new Color('#987c55') }, uSoilSeed: { value: 5.7 } }
-    for (const skin of instance.skins) {
+    for (const skin of instance.modelComparison?.skins||instance.skins) {
       const box = new Box3().setFromBufferAttribute(skin.mesh.geometry.attributes.position), bones = skin.mesh.skeleton.bones
       const uniforms = { ...this.uniforms, uScottRegions: { value: bones.map(b => scottRegion(b.name)) }, uScottHead: { value: new Float32Array(bones.map(b => /Head|Neck|headfront/.test(b.name) ? 1 : 0)) }, uScottOrigin: { value: new Vector3(0, box.min.y, 0) }, uScottScale: { value: 1 / (box.max.y - box.min.y) } }
       const variants = new Map()

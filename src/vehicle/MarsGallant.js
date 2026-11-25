@@ -10,7 +10,7 @@ export const ARMOR_GALLANT_BIND_OFFSET=Object.freeze([.6319690793460873,-.051385
 
 export class MarsGallant{
   constructor(source){
-    this.root=new Group();this.root.name='Scott_Mars_Gallant';this.root.visible=false
+    this.root=new Group();this.root.name='Scott_Mars_Gallant';this.root.visible=false;this.root.userData.prewarmVFX=true
     this.model=source.clone(true);this.root.add(this.model);this.materials=[]
     this.model.traverse(mesh=>{if(!mesh.isMesh)return;mesh.castShadow=false;mesh.receiveShadow=true
       const copy=material=>{const m=material.clone();this.materials.push(m);return m}
@@ -60,6 +60,7 @@ export class MarsGallant{
     // never at the model centre or the wrist/arm.
     if(this.instance)this.root.position.copy(this.palm).sub(this.point.fromArray(GALLANT_MOUNT.grip).applyQuaternion(this.root.quaternion).multiplyScalar(this.root.scale.x))
     this.root.updateWorldMatrix(true,true)
+    if(instance.modelComparison?.variant==='v3')instance.modelComparison.v3.fitWeapon(this.root)
   }
   getMuzzle(target){return this.muzzle.getWorldPosition(target)}
   dispose(){this.root.removeFromParent();this.materials.forEach(m=>m.dispose());this.instance=null}

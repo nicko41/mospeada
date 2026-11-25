@@ -15,7 +15,7 @@ export default function ForestPerformance() {
     // Reallocating the full Anime MRT/MSAA buffers visibly stalls a moving
     // shot. Keep its resolution stable; resume normal adaptation afterward.
     if(forestOpeningState.snapshot().phase==='playing'){stats.seconds=0;stats.frames=0;return}
-    if (!config.adaptiveResolution || !render.ready || !render.nightReady || delta > .2) return
+    if (!config.adaptiveResolution || !render.ready || !render.openingReady || delta > .2) return
     stats.seconds += delta; stats.frames++
     if (stats.seconds < 3) return
     const average = stats.seconds * 1000 / stats.frames, native = Math.min(globalThis.devicePixelRatio || 1, 1.5)

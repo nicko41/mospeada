@@ -1,0 +1,56 @@
+{
+  "input": "public/models/mospeada/scott-bernard-gear-v2-classic-palette.glb",
+  "output": "public/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+  "inputSha256": "ac1a63093981c48b9d654c2bb331f88492dc4feb6c2613ff9cfe01912cb3ceb3",
+  "outputSha256": "36b8998902e68119ded3b85ce6ec498cb9791a365fe8781ff572f1e8e54a695d",
+  "parameters": {
+    "pelvisDrop": 0.016,
+    "headCenter": [
+      0.004,
+      1.585,
+      0.012
+    ],
+    "headRadii": [
+      0.105,
+      0.115,
+      0.116
+    ],
+    "headBlend": 0.72,
+    "flatCenterY": 1.027,
+    "flatHalfWidth": 0.077,
+    "flatFadeWidth": 0.089,
+    "flatBottom": 0.994,
+    "flatTop": 1.056
+  },
+  "plane": [
+    -0.010523919178292762,
+    0.24381646673318141,
+    -0.11674587152670902
+  ],
+  "fill": [
+    152,
+    162,
+    139
+  ],
+  "mrFill": [
+    255,
+    173,
+    0
+  ],
+  "counts": {
+    "pelvis": 5854,
+    "flatPanel": 538,
+    "helmet": 623
+  },
+  "maximumDisplacement": {
+    "pelvis": 0.016000000000000014,
+    "helmet": 0.009261562178811127
+  },
+  "changedVertices": 6477,
+  "paintedTexels": 17749,
+  "newlyCollapsedTriangles": 0,
+  "frontAndVisorUnchanged": true,
+  "referenceAnchorsUnchanged": true,
+  "weightsUVTopologyRigAnimationsUnchanged": true,
+  "originalsOverwritten": false
+}

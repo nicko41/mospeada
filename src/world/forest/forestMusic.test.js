@@ -12,7 +12,7 @@ class FakeAudio{
  pause(){this.paused=true}
  play(){this.plays++;if(this.denied)return Promise.reject(Object.assign(Error('blocked'),{name:'NotAllowedError'}));this.paused=false;return Promise.resolve()}
 }
-const fixture=()=>new ForestMusic({intro:'intro',lifeline:'lifeline',cyclone:'cyclone'},{createAudio:url=>new FakeAudio(url)})
+const fixture=()=>new ForestMusic({intro:'intro',lifeline:'lifeline',cyclone:'cyclone',victory:'mission-accomplished'},{createAudio:url=>new FakeAudio(url)})
 const settled=async music=>Promise.all([...music.pending.values()].map(p=>p.catch(()=>{})))
 const world={bound:true,position:{x:40,y:12,z:-1000},contains:(x,z)=>Math.abs(x-40)<2400&&z<=-1000&&z>=-3400,distance:z=>-1000-z}
 const state=(distance,{x=40,airborne=true,height=15}={})=>({x,z:world.position.z-distance,height,airborne})
@@ -70,6 +70,24 @@ test('pausing freezes all music and fade progression; blocked playback retries o
  music.dispose();assert.ok(Object.values(music.tracks).every(a=>a.paused&&a.src===''))
 })
 
-test('the two requested soundtrack files are present and nonempty',()=>{
- for(const name of ['02-Robotech-Lifeline.mp3','03-Robotech-Cyclone.mp3'])assert.ok(fs.statSync(new URL('../../../assets/sound/'+name,import.meta.url)).size>1000)
+test('Mission Accomplished replaces combat once, keeps its media position and only fades when requested after black',async()=>{
+ const music=fixture();await music.startLifeline();music.enterDesert();await settled(music)
+ await music.startVictory();const audio=music.tracks.victory
+ assert.equal(music.phase,'victory');assert.equal(audio.paused,false);assert.equal(audio.loop,false);assert.equal(audio.volume,music.volume)
+ assert.ok(['intro','lifeline','cyclone'].every(key=>music.tracks[key].paused&&music.tracks[key].volume===0))
+ audio.currentTime=7;await music.startVictory()
+ for(let i=0;i<100;i++)music.update(.1,{state:state(650),world})
+ assert.equal(audio.plays,1);assert.equal(audio.currentTime,7);assert.equal(audio.volume,music.volume)
+ music.setVictoryGain(.5);music.update(.1,{state:state(650),world});assert.equal(audio.volume,music.volume*.5)
+ music.update(.1,{paused:true});assert.equal(audio.paused,true)
+ music.update(.1);await settled(music);assert.equal(audio.currentTime,7);assert.equal(audio.volume,music.volume*.5)
+ music.setVictoryGain(0);music.finishVictory()
+ for(let i=0;i<30;i++)music.update(.1,{state:state(650),world})
+ assert.equal(audio.volume,0);assert.equal(audio.paused,true);assert.equal(music.phase,'complete');assert.equal(music.needed.size,0)
+ music.cancelVictory();await settled(music);assert.equal(music.phase,'lifeline');assert.equal(audio.paused,true);assert.equal(music.tracks.lifeline.paused,false)
+ music.dispose()
+})
+
+test('the requested soundtrack files are present and nonempty',()=>{
+ for(const name of ['02-Robotech-Lifeline.mp3','03-Robotech-Cyclone.mp3','04-Robotech-Mission-Accomplished.mp3'])assert.ok(fs.statSync(new URL('../../../assets/sound/'+name,import.meta.url)).size>1000)
 })

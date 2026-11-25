@@ -1,0 +1,36 @@
+{
+  "prepared": {
+    "depth": 900,
+    "phase": "pursuit",
+    "visible": 15
+  },
+  "crest": {
+    "drawn": 15,
+    "visible": 15,
+    "changed": 505,
+    "depth": 2405,
+    "phase": "pursuit",
+    "shots": 0,
+    "engaged": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "descending": {
+    "drawn": 15,
+    "visible": 15,
+    "changed": 1414,
+    "depth": 2470,
+    "phase": "pursuit",
+    "shots": 0,
+    "engaged": 0,
+    "gl": 0,
+    "shader": ""
+  },
+  "transition": {
+    "phase": "battle",
+    "maxStep": 0,
+    "sameRoots": true,
+    "sameHomes": true
+  },
+  "errors": []
+}

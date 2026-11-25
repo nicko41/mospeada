@@ -32,6 +32,7 @@ import ForestEnvironment from './world/forest/ForestEnvironment.jsx'
 import { activeEnvironment } from './world/environmentConfig.js'
 import { weatherState } from './world/weatherState.js'
 import {ForestOpeningOverlay} from './world/forest/ForestOpening.jsx'
+import {ForestEndingOverlay} from './world/forest/ForestEnding.jsx'
 import {forestOpeningState} from './world/forest/forestOpeningState.js'
 import {startupRenderReady} from './rendering/renderPreparation.js'
 import {updateEntryPreloader} from './ui/entryPreloader.js'
@@ -113,7 +114,7 @@ function EntryPreloader({ sceneReady }) {
   const renderState = useSyncExternalStore(animeState.subscribe, animeState.snapshot)
   const opening = useSyncExternalStore(forestOpeningState.subscribe, forestOpeningState.snapshot)
   // Wait for the current frame and opening views, never for alternate lighting.
-  const renderReady = startupRenderReady(renderState,opening.phase)
+  const renderReady = startupRenderReady(renderState,opening.phase,activeEnvironment==='forest')
   const highestProgress = useRef(0)
   const revealed = useRef(false)
 
@@ -179,6 +180,7 @@ function App() {
 
       <DrivingHUD />
       <ForestOpeningOverlay />
+      <ForestEndingOverlay />
     </main>
   )
 }

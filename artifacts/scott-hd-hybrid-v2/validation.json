@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "geometry": [
+    {
+      "name": "HD2_HeadHelmet",
+      "vertices": 109179,
+      "triangles": 200080,
+      "maxAlignmentError": 5.941390979202765e-8,
+      "maxEdgeMeters": 0.022730134071329393,
+      "rigidJoint": "mixamorig:Head"
+    },
+    {
+      "name": "HD2_ChestPlate",
+      "vertices": 12330,
+      "triangles": 22810,
+      "maxAlignmentError": 5.930662161368616e-8,
+      "maxEdgeMeters": 0.018902713684982808,
+      "rigidJoint": "mixamorig:Spine2"
+    }
+  ],
+  "protectedOriginalTriangles": 8102,
+  "originalBinaryPreserved": true,
+  "originalJointsPreserved": 24,
+  "originalClipsPreserved": 16,
+  "nativeGameplayABPoses": [
+    "rest",
+    "driving",
+    "transform",
+    "combat"
+  ],
+  "sampledClips": [
+    "Running",
+    "Walking",
+    "One_Arm_Handstand",
+    "Roll_Dodge_4",
+    "Run_Turn_Right",
+    "Stand_Up1",
+    "Stand_Up10",
+    "Stand_Up4",
+    "Standard_Forward_Charge",
+    "Standard_Forward_Charge_inplace",
+    "Walk_Left_with_Gun",
+    "Walk_Turn_Left",
+    "Walk_Turn_Right_Idle_Style",
+    "air_squat",
+    "walking_2",
+    "walking_2_inplace"
+  ],
+  "worstRigidWorldErrorMeters": 3.687220280399211e-7,
+  "reversibleVariant": true
+}

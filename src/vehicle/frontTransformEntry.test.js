@@ -17,14 +17,22 @@ globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:1,heigh
 async function load(p){const b=fs.readFileSync(p);return new GLTFLoader().parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.length),'')}
 const assets=Promise.all([load('public/models/mospeada/cyclone-vr052f.glb'),load('public/models/mospeada/scott-bernard-animated-original.glb')])
 const flat=(x,z,out)=>{if(out)out.surface='asphalt';return 0}
-async function fixture(speed=12){
-  const rig=createDrivingCyclone((await assets)[0].scene),s=createBikeState({x:0,z:0,yaw:0},rig.metrics,flat)
+async function fixture(speed=12,sample=flat){
+  const rig=createDrivingCyclone((await assets)[0].scene),s=createBikeState({x:0,z:0,yaw:0},rig.metrics,sample)
   s.speed=speed;s.parked=speed===0;s.idleBlend=speed===0?1:0
   const runtime={state:s};store.bindEntry(null);store.reset();store.set({ready:true,duration:2})
   const entry=new FrontTransformEntry(store,runtime)
-  const tick=(input={},dt=1/60)=>{const effective=entry.beforePhysics(input,dt),cfg={...bikeConfig,...entry.physicsConfig};advanceBike(s,effective,dt,rig.metrics,flat,()=>true,cfg);entry.afterPhysics(dt,rig.metrics,cfg);store.advance(dt,entry.assemblyDuration);return effective}
+  const tick=(input={},dt=1/60)=>{const effective=entry.beforePhysics(input,dt),cfg={...bikeConfig,...entry.physicsConfig};advanceBike(s,effective,dt,rig.metrics,sample,()=>true,cfg);entry.afterPhysics(dt,rig.metrics,cfg);store.advance(dt,entry.assemblyDuration);return effective}
   return{rig,s,runtime,entry,tick}
 }
+
+test('moving downhill can transform without waiting for flat terrain or rear-wheel support',async()=>{
+ for(const grade of [.12,.35,.65])for(const speed of [8,30,55]){
+  const sample=(x,z,out)=>{if(out)out.surface='dirt';return -grade*z},f=await fixture(speed,sample),phases=[];f.entry.request()
+  for(let i=0;i<270&&f.entry.phase!=='complete';i++){f.tick();if(phases.at(-1)!==f.entry.phase)phases.push(f.entry.phase);assert.ok([f.s.x,f.s.z,f.s.height,f.s.pitch].every(Number.isFinite))}
+  assert.equal(f.entry.phase,'complete',`grade ${grade}, speed ${speed}, phases ${phases}`);assert.equal(store.snapshot().progress,1)
+ }
+})
 
 test('T is rejected at rest, in reverse and on foot; forward creeping can enter the automatic wheelie',async()=>{
   const f=await fixture()

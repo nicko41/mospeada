@@ -1,0 +1,54 @@
+{
+  "shots": [
+    {
+      "x": 0,
+      "changed": 2429
+    },
+    {
+      "x": 1.35,
+      "changed": 1950
+    },
+    {
+      "x": -1.35,
+      "changed": 1391
+    }
+  ],
+  "decals": [
+    {
+      "side": "Left",
+      "name": "rango",
+      "normal": [
+        0.4375611655032987,
+        -0.8899756252143741,
+        -0.12838852350455185
+      ],
+      "position": [
+        5.1278049848025224,
+        4.0876932886681825,
+        -41.92717695149827
+      ],
+      "geometry": 48,
+      "material": "onBeforeCompile() {}|cyclone-cover-decals-v1|mospeada-soil-v5"
+    },
+    {
+      "side": "Right",
+      "name": "21",
+      "normal": [
+        -0.4375611655032987,
+        -0.8899756252143741,
+        -0.12838852350455185
+      ],
+      "position": [
+        5.270857814899273,
+        4.073009270234364,
+        -41.701525557505505
+      ],
+      "geometry": 48,
+      "material": "onBeforeCompile() {}|cyclone-cover-decals-v1|mospeada-soil-v5"
+    }
+  ],
+  "bodyMap": "http://127.0.0.1:5174/models/mospeada/scott-shoulders-decals.png",
+  "gl": 0,
+  "shader": "",
+  "errors": []
+}

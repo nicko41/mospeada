@@ -1,0 +1,93 @@
+{
+  "reference": {
+    "clip": "air_squat",
+    "sampledOnce": true,
+    "time": 0.6688890198866526,
+    "wholeAnimationPlayed": false
+  },
+  "scope": "Upper-body riding layer only",
+  "pelvisAndLegs": "Unchanged: bit-identical measured hip, thigh, knee and foot positions in rest and moving snapshots",
+  "chest": "Spine1/Spine2 retain the approved sample rotations; native boost flex is applied at the torso base. Sampled chest edge lengths remain unchanged within 0.002 mm.",
+  "arms": "Arm/forearm IK frames come from air_squat, with relaxed clavicles and inward/downward elbow poles for the bike grips. Native hand contacts retained.",
+  "head": "Sampled neck/head relationships with a forward riding gaze",
+  "rigWeightsMaterialsAndClips": "Unchanged assets, verified by SHA256",
+  "testResult": {
+    "passed": 7,
+    "build": "passed",
+    "failed": 0
+  },
+  "inGame": "artifacts/scott-v2-riding/in-game/validation.json",
+  "views": [
+    "front",
+    "profile",
+    "back",
+    "three-quarter"
+  ],
+  "states": [
+    "rest",
+    "moving"
+  ],
+  "protectedAssets": [
+    {
+      "path": "public/animations/scott-cyclone-actions.json",
+      "sha256": "dfb3dad64f2139dd477712686b309c32972065752762d3448abf3a2c22d7f158",
+      "unchanged": true
+    },
+    {
+      "path": "public/animations/scott-cyclone-riding-reference.json",
+      "sha256": "0091ce99e50c5d3e66cdc42ff120d7bc2d4618cf39c557df153305ab7bd019da",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-front-battloid.json",
+      "sha256": "1f664448b39271d5056362bc13d7e87dd7b95805b0cf4d68df135a2589abebda",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-guard-battloid.json",
+      "sha256": "2e65587c498ba6379eb5bdcf692fcaaf9334f82b7f944b7ef3795843ba4b967a",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-rear-battloid.json",
+      "sha256": "e5d0e2608d82bedd4cab6fe206ada7c42f984ba23051f43726ca0202ecf3148f",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-rear-pieces.glb",
+      "sha256": "5d3c788c896f73866550dec0c59c5a4afb6ce5f3173ce38bba3bb79ba5415fa4",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-suspension-hide.json",
+      "sha256": "3d6aed0c400c54db0877e98c7741859630f6266cd090476a6fcb051a014a806e",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-wheel-battloid.json",
+      "sha256": "61ad207fdaf3547b72b331ba8067d37d0758129dbd92ab1b3d641d53f49d2a5b",
+      "unchanged": true
+    },
+    {
+      "path": "public/models/mospeada/scott-bernard-gear-v2-animated.glb",
+      "sha256": "b93178cafed8f57104135ae034b4523cc85cb570cd44964203aef38f36b7635a",
+      "unchanged": true
+    },
+    {
+      "path": "public/models/mospeada/scott-bernard-animated-original.glb",
+      "sha256": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+      "unchanged": true
+    },
+    {
+      "path": "public/models/mospeada/cyclone-vr052f.glb",
+      "sha256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c",
+      "unchanged": true
+    },
+    {
+      "path": "assets/01-SCOTT/scott-bernard-gear-v2.glb",
+      "sha256": "56fce64c8ce04bcd3768190b0c5c2d06bcf4cacb936724e51267a0515f6321aa",
+      "unchanged": true
+    }
+  ],
+  "checkpoint": "C:\\IT-UP\\MOSPEADA\\.local\\checkpoints\\scott-v2-before-air-squat-upper-body-2026-11-23"
+}

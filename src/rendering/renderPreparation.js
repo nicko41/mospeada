@@ -1,7 +1,7 @@
 import { HalfFloatType, LinearSRGBColorSpace, NoColorSpace, RedFormat, UnsignedByteType, WebGLRenderTarget } from 'three'
 
-export function startupRenderReady(render,openingPhase){
-  return !!render.error||!!render.ready&&(openingPhase==='done'||!!render.openingReady)
+export function startupRenderReady(render,openingPhase,prepareRoute=false){
+  return !!render.error||!!render.ready&&((!prepareRoute&&openingPhase==='done')||!!render.openingReady)
 }
 export function canPrepareLighting(ready,gameReady,openingPhase){
   return !!ready&&!!gameReady&&openingPhase==='done'

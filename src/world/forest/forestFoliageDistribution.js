@@ -1,9 +1,11 @@
-import { forestSourceLayout,forestSurfaceHeight,forestRandom } from './forestLayout.js'
+import { forestLayout,forestSourceLayout,forestSurfaceHeight,forestRandom } from './forestLayout.js'
 import { FOREST_CRASH,crashLocal } from './forestCrashConfig.js'
 import { FOLIAGE_CATALOG } from './foliageCatalog.js'
 import { FOLIAGE_WORLD } from './forestFoliageWorldConfig.js'
 import { crashSiteSample } from './forestCrashSite.js'
 import {forestRouteDistance} from './forestSurface.js'
+import {forestBoundaryLayout} from './forestBoundaries.js'
+import {createTreeBasePlants,treeBaseSectorIndex} from './forestTreeBasePlants.js'
 
 const anchors=Object.values(forestSourceLayout).flat().filter(p=>p.kind==='tree'||p.kind==='rock'),anchorSize=8,grid=new Map()
 for(const p of anchors){const key=`${Math.floor(p.x/anchorSize)},${Math.floor(p.z/anchorSize)}`;if(!grid.has(key))grid.set(key,[]);grid.get(key).push(p)}
@@ -27,6 +29,7 @@ export function foliageWorldDensity(x,z,env=environment(x,z)){
   return density*clump
 }
 const categories=Object.fromEntries(['pasto','hierbas','arbustos','helechos','vegetacion-con-rocas'].map(c=>[c,FOLIAGE_CATALOG.entries.map((e,i)=>({...e,index:i})).filter(e=>e.category===c)]))
+const rootSectors=treeBaseSectorIndex(createTreeBasePlants([...Object.values(forestLayout).flat(),...Object.values(forestBoundaryLayout.byName).flat()].filter(p=>p.kind==='tree'),{allowed:(x,z)=>Number.isFinite(forestSurfaceHeight(x,z))&&forestRouteDistance(x,z)>1.4&&!crashSiteSample(x,z).destroyed}))
 function choose(random,env){const r=random(),category=r<.55?'pasto':r<.78?'hierbas':r<.9?'helechos':r<.98?'arbustos':env.rock<3?'vegetacion-con-rocas':'pasto';const pool=categories[category];return pool[Math.floor(random()*pool.length)]}
 
 // Generated once in a worker, independently of camera direction. Positions and
@@ -48,6 +51,7 @@ export function generateFoliageSector(sx,sz,seed=FOLIAGE_WORLD.seed,region=null)
     const damage=region?null:crashSiteSample(x,z)
     if(!damage||!damage.destroyed&&item.rank<Math.pow(1-damage.damage,4))items.push(item)
   }
+  const roots=(region?.rootSectors||rootSectors).get(`${sx},${sz}`)||[];items.push(...roots)
   const count=items.length,matrices=new Float32Array(count*16),colours=new Float32Array(count*3),rects=new Float32Array(count*4),forms=new Float32Array(count*4),fades=new Float32Array(count*4),contacts=[]
   const bounds=[Infinity,Infinity,Infinity,-Infinity,-Infinity,-Infinity]
   for(let i=0;i<count;i++){
@@ -57,9 +61,9 @@ export function generateFoliageSector(sx,sz,seed=FOLIAGE_WORLD.seed,region=null)
     const r=p.height*e.width/e.height*Math.max(e.anchor[0],1-e.anchor[0])+ .05
     bounds[0]=Math.min(bounds[0],p.x-x0-r);bounds[2]=Math.min(bounds[2],p.z-z0-r);bounds[1]=Math.min(bounds[1],ground-.06)
     bounds[3]=Math.max(bounds[3],p.x-x0+r);bounds[5]=Math.max(bounds[5],p.z-z0+r);bounds[4]=Math.max(bounds[4],ground+p.height)
-    if(!region?.skipContacts&&p.height>.65&&p.rank<.18)contacts.push({x:p.x,z:p.z,height:p.height,scale:p.height,sprite:e.id,kind:'foliageCard'})
+    if(!p.treeBase&&!region?.skipContacts&&p.height>.65&&p.rank<.18)contacts.push({x:p.x,z:p.z,height:p.height,scale:p.height,sprite:e.id,kind:'foliageCard'})
   }
-  return{id:`${sx},${sz}`,sx,sz,x:x0,z:z0,count,matrices,colours,rects,forms,fades,bounds,contacts}
+  return{id:`${sx},${sz}`,sx,sz,x:x0,z:z0,count,treeBaseCount:roots.length,matrices,colours,rects,forms,fades,bounds,contacts}
 }
 export function generateFoliageWorld(progress=()=>{}){
   const sectors=[],n=FOLIAGE_WORLD.worldSize/FOLIAGE_WORLD.sectorSize;let total=0

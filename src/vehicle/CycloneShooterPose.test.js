@@ -117,8 +117,17 @@ test('aim extends the original right arm/hand while the left grip remains fixed,
   combatPose.applyArmor(point,false,armor.state,1/60)
   for(const r of nativeRest)assert.deepEqual(r.b.quaternion.toArray(),r.q,'Rest retains the exact pre-weapon Armor pose')
   instance.armorArms=new ArmorArmMotion(instance)
+  for(const phase of ['compress','pushOff','powered','coast','fall','recover']){
+    const maneuver={...armor.state,jump:{phase,launched:!['compress','pushOff'].includes(phase),phaseTime:.02,elapsed:.3},vy:phase==='fall'?-10:12,height:8}
+    for(let frame=0;frame<40;frame++){
+      step();instance.armorArms.apply({active:true,state:maneuver},{bank:0},1/60,false)
+      combatPose.applyArmor(point,true,maneuver,1/60);weapon.present(instance,true,null)
+    }
+    assert.ok(combatPose.aimBlend>.99,`${phase}: keep aiming throughout the vertical strafe`)
+    const barrel=new Vector3(-1,0,0).applyQuaternion(weapon.root.getWorldQuaternion(new Quaternion())).normalize()
+    assert.ok(barrel.dot(combatPose.point.clone().sub(weapon.getMuzzle(new Vector3())).normalize())>.995,`${phase}: the actual muzzle remains aligned`)
+  }
   for(const maneuver of [
-    {...armor.state,jump:{phase:'fall',launched:true},vy:-4,height:2},
     {...armor.state,diveBlend:1},
     {...armor.state,groundLanding:{phase:'impact'}},
   ]){
@@ -126,7 +135,7 @@ test('aim extends the original right arm/hand while the left grip remains fixed,
       step();instance.armorArms.apply({active:true,state:maneuver},{bank:0},1/60,false)
       const native=[right.a,right.b,right.c,...combatPose.spines].map(b=>({b,q:b.quaternion.toArray()}))
       combatPose.applyArmor(point,true,maneuver,1/60)
-      for(const r of native)assert.deepEqual(r.b.quaternion.toArray(),r.q,'Jump/Ctrl descent/landing must preserve the native animated arm, even while aim is held')
+      for(const r of native)assert.deepEqual(r.b.quaternion.toArray(),r.q,'Explicit Ctrl landing must preserve its full-body arm gesture')
       assert.equal(combatPose.aimBlend,0)
     }
   }

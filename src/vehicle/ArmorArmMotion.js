@@ -1,6 +1,6 @@
 import {Quaternion,Vector3} from 'three'
 import {landingArmSamples} from './ArmorLandingMotion.js'
-import {isJumpCharging} from './armorJumpMotion.js'
+import {isJumpCharging,jumpUsesStrafePose} from './armorJumpMotion.js'
 const damp=(a,b,k,dt)=>a+(b-a)*(1-Math.exp(-k*dt))
 
 // Secondary gestures AFTER the complete native gait. Original T-pose arms
@@ -23,8 +23,9 @@ export class ArmorArmMotion{
     if(!armor?.active){this.lift=this.sway=this.jump=0;return}
     if(armor.state.groundLanding){this.lift=this.sway=this.jump=0;return}
     if(isJumpCharging(armor.state)){this.lift=this.sway=0;this.jump=.85;return}
-    const a=armor.state,jumpTarget=a.jump?(a.jump.phase==='powered'?.95:a.vy>1?.85:.65):0
-    const target=Math.max((a.diveBlend||0)*.95,a.mode==='ARMOR_GROUND'?a.settle*.85:0)
+    const a=armor.state,strafe=jumpUsesStrafePose(a),jumpTarget=a.jump&&!strafe?(a.jump.phase==='powered'?.95:a.vy>1?.85:.65):0
+    if(strafe)this.jump=this.lift=0
+    const target=strafe?0:Math.max((a.diveBlend||0)*.95,a.mode==='ARMOR_GROUND'?a.settle*.85:0)
     const sway=a.mode==='ARMOR_HOVER'||a.jump?-(body?.bank||0)*a.boostBlend*.55:0
     if(!paused){this.lift=damp(this.lift,target,10,dt);this.sway=damp(this.sway,sway,9,dt);this.jump=damp(this.jump,jumpTarget,a.jump?11:8,dt)}
     if(this.lift<1e-5&&Math.abs(this.sway)<1e-5&&this.jump<1e-5)return

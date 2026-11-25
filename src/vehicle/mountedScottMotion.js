@@ -137,13 +137,14 @@ export class MountedScottMotion {
       allowedStand = Math.min(allowedStand, Math.max(0, target.y + vertical - origin.y))
     }
     hip.y += allowedStand - boost * c.boostRiderCrouch - impact * .025 - reverse * .025
+    if(this.minimumSeatedHipY!==undefined)hip.y=Math.max(hip.y,this.minimumSeatedHipY)
     this.hips.position.copy(this.hips.parent.worldToLocal(this.body.localToWorld(hip))); this.wrapper.updateMatrixWorld(true)
     let flex = boost * c.boostRiderLean + brake * c.brakeRiderLean + impact * .06 + stand * c.riderStandTorsoLean
     const axis = new T.Vector3(1, 0, 0).applyQuaternion(rotation(this.body))
     const spineNames = ['Spine', 'Spine1', 'Spine2'], spineBase = spineNames.map(n => this.bones.get(n).quaternion.clone())
     const applyFlex = angle => {
       spineNames.forEach((n, i) => this.bones.get(n).quaternion.copy(spineBase[i])); this.wrapper.updateMatrixWorld(true)
-      for (const name of spineNames) this.worldRotation(this.bones.get(name), rotation(this.bones.get(name)).premultiply(new T.Quaternion().setFromAxisAngle(axis, angle / 3)))
+      for (const [i,name] of spineNames.entries()) this.worldRotation(this.bones.get(name), rotation(this.bones.get(name)).premultiply(new T.Quaternion().setFromAxisAngle(axis, angle * (this.torsoFlexWeights?.[i] ?? 1/3))))
     }
     const handsReach = () => this.limbs.filter(l => !l.leg).every(l => point(l.a).distanceTo(this.body.localToWorld(l.target.clone())) < l.l1 + l.l2 - .015)
     applyFlex(flex)
@@ -203,7 +204,7 @@ export class MountedScottMotion {
         const soleWorld = this.instance.skins[0].mesh
         const contact = limb.soleIds.reduce((p, i) => p.add(soleWorld.localToWorld(soleWorld.getVertexPosition(i, new T.Vector3()))), new T.Vector3()).divideScalar(limb.soleIds.length)
         feet[limb.side] = { ankle: point(limb.c).toArray(), sole: this.body.worldToLocal(contact.clone()).toArray(), worldSole: contact.toArray(), target: target.toArray(), stripBottom: limb.stripBottom, groundBlend, toeDown }
-      } else handError = Math.max(handError, this.solve(limb, target, pole, orientation))
+      } else if(!this.preserveMountedArms) handError = Math.max(handError, this.solve(limb, target, pole, orientation))
     }
     this.diagnostics = { stand, standHeight: allowedStand, torsoFlex: flex, boost, brake, impact, handError, footError, head: headPose, feet, hip: this.body.worldToLocal(point(this.hips)).toArray() }
   }

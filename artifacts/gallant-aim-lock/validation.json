@@ -1,0 +1,25 @@
+{
+  "count": 15,
+  "squads": 4,
+  "total": 15,
+  "text": "Seguí y protegé a Rand · Eliminá a los 15 Invid",
+  "x": 381,
+  "y": 242,
+  "locked": {
+    "target": 0,
+    "marker": "true",
+    "health": 16
+  },
+  "tracking": {
+    "same": true,
+    "error": 0
+  },
+  "firing": {
+    "dead": true,
+    "hits": 16,
+    "shots": 16,
+    "locked": false
+  },
+  "gl": 0,
+  "errors": []
+}

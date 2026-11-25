@@ -10,6 +10,7 @@ import {ForestOpeningShot,FOREST_OPENING} from './forestOpeningShot.js'
 import musicUrl from '../../../assets/sound/01-intro-Robotech-Roy-Fokker-s-Theme.mp3'
 import lifelineUrl from '../../../assets/sound/02-Robotech-Lifeline.mp3'
 import cycloneUrl from '../../../assets/sound/03-Robotech-Cyclone.mp3'
+import victoryUrl from '../../../assets/sound/04-Robotech-Mission-Accomplished.mp3'
 import {ForestMusic} from './ForestMusic.js'
 import {stage4World} from './forestStage4Config.js'
 import './forestOpening.css'
@@ -17,7 +18,7 @@ import './forestOpening.css'
 class OpeningController{
   constructor(runtime,camera,scene){
     Object.assign(this,{runtime,camera,scene});this.active=store.snapshot().phase!=='done';this.holding=false;this.phase='loading';this.elapsed=0;this.suspended=document.hidden;this.disposed=false
-    this.music=new ForestMusic({intro:musicUrl,lifeline:lifelineUrl,cyclone:cycloneUrl},{volume:FOREST_OPENING.volume});this.audio=this.music.tracks.intro
+    this.music=new ForestMusic({intro:musicUrl,lifeline:lifelineUrl,cyclone:cycloneUrl,victory:victoryUrl},{volume:FOREST_OPENING.volume});this.audio=this.music.tracks.intro
     this.music.suspend(document.hidden)
     this.unlockMusic=()=>this.music.unlock()
     this.musicVisibility=()=>this.music.suspend(document.hidden||!this.active&&runtime.paused)

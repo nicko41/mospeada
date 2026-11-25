@@ -6,6 +6,7 @@ import {forestPathX} from './forestSurface.js'
 import {ForestBatch} from './ForestBatch.js'
 import {ForestSpriteBatch,foliageCardMaterial} from './forestFoliageLibrary.js'
 import {cylinderCollider} from '../../player/collisionWorld.js'
+import {createTreeBasePlants} from './forestTreeBasePlants.js'
 
 export const FOREST_SIDE_BANDS=Object.freeze({step:3,treeStep:4.8,depths:[8,14,21,29,38],distance:175})
 // 768 m repeats with the recycled Plano 3; adjacent tiles share the same edge.
@@ -44,6 +45,7 @@ export function createForestSideLayout({minZ,maxZ,pathAt,heightAt,widthAt=forest
    if(row%2===0)plant(x,z,between(2.8,4),side,false,true)
   }
  }
+ for(const p of createTreeBasePlants(trunks,{seed:seed+71,allowed:valid})){tag(p,p.side);p.y=p.ground-.025;sprites.push(p)}
  return {byName,sprites,thickets,trunks,minZ,maxZ}
 }
 

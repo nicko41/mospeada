@@ -1,6 +1,6 @@
 import {FOREST_STAGE4,stage4Edge} from './forestStage4Config.js'
 
-export const FOREST_MUSIC=Object.freeze({introEnd:33,crossfade:4,desertFade:.8,volume:.48})
+export const FOREST_MUSIC=Object.freeze({introEnd:33,crossfade:4,desertFade:.8,volume:.48,victoryEnd:25,victoryFade:2})
 const clamp=n=>Math.max(0,Math.min(1,n))
 
 export function reachedDesertDrop(state,world){
@@ -9,14 +9,14 @@ export function reachedDesertDrop(state,world){
   return world.distance(state.z)>=edge&&(state.airborne||state.height<world.position.y-FOREST_STAGE4.drop*.5)
 }
 
-// Three streamed HTML audio elements, sharing the opening's original player.
+// Streamed HTML audio elements, sharing the opening's original player.
 // Media time drives the 33 s cue; no decoded WebAudio buffers or timer loop.
 export class ForestMusic{
   constructor(urls,{createAudio=url=>new Audio(url),volume=FOREST_MUSIC.volume}={}){
     this.volume=volume;this.tracks={};this.needed=new Set();this.pending=new Map();this.blocked=new Set();this.failed=new Set();this.phase='intro';this.started=false;this.suspended=false;this.disposed=false
     for(const [key,url]of Object.entries(urls)){
       const audio=this.tracks[key]=createAudio(url)
-      audio.preload='auto';audio.volume=0;audio.loop=key!=='intro';audio.load()
+      audio.preload='auto';audio.volume=0;audio.loop=key!=='intro'&&key!=='victory';audio.load()
       audio.addEventListener('error',()=>this.failed.add(key))
     }
   }
@@ -48,8 +48,23 @@ export class ForestMusic{
     else for(const key of this.needed)this.play(key).catch(()=>{})
   }
   stop(key){this.tracks[key].volume=0;this.tracks[key].pause();this.needed.delete(key)}
+  startVictory(){
+    if(this.disposed||this.phase==='victory'||this.phase==='complete')return Promise.resolve()
+    for(const key of [...this.needed])this.stop(key)
+    this.started=true;this.phase='victory';this.victoryGain=1
+    const audio=this.tracks.victory;if(!audio)return Promise.resolve()
+    audio.currentTime=0;audio.volume=this.volume;this.needed.add('victory')
+    return this.play('victory',true).catch(()=>{})
+  }
+  setVictoryGain(value){this.victoryGain=clamp(value);if(this.tracks.victory)this.tracks.victory.volume=this.volume*this.victoryGain}
+  finishVictory(){if(this.tracks.victory){this.stop('victory');if(this.tracks.victory.currentTime>FOREST_MUSIC.victoryEnd)this.tracks.victory.currentTime=FOREST_MUSIC.victoryEnd}this.phase='complete'}
+  cancelVictory(){
+    if(this.disposed||this.phase!=='victory'&&this.phase!=='complete')return
+    if(this.tracks.victory)this.stop('victory')
+    this.startLifeline().catch(()=>{})
+  }
   enterDesert(){
-    if(this.phase==='cyclone')return
+    if(this.phase==='cyclone'||this.phase==='victory'||this.phase==='complete')return
     this.started=true;this.phase='cyclone';this.desertAge=0
     this.outgoing={intro:this.tracks.intro.volume,lifeline:this.tracks.lifeline.volume}
     this.needed.add('cyclone');this.play('cyclone').catch(()=>{})
@@ -58,7 +73,12 @@ export class ForestMusic{
     this.suspend(paused)
     if(this.disposed||this.suspended||!this.started)return
     if(reachedDesertDrop(state,world))this.enterDesert()
-    if(this.phase==='intro'){
+    if(this.phase==='victory'){
+      const time=this.tracks.victory?.currentTime||0
+      const fade=clamp((FOREST_MUSIC.victoryEnd-time)/FOREST_MUSIC.victoryFade)
+      this.setVictoryGain(Math.min(this.victoryGain,fade*fade*(3-2*fade)))
+      if(time>=FOREST_MUSIC.victoryEnd)this.finishVictory()
+    }else if(this.phase==='intro'){
       const time=this.tracks.intro.currentTime
       const blend=clamp((time-(FOREST_MUSIC.introEnd-FOREST_MUSIC.crossfade))/FOREST_MUSIC.crossfade)
       this.tracks.intro.volume=this.volume*Math.min(1,time)*(1-blend)

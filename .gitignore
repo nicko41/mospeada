@@ -48,3 +48,6 @@ id_ed25519
 /artifacts/**
 !/artifacts/**/
 !/artifacts/**/*.json
+
+# Browser session data is local, including JSON files inside the profile.
+/artifacts/armor-evasion-browser-profile/

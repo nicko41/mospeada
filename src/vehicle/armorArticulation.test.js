@@ -145,7 +145,7 @@ test('G and Ctrl land through preparation, descent, impact and recovery with rea
   f.instance.armorLanding=new ArmorLandingMotion(f.instance)
   for(const reason of ['toggle','dive']){
     Object.assign(a,{mode:'ARMOR_HOVER',y:-a.soleOffset+(reason==='dive'?5:.8),height:reason==='dive'?5:.8,vx:0,vz:0,vy:reason==='dive'?8:0,speed:0,descendHeld:false,jumpHeld:false})
-    if(reason==='dive')a.jump={phase:'powered',elapsed:.2,originY:a.y-2,ceilingY:a.y+8}
+    a.jump=null
     c.sync();f.tick()
     if(reason==='toggle')c.toggle()
     const phases=new Set(),yaw=a.yaw;let lowest=Infinity,backward=false,raised=false,peakBend=0
@@ -175,7 +175,7 @@ test('G and Ctrl land through preparation, descent, impact and recovery with rea
   assert.deepEqual(f.source.animations.map(clip=>clip.toJSON()),original)
 })
 
-test('a jump lowers the actual pelvis over planted soles, extends the knees, and only then launches and gathers the legs',async()=>{
+test('a jump lowers the actual pelvis over planted soles, extends the knees, then flies with straight legs',async()=>{
   const f=await fixture(),c=f.controller,a=c.state
   f.instance.armorLanding=new ArmorLandingMotion(f.instance)
   Object.assign(a,{mode:'ARMOR_GROUND',y:-a.soleOffset+.025,height:.025,vx:0,vz:0,vy:0,speed:0,jump:null,jumpHeld:false})
@@ -183,8 +183,8 @@ test('a jump lowers the actual pelvis over planted soles, extends the knees, and
   const hips=()=>f.bones.get('mixamorigHips').getWorldPosition(new T.Vector3()).y
   const knee=side=>{const [h,k,f1]=['UpLeg','Leg','Foot'].map(s=>f.bones.get(`mixamorig${side}${s}`).getWorldPosition(new T.Vector3()));return Math.PI-h.sub(k).angleTo(f1.sub(k))}
   const start=hips(),phases=new Set();let low=start,maxBend=0,endExtension=Infinity,airBend=0
-  for(let i=0;i<65;i++){
-    c.update({rise:true},1/60);f.tick();const j=a.jump;phases.add(j?.phase)
+  for(let i=0;i<130;i++){
+    c.update({rise:true},1/120);f.tick();const j=a.jump;phases.add(j?.phase)
     assert.ok(f.articulation.diagnostics.legs.every(l=>l.error<1e-6))
     if(j?.launched===false){
       assert.equal(a.vy,0,'No vertical launch during the preparation')
@@ -199,7 +199,24 @@ test('a jump lowers the actual pelvis over planted soles, extends the knees, and
   assert.ok(phases.has('compress')&&phases.has('pushOff')&&phases.has('powered'))
   assert.ok(start-low>.12,`Actual pelvis must visibly lower before takeoff: ${start-low} m`)
   assert.ok(maxBend>.7&&endExtension<maxBend*.5,'Legs visibly load then extend before leaving the floor')
-  assert.ok(airBend>.7,'Both actual knees gather again after the impulse')
+  assert.ok(airBend<.25,'Both actual knees remain extended after the impulse')
+})
+
+test('both jump leg variants physically land and finish on the launch mode with the full rig and sole guard',async()=>{
+ const f=await fixture(),c=f.controller,a=c.state
+ f.instance.armorLanding=new ArmorLandingMotion(f.instance)
+ for(const mode of ['ARMOR_GROUND','ARMOR_HOVER'])for(const stance of ['closed','open']){
+  Object.assign(a,{mode,y:-a.soleOffset+(mode==='ARMOR_GROUND'?.025:.8),height:mode==='ARMOR_GROUND'?.025:.8,vx:0,vz:0,vy:0,speed:0,jump:null,jumpHeld:false,groundLanding:null})
+  let sawJump=false
+  for(let i=0;i<900;i++){
+   c.update({rise:i<45},1/60)
+   if(a.jump){a.jump.stance=stance;sawJump=true}
+   f.tick()
+   if(sawJump&&!a.jump)break
+  }
+  assert.equal(a.jump,null,`${mode}/${stance} must complete after real foot contact; height ${a.height}, vy ${a.vy}`)
+  assert.equal(a.mode,mode)
+ }
 })
 
 

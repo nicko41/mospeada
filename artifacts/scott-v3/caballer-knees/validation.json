@@ -1,0 +1,82 @@
+{
+  "scope": "V3 caballers only: preserve original waist starts and fit length to actual lateral knee caps",
+  "fit": [
+    {
+      "side": "Left",
+      "piece": "caballero-right",
+      "waist": [
+        0.06583386635211483,
+        1.1449616853748341,
+        -0.43888440930568295
+      ],
+      "upperPivot": [
+        0.06583386635211483,
+        1.144961685374834,
+        -0.43888440930568307
+      ],
+      "waistError": 2.482534153247273e-16,
+      "longitudinalScale": 0.8467690893098122,
+      "socket": [
+        0.29710642155993405,
+        0.5295679962061931,
+        -0.3192145227077597
+      ],
+      "connector": [
+        0.29710642155993405,
+        0.5295679962061928,
+        -0.31921452270775974
+      ],
+      "error": 3.3766115072321297e-16,
+      "weight": 1
+    },
+    {
+      "side": "Right",
+      "piece": "caballero-right_1",
+      "waist": [
+        -0.03758408950733058,
+        1.136018779344525,
+        -0.42417422403289345
+      ],
+      "upperPivot": [
+        -0.03758408950733058,
+        1.1360187793445253,
+        -0.4241742240328936
+      ],
+      "waistError": 2.7755575615628914e-16,
+      "longitudinalScale": 0.8493021926034167,
+      "socket": [
+        -0.3035308675802342,
+        0.5314795974513393,
+        -0.3192478949853956
+      ],
+      "connector": [
+        -0.30353086758023406,
+        0.5314795974513395,
+        -0.31924789498539574
+      ],
+      "error": 2.9893669801409083e-16,
+      "weight": 1
+    }
+  ],
+  "unchanged": {
+    "originalWaistPivots": true,
+    "widthAndThickness": true,
+    "otherAssemblyMatrices": true,
+    "nativeBonePose": true,
+    "nativeScottGeometryAndSkinning": true,
+    "sourceAndAnimatedGlbs": true
+  },
+  "authorizedAdjustment": "V3-only longitudinal presentation scaling about the original upper pivot; original geometry buffers are not rewritten",
+  "validation": {
+    "testsPassed": 19,
+    "testsFailed": 0,
+    "productionBuild": "passed",
+    "visualReview": "Offline renders of the evaluated static Armor pose: front, rear, rear three-quarter and profile",
+    "renders": [
+      "after/armor-front.png",
+      "after/armor-rear.png",
+      "after/armor-rear-three-quarter.png",
+      "after/armor-profile.png"
+    ]
+  }
+}

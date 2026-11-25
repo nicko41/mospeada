@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "scope": "Front chest only",
+  "selectedVertices": 8855,
+  "changedWeights": 6057,
+  "changedBinaryBytes": 125696,
+  "unselectedWeightsUnchanged": true,
+  "existingRigidShoulderPadsUnchanged": true,
+  "redClothUnchanged": true,
+  "geometryAndMaterialsUnchanged": true,
+  "original24BoneRigAnd16ClipsUnchanged": true,
+  "ridingPoseMatricesIdentical": true,
+  "rigidSurface": {
+    "before": {
+      "maxRigidSurfaceErrorMeters": 0.11362564845198256
+    },
+    "after": {
+      "maxRigidSurfaceErrorMeters": 5.125396027766235e-16
+    }
+  },
+  "upperDiscRegions": {
+    "Left": {
+      "vertices": 1118,
+      "maxDistanceChangeMeters": 8.893727143632901e-10
+    },
+    "Right": {
+      "vertices": 944,
+      "maxDistanceChangeMeters": 8.467790496569094e-10
+    }
+  }
+}

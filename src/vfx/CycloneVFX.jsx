@@ -21,6 +21,7 @@ import {ambientVFXState} from './ambientVFXState.js'
 import {stage4World} from '../world/forest/forestStage4Config.js'
 import {ScoutFlightVFX} from './ScoutFlightVFX.js'
 import {ScoutGroundShadows} from './ScoutGroundShadows.js'
+import {CuffMissileVFX} from './CuffMissileVFX.js'
 import groundExplosionUrl from '../../assets/texturas/explosion-piso.png'
 import airExplosionUrl from '../../assets/texturas/explosion-aire.png'
 import terrainImpactUrl from '../../assets/texturas/impascto-invid-suelo.png'
@@ -48,16 +49,17 @@ function CycloneVFXInstance({ rig, runtime,grassAtlas=null,groundExplosionAtlas=
     const engine = vfx.register('cyclone.engine-smoke', new EngineSmoke(rig))
     const armorBoost = vfx.register('cyclone.armor-boost',new ArmorBoost())
     for(const texture of [groundExplosionAtlas,airExplosionAtlas,terrainImpactAtlas,leafAtlas,blood01Atlas,blood02Atlas])if(texture){texture.colorSpace=SRGBColorSpace;texture.minFilter=texture.magFilter=LinearFilter;texture.generateMipmaps=false;texture.needsUpdate=true}
-    const combat=vfx.register('gallant.combat',new Plano3CombatVFX({explosionAtlases:{ground:groundExplosionAtlas,air:airExplosionAtlas,terrain:terrainImpactAtlas,blood:[blood01Atlas,blood02Atlas]},sampleGround:sampleRideHeight,impactScene:scene}))
+    const combat=vfx.register('gallant.combat',new Plano3CombatVFX({explosionAtlases:{ground:groundExplosionAtlas,air:airExplosionAtlas,terrain:terrainImpactAtlas,blood:[blood01Atlas,blood02Atlas]},sampleGround:sampleRideHeight,impactScene:scene,sharedDust:dust}))
     const tracks=vfx.register('cyclone.wheel-tracks',new WheelTracks(sampleRideHeight))
     runtime.combatVFX=combat
+    const missiles=vfx.register('scott.cuff-missiles',new CuffMissileVFX());runtime.missileVFX=missiles
     const ambient=forest?vfx.register('world.ambient',new AmbientAtmosphere({sampleGround:sampleRideHeight,leafAtlas})):null
     runtime.ambientVFX=ambient
     const wash={front:{position:new Vector3(),normal:new Vector3(0,1,0),forward:new Vector3(),radius:.2},rear:{position:new Vector3(),normal:new Vector3(0,1,0),forward:new Vector3(),radius:.2}}
     const surfaceFX=forest?new ForestWheelFX():null
     scene.add(vfx.root); current.current = { vfx, dust,randDust,scoutFlight,scoutShadows, ejecta, engine, armorBoost, tracks,ambient, wash,surfaceFX,randSurfaceFX:forest?new ForestWheelFX():null,randTracks:{enabled:false},randDustConfig:{},sharedDustConfig:{},publish: 0 }
     if (import.meta.env.DEV) window.__MOSPEADA_VFX__ = { vfx, dust,randDust,scoutFlight,scoutShadows, ejecta, engine, armorBoost,tracks,surfaceFX,ambient,ambientStore:ambientVFXState, store: vfxState, engineStore: engineVFXState }
-    return () => { if(runtime.combatVFX===combat)delete runtime.combatVFX;if(runtime.ambientVFX===ambient)delete runtime.ambientVFX;if(runtime.scoutFlightVFX===scoutFlight)delete runtime.scoutFlightVFX;if(runtime.scoutShadows===scoutShadows)delete runtime.scoutShadows;vfx.dispose(); current.current = null; if (import.meta.env.DEV) delete window.__MOSPEADA_VFX__ }
+    return () => { if(runtime.missileVFX===missiles)delete runtime.missileVFX;if(runtime.combatVFX===combat)delete runtime.combatVFX;if(runtime.ambientVFX===ambient)delete runtime.ambientVFX;if(runtime.scoutFlightVFX===scoutFlight)delete runtime.scoutFlightVFX;if(runtime.scoutShadows===scoutShadows)delete runtime.scoutShadows;vfx.dispose(); current.current = null; if (import.meta.env.DEV) delete window.__MOSPEADA_VFX__ }
   }, [scene, rig,grassAtlas,groundExplosionAtlas,airExplosionAtlas,terrainImpactAtlas,leafAtlas,blood01Atlas,blood02Atlas])
   useFrame(({ camera }, delta) => {
     const effect = current.current, state = runtime.state, wheel = runtime.weathering?.contacts.wheels.rear

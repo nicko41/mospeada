@@ -1,0 +1,76 @@
+{
+  "sha256": "56fce64c8ce04bcd3768190b0c5c2d06bcf4cacb936724e51267a0515f6321aa",
+  "bytes": 31455992,
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Mesh_0"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh_0",
+      "primitives": [
+        {
+          "attrs": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "vertices": 426264,
+          "triangles": 801630,
+          "bounds": {
+            "bufferView": 0,
+            "componentType": 5126,
+            "count": 426264,
+            "max": [
+              0.6498929858207703,
+              0.9496849775314331,
+              0.43741199374198914
+            ],
+            "min": [
+              -0.650098979473114,
+              -0.9506199955940247,
+              -0.4360229969024658
+            ],
+            "type": "VEC3"
+          }
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material_0",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "bufferView": 4,
+      "mimeType": "image/jpeg",
+      "name": "Image_2"
+    },
+    {
+      "bufferView": 5,
+      "mimeType": "image/png",
+      "name": "texture"
+    },
+    {
+      "bufferView": 6,
+      "mimeType": "image/jpeg",
+      "name": "Image_1"
+    }
+  ]
+}

@@ -10,6 +10,8 @@ import {playerCombat} from '../player/playerCombat.js'
 // Complete source clips drive locomotion and the corrected mount crossing.
 // A separate, reset-every-frame posture layer runs only while riding/seating.
 export function updateScottGameplay(instance, authored, clips, runtime, wrapper, delta) {
+  instance.hitMotion?.restore()
+  instance.missilePose?.restore()
   instance.defeatMotion?.restore()
   instance.armorHands?.restore()
   instance.armorGallantPose?.restore()
@@ -23,6 +25,7 @@ export function updateScottGameplay(instance, authored, clips, runtime, wrapper,
   instance.returnMotion?.restore()
   instance.transformationPose?.restore()
   instance.mountedMotion?.restore()
+  instance.v2RidingPose?.restore()
   // Armor presents its reference translations after the mixer. Restore the
   // evaluated clip values first: a paused RidingPose may share the same action
   // across both modes, so Three's unchanged-value cache won't write them again.
@@ -70,7 +73,8 @@ export function updateScottGameplay(instance, authored, clips, runtime, wrapper,
     if (changedFrame) instance.frameTransition = { position: wrapper.position.clone(), quaternion: wrapper.quaternion.clone(), time: 0, duration: blend }
   }
   instance.action.paused = hold
-  instance.action.setEffectiveTimeScale(armor&&name.startsWith('Armor_')?Math.min(3,armor.state.speed/instance.armorLocomotion.info.get(name).speed):1)
+  const backward=armor?.state.aiming&&armor.state.localForward<-Math.abs(armor.state.localSide)?-1:1
+  instance.action.setEffectiveTimeScale(armor&&name.startsWith('Armor_')?backward*Math.min(3,armor.state.speed/instance.armorLocomotion.info.get(name).speed):1)
   if (hold) { instance.action.enabled = true; instance.action.time = time }
   instance.mixer.update(dt)
   for (const retired of instance.retiredActions || []) { retired.remaining -= dt; if (retired.remaining <= 0 && retired.action !== instance.action) retired.action.stop() }
@@ -102,7 +106,10 @@ export function updateScottGameplay(instance, authored, clips, runtime, wrapper,
     instance.bones.get('mixamorigHips').position.copy(instance.armorBaseHipPosition)
     wrapper.updateMatrixWorld(true)
   }
-  else if (mode === 'mounted' || mode === 'stopping') instance.mountedMotion.apply(s, sampleRideHeight, bikeConfig, dt)
+  else if (mode === 'mounted' || mode === 'stopping') {
+    instance.v2RidingPose?.apply(instance.mountedMotion,runtime,wrapper)
+    try{instance.mountedMotion.apply(s, sampleRideHeight, bikeConfig, dt)}finally{instance.v2RidingPose?.finish()}
+  }
   else instance.mountedMotion.applyFeetBlend(riderFootTransition(mode, time, authored.data))
   if (transformPose>0) {
     instance.transformationPose ||= new TransformationScottPose(instance,wrapper)

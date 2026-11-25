@@ -2,7 +2,7 @@ import {Group,Object3D} from 'three'
 import {clone as cloneSkeleton} from 'three/addons/utils/SkeletonUtils.js'
 import {ScoutMechanicalMotion} from './ScoutMechanicalMotion.js'
 
-export const INVID_SCOUT_URL='/models/mospeada/invid-scout-rigged.glb?rig=flight-v3'
+export const INVID_SCOUT_URL='/models/mospeada/invid-scout-rigged.glb?rig=flight-v4-leg-seam'
 // Measured from the supplied GLB (+Y up, face +Z). Each asymmetric barrel
 // aperture was inspected/raycast in source coordinates, not guessed at runtime.
 export const SCOUT_ASSET=Object.freeze({

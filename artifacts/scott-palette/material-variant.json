@@ -1,0 +1,56 @@
+{
+  "input": "public/models/mospeada/scott-bernard-gear-v2-animated.glb",
+  "output": "public/models/mospeada/scott-bernard-gear-v2-classic-palette.glb",
+  "sourceSha256": "b93178cafed8f57104135ae034b4523cc85cb570cd44964203aef38f36b7635a",
+  "outputSha256": "ac1a63093981c48b9d654c2bb331f88492dc4feb6c2613ff9cfe01912cb3ceb3",
+  "reference": "Scott original: area-weighted regional diffuse palette",
+  "counts": {
+    "helmet": 192071,
+    "chest": 497472,
+    "shin": 235638,
+    "pelvis": 247492,
+    "boot": 273007,
+    "thigh": 64645,
+    "knee": 198449
+  },
+  "delta": {
+    "chest": [
+      55,
+      40,
+      40
+    ],
+    "pelvis": [
+      25,
+      13,
+      7
+    ],
+    "thigh": [
+      27,
+      27,
+      37
+    ],
+    "knee": [
+      26,
+      26,
+      38
+    ],
+    "shin": [
+      29,
+      30,
+      40
+    ],
+    "boot": [
+      11,
+      13,
+      26
+    ]
+  },
+  "protectedVisorPixels": 73534,
+  "visorDifferences": 0,
+  "helmetMetalPixels": 0,
+  "geometryUnchanged": true,
+  "skinningUnchanged": true,
+  "rigAndAnimationsUnchanged": true,
+  "originalBinaryPreserved": true,
+  "sourceFilesOverwritten": false
+}

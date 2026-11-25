@@ -1,0 +1,84 @@
+{
+  "initial": {
+    "variant": "v2",
+    "visible": [
+      "v2"
+    ],
+    "sameInstance": true,
+    "sameSkeleton": true,
+    "sameRig": true,
+    "sameTransform": true,
+    "sameArmor": true,
+    "position": [
+      65,
+      -78.25,
+      2.2168647044860395
+    ],
+    "speed": 0,
+    "health": "100",
+    "modelTriangles": 240489,
+    "focus": "BODY",
+    "weaponHand": true
+  },
+  "v1": {
+    "variant": "v1",
+    "visible": [
+      "v1"
+    ],
+    "sameInstance": true,
+    "sameSkeleton": true,
+    "sameRig": true,
+    "sameTransform": true,
+    "sameArmor": true,
+    "position": [
+      65,
+      -78.25,
+      2.2168647044860395
+    ],
+    "speed": 0,
+    "health": "100",
+    "modelTriangles": 10334,
+    "focus": "BODY",
+    "weaponHand": true
+  },
+  "v2": {
+    "variant": "v2",
+    "visible": [
+      "v2"
+    ],
+    "sameInstance": true,
+    "sameSkeleton": true,
+    "sameRig": true,
+    "sameTransform": true,
+    "sameArmor": true,
+    "position": [
+      65,
+      -78.25,
+      2.2168647044860395
+    ],
+    "speed": 0,
+    "health": "100",
+    "modelTriangles": 240489,
+    "focus": "BODY",
+    "weaponHand": true
+  },
+  "moving": {
+    "before": 2.5989084794081747,
+    "after": 4.771727295938415
+  },
+  "transformation": {
+    "phase": "complete",
+    "armorActive": true,
+    "variant": "v1"
+  },
+  "compactBounds": {
+    "x": 566,
+    "y": 398,
+    "width": 54,
+    "height": 62,
+    "right": 20,
+    "bottom": 20
+  },
+  "errors": [],
+  "passed": true
+}

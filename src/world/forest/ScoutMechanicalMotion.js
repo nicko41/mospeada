@@ -1,7 +1,7 @@
 import {AnimationMixer,LoopOnce,LoopRepeat,Matrix4,Vector3,DynamicDrawUsage,InstancedBufferAttribute} from 'three'
 import {SCOUT_JOINTS,SCOUT_MOTION as M} from './scoutMechanicalConfig.js'
 import {ScoutHitReaction} from './ScoutHitReaction.js'
-const soleCache=new WeakMap()
+const soleCache=new WeakMap(),clawCache=new WeakMap()
 
 export class ScoutMechanicalMotion{
   constructor(view,clips){
@@ -22,6 +22,17 @@ export class ScoutMechanicalMotion{
       for(const i of selected)this.soles[side].push(new Vector3().fromBufferAttribute(p,i))
     }
     if(!cached)soleCache.set(g,this.soles)
+    this.claws=clawCache.get(g)
+    if(!this.claws){
+      this.claws=[1,2].map(joint=>{
+        const limits=Array.from({length:3},()=>({min:Infinity,max:-Infinity,a:-1,b:-1}))
+        for(let i=0;i<p.count;i++)if(index.getX(i)===joint&&weight.getX(i)>.99)for(let axis=0;axis<3;axis++){
+          const value=p.getComponent(i,axis),r=limits[axis]
+          if(value<r.min){r.min=value;r.a=i}if(value>r.max){r.max=value;r.b=i}
+        }
+        return [...new Set(limits.flatMap(r=>[r.a,r.b]).filter(i=>i>=0))].map(i=>new Vector3().fromBufferAttribute(p,i))
+      });clawCache.set(g,this.claws)
+    }
     this.sync()
   }
   select(name,manual=false){
@@ -43,6 +54,15 @@ export class ScoutMechanicalMotion{
   }
   reset(){this.hitReaction.reset();this.mixer.stopAllAction();this.current=null;this.name='rest';this.lastMode=null;this.contactAge=Infinity;for(const [i,joint]of this.joints.entries()){joint.position.fromArray(SCOUT_JOINTS[i].pivot);joint.quaternion.identity()}this.sync()}
   dispose(){this.mixer.stopAllAction();this.mixer.uncacheRoot(this.view.model)}
+  clawContactPoint(side,out){
+    const joint=side?2:1,mesh=this.view.levels[0];let lowest=Infinity
+    out.copy(this.view.root.position)
+    for(const probe of this.claws[side?1:0]){
+      this.point.copy(probe).applyMatrix4(this.matrices[joint]).applyMatrix4(mesh.matrixWorld)
+      if(this.point.y<lowest){lowest=this.point.y;out.copy(this.point)}
+    }
+    return out
+  }
   update(scout,dt,sample){
     if(scout.dead){this.hitReaction.reset();this.sync();return}
     if(dt<=0){this.sync();return}
@@ -53,7 +73,7 @@ export class ScoutMechanicalMotion{
     if(Number.isFinite(scout.clawAge)&&scout.clawAge<M.clawDuration){const a=this.select(scout.clawSide?'Claw_R':'Claw_L',true);if(a)a.time=scout.clawAge}
     else if(scout.mode==='descending'){const a=this.select('Landing',true);if(a)a.time=M.landingContact*Math.max(0,Math.min(1,1-gap/2.6))}
     else if(scout.mode==='ground'&&this.contactAge<M.landingDuration-M.landingContact){const a=this.select('Landing',true);if(a)a.time=M.landingContact+this.contactAge}
-    else if(scout.mode==='ground'){const a=this.select(speed>.08?'Walk':'Idle');if(a&&speed>.08)a.setEffectiveTimeScale(Math.max(.25,Math.min(1.35,speed/M.groundSpeed)))}
+    else if(scout.mode==='ground'){const a=this.select(speed>.08?'Walk':'Idle');if(a&&speed>.08)a.setEffectiveTimeScale(Math.max(.25,Math.min(M.runCadence,speed/M.walkReferenceSpeed)))}
     else this.select(scout.mode==='rising'?'Takeoff':'Hover')
     this.mixer.update(dt);this.sync()
     // Ground only: plant the lowest rigid foot on the real terrain by moving

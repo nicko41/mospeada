@@ -30,6 +30,38 @@ async function fixture(){
   const pose=()=>{rig.update(s,flat,bikeConfig);updateScottGameplay(instance,{data},clips,runtime,wrapper,1/60)}
   pose();return{rig,s,entry,runtime,instance,wrapper,bones,pose,source}
 }
+
+test('vertical strafe has stable straight closed/open legs and relinquishes the complete skeleton to directional strafes',async()=>{
+ const f=await fixture(),widths=[]
+ for(const roll of [.1,.9]){
+  let rolls=0
+  const motion=new ArmorLandingMotion(f.instance,()=>{rolls++;return roll}),a=createArmorState({x:0,z:0,height:10,yaw:.4,speed:0}),armor={active:true,state:a,sample:flat}
+  a.height=10;a.jump={phase:'powered',elapsed:.4,launched:true}
+  const base=[...f.bones.values()].map(b=>({b,q:b.quaternion.clone(),p:b.position.clone(),s:b.scale.clone()}))
+  const step=paused=>{motion.restore();motion.apply(armor,1/60,paused);f.wrapper.updateMatrixWorld(true)}
+  const feet=()=>['Left','Right'].map(side=>f.bones.get(`mixamorig${side}Foot`).getWorldPosition(new T.Vector3()))
+  step();assert.equal(a.jump.stance,roll<.5?'closed':'open');widths.push(feet()[0].distanceTo(feet()[1]))
+  for(const leg of motion.jumpLegs.filter(r=>r.bone.name.endsWith('Leg')&&!r.thigh))assert.ok(leg.bone.quaternion.angleTo(leg.rest)<1e-7,'Knees use the original straight chain, not air_squat')
+  for(const foot of motion.feet){
+    const toeForward=new T.Vector3(0,0,1).applyQuaternion(foot.reference.clone().invert()).applyQuaternion(foot.bone.getWorldQuaternion(new T.Quaternion()))
+    assert.ok(toeForward.y<-.9,'Mesh boot tips stay down, independent of the rig ankle-to-toe vector')
+  }
+  for(const [forward,side] of [[1,0],[-1,0],[0,1],[0,-1]]){
+   Object.assign(a,{boosting:true,thrustForward:forward,thrustSide:side})
+   for(let i=0;i<45;i++)step()
+   assert.equal(rolls,1);assert.equal(motion.diagnostics.pose,'strafe');assert.equal(motion.applied,false)
+   base.forEach(r=>assert.ok(r.b.quaternion.angleTo(r.q)<1e-7,'Jump must not change any native strafe bone, including ankles'))
+   const paused=base.map(r=>r.b.quaternion.clone());for(let i=0;i<5;i++)step(true)
+   base.forEach((r,i)=>assert.ok(r.b.quaternion.angleTo(paused[i])<1e-7))
+  }
+  a.jump.poseCancelled=true;a.boosting=false;for(let i=0;i<60;i++)step()
+  assert.equal(motion.diagnostics.pose,'regular');assert.equal(motion.applied,false)
+  base.forEach(r=>assert.ok(r.b.quaternion.angleTo(r.q)<1e-7,'Releasing horizontal boost retains the regular pose until this flight ends'))
+  motion.restore();base.forEach(r=>{assert.ok(r.b.quaternion.angleTo(r.q)<1e-7);assert.deepEqual(r.b.position,r.p);assert.deepEqual(r.b.scale,r.s)})
+  a.jump={phase:'powered',elapsed:.4,launched:true};step();assert.equal(rolls,2);motion.restore()
+ }
+ assert.ok(widths[1]>widths[0]+.25,`Open stance must be visibly wider: ${widths}`)
+})
 test('Armor activation absorbs the presentation offset once and preserves Scott world placement and original skin',async()=>{
   const f=await fixture(),hip=f.bones.get('mixamorigHips').getWorldPosition(new T.Vector3()),head=f.bones.get('mixamorigHead').getWorldPosition(new T.Vector3()),offset=f.entry.actorOffset.clone(),old={x:f.s.x,z:f.s.z,y:f.s.height}
   const geometry=f.instance.skins[0].mesh.geometry,weights=geometry.attributes.skinWeight.array.slice(),controller=new ArmorController(f.runtime,f.rig,flat,()=>true);f.runtime.armorController=controller
@@ -137,7 +169,7 @@ test('arms react to diving and touchdown, and sway opposite lateral boost withou
   a.mode='ARMOR_GROUND';a.boostBlend=0;arms.apply(armor,{bank:0},1/60,false);assert.equal(arms.applied,false)
 })
 
-test('jumping gathers both knees even with full forward boost and sweeps both arms backward using the source poses',async()=>{
+test('pure vertical jump leaves leg posing to the jump layer and sweeps both arms backward',async()=>{
   const f=await fixture(),reaction=new ArmorReactiveMotion(f.instance,f.wrapper),arms=new ArmorArmMotion(f.instance)
   const a=createArmorState({x:0,z:0,height:4,yaw:0,speed:0}),armor={active:true,state:a}
   Object.assign(a,{height:4,vy:10,ay:22,localForward:32,boostBlend:1,jump:{phase:'powered'}})
@@ -145,7 +177,7 @@ test('jumping gathers both knees even with full forward boost and sweeps both ar
   const hand=side=>f.bones.get(`mixamorig${side}Hand`).getWorldPosition(new T.Vector3()).sub(f.bones.get(`mixamorig${side}Shoulder`).getWorldPosition(new T.Vector3())).dot(axis)
   const base=['Left','Right'].map(hand)
   for(let i=0;i<60;i++){arms.restore();reaction.restore();reaction.apply(a,1/60,false);arms.apply(armor,reaction.diagnostics,1/60,false);f.wrapper.updateMatrixWorld(true)}
-  assert.ok(reaction.diagnostics.boost>.9&&reaction.diagnostics.tuck>.5)
+  assert.ok(reaction.diagnostics.boost>.9);assert.equal(reaction.diagnostics.tuck,0)
   assert.ok(arms.diagnostics.jumpBack>.9)
   for(const [i,side]of ['Left','Right'].entries())assert.ok(hand(side)<base[i]-.08,`${side} arm must sweep backward during the jump`)
 })

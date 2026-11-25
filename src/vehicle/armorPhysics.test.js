@@ -4,6 +4,45 @@ import {advanceArmor,armorConfig,createArmorState} from './armorPhysics.js'
 const flat=(x,z,c)=>{if(c)c.surface=x< -10?'dirt':'asphalt';return 0}
 const state=()=>createArmorState({x:0,z:0,height:.8,yaw:0,speed:0})
 function run(a,input,seconds,fps=120,sample=flat,canMove){for(let i=0;i<Math.round(seconds*fps);i++)advanceArmor(a,input,1/fps,sample,canMove);return a}
+
+test('short boosts evade equally in all directions, while aiming Ground can backpedal or run without turning away',()=>{
+  for(const [forward,side] of [[1,0],[-1,0],[0,1],[0,-1]]){
+    const a=run(state(),{forward,side,boost:true,yaw:.7,aiming:true},.4)
+    assert.ok(Math.hypot(a.x,a.z)>11&&a.speed>48,'A brief thrust covers more than eleven metres')
+    assert.ok(Math.abs(a.yaw-.7)<.01)
+    const ground=state();Object.assign(ground,{mode:'ARMOR_GROUND',height:.025,y:.025,yaw:.7})
+    run(ground,{forward,side,boost:true,yaw:.7,aiming:true},1)
+    assert.ok(ground.speed>10&&ground.groundTurn===null);assert.equal(ground.yaw,.7)
+  }
+})
+
+test('tap and held Space have distinct high arcs and return to their launch mode while walking/running inputs continue',()=>{
+ for(const mode of ['ARMOR_GROUND','ARMOR_HOVER'])for(const boost of [false,true]){
+  const peaks=[]
+  for(const held of [.03,.8]){
+   const a=state();Object.assign(a,{mode,y:mode==='ARMOR_GROUND'?.025:.8,height:mode==='ARMOR_GROUND'?.025:.8})
+   const start=a.y;let peak=start,sawJump=false
+   for(let i=0;i<2400;i++){
+    advanceArmor(a,{rise:i/120<held,forward:1,boost,aiming:true,yaw:0},1/120,flat)
+    peak=Math.max(peak,a.y);sawJump||=!!a.jump
+    if(sawJump&&!a.jump)break
+   }
+   assert.equal(a.jump,null);assert.equal(a.mode,mode);assert.ok(Math.abs(a.y-start)<.08)
+   assert.equal(a.jumpCount,1);run(a,{forward:1,boost,aiming:true},2)
+   assert.ok(Math.abs(a.speed-(mode==='ARMOR_GROUND'?(boost?armorConfig.runSpeed:armorConfig.groundSpeed):(boost?armorConfig.boostSpeed:armorConfig.hoverSpeed)))<.01)
+   peaks.push(peak-start)
+  }
+  assert.ok(peaks[0]>8&&peaks[1]>peaks[0]*3&&peaks[1]<=armorConfig.jumpMaxHeight+.001)
+ }
+})
+
+test('a buffered Space tap survives release between frames and grounded vertical terrain motion does not consume it',()=>{
+ const a=state();Object.assign(a,{mode:'ARMOR_GROUND',grounded:true,height:.025,y:.025,vy:2})
+ advanceArmor(a,{rise:false,risePressed:true,forward:1,boost:true},1/60,flat)
+ assert.ok(a.jump);assert.equal(a.jumpCount,1);assert.equal(a.jump.released,true)
+ run(a,{forward:1,boost:true},.6);assert.ok(a.y>6&&a.jump.thrustEnded)
+ const airborne=a.jump;advanceArmor(a,{risePressed:true},1/60,flat);assert.equal(a.jump,airborne);assert.equal(a.jumpCount,1)
+})
 test('hover strafes without turning to velocity, settles at 0.8 m and automatically brakes with finite glide',()=>{
   const a=run(state(),{side:1,yaw:0},2)
   assert.ok(a.x< -12&&Math.abs(a.z)<1e-8);assert.equal(a.yaw,0);assert.ok(Math.abs(a.y-.8)<1e-8)

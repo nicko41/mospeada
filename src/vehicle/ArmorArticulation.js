@@ -121,7 +121,7 @@ export class ArmorArticulation{
         kneeSocketPoint(b.skin,b.socket,this.goal)
         this.direction.copy(this.bottom).sub(this.top);const length=this.direction.length();this.direction.normalize()
         this.targetDirection.copy(this.goal).sub(this.top);const targetLength=this.targetDirection.length();this.targetDirection.normalize()
-        const stretch=Math.max(.05,(targetLength+settings.length)/length*settings.longitudinalScale)
+        const stretch=this.instance.modelComparison?.variant==='v3'?1:Math.max(.05,(targetLength+settings.length)/length*settings.longitudinalScale)
         // One affine longitudinal adjustment about a rigid pivot, never a
         // vertex/skin deformation. Cross-section and original buffers stay intact.
         const u=this.direction,k=stretch-1

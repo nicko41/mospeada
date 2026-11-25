@@ -1,0 +1,159 @@
+{
+  "pelvisDelta": [
+    0,
+    0.07999999999999963,
+    0.04000000000000026
+  ],
+  "contacts": {
+    "Left": {
+      "hand": {
+        "positionDeltaMeters": 5.723069143819501e-10,
+        "rotationComponentDelta": 2.4984680990769448e-11,
+        "unchangedWithinNumericalPrecision": true
+      },
+      "foot": {
+        "positionDeltaMeters": 2.95605151153216e-9,
+        "rotationComponentDelta": 2.6698088184673452e-11,
+        "unchangedWithinNumericalPrecision": true
+      }
+    },
+    "Right": {
+      "hand": {
+        "positionDeltaMeters": 1.1315457275695573e-10,
+        "rotationComponentDelta": 1.3346573846106935e-11,
+        "unchangedWithinNumericalPrecision": true
+      },
+      "foot": {
+        "positionDeltaMeters": 2.8979715584193137e-9,
+        "rotationComponentDelta": 1.3216927552406332e-11,
+        "unchangedWithinNumericalPrecision": true
+      }
+    }
+  },
+  "kneeForward": {
+    "Left": 0.03394756301127844,
+    "Right": 0.030891281427057243
+  },
+  "seatClearanceBefore": {
+    "tested": 550,
+    "minimum": {
+      "id": 89171,
+      "clearance": -0.14426017944077285,
+      "position": [
+        0.026696035124812667,
+        0.8779669801755315,
+        -0.6387537669667382
+      ]
+    },
+    "p05": {
+      "id": 90170,
+      "clearance": -0.12845424812062733,
+      "position": [
+        0.02882275763091191,
+        0.9021960461201467,
+        -0.6515831459226913
+      ]
+    },
+    "median": {
+      "id": 102228,
+      "clearance": -0.027561872049177705,
+      "position": [
+        0.07803315686817369,
+        0.903945210247486,
+        -0.5934703739338985
+      ]
+    }
+  },
+  "seatClearanceAfter": {
+    "tested": 544,
+    "minimum": {
+      "id": 83468,
+      "clearance": 0.004944844140136739,
+      "position": [
+        -0.022267095953993676,
+        1.0090494048451373,
+        -0.6276074978578416
+      ]
+    },
+    "p05": {
+      "id": 83058,
+      "clearance": 0.0146421360490534,
+      "position": [
+        -0.03264688078834843,
+        1.000844973969912,
+        -0.6222180612066893
+      ]
+    },
+    "median": {
+      "id": 77500,
+      "clearance": 0.09285072674272599,
+      "position": [
+        -0.06159781325696545,
+        0.990854058584765,
+        -0.5573533663331939
+      ]
+    }
+  },
+  "tests": {
+    "passed": 9,
+    "failed": 0,
+    "build": "passed"
+  },
+  "adjustedBones": [
+    "Hips translation",
+    "Spine hinge; Spine1/Spine2 reference rotations preserved",
+    "LeftUpLeg/LeftLeg and RightUpLeg/RightLeg rotations from unchanged ankle targets",
+    "Arms/forearms recalculated to fixed Hand position and orientation"
+  ],
+  "scope": "Current air-squat-seated riding variant only",
+  "protectedAssets": [
+    {
+      "path": "public/animations/scott-cyclone-actions.json",
+      "unchanged": true
+    },
+    {
+      "path": "public/animations/scott-cyclone-riding-reference.json",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-front-battloid.json",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-guard-battloid.json",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-rear-battloid.json",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-rear-pieces.glb",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-suspension-hide.json",
+      "unchanged": true
+    },
+    {
+      "path": "public/transformations/cyclone-wheel-battloid.json",
+      "unchanged": true
+    },
+    {
+      "path": "public/models/mospeada/scott-bernard-gear-v2-animated.glb",
+      "unchanged": true
+    },
+    {
+      "path": "public/models/mospeada/scott-bernard-animated-original.glb",
+      "unchanged": true
+    },
+    {
+      "path": "public/models/mospeada/cyclone-vr052f.glb",
+      "unchanged": true
+    },
+    {
+      "path": "assets/01-SCOTT/scott-bernard-gear-v2.glb",
+      "unchanged": true
+    }
+  ]
+}

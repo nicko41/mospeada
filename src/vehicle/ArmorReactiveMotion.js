@@ -1,5 +1,6 @@
 import {Euler,Quaternion} from 'three'
 import {armorConfig} from './armorPhysics.js'
+import {jumpUsesStrafePose} from './armorJumpMotion.js'
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x))
 const damp=(a,b,k,dt)=>a+(b-a)*(1-Math.exp(-k*dt))
 
@@ -15,30 +16,28 @@ export class ArmorReactiveMotion{
   }
   restore(){if(!this.applied)return;for(const r of this.records)r.bone.quaternion.copy(r.q);this.wrapper.updateMatrixWorld(true);this.applied=false}
   apply(a,dt,paused){
-    const intensity=armorConfig.bodyIntensity,ground=a.mode==='ARMOR_GROUND'&&!a.jump&&a.height<.45
+    const intensity=armorConfig.bodyIntensity,ground=a.mode==='ARMOR_GROUND'&&!a.jump&&a.height<.45,strafe=jumpUsesStrafePose(a)
     const power=(a.mode==='ARMOR_HOVER'||a.jump?a.boostBlend:0)*clamp((a.localForward/armorConfig.hoverSpeed+a.forwardAcceleration/armorConfig.boostAcceleration)*.65,-1,1)
     if(!paused){
       this.boost=damp(this.boost,Math.max(0,power),8,dt)
       this.reverse=damp(this.reverse,Math.max(0,-power),8,dt)
       this.side=damp(this.side,clamp(a.localSide/armorConfig.hoverSpeed*(a.boostBlend>.05?.16:.07)+a.sideAcceleration/armorConfig.boostAcceleration*.14,-.30,.30),9,dt)
       this.forward=damp(this.forward,clamp(a.forwardAcceleration/armorConfig.acceleration*.065,-.10,.10),8,dt)
-      const flight=a.jump&&a.height>.2?.35+Math.max(0,a.vy)/armorConfig.maxRiseSpeed*.2:0
-      this.vertical=damp(this.vertical,clamp(flight+Math.max(0,a.ay)/armorConfig.jumpAcceleration*.6+Math.max(0,a.vy)/armorConfig.maxRiseSpeed*.25,0,.75),7,dt)
+      this.vertical=strafe?0:damp(this.vertical,clamp(Math.max(0,a.ay)/armorConfig.jumpAcceleration*.6+Math.max(0,a.vy)/armorConfig.maxRiseSpeed*.25,0,.75),7,dt)
       this.groundBlend=damp(this.groundBlend,ground?1:0,10,dt)
     }
     const lean=(this.boost*.24-this.reverse*.22+this.forward)*intensity,bank=this.side*intensity
-    // A powered jump still gathers both knees when Shift is held. Horizontal
-    // thrust must not erase the airborne flexion into two straight legs.
-    const tuck=Math.max(this.vertical*(1-Math.max(this.boost,this.reverse)),a.jump?this.vertical*.85:0)*intensity
+    const tuck=a.jump?0:this.vertical*(1-Math.max(this.boost,this.reverse))*intensity
     const sideFlex=(a.mode==='ARMOR_HOVER'||a.jump?a.boostBlend:0)*clamp(Math.abs(this.side)/.30,0,1)*intensity
     for(const r of this.records){
       r.q.copy(r.bone.quaternion)
       const n=r.name.replace('mixamorig','');let x=0,z=0
+      if(a.jump&&!strafe&&/(Left|Right)(UpLeg|Leg|Foot|ToeBase)$/.test(n))continue
       if(n==='Hips'){x=lean*.15;z=bank*.25}
       else if(n.startsWith('Spine')){x=lean*.28;z=-bank*.35}
       else if(n==='Head'){x=-lean*.22;z=bank*.20}
       else if(n.endsWith('Shoulder')){z=(n.startsWith('Left')?1:-1)*Math.abs(bank)*.25}
-      else if(n.endsWith('UpLeg')){z=bank*.65;x=-this.forward*.2}
+      else if(n.endsWith('UpLeg')){z=bank*(a.boostBlend>.05?1.65:.65);x=-this.forward*.2}
       else if(n.endsWith('ForeArm'))x=-lean*.45
       if(/(Left|Right)(UpLeg|Leg|Foot|ToeBase)$/.test(n)){
         // Both legs counter the lateral lean. Only the leg ON the thrust

@@ -5,6 +5,7 @@ import {forestRandom} from './forestLayout.js'
 import {stage2LipZ,stage2PathX,FOREST_STAGE2 as S} from './forestStage2Config.js'
 import {stage2SurfaceHeight} from './forestStage2Terrain.js'
 import {canyonSideHeight} from './forestCanyonSides.js'
+import {createTreeBasePlants} from './forestTreeBasePlants.js'
 
 const species=FOLIAGE_CATALOG.entries.filter(e=>['pasto-alto-01','pasto-alto-02','pasto-ancho-01','pasto-espigas-01','helecho-01','hojas-anchas-02','roseta-02'].includes(e.id))
 const surface=(x,z)=>Math.abs(x)<S.halfWidth?stage2SurfaceHeight(x,z):canyonSideHeight(x,z)
@@ -61,6 +62,7 @@ export function createCanyonFoliage(atlas,terrain,sides){
     }
     for(const geometry of geometries)wallLedges(geometry,random,add,back)
   }
+  for(const p of createTreeBasePlants(Object.values(sides.byName).flat(),{seed:19830929})){p.y=surface(p.x,p.z)-.025;placements.push(p);const key=Math.floor(p.x/64);if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(p)}
   const material=foliageCardMaterial(atlas,true,true,{start:0,end:0,fade:155,max:205})
   for(const [key,items]of buckets){const batch=new ForestSpriteBatch(items,material,surface);batch.distance=205;batch.name='Forest_canyon_rim_foliage_'+key;group.add(batch);batches.push(batch)}
   group.name='Forest_canyon_organic_rim';group.userData.forest=true

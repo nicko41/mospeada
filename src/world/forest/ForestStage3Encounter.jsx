@@ -44,9 +44,9 @@ export default function ForestStage3Encounter({runtime}){
     }
   },.1)
   return <>
-    {resources.encounter.drones.map(({id})=><mesh key={id} ref={mesh=>meshes.current[id]=mesh} name={'Invid_prototype_'+id} visible={false} castShadow={false}>
+    <group name="Invid_drone_preparation" userData={{prewarmVFX:true}}>{resources.encounter.drones.map(({id})=><mesh key={id} ref={mesh=>meshes.current[id]=mesh} name={'Invid_prototype_'+id} visible={false} castShadow={false}>
       <boxGeometry args={[.9,.9,.9]}/><meshLambertMaterial color="#a44ee0" emissive="#30123e" transparent opacity={1} depthWrite/>
-    </mesh>)}
+    </mesh>)}</group>
     <group ref={hudAnchor}><Html fullscreen calculatePosition={(_,__,size)=>[size.width/2,size.height/2]} style={{pointerEvents:'none'}}><div ref={hud} style={{display:'none',position:'absolute',inset:0,pointerEvents:'none',fontFamily:'sans-serif'}}>
       <div ref={feedback} style={{position:'absolute',inset:0,opacity:0,boxShadow:'inset 0 0 100px 15px #cc3964'}}/>
       <div ref={label} style={{position:'absolute',top:105,left:'50%',transform:'translateX(-50%)',whiteSpace:'nowrap',padding:'9px 14px',background:'#10291dd9',color:'#e4eddf',fontSize:13}}/>

@@ -14,6 +14,15 @@ export function armorBoostLegWeight(entry,state){
   return entry?.phase==='complete'?clamp(Math.max(state?.boostBlend||0,(state?.boostKick||0)*.85)):0
 }
 
+export function createBoostLegPoses(instance){
+ const records=[],clip=instance.sourceClips?.find(c=>c.name==='Running');if(!clip)return records
+ for(const side of ['Left','Right'])for(const suffix of ['UpLeg','Leg','Foot','ToeBase']){
+  const name=`mixamorig${side}${suffix}`,bone=instance.bones.get(name),track=clip.tracks.find(t=>t.name===name+'.quaternion')
+  if(bone&&track)records.push({bone,side,thigh:suffix==='UpLeg',lag:(side==='Right'?.03:0)+(suffix==='UpLeg'?0:suffix==='Leg'?.025:.045),q:new Quaternion(),target:new Quaternion().fromArray(track.createInterpolant().evaluate(clip.duration*(side==='Left'?.70:.20))).normalize(),reverse:new Quaternion().fromArray(track.createInterpolant().evaluate(clip.duration*(side==='Left'?.20:.70))).normalize()})
+ }
+ return records
+}
+
 // Source Running's trailing stride bends both knees with heels behind the
 // pelvis. Apply only those local chains; torso and Armor anchors stay intact.
 export class ScottArmorBoostMotion{
@@ -21,12 +30,7 @@ export class ScottArmorBoostMotion{
     this.wrapper=wrapper;this.applied=false;this.records=[]
     this.random=random;this.boostDirection=0;this.forwardOpen=false;this.reverseOpen=false;this.opening=0;this.variant='current'
     this.model=instance.model;this.modelQ=new Quaternion();this.parentQ=new Quaternion();this.open=new Quaternion();this.axis=new Vector3()
-    const clip=instance.sourceClips?.find(c=>c.name==='Running')
-    if(!clip)return
-    for(const side of ['Left','Right'])for(const suffix of ['UpLeg','Leg','Foot','ToeBase']){
-      const name=`mixamorig${side}${suffix}`,bone=instance.bones.get(name),track=clip.tracks.find(t=>t.name===name+'.quaternion')
-      if(bone&&track)this.records.push({bone,side,thigh:suffix==='UpLeg',lag:(side==='Right'?.03:0)+(suffix==='UpLeg'?0:suffix==='Leg'?.025:.045),q:new Quaternion(),target:new Quaternion().fromArray(track.createInterpolant().evaluate(clip.duration*(side==='Left'?.70:.20))).normalize(),reverse:new Quaternion().fromArray(track.createInterpolant().evaluate(clip.duration*(side==='Left'?.20:.70))).normalize()})
-    }
+    this.records=createBoostLegPoses(instance)
   }
   restore(){if(!this.applied)return;for(const r of this.records)r.bone.quaternion.copy(r.q);this.wrapper.updateMatrixWorld(true);this.applied=false}
   apply(entry,state,dt=1/60,paused=false){

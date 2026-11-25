@@ -3,7 +3,7 @@
   "output": "public/models/mospeada/invid-scout-rigged.glb",
   "sourceSha256": "3e6e7c4ad75b92e5e31e2afe52c4a8f8d2f96ba75068e3649af39b359ace5f5a",
   "sourceUnchanged": true,
-  "runtimeSha256": "18d57f3a1209aba222234c080e150915fd27cc8b37568f93656e693c1f33f577",
+  "runtimeSha256": "9dabb493f8f1d1c22cb4d47fa1e615de25110fd48dca32c00ab7afb7f1fb1b7d",
   "joints": [
     {
       "name": "body_root",
@@ -61,17 +61,31 @@
       "triangles": 79986,
       "vertices": 55557,
       "jointVertices": [
-        20276,
+        20275,
         6106,
         8131,
         11873,
-        9171
+        9172
       ],
       "collarVertices": 2840,
       "welded": 39764,
       "clawVertices": 4588,
       "correctedClawVertices": 449,
-      "clawComponents": 11
+      "clawComponents": 11,
+      "legRepairs": [
+        {
+          "position": [
+            -0.36591601371765137,
+            -0.3714219927787781,
+            0.3849579989910126
+          ],
+          "vertices": [
+            13443
+          ],
+          "neighbors": 9,
+          "joint": 4
+        }
+      ]
     },
     {
       "level": 1,
@@ -88,7 +102,8 @@
       "welded": 19155,
       "clawVertices": 2732,
       "correctedClawVertices": 255,
-      "clawComponents": 9
+      "clawComponents": 9,
+      "legRepairs": []
     },
     {
       "level": 2,
@@ -105,7 +120,8 @@
       "welded": 9098,
       "clawVertices": 1556,
       "correctedClawVertices": 155,
-      "clawComponents": 7
+      "clawComponents": 7,
+      "legRepairs": []
     }
   ],
   "bytes": 14784808,

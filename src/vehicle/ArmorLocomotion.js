@@ -54,6 +54,7 @@ export class ArmorLocomotion{
   }
   apply(armor,dt,paused){
     if(!armor?.active){this.weight=0;return}
+    if(armor.state.jump?.launched){this.weight=0;return}
     const target=armor.state.mode==='ARMOR_GROUND'&&!armor.state.jump&&!armor.state.groundLanding&&armor.state.height<.45&&(armor.state.speed>.05||armor.state.groundTurn)?1:0
     if(!paused)this.weight+=(target-this.weight)*(1-Math.exp(-dt*12))
     if(this.weight>.999)this.weight=1

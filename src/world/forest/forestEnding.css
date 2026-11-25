@@ -1,0 +1,10 @@
+.forest-ending { position: fixed; inset: 0; z-index: 9997; pointer-events: auto; }
+.forest-ending[data-phase="idle"] { display: none; }
+.forest-ending-veil { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; will-change: opacity; }
+.ride-victory-overlay { color: #c4eff6; overflow: hidden; }
+.ride-victory-overlay .ride-defeat-band::before,
+.ride-victory-overlay .ride-defeat-band::after { content: ''; position: absolute; inset: 0 auto 0 0; width: 50%; background: #98d2e1; mix-blend-mode: normal; border-block: 1px solid #d5f7ff; box-shadow: 0 0 18px #98d2e133; z-index: 20; transform: translateX(calc((1 - var(--victory-bands, 0)) * -105%)); }
+.ride-victory-overlay .ride-defeat-band::after { left: 50%; transform: translateX(calc((1 - var(--victory-bands, 0)) * 105%)); }
+.ride-victory-overlay .ride-defeat-title { transform: skewX(var(--defeat-skew)) scale(var(--victory-panel, 0)); opacity: var(--victory-opacity, 0); transform-origin: center; }
+.app[data-forest-ending="active"] .driving-hud,
+.app[data-forest-ending="active"] [aria-label="Diagnóstico de foliage"] { opacity: 0; visibility: hidden; pointer-events: none; }

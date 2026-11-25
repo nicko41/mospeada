@@ -27,7 +27,7 @@ export class AnimeRenderer {
     this.records = new Map(); this.sources = new Map(); this.bindings = []
     this.ready = false; this.openingReady=false; this.warming = null; this.disposed = false
     this.brush = new SurfaceBrush()
-    this.uniforms = { uAnimeCel: { value: 1 }, uAnimeLevels: { value: 3 }, uAnimeShadow: { value: 0.72 }, uAnimeHighlights: { value: 0.55 }, uAnimeDay: { value: 1 } }
+    this.uniforms = { uAnimeCel: { value: 1 }, uAnimeLevels: { value: 3 }, uAnimeShadow: { value: 0.72 }, uAnimeHighlights: { value: 0.55 }, uAnimeDay: { value: 1 },uDistanceHaze:{value:0},uDistanceHazeRange:{value:new T.Vector2(0,1)} }
     this.target = new T.WebGLRenderTarget(1, 1, { count: 2, type: T.HalfFloatType, samples: Math.min(4, renderer.capabilities.maxSamples), depthTexture: new T.DepthTexture(1, 1, T.UnsignedIntType) })
     this.target.textures[0].colorSpace = T.LinearSRGBColorSpace
     this.target.textures[1].type = T.UnsignedByteType; this.target.textures[1].colorSpace = T.NoColorSpace
@@ -35,7 +35,7 @@ export class AnimeRenderer {
     this.target.textures[1].minFilter = T.NearestFilter; this.target.textures[1].magFilter = T.NearestFilter
     this.composite = new T.ShaderMaterial({ vertexShader: compositeVertex, fragmentShader: compositeFragment, depthTest: false, depthWrite: false,
       uniforms: { uBeauty: { value: this.target.textures[0] }, uMask: { value: this.target.textures[1] }, uDepth: { value: this.target.depthTexture }, uPixel: { value: new T.Vector2(1, 1) }, uNear: { value: camera.near }, uFar: { value: camera.far }, uWidth: { value: 1.2 }, uOutlineColor: { value: new T.Color('#111b2e').convertLinearToSRGB() },
-        uFogDensity: { value: 0.068 }, uOutlines: { value: 1 } },
+        uFogDensity: { value: 0.068 },uFogLinear:{value:0},uFogRange:{value:new T.Vector2()},uHazeBlur:{value:0}, uOutlines: { value: 1 } },
     })
     this.quad = new FullScreenQuad(this.composite)
     this.size = new T.Vector2(); this.zero = new Float32Array([0, 0, 0, 0])
@@ -259,26 +259,46 @@ export class AnimeRenderer {
   prepareOpening(){
     if(this.openingWork||!this.ready||this.disposed)return this.openingWork
     const start=performance.now()
-    this.openingWork=Promise.resolve().then(()=>this.prepareStartupViews()).then(()=>{
+    this.openingWork=Promise.resolve().then(()=>this.prepareTextures()).then(()=>this.prepareStartupViews()).then(()=>{
       if(this.disposed)return
       this.openingReady=true;this.stats.preparation.openingMs=performance.now()-start
     }).catch(error=>{if(!this.disposed)this.error=error.message})
     return this.openingWork
   }
+  async prepareTextures(){
+    // Parsing/preloading an image does not upload it to the GPU. Include
+    // dormant combat maps/atlases and batching textures before first use.
+    if(!this.renderer?.initTexture)return
+    const textures=new Set(),collect=value=>{
+      if(value?.isTexture)textures.add(value)
+      else if(Array.isArray(value))value.forEach(collect)
+    }
+    for(const {source,variant} of this.records.values())for(const material of [source,variant]){
+      Object.values(material).forEach(collect)
+      for(const uniform of Object.values(material.uniforms||{}))collect(uniform?.value)
+    }
+    const start=performance.now()
+    for(const texture of textures){await this.idleTurn();if(this.disposed)return;this.renderer.initTexture(texture)}
+    this.stats.preparation.uploadedTextures=textures.size;this.stats.preparation.textureMs=performance.now()-start
+  }
   async prepareStartupViews(){
     const views=this.startupViews?.()||[];if(!views.length)return
     const start=performance.now(),camera=this.camera,shadows=this.renderer.shadowMap,oldAuto=shadows?.autoUpdate,oldNeeds=shadows?.needsUpdate
-    for(const view of views){
+    for(const entry of views){
+      const view=entry.camera||entry,root=entry.root,visible=root?.visible
       await this.idleTurn();if(this.disposed)return
       // Tiny MRT with the same formats/MSAA as gameplay. Upload VAOs, batch
       // draw buffers and textures for every part of the shot before its fade.
       // Initial lighting preparation already rendered the static shadow maps.
       try{
         if(shadows){shadows.autoUpdate=false;shadows.needsUpdate=false}
-        this.prepareViewVisibility(view);this.camera=view;this.collect();this.sync()
+        if(root)root.visible=true
+        this.prepareViewVisibility(view);entry.updateVisibility?.(view)
+        this.camera=view;this.collect();this.sync()
         this.withPreparationVariant(this.initialNight,()=>this.drawSceneTarget(this.preparationTargets.anime))
       }finally{
-        this.camera=camera;this.prepareViewVisibility(camera)
+        this.camera=camera;this.prepareViewVisibility(camera);entry.updateVisibility?.(camera)
+        if(root)root.visible=visible
         if(shadows){shadows.autoUpdate=oldAuto;shadows.needsUpdate=oldNeeds}
       }
     }
@@ -351,6 +371,12 @@ export class AnimeRenderer {
     uniforms.uWidth.value = config.width * renderer.getPixelRatio()
     uniforms.uOutlineColor.value.set(config.color).convertLinearToSRGB()
     uniforms.uFogDensity.value = scene.fog?.density || 0; uniforms.uOutlines.value = config.outlines ? 1 : 0
+    const distanceHaze=!!scene.fog?.desertHaze
+    this.uniforms.uDistanceHaze.value=distanceHaze?1:0
+    this.uniforms.uDistanceHazeRange.value.set(scene.fog?.near??0,scene.fog?.far??1)
+    uniforms.uFogLinear.value=scene.fog?.isFog||distanceHaze?1:0
+    uniforms.uFogRange.value.set(scene.fog?.near??0,scene.fog?.far??1)
+    uniforms.uHazeBlur.value=scene.fog?.desertHaze?.blur??0
     this.stats.mode = 'ANIME'
     if (!this.ready && !this.error) {
       this.stats.renderCalls = 0;this.warm();return

@@ -41,7 +41,7 @@ export default function ForestRandEscape({runtime}){
     if(config.soilRequest!==weathering.soilRequest){weathering.soilRequest=config.soilRequest;Object.assign(weathering.load,{frontMud:config.maximum,rearMud:config.maximum,frontFilm:config.maximum*.7,rearFilm:config.maximum*.7})}
     weathering.layer.update(weathering.load,config)
     if(runtime.climaxSequence?.phase==='resume'){rig.root.visible=false;return}
-    escape.update(dt,s,stage4World.get(),!!runtime.desertPatrol?.active||!!runtime.climaxSequence?.active);rig.root.visible=escape.active
+    if(!runtime.ending?.holding||runtime.ending.phase==='victory')escape.update(dt,s,stage4World.get(),!!runtime.desertPatrol?.active||!!runtime.climaxSequence?.active);rig.root.visible=escape.active
     if(!escape.active)return
     rig.update(escape.state,sampleRideHeight,bikeConfig);rider.update(escape.state,dt,bikeConfig,sampleRideHeight)
     const wheels=weathering.contacts.update(escape.state)

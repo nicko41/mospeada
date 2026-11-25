@@ -18,7 +18,7 @@ export default function ForestDesertScouts({runtime}){
   const asset=useGLTF(INVID_SCOUT_URL),{camera}=useThree()
   const resources=useMemo(()=>{
     const root=new Group();root.name='Desert_Invid_Scout_patrol';root.userData.prewarmVFX=true
-    const views=Array.from({length:SCOUT_PATROL.count},(_,i)=>createScoutView(asset.scene,i,asset.animations)),opening=new DesertScoutPatrol(views,sampleRideHeight,Math.random,{rigTestId:0}),squad=createScoutSquad(root,views)
+    const views=Array.from({length:SCOUT_PATROL.count},(_,i)=>createScoutView(asset.scene,i,asset.animations)),opening=new DesertScoutPatrol(views,sampleRideHeight),squad=createScoutSquad(root,views)
     squad.scouts=opening.scouts
     const sequence=new DesertClimaxSequence(opening,{onTransition:()=>window.dispatchEvent(new Event('level1-climax-transition')),onVictory:()=>window.dispatchEvent(new Event('level1-victory'))})
     return{root,opening,patrol:opening,views,batches:squad.batches,sequence,squads:[squad],climax:null,preparing:null,removeTargets:[],refs:0,actorState:null,recoveryAge:0,publishAge:0,actorPosition:new Vector3(),player:{x:0,z:0,height:0,speed:0}}
@@ -35,7 +35,7 @@ export default function ForestDesertScouts({runtime}){
       return Number.isFinite(h)||!world?.climaxPlain?h:world.position.y+stage4DesertHeight(x-world.position.x,z-world.position.z)
     }
     resources.climax=new DesertScoutPatrol(all,sample,Math.random,{climax:true,bolts:resources.opening.bolts})
-    for(let group=0;group<6;group++)resources.squads[group+1].scouts=resources.climax.scouts.slice(group*5,group*5+5)
+    for(let group=0;group<C.count/C.squadSize;group++)resources.squads[group+1].scouts=resources.climax.scouts.slice(group*C.squadSize,(group+1)*C.squadSize)
     resources.removeTargets.push(...resources.climax.scouts.map(registerMeleeTarget))
   }
   useLayoutEffect(()=>{
@@ -56,6 +56,7 @@ export default function ForestDesertScouts({runtime}){
     if(hip&&Math.hypot(resources.actorPosition.x-s.x,resources.actorPosition.z-s.z)<12){player.x=resources.actorPosition.x;player.z=resources.actorPosition.z;player.height=resources.actorPosition.y-.8}
     else{player.x=s.x;player.z=s.z;player.height=s.height}
     player.speed=s.speed
+    player.yaw=runtime.armorController?.active?runtime.armorController.state.yaw:s.travelYaw??s.yaw
     player.dead=playerCombat.dead
     const dt=runtime.paused||playerCombat.dead?0:Math.min(delta,.1),world=stage4World.get(),sequence=resources.sequence
     if(playerCombat.dead&&!resources.playerWasDead)resources.patrol.stopCombat()
@@ -69,9 +70,11 @@ export default function ForestDesertScouts({runtime}){
     runtime.desertPatrol=resources.patrol
     resources.patrol.update(dt,player,camera,world,{
       allowAttack:!playerCombat.dead&&(sequence.phase==='opening'||sequence.phase==='battle'),randTarget:runtime.randEscape,
+      lockedTarget:runtime.gallant?.aimLock.target,
       onRandHit:b=>{runtime.randEscape?.receiveHit();runtime.combatVFX?.enemyImpact(b.position,b.velocity)},
-      onPlayerHit:b=>{damagePlayer(SCOUT_ATTACK_DAMAGE,b.source);runtime.combatVFX?.enemyImpact(b.position,b.velocity)},
+      onPlayerHit:b=>{damagePlayer(SCOUT_ATTACK_DAMAGE,b.source,{kind:b.kind==='claw'?'scout-claw':'scout-projectile'});runtime.combatVFX?.enemyImpact(b.position,b.velocity)},
       onImpact:b=>runtime.combatVFX?.enemyWorldImpact(b.position,b.velocity),
+      onClawImpact:point=>runtime.combatVFX?.clawGroundImpact(point),
     })
     if(!playerCombat.dead&&sequence.phase==='failed'&&world?.bound&&!sequence.completed){
       resources.recoveryAge+=dt

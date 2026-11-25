@@ -7,4 +7,5 @@ export const SCOUT_JOINTS=Object.freeze([
   {name:'leg_L',pivot:[.18,.18,-.045]},
   {name:'leg_R',pivot:[-.18,.16,-.045]},
 ])
-export const SCOUT_MOTION=Object.freeze({groundSpeed:.9,walkCycle:1.4,blend:.16,clawDuration:.78,clawImpact:.24,landingContact:.45,landingDuration:.75})
+export const SCOUT_MOTION=Object.freeze({groundSpeed:2.4,walkReferenceSpeed:.9,runCadence:2.5,flightMinSpeed:28,flightMaxSpeed:36,groundPatrolSeconds:14,groundOpeningSeconds:10,walkCycle:1.4,blend:.16,clawDuration:.78,clawImpact:.24,landingContact:.45,landingDuration:.75,
+  evadeDuration:.65,evadeSpeed:9,evadeCooldown:9,evadeCooldownSpread:4,evadeLockDelay:.6,evadeChance:.65,evadeSpacing:1.8})

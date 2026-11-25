@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "bones": 24,
+  "clips": 16,
+  "originalBinaryPreserved": true,
+  "donorImageBytesPreserved": true,
+  "referenceVerticesNeverDrawn": true,
+  "referenceVerticesUnchanged": 15429,
+  "rigidWorldErrorMeters": 3.6863408273473424e-7,
+  "kneeSocketErrorMeters": 3.7238012298709097e-16,
+  "palmIK": [
+    {
+      "side": "Left",
+      "IKError": 1.0677352520015991e-8
+    },
+    {
+      "side": "Right",
+      "IKError": 4.450439406454376e-8
+    }
+  ],
+  "animationSamples": [
+    {
+      "name": "Running",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.7090555000323941
+    },
+    {
+      "name": "Walking",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.7182742576122503
+    },
+    {
+      "name": "One_Arm_Handstand",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 2.1292647656150634
+    },
+    {
+      "name": "Roll_Dodge_4",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 4.058193640866546
+    },
+    {
+      "name": "Run_Turn_Right",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 3.2074666055938215
+    },
+    {
+      "name": "Stand_Up1",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.6536203926198598
+    },
+    {
+      "name": "Stand_Up10",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.7326561309115605
+    },
+    {
+      "name": "Stand_Up4",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.3894855789895129
+    },
+    {
+      "name": "Standard_Forward_Charge",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 3.2315405145583984
+    },
+    {
+      "name": "Standard_Forward_Charge_inplace",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.6579463809132275
+    },
+    {
+      "name": "Walk_Left_with_Gun",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.9626374908132536
+    },
+    {
+      "name": "Walk_Turn_Left",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 3.1197448812329847
+    },
+    {
+      "name": "Walk_Turn_Right_Idle_Style",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.8778585714619667
+    },
+    {
+      "name": "air_squat",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.6784444630800317
+    },
+    {
+      "name": "walking_2",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 2.0446666021910955
+    },
+    {
+      "name": "walking_2_inplace",
+      "samples": 5,
+      "finite": true,
+      "maxDistance": 1.6931014956598378
+    }
+  ],
+  "gameplayPoses": [
+    "rest",
+    "driving",
+    "transform",
+    "combat"
+  ],
+  "rigidAndClothWeightsNormalized": true
+}

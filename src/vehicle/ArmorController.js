@@ -34,14 +34,14 @@ export class ArmorController{
     if(reaction)reaction.boost=reaction.reverse=reaction.side=reaction.forward=reaction.vertical=0
   }
   toggle(){
-    if(!this.active||this.state.groundLanding)return
+    if(!this.active||this.state.knockedDown||this.state.groundLanding||this.state.jump)return
     if(this.state.mode==='ARMOR_HOVER')this.startLanding('toggle')
     else{this.state.mode='ARMOR_HOVER';this.state.groundTurn=null}
   }
   update(input,dt){
     if(!this.active)return
     const a=this.state,instance=this.runtime.scottInstance
-    if(input.descend&&!a.descendHeld&&!a.groundLanding&&(a.jump||a.height>1.2))this.startLanding('dive')
+    if(input.descend&&!a.descendHeld&&!a.groundLanding&&!a.jump&&a.height>1.2)this.startLanding('dive')
     if(instance?.armorBaseHipPosition&&!a.groundTurn){
       instance.bones.get('mixamorigHips').parent.localToWorld(this.point.copy(instance.armorBaseHipPosition))
       const x=this.point.x-a.x,z=this.point.z-a.z
@@ -60,12 +60,13 @@ export class ArmorController{
   }
   deactivate(){
     if(!this.active)return
+    this.runtime.armorJumpQueued=false
     this.sync();this.active=false;this.camera?.deactivate()
     const s=this.runtime.state,a=this.state
     s.speed=a.speed;s.travelYaw=Math.atan2(a.vx,a.vz);s.boostBlend=0;this.runtime.boostQueued=false
     if(this.runtime.scottInstance){delete this.runtime.scottInstance.armorBaseHipPosition;delete this.runtime.scottInstance.armorReferencePose}
   }
-  reset(){this.active=false;this.state=null;this.camera?.deactivate()}
+  reset(){this.active=false;this.state=null;this.runtime.armorJumpQueued=false;this.camera?.deactivate()}
   guardFloor(instance,wrapper){
     if(!this.active||!this.state.groundLanding&&!isJumpCharging(this.state)&&this.state.height>.65)return
     const a=this.state,landing=a.groundLanding,charging=isJumpCharging(a)
