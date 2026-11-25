@@ -1,0 +1,40 @@
+{
+  "before": 23.481312142130093,
+  "boost": {
+    "speed": 45.149122409392206,
+    "maxFov": 2.0314663899646064,
+    "maxBlur": 0.13813971451759294,
+    "count": 1
+  },
+  "url": "http://localhost:5173/?environment=highway",
+  "frames": 48,
+  "maxShakePixels": 1.003534926698819,
+  "unchanged": true,
+  "shaderError": "",
+  "boostConfig": {
+    "blurEnabled": true,
+    "fovEnabled": true,
+    "shakeEnabled": true,
+    "blurIntensity": 0.24,
+    "clearRadius": 0.45,
+    "peripheralIntensity": 0.85,
+    "blurPixels": 10,
+    "maxFov": 3,
+    "enterRate": 7,
+    "exitRate": 2.5,
+    "shakeIntensity": 0.28
+  },
+  "impactConfig": {
+    "shakeEnabled": true,
+    "intensity": 0.65,
+    "duration": 0.2,
+    "range": 32,
+    "damping": 14,
+    "maxConcurrent": 4,
+    "blurEnabled": false,
+    "blurIntensity": 0.08,
+    "blurPixels": 0.3,
+    "blurDuration": 0.07,
+    "blurRange": 5
+  }
+}

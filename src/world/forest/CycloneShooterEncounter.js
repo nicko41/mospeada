@@ -7,7 +7,7 @@ const droneEligible=d=>d.spawned&&!d.dead
 export class CycloneShooterEncounter{
   constructor(){
     this.pointer=new Vector2(.12,.08);this.aimPoint=new Vector3();this.targeting=new GallantTargeting();this.scratch=new Vector3()
-    this.drones=S.waves.flatMap((count,wave)=>Array.from({length:count},(_,slot)=>({wave,slot,position:new Vector3()}))).map((d,id)=>({...d,id}))
+    this.drones=S.waves.flatMap((count,wave)=>Array.from({length:count},(_,slot)=>({wave,slot,position:new Vector3()}))).map((d,id)=>({...d,id,cameraShakeScale:.35}))
     this.bolts=createEnergyProjectiles(S.maxEnemyBolts)
     this.reset()
   }

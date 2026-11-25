@@ -1,0 +1,32 @@
+{
+  "defaults": {
+    "shakeEnabled": true,
+    "intensity": 0.45,
+    "duration": 0.14,
+    "range": 18,
+    "damping": 20,
+    "maxConcurrent": 4,
+    "blurEnabled": false,
+    "blurIntensity": 0.08,
+    "blurPixels": 0.3,
+    "blurDuration": 0.07,
+    "blurRange": 5
+  },
+  "limits": {
+    "translation": 0.006,
+    "rotation": 0.0010471975511965976,
+    "slots": 4
+  },
+  "expandedTests": {
+    "tests": 52,
+    "passed": 51,
+    "failed": 1,
+    "knownFailures": [
+      "editable presets keep violet actor contact separate from earth impacts"
+    ],
+    "baseline": "artifacts/scott-v3/pre-integration-failures.log"
+  },
+  "build": "passed",
+  "liveValidation": "validation.json",
+  "logicalCameraAndAimingUnchanged": true
+}

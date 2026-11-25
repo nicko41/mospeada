@@ -1,0 +1,114 @@
+{
+  "v1": {
+    "shoulders:white": {
+      "area": 0.03132074910889658,
+      "samples": 217,
+      "median": [
+        190,
+        192,
+        180
+      ]
+    },
+    "shoulders:green": {
+      "area": 0.2686774259702079,
+      "samples": 1119,
+      "median": [
+        173,
+        180,
+        163
+      ]
+    },
+    "legs:green": {
+      "area": 1.0524041132045987,
+      "samples": 3055,
+      "median": [
+        169,
+        194,
+        186
+      ]
+    },
+    "legs:white": {
+      "area": 0.37163294798762736,
+      "samples": 698,
+      "median": [
+        236,
+        236,
+        235
+      ]
+    },
+    "chest:green": {
+      "area": 0.04801846037983029,
+      "samples": 115,
+      "median": [
+        176,
+        182,
+        161
+      ]
+    },
+    "chest:white": {
+      "area": 0.0011065384176075737,
+      "samples": 11,
+      "median": [
+        170,
+        172,
+        157
+      ]
+    }
+  },
+  "v3": {
+    "legs:green": {
+      "area": 0.8128268519853291,
+      "samples": 57187,
+      "median": [
+        156,
+        179,
+        161
+      ]
+    },
+    "chest:green": {
+      "area": 0.09038822190050355,
+      "samples": 6279,
+      "median": [
+        151,
+        174,
+        155
+      ]
+    },
+    "chest:white": {
+      "area": 0.0015040102417951298,
+      "samples": 101,
+      "median": [
+        214,
+        214,
+        219
+      ]
+    },
+    "legs:white": {
+      "area": 0.24308111633288415,
+      "samples": 16987,
+      "median": [
+        224,
+        220,
+        227
+      ]
+    },
+    "shoulders:green": {
+      "area": 0.19693633266055915,
+      "samples": 13737,
+      "median": [
+        156,
+        179,
+        161
+      ]
+    },
+    "shoulders:white": {
+      "area": 0.009820205384655004,
+      "samples": 676,
+      "median": [
+        217,
+        217,
+        221
+      ]
+    }
+  }
+}

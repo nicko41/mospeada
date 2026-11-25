@@ -1,0 +1,26 @@
+{
+  "issue": "Hydraulics frozen in Armor presentation matrices after ending/restart",
+  "reproduction": {
+    "log": "before-tests.log",
+    "beforeTests": 2,
+    "beforeFailures": 2
+  },
+  "validation": {
+    "existingFailures": [
+      "a jump lowers the actual pelvis over planted soles, extends the knees, then flies with straight legs"
+    ],
+    "build": "passed",
+    "log": "after-tests.log",
+    "tests": 104,
+    "passed": 103,
+    "baseline": "artifacts/scott-v3/pre-integration-failures.log"
+  },
+  "covered": [
+    "native hydraulics recover frozen root and connector matrices",
+    "V3 Armor victory to closing ride",
+    "two restarts with steering and wheelie",
+    "repeat Armor assembly and victory cut",
+    "hydraulic mesh geometry identity"
+  ],
+  "visualInGame": false
+}

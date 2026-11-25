@@ -1,0 +1,37 @@
+{
+  "firing": {
+    "aiming": true,
+    "blend": 0.9999999755637952,
+    "shots": 5
+  },
+  "extendedMorph": 1,
+  "captures": [
+    "extended-before-front",
+    "extended-after-front",
+    "extended-before-rear",
+    "extended-after-rear"
+  ],
+  "nativeBones": 28,
+  "meshes": [
+    {
+      "name": "Scott_V3_Left_shoulder_undersuit",
+      "visible": true,
+      "tuck": 0,
+      "triangles": 384,
+      "sameSkeleton": true,
+      "color": "171b1c",
+      "mapped": false
+    },
+    {
+      "name": "Scott_V3_Right_shoulder_undersuit",
+      "visible": true,
+      "tuck": 0,
+      "triangles": 384,
+      "sameSkeleton": true,
+      "color": "171b1c",
+      "mapped": false
+    }
+  ],
+  "glError": 0,
+  "badPrograms": 0
+}

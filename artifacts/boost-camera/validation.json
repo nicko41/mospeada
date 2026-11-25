@@ -1,0 +1,71 @@
+{
+  "controls": {
+    "initial": [
+      true,
+      true,
+      true
+    ],
+    "independent": true,
+    "sliders": 8
+  },
+  "boost": {
+    "speed": 62.336776546019635,
+    "count": 1,
+    "time": 0,
+    "target": 0.11683882730098176,
+    "level": 0.3607340576043222,
+    "fov": 5.050276806460512,
+    "events": [
+      "boostStart"
+    ]
+  },
+  "gpu": {
+    "w": 1082,
+    "h": 804,
+    "hero": 40388,
+    "heroPeriphery": 19994,
+    "heroChanged": 0,
+    "centerChanged": 0,
+    "centerPixels": 50389,
+    "peripheryChanged": 179536,
+    "maskMax": 255,
+    "callsOff": 736,
+    "callsOn": 736,
+    "targets": 2,
+    "rects": [
+      [
+        0.30205058610993984,
+        0.3893913394476499,
+        0.400532897680841,
+        0.4987983246635676
+      ],
+      [
+        2,
+        2,
+        -1,
+        -1
+      ]
+    ],
+    "strength": 0.10623730730758352,
+    "unchanged": true,
+    "error": 0
+  },
+  "deceleration": {
+    "speed": 29.709808135730565,
+    "target": 0,
+    "level": 0.0026428933146898786
+  },
+  "armor": {
+    "active": true,
+    "level": 0,
+    "fov": 0
+  },
+  "frames": 53,
+  "unchanged": true,
+  "maxRayError": 0,
+  "maxFov": 13.998228170534915,
+  "maxBlur": 0.8498924246396201,
+  "airFrames": 15,
+  "shaderError": "",
+  "badPrograms": 0
+}

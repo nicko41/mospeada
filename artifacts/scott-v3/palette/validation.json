@@ -1,0 +1,113 @@
+{
+  "scope": "Scott V3 chest, shoulders and legs: V1 regional albedo palette",
+  "implementation": "V3-only material shader, before existing Scott soil and anime/cel lighting",
+  "reversible": "scottV3Config.palette.enabled",
+  "tests": {
+    "scottSuitePassed": 34,
+    "scottSuiteFailed": 0,
+    "finalMaterialChecksPassed": 2,
+    "productionBuild": "passed"
+  },
+  "nativeSourceSha256": "74e05d816cff3ca5cf1447187c5437d4e9a05d8bb038d745d519e70ce46a4370",
+  "animatedSha256": "89c9c9bf87093083b7a376157a74875610834f9b3bdb862068224efd59da4b34",
+  "sourceAssetsWritten": false,
+  "geometryAndSkinningChanged": false,
+  "originalTexturesAndUVsChanged": false,
+  "pbrMapsChanged": false,
+  "poseChanges": false,
+  "scottSoilMaximum": 0.25,
+  "cycloneChanged": false,
+  "palette": {
+    "chest": {
+      "source": {
+        "green": [
+          151,
+          174,
+          155
+        ],
+        "white": [
+          214,
+          214,
+          219
+        ]
+      },
+      "v1": {
+        "green": [
+          175,
+          182,
+          164
+        ],
+        "white": [
+          196,
+          196,
+          193
+        ]
+      }
+    },
+    "shoulders": {
+      "source": {
+        "green": [
+          156,
+          179,
+          161
+        ],
+        "white": [
+          217,
+          217,
+          221
+        ]
+      },
+      "v1": {
+        "green": [
+          173,
+          180,
+          163
+        ],
+        "white": [
+          190,
+          192,
+          180
+        ]
+      }
+    },
+    "legs": {
+      "source": {
+        "green": [
+          156,
+          179,
+          161
+        ],
+        "white": [
+          224,
+          220,
+          227
+        ]
+      },
+      "v1": {
+        "green": [
+          169,
+          194,
+          186
+        ],
+        "white": [
+          236,
+          236,
+          235
+        ]
+      }
+    }
+  },
+  "regionalInspection": {
+    "changedVertices": 64151,
+    "protectedChanges": 0,
+    "counts": {
+      "chest": 5228,
+      "shoulders": 10918,
+      "legs": 48005,
+      "protected": 34056
+    },
+    "vertices": 126423,
+    "triangles": 198571
+  },
+  "visualReview": "Offline front, three-quarter and rear renders; previews sample the same albedo remap into vertex colours, while the game retains full-resolution textures"
+}

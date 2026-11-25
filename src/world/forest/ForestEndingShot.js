@@ -4,6 +4,7 @@ import {bikeConfig} from '../../vehicle/bikeConfig.js'
 import {setCameraFov} from '../../vehicle/cameraFraming.js'
 import {DESERT_CLIMAX as C,climaxPathX} from './forestClimaxConfig.js'
 import {FOREST_MUSIC} from './ForestMusic.js'
+import {restoreVehiclePresentation} from '../../vehicle/restoreVehiclePresentation.js'
 
 const timing={victoryHold:4.2,cut:.35,blackHold:4,audioFade:FOREST_MUSIC.victoryFade,audioEnd:FOREST_MUSIC.victoryEnd}
 const rideDuration=timing.audioEnd-timing.victoryHold-timing.cut-timing.blackHold-timing.audioFade,stretch=rideDuration/9.2
@@ -58,8 +59,9 @@ export class ForestEndingShot{
     const x=world.position.x+climaxPathX(depth),z=world.position.z-depth,rx=x-FOREST_ENDING.randLane,rz=z-FOREST_ENDING.randLead
     for(const [px,pz,m]of [[x,z,r.vehicleRig.metrics],[rx,rz,rand.metrics]])for(const at of [m.frontZ,m.rearZ])if(!Number.isFinite(this.sample(px,pz-at)))return false
     // Recompose only behind the short black cut, including Armor victories.
+    restoreVehiclePresentation(r)
     r.armorController?.reset();r.transformEntry?.reset();r.scottInstance?.missilePose?.cancel()
-    r.scottInstance?.armorArticulation?.restore();r.combatVFX?.clear();r.missileVFX?.clear()
+    r.combatVFX?.clear();r.missileVFX?.clear()
     if(r.gallant)for(const missile of r.gallant.missiles?.records||[])missile.active=false
     Object.assign(r.state,createBikeState({x,z,yaw:Math.PI},r.vehicleRig.metrics,this.sample))
     rand.state=createBikeState({x:rx,z:rz,yaw:Math.PI},rand.metrics,this.sample)

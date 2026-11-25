@@ -1,5 +1,7 @@
 // Cyclone/world metres. These assembly/pose offsets apply exclusively to V3.
 export const scottV3Config={
+ palette:{enabled:true},
+ undersuit:{enabled:true,inset:.05,overlap:.075,drop:0,radiusY:.039,radiusZ:.042,raisedDrop:.022,raisedRadiusY:.060,raisedRadiusZ:.065,clothUV:[.7563629746437073,.8004850149154663]},
  riding:{
   elbowReference:'intro',
   pelvisOffset:[0,.025,.11],

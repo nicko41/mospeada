@@ -96,7 +96,7 @@ export default function GallantCombat({runtime}){
     if(c.aimLock.target)c.aimPoint.copy(c.aimLock.point)
     const launchPose=instance?.missilePose
     if(launchPose?.ready&&!runtime.paused&&!playerCombat.dead){const a=runtime.armorController?.active?runtime.armorController.state:null,s=runtime.state,yaw=s.travelYaw??s.yaw;c.missileVelocity.set(a?a.vx:Math.sin(yaw)*s.speed,a?a.vy:s.verticalVelocity||0,a?a.vz:Math.cos(yaw)*s.speed);if(c.missiles.launch(launchPose.target,c.active,runtime.missileVFX,c.missileVelocity))launchPose.commit();else launchPose.cancel()}
-    c.missiles.step(playerCombat.dead?0:dt,c.hitscan,runtime.missileVFX,target=>{c.hit=.24;c.hits++;runtime.combatVFX?.destroyTarget(target);if(c.aimLock.target===target)c.aimLock.clear()},(point,direction)=>runtime.combatVFX?.emit(point,true,direction,'invidExplosion',.25))
+    c.missiles.step(playerCombat.dead?0:dt,c.hitscan,runtime.missileVFX,target=>{c.hit=.24;c.hits++;runtime.combatVFX?.destroyTarget(target);if(c.aimLock.target===target)c.aimLock.clear()},(point,direction)=>runtime.combatVFX?.emit(point,true,direction,'invidExplosion',.25,{cameraShake:false}))
     c.missiles.present(c.active);runtime.missileVFX?.present(c.missiles.records,camera,dt)
     if(instance?.mountedMotion)w.attach(instance)
     if(c.active&&pose){

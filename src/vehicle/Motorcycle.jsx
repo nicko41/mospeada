@@ -34,6 +34,8 @@ import {stage4World} from '../world/forest/forestStage4Config.js'
 import {BikeDefeatMotion} from './BikeDefeatMotion.js'
 import {COVER_DECALS} from './coverDecalData.js'
 import {applyCoverDecals} from './coverDecals.js'
+import {restoreVehiclePresentation} from './restoreVehiclePresentation.js'
+import {cameraImpactEvents} from '../rendering/cameraImpactEvents.js'
 
 const CYCLONE_MODEL='/models/mospeada/cyclone-vr052f.glb'
 useGLTF.preload(CYCLONE_MODEL)
@@ -48,6 +50,7 @@ export default function Motorcycle() {
   const runtime = useRef({ state: null, keys: {}, input: {}, paused: false, cameraMode: 0, stamp: 0, nearby: [], cameraNearby: [], cameraTarget: new T.Vector3(), desired: new T.Vector3(), probe: new T.Vector3() }).current
 
   runtime.gameplay = true; runtime.scottBikeBody = rig.body; runtime.vehicleRig = rig
+  useLayoutEffect(()=>cameraImpactEvents.bind(runtime),[runtime])
   const getConfig = () => ({ ...bikeConfig, dismountDuration: runtime.scottData?.duration || bikeConfig.dismountDuration, mountAnchor: runtime.scottData?.keyPoses[0].pelvis })
   useLayoutEffect(() => {
     const unregister = registerRideSurfaces(scene)
@@ -71,6 +74,7 @@ export default function Motorcycle() {
     runtime.levelProgress=levelProgress
     const resetAt=start=>{
       runtime.ending?.reset()
+      restoreVehiclePresentation(runtime)
       runtime.scottInstance?.defeatMotion?.reset();runtime.defeat=null;runtime.pendingDefeatRetry=false
       runtime.bikeDefeatMotion?.reset();runtime.canyonCrash=null
       runtime.resumeClimaxCheckpoint=!!start.climax

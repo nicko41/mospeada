@@ -123,10 +123,27 @@ uniform float uFogDensity;
 uniform float uFogLinear;
 uniform vec2 uFogRange;
 uniform float uHazeBlur;
+uniform vec2 uImpactBlurDirection;
+uniform vec2 uImpactBlurFocus;
+uniform float uImpactBlurPixels;
+uniform float uImpactBlurBlend;
+uniform float uBoostBlurStrength;
+uniform float uBoostBlurPixels;
+uniform float uBoostClearRadius;
+uniform float uBoostAspect;
+uniform vec4 uBoostProtectRects[2];
 varying vec2 vUv;
 float viewDepth(vec2 uv) {
   float d = texture2D(uDepth, uv).r;
   return uNear * uFar / max(uFar - d * (uFar - uNear), 0.0001);
+}
+float boostProtected(vec2 uv){
+  float protect=step(.65,texture2D(uMask,uv).r);
+  for(int i=0;i<2;i++){
+    vec4 r=uBoostProtectRects[i];
+    protect=max(protect,step(r.x,uv.x)*step(r.y,uv.y)*step(uv.x,r.z)*step(uv.y,r.w));
+  }
+  return protect;
 }
 void main() {
   float edge = 0.0;
@@ -167,6 +184,43 @@ void main() {
       beauty=softened/totalWeight;
       edge*=1.0-softDistance*.65;
     }
+  }
+  if(uBoostBlurStrength>0.00001){
+    vec2 radial=vUv-vec2(.5);
+    float radius=length(radial*vec2(uBoostAspect,1.0))*2.0;
+    float peripheral=smoothstep(uBoostClearRadius,1.2,radius);
+    // Dilate hero protection through AA edges; never smear Scott or Cyclone
+    // into the moving background. Small rectangles also protect clear optics.
+    float protect=boostProtected(vUv);
+    protect=max(protect,boostProtected(clamp(vUv+vec2(uPixel.x*1.5,0.0),vec2(0.0),vec2(1.0))));
+    protect=max(protect,boostProtected(clamp(vUv-vec2(uPixel.x*1.5,0.0),vec2(0.0),vec2(1.0))));
+    protect=max(protect,boostProtected(clamp(vUv+vec2(0.0,uPixel.y*1.5),vec2(0.0),vec2(1.0))));
+    protect=max(protect,boostProtected(clamp(vUv-vec2(0.0,uPixel.y*1.5),vec2(0.0),vec2(1.0))));
+    float aimProtect=1.0-smoothstep(.04,.09,length(vUv-uImpactBlurFocus));
+    if(peripheral>0.0&&max(protect,aimProtect)<.001){
+      vec2 ray=radial/uPixel;ray/=max(length(ray),.001);
+      vec2 offset=ray*uPixel*uBoostBlurPixels*peripheral;
+      vec3 accumulated=beauty*2.0;float total=2.0;
+      for(int i=1;i<=3;i++){
+        vec2 tap=clamp(vUv-offset*(float(i)/3.0),vec2(0.0),vec2(1.0));
+        float weight=1.0-boostProtected(tap);
+        accumulated+=texture2D(uBeauty,tap).rgb*weight;total+=weight;
+      }
+      beauty=mix(beauty,accumulated/total,uBoostBlurStrength*peripheral);
+    }
+  }
+  if(uImpactBlurBlend>0.0001){
+    // Directional impulse blur. Wide Invid destruction pulses use five
+    // balanced taps; ordinary hits keep their original three-tap response.
+    vec2 offset=uImpactBlurDirection*uPixel*uImpactBlurPixels;
+    vec3 outer=texture2D(uBeauty,clamp(vUv-offset,vec2(0.0),vec2(1.0))).rgb+texture2D(uBeauty,clamp(vUv+offset,vec2(0.0),vec2(1.0))).rgb;
+    vec3 softened=beauty*.8+outer*.1;
+    if(uImpactBlurPixels>24.0){
+      vec3 inner=texture2D(uBeauty,clamp(vUv-offset*.5,vec2(0.0),vec2(1.0))).rgb+texture2D(uBeauty,clamp(vUv+offset*.5,vec2(0.0),vec2(1.0))).rgb;
+      softened=mix(softened,(beauty+outer+inner)*.2,smoothstep(24.0,48.0,uImpactBlurPixels));
+    }
+    float focus=smoothstep(.045,.13,length(vUv-uImpactBlurFocus));
+    beauty=mix(beauty,softened,uImpactBlurBlend*focus);
   }
   gl_FragColor = vec4(beauty, 1.0);
   #include <tonemapping_fragment>

@@ -1,0 +1,38 @@
+{
+  "undersuit": {
+    "independentMeshes": 2,
+    "addedTriangles": 768,
+    "nativeBones": 28,
+    "nativeGLBModified": false,
+    "newWeightsOnly": [
+      "Shoulder",
+      "Arm"
+    ],
+    "originalClothAtlasReused": true,
+    "reversible": "scottV3Config.undersuit.enabled=false",
+    "corrective": "Additional fabric morph only; native skeleton and poses unchanged"
+  },
+  "checks": {
+    "passedTests": 33,
+    "failedTests": 0,
+    "build": "passed",
+    "liveGame": "ingame/validation.json",
+    "poses": [
+      "standard ride",
+      "maximum mounted arm extension",
+      "two-handed aim",
+      "return to normal riding"
+    ],
+    "renderErrors": 0
+  },
+  "hashes": [
+    {
+      "Path": "C:\\IT-UP\\MOSPEADA\\assets\\01-SCOTT\\scott-gear-v3.glb",
+      "Hash": "74E05D816CFF3CA5CF1447187C5437D4E9A05D8BB038D745D519E70CE46A4370"
+    },
+    {
+      "Path": "C:\\IT-UP\\MOSPEADA\\public\\models\\mospeada\\scott-gear-v3-animated.glb",
+      "Hash": "89C9C9BF87093083B7A376157A74875610834F9B3BDB862068224EFD59DA4B34"
+    }
+  ]
+}

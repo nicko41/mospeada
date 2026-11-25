@@ -1,0 +1,31 @@
+{
+  "w": 1082,
+  "h": 804,
+  "hero": 40388,
+  "heroPeriphery": 19994,
+  "heroChanged": 0,
+  "centerChanged": 0,
+  "centerPixels": 50389,
+  "peripheryChanged": 179536,
+  "maskMax": 255,
+  "callsOff": 736,
+  "callsOn": 736,
+  "targets": 2,
+  "rects": [
+    [
+      0.30205058610993984,
+      0.3893913394476499,
+      0.400532897680841,
+      0.4987983246635676
+    ],
+    [
+      2,
+      2,
+      -1,
+      -1
+    ]
+  ],
+  "strength": 0.10623730730758352,
+  "unchanged": true,
+  "error": 0
+}

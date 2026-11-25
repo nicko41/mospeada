@@ -37,6 +37,9 @@ export function createHydraulicLink(body, targetFrame, base, target, options = {
   const sleeveLength = initial * 0.58
   const state = { length: initial, stroke: 0, baseError: 0, targetError: 0, connectorLength: 0, connectorStartError: 0, connectorEndError: 0 }
   function poseBody(start,end,mount,options) {
+    // Armor/V3 temporarily override these matrices. Reclaim the procedural
+    // TRS frames whenever the mechanics solve the hydraulic endpoints again.
+    root.matrixAutoUpdate = true; endPin.matrixAutoUpdate = true
     root.position.copy(start)
     const delta = end.clone().sub(start), length = delta.length()
     root.quaternion.setFromUnitVectors(up, delta.normalize())

@@ -1,9 +1,9 @@
 // Small local-only Chrome DevTools test client. Start Chrome with port 9333.
-export async function connect() {
+export async function connect({port=9333}={}) {
   const testUrl = process.env.MOSPEADA_TEST_URL || 'http://127.0.0.1:5173'
-  const pages = await (await fetch('http://127.0.0.1:9333/json/list')).json()
+  const pages = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()
   const page = pages.find(p => p.type === 'page' && p.url.startsWith(testUrl))
-  if (!page) throw Error('Open the MOSPEADA dev server in the test Chrome on port 9333')
+  if (!page) throw Error(`Open the MOSPEADA dev server in the test Chrome on port ${port}`)
   const socket = new WebSocket(page.webSocketDebuggerUrl), pending = new Map(), events = []
   let id = 0
   await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onerror = reject })

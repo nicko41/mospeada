@@ -6,19 +6,20 @@ import { patchSurfaceBrush } from './surfaceBrushShader.js'
 import { animeProgramKey, createPreparationTargets } from './renderPreparation.js'
 import { publishRenderMetrics } from './renderMetrics.js'
 import {combatFlashUniforms,patchCombatFlashLighting,syncCombatFlashLighting} from '../vfx/combatFlashLighting.js'
+import {BoostProtection} from './BoostProtection.js'
 
 const dynamic = ['color', 'emissive', 'emissiveIntensity', 'opacity', 'roughness', 'metalness', 'envMapIntensity', 'normalScale', 'clearcoat', 'clearcoatRoughness', 'transmission', 'thickness', 'ior', 'specularIntensity', 'specularColor', 'attenuationColor', 'attenuationDistance']
 const textureKeys = ['map', 'alphaMap', 'normalMap', 'roughnessMap', 'metalnessMap', 'emissiveMap', 'envMap']
 
 export function materialProfile(object, material) {
-  let parent = object, hero = object.isSkinnedMesh ? 1 : 0
-  while (parent) { if (parent.name === 'Cyclone_riding_vehicle'||parent.userData.animeHero) hero = 1; parent = parent.parent }
+  let parent = object, hero = object.isSkinnedMesh ? 1 : 0,boostGroup=0
+  while (parent) { if (parent.name === 'Cyclone_riding_vehicle'||parent.userData.animeHero) hero = 1;if(parent.name==='Cyclone_riding_vehicle')boostGroup=1;if(parent.name==='Scott_original_playback')boostGroup=2;parent = parent.parent }
   const grass = /^Grass_/.test(object.name)
   const glass = (material.transmission || 0) > 0 || material.transparent && material.opacity < 0.95
   const lit = material.isMeshStandardMaterial || material.isMeshLambertMaterial || material.isMeshPhongMaterial
   const emitter = /Headlight_.*(Optic|Glass)|faro-yellow/.test(object.userData.sourcePiece || '')
   const natural = !!(object.userData.forest || material.userData.forest)
-  return { surfaceShine: material.userData.animeSurfaceShine ?? 1, hero, grass, natural, glass: glass ? 1 : 0, mask: lit && !natural && !glass && !emitter && !object.userData.rideSurface ? hero ? 1 : 0.5 : 0 }
+  return { surfaceShine: material.userData.animeSurfaceShine ?? 1, hero,boostGroup, grass, natural, glass: glass ? 1 : 0, mask: lit && !natural && !glass && !emitter && !object.userData.rideSurface ? hero ? 1 : 0.5 : 0 }
 }
 
 export class AnimeRenderer {
@@ -35,10 +36,12 @@ export class AnimeRenderer {
     this.target.textures[1].minFilter = T.NearestFilter; this.target.textures[1].magFilter = T.NearestFilter
     this.composite = new T.ShaderMaterial({ vertexShader: compositeVertex, fragmentShader: compositeFragment, depthTest: false, depthWrite: false,
       uniforms: { uBeauty: { value: this.target.textures[0] }, uMask: { value: this.target.textures[1] }, uDepth: { value: this.target.depthTexture }, uPixel: { value: new T.Vector2(1, 1) }, uNear: { value: camera.near }, uFar: { value: camera.far }, uWidth: { value: 1.2 }, uOutlineColor: { value: new T.Color('#111b2e').convertLinearToSRGB() },
-        uFogDensity: { value: 0.068 },uFogLinear:{value:0},uFogRange:{value:new T.Vector2()},uHazeBlur:{value:0}, uOutlines: { value: 1 } },
+        uFogDensity: { value: 0.068 },uFogLinear:{value:0},uFogRange:{value:new T.Vector2()},uHazeBlur:{value:0}, uOutlines: { value: 1 },uImpactBlurDirection:{value:new T.Vector2(0,1)},uImpactBlurFocus:{value:new T.Vector2(.5,.5)},uImpactBlurPixels:{value:0},uImpactBlurBlend:{value:0} },
     })
     this.quad = new FullScreenQuad(this.composite)
     this.size = new T.Vector2(); this.zero = new Float32Array([0, 0, 0, 0])
+    this.boostProtection=new BoostProtection()
+    Object.assign(this.composite.uniforms,{uBoostBlurStrength:{value:0},uBoostBlurPixels:{value:0},uBoostClearRadius:{value:.5},uBoostAspect:{value:1},uBoostProtectRects:{value:this.boostProtection.rects}})
     this.stats = { materials: 0, renderCalls: 0, mode: 'ANIME' }
   }
   sourceRecord(material) {
@@ -80,13 +83,15 @@ export class AnimeRenderer {
     this.scene.traverse(object => {
       if (!object.material || !(object.isMesh || object.isSprite || object.isLine || object.isPoints)) return
       const source = object.material, array = Array.isArray(source) ? source : [source]
-      let attachment = null
+      let attachment = null,boostGroup=0
       const variants = array.map(material => {
         const brush = this.brush?.attach(object, material)
         if (brush) attachment = brush
-        return this.variant(material, { ...materialProfile(object, material), brush })
+        const profile={...materialProfile(object,material),brush}
+        if(profile.boostGroup&&profile.mask<1)boostGroup=profile.boostGroup
+        return this.variant(material,profile)
       })
-      this.bindings.push({ object, source, anime: Array.isArray(source) ? variants : variants[0], attachment })
+      this.bindings.push({ object, source, anime: Array.isArray(source) ? variants : variants[0], attachment,boostGroup })
     })
   }
   restore() { for (const b of this.bindings) { if (b.object.material === b.anime) b.object.material = b.source; if (b.attachment && b.object.geometry === b.attachment.geometry) b.object.geometry = b.attachment.sourceGeometry } }
@@ -340,8 +345,8 @@ export class AnimeRenderer {
     })().catch(error=>{if(!this.disposed)this.error=error.message})
     return this.backgroundWork
   }
-  drawSceneTarget(target = this.target) {
-    const { renderer, scene, camera } = this
+  drawSceneTarget(target = this.target, camera = this.camera) {
+    const { renderer, scene } = this
     camera.updateMatrixWorld();syncCombatFlashLighting(camera)
     const previous = renderer.getRenderTarget(), background = scene.background, clearColor = renderer.getClearColor(new T.Color()), clearAlpha = renderer.getClearAlpha(), autoClear = renderer.autoClear
     try {
@@ -359,7 +364,7 @@ export class AnimeRenderer {
       this.restore(); renderer.setRenderTarget(previous)
     }
   }
-  render(config, day) {
+  render(config, day, presentation=null) {
     const { renderer, scene, camera } = this
     if(this.warming&&!this.ready&&!this.error)return
     this.collect(); this.resize(); this.sync()
@@ -367,6 +372,17 @@ export class AnimeRenderer {
     Object.assign(this.uniforms.uAnimeCel, { value: config.cel ? 1 : 0 }); this.uniforms.uAnimeLevels.value = config.levels
     this.uniforms.uAnimeShadow.value = config.shadow; this.uniforms.uAnimeHighlights.value = config.highlights; this.uniforms.uAnimeDay.value = day
     const uniforms = this.composite.uniforms
+    if(presentation)uniforms.uImpactBlurDirection.value.copy(presentation.blurDirection)
+    else uniforms.uImpactBlurDirection.value.set(0,1)
+    if(presentation)uniforms.uImpactBlurFocus.value.copy(presentation.blurFocus)
+    else uniforms.uImpactBlurFocus.value.set(.5,.5)
+    uniforms.uImpactBlurPixels.value=presentation?.blurPixels||0
+    uniforms.uImpactBlurBlend.value=presentation?.blurBlend||0
+    uniforms.uBoostBlurStrength.value=presentation?.boostBlurStrength||0
+    uniforms.uBoostBlurPixels.value=presentation?.boostBlurPixels||0
+    uniforms.uBoostClearRadius.value=presentation?.boostClearRadius??.5
+    uniforms.uBoostAspect.value=this.target.width/this.target.height
+    if(uniforms.uBoostBlurStrength.value>0)this.boostProtection.update(this.bindings,presentation?.camera||camera,this.target.width,this.target.height)
     uniforms.uNear.value = camera.near; uniforms.uFar.value = camera.far
     uniforms.uWidth.value = config.width * renderer.getPixelRatio()
     uniforms.uOutlineColor.value.set(config.color).convertLinearToSRGB()
@@ -382,9 +398,9 @@ export class AnimeRenderer {
       this.stats.renderCalls = 0;this.warm();return
     }
     if (this.error) {
-      renderer.render(scene,camera);this.stats.renderCalls=renderer.info.render.calls;return
+      renderer.render(scene,presentation?.camera||camera);this.stats.renderCalls=renderer.info.render.calls;return
     }
-    this.stats.renderCalls = this.drawSceneTarget()
+    this.stats.renderCalls = this.drawSceneTarget(this.target,presentation?.camera||camera)
     renderer.setRenderTarget(null); this.quad.render(renderer)
     this.stats.renderCalls += renderer.info.render.calls
     this.stats.renderTriangles+=renderer.info.render.triangles

@@ -8,6 +8,7 @@ import {SCOUT_SCORCH_SLOTS} from '../world/forest/scoutHitAppearance.js'
 import {SurfaceImpactMarks} from './SurfaceImpactMarks.js'
 import {SCOUT_ASSET} from '../world/forest/invidScoutAsset.js'
 import {InvidImpactDust} from './InvidImpactDust.js'
+import {cameraImpactEvents} from '../rendering/cameraImpactEvents.js'
 
 const rgba=hex=>{const c=new Color(hex);return new QVec4(c.r,c.g,c.b,1)}
 const MathUtilsSmooth=t=>{const x=Math.max(0,Math.min(1,t));return x*x*(3-2*x)}
@@ -136,6 +137,7 @@ export class Plano3CombatVFX{
     for(let i=first;i<system.particleNum;i++)for(const behavior of system.behaviors)behavior.update(system.particles[i],0)
   }
   emit(point,death,normal=null,name=death?'invidExplosion':'invidHit',scale=1,context={}){
+    if(death)cameraImpactEvents.emit(context.cameraShake===false?'environmentExplosion':'explosion',point,scale,context.cameraShakeScale)
     if(death){this.emitDeathEnergy(point,scale);this.hasEffects=true;return this.impacts.spawn(name,point,normal,scale,context)}
     if(name==='invidHit'||name==='gallantImpact'){this.hasEffects=true;return this.impacts.spawn(name,point,normal,scale,context)}
     const preset=this.presets[name],ps=this.systems[death?1:0],limit=death?COMBAT_VFX_LIMITS.sparksPerExplosion:COMBAT_VFX_LIMITS.sparksPerHit
@@ -215,7 +217,7 @@ export class Plano3CombatVFX{
     const preset=this.presets.invidExplosion,groundY=this.sampleGround?.(target.position.x,target.position.z)
     const grounded=Number.isFinite(groundY)?target.position.y-groundY<=preset.groundGap:target.mode==='ground'||target.grounded===true
     this.point.copy(target.position);if(target.height)this.point.y+=target.height*preset.bodyOffset
-    v.deathRecord=this.emit(this.point,true,null,'invidExplosion',target.height?target.height/5.2:.45,{groundY,grounded});v.deathSeed=v.deathRecord?.seed
+    v.deathRecord=this.emit(this.point,true,null,'invidExplosion',target.height?target.height/5.2:.45,{groundY,grounded,...(target.cameraShakeScale!=null?{cameraShakeScale:target.cameraShakeScale}:{})});v.deathSeed=v.deathRecord?.seed
     if(bloodTarget(target)){
       const view=target.view,mesh=view.levels[0];this.direction.set(0,0,1)
       mesh.updateWorldMatrix(true,false);this.point.fromArray(SCOUT_ASSET.head)

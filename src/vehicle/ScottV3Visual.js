@@ -8,6 +8,8 @@ import {readV3KneeSocket} from './scottV3KneeSockets.js'
 import {kneeSocketPoint} from './scottKneeSockets.js'
 import {ScottRideSpeedResponse} from './ScottRideSpeedResponse.js'
 import {introElbowDirections} from './ScottV3RidingReference.js'
+import {installScottV3Palette} from './scottV3Palette.js'
+import {ScottV3ShoulderUndersuit} from './ScottV3ShoulderUndersuit.js'
 
 const point=b=>b.getWorldPosition(new Vector3())
 const rigid=bone=>new Matrix4().compose(point(bone),bone.getWorldQuaternion(new Quaternion()).normalize(),new Vector3(1,1,1))
@@ -20,12 +22,14 @@ export class ScottV3Visual{
   this.speedResponse=new ScottRideSpeedResponse()
   this.model.traverse(mesh=>{if(mesh.isSkinnedMesh){
    const original=mesh.material.clone(),clean=original.clone();mesh.material=original
+   if(config.palette.enabled)for(const material of [original,clean])installScottV3Palette(material,mesh.skeleton.bones)
    mesh.castShadow=true;mesh.frustumCulled=false;mesh.userData.prewarmVFX=true
    this.skins.push({mesh,original,clean,variant:'v3'})
   }})
   instance.model.add(this.model)
   this.shapes=Object.fromEntries(['Left','Right'].map(side=>[side,this.measure(side)]))
   this.kneeSockets=Object.fromEntries(['Left','Right'].map(side=>[side,readV3KneeSocket(this.skins[0].mesh,side,this.retarget.targetBind.get(side+'Leg').position,config.assembly['leg'+side].kneeProbeOffset)]))
+  this.undersuit=new ScottV3ShoulderUndersuit(this.skins[0].mesh,config.undersuit)
  }
  measure(side){
   const mesh=this.skins[0].mesh,g=mesh.geometry,p=g.attributes.position,j=g.attributes.skinIndex,w=g.attributes.skinWeight,frames=this.retarget.targetBind,sign=side==='Left'?1:-1,wrist=frames.get(side+'Hand').position,foot=frames.get(side+'Foot').position
@@ -65,6 +69,7 @@ export class ScottV3Visual{
   this.coverRig=runtime.vehicleRig;this.handCovers=covers;return covers
  }
  apply(runtime,delta){
+  this.undersuit.setEnabled(config.undersuit.enabled)
   this.retarget.apply()
   const retarget=this.retarget,body=runtime?.scottBikeBody,bones=retarget.bones
   this.diagnostics={mappedBones:retarget.records.length,nativeBones:this.skins[0].mesh.skeleton.bones.length}
@@ -147,6 +152,7 @@ export class ScottV3Visual{
    }
   }
   this.model.updateWorldMatrix(true,true)
+  this.undersuit.update()
  }
  // Equipment crosses anatomical bind frames through rigid transforms only.
  boneDelta(name,offset=[0,0,0]){
@@ -198,5 +204,5 @@ export class ScottV3Visual{
   const world=this.boneDelta('RightHand').multiply(root.matrixWorld),local=root.parent.matrixWorld.clone().invert().multiply(world)
   local.decompose(root.position,root.quaternion,new Vector3());root.updateWorldMatrix(false,true)
  }
- dispose(){this.restoreAttachments();this.model.removeFromParent();for(const s of this.skins){s.original.dispose();s.clean.dispose()}}
+ dispose(){this.restoreAttachments();this.undersuit.dispose();this.model.removeFromParent();for(const s of this.skins){s.original.dispose();s.clean.dispose()}}
 }

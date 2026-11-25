@@ -1,0 +1,174 @@
+{
+  "controls": {
+    "initial": [
+      true,
+      true
+    ],
+    "independentBlur": true,
+    "sliders": 10
+  },
+  "steps": {
+    "explosion": {
+      "frames": 9,
+      "logicalUnchanged": true,
+      "shakenFrames": 5,
+      "maxScreenPixels": 50.11539850868384,
+      "maxTranslation": 0.18069169849458988,
+      "maxRotation": 0.08883444154278462,
+      "maxSlots": 1,
+      "maxBlur": 0.85,
+      "maxGpuBlur": 0.8500000238418579,
+      "maxBlurPixels": 72
+    },
+    "distant": {
+      "frames": 11,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 0,
+      "maxBlur": 0,
+      "maxGpuBlur": 0,
+      "maxBlurPixels": 0
+    },
+    "hostile-contact": {
+      "frames": 11,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 0,
+      "maxBlur": 0,
+      "maxGpuBlur": 0,
+      "maxBlurPixels": 0
+    },
+    "orb-ground": {
+      "frames": 11,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 0,
+      "maxBlur": 0,
+      "maxGpuBlur": 0,
+      "maxBlurPixels": 0
+    },
+    "scenery-explosion": {
+      "frames": 11,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 1,
+      "maxBlur": 0.1516212407716904,
+      "maxGpuBlur": 0.1516212373971939,
+      "maxBlurPixels": 18
+    },
+    "direct-hit": {
+      "frames": 10,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 1,
+      "maxBlur": 0.6490326596647864,
+      "maxGpuBlur": 0.6490326523780823,
+      "maxBlurPixels": 18
+    },
+    "direct-with-blur": {
+      "frames": 10,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 1,
+      "maxBlur": 0.6490326596647864,
+      "maxGpuBlur": 0.6490326523780823,
+      "maxBlurPixels": 18
+    },
+    "blur-only": {
+      "frames": 10,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 1,
+      "maxBlur": 0.85,
+      "maxGpuBlur": 0.8500000238418579,
+      "maxBlurPixels": 72
+    },
+    "disabled": {
+      "frames": 11,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 0,
+      "maxBlur": 0,
+      "maxGpuBlur": 0,
+      "maxBlurPixels": 0
+    },
+    "paused": {
+      "frames": 10,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 0,
+      "maxBlur": 0,
+      "maxGpuBlur": 0,
+      "maxBlurPixels": 0
+    },
+    "resumed": {
+      "frames": 11,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 0,
+      "maxBlur": 0,
+      "maxGpuBlur": 0,
+      "maxBlurPixels": 0
+    },
+    "restart": {
+      "frames": 11,
+      "logicalUnchanged": true,
+      "shakenFrames": 0,
+      "maxScreenPixels": 0,
+      "maxTranslation": 0,
+      "maxRotation": 0,
+      "maxSlots": 0,
+      "maxBlur": 0,
+      "maxGpuBlur": 0,
+      "maxBlurPixels": 0
+    }
+  },
+  "events": [
+    "explosion",
+    "explosion",
+    "environmentExplosion",
+    "directHit",
+    "directHit",
+    "explosion",
+    "directHit",
+    "explosion",
+    "explosion"
+  ],
+  "glError": 0,
+  "badPrograms": 0,
+  "shaderError": "",
+  "blurFocus": [
+    0.56,
+    0.54
+  ]
+}
