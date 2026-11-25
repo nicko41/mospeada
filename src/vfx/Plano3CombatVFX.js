@@ -9,6 +9,7 @@ import {SurfaceImpactMarks} from './SurfaceImpactMarks.js'
 import {SCOUT_ASSET} from '../world/forest/invidScoutAsset.js'
 import {InvidImpactDust} from './InvidImpactDust.js'
 import {cameraImpactEvents} from '../rendering/cameraImpactEvents.js'
+import {cinematicCombatEvents} from '../rendering/cinematicCombatEvents.js'
 
 const rgba=hex=>{const c=new Color(hex);return new QVec4(c.r,c.g,c.b,1)}
 const MathUtilsSmooth=t=>{const x=Math.max(0,Math.min(1,t));return x*x*(3-2*x)}
@@ -137,6 +138,7 @@ export class Plano3CombatVFX{
     for(let i=first;i<system.particleNum;i++)for(const behavior of system.behaviors)behavior.update(system.particles[i],0)
   }
   emit(point,death,normal=null,name=death?'invidExplosion':'invidHit',scale=1,context={}){
+    if(death&&context.cameraShake!==false)cinematicCombatEvents.emit('explosion',point,{strength:scale,style:'biomechanical'})
     if(death)cameraImpactEvents.emit(context.cameraShake===false?'environmentExplosion':'explosion',point,scale,context.cameraShakeScale)
     if(death){this.emitDeathEnergy(point,scale);this.hasEffects=true;return this.impacts.spawn(name,point,normal,scale,context)}
     if(name==='invidHit'||name==='gallantImpact'){this.hasEffects=true;return this.impacts.spawn(name,point,normal,scale,context)}
@@ -191,8 +193,9 @@ export class Plano3CombatVFX{
     // newborn particles now without advancing time: they must draw this frame.
     this.uploadBirths(1,2,3,4,6)
   }
-  enemyImpact(point,velocity=null){this.contactNormal.copy(velocity||this.axis).normalize().negate();this.emit(point,false,this.contactNormal,'invidLaserImpact')}
+  enemyImpact(point,velocity=null){cinematicCombatEvents.emit('blast',point,{direction:velocity,style:'energy'});this.contactNormal.copy(velocity||this.axis).normalize().negate();this.emit(point,false,this.contactNormal,'invidLaserImpact')}
   clawGroundImpact(point){
+    cinematicCombatEvents.emit('ground',point,{strength:.7,style:'earth'})
     this.contactNormal.set(0,1,0);this.hasEffects=true
     this.impacts.spawn('invidClawImpact',point,this.contactNormal,1,{grounded:true,groundY:point.y})
     this.impactDust.burst(point)
@@ -200,6 +203,7 @@ export class Plano3CombatVFX{
   enemyWorldImpact(point,velocity=null){
     const ground=this.sampleGround?.(point.x,point.z)
     if(Number.isFinite(ground)&&Math.abs(point.y-ground)>.8){this.enemyImpact(point,velocity);return}
+    cinematicCombatEvents.emit('ground',point,{direction:velocity,style:'earth'})
     this.contactNormal.set(0,1,0);this.hasEffects=true
     this.impacts.spawn('invidGroundImpact',point,this.contactNormal,1,{grounded:true,groundY:point.y})
     this.impactDust.burst(point)
@@ -349,6 +353,7 @@ export class Plano3CombatVFX{
       t.age+=dt;t.life=Math.max(0,t.life-dt)
     }
     for(const b of encounter.bolts)if(b.active){
+      cinematicCombatEvents.observeProjectile(b)
       if(b.style==='scoutOval'){
         const scale=b.visualScale||1
         this.object.position.copy(b.position);this.direction.copy(b.velocity).normalize();this.object.quaternion.setFromUnitVectors(this.axis,this.direction)

@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import {Box3,Group,PerspectiveCamera,Ray,Vector2,Vector3} from 'three'
-import {GallantAimLock} from './GallantAimLock.js'
+import {GallantAimLock,GALLANT_AIM_LOCK,cuffMissileLockReady} from './GallantAimLock.js'
 import {GallantHitscan} from './GallantShot.js'
 import {registerMeleeTarget} from '../player/meleeWorld.js'
 import {boxCollider,registerColliders} from '../player/collisionWorld.js'
@@ -22,10 +22,33 @@ test('aim lock selects the Scout nearest the reticle and follows it without jump
 
 test('aim lock rejects hidden, offscreen, distant and occluded Scouts and clears on reset',()=>{
  const {camera,lock,hitscan,pointer,state}=setup(),a=scout(0,-20),targets=[a]
- for(const change of [()=>a.view.root.visible=false,()=>a.position.z=-70,()=>a.position.z=10,()=>a.position.x=100]){a.view.root.visible=true;a.position.set(0,0,-20);change();assert.equal(lock.update(true,camera,pointer,targets,hitscan,state),null)}
+ for(const change of [()=>a.view.root.visible=false,()=>a.position.z=-(GALLANT_AIM_LOCK.maxDistance+10),()=>a.position.z=10,()=>a.position.x=100]){a.view.root.visible=true;a.position.set(0,0,-20);change();assert.equal(lock.update(true,camera,pointer,targets,hitscan,state),null)}
  a.position.set(0,0,-20);a.view.root.visible=true;const remove=registerColliders([boxCollider(new Box3(new Vector3(-4,0,-12),new Vector3(4,8,-10)))])
  try{assert.equal(lock.update(true,camera,pointer,targets,hitscan,state),null)}finally{remove()}
  assert.equal(lock.update(true,camera,pointer,targets,hitscan,state),a);assert.equal(lock.update(false,camera,pointer,targets,hitscan,{}),null)
+})
+
+test('distant cuff targets need three seconds of uninterrupted aim; pose refresh cannot double the charge',()=>{
+ const {camera,lock,hitscan,pointer,state}=setup(),a=scout(0,-210);a.receiveMissileHit=()=>true
+ assert.equal(lock.update(true,camera,pointer,[a],hitscan,state),a)
+ for(let i=0;i<179;i++){
+  lock.update(true,camera,pointer,[a],hitscan,state);lock.update(true,camera,pointer,[a],hitscan,state,1/60)
+  assert.equal(cuffMissileLockReady(lock,true),false)
+ }
+ lock.update(true,camera,pointer,[a],hitscan,state,1/30)
+ assert.equal(lock.progress,1);assert.equal(cuffMissileLockReady(lock,true),true);assert.equal(cuffMissileLockReady(lock,false),false);assert.equal(cuffMissileLockReady(lock,true,scout(0,-20)),false)
+ lock.update(false,camera,pointer,[a],hitscan,state);assert.equal(lock.progress,0);assert.equal(lock.ready,false)
+})
+
+test('cover, evasion, actor resets and target changes cancel cuff readiness instead of transferring it',()=>{
+ const {camera,lock,hitscan,pointer,state}=setup(),a=scout(0,-180),b=scout(0,-190);a.receiveMissileHit=b.receiveMissileHit=()=>true
+ lock.update(true,camera,pointer,[a,b],hitscan,state,3);assert.equal(lock.ready,true)
+ a.dead=true;lock.update(true,camera,pointer,[a,b],hitscan,state);assert.equal(lock.target,b);assert.equal(lock.progress,0)
+ lock.update(true,camera,pointer,[b],hitscan,state,3);assert.equal(lock.ready,true)
+ const remove=registerColliders([boxCollider(new Box3(new Vector3(-4,0,-100),new Vector3(4,8,-98)))])
+ try{lock.update(true,camera,pointer,[b],hitscan,state);assert.equal(lock.ready,false);assert.equal(lock.target,null)}finally{remove()}
+ lock.update(true,camera,pointer,[b],hitscan,state,3);b.evading=true;lock.update(true,camera,pointer,[b],hitscan,state);assert.equal(lock.lockAge,0)
+ b.evading=false;lock.update(true,camera,pointer,[b],hitscan,state,3);lock.update(true,camera,pointer,[b],hitscan,{});assert.equal(lock.progress,0)
 })
 
 test('locked fire uses real muzzle collisions, consumes sixteen hits, and cannot shoot through cover beside Scott',()=>{

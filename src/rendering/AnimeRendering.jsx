@@ -18,6 +18,8 @@ import {cameraImpactAllowed,sampleImpactPlayer,sampleImpactFocus,subscribeCamera
 import {BoostCameraFX} from './BoostCameraFX.js'
 import {boostCameraState} from './boostCameraState.js'
 import {bikeConfig} from '../vehicle/bikeConfig.js'
+import {CinematicCombatFX} from './CinematicCombatFX.js'
+import {cinematicCombatState} from './cinematicCombatState.js'
 
 export default function AnimeRendering() {
   const { gl, scene, camera } = useThree(), controller = useRef(null),impactController=useRef(null)
@@ -26,7 +28,8 @@ export default function AnimeRendering() {
     const effect = new AnimeRenderer(gl, scene, camera); controller.current = effect
     const impact=new CameraImpactFX(camera)
     const boost=new BoostCameraFX(camera)
-    impactController.current={fx:impact,boost,generation:cameraImpactEvents.generation,actor:null,player:new Vector3(),kick:new Vector3()}
+    const cinematic=new CinematicCombatFX(scene,camera);effect.cinematic=cinematic;Object.assign(effect.composite.uniforms,cinematic.uniforms)
+    impactController.current={fx:impact,boost,cinematic,generation:cameraImpactEvents.generation,actor:null,player:new Vector3(),kick:new Vector3()}
     const unsubscribe=subscribeCameraImpactDamage(cameraImpactEvents,()=>impact.reset())
     effect.allowBackgroundWork=()=>!frontTransformState.snapshot().entryRunning&&forestOpeningState.snapshot().phase!=='playing'&&forestEndingState.snapshot().phase==='idle'&&(!effect.openingReady||!desktopInput.ready||rideMotion.paused||effect.initialNight!==(timeOfDayState.target<.5))
     effect.startupViews=()=>[...forestOpeningState.startupViews(),...forestFirstPassViews(scene,camera)]
@@ -40,12 +43,14 @@ export default function AnimeRendering() {
     if (import.meta.env.DEV) window.__ANIME__ = { effect, state: animeState, renderer: gl, scene, camera }
     if(import.meta.env.DEV)window.__CAMERA_IMPACT__={effect:impact,state:cameraImpactState,events:cameraImpactEvents}
     if(import.meta.env.DEV)window.__BOOST_CAMERA__={effect:boost,state:boostCameraState}
+    if(import.meta.env.DEV)window.__CINEMATIC_COMBAT__={effect:cinematic,state:cinematicCombatState,events:cinematic.events}
     return () => {
-      controller.current = null; effect.dispose(); gl.debug.onShaderError = previous
+      controller.current = null; cinematic.dispose();effect.dispose(); gl.debug.onShaderError = previous
       unsubscribe();impact.reset();impactController.current=null
       if (import.meta.env.DEV) delete window.__ANIME__
       if(import.meta.env.DEV)delete window.__CAMERA_IMPACT__
       if(import.meta.env.DEV)delete window.__BOOST_CAMERA__
+      if(import.meta.env.DEV)delete window.__CINEMATIC_COMBAT__
     }
   }, [gl, scene, camera])
   // Positive priority takes over only the final render. All simulation, camera,
@@ -60,7 +65,7 @@ export default function AnimeRendering() {
     const feedback=impactController.current,runtime=cameraImpactEvents.runtime
     let presentation=null
     if(feedback){
-      if(feedback.generation!==cameraImpactEvents.generation||feedback.actor!==runtime?.state){feedback.fx.reset();feedback.boost.reset(runtime?.state);cameraImpactEvents.drain();feedback.generation=cameraImpactEvents.generation;feedback.actor=runtime?.state}
+      if(feedback.generation!==cameraImpactEvents.generation||feedback.actor!==runtime?.state){feedback.fx.reset();feedback.boost.reset(runtime?.state);feedback.cinematic.reset();cameraImpactEvents.drain();feedback.generation=cameraImpactEvents.generation;feedback.actor=runtime?.state}
       const boostConfig=boostCameraState.snapshot(),ready=desktopInput.ready&&effect.ready&&!effect.error
       feedback.boost.sample(delta,runtime,boostConfig,bikeConfig,ready)
       if(cameraImpactAllowed(runtime,desktopInput.ready&&effect.ready&&!effect.error)){
@@ -71,6 +76,7 @@ export default function AnimeRendering() {
       }else{feedback.fx.reset();cameraImpactEvents.drain()}
       sampleImpactFocus(runtime||{},feedback.boost.focus)
       presentation=feedback.boost.compose(camera,presentation,boostConfig,feedback.boost.focus)
+      presentation.camera=feedback.cinematic.update(delta,runtime,ready,feedback.player,presentation.camera,presentation.blurFocus)
     }
     // The opaque loader retains the first frame. Preparation refreshes its own
     // bindings; traversing all materials at 60 Hz here starves compilation.

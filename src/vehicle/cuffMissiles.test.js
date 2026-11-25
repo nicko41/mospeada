@@ -33,6 +33,15 @@ test('one guided impact kills a full-health Scout once; the path oscillates and 
  try{const t=p.scouts[0];assert.equal(t.health,16);assert.ok(m.launch(t,true,vfx));const samples=[];for(let i=0;i<480&&!t.dead;i++){t.position.x=Math.sin(i/120)*2;f.tick();samples.push(m.records[0].position.x)}assert.ok(t.dead);assert.equal(t.hits,1);assert.equal(p.kills,1);assert.equal(f.hits(),1);assert.ok(Math.max(...samples)-Math.min(...samples)>1);assert.ok(vfx.emitted>30);assert.ok(vfx.system.particleNum>0);assert.ok(vfx.system.particleNum<=MISSILE_SMOKE_LIMIT);for(let i=0;i<60;i++)f.tick();assert.equal(p.kills,1);assert.equal(f.hits(),1)}finally{f.dispose()}
 })
 
+test('cuff flight reaches a locked Scout beyond the old Gallant range without increasing missile speed',async()=>{
+ const f=await setup(),m=f.missiles,t=f.patrol.scouts[0]
+ try{
+  t.position.set(0,0,210);assert.ok(m.launch(t,true,f.vfx))
+  for(let i=0;i<960&&!t.dead;i++)f.tick()
+  assert.equal(t.dead,true);assert.equal(m.stats.hits,1);assert.equal(m.remaining,3)
+ }finally{f.dispose()}
+})
+
 test('four missiles per battle cannot be replenished by changing form, pause freezes flight, and checkpoint reset reloads',async()=>{
  const f=await setup(),{missiles:m,patrol:p}=f
  try{

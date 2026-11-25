@@ -1,3 +1,5 @@
+import {cinematicDeclarations,cinematicComposite} from './cinematicCombatShader.js'
+
 // Fragment-only treatment: native skinning, morphs, instancing, maps, light
 // attenuation, shadow maps and transmission remain in Three's original shaders.
 export const animeUniformsGLSL = /* glsl */`
@@ -132,6 +134,7 @@ uniform float uBoostBlurPixels;
 uniform float uBoostClearRadius;
 uniform float uBoostAspect;
 uniform vec4 uBoostProtectRects[2];
+${cinematicDeclarations}
 varying vec2 vUv;
 float viewDepth(vec2 uv) {
   float d = texture2D(uDepth, uv).r;
@@ -222,6 +225,7 @@ void main() {
     float focus=smoothstep(.045,.13,length(vUv-uImpactBlurFocus));
     beauty=mix(beauty,softened,uImpactBlurBlend*focus);
   }
+  ${cinematicComposite}
   gl_FragColor = vec4(beauty, 1.0);
   #include <tonemapping_fragment>
   #include <colorspace_fragment>

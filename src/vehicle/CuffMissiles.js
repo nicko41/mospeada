@@ -1,6 +1,6 @@
 import {Box3,Matrix4,Ray,Vector3} from 'three'
 
-export const CUFF_MISSILES=Object.freeze({capacity:4,interval:.45,life:4,speed:42,wave:1.15,smokeSpacing:.65})
+export const CUFF_MISSILES=Object.freeze({capacity:4,interval:.45,life:8,speed:42,wave:1.15,smokeSpacing:.65})
 const up=new Vector3(0,1,0)
 export class CuffMissiles{
  constructor(){

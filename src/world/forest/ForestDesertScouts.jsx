@@ -1,5 +1,6 @@
 import {useLayoutEffect,useMemo} from 'react'
 import {useFrame,useThree} from '@react-three/fiber'
+import {observeArmorUnlock} from '../../vehicle/armorUnlock.js'
 import {useGLTF} from '@react-three/drei'
 import {Group,Vector3} from 'three'
 import {INVID_SCOUT_URL,createScoutView} from './invidScoutAsset.js'
@@ -76,6 +77,7 @@ export default function ForestDesertScouts({runtime}){
       onImpact:b=>runtime.combatVFX?.enemyWorldImpact(b.position,b.velocity),
       onClawImpact:point=>runtime.combatVFX?.clawGroundImpact(point),
     })
+    if(dt>0)observeArmorUnlock(runtime,world)
     if(!playerCombat.dead&&sequence.phase==='failed'&&world?.bound&&!sequence.completed){
       resources.recoveryAge+=dt
       if(resources.recoveryAge>=SCOUT_PATROL.retrySeconds){

@@ -15,6 +15,7 @@ import CycloneSpeedometer from './CycloneSpeedometer.jsx'
 import ScottHealthHUD from './ScottHealthHUD.jsx'
 import ScottModelToggle from './ScottModelToggle.jsx'
 import CameraImpactControls from '../rendering/CameraImpactControls.jsx'
+import CinematicCombatControls from '../rendering/CinematicCombatControls.jsx'
 
 const tuning = [
   ['acceleration', 'Aceleración', 2, 24, 0.2], ['braking', 'Frenado', 4, 30, 0.5],
@@ -47,7 +48,7 @@ export default function DrivingHUD() {
     <div className="ride-actions"><button onClick={() => rideCommand({ pause: true })}>{data.paused ? 'Continuar · P' : 'Pausa · P'}</button><button onClick={() => rideCommand({ camera: true })}>Vista · C</button><button onClick={() => rideCommand({ centerCamera: true })}>Recentrar</button><button onClick={() => setOpen(!open)} aria-expanded={open}>Ajustes</button></div>
     {data.paused && open && <aside className="ride-settings" aria-label="Ajustes del juego" onKeyDown={e => e.stopPropagation()} onPointerDown={e => e.stopPropagation()} onContextMenu={e => e.preventDefault()}>
       <div className="ride-settings-heading"><h2>Ajustes</h2><button aria-label="Cerrar ajustes" onClick={() => setOpen(false)}>×</button></div>
-      <div className="ride-settings-tabs" role="group" aria-label="Categorías de ajustes">{[['weather', 'Clima'], ['driving', 'Conducción'],['armor','Armor'], ['anime', 'Anime'], ['impact','Cámara FX'], ['brush', 'Reflejo'], ['soil', 'Suciedad'], ['vfx', 'VFX · terreno'], ['transform', 'Transformación']].map(([key, label]) => <button key={key} aria-pressed={section === key} onClick={() => setSection(key)}>{label}</button>)}</div>
+      <div className="ride-settings-tabs" role="group" aria-label="Categorías de ajustes">{[['weather', 'Clima'], ['driving', 'Conducción'],['armor','Armor'], ['anime', 'Anime'], ['impact','Cámara FX'],['combatFX','Cine · combate'], ['brush', 'Reflejo'], ['soil', 'Suciedad'], ['vfx', 'VFX · terreno'], ['transform', 'Transformación']].map(([key, label]) => <button key={key} aria-pressed={section === key} onClick={() => setSection(key)}>{label}</button>)}</div>
       <div className="ride-settings-body">
         {section === 'weather' && <section className="anime-settings" aria-label="Clima y hora"><h2>Clima y hora</h2>
           <div className="weather-presets"><button aria-pressed={weather === 'sunny'} onClick={() => { weatherState.setPreset('sunny'); timeOfDayState.target = 1 }}>Día soleado</button><button aria-pressed={weather === 'storm'} onClick={() => weatherState.setPreset('storm')}>Tormenta</button></div>
@@ -57,6 +58,7 @@ export default function DrivingHUD() {
         {section === 'driving' && <div className="ride-tuning"><h2>Conducción y escenario</h2><label><span>Escenario de prueba</span><select aria-label="Escenario de prueba" defaultValue="" onChange={e => { rideCommand({ start: e.target.value }); e.target.value = '' }}><option value="" disabled>Elegir escenario…</option>{Object.entries(TEST_STARTS).map(([key, start], i) => <option key={key} value={key}>{i + 1} · {start.label}</option>)}</select></label><label className="ride-flight-option"><input type="checkbox" checked={flight} onChange={event => { bikeConfig.flightEnabled = event.target.checked; setFlight(event.target.checked) }} /> Despegue por inercia</label>{tuning.map(([key, label, min, max, step]) => <label key={key}><span>{label}</span><input aria-label={label} type="range" min={min} max={max} step={step} defaultValue={bikeConfig[key]} onChange={e => { bikeConfig[key] = Number(e.target.value) }} /></label>)}<small>Se aplican al instante durante esta sesión.</small></div>}
         {section === 'anime' && <AnimeControls />}
         {section === 'impact' && <CameraImpactControls />}
+        {section === 'combatFX' && <CinematicCombatControls />}
         {section === 'brush' && <SurfaceBrushPanel />}
         {section === 'soil' && <WeatheringPanel />}
         {section === 'vfx' && <VFXPanel />}

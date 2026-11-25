@@ -7,6 +7,7 @@ import { animeProgramKey, createPreparationTargets } from './renderPreparation.j
 import { publishRenderMetrics } from './renderMetrics.js'
 import {combatFlashUniforms,patchCombatFlashLighting,syncCombatFlashLighting} from '../vfx/combatFlashLighting.js'
 import {BoostProtection} from './BoostProtection.js'
+import {cinematicUniforms} from './cinematicCombatShader.js'
 
 const dynamic = ['color', 'emissive', 'emissiveIntensity', 'opacity', 'roughness', 'metalness', 'envMapIntensity', 'normalScale', 'clearcoat', 'clearcoatRoughness', 'transmission', 'thickness', 'ior', 'specularIntensity', 'specularColor', 'attenuationColor', 'attenuationDistance']
 const textureKeys = ['map', 'alphaMap', 'normalMap', 'roughnessMap', 'metalnessMap', 'emissiveMap', 'envMap']
@@ -42,6 +43,7 @@ export class AnimeRenderer {
     this.size = new T.Vector2(); this.zero = new Float32Array([0, 0, 0, 0])
     this.boostProtection=new BoostProtection()
     Object.assign(this.composite.uniforms,{uBoostBlurStrength:{value:0},uBoostBlurPixels:{value:0},uBoostClearRadius:{value:.5},uBoostAspect:{value:1},uBoostProtectRects:{value:this.boostProtection.rects}})
+    Object.assign(this.composite.uniforms,cinematicUniforms())
     this.stats = { materials: 0, renderCalls: 0, mode: 'ANIME' }
   }
   sourceRecord(material) {
@@ -382,7 +384,7 @@ export class AnimeRenderer {
     uniforms.uBoostBlurPixels.value=presentation?.boostBlurPixels||0
     uniforms.uBoostClearRadius.value=presentation?.boostClearRadius??.5
     uniforms.uBoostAspect.value=this.target.width/this.target.height
-    if(uniforms.uBoostBlurStrength.value>0)this.boostProtection.update(this.bindings,presentation?.camera||camera,this.target.width,this.target.height)
+    if(uniforms.uBoostBlurStrength.value>0||uniforms.uCfxCount.value>0)this.boostProtection.update(this.bindings,presentation?.camera||camera,this.target.width,this.target.height)
     uniforms.uNear.value = camera.near; uniforms.uFar.value = camera.far
     uniforms.uWidth.value = config.width * renderer.getPixelRatio()
     uniforms.uOutlineColor.value.set(config.color).convertLinearToSRGB()

@@ -11,7 +11,7 @@ import {armorGallantVisible} from './armorHandoff.js'
 import {MountedGallantPose} from './MountedGallantPose.js'
 import {CycloneShooterCamera} from './CycloneShooterCamera.js'
 import {bikeGallantAvailable} from './bikeGallant.js'
-import {GallantAimLock} from './GallantAimLock.js'
+import {GallantAimLock,cuffMissileLockReady} from './GallantAimLock.js'
 import {CuffMissiles} from './CuffMissiles.js'
 import {ScottMissilePose} from './ScottMissilePose.js'
 import {GallantAimInput} from './GallantAimInput.js'
@@ -32,7 +32,7 @@ export default function GallantCombat({runtime}){
     const enabled=()=>(runtime.armorController?.active||bikeGallantAvailable(runtime))&&!runtime.paused&&!runtime.ending?.holding&&!playerCombat.dead
     const canHoldAim=()=>!!runtime.state&&(runtime.state.riderMode==='mounted'||runtime.armorController?.active)&&!runtime.opening?.active&&!runtime.paused&&!runtime.ending?.holding&&!playerCombat.dead
     const release=()=>{combat.aimInput.clear();combat.aiming=combat.firing=combat.missileQueued=false;combat.aimLock.clear()}
-    const missileKey=e=>{if(e.code!=='KeyQ'||e.repeat||e.ctrlKey||e.metaKey||e.altKey||/INPUT|SELECT|TEXTAREA/.test(e.target?.tagName)||!enabled())return;e.preventDefault();if(combat.aiming&&combat.aimLock.target?.receiveMissileHit)combat.missileQueued=true}
+    const missileKey=e=>{if(e.code!=='KeyQ'||e.repeat||e.ctrlKey||e.metaKey||e.altKey||/INPUT|SELECT|TEXTAREA/.test(e.target?.tagName)||!enabled())return;e.preventDefault();if(cuffMissileLockReady(combat.aimLock,combat.aiming))combat.missileQueued=true}
     const move=e=>{if(e.type==='pointermove'&&canHoldAim()&&Number.isFinite(e.buttons)){if(e.buttons&2)combat.aimInput.press(runtime.state);else combat.aimInput.clear()}if(!enabled()||!bikeGallantAvailable(runtime))return;const rect=canvas.getBoundingClientRect();combat.pointer.set((e.clientX-rect.left)/rect.width*2-1,1-(e.clientY-rect.top)/rect.height*2)}
     const capture=e=>{if(e.button===2&&canHoldAim()){combat.aimInput.press(runtime.state);if(!runtime.armorController?.active){move(e);runtime.cameraController?.end();runtime.orbit.enabled=false;e.stopImmediatePropagation()}}}
     const down=e=>{if(e.button===2&&canHoldAim()){combat.aimInput.press(runtime.state);move(e);e.preventDefault();return}if(!enabled()||e.button!==0)return;move(e);combat.firing=true;e.preventDefault()}
@@ -74,7 +74,7 @@ export default function GallantCombat({runtime}){
     c.raycaster.setFromCamera(mounted?c.pointer:armorReticle,camera);c.raycaster.ray.at(GALLANT_FIRE.range,c.aimPoint)
     c.aimLock.update(c.aiming,camera,mounted?c.pointer:armorReticle,runtime.stage3?.encounter.active?runtime.stage3.encounter.drones:runtime.desertPatrol?.scouts||[],c.hitscan,runtime.state)
     if(c.aimLock.target)c.aimPoint.copy(c.aimLock.point)
-    if(instance?.mountedMotion){instance.missilePose ||=new ScottMissilePose(instance);if(c.missileQueued){if(c.active&&c.aimLock.target?.receiveMissileHit&&c.missiles.remaining>0&&c.missiles.cooldown<=0)instance.missilePose.request(c.aimLock.target,c.missiles.launchers[4-c.missiles.remaining],mounted);c.missileQueued=false}}
+    if(instance?.mountedMotion){instance.missilePose ||=new ScottMissilePose(instance);if(c.missileQueued){if(c.active&&cuffMissileLockReady(c.aimLock,c.aiming)&&c.missiles.remaining>0&&c.missiles.cooldown<=0)instance.missilePose.request(c.aimLock.target,c.missiles.launchers[4-c.missiles.remaining],mounted);c.missileQueued=false}}
     if(mounted){
       if(runtime.stage3?.encounter.active){runtime.stage3.encounter.pointer.copy(c.pointer);if(!c.aimLock.target){runtime.stage3.encounter.target(c.raycaster.ray);c.aimPoint.copy(runtime.stage3.encounter.aimPoint)}}
       if(instance?.mountedMotion){if(!(instance.shooterPose instanceof MountedGallantPose)){instance.shooterPose?.restore();instance.shooterPose=new MountedGallantPose(instance)}instance.shooterPose.applyMounted(c.aimPoint,c.aiming,dt,c.weapon)}
@@ -92,10 +92,13 @@ export default function GallantCombat({runtime}){
   // Both contexts feed one weapon instance and the already pooled combat FX.
   useFrame((_,delta)=>{
     const c=combat,w=c.weapon,instance=runtime.scottInstance,p3=runtime.stage3?.encounter,dt=runtime.paused?0:Math.min(delta,.1),pose=c.mounted?instance?.shooterPose:instance?.armorGallantPose,blend=c.mounted?pose?.blend:pose?.aimBlend
-    c.aimLock.update(c.active&&c.aiming&&!runtime.paused&&!playerCombat.dead,camera,c.mounted?c.pointer:armorReticle,p3?.active?p3.drones:runtime.desertPatrol?.scouts||[],c.hitscan,runtime.state)
+    // This is the only timed update: the earlier pose pass refreshes target
+    // geometry with delta=0, so acquisition cannot advance twice per frame.
+    c.aimLock.update(c.active&&c.aiming&&!runtime.paused&&!playerCombat.dead,camera,c.mounted?c.pointer:armorReticle,p3?.active?p3.drones:runtime.desertPatrol?.scouts||[],c.hitscan,runtime.state,dt)
     if(c.aimLock.target)c.aimPoint.copy(c.aimLock.point)
     const launchPose=instance?.missilePose
-    if(launchPose?.ready&&!runtime.paused&&!playerCombat.dead){const a=runtime.armorController?.active?runtime.armorController.state:null,s=runtime.state,yaw=s.travelYaw??s.yaw;c.missileVelocity.set(a?a.vx:Math.sin(yaw)*s.speed,a?a.vy:s.verticalVelocity||0,a?a.vz:Math.cos(yaw)*s.speed);if(c.missiles.launch(launchPose.target,c.active,runtime.missileVFX,c.missileVelocity))launchPose.commit();else launchPose.cancel()}
+    if(launchPose?.active&&!launchPose.fired&&!cuffMissileLockReady(c.aimLock,c.aiming,launchPose.target))launchPose.cancel()
+    if(launchPose?.ready&&!runtime.paused&&!playerCombat.dead){const a=runtime.armorController?.active?runtime.armorController.state:null,s=runtime.state,yaw=s.travelYaw??s.yaw;c.missileVelocity.set(a?a.vx:Math.sin(yaw)*s.speed,a?a.vy:s.verticalVelocity||0,a?a.vz:Math.cos(yaw)*s.speed);if(c.missiles.launch(launchPose.target,c.active&&cuffMissileLockReady(c.aimLock,c.aiming,launchPose.target),runtime.missileVFX,c.missileVelocity))launchPose.commit();else launchPose.cancel()}
     c.missiles.step(playerCombat.dead?0:dt,c.hitscan,runtime.missileVFX,target=>{c.hit=.24;c.hits++;runtime.combatVFX?.destroyTarget(target);if(c.aimLock.target===target)c.aimLock.clear()},(point,direction)=>runtime.combatVFX?.emit(point,true,direction,'invidExplosion',.25,{cameraShake:false}))
     c.missiles.present(c.active);runtime.missileVFX?.present(c.missiles.records,camera,dt)
     if(instance?.mountedMotion)w.attach(instance)
@@ -127,7 +130,7 @@ export default function GallantCombat({runtime}){
     if(anchor.current){camera.getWorldDirection(c.forward);anchor.current.position.copy(camera.position).addScaledVector(c.forward,10);anchor.current.updateMatrixWorld(true)}
     if(hud.current)hud.current.style.display=!runtime.ending?.holding&&(c.active||patrol?.active&&(c.hurt>0||playerCombat.dead))?'block':'none'
     if(label.current)label.current.style.display=runtime.paused?'block':'none'
-    if(reticle.current){const locked=!!c.aimLock.target,pointer=locked?c.aimLock.screen:c.mounted?c.pointer:armorReticle;reticle.current.style.opacity=String(c.active&&!playerCombat.dead?blend||0:0);reticle.current.style.left=`${(pointer.x+1)*50}%`;reticle.current.style.top=`${(1-pointer.y)*50}%`;reticle.current.style.color=c.hit>0?'#fff6a0':locked?'#7fffea':'#e3efd6';reticle.current.style.borderRadius=locked?'4px':'50%';reticle.current.style.width=reticle.current.style.height=locked?'26px':'18px';reticle.current.dataset.locked=String(locked)}
+    if(reticle.current){const locked=!!c.aimLock.target,ready=cuffMissileLockReady(c.aimLock,c.aiming),pointer=locked?c.aimLock.screen:c.mounted?c.pointer:armorReticle;reticle.current.style.opacity=String(c.active&&!playerCombat.dead?blend||0:0);reticle.current.style.left=`${(pointer.x+1)*50}%`;reticle.current.style.top=`${(1-pointer.y)*50}%`;reticle.current.style.color=ready?'#ff3b32':locked&&c.aimLock.target.receiveMissileHit?'#ffc65e':c.hit>0?'#fff6a0':locked?'#7fffea':'#e3efd6';reticle.current.style.borderRadius=locked?'4px':'50%';reticle.current.style.width=reticle.current.style.height=locked?'26px':'18px';reticle.current.dataset.locked=String(locked);reticle.current.dataset.lockReady=String(ready);reticle.current.dataset.lockProgress=String(c.aimLock.progress)}
     if(feedback.current)feedback.current.style.opacity=String(c.hurt*.4)
     if(label.current)label.current.textContent=playerCombat.dead?'Derrotado · Reintentar desde el checkpoint':c.active?`Gallant · clic derecho: apuntar · clic izquierdo: disparar${patrol?.active||c.hurt>0?' · Salud '+playerCombat.playerHealth:''}`:`Impacto · Salud ${playerCombat.playerHealth}`
   },.12)

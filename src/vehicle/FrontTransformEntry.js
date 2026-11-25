@@ -2,6 +2,7 @@ import { sampleFrontSequence } from './frontTransformMath.js'
 import { wheelStartProgress } from './wheelMotion.js'
 import { Vector3 } from 'three'
 import {returnProgress,sampleReturnPhases,RETURN_BOOST_TIME,RETURN_ASSEMBLY_TIME,RETURN_POSE_TIME} from './returnChoreography.js'
+import {armorTransformationUnlocked} from './armorUnlock.js'
 
 const clamp = n => Math.max(0, Math.min(1, n))
 const smooth = n => { const t=clamp(n);return t*t*(3-2*t) }
@@ -61,6 +62,9 @@ export class FrontTransformEntry {
       this.returnOffset.copy(this.actorOffset)
       this.paused=false;this.store.set({direction:-1,playing:true});this.stage('reversing');return
     }
+    if(!armorTransformationUnlocked(this.runtime)){
+      this.messageTime=2.5;this.publish('Armor se habilita al caer al barranco, en el primer encuentro con Invid');return
+    }
     if(!canStartFrontTransformation(s)){
       this.messageTime=2.5;this.publish('Avanzá para transformar · no se activa detenido ni en reversa');return
     }
@@ -73,7 +77,7 @@ export class FrontTransformEntry {
     s.wheelieTime=0;s.wheelieExhausted=false
     this.store.reset();this.stage('wheelie')
   }
-  resetLevelCamera(){this.transformationCount=0;this.orbitCamera=true}
+  resetLevelCamera(){this.transformationCount=0;this.orbitCamera=true;this.runtime.armorUnlocked=false}
   reset() {
     this.phase='idle';this.time=0;this.poseBlend=0;this.paused=false;this.flightActive=false;this.state=null;this.elapsed=0;this.reverseMotion=null;this.returnMotion=null
     this.actorOffset.set(0,0,0);this.departure.set(0,0,0);this.returnOffset.set(0,0,0)
