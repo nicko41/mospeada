@@ -1,0 +1,91 @@
+{
+  "source": "public/models/mospeada/scott-gear-v3-animated.glb",
+  "output": "assets/01-SCOTT/scott-gear-v3-helmet-corrected.glb",
+  "publicOutput": "public/models/mospeada/scott-gear-v3-helmet-corrected.glb",
+  "sourceSha256": "89c9c9bf87093083b7a376157a74875610834f9b3bdb862068224efd59da4b34",
+  "outputSha256": "df27d207a2c5e247f9a51bb188f56909eccedebbbf9e5861a8823d59ae604cb7",
+  "patches": [
+    {
+      "side": -1,
+      "removedFaces": 483,
+      "boundaryVertices": 59,
+      "replacementFaces": 283,
+      "min": [
+        -0.11255015432834625,
+        1.6042730808258057,
+        -0.10974245518445969
+      ],
+      "max": [
+        -0.07531849294900894,
+        1.66156804561615,
+        -0.028109367936849594
+      ]
+    },
+    {
+      "side": 1,
+      "removedFaces": 485,
+      "boundaryVertices": 59,
+      "replacementFaces": 283,
+      "min": [
+        0.07535343617200851,
+        1.6048294305801392,
+        -0.11010956764221191
+      ],
+      "max": [
+        0.113311268389225,
+        1.6617965698242188,
+        -0.02817724645137787
+      ]
+    }
+  ],
+  "recoloredFaces": 2332,
+  "repaintedPixels": 22779,
+  "protectedPixels": 822,
+  "originalVertices": 126423,
+  "localDuplicatedOrReconstructedVertices": 2076,
+  "originalTriangles": 198571,
+  "correctedTriangles": 198295,
+  "atlasReferences": {
+    "white": {
+      "id": 62290,
+      "score": 426,
+      "uv": [
+        0.6051660180091858,
+        0.891327977180481
+      ],
+      "rgb": [
+        218,
+        215,
+        222
+      ]
+    },
+    "blue": {
+      "id": 89798,
+      "score": 774,
+      "uv": [
+        0.1605139970779419,
+        0.9484959840774536
+      ],
+      "rgb": [
+        5,
+        65,
+        169
+      ]
+    }
+  },
+  "preserved": [
+    "source GLB",
+    "all original binary bytes",
+    "all body geometry and UVs",
+    "native rig hierarchy",
+    "all original joint indices and weights",
+    "bind pose",
+    "all animations",
+    "all material definitions",
+    "all body/front visor/top-tab texture pixels",
+    "open visor and top tabs",
+    "face and chin",
+    "helmet transform"
+  ],
+  "skinPolicy": "Local duplicate/reconstruction vertices copy native joint indices and weights directly; no weight generation or transfer from another model"
+}

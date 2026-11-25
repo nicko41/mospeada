@@ -5,7 +5,11 @@ export const SCOTT_MODEL_VARIANT='gear-v2'
 export const SCOTT_GEAR_V2_PALETTE='classic'
 // Set false to restore the approved shape before the rear-only refinement.
 export const SCOTT_V2_REAR_REFINEMENT=true
-export const SCOTT_V3_MODEL='/models/mospeada/scott-gear-v3-animated.glb'
+// Historical V3 exports retained only as backups.
+export const SCOTT_V3_ORIGINAL_MODEL='/models/mospeada/scott-gear-v3-animated.glb'
+export const SCOTT_V3_APPROVED_HELMET_MODEL='/models/mospeada/scott-gear-v3-helmet-corrected.glb'
+// Current approved gameplay V3. Use this version as the base for future V3 edits.
+export const SCOTT_V3_MODEL='/models/mospeada/scott-gear-v3-helmet-boundary.glb'
 // Visible selection is independent of the legacy animation/controller proxy.
 export const SCOTT_INITIAL_SELECTION='v3'
 export const SCOTT_RIG_REFERENCE='/models/mospeada/scott-bernard-animated-original.glb'

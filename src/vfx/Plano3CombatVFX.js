@@ -3,13 +3,13 @@ import {ApplyForce,Bezier,ColorOverLife,ColorRange,ConeEmitter,ConstantValue,Gra
 import {CombatBursts} from './CombatBursts.js'
 import {COMBAT_VFX_LIMITS,GALLANT_MUZZLE,SCOUT_CANNON} from './combatVFXPresets.js'
 import {combatEnergyTexture} from './combatEnergyTextures.js'
-import {SCOUT_PROJECTILE_CAPACITY} from '../vehicle/EnergyProjectiles.js'
 import {SCOUT_SCORCH_SLOTS} from '../world/forest/scoutHitAppearance.js'
 import {SurfaceImpactMarks} from './SurfaceImpactMarks.js'
 import {SCOUT_ASSET} from '../world/forest/invidScoutAsset.js'
 import {InvidImpactDust} from './InvidImpactDust.js'
 import {cameraImpactEvents} from '../rendering/cameraImpactEvents.js'
 import {cinematicCombatEvents} from '../rendering/cinematicCombatEvents.js'
+import {InvidOrbSprites} from './InvidOrbSprites.js'
 
 const rgba=hex=>{const c=new Color(hex);return new QVec4(c.r,c.g,c.b,1)}
 const MathUtilsSmooth=t=>{const x=Math.max(0,Math.min(1,t));return x*x*(3-2*x)}
@@ -29,7 +29,7 @@ function energyTexture(blast=false){
 // Contact flashes and laser geometry are pooled; sparks use the game's shared
 // Quarks registry, particle integration and renderer. No postprocessing/bloom.
 export class Plano3CombatVFX{
-  constructor({explosionAtlases={},sampleGround=null,impactScene=null,bloodRandom=Math.random,sharedDust=null}={}){
+  constructor({explosionAtlases={},invidOrbAtlas=null,sampleGround=null,impactScene=null,bloodRandom=Math.random,sharedDust=null}={}){
     this.root=new Group();this.root.name='Plano3_combat_energy';this.root.visible=false
     this.star=energyTexture();this.blast=energyTexture(true);this.plane=new PlaneGeometry(1,1);this.box=new BoxGeometry(1,1,1)
     this.muzzleTexture=combatEnergyTexture(true);this.fireballTexture=combatEnergyTexture()
@@ -54,11 +54,7 @@ export class Plano3CombatVFX{
     this.contactBindPoint=new Vector3();this.contactBindNormal=new Vector3();this.contactJoint=0;this.contactExact=false;this.contactMatrix=new Matrix4();this.contactScale=new Vector3()
     this.shell=this.mesh(this.box,this.shellMaterial,40,'Combat_laser_glow')
     this.core=this.mesh(this.box,this.coreMaterial,40,'Combat_laser_cores')
-    this.ovalGeometry=new SphereGeometry(1,12,8)
-    this.ovalMaterial=new MeshBasicMaterial({color:'#bd36ff',transparent:true,opacity:.46,depthWrite:false,toneMapped:false,blending:AdditiveBlending})
-    this.ovalCoreMaterial=new MeshBasicMaterial({color:'#ffffff',transparent:true,opacity:1,depthWrite:false,toneMapped:false})
-    this.ovals=this.mesh(this.ovalGeometry,this.ovalMaterial,SCOUT_PROJECTILE_CAPACITY,'Scout_energy_oval_halos')
-    this.ovalCores=this.mesh(this.ovalGeometry,this.ovalCoreMaterial,SCOUT_PROJECTILE_CAPACITY,'Scout_energy_oval_cores')
+    this.orbSprites=new InvidOrbSprites({map:invidOrbAtlas||this.impacts.haloTexture,atlas:!!invidOrbAtlas});this.root.add(this.orbSprites.mesh)
     this.cannonGeometry=new CircleGeometry(1,20)
     this.cannonMaterial=new MeshBasicMaterial({color:'#ffffff',transparent:true,blending:AdditiveBlending,depthWrite:false,toneMapped:false,side:DoubleSide,fog:false})
     this.cannonHaloMaterial=new MeshBasicMaterial({map:this.impacts.haloTexture,transparent:true,depthWrite:false,toneMapped:false,blending:AdditiveBlending,fog:false})
@@ -66,7 +62,7 @@ export class Plano3CombatVFX{
     this.cannonHalos=this.mesh(this.plane,this.cannonHaloMaterial,SCOUT_CANNON.capacity,'Scout_cannon_lavender_halos');this.cannonFlashes.renderOrder=10;this.cannonHalos.renderOrder=9
     // Projectile and muzzle colours are pure authored energy colours, without
     // the warm per-instance tint used by the existing Gallant hit flashes.
-    for(const mesh of [this.ovals,this.ovalCores,this.cannonFlashes,this.cannonHalos])for(let i=0;i<mesh.instanceMatrix.count;i++)mesh.setColorAt(i,new Color('#ffffff'))
+    for(const mesh of [this.cannonFlashes,this.cannonHalos])for(let i=0;i<mesh.instanceMatrix.count;i++)mesh.setColorAt(i,new Color('#ffffff'))
     this.object=new Object3D();this.axis=new Vector3(0,0,1);this.direction=new Vector3();this.start=new Vector3();this.end=new Vector3();this.point=new Vector3();this.tint=new Color();this.cameraRotation=new Quaternion();this.muzzleLife=0;this.previousTime=0;this.hasEffects=false
     this.stats={shots:0,hits:0,explosions:0};this.systems=[]
     this.sparkMaterial=new MeshBasicMaterial({map:this.star,transparent:true,depthTest:false,depthWrite:false,toneMapped:false})
@@ -298,7 +294,8 @@ export class Plano3CombatVFX{
     if(!keepMarks)this.surfaceMarks.clear()
     this.muzzleLife=0;this.impacts.clear();this.visuals=new WeakMap();this.traces.forEach(t=>t.life=0);this.systems.forEach(ps=>ps.restart());this.root.visible=false;this.hasEffects=false
     if(!keepClock){this.encounter=null;this.previousTime=0}
-    for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.blastMesh,this.shell,this.core,this.ovals,this.ovalCores,this.cannonFlashes,this.cannonHalos])mesh.count=0
+    this.orbSprites.clear()
+    for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.blastMesh,this.shell,this.core,this.cannonFlashes,this.cannonHalos])mesh.count=0
     this.batches?.forEach(batch=>batch.update())
     if(resetStats)Object.assign(this.stats,{shots:0,hits:0,explosions:0})
   }
@@ -316,7 +313,8 @@ export class Plano3CombatVFX{
     if(!encounter.active){if(this.hasEffects||this.root.visible)this.clear(false,true,true);return}
     this.clock+=Math.max(0,dt);this.impacts.update(dt,camera)
     this.root.visible=true;camera.getWorldQuaternion(this.cameraRotation)
-    let flashes=0,contacts=0,beams=0,ovals=0,cannons=0
+    let flashes=0,contacts=0,beams=0,cannons=0
+    this.orbSprites.begin(encounter.bolts)
     for(const scout of encounter.scouts||[]){
       if(scout.dead||!scout.view.root.visible)continue
       for(let side=0;side<scout.view.muzzles.length;side++){
@@ -352,19 +350,16 @@ export class Plano3CombatVFX{
       const end=Math.min(1,(t.age+.035)/.085),start=Math.max(0,end-.4);this.start.lerpVectors(t.from,t.to,start);this.end.lerpVectors(t.from,t.to,end);if(this.beam(beams,this.start,this.end,false))beams++
       t.age+=dt;t.life=Math.max(0,t.life-dt)
     }
-    for(const b of encounter.bolts)if(b.active){
+    for(let slot=0;slot<encounter.bolts.length;slot++){const b=encounter.bolts[slot];if(!b.active)continue
       cinematicCombatEvents.observeProjectile(b)
       if(b.style==='scoutOval'){
-        const scale=b.visualScale||1
-        this.object.position.copy(b.position);this.direction.copy(b.velocity).normalize();this.object.quaternion.setFromUnitVectors(this.axis,this.direction)
-        this.object.scale.set(.28*scale,.28*scale,.60*scale);this.object.updateMatrix();this.ovals.setMatrixAt(ovals,this.object.matrix)
-        this.object.scale.set(.14*scale,.14*scale,.39*scale);this.object.updateMatrix();this.ovalCores.setMatrixAt(ovals,this.object.matrix);ovals++
+        this.orbSprites.put(b,slot,dt,this.cameraRotation)
       }else{this.start.copy(b.position).addScaledVector(b.velocity,-.055);if(this.beam(beams,this.start,b.position,true))beams++}
     }
     this.flashMesh.count=flashes;this.contactFlashes.count=contacts;this.shell.count=this.core.count=beams
-    this.ovals.count=this.ovalCores.count=ovals
+    this.orbSprites.finish()
     this.cannonFlashes.count=this.cannonHalos.count=cannons
-    for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.blastMesh,this.shell,this.core,this.ovals,this.ovalCores,this.cannonFlashes,this.cannonHalos])if(mesh.count){mesh.instanceMatrix.needsUpdate=true;mesh.instanceColor.needsUpdate=true}
+    for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.blastMesh,this.shell,this.core,this.cannonFlashes,this.cannonHalos])if(mesh.count){mesh.instanceMatrix.needsUpdate=true;mesh.instanceColor.needsUpdate=true}
   }
-  dispose(){this.root.removeFromParent();this.impactDust.dispose();this.surfaceMarks.dispose();this.impacts.dispose();for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.shell,this.core,this.ovals,this.ovalCores,this.cannonFlashes,this.cannonHalos])mesh.dispose();for(const resource of [this.volumeGeometry,this.volumeMaterial,this.plane,this.box,this.star,this.blast,this.muzzleTexture,this.fireballTexture,this.flashMaterial,this.muzzleHaloMaterial,this.fireballMaterial,this.muzzleSparkMaterial,this.hitFlashMaterial,this.shellMaterial,this.coreMaterial,this.sparkMaterial,this.deathSparkMaterial,this.deathFlashMaterial,this.deathSmokeMaterial,this.ovalGeometry,this.ovalMaterial,this.ovalCoreMaterial,this.cannonGeometry,this.cannonMaterial,this.cannonHaloMaterial])resource.dispose()}
+  dispose(){this.root.removeFromParent();this.orbSprites.dispose();this.impactDust.dispose();this.surfaceMarks.dispose();this.impacts.dispose();for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.shell,this.core,this.cannonFlashes,this.cannonHalos])mesh.dispose();for(const resource of [this.volumeGeometry,this.volumeMaterial,this.plane,this.box,this.star,this.blast,this.muzzleTexture,this.fireballTexture,this.flashMaterial,this.muzzleHaloMaterial,this.fireballMaterial,this.muzzleSparkMaterial,this.hitFlashMaterial,this.shellMaterial,this.coreMaterial,this.sparkMaterial,this.deathSparkMaterial,this.deathFlashMaterial,this.deathSmokeMaterial,this.cannonGeometry,this.cannonMaterial,this.cannonHaloMaterial])resource.dispose()}
 }

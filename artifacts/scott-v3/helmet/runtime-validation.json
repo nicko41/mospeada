@@ -1,0 +1,21 @@
+{
+  "activeModel": "/models/mospeada/scott-gear-v3-helmet-corrected.glb",
+  "nativeBones": 28,
+  "clips": 21,
+  "approvedPoseComparisons": 4,
+  "newHelmetVertices": "finite in riding, steering, boost and hover",
+  "originalHashes": [
+    {
+      "file": "assets/01-SCOTT/scott-gear-v3.glb",
+      "sha256": "74e05d816cff3ca5cf1447187c5437d4e9a05d8bb038d745d519e70ce46a4370"
+    },
+    {
+      "file": "assets/01-SCOTT/scott-gear-v3-animated.glb",
+      "sha256": "89c9c9bf87093083b7a376157a74875610834f9b3bdb862068224efd59da4b34"
+    },
+    {
+      "file": "public/models/mospeada/scott-gear-v3-animated.glb",
+      "sha256": "89c9c9bf87093083b7a376157a74875610834f9b3bdb862068224efd59da4b34"
+    }
+  ]
+}

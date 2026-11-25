@@ -1,0 +1,25 @@
+{
+  "source": "assets/01-SCOTT/scott-gear-v3-helmet-approved.glb",
+  "output": "assets/01-SCOTT/scott-gear-v3-helmet-boundary.glb",
+  "sourceSha256": "df27d207a2c5e247f9a51bb188f56909eccedebbbf9e5861a8823d59ae604cb7",
+  "outputSha256": "bddf92324123a5d9d86f07a89c7b0e236c52ecfdbafdfe15b6eb51a090f38f71",
+  "texturePixels": 43122,
+  "tile": {
+    "x": 36,
+    "y": 1284,
+    "size": 128
+  },
+  "localUVVertices": 2076,
+  "localMaterialTriangles": 6618,
+  "bodyTriangles": 191677,
+  "preserved": [
+    "all positions and normals bit-exact",
+    "every approved triangle unchanged, separated into material groups",
+    "all skin weights and joints bit-exact",
+    "rig, bind pose and animations",
+    "native UVs outside the already repaired faces",
+    "original body/face material and all original texture bytes",
+    "two upper plastics",
+    "approved lateral removals"
+  ]
+}

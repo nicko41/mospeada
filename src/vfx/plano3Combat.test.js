@@ -11,15 +11,15 @@ test('Scout oval energy reuses bounded combat batches and clears on exit without
   const runtime=new VFXRuntime(),fx=runtime.register('scout-combat',new Plano3CombatVFX()),scene=new Scene();scene.add(runtime.root)
   const camera=new PerspectiveCamera(50,16/9,.1,500),weapon={root:{visible:false}},bolt={active:true,style:'scoutOval',position:new Vector3(0,3,-10),velocity:new Vector3(0,-1,30)},encounter={active:true,time:1,bolts:[bolt]}
   try{
-    const geometry=fx.ovals.geometry,buffer=fx.ovals.instanceMatrix
+    const mesh=fx.orbSprites.mesh,geometry=mesh.geometry,buffer=mesh.instanceMatrix
     fx.update(1/60,encounter,weapon,camera)
-    assert.equal(fx.ovals.count,1);assert.equal(fx.ovalCores.count,1);assert.equal(fx.shell.count,0,'Scout shots have no rectangular laser streak')
-    const matrix=new Matrix4();fx.ovals.getMatrixAt(0,matrix);const scale=new Vector3().setFromMatrixScale(matrix)
-    assert.ok(scale.z>scale.x*1.5,'Energy projectile is elongated along its trajectory')
+    assert.equal(mesh.count,1);assert.equal(fx.shell.count,0,'Scout shots have no rectangular laser streak')
+    const matrix=new Matrix4();mesh.getMatrixAt(0,matrix);const scale=new Vector3().setFromMatrixScale(matrix)
+    assert.ok(scale.x>scale.y,'Energy orb is an oval billboard')
     assert.equal(fx.stats.shots,0);assert.equal(fx.hasEffects,false)
     encounter.active=false;encounter.time=2;fx.update(1/60,encounter,weapon,camera)
-    assert.equal(fx.root.visible,false);assert.equal(fx.ovals.count,0);assert.equal(fx.ovalCores.count,0);assert.equal(fx.shell.count,0)
-    assert.equal(fx.ovals.geometry,geometry);assert.equal(fx.ovals.instanceMatrix,buffer)
+    assert.equal(fx.root.visible,false);assert.equal(mesh.count,0);assert.equal(fx.shell.count,0)
+    assert.equal(mesh.geometry,geometry);assert.equal(mesh.instanceMatrix,buffer)
   }finally{runtime.dispose()}
 })
 
