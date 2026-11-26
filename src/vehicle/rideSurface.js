@@ -47,7 +47,7 @@ function raycastRegistered(raycaster,collection){
   return nearest
 }
 
-function gridFor(geometry) {
+export function* prepareRideSurfaceGeometrySteps(geometry) {
   let grid = geometryGrids.get(geometry)
   if (grid) return grid
   grid = new Map()
@@ -56,6 +56,7 @@ function gridFor(geometry) {
   if(geometry.userData.rideMutableHeight)grid.mutable=[]
   const p = geometry.attributes.position, index = geometry.index
   for (let i = 0; i < (index?.count ?? p.count); i += 3) {
+    if(i%768===0)yield
     const ids = [0, 1, 2].map(j => index ? index.getX(i + j) : i + j)
     const t = ids.map(id => [p.getX(id), p.getY(id), p.getZ(id)])
     grid.mutable?.push({triangle:t,ids})
@@ -68,6 +69,7 @@ function gridFor(geometry) {
   geometryGrids.set(geometry, grid)
   return grid
 }
+function gridFor(geometry){const steps=prepareRideSurfaceGeometrySteps(geometry);let step;do{step=steps.next()}while(!step.done);return step.value}
 // Opt-in height deformation retains cell membership and shared triangle arrays;
 // the connector changes only Y, so no spatial grid is rebuilt at the handoff.
 export function refreshRideSurfaceGeometry(geometry){

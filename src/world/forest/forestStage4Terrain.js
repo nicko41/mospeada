@@ -10,11 +10,12 @@ export function stage4Grid(minX,maxX,start,end,stepX,stepZ,height,mapped=false){
   for(let row=0;row<rows-1;row++)for(let col=0;col<columns-1;col++){const a=row*columns+col,b=a+columns;ix.push(a,a+1,b,a+1,b+1,b)}
   const g=new BufferGeometry();g.setAttribute('position',new Float32BufferAttribute(p,3));g.setAttribute('uv',new Float32BufferAttribute(uv,2));g.setIndex(ix);g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();g.userData.rideGridCell=stepX>=8?16:4;g.userData.rideMutableHeight=mapped&&start===0;return g
 }
-export function createStage4Terrain(){
+export function createStage4Terrain(){const steps=createStage4TerrainSteps();let step;do{step=steps.next()}while(!step.done);return step.value}
+export function* createStage4TerrainSteps(){
   const forest=[]
-  for(let start=0;start<620;start+=96)for(const [a,b,s]of [[-S.halfWidth,-96,16],[-96,96,2],[96,S.halfWidth,16]])forest.push(stage4Grid(a,b,start,Math.min(620,start+96),s,2,stage4ForestHeight,true))
+  for(let start=0;start<620;start+=96)for(const [a,b,s]of [[-S.halfWidth,-96,16],[-96,96,2],[96,S.halfWidth,16]]){forest.push(stage4Grid(a,b,start,Math.min(620,start+96),s,2,stage4ForestHeight,true));yield}
   const desert=[]
-  for(let start=520;start<2400;start+=160)for(const [a,b,s]of [[-2400,-512,32],[-512,512,16],[512,2400,32]])desert.push(stage4Grid(a,b,start,Math.min(2400,start+160),s,16,stage4DesertHeight))
+  for(let start=520;start<2400;start+=160)for(const [a,b,s]of [[-2400,-512,32],[-512,512,16],[512,2400,32]]){desert.push(stage4Grid(a,b,start,Math.min(2400,start+160),s,16,stage4DesertHeight));yield}
   const p=[],uv=[],ix=[],cols=257,rows=17
   for(let row=0;row<rows;row++)for(let col=0;col<cols;col++){
     const x=-1024+col*8,t=row/(rows-1),edge=stage4Edge(x),z=-edge-t*(8+3*Math.sin(x*.05))

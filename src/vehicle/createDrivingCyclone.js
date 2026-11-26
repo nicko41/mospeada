@@ -1,5 +1,5 @@
 import * as T from 'three'
-import { createParkedCyclone } from './createParkedCyclone.js'
+import { createParkedCycloneSteps } from './createParkedCyclone.js'
 import { createFrontForks } from './frontForks.js'
 import { createGuardHinge, seatHydraulicInHousing } from './guardMounts.js'
 import { createHydraulicLink, closestSurfacePoint } from './hydraulicLink.js'
@@ -9,8 +9,10 @@ import { applyHeadlightOpenings } from './headlightOpenings.js'
 
 // Vehicle articulation only. Scott is a separate original skinned instance;
 // none of the rejected rider IK, finger construction or weight edits run here.
-export function createDrivingCyclone(source) {
-  const rig = createParkedCyclone(source), { root, body, surfaces, metrics: m, presentationScale: scale } = rig
+const profilesBySource=new WeakMap()
+export function createDrivingCyclone(source){const steps=createDrivingCycloneSteps(source);let step;do{step=steps.next()}while(!step.done);return step.value}
+export function* createDrivingCycloneSteps(source) {
+  const rig = yield* createParkedCycloneSteps(source), { root, body, surfaces, metrics: m, presentationScale: scale } = rig
   rig.headlightOpenings=applyHeadlightOpenings(surfaces)
   const group = (name, parent, p = new T.Vector3()) => { const g = new T.Group(); g.name = name; g.position.copy(p); parent.add(g); return g }
   const imported = body.children[0], offset = imported.position.clone()
@@ -22,19 +24,21 @@ export function createDrivingCyclone(source) {
   const rearAxle = group('Rear_axle', rearSwing, rc.clone().sub(rearPivot)), rearSpin = group('Rear_wheel_spin', rearAxle)
   const rearIdle = group('Rear_engine_idle', body, new T.Vector3(0, m.rearY + .17, m.rearZ))
   root.updateMatrixWorld(true)
-  const profile = prefix => {
+  const profile = function*(prefix) {
     const tire = surfaces.find(m => m.userData.sourcePiece === prefix + '_Tire_Rubber'), center = prefix === 'Front' ? fc : rc, unique = new Map()
     // Freeze the coordinate conversion once: localToWorld/worldToLocal update
     // the whole ancestor chain, which used to happen for every tire vertex.
     const toBody = body.matrixWorld.clone().invert().multiply(tire.matrixWorld)
     const p = tire.geometry.attributes.position, v = new T.Vector3()
     for (let i = 0; i < p.count; i++) {
+      if(i%2048===0)yield
       v.fromBufferAttribute(p, i).applyMatrix4(toBody).sub(center)
       const r = Math.hypot(v.y, v.z); unique.set(`${v.x.toFixed(5)},${r.toFixed(5)}`, [v.x, r])
     }
     return [...unique.values()]
   }
-  const frontProfile = profile('Front'), rearProfile = profile('Rear')
+  let profiles=profilesBySource.get(source);if(!profiles){profiles=[yield* profile('Front'),yield* profile('Rear')];profilesBySource.set(source,profiles)}
+  const [frontProfile,rearProfile]=profiles
   for (const mesh of surfaces) {
     const name = mesh.userData.sourcePiece || mesh.name
     let parent = body
@@ -44,12 +48,13 @@ export function createDrivingCyclone(source) {
     else if (/^Arm_Guard_/.test(name)) parent = frontLower
     else if (/^(rear1$|Carcasa aerodinámica del escape|Silenciador metálico|Salida posterior oscura|Collar de transición)/.test(name)) parent = rearIdle
     if (/brazo tubular/.test(name)) mesh.visible = false
-    parent.attach(mesh)
+    parent.attach(mesh);yield
   }
   root.updateMatrixWorld(true)
-  const frontForks = createFrontForks(body, frontLower, surfaces)
-  const guards = [createGuardHinge(frontAxle, surfaces, 1), createGuardHinge(frontAxle, surfaces, -1)]
+  const frontForks = createFrontForks(body, frontLower, surfaces);yield
+  const guards=[];guards.push(createGuardHinge(frontAxle,surfaces,1));yield;guards.push(createGuardHinge(frontAxle,surfaces,-1));yield
   const seats = [seatHydraulicInHousing(body, surfaces, 1, offset, scale), seatHydraulicInHousing(body, surfaces, -1, offset, scale)]
+  yield
   const frontTarget = guards[0].root.worldToLocal(body.localToWorld(new T.Vector3(seats[0].base.x, seats[0].base.y, fc.z - .42 * scale)))
   const forkMountFrame = frontForks[0].lowerMeshes.find(m => m.userData.sourcePiece === 'Fork_Left_Lower_Reinforcement')
   const mount = closestSurfacePoint(forkMountFrame, guards[0].root.localToWorld(frontTarget.clone()))

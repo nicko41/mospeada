@@ -1,0 +1,26 @@
+[
+  {
+    "name": "stage2 terrain",
+    "sha256": "3569ebfddf325d687ef30f40186690132da54f20693c3d2ebfce57ce6f149126",
+    "geometries": 41,
+    "vertices": 172322,
+    "triangles": 332704,
+    "pass": true
+  },
+  {
+    "name": "canyon sides",
+    "sha256": "99f1faafcf8bba9dbd42e5747144211f0a181d7607e23dd53576451f6405820f",
+    "geometries": 30,
+    "vertices": 88182,
+    "triangles": 167424,
+    "pass": true
+  },
+  {
+    "name": "stage4 terrain",
+    "sha256": "e946f8a6ddb29e67f80b14c61a7d3d4d9b94e0a828eb5abe69125f690bee69ff",
+    "geometries": 58,
+    "vertices": 96574,
+    "triangles": 182584,
+    "pass": true
+  }
+]

@@ -1,5 +1,6 @@
+import {useTexture} from '../../loading/resources.js'
 import {useEffect,useLayoutEffect,useMemo,useState} from 'react'
-import {Html,useTexture} from '@react-three/drei'
+import {Html} from '@react-three/drei'
 import {useFrame} from '@react-three/fiber'
 import {createTreeCanopyTest} from './treeCanopyTest.js'
 import {isCanopyTestTree,treeCanopyTestMode,TREE_CANOPY_TEST} from './treeCanopyTestConfig.js'

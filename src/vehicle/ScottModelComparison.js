@@ -9,6 +9,7 @@ export class ScottModelComparison{
   this.instance=instance;this.base=instance.skins[0];this.variant=baseVariant
   this.skins=[];this.alternates=[];this.baseVisibility=this.base.mesh.visible
   for(const variant of ['v1','v2']){
+   if(!sources[variant])continue
    let skin
    if(variant===baseVariant)skin=this.base
    else{
@@ -29,6 +30,22 @@ export class ScottModelComparison{
   }
   if(sources.v3){this.v3=new ScottV3Visual(instance,sources.v3);this.skins.push(...this.v3.skins)}
   this.select(baseVariant)
+ }
+ addVariant(variant,scene,maps=[]){
+  if(this.skins.some(s=>s.variant===variant))return
+  let source;scene.traverse(node=>{if(node.isSkinnedMesh&&!source)source=node})
+  if(!source)throw Error('Falta Scott '+variant)
+  const skeleton=this.base.mesh.skeleton
+  if(source.skeleton.bones.some((b,i)=>b.name!==skeleton.bones[i]?.name))throw Error('Scott incompatible: '+variant)
+  const original=source.material.clone(),clean=original.clone(),mesh=new SkinnedMesh(source.geometry,original)
+  mesh.name='Scott_'+variant.toUpperCase()+'_visual_comparison'
+  mesh.position.copy(this.base.mesh.position);mesh.quaternion.copy(this.base.mesh.quaternion);mesh.scale.copy(this.base.mesh.scale)
+  mesh.castShadow=true;mesh.frustumCulled=false;mesh.visible=false
+  this.base.mesh.parent.add(mesh);mesh.bind(skeleton,this.base.mesh.bindMatrix);mesh.bindMode=this.base.mesh.bindMode
+  const skin={mesh,original,clean,hand:createRelaxedScottHands(mesh),variant}
+  if(variant==='v1'&&maps.length){clean.map=maps[0];clean.normalMap=maps[1];clean.roughnessMap=clean.metalnessMap=maps[2]}
+  mesh.material=this.instance.clean?clean:original
+  this.alternates.push(skin);this.skins.push(skin)
  }
  select(variant){
   if(!this.skins.some(s=>s.variant===variant))return

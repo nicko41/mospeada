@@ -1,8 +1,10 @@
-import {useLayoutEffect,useMemo} from 'react'
-import {useFrame,useLoader} from '@react-three/fiber'
-import {useGLTF} from '@react-three/drei'
-import {FileLoader} from 'three'
-import {createRandCyclone,RAND_CYCLONE_URL} from '../../vehicle/createRandCyclone.js'
+import {useGLTF,useJSON} from '../../loading/resources.js'
+import {useLayoutEffect} from 'react'
+import {useFrame,useThree} from '@react-three/fiber'
+import {usePreparedResource} from '../../loading/preparedResources.js'
+import {workQueue} from '../../loading/workQueue.js'
+
+import {createRandCycloneSteps,RAND_CYCLONE_URL} from '../../vehicle/createRandCyclone.js'
 import {RandRider,RAND_RIDER_URL} from '../../vehicle/RandRider.js'
 import {bikeConfig} from '../../vehicle/bikeConfig.js'
 import {sampleRideHeight} from '../../vehicle/rideSurface.js'
@@ -16,15 +18,15 @@ import {weatherState} from '../weatherState.js'
 import {vfxState} from '../../vfx/vfxState.js'
 import {playerCombat} from '../../player/playerCombat.js'
 
-const SCOTT_URL='/models/mospeada/scott-bernard-animated-original.glb',ACTIONS_URL='/animations/scott-cyclone-actions.json'
-useGLTF.preload(RAND_CYCLONE_URL);useGLTF.preload(RAND_RIDER_URL)
+const SCOTT_URL='/delivery/scott-reference-v1.glb',ACTIONS_URL='/animations/scott-cyclone-actions.json'
 export default function ForestRandEscape({runtime}){
-  const bike=useGLTF(RAND_CYCLONE_URL),rand=useGLTF(RAND_RIDER_URL),scott=useGLTF(SCOTT_URL),actions=useLoader(FileLoader,ACTIONS_URL)
-  const resources=useMemo(()=>{
-    const rig=createRandCyclone(bike.scene),escape=new RandDesertEscape(sampleRideHeight,rig.metrics)
+  const {gl}=useThree()
+  const bike=useGLTF(RAND_CYCLONE_URL),rand=useGLTF(RAND_RIDER_URL),scott=useGLTF(SCOTT_URL),actions=useJSON(ACTIONS_URL)
+  const resources=usePreparedResource(gl,'rand resources',async()=>{
+    const rig=await workQueue.drain(createRandCycloneSteps(bike.scene),'rand vehicle'),escape=new RandDesertEscape(sampleRideHeight,rig.metrics)
     const config=weatheringState.snapshot(),weathering={rig,escape,layer:new CycloneSoilLayer(rig),contacts:new WheelContacts(rig,sampleRideHeight),load:createSoilLoad(),accumulationTime:0,cleanRequest:config.cleanRequest,soilRequest:config.soilRequest}
     // Select bike surfaces before the rider/hand meshes join the chassis.
-    const rider=new RandRider(rand.scene,scott.scene,JSON.parse(actions),rig)
+    const rider=await workQueue.submit(()=>new RandRider(rand.scene,scott.scene,actions,rig),'rand rider')
     rig.root.visible=false;return {rig,rider,escape,weathering,refs:0,actorState:null}
   },[bike.scene,rand.scene,scott.scene,actions])
   useLayoutEffect(()=>{

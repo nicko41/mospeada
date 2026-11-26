@@ -1,6 +1,7 @@
+import {useGLTF} from '../loading/resources.js'
 import { useEffect, useLayoutEffect, useMemo, useRef, useSyncExternalStore } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { useGLTF } from '@react-three/drei'
+
 import * as THREE from 'three'
 import { timeOfDayState } from './TimeOfDay'
 import { registerColliders, placedBox } from '../player/collisionWorld'

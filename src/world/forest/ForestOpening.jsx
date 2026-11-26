@@ -13,12 +13,14 @@ import cycloneUrl from '../../../assets/sound/03-Robotech-Cyclone.mp3'
 import victoryUrl from '../../../assets/sound/04-Robotech-Mission-Accomplished.mp3'
 import {ForestMusic} from './ForestMusic.js'
 import {stage4World} from './forestStage4Config.js'
+import {stageStreaming} from '../../loading/stageStreaming.js'
 import './forestOpening.css'
 
 class OpeningController{
   constructor(runtime,camera,scene){
     Object.assign(this,{runtime,camera,scene});this.active=store.snapshot().phase!=='done';this.holding=false;this.phase='loading';this.elapsed=0;this.suspended=document.hidden;this.disposed=false
-    this.music=new ForestMusic({intro:musicUrl,lifeline:lifelineUrl,cyclone:cycloneUrl,victory:victoryUrl},{volume:FOREST_OPENING.volume});this.audio=this.music.tracks.intro
+    this.music=new ForestMusic({intro:musicUrl,lifeline:lifelineUrl,cyclone:cycloneUrl,victory:victoryUrl},{volume:FOREST_OPENING.volume,lazy:true,initialTrack:this.active?'intro':'lifeline'});this.audio=this.music.tracks.intro
+    this.preloadMusic=()=>stageStreaming.downloaded('stage3').then(()=>{if(!this.disposed)this.music.preloadTrack('lifeline')}).catch(()=>{});window.addEventListener('game-ready',this.preloadMusic,{once:true})
     this.music.suspend(document.hidden)
     this.unlockMusic=()=>this.music.unlock()
     this.musicVisibility=()=>this.music.suspend(document.hidden||!this.active&&runtime.paused)
@@ -71,6 +73,9 @@ class OpeningController{
     })
   }
   update(delta){
+    if(this.audio.currentTime>20||stageStreaming.states.stage3.networkReadyMs)this.music.preloadTrack('lifeline')
+    if(['mounting','prepared','ready'].includes(stageStreaming.states.stage4.phase))this.music.preloadTrack('cyclone')
+    if(this.runtime.climaxSequence?.active)this.music.preloadTrack('victory')
     this.music.update(delta,{paused:document.hidden||!this.active&&this.runtime.paused,state:this.runtime.state,world:stage4World.get()})
     if(!this.active)return false
     if(this.phase==='loading'&&desktopInput.ready)this.play()
@@ -111,6 +116,7 @@ class OpeningController{
     this.disposed=true;this.restore();this.active=false;this.holding=false
     if(this.key){window.removeEventListener('keydown',this.key,true);window.removeEventListener('keyup',this.key,true);document.removeEventListener('visibilitychange',this.visibility)}
     window.removeEventListener('pointerdown',this.unlockMusic);window.removeEventListener('keydown',this.unlockMusic);document.removeEventListener('visibilitychange',this.musicVisibility)
+    window.removeEventListener('game-ready',this.preloadMusic)
     this.music.dispose()
   }
 }

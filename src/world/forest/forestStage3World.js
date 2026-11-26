@@ -6,7 +6,7 @@ import {worldFoliageSector} from './forestFoliageWorldRendering.js'
 import {FOLIAGE_CATALOG} from './foliageCatalog.js'
 import {forestLodRange} from './forestLod.js'
 import {registerColliders,cylinderCollider} from '../../player/collisionWorld.js'
-import {createForestSideLayout,createSideBoundaryLibrary,createSideBoundaryColliders,forestSideWidth,ForestSideBoundaryBand} from './forestSideBoundaries.js'
+import {createForestSideLayoutSteps,createSideBoundaryLibrary,createSideBoundaryColliders,forestSideWidth,ForestSideBoundaryBand} from './forestSideBoundaries.js'
 import {createTreeBasePlants} from './forestTreeBasePlants.js'
 
 let current=null
@@ -29,23 +29,28 @@ export function foliageData(plants,height,id,bounds=[-256,0,-96,256,30,0]){
   return {id,x:0,z:0,count,matrices,colours,rects,forms,fades,bounds,contacts:[]}
 }
 export class ForestStage3World extends Group{
-  constructor(assets,ground,foliage,distant){
+  constructor(assets,ground,foliage,distant,{deferred=false}={}){
     super();this.name='Forest_Plano_3_recycled_route';this.tiles=[];this.owned=[];this.batches=[];this.recycles=0
+    this.preparationSteps=this.build(assets,ground,foliage,distant);if(!deferred)for(const step of this.preparationSteps)void step
+  }
+  *build(assets,ground,foliage,distant){
     this.sideLibrary=createSideBoundaryLibrary(assets,foliage.near.map)
     const trees=assets.filter(a=>a.kind==='tree'),sprites=FOLIAGE_CATALOG.entries.filter(e=>['pasto','hierbas','helechos','arbustos'].includes(e.category))
     for(let phase=0;phase<S.chunks;phase++){
       const group=new Group(),origin=S.startZ-phase*S.chunkLength,height=(x,z)=>stage3Height(x,origin+z),random=forestRandom(S.seed+phase*191),between=(a,b)=>a+(b-a)*random(),layout=new Map(trees.map(a=>[a.name,[]])),anchors=[]
       for(let attempt=0;attempt<6000&&anchors.length<220;attempt++){
+        if(attempt%64===0)yield
         const x=between(-250,250),z=between(-94,-2);if(Math.abs(x-stage3PathX(origin+z))<11||anchors.some(p=>(p.x-x)**2+(p.z-z)**2<15))continue
         const a=trees[Math.floor(random()*trees.length)],p={x,z,scale:between(2.1,3.25),yaw:between(0,Math.PI*2),tint:between(.91,1.04),kind:'tree',name:a.name};anchors.push(p);layout.get(a.name).push(p)
       }
       const geometry=terrain(phase),mesh=new Mesh(geometry,ground);mesh.name='Forest_Plano_3_ground_'+phase;mesh.receiveShadow=true;mesh.userData={forest:true,rideSurface:true,rideSurfaceType:'dirt',rideSurfaceBiome:'forest',rideSurfaceEarthWeight:stage3EarthWeight};group.add(mesh);this.owned.push(geometry)
       const batches=[]
       for(const asset of trees){const placements=layout.get(asset.name)
-        for(const [far,parts]of [[false,[...asset.parts,...(asset.midParts||[])]],[true,distant.get(asset.name).parts]])for(const part of parts){const b=new ForestBatch(part,placements,asset.bounds,'tree',far?340:forestLodRange('tree').max,far?forestLodRange('tree',true).start:0,height);b.userData.forest=true;group.add(b);batches.push(b)}
+        for(const [far,parts]of [[false,[...asset.parts,...(asset.midParts||[])]],[true,distant.get(asset.name).parts]])for(const part of parts){const b=new ForestBatch(part,placements,asset.bounds,'tree',far?340:forestLodRange('tree').max,far?forestLodRange('tree',true).start:0,height);b.userData.forest=true;group.add(b);batches.push(b);yield}
       }
       const plants=[]
       for(let i=0;i<4000;i++){
+        if(i%256===0)yield
         const a=anchors[Math.floor(random()*anchors.length)],x=i%3?between(-80,80):a.x+between(-2,2),z=i%3?between(-95,-1):Math.max(-95,Math.min(-1,a.z+between(-2,2)))
         if(Math.abs(x-stage3PathX(origin+z))<1.7||Math.abs(x)>254)continue
         const e=sprites[Math.floor(random()*sprites.length)];plants.push({x,z,scale:between(...e.heightRange),sprite:e.id,yaw:between(0,Math.PI*2),mirror:random()<.5,tint:between(.95,1.03)})
@@ -53,9 +58,10 @@ export class ForestStage3World extends Group{
       plants.push(...createTreeBasePlants(anchors,{seed:S.seed+phase*191}))
       const grass=worldFoliageSector(foliageData(plants,height,phase),foliage);group.add(grass.near,grass.far)
       const colliders=anchors.map(p=>{const a=trees.find(a=>a.name===p.name),y=height(p.x,p.z);return cylinderCollider(p.x,p.z+origin,Math.max(.3,(a.bounds.max.x-a.bounds.min.x)*p.scale*.035),y-.15,y+(a.bounds.max.y-a.bounds.min.y)*p.scale*.7)})
-      const sideLayout=createForestSideLayout({minZ:-96,maxZ:0,pathAt:z=>stage3PathX(origin+z),heightAt:height,widthAt:(z,side)=>forestSideWidth(origin+z,side)-side*stage3PathX(origin+z),trees:this.sideLibrary.trees,seed:S.seed+phase*191+122}),boundary=new ForestSideBoundaryBand(sideLayout,this.sideLibrary,height)
+      const sideLayout=yield* createForestSideLayoutSteps({minZ:-96,maxZ:0,pathAt:z=>stage3PathX(origin+z),heightAt:height,widthAt:(z,side)=>forestSideWidth(origin+z,side)-side*stage3PathX(origin+z),trees:this.sideLibrary.trees,seed:S.seed+phase*191+122}),boundary=new ForestSideBoundaryBand(sideLayout,this.sideLibrary,height,{deferred:true})
+      yield* boundary.preparationSteps
       group.add(boundary);colliders.push(...createSideBoundaryColliders(sideLayout,new Vector3(0,0,origin)))
-      group.position.z=origin;this.add(group);this.tiles.push({group,batches,phase,index:phase,trees:anchors,mesh,colliders,grass,boundary,remove:null});this.batches.push(...batches)
+      group.position.z=origin;this.add(group);this.tiles.push({group,batches,phase,index:phase,trees:anchors,mesh,colliders,grass,boundary,remove:null});this.batches.push(...batches);yield
     }
   }
   ensureAround(z){

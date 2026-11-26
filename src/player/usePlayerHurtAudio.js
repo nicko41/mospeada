@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import {assetUrl} from '../loading/resources.js'
 import { playerCombat, subscribePlayerHealth } from './playerCombat'
 
 const HURT_URLS = ['hurt01.mp3', 'hurt02.mp3', 'hurt03.mp3']
@@ -7,7 +8,7 @@ export default function usePlayerHurtAudio() {
   const deathAudioFinished = useRef(true)
   useEffect(() => {
     const createSound = name => {
-      const sound = new Audio(`${import.meta.env.BASE_URL}sounds/character/${name}`)
+      const sound = new Audio(assetUrl(`/sounds/character/${name}`))
       sound.preload = 'auto'
       sound.volume = 0.7
       sound.load()

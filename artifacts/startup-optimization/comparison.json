@@ -1,0 +1,1193 @@
+[
+  {
+    "file": "after-20mbps-cold.json",
+    "readyMs": 41071.09999999404,
+    "controlMs": 62361,
+    "metrics": {
+      "requestsComplete": 73,
+      "transferBytes": 83708278,
+      "encodedBodyBytes": 83686978,
+      "uniqueUrlDecodedBytes": 115355144,
+      "maxStartupTaskMs": 1178,
+      "workerTimingFallbackBytes": 81992,
+      "transportBytesAtReady": 85371466,
+      "partialDownloads": [
+        {
+          "url": "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/textures/desert/desierto-floor.png",
+          "receivedBytes": 560596
+        },
+        {
+          "url": "http://127.0.0.1:5181/assets/desierto-floor2-CulRt4mX.png",
+          "receivedBytes": 554596
+        },
+        {
+          "url": "http://127.0.0.1:5181/assets/02-Robotech-Lifeline-Bd__GJoj.mp3",
+          "receivedBytes": 542596
+        }
+      ]
+    },
+    "preparation": {
+      "startMs": 36210.39999999106,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 468.5,
+      "primeMs": 975.6000000089407,
+      "totalMs": 1444.300000011921,
+      "programs": 87,
+      "uploadedTextures": 59,
+      "textureMs": 2622.199999988079,
+      "startupViews": 10,
+      "startupViewsMs": 715.4000000059605,
+      "openingMs": 3369.0999999940395
+    },
+    "mandatoryBytes": 74564585,
+    "anticipatedBytes": 10806881,
+    "top15": [
+      {
+        "file": "/resources/2af14fc220b9c3a5/delivery/scott-v3.glb",
+        "transportBytes": 33469141,
+        "decodedBytes": 34618288,
+        "partial": false,
+        "group": "Scott V3",
+        "why": "Única representación visual inicial; mismos vértices, materiales, imágenes y skinning.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/delivery/scott-controller-v2.glb",
+        "transportBytes": 7848859,
+        "decodedBytes": 8826676,
+        "partial": false,
+        "group": "Scott funcional",
+        "why": "Rig, animaciones y sondas del controlador original. Contenedor sin imágenes; no se presenta la visual V2.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/models/mospeada/alpha-fighter-down.glb",
+        "transportBytes": 5091800,
+        "decodedBytes": 6311572,
+        "partial": false,
+        "group": "Introducción",
+        "why": "Alpha accidentado visible en la introducción y el claro inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/models/glTF/Bark_NormalTree.png",
+        "transportBytes": 3895146,
+        "decodedBytes": 3894788,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/models/mospeada/cyclone-vr052f.glb",
+        "transportBytes": 3817985,
+        "decodedBytes": 23345364,
+        "partial": false,
+        "group": "Cyclone",
+        "why": "Modelo original de la moto para intro y conducción; URL compartida con la futura instancia de Rand.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/delivery/mars-gallant.glb",
+        "transportBytes": 2950016,
+        "decodedBytes": 2986796,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/orilla-rio-BJGVuZGQ.png",
+        "transportBytes": 2650768,
+        "decodedBytes": 2650410,
+        "partial": false,
+        "group": "Plano 2",
+        "why": "Textura original del barranco/ribera; anticipada para el primer salto, fuera de la barrera del preloader.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/models/glTF/Leaves.png",
+        "transportBytes": 2586790,
+        "decodedBytes": 2586432,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/models/glTF/Rocks_Diffuse.png",
+        "transportBytes": 2517756,
+        "decodedBytes": 2517398,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/foliage/forest/atlas.png",
+        "transportBytes": 2322575,
+        "decodedBytes": 2322217,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/01-intro-Robotech-Roy-Fokker-s-Theme-XxvuwqSQ.mp3",
+        "transportBytes": 2211266,
+        "decodedBytes": 2210832,
+        "partial": false,
+        "group": "Introducción",
+        "why": "Música de la introducción original.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/follaje1-CKIQsWbX.png",
+        "transportBytes": 1897853,
+        "decodedBytes": 1897495,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/explosion-piso-DTBYY79e.png",
+        "transportBytes": 1881202,
+        "decodedBytes": 1880844,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/follaje2-tJ9eulzM.png",
+        "transportBytes": 1369443,
+        "decodedBytes": 1369085,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/explosion-aire-DrcJascN.png",
+        "transportBytes": 1365308,
+        "decodedBytes": 1364950,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      }
+    ]
+  },
+  {
+    "file": "after-20mbps-warm.json",
+    "readyMs": 23907.29999999702,
+    "controlMs": 42342,
+    "metrics": {
+      "requestsComplete": 76,
+      "transferBytes": 300,
+      "encodedBodyBytes": 0,
+      "uniqueUrlDecodedBytes": 124214334,
+      "maxStartupTaskMs": 9509,
+      "workerTimingFallbackBytes": 0,
+      "transportBytesAtReady": 342,
+      "partialDownloads": []
+    },
+    "preparation": {
+      "startMs": 8752.5,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 2405.1000000089407,
+      "primeMs": 9507.39999999106,
+      "totalMs": 11912.5,
+      "programs": 87,
+      "uploadedTextures": 59,
+      "textureMs": 2238.5,
+      "startupViews": 10,
+      "startupViewsMs": 940.2999999970198,
+      "openingMs": 3199.2000000029802
+    },
+    "mandatoryBytes": 342,
+    "anticipatedBytes": 0,
+    "top15": [
+      {
+        "file": "/",
+        "transportBytes": 342,
+        "decodedBytes": 48538,
+        "partial": false,
+        "group": "Aplicación",
+        "why": "HTML/JavaScript/CSS de arranque y runtime. Los GLB e imágenes grandes son archivos externos.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/fonts/mospeada/Open24DisplayST.ttf",
+        "transportBytes": 0,
+        "decodedBytes": 26988,
+        "partial": false,
+        "group": "Interfaz",
+        "why": "Fuente del display Cyclone; HTML y CSS usan exactamente la misma URL.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/index-C-TtfFhI.js",
+        "transportBytes": 0,
+        "decodedBytes": 2305171,
+        "partial": false,
+        "group": "Aplicación",
+        "why": "HTML/JavaScript/CSS de arranque y runtime. Los GLB e imágenes grandes son archivos externos.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/rolldown-runtime-hePW80VL.js",
+        "transportBytes": 0,
+        "decodedBytes": 716,
+        "partial": false,
+        "group": "Aplicación",
+        "why": "HTML/JavaScript/CSS de arranque y runtime. Los GLB e imágenes grandes son archivos externos.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/index-Cufsa-II.css",
+        "transportBytes": 0,
+        "decodedBytes": 26727,
+        "partial": false,
+        "group": "Aplicación",
+        "why": "HTML/JavaScript/CSS de arranque y runtime. Los GLB e imágenes grandes son archivos externos.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/terrainWorker-dU2Bmd4s.js",
+        "transportBytes": 0,
+        "decodedBytes": 137237,
+        "partial": true,
+        "group": "Preparación CPU",
+        "why": "Worker que genera exactamente las geometrías originales de terreno fuera del hilo principal.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/forestFoliageWorker-UZCMauDS.js",
+        "transportBytes": 0,
+        "decodedBytes": 123632,
+        "partial": true,
+        "group": "Bosque inicial",
+        "why": "Worker de distribución forestal; URL compartida por los sectores iniciales y el barranco.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/delivery/scott-controller-v2.glb",
+        "transportBytes": 0,
+        "decodedBytes": 8826676,
+        "partial": false,
+        "group": "Scott funcional",
+        "why": "Rig, animaciones y sondas del controlador original. Contenedor sin imágenes; no se presenta la visual V2.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/delivery/scott-reference-v1.glb",
+        "transportBytes": 0,
+        "decodedBytes": 1424304,
+        "partial": false,
+        "group": "Scott funcional",
+        "why": "Jerarquía y referencias originales usadas por anclajes/poses. Sin imágenes; no se presenta la visual V1.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/delivery/scott-v3.glb",
+        "transportBytes": 0,
+        "decodedBytes": 34618288,
+        "partial": false,
+        "group": "Scott V3",
+        "why": "Única representación visual inicial; mismos vértices, materiales, imágenes y skinning.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/animations/scott-cyclone-actions.json",
+        "transportBytes": 0,
+        "decodedBytes": 737452,
+        "partial": false,
+        "group": "Scott funcional",
+        "why": "Clips originales de conducción y transformación.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/transformations/cyclone-front-battloid.json",
+        "transportBytes": 0,
+        "decodedBytes": 156217,
+        "partial": false,
+        "group": "Armor",
+        "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/transformations/cyclone-rear-battloid.json",
+        "transportBytes": 0,
+        "decodedBytes": 39541,
+        "partial": false,
+        "group": "Armor",
+        "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/transformations/cyclone-guard-battloid.json",
+        "transportBytes": 0,
+        "decodedBytes": 34843,
+        "partial": false,
+        "group": "Armor",
+        "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/2af14fc220b9c3a5/transformations/cyclone-wheel-battloid.json",
+        "transportBytes": 0,
+        "decodedBytes": 41102,
+        "partial": false,
+        "group": "Armor",
+        "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+        "inclusion": "obligatorio"
+      }
+    ]
+  },
+  {
+    "file": "before-20mbps-cold.json",
+    "readyMs": 146999.09999999404,
+    "metrics": {
+      "requestsComplete": 106,
+      "transferBytes": 211431115,
+      "encodedBodyBytes": 211399315,
+      "uniqueUrlDecodedBytes": 286015480,
+      "maxStartupTaskMs": 20990,
+      "workerTimingFallbackBytes": 78582,
+      "transportBytesAtReady": 211438644,
+      "partialDownloads": []
+    },
+    "preparation": {
+      "startMs": 107288.69999998808,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 4495.4000000059605,
+      "primeMs": 20989.79999999702,
+      "totalMs": 25485.20000000298,
+      "programs": 125,
+      "uploadedTextures": 92,
+      "textureMs": 5634.699999988079,
+      "startupViews": 44,
+      "startupViewsMs": 8496,
+      "openingMs": 14149
+    },
+    "mandatoryBytes": 36676642,
+    "anticipatedBytes": 38602209,
+    "top15": [
+      {
+        "file": "/models/mospeada/scott-gear-v3-helmet-boundary.glb",
+        "transportBytes": 52470956,
+        "decodedBytes": 61857948,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+        "transportBytes": 40436344,
+        "decodedBytes": 46259340,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/scott-bernard-animated-original.glb",
+        "transportBytes": 12563438,
+        "decodedBytes": 13993900,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/invid-scout-rigged.glb?rig=flight-v4-leg-seam",
+        "transportBytes": 11911117,
+        "decodedBytes": 14784808,
+        "partial": false,
+        "group": "Scouts",
+        "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/models/mospeada/rand-casual-rigged.glb",
+        "transportBytes": 7937138,
+        "decodedBytes": 11058140,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/scott-shoulders-normal.png",
+        "transportBytes": 5737901,
+        "decodedBytes": 5737544,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/alpha-fighter-down.glb",
+        "transportBytes": 5091799,
+        "decodedBytes": 6311572,
+        "partial": false,
+        "group": "Introducción",
+        "why": "Alpha accidentado visible en la introducción y el claro inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/models/mospeada/scott-shoulders-decals.png",
+        "transportBytes": 4943573,
+        "decodedBytes": 4943216,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/glTF/Bark_NormalTree_Normal.png",
+        "transportBytes": 4384853,
+        "decodedBytes": 4384496,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/models/glTF/Bark_NormalTree.png",
+        "transportBytes": 3895145,
+        "decodedBytes": 3894788,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/models/mospeada/rand-cyclone.glb",
+        "transportBytes": 3817984,
+        "decodedBytes": 23345364,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/cyclone-vr052f.glb",
+        "transportBytes": 3817984,
+        "decodedBytes": 23345364,
+        "partial": false,
+        "group": "Cyclone",
+        "why": "Modelo original de la moto para intro y conducción; URL compartida con la futura instancia de Rand.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/models/mospeada/horizon-t-desert-landmark.glb",
+        "transportBytes": 3599147,
+        "decodedBytes": 4412784,
+        "partial": false,
+        "group": "Desierto posterior",
+        "why": "Modelo posterior, descargado fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/02-Robotech-Lifeline-Bd__GJoj.mp3",
+        "transportBytes": 2977870,
+        "decodedBytes": 2977437,
+        "partial": false,
+        "group": "Música posterior",
+        "why": "Anticipación de Lifeline para su cue original; no bloquea el preloader.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/models/mospeada/mars-gallant.glb",
+        "transportBytes": 2897698,
+        "decodedBytes": 3299312,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      }
+    ]
+  },
+  {
+    "file": "before-20mbps-warm.json",
+    "readyMs": 63675.09999999404,
+    "metrics": {
+      "requestsComplete": 105,
+      "transferBytes": 59820739,
+      "encodedBodyBytes": 59789239,
+      "uniqueUrlDecodedBytes": 286015294,
+      "maxStartupTaskMs": 15698,
+      "workerTimingFallbackBytes": 600,
+      "transportBytesAtReady": 52506910,
+      "partialDownloads": []
+    },
+    "preparation": {
+      "startMs": 33228.09999999404,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 4359,
+      "primeMs": 15697.90000000596,
+      "totalMs": 20056.90000000596,
+      "programs": 128,
+      "uploadedTextures": 92,
+      "textureMs": 2671.3999999910593,
+      "startupViews": 44,
+      "startupViewsMs": 7632.9000000059605,
+      "openingMs": 10319.39999999106
+    },
+    "mandatoryBytes": 24576,
+    "anticipatedBytes": 7552,
+    "top15": [
+      {
+        "file": "/models/mospeada/scott-gear-v3-helmet-boundary.glb",
+        "transportBytes": 52470956,
+        "decodedBytes": 61857948,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/assets/grass-01-BS-zutJV.jpg",
+        "transportBytes": 1029,
+        "decodedBytes": 368020,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/dirt01-Z3GgFyhG.jpg",
+        "transportBytes": 1029,
+        "decodedBytes": 377132,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/foliage/forest/atlas.png",
+        "transportBytes": 1026,
+        "decodedBytes": 2322217,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/impascto-invid-suelo-DN9g5Zv7.png",
+        "transportBytes": 684,
+        "decodedBytes": 1208219,
+        "partial": false,
+        "group": "VFX iniciales",
+        "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/foliage/forest/wheel-fragments.png",
+        "transportBytes": 684,
+        "decodedBytes": 4899,
+        "partial": false,
+        "group": "VFX iniciales",
+        "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/explosion-piso-DTBYY79e.png",
+        "transportBytes": 684,
+        "decodedBytes": 1880844,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/explosion-aire-DrcJascN.png",
+        "transportBytes": 684,
+        "decodedBytes": 1364950,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/hojas flotantes-CScvGVsT.png",
+        "transportBytes": 684,
+        "decodedBytes": 652911,
+        "partial": false,
+        "group": "VFX iniciales",
+        "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/invid-blood01-DKbTfKQU.png",
+        "transportBytes": 684,
+        "decodedBytes": 1260400,
+        "partial": false,
+        "group": "Scouts",
+        "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/invid-blood02-Chxk3y2v.png",
+        "transportBytes": 684,
+        "decodedBytes": 1343671,
+        "partial": false,
+        "group": "Scouts",
+        "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/invid-orbes-BLaJbtF8.png",
+        "transportBytes": 684,
+        "decodedBytes": 1507164,
+        "partial": false,
+        "group": "Scouts",
+        "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/textures/desert/desierto-floor.png",
+        "transportBytes": 684,
+        "decodedBytes": 2627854,
+        "partial": false,
+        "group": "Plano 4",
+        "why": "Mapas originales del desierto; anticipados para la continuidad sin depender de cuánto dura el combate.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/desierto-floor2-CulRt4mX.png",
+        "transportBytes": 684,
+        "decodedBytes": 2142768,
+        "partial": false,
+        "group": "Plano 4",
+        "why": "Mapas originales del desierto; anticipados para la continuidad sin depender de cuánto dura el combate.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/forestFoliageWorker-UZCMauDS.js",
+        "transportBytes": 600,
+        "decodedBytes": 123632,
+        "partial": true,
+        "group": "Bosque inicial",
+        "why": "Worker de distribución forestal; URL compartida por los sectores iniciales y el barranco.",
+        "inclusion": "obligatorio"
+      }
+    ]
+  },
+  {
+    "file": "before-5mbps-cold.json",
+    "readyMs": 373615.8000000119,
+    "metrics": {
+      "requestsComplete": 106,
+      "transferBytes": 211431115,
+      "encodedBodyBytes": 211399315,
+      "uniqueUrlDecodedBytes": 286015480,
+      "maxStartupTaskMs": 15625,
+      "workerTimingFallbackBytes": 78582,
+      "transportBytesAtReady": 211438644,
+      "partialDownloads": []
+    },
+    "preparation": {
+      "startMs": 342871.200000003,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 4100.9000000059605,
+      "primeMs": 15624.79999999702,
+      "totalMs": 19725.79999999702,
+      "programs": 125,
+      "uploadedTextures": 92,
+      "textureMs": 3405.7000000029802,
+      "startupViews": 44,
+      "startupViewsMs": 7514,
+      "openingMs": 10935.5
+    },
+    "mandatoryBytes": 36676642,
+    "anticipatedBytes": 38602209,
+    "top15": [
+      {
+        "file": "/models/mospeada/scott-gear-v3-helmet-boundary.glb",
+        "transportBytes": 52470956,
+        "decodedBytes": 61857948,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+        "transportBytes": 40436344,
+        "decodedBytes": 46259340,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/scott-bernard-animated-original.glb",
+        "transportBytes": 12563438,
+        "decodedBytes": 13993900,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/invid-scout-rigged.glb?rig=flight-v4-leg-seam",
+        "transportBytes": 11911117,
+        "decodedBytes": 14784808,
+        "partial": false,
+        "group": "Scouts",
+        "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/models/mospeada/rand-casual-rigged.glb",
+        "transportBytes": 7937138,
+        "decodedBytes": 11058140,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/scott-shoulders-normal.png",
+        "transportBytes": 5737901,
+        "decodedBytes": 5737544,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/alpha-fighter-down.glb",
+        "transportBytes": 5091799,
+        "decodedBytes": 6311572,
+        "partial": false,
+        "group": "Introducción",
+        "why": "Alpha accidentado visible en la introducción y el claro inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/models/mospeada/scott-shoulders-decals.png",
+        "transportBytes": 4943573,
+        "decodedBytes": 4943216,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/glTF/Bark_NormalTree_Normal.png",
+        "transportBytes": 4384853,
+        "decodedBytes": 4384496,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/models/glTF/Bark_NormalTree.png",
+        "transportBytes": 3895145,
+        "decodedBytes": 3894788,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/models/mospeada/rand-cyclone.glb",
+        "transportBytes": 3817984,
+        "decodedBytes": 23345364,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/models/mospeada/cyclone-vr052f.glb",
+        "transportBytes": 3817984,
+        "decodedBytes": 23345364,
+        "partial": false,
+        "group": "Cyclone",
+        "why": "Modelo original de la moto para intro y conducción; URL compartida con la futura instancia de Rand.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/models/mospeada/horizon-t-desert-landmark.glb",
+        "transportBytes": 3599147,
+        "decodedBytes": 4412784,
+        "partial": false,
+        "group": "Desierto posterior",
+        "why": "Modelo posterior, descargado fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/02-Robotech-Lifeline-Bd__GJoj.mp3",
+        "transportBytes": 2977870,
+        "decodedBytes": 2977437,
+        "partial": false,
+        "group": "Música posterior",
+        "why": "Anticipación de Lifeline para su cue original; no bloquea el preloader.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/models/mospeada/mars-gallant.glb",
+        "transportBytes": 2897698,
+        "decodedBytes": 3299312,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      }
+    ]
+  },
+  {
+    "file": "before-5mbps-warm.json",
+    "readyMs": 150087.89999999106,
+    "metrics": {
+      "requestsComplete": 105,
+      "transferBytes": 59820739,
+      "encodedBodyBytes": 59789239,
+      "uniqueUrlDecodedBytes": 286015294,
+      "maxStartupTaskMs": 21420,
+      "workerTimingFallbackBytes": 600,
+      "transportBytesAtReady": 52506910,
+      "partialDownloads": []
+    },
+    "preparation": {
+      "startMs": 109755.89999999106,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 5599.4000000059605,
+      "primeMs": 21419.5,
+      "totalMs": 27018.90000000596,
+      "programs": 125,
+      "uploadedTextures": 92,
+      "textureMs": 4973.199999988079,
+      "startupViews": 44,
+      "startupViewsMs": 8220.29999999702,
+      "openingMs": 13215.40000000596
+    },
+    "mandatoryBytes": 24576,
+    "anticipatedBytes": 7552,
+    "top15": [
+      {
+        "file": "/models/mospeada/scott-gear-v3-helmet-boundary.glb",
+        "transportBytes": 52470956,
+        "decodedBytes": 61857948,
+        "partial": false,
+        "group": "REVISAR",
+        "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+        "inclusion": "revisar"
+      },
+      {
+        "file": "/assets/grass-01-BS-zutJV.jpg",
+        "transportBytes": 1029,
+        "decodedBytes": 368020,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/dirt01-Z3GgFyhG.jpg",
+        "transportBytes": 1029,
+        "decodedBytes": 377132,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/foliage/forest/atlas.png",
+        "transportBytes": 1026,
+        "decodedBytes": 2322217,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/impascto-invid-suelo-DN9g5Zv7.png",
+        "transportBytes": 684,
+        "decodedBytes": 1208219,
+        "partial": false,
+        "group": "VFX iniciales",
+        "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/foliage/forest/wheel-fragments.png",
+        "transportBytes": 684,
+        "decodedBytes": 4899,
+        "partial": false,
+        "group": "VFX iniciales",
+        "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/explosion-piso-DTBYY79e.png",
+        "transportBytes": 684,
+        "decodedBytes": 1880844,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/explosion-aire-DrcJascN.png",
+        "transportBytes": 684,
+        "decodedBytes": 1364950,
+        "partial": false,
+        "group": "Plano 3",
+        "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/hojas flotantes-CScvGVsT.png",
+        "transportBytes": 684,
+        "decodedBytes": 652911,
+        "partial": false,
+        "group": "VFX iniciales",
+        "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/invid-blood01-DKbTfKQU.png",
+        "transportBytes": 684,
+        "decodedBytes": 1260400,
+        "partial": false,
+        "group": "Scouts",
+        "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/invid-blood02-Chxk3y2v.png",
+        "transportBytes": 684,
+        "decodedBytes": 1343671,
+        "partial": false,
+        "group": "Scouts",
+        "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/invid-orbes-BLaJbtF8.png",
+        "transportBytes": 684,
+        "decodedBytes": 1507164,
+        "partial": false,
+        "group": "Scouts",
+        "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/textures/desert/desierto-floor.png",
+        "transportBytes": 684,
+        "decodedBytes": 2627854,
+        "partial": false,
+        "group": "Plano 4",
+        "why": "Mapas originales del desierto; anticipados para la continuidad sin depender de cuánto dura el combate.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/desierto-floor2-CulRt4mX.png",
+        "transportBytes": 684,
+        "decodedBytes": 2142768,
+        "partial": false,
+        "group": "Plano 4",
+        "why": "Mapas originales del desierto; anticipados para la continuidad sin depender de cuánto dura el combate.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/assets/forestFoliageWorker-UZCMauDS.js",
+        "transportBytes": 600,
+        "decodedBytes": 123632,
+        "partial": true,
+        "group": "Bosque inicial",
+        "why": "Worker de distribución forestal; URL compartida por los sectores iniciales y el barranco.",
+        "inclusion": "obligatorio"
+      }
+    ]
+  },
+  {
+    "file": "intermediate-77mb-20mbps-cold.json",
+    "readyMs": 74794.29999999702,
+    "metrics": {
+      "requestsComplete": 69,
+      "transferBytes": 77510348,
+      "encodedBodyBytes": 77489948,
+      "uniqueUrlDecodedBytes": 109119327,
+      "maxStartupTaskMs": 16131,
+      "workerTimingFallbackBytes": 81992,
+      "transportBytesAtReady": 77515544,
+      "partialDownloads": []
+    },
+    "preparation": {
+      "startMs": 51256.39999999106,
+      "initialMode": "ANIME",
+      "initialNight": false,
+      "initialGLError": 0,
+      "compileMs": 2919.9000000059605,
+      "primeMs": 16129.09999999404,
+      "totalMs": 19049.20000000298,
+      "programs": 87,
+      "uploadedTextures": 59,
+      "textureMs": 2875.0999999940395,
+      "startupViews": 10,
+      "startupViewsMs": 1522.7999999970198,
+      "openingMs": 4430.20000000298
+    },
+    "mandatoryBytes": 74562977,
+    "anticipatedBytes": 2952567,
+    "top15": [
+      {
+        "file": "/resources/83edda2a25d16d9d/delivery/scott-v3.glb",
+        "transportBytes": 33469141,
+        "decodedBytes": 34618288,
+        "partial": false,
+        "group": "Scott V3",
+        "why": "Única representación visual inicial; mismos vértices, materiales, imágenes y skinning.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/delivery/scott-controller-v2.glb",
+        "transportBytes": 7848859,
+        "decodedBytes": 8826676,
+        "partial": false,
+        "group": "Scott funcional",
+        "why": "Rig, animaciones y sondas del controlador original. Contenedor sin imágenes; no se presenta la visual V2.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/models/mospeada/alpha-fighter-down.glb",
+        "transportBytes": 5091800,
+        "decodedBytes": 6311572,
+        "partial": false,
+        "group": "Introducción",
+        "why": "Alpha accidentado visible en la introducción y el claro inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/models/glTF/Bark_NormalTree.png",
+        "transportBytes": 3895146,
+        "decodedBytes": 3894788,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/models/mospeada/cyclone-vr052f.glb",
+        "transportBytes": 3817985,
+        "decodedBytes": 23345364,
+        "partial": false,
+        "group": "Cyclone",
+        "why": "Modelo original de la moto para intro y conducción; URL compartida con la futura instancia de Rand.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/orilla-rio-BJGVuZGQ.png",
+        "transportBytes": 2650768,
+        "decodedBytes": 2650410,
+        "partial": false,
+        "group": "Plano 2",
+        "why": "Textura original del barranco/ribera; anticipada para el primer salto, fuera de la barrera del preloader.",
+        "inclusion": "anticipado"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/models/glTF/Leaves.png",
+        "transportBytes": 2586790,
+        "decodedBytes": 2586432,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/models/glTF/Rocks_Diffuse.png",
+        "transportBytes": 2517756,
+        "decodedBytes": 2517398,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/foliage/forest/atlas.png",
+        "transportBytes": 2322575,
+        "decodedBytes": 2322217,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/01-intro-Robotech-Roy-Fokker-s-Theme-XxvuwqSQ.mp3",
+        "transportBytes": 2211266,
+        "decodedBytes": 2210832,
+        "partial": false,
+        "group": "Introducción",
+        "why": "Música de la introducción original.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/follaje1-CKIQsWbX.png",
+        "transportBytes": 1897853,
+        "decodedBytes": 1897495,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/follaje2-tJ9eulzM.png",
+        "transportBytes": 1369443,
+        "decodedBytes": 1369085,
+        "partial": false,
+        "group": "Bosque inicial",
+        "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/assets/impascto-invid-suelo-DN9g5Zv7.png",
+        "transportBytes": 1208577,
+        "decodedBytes": 1208219,
+        "partial": false,
+        "group": "VFX iniciales",
+        "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/transformations/cyclone-rear-pieces.glb",
+        "transportBytes": 1027933,
+        "decodedBytes": 5608972,
+        "partial": false,
+        "group": "Armor",
+        "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+        "inclusion": "obligatorio"
+      },
+      {
+        "file": "/resources/83edda2a25d16d9d/delivery/scott-reference-v1.glb",
+        "transportBytes": 975564,
+        "decodedBytes": 1424304,
+        "partial": false,
+        "group": "Scott funcional",
+        "why": "Jerarquía y referencias originales usadas por anclajes/poses. Sin imágenes; no se presenta la visual V1.",
+        "inclusion": "obligatorio"
+      }
+    ]
+  }
+]

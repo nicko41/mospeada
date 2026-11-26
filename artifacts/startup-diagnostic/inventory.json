@@ -1,0 +1,1364 @@
+{
+  "units": "MB = 1,000,000 bytes; MiB = 1,048,576 bytes",
+  "dist": {
+    "files": 330,
+    "bytes": 630514847
+  },
+  "public": {
+    "files": 308,
+    "bytes": 602266324
+  },
+  "largestPublished": [
+    {
+      "path": "dist/models/mospeada/scott-gear-v3-helmet-boundary.glb",
+      "bytes": 61857948
+    },
+    {
+      "path": "dist/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+      "bytes": 46259340
+    },
+    {
+      "path": "dist/models/mospeada/scott-gear-v3-helmet-corrected.glb",
+      "bytes": 44453640
+    },
+    {
+      "path": "dist/models/mospeada/scott-bernard-gear-v2-classic-palette.glb",
+      "bytes": 41516888
+    },
+    {
+      "path": "dist/models/mospeada/scott-bernard-gear-v2-animated.glb",
+      "bytes": 33570096
+    },
+    {
+      "path": "dist/models/mospeada/scott-bernard-hd-hybrid-v2.glb",
+      "bytes": 31674476
+    },
+    {
+      "path": "dist/models/mospeada/scott-bernard-hd-hybrid-v1.glb",
+      "bytes": 29552004
+    },
+    {
+      "path": "dist/models/mospeada/cyclone-vr052f.glb",
+      "bytes": 23345364
+    },
+    {
+      "path": "dist/models/mospeada/rand-cyclone.glb",
+      "bytes": 23345364
+    },
+    {
+      "path": "dist/models/mospeada/scott-gear-v3-animated.glb",
+      "bytes": 21386324
+    },
+    {
+      "path": "dist/models/mospeada/invid-scout-rigged.glb",
+      "bytes": 14784808
+    },
+    {
+      "path": "dist/models/mospeada/scott-bernard-animated-original.glb",
+      "bytes": 13993900
+    },
+    {
+      "path": "dist/models/mospeada/invid-scout.glb",
+      "bytes": 13933968
+    },
+    {
+      "path": "dist/models/mospeada/scott-bernard-gear.glb",
+      "bytes": 12998440
+    },
+    {
+      "path": "dist/models/mospeada/rand-casual-rigged.glb",
+      "bytes": 11058140
+    },
+    {
+      "path": "dist/models/mospeada/alpha-fighter-down.glb",
+      "bytes": 6311572
+    },
+    {
+      "path": "dist/models/mospeada/scott-shoulders-normal.png",
+      "bytes": 5737544
+    },
+    {
+      "path": "dist/models/glTF/Bark_DeadTree_Normal.png",
+      "bytes": 5728199
+    },
+    {
+      "path": "dist/models/glTF/Bark_TwistedTree_Normal.png",
+      "bytes": 5728199
+    },
+    {
+      "path": "dist/models/Textures/Bark_DeadTree_Normal.png",
+      "bytes": 5728199
+    },
+    {
+      "path": "dist/models/Textures/Bark_TwistedTree_Normal.png",
+      "bytes": 5728199
+    },
+    {
+      "path": "dist/transformations/cyclone-rear-pieces.glb",
+      "bytes": 5608972
+    },
+    {
+      "path": "dist/sounds/ambience/ambience-rain.mp3",
+      "bytes": 4966191
+    },
+    {
+      "path": "dist/models/mospeada/scott-shoulders-color.png",
+      "bytes": 4947171
+    },
+    {
+      "path": "dist/models/mospeada/scott-shoulders-color-clean-v2.png",
+      "bytes": 4945776
+    }
+  ],
+  "bundles": [
+    {
+      "path": "dist/assets/forestFoliageWorker-UZCMauDS.js",
+      "bytes": 123632,
+      "gzipBytes": 39168,
+      "dataUriCount": 0,
+      "dataUriCharacters": 0,
+      "dataUris": [],
+      "sourceMap": false
+    },
+    {
+      "path": "dist/assets/index-CkRGR8Ba.js",
+      "bytes": 2406611,
+      "gzipBytes": 697171,
+      "dataUriCount": 2,
+      "dataUriCharacters": 510,
+      "dataUris": [
+        {
+          "length": 79,
+          "prefix": "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA",
+          "offset": 1109998
+        },
+        {
+          "length": 431,
+          "prefix": "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAA",
+          "offset": 1110821
+        }
+      ],
+      "sourceMap": false
+    }
+  ],
+  "models": [
+    {
+      "file": "public/models/bat.glb",
+      "bytes": 11596,
+      "sha256": "546e104b1b66e5c3904f3b92dff789e2d722928532b9501b0e5d07a50077a74c",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 2400,
+      "embeddedImageBytes": 0,
+      "otherBytes": 11596,
+      "images": [],
+      "meshCount": 1,
+      "materialCount": 2
+    },
+    {
+      "file": "public/models/deadtrees01.glb",
+      "bytes": 2744172,
+      "sha256": "769e8280e97965f0cc88213a3f4645385c64c2915eda255deec4481c829beb42",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 7060,
+      "embeddedImageBytes": 2343528,
+      "otherBytes": 400644,
+      "images": [
+        {
+          "index": 0,
+          "name": "MapleTree_Bark_Normal.png",
+          "mimeType": "image/png",
+          "bytes": 1303743,
+          "width": 1024,
+          "height": 1024,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "MapleTree_Bark.png",
+          "mimeType": "image/png",
+          "bytes": 1039785,
+          "width": 1024,
+          "height": 1024,
+          "format": "png"
+        }
+      ],
+      "meshCount": 5,
+      "materialCount": 1
+    },
+    {
+      "file": "public/models/enemies/Zombie02.glb",
+      "bytes": 2162724,
+      "sha256": "b2f6efedfc1e5b76965bafc4fd5ee9b6c497387b005a1e1ad9fcb7595f401f1a",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 326100,
+      "embeddedImageBytes": 343052,
+      "otherBytes": 1819672,
+      "images": [
+        {
+          "index": 0,
+          "name": "ColorPalette.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 343052,
+          "width": 1024,
+          "height": 1024,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1,
+      "animationCount": 13
+    },
+    {
+      "file": "public/models/grass01.glb",
+      "bytes": 550544,
+      "sha256": "106ab818c589c808d29ca0836fbc26baa859ab3189aabe1034cb6dfc7e50c575",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 2332,
+      "embeddedImageBytes": 0,
+      "otherBytes": 550544,
+      "images": [],
+      "meshCount": 1,
+      "materialCount": 2
+    },
+    {
+      "file": "public/models/grass02.glb",
+      "bytes": 38312,
+      "sha256": "b0d8ec96121cc7ceeaf18b1689a62d33e21ad7445139a62a68136b655004187e",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 25852,
+      "embeddedImageBytes": 0,
+      "otherBytes": 38312,
+      "images": [],
+      "meshCount": 28,
+      "materialCount": 1
+    },
+    {
+      "file": "public/models/letter.glb",
+      "bytes": 22908,
+      "sha256": "7deb4503eada09c76ba2059db25150d009233112b0ea625d42397659a7102ec5",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 2056,
+      "embeddedImageBytes": 9014,
+      "otherBytes": 13894,
+      "images": [
+        {
+          "index": 0,
+          "name": "Atlas_Pirate.png",
+          "mimeType": "image/png",
+          "bytes": 9014,
+          "width": 1024,
+          "height": 1024,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1
+    },
+    {
+      "file": "public/models/mobile.glb",
+      "bytes": 17172,
+      "sha256": "a3501dc8935fb7b4302f2a8259f1b200545e65200dc74d6976305151da885231",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 1672,
+      "embeddedImageBytes": 842,
+      "otherBytes": 16330,
+      "images": [
+        {
+          "index": 0,
+          "name": "1327 iPhone",
+          "mimeType": "image/png",
+          "bytes": 842,
+          "width": 256,
+          "height": 256,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1
+    },
+    {
+      "file": "public/models/mospeada/alpha-fighter-down.glb",
+      "bytes": 6311572,
+      "sha256": "636c08f790b359416837902aecd729c44c0e4325b780dac42eaeee23929bd819",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 2292,
+      "embeddedImageBytes": 2709704,
+      "otherBytes": 3601868,
+      "images": [
+        {
+          "index": 0,
+          "mimeType": "image/jpeg",
+          "bytes": 1346616,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 1,
+          "mimeType": "image/jpeg",
+          "bytes": 691723,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 2,
+          "mimeType": "image/jpeg",
+          "bytes": 671365,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1
+    },
+    {
+      "file": "public/models/mospeada/cyclone-vr052f.glb",
+      "bytes": 23345364,
+      "sha256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c",
+      "extensionsUsed": [
+        "KHR_materials_transmission",
+        "KHR_materials_volume",
+        "KHR_materials_ior",
+        "KHR_materials_clearcoat",
+        "KHR_materials_emissive_strength",
+        "KHR_texture_transform",
+        "KHR_materials_specular"
+      ],
+      "extensionsRequired": [],
+      "jsonBytes": 309012,
+      "embeddedImageBytes": 110120,
+      "otherBytes": 23235244,
+      "images": [
+        {
+          "index": 0,
+          "mimeType": "image/png",
+          "bytes": 48592,
+          "width": 1200,
+          "height": 480,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "mimeType": "image/png",
+          "bytes": 13044,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "mimeType": "image/png",
+          "bytes": 8860,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 3,
+          "mimeType": "image/png",
+          "bytes": 8860,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 4,
+          "mimeType": "image/png",
+          "bytes": 8860,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 5,
+          "mimeType": "image/png",
+          "bytes": 8860,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 6,
+          "mimeType": "image/png",
+          "bytes": 13044,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        }
+      ],
+      "meshCount": 203,
+      "materialCount": 188
+    },
+    {
+      "file": "public/models/mospeada/horizon-t-desert-landmark.glb",
+      "bytes": 4412784,
+      "sha256": "49a48e6532df85c369bf68de6f664f62819cb584360fa07fb3d182f7189052ba",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 2524,
+      "embeddedImageBytes": 765093,
+      "otherBytes": 3647691,
+      "images": [
+        {
+          "index": 0,
+          "name": "Image_2",
+          "mimeType": "image/jpeg",
+          "bytes": 181888,
+          "width": 1024,
+          "height": 1024,
+          "format": "jpeg"
+        },
+        {
+          "index": 1,
+          "name": "Image_0",
+          "mimeType": "image/jpeg",
+          "bytes": 307459,
+          "width": 1024,
+          "height": 1024,
+          "format": "jpeg"
+        },
+        {
+          "index": 2,
+          "name": "Image_1",
+          "mimeType": "image/jpeg",
+          "bytes": 275746,
+          "width": 1024,
+          "height": 1024,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 2,
+      "materialCount": 1
+    },
+    {
+      "file": "public/models/mospeada/invid-scout-rigged.glb",
+      "bytes": 14784808,
+      "sha256": "9dabb493f8f1d1c22cb4d47fa1e615de25110fd48dca32c00ab7afb7f1fb1b7d",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 15564,
+      "embeddedImageBytes": 8943119,
+      "otherBytes": 5841689,
+      "images": [
+        {
+          "index": 0,
+          "name": "Image_2",
+          "mimeType": "image/jpeg",
+          "bytes": 2182724,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 1,
+          "name": "texture",
+          "mimeType": "image/png",
+          "bytes": 5081140,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "Image_1",
+          "mimeType": "image/jpeg",
+          "bytes": 1679255,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 3,
+      "materialCount": 1,
+      "animationCount": 7
+    },
+    {
+      "file": "public/models/mospeada/invid-scout.glb",
+      "bytes": 13933968,
+      "sha256": "3e6e7c4ad75b92e5e31e2afe52c4a8f8d2f96ba75068e3649af39b359ace5f5a",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 3588,
+      "embeddedImageBytes": 8943119,
+      "otherBytes": 4990849,
+      "images": [
+        {
+          "index": 0,
+          "name": "Image_2",
+          "mimeType": "image/jpeg",
+          "bytes": 2182724,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 1,
+          "name": "texture",
+          "mimeType": "image/png",
+          "bytes": 5081140,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "Image_1",
+          "mimeType": "image/jpeg",
+          "bytes": 1679255,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 3,
+      "materialCount": 1
+    },
+    {
+      "file": "public/models/mospeada/mars-gallant.glb",
+      "bytes": 3299312,
+      "sha256": "5fc7a610b5c94b71c95a5d0f8cd9a867e03b69c1c7dec82086d0c195ec6da277",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 2288,
+      "embeddedImageBytes": 2216408,
+      "otherBytes": 1082904,
+      "images": [
+        {
+          "index": 0,
+          "mimeType": "image/jpeg",
+          "bytes": 1016224,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 1,
+          "mimeType": "image/jpeg",
+          "bytes": 612878,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 2,
+          "mimeType": "image/jpeg",
+          "bytes": 587306,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1
+    },
+    {
+      "file": "public/models/mospeada/rand-casual-rigged.glb",
+      "bytes": 11058140,
+      "sha256": "86f3c52ffad57b6d54106282bcce91613ee2bfccc3d4c7b5fafe309e17ed5f4f",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 388400,
+      "embeddedImageBytes": 6161907,
+      "otherBytes": 4896233,
+      "images": [
+        {
+          "index": 0,
+          "name": "normal",
+          "mimeType": "image/png",
+          "bytes": 2465313,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 1769738,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic_roughness",
+          "mimeType": "image/png",
+          "bytes": 1926856,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1,
+      "animationCount": 7
+    },
+    {
+      "file": "public/models/mospeada/rand-cyclone.glb",
+      "bytes": 23345364,
+      "sha256": "f116f651b56351415f6a8b36c4ac7c5b56b80e6e192388dec8a6b6a97e513f8c",
+      "extensionsUsed": [
+        "KHR_materials_transmission",
+        "KHR_materials_volume",
+        "KHR_materials_ior",
+        "KHR_materials_clearcoat",
+        "KHR_materials_emissive_strength",
+        "KHR_texture_transform",
+        "KHR_materials_specular"
+      ],
+      "extensionsRequired": [],
+      "jsonBytes": 309012,
+      "embeddedImageBytes": 110120,
+      "otherBytes": 23235244,
+      "images": [
+        {
+          "index": 0,
+          "mimeType": "image/png",
+          "bytes": 48592,
+          "width": 1200,
+          "height": 480,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "mimeType": "image/png",
+          "bytes": 13044,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "mimeType": "image/png",
+          "bytes": 8860,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 3,
+          "mimeType": "image/png",
+          "bytes": 8860,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 4,
+          "mimeType": "image/png",
+          "bytes": 8860,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 5,
+          "mimeType": "image/png",
+          "bytes": 8860,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        },
+        {
+          "index": 6,
+          "mimeType": "image/png",
+          "bytes": 13044,
+          "width": 128,
+          "height": 128,
+          "format": "png"
+        }
+      ],
+      "meshCount": 203,
+      "materialCount": 188
+    },
+    {
+      "file": "public/models/mospeada/scott-bernard-animated-original.glb",
+      "bytes": 13993900,
+      "sha256": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 395760,
+      "embeddedImageBytes": 11597950,
+      "otherBytes": 2395950,
+      "images": [
+        {
+          "index": 0,
+          "name": "normal",
+          "mimeType": "image/png",
+          "bytes": 4314527,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4112049,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic_roughness",
+          "mimeType": "image/png",
+          "bytes": 3171374,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1,
+      "animationCount": 16
+    },
+    {
+      "file": "public/models/mospeada/scott-bernard-gear-v2-animated.glb",
+      "bytes": 33570096,
+      "sha256": "b93178cafed8f57104135ae034b4523cc85cb570cd44964203aef38f36b7635a",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 397628,
+      "embeddedImageBytes": 19792205,
+      "otherBytes": 13777891,
+      "images": [
+        {
+          "index": 0,
+          "name": "normal",
+          "mimeType": "image/png",
+          "bytes": 4314527,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4112049,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic_roughness",
+          "mimeType": "image/png",
+          "bytes": 3171374,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 3,
+          "name": "Image_2",
+          "mimeType": "image/jpeg",
+          "bytes": 2140952,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 4,
+          "name": "texture",
+          "mimeType": "image/png",
+          "bytes": 4413127,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 5,
+          "name": "Image_1",
+          "mimeType": "image/jpeg",
+          "bytes": 1640176,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 2,
+      "animationCount": 16
+    },
+    {
+      "file": "public/models/mospeada/scott-bernard-gear-v2-classic-palette.glb",
+      "bytes": 41516888,
+      "sha256": "ac1a63093981c48b9d654c2bb331f88492dc4feb6c2613ff9cfe01912cb3ceb3",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 397792,
+      "embeddedImageBytes": 21685528,
+      "otherBytes": 19831360,
+      "images": [
+        {
+          "index": 0,
+          "name": "normal",
+          "mimeType": "image/png",
+          "bytes": 4314527,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4112049,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic_roughness",
+          "mimeType": "image/png",
+          "bytes": 3171374,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 3,
+          "name": "Image_2",
+          "mimeType": "image/jpeg",
+          "bytes": 2140952,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 4,
+          "name": "Scott V2 classic palette",
+          "mimeType": "image/png",
+          "bytes": 4995087,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 5,
+          "name": "Scott V2 white nonmetal helmet",
+          "mimeType": "image/png",
+          "bytes": 2951539,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 2,
+      "animationCount": 16
+    },
+    {
+      "file": "public/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+      "bytes": 46259340,
+      "sha256": "36b8998902e68119ded3b85ce6ec498cb9791a365fe8781ff572f1e8e54a695d",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 397880,
+      "embeddedImageBytes": 24278297,
+      "otherBytes": 21981043,
+      "images": [
+        {
+          "index": 0,
+          "name": "normal",
+          "mimeType": "image/png",
+          "bytes": 4314527,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4112049,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic_roughness",
+          "mimeType": "image/png",
+          "bytes": 3171374,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 3,
+          "name": "Scott V2 clean rear panel normal",
+          "mimeType": "image/png",
+          "bytes": 4742362,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 4,
+          "name": "Scott V2 clean rear panel color",
+          "mimeType": "image/png",
+          "bytes": 4991796,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 5,
+          "name": "Scott V2 clean rear panel PBR",
+          "mimeType": "image/png",
+          "bytes": 2946189,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 2,
+      "animationCount": 16
+    },
+    {
+      "file": "public/models/mospeada/scott-bernard-gear.glb",
+      "bytes": 12998440,
+      "sha256": "bb96f71e8c0d2758f2d016a282d898e0218cbaa402ac3315209a2d5b1bf7373b",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 139168,
+      "embeddedImageBytes": 11597950,
+      "otherBytes": 1400490,
+      "images": [
+        {
+          "index": 0,
+          "name": "normal",
+          "mimeType": "image/png",
+          "bytes": 4314527,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4112049,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic_roughness",
+          "mimeType": "image/png",
+          "bytes": 3171374,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1,
+      "animationCount": 2
+    },
+    {
+      "file": "public/models/mospeada/scott-bernard-hd-hybrid-v1.glb",
+      "bytes": 29552004,
+      "sha256": "85a2ab563e2d0b870fb3b1b528f87c945f99895104d3267fa5da95d0b8a42d87",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 403912,
+      "embeddedImageBytes": 20364938,
+      "otherBytes": 9187066,
+      "images": [
+        {
+          "index": 0,
+          "name": "normal",
+          "mimeType": "image/png",
+          "bytes": 4314527,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4112049,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic_roughness",
+          "mimeType": "image/png",
+          "bytes": 3171374,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 3,
+          "mimeType": "image/jpeg",
+          "bytes": 3968332,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 4,
+          "mimeType": "image/jpeg",
+          "bytes": 1944648,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 5,
+          "mimeType": "image/jpeg",
+          "bytes": 2854008,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 7,
+      "materialCount": 2,
+      "animationCount": 16
+    },
+    {
+      "file": "public/models/mospeada/scott-bernard-hd-hybrid-v2.glb",
+      "bytes": 31674476,
+      "sha256": "c6cb9a9f91704a1a7b3740b9d85128f90e854236dfca9082d787e9c59fda0867",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 399384,
+      "embeddedImageBytes": 20364938,
+      "otherBytes": 11309538,
+      "images": [
+        {
+          "index": 0,
+          "name": "normal",
+          "mimeType": "image/png",
+          "bytes": 4314527,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4112049,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic_roughness",
+          "mimeType": "image/png",
+          "bytes": 3171374,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 3,
+          "mimeType": "image/jpeg",
+          "bytes": 3968332,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 4,
+          "mimeType": "image/jpeg",
+          "bytes": 1944648,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        },
+        {
+          "index": 5,
+          "mimeType": "image/jpeg",
+          "bytes": 2854008,
+          "width": 2048,
+          "height": 2048,
+          "format": "jpeg"
+        }
+      ],
+      "meshCount": 3,
+      "materialCount": 2,
+      "animationCount": 16
+    },
+    {
+      "file": "public/models/mospeada/scott-gear-v3-animated.glb",
+      "bytes": 21386324,
+      "sha256": "89c9c9bf87093083b7a376157a74875610834f9b3bdb862068224efd59da4b34",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 225188,
+      "embeddedImageBytes": 11492048,
+      "otherBytes": 9894276,
+      "images": [
+        {
+          "index": 0,
+          "name": "texture_0_normal",
+          "mimeType": "image/png",
+          "bytes": 4206151,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4100277,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic-texture_0_roughness",
+          "mimeType": "image/png",
+          "bytes": 3185620,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1,
+      "animationCount": 21
+    },
+    {
+      "file": "public/models/mospeada/scott-gear-v3-helmet-boundary.glb",
+      "bytes": 61857948,
+      "sha256": "bddf92324123a5d9d86f07a89c7b0e236c52ecfdbafdfe15b6eb51a090f38f71",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 227948,
+      "embeddedImageBytes": 27999832,
+      "otherBytes": 33858116,
+      "images": [
+        {
+          "index": 0,
+          "name": "texture_0_normal",
+          "mimeType": "image/png",
+          "bytes": 5639314,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4956669,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic-texture_0_roughness",
+          "mimeType": "image/png",
+          "bytes": 3408393,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 3,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4950280,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 4,
+          "name": "texture_0_metallic-texture_0_roughness",
+          "mimeType": "image/png",
+          "bytes": 3406809,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 5,
+          "name": "texture_0_normal",
+          "mimeType": "image/png",
+          "bytes": 5638367,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 2,
+      "animationCount": 21
+    },
+    {
+      "file": "public/models/mospeada/scott-gear-v3-helmet-corrected.glb",
+      "bytes": 44453640,
+      "sha256": "df27d207a2c5e247f9a51bb188f56909eccedebbbf9e5861a8823d59ae604cb7",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 226632,
+      "embeddedImageBytes": 14004376,
+      "otherBytes": 30449264,
+      "images": [
+        {
+          "index": 0,
+          "name": "texture_0_normal",
+          "mimeType": "image/png",
+          "bytes": 5639314,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "texture_0",
+          "mimeType": "image/png",
+          "bytes": 4956669,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "texture_0_metallic-texture_0_roughness",
+          "mimeType": "image/png",
+          "bytes": 3408393,
+          "width": 2048,
+          "height": 2048,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 1,
+      "animationCount": 21
+    },
+    {
+      "file": "public/models/phone.glb",
+      "bytes": 362728,
+      "sha256": "3f6991e0b463de5391ef44963e6d0a504dbe5092af0ba8a39028344b7cf76107",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 6856,
+      "embeddedImageBytes": 0,
+      "otherBytes": 362728,
+      "images": [],
+      "meshCount": 2,
+      "materialCount": 4
+    },
+    {
+      "file": "public/models/rangerover.glb",
+      "bytes": 2181560,
+      "sha256": "5d4b7cf00d2d9539d9a8f5260b24f314703206793e152e9e2d66faf2acb155ee",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 41088,
+      "embeddedImageBytes": 4511,
+      "otherBytes": 2177049,
+      "images": [
+        {
+          "index": 0,
+          "name": "Palette.png",
+          "mimeType": "image/png",
+          "bytes": 4511,
+          "width": 256,
+          "height": 256,
+          "format": "png"
+        }
+      ],
+      "meshCount": 32,
+      "materialCount": 2
+    },
+    {
+      "file": "public/models/tree01.glb",
+      "bytes": 327304,
+      "sha256": "e791cdc2044835f584bbd145dd6b8626f766affa54b740799e0e7fb73704a472",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 3036,
+      "embeddedImageBytes": 0,
+      "otherBytes": 327304,
+      "images": [],
+      "meshCount": 1,
+      "materialCount": 2
+    },
+    {
+      "file": "public/models/tree02.glb",
+      "bytes": 2385268,
+      "sha256": "6ddb7b1d81a325cfbe3053f43c96ce8b6a871dc866702ef3993dbecc79430b70",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 4136,
+      "embeddedImageBytes": 2179849,
+      "otherBytes": 205419,
+      "images": [
+        {
+          "index": 0,
+          "name": "Bark_NormalTree_Normal.png",
+          "mimeType": "image/png",
+          "bytes": 1061891,
+          "width": 1024,
+          "height": 1024,
+          "format": "png"
+        },
+        {
+          "index": 1,
+          "name": "Bark_NormalTree.png",
+          "mimeType": "image/png",
+          "bytes": 959943,
+          "width": 1024,
+          "height": 1024,
+          "format": "png"
+        },
+        {
+          "index": 2,
+          "name": "Leaves_NormalTree_C.png",
+          "mimeType": "image/png",
+          "bytes": 158015,
+          "width": 1024,
+          "height": 1024,
+          "format": "png"
+        }
+      ],
+      "meshCount": 1,
+      "materialCount": 2
+    },
+    {
+      "file": "public/transformations/cyclone-rear-pieces.glb",
+      "bytes": 5608972,
+      "sha256": "5d3c788c896f73866550dec0c59c5a4afb6ce5f3173ce38bba3bb79ba5415fa4",
+      "extensionsUsed": [],
+      "extensionsRequired": [],
+      "jsonBytes": 30564,
+      "embeddedImageBytes": 0,
+      "otherBytes": 5608972,
+      "images": [],
+      "meshCount": 32,
+      "materialCount": 1
+    }
+  ]
+}

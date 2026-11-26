@@ -1,5 +1,6 @@
+import {useTexture} from '../../loading/resources.js'
 import { useEffect,useMemo } from 'react'
-import { useTexture } from '@react-three/drei'
+
 import { useFrame,useThree } from '@react-three/fiber'
 import { LinearFilter,LinearMipmapLinearFilter,SRGBColorSpace } from 'three'
 import { FOLIAGE_CATALOG } from './foliageCatalog.js'

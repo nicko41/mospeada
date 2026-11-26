@@ -6,14 +6,15 @@ import { matchCyclonePaintToBoots } from './cyclonePaint.js'
 // articulation separately; this constructor never creates or modifies Scott.
 export const CYCLONE_PRESENTATION_SCALE = 0.88 * 1.07
 
-export function createParkedCyclone(source, { scale = CYCLONE_PRESENTATION_SCALE } = {}) {
+export function createParkedCyclone(source,options){const steps=createParkedCycloneSteps(source,options);let step;do{step=steps.next()}while(!step.done);return step.value}
+export function* createParkedCycloneSteps(source, { scale = CYCLONE_PRESENTATION_SCALE } = {}) {
   const root = new T.Group(), body = new T.Group(), model = source.clone(true), surfaces = []
   root.name = 'Cyclone_riding_vehicle'; body.name = 'Chassis'; root.add(body); body.add(model)
   // Scale the complete imported instance; keep its internal geometry and all
   // relative part transforms untouched. The body remains a metre-based frame.
   model.scale.multiplyScalar(scale)
-  model.traverse(mesh => {
-    if (!mesh.isMesh) return
+  const meshes=[];model.traverse(mesh=>{if(mesh.isMesh)meshes.push(mesh)})
+  for(const mesh of meshes){
     mesh.material = Array.isArray(mesh.material) ? mesh.material.map(m => m.clone()) : mesh.material.clone()
     for(const material of Array.isArray(mesh.material)?mesh.material:[mesh.material])matchCyclonePaintToBoots(mesh,material)
     if (mesh.userData.sourcePiece === 'rear_sit + rear_sit') {
@@ -26,8 +27,8 @@ export function createParkedCyclone(source, { scale = CYCLONE_PRESENTATION_SCALE
         material.userData.animeSurfaceShine = 0.05
       }
     }
-    mesh.castShadow = mesh.receiveShadow = true; surfaces.push(mesh)
-  })
+    mesh.castShadow = mesh.receiveShadow = true; surfaces.push(mesh);yield
+  }
   root.updateMatrixWorld(true)
   const tire = prefix => surfaces.find(mesh => mesh.userData.sourcePiece === prefix + '_Tire_Rubber')
   const f = new T.Box3().setFromObject(tire('Front')), r = new T.Box3().setFromObject(tire('Rear'))

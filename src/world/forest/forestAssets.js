@@ -1,27 +1,13 @@
-import { useLoader } from '@react-three/fiber'
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import { Box3, Color, LoadingManager, Matrix4, MeshLambertMaterial, TextureLoader } from 'three'
+import { Box3, Color, Matrix4, MeshLambertMaterial } from 'three'
 import { FOREST_ASSETS } from './forestConfig.js'
 import { prepareForestGeometry } from './forestGeometry.js'
 import { withForestLod } from './forestLod.js'
 import { FOREST_PALETTE_VERSION, forestMaterialPalette } from './forestPalette.js'
+import {useGLTF} from '../../loading/resources.js'
 
-const manager = new LoadingManager(), textureLoader = new TextureLoader(manager), textures = new Map()
-manager.addHandler(/\.png$/i, {
-  load(url, onLoad, onProgress, onError) {
-    let entry = textures.get(url)
-    if (!entry) {
-      entry = {}
-      entry.ready = new Promise((resolve, reject) => { entry.texture = textureLoader.load(url, resolve, onProgress, reject) })
-      textures.set(url, entry); entry.ready.catch(() => textures.delete(url))
-    }
-    entry.ready.then(onLoad, onError)
-    return entry.texture
-  },
-})
-const loader = new GLTFLoader(manager)
 const urls = FOREST_ASSETS.map(asset => `/models/glTF/${asset.name}.gltf`)
-export const useForestAssets = () => useLoader(loader, urls)
+let cached
+export const useForestAssets = () => {const loaded=urls.map(useGLTF);if(!cached||loaded.some((asset,i)=>asset!==cached[i]))cached=loaded;return cached}
 
 export function forestMaterial(source, kind) {
   const bark = /Bark/.test(source.name), rock = kind === 'rock' || kind === 'pebble'

@@ -12,16 +12,19 @@ export function reachedDesertDrop(state,world){
 // Streamed HTML audio elements, sharing the opening's original player.
 // Media time drives the 33 s cue; no decoded WebAudio buffers or timer loop.
 export class ForestMusic{
-  constructor(urls,{createAudio=url=>new Audio(url),volume=FOREST_MUSIC.volume}={}){
+  constructor(urls,{createAudio=url=>url?new Audio(url):new Audio(),volume=FOREST_MUSIC.volume,lazy=false,initialTrack='intro'}={}){
     this.volume=volume;this.tracks={};this.needed=new Set();this.pending=new Map();this.blocked=new Set();this.failed=new Set();this.phase='intro';this.started=false;this.suspended=false;this.disposed=false
+    this.urls=urls;this.loaded=new Set()
     for(const [key,url]of Object.entries(urls)){
-      const audio=this.tracks[key]=createAudio(url)
-      audio.preload='auto';audio.volume=0;audio.loop=key!=='intro'&&key!=='victory';audio.load()
+      const eager=!lazy||key===initialTrack,audio=this.tracks[key]=createAudio(eager?url:undefined)
+      audio.preload=eager?'auto':'none';audio.volume=0;audio.loop=key!=='intro'&&key!=='victory';if(eager){audio.load();this.loaded.add(key)}
       audio.addEventListener('error',()=>this.failed.add(key))
     }
   }
+  preloadTrack(key){if(this.loaded.has(key)||!this.tracks[key])return;const audio=this.tracks[key];audio.src=this.urls[key];audio.preload='metadata';audio.load();this.loaded.add(key)}
   play(key,retry=false){
     if(this.disposed||this.suspended||this.failed.has(key))return Promise.resolve()
+    this.preloadTrack(key)
     if(retry)this.blocked.delete(key)
     if(this.pending.has(key))return this.pending.get(key)
     const audio=this.tracks[key]

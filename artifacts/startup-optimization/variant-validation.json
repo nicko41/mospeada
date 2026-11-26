@@ -1,0 +1,290 @@
+{
+  "states": [
+    {
+      "variant": "v1",
+      "visible": [
+        "v1"
+      ],
+      "sameActor": true,
+      "sameSkeleton": true,
+      "sameVehicle": true,
+      "sameTransform": true,
+      "sameArmor": true,
+      "position": [
+        -35.704101262496955,
+        0.32298780431652574,
+        -1.1516674777920826
+      ],
+      "speed": 0,
+      "health": "100",
+      "triangles": 10334,
+      "shoulders": [
+        {
+          "clean": true,
+          "width": 2048,
+          "height": 2048
+        }
+      ],
+      "selectionMs": 16185
+    },
+    {
+      "variant": "v2",
+      "visible": [
+        "v2"
+      ],
+      "sameActor": true,
+      "sameSkeleton": true,
+      "sameVehicle": true,
+      "sameTransform": true,
+      "sameArmor": true,
+      "position": [
+        -35.704101262496955,
+        0.32298780431652574,
+        -1.1516674777920826
+      ],
+      "speed": 0,
+      "health": "100",
+      "triangles": 240489,
+      "shoulders": [
+        {
+          "clean": true,
+          "width": 2048,
+          "height": 2048
+        }
+      ],
+      "selectionMs": 24802
+    },
+    {
+      "variant": "v3",
+      "visible": [
+        "v3"
+      ],
+      "sameActor": true,
+      "sameSkeleton": true,
+      "sameVehicle": true,
+      "sameTransform": true,
+      "sameArmor": true,
+      "position": [
+        -35.704101262496955,
+        0.32298780431652574,
+        -1.1516674777920826
+      ],
+      "speed": 0,
+      "health": "100",
+      "triangles": 198295,
+      "shoulders": [
+        {
+          "clean": true,
+          "width": 2048,
+          "height": 2048
+        }
+      ],
+      "selectionMs": 162
+    },
+    {
+      "variant": "v1",
+      "visible": [
+        "v1"
+      ],
+      "sameActor": true,
+      "sameSkeleton": true,
+      "sameVehicle": true,
+      "sameTransform": true,
+      "sameArmor": true,
+      "position": [
+        -33.6726805987703,
+        -1.76864123664529,
+        -1.1517981805149344
+      ],
+      "speed": 7.722306520705109,
+      "health": "100",
+      "triangles": 10334,
+      "shoulders": [
+        {
+          "clean": true,
+          "width": 2048,
+          "height": 2048
+        }
+      ],
+      "selectionMs": 200
+    },
+    {
+      "variant": "v2",
+      "visible": [
+        "v2"
+      ],
+      "sameActor": true,
+      "sameSkeleton": true,
+      "sameVehicle": true,
+      "sameTransform": true,
+      "sameArmor": true,
+      "position": [
+        1.2583979588760896,
+        -603.0153509114541,
+        3.2057462868392563
+      ],
+      "speed": 10.314629020085782,
+      "health": "100",
+      "triangles": 240489,
+      "shoulders": [
+        {
+          "clean": true,
+          "width": 2048,
+          "height": 2048
+        }
+      ],
+      "selectionMs": 185
+    }
+  ],
+  "initialRequests": [
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/fonts/mospeada/Open24DisplayST.ttf",
+    "http://127.0.0.1:5181/assets/index-Cvw3RpLW.js",
+    "http://127.0.0.1:5181/assets/rolldown-runtime-hePW80VL.js",
+    "http://127.0.0.1:5181/assets/index-Cufsa-II.css",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/delivery/scott-controller-v2.glb",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/delivery/scott-reference-v1.glb",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/delivery/scott-v3.glb",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/animations/scott-cyclone-actions.json",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/transformations/cyclone-front-battloid.json",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/transformations/cyclone-rear-battloid.json",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/transformations/cyclone-guard-battloid.json",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/transformations/cyclone-wheel-battloid.json",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/transformations/cyclone-suspension-hide.json",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/transformations/cyclone-rear-pieces.glb",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/mospeada/cyclone-vr052f.glb",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/mospeada/alpha-fighter-down.glb",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/CommonTree_3.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/CommonTree_2.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/CommonTree_4.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/CommonTree_1.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Bush_Common.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Grass_Common_Short.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Grass_Wispy_Short.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Fern_1.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Plant_1.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Plant_7.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Rock_Medium_1.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Rock_Medium_2.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Pebble_Round_2.gltf",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Pebble_Square_3.gltf",
+    "http://127.0.0.1:5181/assets/impascto-invid-suelo-DN9g5Zv7.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/foliage/forest/wheel-fragments.png",
+    "http://127.0.0.1:5181/assets/hojas%20flotantes-CScvGVsT.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/mospeada/cyclone-cover-21.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/mospeada/cyclone-cover-rango.png",
+    "http://127.0.0.1:5181/assets/follaje1-CKIQsWbX.png",
+    "http://127.0.0.1:5181/assets/follaje2-tJ9eulzM.png",
+    "http://127.0.0.1:5181/assets/grass-01-BS-zutJV.jpg",
+    "http://127.0.0.1:5181/assets/dirt01-Z3GgFyhG.jpg",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/foliage/forest/atlas.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Bark_NormalTree.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Leaves_NormalTree_C.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Leaves_TwistedTree_C.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Grass.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Leaves.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/PathRocks_Diffuse.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Rocks_Diffuse.png",
+    "http://127.0.0.1:5181/assets/terrainWorker-dU2Bmd4s.js",
+    "http://127.0.0.1:5181/assets/forestFoliageWorker-UZCMauDS.js",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/CommonTree_3.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/CommonTree_2.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/CommonTree_4.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/CommonTree_1.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Bush_Common.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Grass_Common_Short.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Grass_Wispy_Short.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Fern_1.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Plant_1.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Plant_7.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Rock_Medium_1.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Rock_Medium_2.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Pebble_Round_2.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/models/glTF/Pebble_Square_3.bin",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/favicon.svg",
+    "http://127.0.0.1:5181/assets/forestFoliageWorker-UZCMauDS.js",
+    "http://127.0.0.1:5181/assets/barranco-B_hlRwfz.jpg",
+    "http://127.0.0.1:5181/assets/orilla-rio-BJGVuZGQ.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/delivery/mars-gallant.glb",
+    "http://127.0.0.1:5181/assets/explosion-piso-DTBYY79e.png",
+    "http://127.0.0.1:5181/assets/explosion-aire-DrcJascN.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/textures/desert/desierto-floor.png",
+    "http://127.0.0.1:5181/assets/desierto-floor2-CulRt4mX.png",
+    "http://127.0.0.1:5181/assets/02-Robotech-Lifeline-Bd__GJoj.mp3",
+    "http://127.0.0.1:5181/assets/terrainWorker-dU2Bmd4s.js",
+    "http://127.0.0.1:5181/assets/03-Robotech-Cyclone-OtF79o3S.mp3",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/delivery/invid-scout.glb?rig=flight-v4-leg-seam",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/delivery/rand-rider.glb",
+    "http://127.0.0.1:5181/assets/invid-blood01-DKbTfKQU.png",
+    "http://127.0.0.1:5181/assets/invid-blood02-Chxk3y2v.png",
+    "http://127.0.0.1:5181/assets/invid-orbes-BLaJbtF8.png",
+    "http://127.0.0.1:5181/resources/2af14fc220b9c3a5/delivery/horizon-t.glb"
+  ],
+  "initialGlError": 0,
+  "initial": {
+    "variant": "v3",
+    "visible": [
+      "v3"
+    ],
+    "sameActor": true,
+    "sameSkeleton": true,
+    "sameVehicle": true,
+    "sameTransform": true,
+    "sameArmor": true,
+    "position": [
+      -35.704101262496955,
+      0.32298780431652574,
+      -1.1516674777920826
+    ],
+    "speed": 0,
+    "health": "100",
+    "triangles": 198295,
+    "shoulders": []
+  },
+  "independence": {
+    "separateRoots": true,
+    "separateTransforms": true,
+    "sharedMaterials": 0,
+    "sharedGeometry": 0,
+    "cycloneRequests": 1
+  },
+  "moving": {
+    "speed": 17.42373905840792,
+    "keyHeld": true
+  },
+  "armor": {
+    "variant": "v2",
+    "visible": [
+      "v2"
+    ],
+    "sameActor": true,
+    "sameSkeleton": true,
+    "sameVehicle": true,
+    "sameTransform": true,
+    "sameArmor": true,
+    "position": [
+      1.2583979588760896,
+      -653.7619181950024,
+      6.991763998301008
+    ],
+    "speed": 10.29999999999999,
+    "health": "100",
+    "triangles": 240489,
+    "shoulders": [
+      {
+        "clean": true,
+        "width": 2048,
+        "height": 2048
+      }
+    ]
+  },
+  "glError": 0,
+  "shaderError": "",
+  "errors": [],
+  "webglMessages": [],
+  "pass": true,
+  "transformationFixture": {
+    "checkpointZ": -600,
+    "armorAlreadyUnlocked": true,
+    "note": "La primera solicitud T quedó correctamente en idle antes del desbloqueo. Se completó después con un checkpoint de QA aislado y Armor previamente desbloqueado. No es evidencia de recorrido continuo."
+  }
+}

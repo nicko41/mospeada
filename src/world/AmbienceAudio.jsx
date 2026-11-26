@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import {assetUrl} from '../loading/resources.js'
 import { useFrame } from '@react-three/fiber'
 import { lightningState } from './Lightning'
 import { desktopInput } from '../player/touchInput'
@@ -12,7 +13,7 @@ export default function AmbienceAudio() {
 
   useEffect(() => {
     const createSound = (name, volume, loop = false) => {
-      const sound = new Audio(`${import.meta.env.BASE_URL}sounds/ambience/${name}.mp3`)
+      const sound = new Audio(assetUrl(`/sounds/ambience/${name}.mp3`))
       sound.preload = 'metadata'
       sound.volume = volume
       sound.loop = loop

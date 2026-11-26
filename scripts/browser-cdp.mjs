@@ -1,10 +1,10 @@
 // Small local-only Chrome DevTools test client. Start Chrome with port 9333.
-export async function connect({port=9333}={}) {
-  const testUrl = process.env.MOSPEADA_TEST_URL || 'http://127.0.0.1:5173'
+export async function connect({port=9333,urlPrefix=process.env.MOSPEADA_TEST_URL || 'http://127.0.0.1:5173'}={}) {
+  const testUrl = urlPrefix
   const pages = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()
   const page = pages.find(p => p.type === 'page' && p.url.startsWith(testUrl))
   if (!page) throw Error(`Open the MOSPEADA dev server in the test Chrome on port ${port}`)
-  const socket = new WebSocket(page.webSocketDebuggerUrl), pending = new Map(), events = []
+  const socket = new WebSocket(page.webSocketDebuggerUrl), pending = new Map(), events = [],listeners=new Set()
   let id = 0
   await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onerror = reject })
   socket.onmessage = event => {
@@ -12,7 +12,7 @@ export async function connect({port=9333}={}) {
     if (message.id) {
       const item = pending.get(message.id); pending.delete(message.id)
       if (message.error) item.reject(Error(JSON.stringify(message.error))); else item.resolve(message.result)
-    } else events.push(message)
+    } else {events.push(message);listeners.forEach(listener=>listener(message))}
   }
   const send = (method, params = {}) => new Promise((resolve, reject) => { const key = ++id; pending.set(key, { resolve, reject }); socket.send(JSON.stringify({ id: key, method, params })) })
   await send('Runtime.enable'); await send('Page.enable'); await send('Log.enable')
@@ -26,5 +26,5 @@ export async function connect({port=9333}={}) {
     await evaluate(`(()=>{const b=[...document.querySelectorAll('.ride-settings-tabs button')].find(b=>b.textContent===${JSON.stringify(section)});if(!b)throw Error('Missing settings section');b.click()})()`)
   }
   const closeSettings = () => evaluate(`document.querySelector('[aria-label="Cerrar ajustes"]')?.click()`)
-  return { send, evaluate, events, openSettings, closeSettings, close: () => socket.close() }
+  return { send, evaluate, events,onEvent(listener){listeners.add(listener);return()=>listeners.delete(listener)}, openSettings, closeSettings, close: () => socket.close() }
 }

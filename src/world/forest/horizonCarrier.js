@@ -2,7 +2,7 @@ import {Box3,BufferGeometry,Euler,Float32BufferAttribute,Group,LOD,Matrix4,Mesh,
 import {stage4DesertHeight} from './forestStage4Config.js'
 
 export const HORIZON_CARRIER=Object.freeze({
- model:'/models/mospeada/horizon-t-desert-landmark.glb',
+ model:'/delivery/horizon-t.glb',
  x:1050,depth:4700,length:920,burial:55,
  pitch:-.025,yaw:-.52,roll:.085,farLod:2400,
  drifts:Object.freeze([

@@ -8,6 +8,10 @@ import { publishRenderMetrics } from './renderMetrics.js'
 import {combatFlashUniforms,patchCombatFlashLighting,syncCombatFlashLighting} from '../vfx/combatFlashLighting.js'
 import {BoostProtection} from './BoostProtection.js'
 import {cinematicUniforms} from './cinematicCombatShader.js'
+import {workQueue} from '../loading/workQueue.js'
+import {cloneRenderMaterial} from '../loading/cloneMaterial.js'
+import {prepareGpu,waitForGpuPreparation} from '../loading/gpuUploads.js'
+import {skinnedBoundsSteps} from '../loading/skinnedBounds.js'
 
 const dynamic = ['color', 'emissive', 'emissiveIntensity', 'opacity', 'roughness', 'metalness', 'envMapIntensity', 'normalScale', 'clearcoat', 'clearcoatRoughness', 'transmission', 'thickness', 'ior', 'specularIntensity', 'specularColor', 'attenuationColor', 'attenuationDistance']
 const textureKeys = ['map', 'alphaMap', 'normalMap', 'roughnessMap', 'metalnessMap', 'emissiveMap', 'envMap']
@@ -66,7 +70,7 @@ export class AnimeRenderer {
   variant(source, profile) {
     const key = `${source.uuid}:${profile.hero}:${profile.glass}:${profile.mask}:${profile.grass}:${!!profile.natural}:${profile.surfaceShine ?? 1}:${profile.brush?.object.uuid || ''}`
     if (this.records.has(key)) return this.records.get(key).variant
-    const record = this.sourceRecord(source), variant = source.clone()
+    const record = this.sourceRecord(source), variant = cloneRenderMaterial(source)
     if (variant.isShaderMaterial) variant.uniforms = { ...source.uniforms }
     variant.name = `ANIME / ${source.name || source.type}`
     variant.onBeforeCompile = (shader, renderer) => {
@@ -83,6 +87,7 @@ export class AnimeRenderer {
     this.restore()
     this.bindings = []
     this.scene.traverse(object => {
+      if(object.userData.cpuOnly)return
       if (!object.material || !(object.isMesh || object.isSprite || object.isLine || object.isPoints)) return
       const source = object.material, array = Array.isArray(source) ? source : [source]
       let attachment = null,boostGroup=0
@@ -134,18 +139,30 @@ export class AnimeRenderer {
       finally {inactive.forEach(({object},i)=>{object.material=materials[i]})}
     } finally {lights.forEach((light,i)=>{light.visible=visibility[i]});this.renderer.setRenderTarget(previous);this.restore()}
   }
-  compileObject(object,targetScene=object) {
-    const pending=this.renderer.compile?Promise.resolve(this.renderer.compile(object,this.camera,targetScene)):this.renderer.compileAsync(object,this.camera,targetScene)
-    const programs=new Set()
-    object.traverse(node=>{for(const material of Array.isArray(node.material)?node.material:[node.material]){
-      if(material){const p=this.renderer.properties?.get(material).currentProgram;if(p)programs.add(p)}
+  compileObject(object,targetScene=object,yieldTurn=()=>this.idleTurn()) {
+    const renderer=this.renderer,programs=new Set(),transmission=new Set()
+    const capture=()=>object.traverse(node=>{for(const material of Array.isArray(node.material)?node.material:[node.material]){
+      if(!material)continue
+      const properties=renderer.properties?.get(material)
+      if(properties?.currentProgram)programs.add(properties.currentProgram)
+      for(const program of properties?.programs?.values()||[])programs.add(program)
+      if(material.transmission>0&&material.side===T.DoubleSide)transmission.add(material)
     }})
+    const compile=()=>renderer.compile?Promise.resolve(renderer.compile(object,this.camera,targetScene)):renderer.compileAsync(object,this.camera,targetScene)
+    const pending=[compile()];capture()
+    // Three's transmission pass draws the back face separately. compileAsync
+    // alone only compiles the material's normal side, causing a driver stall
+    // on the first real draw of the transparent Cyclone parts.
+    if(transmission.size){
+      try{for(const material of transmission){material.side=T.BackSide;material.needsUpdate=true}pending.push(compile());capture()}
+      finally{for(const material of transmission){material.side=T.DoubleSide;material.needsUpdate=true}}
+    }
     // Capture the actual programs: live renders change currentProgram, and
     // Suspense/StrictMode may dispose one while compilation is still pending.
     // Never poll a deleted WebGLProgram or mistake a ready day shader for night.
-    return pending.then(async()=>{
+    return Promise.all(pending).then(async()=>{
       while([...programs].some(p=>p.program&&p.isReady&&!p.isReady())){
-        await this.idleTurn();if(this.disposed)return
+        await yieldTurn();if(this.disposed)return
       }
     })
   }
@@ -212,15 +229,23 @@ export class AnimeRenderer {
     this.warming=Promise.resolve(assembly).then(()=>{
       if(this.disposed)return
       this.collect();this.sync()
+      this.initialMaterials=[...this.records.values()]
+      // Critical models, maps and Armor dependencies now exist. Next-route
+      // downloads can overlap initial graphics without joining its barrier.
+      if(typeof window!=='undefined')window.dispatchEvent(new Event('startup-assets-ready'))
       return Promise.all([this.compileVariant(night),this.compileObject(this.quad._mesh)])
-    }).then(()=>{
+    }).then(async()=>{
       if(this.disposed)return
+      await this.prepareProgramBindings([...this.renderer.info.programs]);if(this.disposed)return
       this.stats.preparation.compileMs=performance.now()-this.stats.preparation.startMs
+      this.onStartupProgress?.(.35)
       const primeStart=performance.now();this.primeVariant(night,true)
       // Only the starting image gets a full-sized first draw. No repeated
       // canvas captures or synchronous reflection of hundreds of unused shaders.
       this.drawSceneTarget()
-      this.preparedLighting.add(night);this.ready=true
+        this.preparedLighting.add(night);this.ready=true
+        this.preparedPrograms=new Set(this.renderer.info.programs)
+      this.onStartupProgress?.(.55)
       Object.assign(this.stats.preparation,{primeMs:performance.now()-primeStart,totalMs:performance.now()-this.stats.preparation.startMs,programs:this.renderer.info.programs.length})
     }).catch(error=>{this.error=error.message})
   }
@@ -242,7 +267,11 @@ export class AnimeRenderer {
     while(i<programs.length){
       await this.idleTurn();if(this.disposed)return
       const deadline=performance.now()+4
-      do{const p=programs[i++];if(p.program){p.getUniforms?.();p.getAttributes?.()}}while(i<programs.length&&performance.now()<deadline)
+        do{const p=programs[i++];if(p.program){
+          const renderer=this.renderer,gl=renderer.getContext(),checks=renderer.debug.checkShaderErrors
+          if(!gl.getProgramParameter(p.program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p.program)||'Shader link failed')
+          try{renderer.debug.checkShaderErrors=false;p.getUniforms?.();p.getAttributes?.()}finally{renderer.debug.checkShaderErrors=checks}
+        }}while(i<programs.length&&performance.now()<deadline)
     }
   }
   prepareViewVisibility(camera){
@@ -268,29 +297,104 @@ export class AnimeRenderer {
     const start=performance.now()
     this.openingWork=Promise.resolve().then(()=>this.prepareTextures()).then(()=>this.prepareStartupViews()).then(()=>{
       if(this.disposed)return
-      this.openingReady=true;this.stats.preparation.openingMs=performance.now()-start
+        this.openingReady=true;this.stats.preparation.openingMs=performance.now()-start;this.onStartupProgress?.(1)
     }).catch(error=>{if(!this.disposed)this.error=error.message})
     return this.openingWork
+  }
+  prepareStage(root,id){this.stagePreparations ||=new WeakMap();if(!this.stagePreparations.has(root))this.stagePreparations.set(root,this.prepareStageWork(root,id));return this.stagePreparations.get(root)}
+  async prepareStageWork(root,id){
+    this.streamingTargets ||=createPreparationTargets(this.target?.samples||0)
+    const renderer=this.renderer,objects=[],textures=new Set(),preparedScene=new T.Scene()
+    preparedScene.fog=this.scene.fog;preparedScene.environment=this.scene.environment
+    this.scene.traverseVisible(light=>{
+      if(!light.isLight)return
+      const copy=light.clone(false);copy.matrixAutoUpdate=false;copy.matrix.copy(light.matrixWorld)
+      if(light.shadow)copy.shadow=light.shadow
+      if(light.target){copy.target=new T.Object3D();copy.target.position.setFromMatrixPosition(light.target.matrixWorld);preparedScene.add(copy.target)}
+      preparedScene.add(copy)
+    })
+    for(const preparationRoot of [root,...(root.userData.preparationRoots||[])])preparationRoot.traverse(object=>{
+      if(object.userData.cpuOnly||!object.material)return
+      objects.push(object)
+      for(const material of Array.isArray(object.material)?object.material:[object.material]){
+        for(const value of Object.values(material))if(value?.isTexture&&value.image)textures.add(value)
+        for(const uniform of Object.values(material.uniforms||{}))if(uniform?.value?.isTexture&&uniform.value.image)textures.add(uniform.value)
+      }
+    })
+    await Promise.all(objects.filter(o=>o.isSkinnedMesh&&o.boundingSphere===null).map(o=>workQueue.drain(skinnedBoundsSteps(o),id+' skinned bounds')))
+    for(const texture of textures)await prepareGpu(renderer,()=>renderer.initTexture(texture),id+' texture')
+    this.collect();this.sync()
+    const bindings=new Map(this.bindings.map(b=>[b.object,b]))
+    const visit=(object,compile=false)=>{
+      if(this.disposed)return
+      const jobStart=performance.now(),programsBefore=renderer.info.programs.length
+      const parent=object.parent,index=parent?.children.indexOf(object),matrix=object.matrix.clone(),auto=object.matrixAutoUpdate,visible=object.visible,culled=object.frustumCulled,material=object.material,geometry=object.geometry,target=renderer.getRenderTarget(),shadows=renderer.shadowMap,shadowAuto=shadows.autoUpdate,shadowNeeds=shadows.needsUpdate
+      const binding=bindings.get(object)
+      const checkShaderErrors=renderer.debug.checkShaderErrors
+      const count=object.isInstancedMesh?object.count:null
+      object.updateWorldMatrix(true,false);const world=object.matrixWorld.clone()
+      try{
+        preparedScene.add(object);object.matrixAutoUpdate=false;object.matrix.copy(world);object.visible=true;object.frustumCulled=false
+        if(count!==null)object.count=Math.max(1,count)
+        if(binding){object.material=binding.anime;if(binding.attachment)object.geometry=binding.attachment.geometry}
+        shadows.autoUpdate=false;shadows.needsUpdate=false;renderer.setRenderTarget(this.streamingTargets.anime)
+        if(compile)return this.compileObject(preparedScene,preparedScene,()=>workQueue.submit(()=>{},id+' shader wait'))
+        // compileAsync has completed and LINK_STATUS was checked below.
+        // Successful programs need no synchronous driver info-log round trip.
+        renderer.debug.checkShaderErrors=false
+        renderer.render(preparedScene,this.camera)
+        const ms=performance.now()-jobStart
+        if(ms>30){this.stats.streamingSlowJobs||=[];this.stats.streamingSlowJobs.push({id,name:object.name,type:object.type,ms,programsAdded:renderer.info.programs.length-programsBefore,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles});if(this.stats.streamingSlowJobs.length>100)this.stats.streamingSlowJobs.shift()}
+      }finally{
+        preparedScene.remove(object);if(parent){parent.add(object);parent.children.splice(parent.children.indexOf(object),1);parent.children.splice(index,0,object)}
+        object.matrix.copy(matrix);object.matrixAutoUpdate=auto;object.visible=visible;object.frustumCulled=culled;object.material=material;object.geometry=geometry;object.matrixWorldNeedsUpdate=true
+        shadows.autoUpdate=shadowAuto;shadows.needsUpdate=shadowNeeds;renderer.setRenderTarget(target)
+        renderer.debug.checkShaderErrors=checkShaderErrors
+        if(count!==null)object.count=count
+      }
+    }
+    const programs=new Set(),compileJobs=[]
+    for(const object of objects){
+      const binding=bindings.get(object),materials=Array.isArray(binding?.anime)?binding.anime:[binding?.anime||object.material]
+      const signature=materials.map(m=>m.uuid).join('|')+'|'+object.type+'|'+Object.entries(object.geometry?.attributes||{}).map(([key,a])=>key+':'+a.itemSize+':'+a.normalized).join(',')+'|'+Object.entries(object.geometry?.morphAttributes||{}).map(([key,a])=>key+':'+a.length).join(',')+'|'+!!object.instanceColor+'|'+!!object.geometry?.isInstancedBufferGeometry
+      if(programs.has(signature))continue
+      programs.add(signature);compileJobs.push(workQueue.submit(()=>visit(object,true),id+' shader'))
+    }
+    await Promise.all(compileJobs)
+    this.preparedPrograms ||=new Set()
+    await Promise.all([...renderer.info.programs].filter(program=>!this.preparedPrograms.has(program)).map(program=>workQueue.submit(()=>{
+      if(!program.program||program.isReady&&!program.isReady())return
+      const gl=renderer.getContext()
+      if(!gl.getProgramParameter(program.program,gl.LINK_STATUS))throw Error('Stage '+id+' shader: '+gl.getProgramInfoLog(program.program))
+      const checks=renderer.debug.checkShaderErrors
+      try{renderer.debug.checkShaderErrors=false;program.getUniforms();program.getAttributes()}finally{renderer.debug.checkShaderErrors=checks}
+      this.preparedPrograms.add(program)
+    },id+' program bindings')))
+    await Promise.all(objects.map(object=>prepareGpu(renderer,()=>visit(object),id+' geometry')))
+    const gpuFenceMs=await waitForGpuPreparation(renderer,id)
+    this.stats.streaming||={};this.stats.streaming[id]={objects:objects.length,textures:textures.size,programs:programs.size,gpuFenceMs,readyMs:performance.now()}
   }
   async prepareTextures(){
     // Parsing/preloading an image does not upload it to the GPU. Include
     // dormant combat maps/atlases and batching textures before first use.
     if(!this.renderer?.initTexture)return
     const textures=new Set(),collect=value=>{
-      if(value?.isTexture)textures.add(value)
+      if(value?.isTexture&&value.image)textures.add(value)
       else if(Array.isArray(value))value.forEach(collect)
     }
-    for(const {source,variant} of this.records.values())for(const material of [source,variant]){
+    for(const {source,variant} of this.initialMaterials||this.records.values())for(const material of [source,variant]){
       Object.values(material).forEach(collect)
       for(const uniform of Object.values(material.uniforms||{}))collect(uniform?.value)
     }
     const start=performance.now()
-    for(const texture of textures){await this.idleTurn();if(this.disposed)return;this.renderer.initTexture(texture)}
+    let completed=0
+    for(const texture of textures){await this.idleTurn();if(this.disposed)return;this.renderer.initTexture(texture);this.onStartupProgress?.(.55+.25*(++completed/textures.size))}
     this.stats.preparation.uploadedTextures=textures.size;this.stats.preparation.textureMs=performance.now()-start
   }
   async prepareStartupViews(){
     const views=this.startupViews?.()||[];if(!views.length)return
     const start=performance.now(),camera=this.camera,shadows=this.renderer.shadowMap,oldAuto=shadows?.autoUpdate,oldNeeds=shadows?.needsUpdate
+    let completed=0
     for(const entry of views){
       const view=entry.camera||entry,root=entry.root,visible=root?.visible
       await this.idleTurn();if(this.disposed)return
@@ -303,6 +407,7 @@ export class AnimeRenderer {
         this.prepareViewVisibility(view);entry.updateVisibility?.(view)
         this.camera=view;this.collect();this.sync()
         this.withPreparationVariant(this.initialNight,()=>this.drawSceneTarget(this.preparationTargets.anime))
+          this.onStartupProgress?.(.8+.19*(++completed/views.length))
       }finally{
         this.camera=camera;this.prepareViewVisibility(camera);entry.updateVisibility?.(camera)
         if(root)root.visible=visible
@@ -414,6 +519,7 @@ export class AnimeRenderer {
     for (const record of this.records.values()) record.variant.dispose()
     this.brush?.dispose()
     this.preparationTargets?.dispose(); this.preparationTargets = null
+    this.streamingTargets?.dispose();this.streamingTargets=null
     this.target.dispose(); this.composite.dispose(); this.quad.dispose()
   }
 }

@@ -45,13 +45,18 @@ export function foliageCardMaterial(atlas,withDistanceFade=true,reactive=false,l
 }
 
 export class ForestSpriteBatch extends BatchedMesh {
-  constructor(placements,material,heightAt=forestSurfaceHeight){
+  constructor(placements,material,heightAt=forestSurfaceHeight,{deferred=false}={}){
     const reactive=!!material.userData.foliageInteraction
     super(placements.length,FOLIAGE_CATALOG.entries.length*(reactive?12:8),FOLIAGE_CATALOG.entries.length*(reactive?24:12),material)
+    this.preparationSteps=this.build(placements,material,heightAt,reactive)
+    if(!deferred)for(const step of this.preparationSteps)void step
+  }
+  *build(placements,material,heightAt,reactive){
     const ids=new Map()
-    for(const entry of FOLIAGE_CATALOG.entries){const g=foliageCardGeometry(entry,reactive);if(reactive){g.boundingBox.expandByScalar(1);g.boundingSphere.radius+=1}ids.set(entry.id,this.addGeometry(g));g.dispose()}
+    for(const entry of FOLIAGE_CATALOG.entries){const g=foliageCardGeometry(entry,reactive);if(reactive){g.boundingBox.expandByScalar(1);g.boundingSphere.radius+=1}ids.set(entry.id,this.addGeometry(g));g.dispose();yield}
     const object=new Object3D(),color=new Color()
-    for(const p of placements){const id=this.addInstance(ids.get(p.sprite));object.position.set(p.x,p.y??heightAt(p.x,p.z)-.025,p.z);if(p.quaternion)object.quaternion.fromArray(p.quaternion);else object.rotation.set(p.tiltX||0,p.yaw,p.tiltZ||0);object.scale.set(p.scale*(p.mirror?-1:1),p.scale,p.scale);object.updateMatrix();this.setMatrixAt(id,object.matrix);this.setColorAt(id,color.setScalar(p.tint))}
+    let count=0
+    for(const p of placements){const id=this.addInstance(ids.get(p.sprite));object.position.set(p.x,p.y??heightAt(p.x,p.z)-.025,p.z);if(p.quaternion)object.quaternion.fromArray(p.quaternion);else object.rotation.set(p.tiltX||0,p.yaw,p.tiltZ||0);object.scale.set(p.scale*(p.mirror?-1:1),p.scale,p.scale);object.updateMatrix();this.setMatrixAt(id,object.matrix);this.setColorAt(id,color.setScalar(p.tint));if(++count%256===0)yield}
     this.placements=placements;this.distance=FOLIAGE_PILOT.distance;this.minimum=0;this.cellX=this.cellZ=Infinity
     this.name='Forest_illustrated_foliage_pilot';this.userData={forest:true,forestKind:'foliageCard'};this.sortObjects=false;this.perObjectFrustumCulled=true;this.computeBoundingBox();this.computeBoundingSphere()
   }

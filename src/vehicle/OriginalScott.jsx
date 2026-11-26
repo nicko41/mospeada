@@ -1,6 +1,6 @@
 import { useLayoutEffect, useMemo, useRef } from 'react'
-import { useFrame, useLoader } from '@react-three/fiber'
-import { useGLTF, useTexture } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber'
+import {useGLTF,loadGLTF,loadTexture,useJSON,loadJSON} from '../loading/resources.js'
 import { clone } from 'three/addons/utils/SkeletonUtils.js'
 import * as T from 'three'
 import { originalScottState as playback } from './originalScottState.js'
@@ -23,7 +23,7 @@ import {ScottDefeatMotion} from './ScottDefeatMotion.js'
 import {ScottHitMotion} from './ScottHitMotion.js'
 import {playerCombat} from '../player/playerCombat.js'
 import {rideUI} from './rideUI.js'
-import {SCOTT_MODEL,SCOTT_RIG_REFERENCE,SCOTT_V2_MODEL,SCOTT_V3_MODEL,SCOTT_ORIGINAL_SHOULDER_MAPS,SCOTT_MODEL_VARIANT} from './scottModelConfig.js'
+import {SCOTT_MODEL,SCOTT_RIG_REFERENCE,SCOTT_V2_MODEL,SCOTT_MODEL_VARIANT} from './scottModelConfig.js'
 import {createScottRidingPose} from './ScottAirSquatRidingPose.js'
 import {ScottModelComparison} from './ScottModelComparison.js'
 import {scottModelSelection} from './scottModelSelection.js'
@@ -32,28 +32,23 @@ import {scottModelSelection} from './scottModelSelection.js'
 // Suspense discovers GLB -> action data -> shoulder maps in separate retries.
 const SCOTT_ACTIONS='/animations/scott-cyclone-actions.json'
 const SCOTT_MAPS=['/models/mospeada/scott-shoulders-decals.png', '/models/mospeada/scott-shoulders-normal.png', '/models/mospeada/scott-shoulders-roughness.png']
-useGLTF.preload(SCOTT_MODEL)
-useGLTF.preload(SCOTT_RIG_REFERENCE)
-useGLTF.preload(SCOTT_V2_MODEL)
-useGLTF.preload(SCOTT_V3_MODEL)
-useLoader.preload(T.FileLoader,SCOTT_ACTIONS)
-useTexture.preload(SCOTT_MAPS)
+const CONTROLLER='/delivery/scott-controller-v2.glb',REFERENCE='/delivery/scott-reference-v1.glb',VISUAL='/delivery/scott-v3.glb'
+useGLTF.preload(CONTROLLER);useGLTF.preload(REFERENCE);useGLTF.preload(VISUAL);loadJSON(SCOTT_ACTIONS)
 
 export default function OriginalScott({ runtime }) {
-  const asset = useGLTF(SCOTT_MODEL)
-  const reference = useGLTF(SCOTT_RIG_REFERENCE)
-  const v2Asset = useGLTF(SCOTT_V2_MODEL)
-  const v3Asset = useGLTF(SCOTT_V3_MODEL)
-  const actionData = useLoader(T.FileLoader, SCOTT_ACTIONS)
-  const authored = useMemo(() => { const data = JSON.parse(actionData); return { data, clips: parseCycloneScottActions(data) } }, [actionData])
+  const {scene}=useThree()
+  const asset = useGLTF(CONTROLLER)
+  const reference = useGLTF(REFERENCE)
+  const v3Asset = useGLTF(VISUAL)
+  const actionData = useJSON(SCOTT_ACTIONS)
+  const authored = useMemo(() => ({data:actionData,clips:parseCycloneScottActions(actionData)}),[actionData])
   const clips = useMemo(() => [...asset.animations, ...authored.clips], [asset.animations, authored])
-  const maps = useTexture(SCOTT_MAPS)
   const wrapper = useRef(), instance = useMemo(() => {
     const model = clone(asset.scene), skins = [], bones = new Map(), hands = []
     model.traverse(node => {
       if (node.isBone) bones.set(node.name, node)
       if (node.isSkinnedMesh) {
-        node.frustumCulled = false; node.castShadow = true
+        node.frustumCulled = false; node.castShadow = false;node.visible=false;node.userData.cpuOnly=true
         const original = node.material, clean = original.clone()
         skins.push({ mesh: node, original, clean })
         const relaxed = createRelaxedScottHands(node)
@@ -65,22 +60,33 @@ export default function OriginalScott({ runtime }) {
   useLayoutEffect(() => {
     // StrictMode replays effect setup/cleanup; reinstall the private variant.
     instance.hands.forEach(hand => hand.attach())
-    maps.forEach((map, i) => { map.flipY = false; map.colorSpace = i === 0 ? T.SRGBColorSpace : T.NoColorSpace; map.needsUpdate = true })
-    if(SCOTT_ORIGINAL_SHOULDER_MAPS)for (const skin of instance.skins) { skin.clean.map = maps[0]; skin.clean.normalMap = maps[1]; skin.clean.roughnessMap = maps[2]; skin.clean.metalnessMap = maps[2] }
-    instance.modelComparison=new ScottModelComparison(instance,{v1:reference.scene,v2:v2Asset.scene,v3:v3Asset.scene},SCOTT_MODEL_VARIANT==='original'?'v1':'v2',maps)
+    instance.modelComparison=new ScottModelComparison(instance,{v3:v3Asset.scene},'v3')
     instance.modelComparison.select(scottModelSelection.snapshot().variant)
     scottModelSelection.ready(true)
     playback.set({ clips: clips.map(c => ({ name: c.name, duration: c.duration })), ready: true })
     runtime.scottData = authored.data
     runtime.scottInstance = instance
+    const comparison=instance.modelComparison
+    const removeLoader=scottModelSelection.setLoader(async variant=>{
+      if(comparison.skins.some(s=>s.variant===variant))return
+      const [visual,maps]=await Promise.all([loadGLTF(variant==='v1'?SCOTT_RIG_REFERENCE:SCOTT_V2_MODEL),variant==='v1'?Promise.all(SCOTT_MAPS.map(loadTexture)):Promise.resolve([])])
+      if(runtime.scottInstance!==instance)return
+      maps.forEach((map,i)=>{map.flipY=false;map.colorSpace=i===0?T.SRGBColorSpace:T.NoColorSpace;map.needsUpdate=true})
+      comparison.addVariant(variant,visual.scene,maps)
+      const weathering=runtime.weathering
+      if(weathering?.scottLayer){weathering.scottLayer.addSkins(comparison.skins.filter(s=>s.variant===variant));weathering.scottLayer.install()}
+        const root=new T.Group()
+        root.userData.preparationRoots=new Set(comparison.skins.filter(s=>s.variant===variant).map(s=>s.mesh))
+        await scene.userData.animeRenderer.prepareStage(root,'scott-'+variant)
+    })
     if(SCOTT_MODEL_VARIANT==='gear-v2')instance.v2RidingPose ||=createScottRidingPose(instance,authored.data)
     // Sample/measure original clips during loading, not on the first T or
     // the first Armor frame. These constructors do not apply a body pose.
     instance.armorLocomotion ||= new ArmorLocomotion(instance,authored.data.actorScale)
     instance.transformationPose ||= new TransformationScottPose(instance,wrapper.current)
     if (import.meta.env.DEV) window.__SCOTT_ORIGINAL__ = { instance, source: asset, reference, playback, wrapper, authored, model:SCOTT_MODEL, statement: 'Selected visual skin; original 24-bone rig, 16 unchanged clips and reference anchor topology.' }
-    return () => { scottModelSelection.ready(false);instance.modelComparison.dispose();delete instance.modelComparison;delete runtime.scottInstance; instance.mixer.stopAllAction(); instance.mixer.uncacheRoot(instance.model); instance.clip = null; instance.action = null; instance.lastSeek = -1; instance.hands.forEach(h => h.dispose()); instance.skins.forEach(s => s.clean.dispose()); if (import.meta.env.DEV) delete window.__SCOTT_ORIGINAL__ }
-  }, [instance, asset.animations, clips, authored, reference.scene, v2Asset.scene, v3Asset.scene, maps[0], maps[1], maps[2]])
+    return () => {removeLoader();scottModelSelection.ready(false);instance.modelComparison.dispose();delete instance.modelComparison;delete runtime.scottInstance; instance.mixer.stopAllAction(); instance.mixer.uncacheRoot(instance.model); instance.clip = null; instance.action = null; instance.lastSeek = -1; instance.hands.forEach(h => h.dispose()); instance.skins.forEach(s => s.clean.dispose()); if (import.meta.env.DEV) delete window.__SCOTT_ORIGINAL__ }
+    }, [instance, asset.animations, clips, authored, reference.scene, v3Asset.scene,scene])
   useLayoutEffect(()=>()=>{instance.armorArticulation?.dispose();delete instance.armorArticulation},[instance])
   // Restore ONLY the four attachment assemblies before the normal mechanics.
   useFrame(()=>{instance.modelComparison?.v3?.restoreAttachments();instance.armorArticulation?.restore()},-2.15)

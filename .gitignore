@@ -48,6 +48,11 @@ id_ed25519
 /artifacts/**
 !/artifacts/**/
 !/artifacts/**/*.json
+!/artifacts/startup-diagnostic/DIAGNOSTICO.md
+!/artifacts/startup-optimization/VALIDACION.md
+!/artifacts/startup-optimization/ESTADO.txt
+!/artifacts/startup-optimization/*-files.csv
+!/artifacts/desert-material-diagnostic/DIAGNOSTICO.txt
 
 # Browser session data is local, including JSON files inside the profile.
 /artifacts/armor-evasion-browser-profile/

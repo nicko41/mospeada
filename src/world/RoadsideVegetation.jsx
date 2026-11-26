@@ -1,5 +1,6 @@
+import {useGLTF} from '../loading/resources.js'
 import { useLayoutEffect, useMemo, useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { phoneLightState } from '../player/PhoneLight'

@@ -1,6 +1,7 @@
+import {useTexture} from '../../loading/resources.js'
 import { useEffect, useMemo } from 'react'
 import { useThree } from '@react-three/fiber'
-import { useTexture } from '@react-three/drei'
+
 import grassUrl from '../../../assets/texturas/pasto/grass-01.jpg'
 import dirtUrl from '../../../assets/texturas/pasto/dirt01.jpg'
 import { createForestTerrain } from './forestTerrainGeometry.js'

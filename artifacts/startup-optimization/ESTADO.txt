@@ -1,0 +1,62 @@
+MOSPEADA — Estado de la optimización de carga
+2026-11-26
+
+Implementación principal preparada para commit y push. El usuario autorizó
+el push a main y su publicación automática en Vercel, y pidió omitir las
+pruebas adicionales pendientes. No presentar este estado como validación
+integral terminada.
+
+CAMBIOS INCLUIDOS
+
+- Scott V3 como única representación visual inicial. V1 y V2 se solicitan
+  al seleccionarlas; sus datos funcionales originales se conservan en
+  contenedores sin imágenes para rig, clips y referencias del controlador.
+- Contenedores de entrega Meshopt sin pérdida, con modelos originales
+  preservados. Cyclone comparte URL y caché; sus instancias siguen siendo
+  independientes.
+- Dependencias explícitas por plano, descargas anticipadas y preparación
+  cooperativa de texturas, geometrías, materiales y shaders.
+- Geometría del terreno fuera del hilo principal y preparación de las
+  superficies de contacto antes del montaje. El plano 4 distingue recursos
+  preparados de recursos ya colocados con sus colisiones registradas.
+- Transición al plano 4 persistente: no se pierde si la preparación termina
+  después de la fase breve de salida del combate.
+- Cachés compartidas, eliminación de mapas no utilizados por el material
+  Lambert forestal y separación de dependencias exclusivas de autopista.
+- URLs versionadas de recursos públicos; immutable únicamente para URLs
+  versionadas/con hash. Documento y manifiesto revalidables. Brotli conservado.
+- Display Cyclone conservado; progreso diferenciado de descarga/preparación.
+- Diagnóstico reversible del patrón circular del desierto: su origen es
+  desertPebble() en el shader ya existente. No se aplicó una modificación
+  visual permanente al material del suelo.
+
+EVIDENCIA YA OBTENIDA
+
+- Compilaciones de producción y de QA completadas antes de esta solicitud.
+- Última ejecución de la suite: 557 pruebas, 549 aprobadas y 8 fallidas.
+  Las ocho fallas también fueron reproducidas sobre el código anterior;
+  no se declara la suite completamente aprobada.
+- Equivalencia exacta de las geometrías comparadas de los planos 2, 3 y 4.
+- 18 casos de equivalencia de píxeles/mipmaps/subidas GPU, sin diferencias.
+- Comprobaciones de caché, invalidación de versiones y selección V1/V2/V3.
+- Un recorrido completo con recursos posteriores sin caché a 5 Mbps, boost,
+  desbloqueo y transformación nativos, combates y secuencia final. Terminó
+  sin transiciones perdidas sobre una versión intermedia, anterior a los
+  últimos ajustes de preparación. No sustituye repetir la prueba final.
+- El inventario intermediate-77mb-20mbps-cold-files.csv identifica por archivo
+  77.515544 MB transferidos: 74.562977 MB obligatorios y 2.952567 MB anticipados.
+  Es una captura intermedia, no el peso definitivo del último código.
+
+PENDIENTES NO EJECUTADOS POR INDICACIÓN DEL USUARIO
+
+- Matriz final antes/después con caché vacía y visitas posteriores, a 5 y
+  20 Mbps, incluyendo tiempo exacto hasta obtener el control tras la intro.
+- Repetir el recorrido completo a ambas velocidades de red con el código
+  final y comparar FPS, frame times y bloqueos contra la versión anterior.
+- Validar continuidad de audio y consolidar las métricas finales de carga
+  y preparación gráfica con condiciones equivalentes.
+
+Los JSON/CSV y perfiles guardados son evidencia de sus respectivas versiones
+intermedias. No deben citarse como resultados finales de este commit.
+Los scripts de benchmark y recorrido se conservan para poder reanudar estas
+comprobaciones sin reconstruir las herramientas.

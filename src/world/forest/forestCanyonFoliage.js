@@ -27,9 +27,9 @@ function rimPoint(line,distance,back){
   const a=points[lo],b=points[hi],t=Math.max(0,Math.min(1,(distance-a.distance)/(b.distance-a.distance))),dx=b.x-a.x,dz=b.z-a.z,n=Math.hypot(dx,dz),side=back?-1:1
   return {x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t,z:a.z+(b.z-a.z)*t,outX:dz/n*side,outZ:-dx/n*side}
 }
-function wallLedges(geometry,random,add,back){
+function* wallLedgesSteps(geometry,random,add,back){
   const p=geometry.attributes.position,index=geometry.index
-  for(let i=0;i<index.count;i+=3){
+  for(let i=0;i<index.count;i+=3){if(i%3072===0)yield;
     const a=index.getX(i),b=index.getX(i+1),c=index.getX(i+2),x=(p.getX(a)+p.getX(b)+p.getX(c))/3,z=(p.getZ(a)+p.getZ(b)+p.getZ(c))/3,y=(p.getY(a)+p.getY(b)+p.getY(c))/3
     if((z<(stage2LipZ(x)+stage2LipZ(x,true))*.5)!==back)continue
     const depth=canyonSideHeight(x,stage2LipZ(x,back))-y
@@ -40,14 +40,15 @@ function wallLedges(geometry,random,add,back){
     add({x,z,y:y-.025,scale:.25+random()*.16,yaw:random()*Math.PI*2,tiltX:(back?1:-1)*(.3+random()*.55),ledge:true})
   }
 }
-export function createCanyonFoliage(atlas,terrain,sides){
+export function createCanyonFoliage(atlas,terrain,sides){const steps=createCanyonFoliageSteps(atlas,terrain,sides);let step;do{step=steps.next()}while(!step.done);return step.value}
+export function* createCanyonFoliageSteps(atlas,terrain,sides){
   const random=forestRandom(19830928),placements=[],buckets=new Map(),group=new Group(),batches=[],lines=[],geometries=[terrain.cliffs,...sides.tiles.map(t=>t.cliffs)]
   const axis=new Vector3(),up=new Vector3(0,1,0),tilt=new Quaternion(),yaw=new Quaternion()
   const add=p=>{const entry=species[Math.floor(random()*species.length)];p.sprite=entry.id;p.mirror=random()<.5;p.tint=1;placements.push(p);const key=Math.floor(p.x/64);if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(p)}
   for(const back of [false,true]){
     const line=canyonRimPolyline(geometries,back);lines.push(line)
     let nextGap=7+random()*7
-    for(let distance=.25;distance<line.length-.25;){
+    for(let distance=.25;distance<line.length-.25;){if(placements.length%128===0)yield;
       // Short gaps interrupt overlapping groups. Keep coverage at the launch
       // lane too: low upright tufts and outward leaves have no colliders.
       if(distance>nextGap){distance+=.45+random()*.55;nextGap=distance+8+random()*9;continue}
@@ -60,11 +61,11 @@ export function createCanyonFoliage(atlas,terrain,sides){
       }
       distance+=.43+random()*.22
     }
-    for(const geometry of geometries)wallLedges(geometry,random,add,back)
+    for(const geometry of geometries)yield* wallLedgesSteps(geometry,random,add,back)
   }
   for(const p of createTreeBasePlants(Object.values(sides.byName).flat(),{seed:19830929})){p.y=surface(p.x,p.z)-.025;placements.push(p);const key=Math.floor(p.x/64);if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(p)}
   const material=foliageCardMaterial(atlas,true,true,{start:0,end:0,fade:155,max:205})
-  for(const [key,items]of buckets){const batch=new ForestSpriteBatch(items,material,surface);batch.distance=205;batch.name='Forest_canyon_rim_foliage_'+key;group.add(batch);batches.push(batch)}
+  for(const [key,items]of buckets){const batch=new ForestSpriteBatch(items,material,surface);batch.distance=205;batch.name='Forest_canyon_rim_foliage_'+key;group.add(batch);batches.push(batch);yield}
   group.name='Forest_canyon_organic_rim';group.userData.forest=true
   return {group,batches,placements,lines,update(camera){for(const batch of batches){batch.visible=batch.boundingBox.distanceToPoint(camera.position)<209;if(batch.visible)batch.updateDistance(camera)}},dispose(){batches.forEach(b=>b.dispose());material.dispose()}}
 }

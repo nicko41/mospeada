@@ -1,7 +1,10 @@
-import {useLayoutEffect,useMemo} from 'react'
+import {useGLTF} from '../../loading/resources.js'
+import {useLayoutEffect} from 'react'
+import {usePreparedResource} from '../../loading/preparedResources.js'
+import {workQueue} from '../../loading/workQueue.js'
 import {useFrame,useThree} from '@react-three/fiber'
 import {observeArmorUnlock} from '../../vehicle/armorUnlock.js'
-import {useGLTF} from '@react-three/drei'
+
 import {Group,Vector3} from 'three'
 import {INVID_SCOUT_URL,createScoutView} from './invidScoutAsset.js'
 import {DesertScoutPatrol,SCOUT_PATROL,SCOUT_ATTACK_DAMAGE} from './DesertScoutPatrol.js'
@@ -15,16 +18,17 @@ import {registerInvidBody} from '../../vehicle/invidBodyCollision.js'
 import {damagePlayer,playerCombat} from '../../player/playerCombat.js'
 import {rideUI} from '../../vehicle/rideUI.js'
 
-useGLTF.preload(INVID_SCOUT_URL)
 export default function ForestDesertScouts({runtime}){
-  const asset=useGLTF(INVID_SCOUT_URL),{camera}=useThree()
-  const resources=useMemo(()=>{
+  const asset=useGLTF(INVID_SCOUT_URL),{camera,gl}=useThree()
+  const resources=usePreparedResource(gl,'scouts resources',async()=>{
     const root=new Group();root.name='Desert_Invid_Scout_patrol';root.userData.prewarmVFX=true
-    const views=Array.from({length:SCOUT_PATROL.count},(_,i)=>createScoutView(asset.scene,i,asset.animations)),opening=new DesertScoutPatrol(views,sampleRideHeight),squad=createScoutSquad(root,views)
+    const views=[]
+    for(let i=0;i<SCOUT_PATROL.count;i++)views.push(await workQueue.submit(()=>createScoutView(asset.scene,i,asset.animations),'scouts view'))
+    const opening=new DesertScoutPatrol(views,sampleRideHeight),squad=await workQueue.submit(()=>createScoutSquad(root,views),'scouts squad')
     squad.scouts=opening.scouts
     const sequence=new DesertClimaxSequence(opening,{onTransition:()=>window.dispatchEvent(new Event('level1-climax-transition')),onVictory:()=>window.dispatchEvent(new Event('level1-victory'))})
     return{root,opening,patrol:opening,views,batches:squad.batches,sequence,squads:[squad],climax:null,preparing:null,removeTargets:[],refs:0,actorState:null,recoveryAge:0,publishAge:0,actorPosition:new Vector3(),player:{x:0,z:0,height:0,speed:0}}
-  },[asset.scene])
+  })
   function* prepareClimax(){
     const all=[]
     for(let group=0;group<C.count/C.squadSize;group++){

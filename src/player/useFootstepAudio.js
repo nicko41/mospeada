@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import {assetUrl} from '../loading/resources.js'
 import { HIGHWAY_LENGTH, HIGHWAY_TOP_HALF_WIDTH, HIGHWAY_Z } from '../world/sectors/highwayProfile'
 
 const FOOTSTEP_PATHS = {
@@ -13,7 +14,7 @@ export default function useFootstepAudio() {
 
   useEffect(() => {
     const sounds = Object.fromEntries(Object.entries(FOOTSTEP_PATHS).map(([surface, path]) => {
-      const sound = new Audio(`${import.meta.env.BASE_URL}${path}`)
+      const sound = new Audio(assetUrl('/'+path))
       sound.preload = 'auto'
       sound.loop = true
       sound.preservesPitch = true

@@ -1,10 +1,10 @@
+import {useTexture,useFoliage,loadFoliage,configureTexture} from '../../loading/resources.js'
 import {useEffect,useMemo,useRef} from 'react'
-import {useFrame,useLoader,useThree} from '@react-three/fiber'
-import {useTexture} from '@react-three/drei'
+import {useFrame,useThree} from '@react-three/fiber'
+
 import {LinearFilter,LinearMipmapLinearFilter,SRGBColorSpace,Vector3} from 'three'
 import {FOLIAGE_CATALOG} from './foliageCatalog.js'
 import {FOLIAGE_WORLD} from './forestFoliageWorldConfig.js'
-import {ForestFoliageWorldLoader} from './forestFoliageWorldLoader.js'
 import {worldFoliageMaterial} from './forestFoliageWorldRendering.js'
 import {foliageContactMaterial} from './forestFoliageLibrary.js'
 import {ForestFoliageWorldManager} from './forestFoliageWorldManager.js'
@@ -15,12 +15,12 @@ import ForestFoliageDiagnostics from './ForestFoliageDiagnostics.jsx'
 import {forestOpeningState} from './forestOpeningState.js'
 
 const cache=new WeakMap(),key=FOLIAGE_WORLD.version+'-'+FOLIAGE_WORLD.seed
-export const preloadFoliageWorld=()=>{useTexture.preload(FOLIAGE_CATALOG.atlas.url);useLoader.preload(ForestFoliageWorldLoader,key)}
+export const preloadFoliageWorld=()=>{useTexture.preload(FOLIAGE_CATALOG.atlas.url);loadFoliage(key)}
 export default function ForestFoliageWorld(){
-  const world=useLoader(ForestFoliageWorldLoader,key),atlas=useTexture(FOLIAGE_CATALOG.atlas.url),{gl,camera,scene}=useThree()
+  const world=useFoliage(key),atlas=useTexture(FOLIAGE_CATALOG.atlas.url),{gl,camera,scene}=useThree()
   const manager=useMemo(()=>{
     const previous=cache.get(gl);if(previous?.world===world)return previous.manager
-    atlas.colorSpace=SRGBColorSpace;atlas.minFilter=LinearMipmapLinearFilter;atlas.magFilter=LinearFilter;atlas.anisotropy=Math.min(4,gl.capabilities.getMaxAnisotropy());atlas.generateMipmaps=true;atlas.needsUpdate=true
+    configureTexture(atlas,{colorSpace:SRGBColorSpace,minFilter:LinearMipmapLinearFilter,magFilter:LinearFilter,anisotropy:Math.min(4,gl.capabilities.getMaxAnisotropy()),generateMipmaps:true})
     const density={value:FOLIAGE_WORLD.profiles[FOLIAGE_WORLD.defaultProfile]},materials={density,near:worldFoliageMaterial(atlas,'near',density),far:worldFoliageMaterial(atlas,'far',density),contact:foliageContactMaterial('foliageContact')}
     const manager=new ForestFoliageWorldManager(world,materials,gl,camera);cache.set(gl,{world,manager,refs:0});return manager
   },[world,atlas,gl,camera])

@@ -13,7 +13,9 @@ export const FOREST_SIDE_BANDS=Object.freeze({step:3,treeStep:4.8,depths:[8,14,2
 export function forestPerimeterExtent(z,side,halfWidth=256){const k=Math.PI*2/768,large=halfWidth>500;return halfWidth-(large?95:70)+(large?28:12)*Math.sin(z*k*2+side*.7)+(large?15:6)*Math.sin(z*k*5-side*1.3)}
 export const forestSideWidth=(z,side)=>forestPerimeterExtent(z,side)
 
-export function createForestSideLayout({minZ,maxZ,pathAt,heightAt,widthAt=forestSideWidth,allowed=()=>true,seed=19831122,trees=FOREST_ASSETS.filter(a=>a.kind==='tree')}={}){
+export function createForestSideLayout(options){const steps=createForestSideLayoutSteps(options);let step;do{step=steps.next()}while(!step.done);return step.value}
+export function* createForestSideLayoutSteps({minZ,maxZ,pathAt,heightAt,widthAt=forestSideWidth,allowed=()=>true,seed=19831122,trees=FOREST_ASSETS.filter(a=>a.kind==='tree')}={}){
+ let work=0
  const random=forestRandom(seed),between=(a,b)=>a+(b-a)*random(),byName=Object.fromEntries(trees.map(a=>[a.name,[]])),sprites=[],thickets=[],trunks=[]
  const shrubs=FOLIAGE_CATALOG.entries.filter(e=>e.category==='arbustos'&&!e.id.includes('flores')),ferns=FOLIAGE_CATALOG.entries.filter(e=>e.category==='helechos')
  const tag=(p,side)=>{p.side=side;p.offset=p.x-pathAt(p.z)-side*widthAt(p.z,side);p.ground=heightAt(p.x,p.z);return p}
@@ -26,7 +28,7 @@ export function createForestSideLayout({minZ,maxZ,pathAt,heightAt,widthAt=forest
   p.y=p.ground-.025;sprites.push(p)
  }
  for(const side of[-1,1]){
-  for(let row=0;row<2;row++)for(let station=Math.ceil(minZ/FOREST_SIDE_BANDS.step)*FOREST_SIDE_BANDS.step;station<=maxZ;station+=spacing(station,side,FOREST_SIDE_BANDS.step)){
+  for(let row=0;row<2;row++)for(let station=Math.ceil(minZ/FOREST_SIDE_BANDS.step)*FOREST_SIDE_BANDS.step;station<=maxZ;station+=spacing(station,side,FOREST_SIDE_BANDS.step)){if(++work%16===0)yield;
    const z=station+(row*1.5+between(-.18,.18))*spacing(station,side,1),x=pathAt(z)+side*(widthAt(z,side)+row*4.8+between(-.25,.25))
    if(!valid(x,z,2.3))continue
    const height=between(2.1,3.15),p=tag({x,z,radius:between(2.25,2.5),height:height*.78,layer:row},side);thickets.push(p)
@@ -36,7 +38,7 @@ export function createForestSideLayout({minZ,maxZ,pathAt,heightAt,widthAt=forest
    for(let j=0;j<2;j++)plant(x+between(-1.25,1.25),z+between(-1,1),height*between(.8,1.1),side)
    if(row===0)plant(x-side*between(1.3,2),z+between(-.9,.9),between(.85,1.35),side,true)
   }
-  for(let row=0;row<FOREST_SIDE_BANDS.depths.length;row++)for(let station=Math.ceil(minZ/FOREST_SIDE_BANDS.treeStep)*FOREST_SIDE_BANDS.treeStep;station<=maxZ;station+=spacing(station,side,FOREST_SIDE_BANDS.treeStep)){
+  for(let row=0;row<FOREST_SIDE_BANDS.depths.length;row++)for(let station=Math.ceil(minZ/FOREST_SIDE_BANDS.treeStep)*FOREST_SIDE_BANDS.treeStep;station<=maxZ;station+=spacing(station,side,FOREST_SIDE_BANDS.treeStep)){if(++work%16===0)yield;
    const z=station+(row*.83+between(-1.1,1.1))*spacing(station,side,1),depth=FOREST_SIDE_BANDS.depths[row]+between(-1.6,1.6),x=pathAt(z)+side*(widthAt(z,side)+depth)
    if(!valid(x,z,1))continue
    const asset=trees[Math.floor(random()*trees.length)],scale=between(2.25,3.5),p=tag({x,z,scale,yaw:between(0,Math.PI*2),tint:between(.72,.95),kind:'tree',name:asset.name,trunkRadius:(asset.trunkRadius||.26)*scale,height:asset.bounds?(asset.bounds.max.y-asset.bounds.min.y)*scale*.75:24,solid:row<3,layer:row},side)
@@ -80,15 +82,18 @@ export function createSideBoundaryLibrary(assets,atlas){
 }
 
 export class ForestSideBoundaryBand extends Group{
- constructor(layout,library,heightAt){
+ constructor(layout,library,heightAt,{deferred=false}={}){
   super();this.name='Forest_staggered_side_boundary';this.userData.forest=true;this.layout=layout;this.batches=[];this.camera={position:new Vector3()};this.origin=new Vector3();this.matrix=new Matrix4()
-  this.plants=new ForestSpriteBatch(layout.sprites,library.shrubs,heightAt);this.plants.name='Forest_side_staggered_shrubs';this.plants.distance=145;this.add(this.plants)
+  this.preparationSteps=this.build(layout,library,heightAt);if(!deferred)for(const step of this.preparationSteps)void step
+ }
+ *build(layout,library,heightAt){
+  this.plants=new ForestSpriteBatch(layout.sprites,library.shrubs,heightAt,{deferred:true});yield* this.plants.preparationSteps;this.plants.name='Forest_side_staggered_shrubs';this.plants.distance=145;this.add(this.plants);yield
   for(const asset of library.trees){const placements=layout.byName[asset.name]||[];if(!placements.length)continue
    for(const part of asset.parts){
     const batch=new ForestBatch(part,placements,asset.bounds,'tree',FOREST_SIDE_BANDS.distance,0,heightAt);batch.name='Forest_side_dark_trunks_'+asset.name;batch.userData.forest=true;batch.receiveShadow=true
     batch.userData.sideOffsets=new Float64Array(placements.length*2)
     for(let i=0;i<placements.length;i++){batch.getMatrixAt(i,this.matrix);batch.userData.sideOffsets[i*2]=this.matrix.elements[12]-placements[i].x;batch.userData.sideOffsets[i*2+1]=this.matrix.elements[13]-placements[i].ground}
-    this.batches.push(batch);this.add(batch)
+    this.batches.push(batch);this.add(batch);yield
    }
   }
  }

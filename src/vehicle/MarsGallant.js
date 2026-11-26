@@ -1,6 +1,6 @@
 import {Group,Object3D,Matrix4,Quaternion,Vector3} from 'three'
 
-export const MARS_GALLANT_URL='/models/mospeada/mars-gallant.glb'
+export const MARS_GALLANT_URL='/delivery/mars-gallant.glb'
 // Measured in the supplied model's frame: barrel -X, top +Y, width Z.
 // The rear grip sits beside the trigger; the original source remains intact.
 export const GALLANT_MOUNT=Object.freeze({length:.34,sourceLength:1.9033389687538147,grip:[.67,-.22,0],muzzle:[-.952281,.065,0]})

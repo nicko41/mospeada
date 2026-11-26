@@ -1,6 +1,7 @@
+import {useGLTF} from '../loading/resources.js'
 import {useLayoutEffect,useMemo,useRef} from 'react'
 import {useFrame,useThree} from '@react-three/fiber'
-import {Html,useGLTF} from '@react-three/drei'
+import {Html} from '@react-three/drei'
 import {Ray,Raycaster,Vector2,Vector3} from 'three'
 import {MarsGallant,MARS_GALLANT_URL} from './MarsGallant.js'
 import {ArmorGallantPose,armorWeaponAvailable} from './ArmorGallantPose.js'
@@ -16,7 +17,6 @@ import {CuffMissiles} from './CuffMissiles.js'
 import {ScottMissilePose} from './ScottMissilePose.js'
 import {GallantAimInput} from './GallantAimInput.js'
 
-useGLTF.preload(MARS_GALLANT_URL)
 // Crosshair, camera aim and shot selection share the exact screen centre.
 const armorReticle=new Vector2(0,0)
 

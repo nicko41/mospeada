@@ -1,3 +1,4 @@
+import {useTexture,deferredTexture} from '../loading/resources.js'
 import { useLayoutEffect, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { VFXRuntime } from './VFXRuntime.js'
@@ -10,7 +11,7 @@ import { vfxState } from './vfxState.js'
 import { timeOfDayState } from '../world/TimeOfDay.jsx'
 import { weatherState } from '../world/weatherState.js'
 import {Vector3,SRGBColorSpace,LinearFilter} from 'three'
-import {useTexture} from '@react-three/drei'
+
 import {activeEnvironment} from '../world/environmentConfig.js'
 import {ForestWheelFX} from '../world/forest/forestWheelFX.js'
 import {Plano3CombatVFX} from './Plano3CombatVFX.js'
@@ -32,10 +33,10 @@ import invidOrbUrl from '../../assets/invid/invid-orbes.png'
 
 const forest=activeEnvironment==='forest',grassUrl='/foliage/forest/wheel-fragments.png'
 useTexture.preload(terrainImpactUrl)
-if(forest)useTexture.preload([grassUrl,groundExplosionUrl,airExplosionUrl,floatingLeavesUrl,invidBlood01Url,invidBlood02Url,invidOrbUrl])
+if(forest)useTexture.preload([grassUrl,floatingLeavesUrl])
 export default function CycloneVFX(props){return forest?<ForestCycloneVFX {...props}/>:<HighwayCycloneVFX {...props}/>}
 function HighwayCycloneVFX(props){const terrain=useTexture(terrainImpactUrl);return <CycloneVFXInstance {...props} terrainImpactAtlas={terrain}/>}
-function ForestCycloneVFX(props){const [atlas,ground,air,terrain,leaves,blood01,blood02,orbs]=useTexture([grassUrl,groundExplosionUrl,airExplosionUrl,terrainImpactUrl,floatingLeavesUrl,invidBlood01Url,invidBlood02Url,invidOrbUrl]);return <CycloneVFXInstance {...props} grassAtlas={atlas} groundExplosionAtlas={ground} airExplosionAtlas={air} terrainImpactAtlas={terrain} leafAtlas={leaves} blood01Atlas={blood01} blood02Atlas={blood02} invidOrbAtlas={orbs}/>}
+function ForestCycloneVFX(props){const [atlas,terrain,leaves]=useTexture([grassUrl,terrainImpactUrl,floatingLeavesUrl]);return <CycloneVFXInstance {...props} grassAtlas={atlas} groundExplosionAtlas={deferredTexture(groundExplosionUrl)} airExplosionAtlas={deferredTexture(airExplosionUrl)} terrainImpactAtlas={terrain} leafAtlas={leaves} blood01Atlas={deferredTexture(invidBlood01Url)} blood02Atlas={deferredTexture(invidBlood02Url)} invidOrbAtlas={deferredTexture(invidOrbUrl)}/>}
 function CycloneVFXInstance({ rig, runtime,grassAtlas=null,groundExplosionAtlas=null,airExplosionAtlas=null,terrainImpactAtlas=null,leafAtlas=null,blood01Atlas=null,blood02Atlas=null,invidOrbAtlas=null }) {
   const { scene } = useThree(), current = useRef(null)
   useLayoutEffect(() => {

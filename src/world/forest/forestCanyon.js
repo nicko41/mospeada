@@ -23,13 +23,15 @@ export function canyonWallPoint(x,t,back,heightAt){
 function geometry(positions,uv,indices,colours){
   const g=new BufferGeometry();g.setAttribute('position',new Float32BufferAttribute(positions,3));g.setAttribute('uv',new Float32BufferAttribute(uv,2));if(colours)g.setAttribute('color',new Float32BufferAttribute(colours,3));g.setIndex(indices);g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();return g
 }
-export function createNaturalCanyon(heightAt,{minX=-S.halfWidth,maxX=S.halfWidth,step=null,skirts=true}={}){
+export function createNaturalCanyon(heightAt,options){const steps=createNaturalCanyonSteps(heightAt,options);let step;do{step=steps.next()}while(!step.done);return step.value}
+export function* createNaturalCanyonSteps(heightAt,{minX=-S.halfWidth,maxX=S.halfWidth,step=null,skirts=true}={}){
   // Exactly the same X stations as the top meshes: no cracks along the rims.
   const xs=[];for(let x=minX;x<=maxX;x+=step||(x>=-S.detailHalfWidth&&x<S.detailHalfWidth?1:4))xs.push(x)
   const positions=[],uv=[],indices=[],colours=[],rows=30,columns=xs.length
   for(const back of [false,true]){
     const offset=positions.length/3,previous=[],vertical=new Float64Array(columns)
     for(let row=0;row<=rows;row++){
+      if(row%4===0)yield
       let horizontal=0,last
       for(let col=0;col<columns;col++){
         const p=canyonWallPoint(xs[col],row/rows,back,heightAt)
@@ -42,7 +44,7 @@ export function createNaturalCanyon(heightAt,{minX=-S.halfWidth,maxX=S.halfWidth
   }
   const cliffs=geometry(positions,uv,indices,colours),bedPositions=[],bedUv=[],bedIndices=[],across=48
   cliffs.userData.canyonRows=rows
-  for(let row=0;row<=across;row++)for(const x of xs){const front=canyonWallPoint(x,1,false,heightAt),back=canyonWallPoint(x,1,true,heightAt),z=front.z+(back.z-front.z)*row/across;bedPositions.push(x,canyonFloor(x,z),z);bedUv.push(x/4,z/4)}
+  for(let row=0;row<=across;row++){if(row%4===0)yield;for(const x of xs){const front=canyonWallPoint(x,1,false,heightAt),back=canyonWallPoint(x,1,true,heightAt),z=front.z+(back.z-front.z)*row/across;bedPositions.push(x,canyonFloor(x,z),z);bedUv.push(x/4,z/4)}}
   for(let row=0;row<across;row++)for(let col=0;col<columns-1;col++){const a=row*columns+col,b=a+columns;bedIndices.push(a,a+1,b,a+1,b+1,b)}
   // Closed lateral skirts continue the land mass downward, rather than leaving
   // an open sheet with sky underneath. They add no drivable surface.
@@ -52,6 +54,7 @@ export function createNaturalCanyon(heightAt,{minX=-S.halfWidth,maxX=S.halfWidth
   }
   const bed=geometry(bedPositions,bedUv,bedIndices),bankFrame=[]
   for(let i=0;i<bedPositions.length;i+=3){
+    if(i%12288===0)yield
     const x=bedPositions[i],r=riverSection(x)
     bankFrame.push(r.z,r.halfWidth,canyonWallPoint(x,1,false,heightAt).z,canyonWallPoint(x,1,true,heightAt).z)
   }

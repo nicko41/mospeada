@@ -1,4 +1,5 @@
 import { isGameInputActive } from '../player/touchInput'
+import {assetUrl} from '../loading/resources.js'
 import { useEffect, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { ENTITY_STATE as S, ENTITY_ATTACK_RANGE } from '../player/meleeConfig'
@@ -13,7 +14,7 @@ export default function useMonsterAudio(combat, root, camera, teleportSmoke) {
   const audio = useRef(null)
   useEffect(() => {
     const createSound = (name, loop = false) => {
-      const sound = new Audio(`${import.meta.env.BASE_URL}sounds/monsters/${name}.mp3`)
+      const sound = new Audio(assetUrl(`/sounds/monsters/${name}.mp3`))
       sound.preload = 'auto'
       sound.loop = loop
       sound.load()

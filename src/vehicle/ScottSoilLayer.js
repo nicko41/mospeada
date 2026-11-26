@@ -66,7 +66,15 @@ export class ScottSoilLayer {
   constructor(instance) {
     this.instance = instance; this.records = []
     this.uniforms = { uSoilEnabled: { value: 1 }, uScottMud: { value: new Vector4(0, 0, 0, 0) }, uScottFilm: { value: new Vector4(0, 0, 0, 0) }, uSoilDark: { value: new Color('#503d2c') }, uSoilLight: { value: new Color('#987c55') }, uSoilSeed: { value: 5.7 } }
-    for (const skin of instance.modelComparison?.skins||instance.skins) {
+    this.addSkins(instance.modelComparison?.skins||instance.skins)
+    this.samples = {}
+    for (const [region, pattern] of Object.entries({ boots: /Foot$/, legs: /Leg$/, arms: /ForeArm$/, torso: /Spine$/ })) {
+      this.samples[region] = [...instance.bones.values()].filter(b => pattern.test(b.name)).map(bone => ({ bone, position: new Vector3() }))
+    }
+  }
+  addSkins(skins) {
+    for (const skin of skins) {
+      if(this.records.some(record=>record.mesh===skin.mesh))continue
       const box = new Box3().setFromBufferAttribute(skin.mesh.geometry.attributes.position), bones = skin.mesh.skeleton.bones
       const uniforms = { ...this.uniforms, uScottRegions: { value: bones.map(b => scottRegion(b.name)) }, uScottHead: { value: new Float32Array(bones.map(b => /Head|Neck|headfront/.test(b.name) ? 1 : 0)) }, uScottOrigin: { value: new Vector3(0, box.min.y, 0) }, uScottScale: { value: 1 / (box.max.y - box.min.y) } }
       const variants = new Map()
@@ -77,10 +85,6 @@ export class ScottSoilLayer {
         variants.set(source, material)
       }
       this.records.push({ mesh: skin.mesh, variants, uniforms })
-    }
-    this.samples = {}
-    for (const [region, pattern] of Object.entries({ boots: /Foot$/, legs: /Leg$/, arms: /ForeArm$/, torso: /Spine$/ })) {
-      this.samples[region] = [...instance.bones.values()].filter(b => pattern.test(b.name)).map(bone => ({ bone, position: new Vector3() }))
     }
   }
   install() { for (const r of this.records) if (r.variants.has(r.mesh.material)) r.mesh.material = r.variants.get(r.mesh.material) }

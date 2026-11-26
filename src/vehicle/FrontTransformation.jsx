@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
+import {loadJSON,loadGLTF} from '../loading/resources.js'
 import { useFrame } from '@react-three/fiber'
 import { FrontBattloidTransform } from './FrontBattloidTransform.js'
 import { frontTransformState as store } from './frontTransformState.js'
@@ -11,10 +12,14 @@ import { TransformationFrame } from './TransformationFrame.js'
 import { wheelArmorState } from './wheelArmorState.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import {playerCombat} from '../player/playerCombat.js'
+const CONFIGS=['front','rear','guard','wheel','suspension-hide'].map(n=>`/transformations/cyclone-${n}${n==='suspension-hide'?'':'-battloid'}.json`)
+const ARMOR_GEOMETRY='/transformations/cyclone-rear-pieces.glb'
+const preparedData=Promise.all([...CONFIGS.map(loadJSON),loadGLTF(ARMOR_GEOMETRY)]).then(([front,rear,guards,wheels,suspension,asset])=>({front,rear,guards,wheels,suspension,geometry:asset.scene}))
+preparedData.catch(()=>{})
 
 export default function FrontTransformation({ rig, runtime }) {
   const data = useRef(null), effect = useRef(null),rear=useRef(null),guards=useRef(null),wheels=useRef(null),suspension=useRef(null),frame=useRef(null)
-  useEffect(() => {
+  useLayoutEffect(() => {
     const controller = new AbortController()
     // The renderer can prepare derived Armor meshes before the first T.
     // Resolve after their construction, never by playing the transformation.
@@ -23,9 +28,7 @@ export default function FrontTransformation({ rig, runtime }) {
     rig.root.userData.armorPreparation = preparation
     runtime.finishArmorPreparation = prepared
     store.reset(); store.set({ready:false,error:''})
-    const read=url=>fetch(url,{signal:controller.signal}).then(r=>{if(!r.ok)throw Error('No se pudo cargar la configuración Battloid');return r.json()})
-    Promise.all([read('/transformations/cyclone-front-battloid.json'),read('/transformations/cyclone-rear-battloid.json'),read('/transformations/cyclone-guard-battloid.json'),read('/transformations/cyclone-wheel-battloid.json'),read('/transformations/cyclone-suspension-hide.json')])
-      .then(async([front,rear,guards,wheels,suspension])=>({front,rear,guards,wheels,suspension,geometry:(await new GLTFLoader().loadAsync(rear.geometryUrl)).scene}))
+    preparedData
       .then(value=>{if(!controller.signal.aborted)data.current=value})
       .catch(error=>{prepared();if(error.name!=='AbortError')store.set({error:error.message})})
     const down = e => {

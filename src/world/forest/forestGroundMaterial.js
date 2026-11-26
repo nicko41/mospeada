@@ -13,12 +13,13 @@ function crashSurfaceMap(){
 
 export const FOREST_GROUND_TILE_METRES=4
 export function configureGroundTexture(texture,anisotropy) {
+  const changed=texture.colorSpace!==SRGBColorSpace||texture.wrapS!==MirroredRepeatWrapping||texture.wrapT!==MirroredRepeatWrapping||texture.repeat.x!==FOREST.size/FOREST_GROUND_TILE_METRES||texture.repeat.y!==FOREST.size/FOREST_GROUND_TILE_METRES||texture.minFilter!==LinearMipmapLinearFilter||texture.magFilter!==LinearFilter||!texture.generateMipmaps||texture.anisotropy!==Math.min(8,anisotropy)
   texture.colorSpace=SRGBColorSpace
   texture.wrapS=texture.wrapT=MirroredRepeatWrapping
   texture.repeat.set(FOREST.size/FOREST_GROUND_TILE_METRES,FOREST.size/FOREST_GROUND_TILE_METRES)
   texture.minFilter=LinearMipmapLinearFilter;texture.magFilter=LinearFilter
   texture.generateMipmaps=true;texture.anisotropy=Math.min(8,anisotropy)
-  texture.needsUpdate=true
+  if(changed)texture.needsUpdate=true
   return texture
 }
 
@@ -40,12 +41,13 @@ function canopyGrounding() {
 
 // Visible colour/detail comes from the two original illustrations. Spatial
 // masks only choose grass/dirt; hashes only vary image coordinates, never RGB.
+let sharedShade,sharedCrash,maskUsers=0
 export function createForestGroundMaterial(grass,dirt,anisotropy=1) {
   configureGroundTexture(grass,anisotropy);configureGroundTexture(dirt,anisotropy)
   const material=new MeshLambertMaterial({map:grass,vertexColors:false})
   material.name='Forest / original illustrated grass and dirt';material.userData.forest=true
   material.userData.forestGround={tileMetres:FOREST_GROUND_TILE_METRES,source:'original grass-01.jpg + dirt01.jpg'}
-  const shade=canopyGrounding(),crash=crashSurfaceMap()
+  const shade=sharedShade ||=canopyGrounding(),crash=sharedCrash ||=crashSurfaceMap();maskUsers++
   material.onBeforeCompile=shader=>{
     shader.uniforms.uForestDirt={value:dirt};shader.uniforms.uForestGroundShade={value:shade};shader.uniforms.uForestCrashSurface={value:crash}
     shader.vertexShader='varying vec2 vForestGround;\n'+shader.vertexShader
@@ -101,7 +103,7 @@ export function createForestGroundMaterial(grass,dirt,anisotropy=1) {
       diffuseColor.rgb*=mix(vec3(.55,.74,.83),vec3(1.0),forestGroundShade);
     `)
   }
-  material.addEventListener('dispose',()=>{shade.dispose();crash.dispose()})
+  material.addEventListener('dispose',()=>{if(--maskUsers===0){shade.dispose();crash.dispose();sharedShade=sharedCrash=null}})
   material.customProgramCacheKey=()=>`forest-original-ground-images-forward-route-v4/${FOREST_CRASH.length}`
   return material
 }

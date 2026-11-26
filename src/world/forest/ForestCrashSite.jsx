@@ -1,5 +1,6 @@
+import {useTexture} from '../../loading/resources.js'
 import {useLayoutEffect,useMemo} from 'react'
-import {useTexture} from '@react-three/drei'
+
 import {registerColliders} from '../../player/collisionWorld.js'
 import {FOLIAGE_CATALOG} from './foliageCatalog.js'
 import {createCrashTree,createCrushedFoliage} from './forestCrashDressing.js'

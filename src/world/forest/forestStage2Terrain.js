@@ -1,4 +1,4 @@
-import {createNaturalCanyon} from './forestCanyon.js'
+import {createNaturalCanyonSteps} from './forestCanyon.js'
 import {BufferGeometry,Float32BufferAttribute} from 'three'
 import {forestBaseSurfaceHeight} from './forestLayout.js'
 import {FOREST_STAGE2 as S,stage2PathX,stage2Smooth,inForestStage2,stage2Void,stage2EdgeBend,stage2LipZ} from './forestStage2Config.js'
@@ -45,14 +45,17 @@ export function stage2SurfaceHeight(x,z){
   for(let dz=-1;dz<=1;dz++){const z0=row+dz*sz;if(z0<S.endZ||z0+sz>S.startZ||z0<S.canyon.lipZ&&z0+sz>S.canyon.landingZ)continue;const a=vertex(x0,z0),b=vertex(x0,z0+sz),c=vertex(x0+sx,z0),d=vertex(x0+sx,z0+sz),h=triangleHeight(x,z,a,b,c)??triangleHeight(x,z,d,c,b);if(h!==null)return h}
   return -Infinity
 }
-function topChunk(minZ,maxZ,minX=-S.detailHalfWidth,maxX=S.detailHalfWidth,sx=1,sz=1){
+function* topChunkSteps(minZ,maxZ,minX=-S.detailHalfWidth,maxX=S.detailHalfWidth,sx=1,sz=1){
   const vertices=[],uv=[],indices=[],columns=(maxX-minX)/sx+1,rows=(maxZ-minZ)/sz
-  for(let row=0;row<=rows;row++)for(let col=0;col<columns;col++){const x=minX+col*sx,z=stage2MappedZ(x,minZ+row*sz);vertices.push(x,stage2Height(x,z),z);uv.push((x+400)/800,1-(z+400)/800)}
+  for(let row=0;row<=rows;row++){for(let col=0;col<columns;col++){const x=minX+col*sx,z=stage2MappedZ(x,minZ+row*sz);vertices.push(x,stage2Height(x,z),z);uv.push((x+400)/800,1-(z+400)/800)}if(row%4===0)yield}
   for(let row=0;row<rows;row++)for(let col=0;col<columns-1;col++){const a=row*columns+col,b=a+columns,c=a+1,d=b+1;indices.push(a,b,c,c,b,d)}
   const g=new BufferGeometry();g.setAttribute('position',new Float32BufferAttribute(vertices,3));g.setAttribute('uv',new Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();return g
 }
 export function createStage2Terrain(){
+  const steps=createStage2TerrainSteps();let step;do{step=steps.next()}while(!step.done);return step.value
+}
+export function* createStage2TerrainSteps(){
   const tops=[]
-  for(const [min,max]of [[S.canyon.lipZ,S.startZ],[S.endZ,S.canyon.landingZ]])for(let z=min;z<max;z+=S.chunkLength){const end=Math.min(max,z+S.chunkLength);tops.push(topChunk(z,end),topChunk(z,end,-S.halfWidth,-S.detailHalfWidth,4,2),topChunk(z,end,S.detailHalfWidth,S.halfWidth,4,2))}
-  return {tops,...createNaturalCanyon(stage2Height)}
+  for(const [min,max]of [[S.canyon.lipZ,S.startZ],[S.endZ,S.canyon.landingZ]])for(let z=min;z<max;z+=S.chunkLength){const end=Math.min(max,z+S.chunkLength);tops.push(yield* topChunkSteps(z,end),yield* topChunkSteps(z,end,-S.halfWidth,-S.detailHalfWidth,4,2),yield* topChunkSteps(z,end,S.detailHalfWidth,S.halfWidth,4,2))}
+  return {tops,...yield* createNaturalCanyonSteps(stage2Height)}
 }

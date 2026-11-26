@@ -1,0 +1,298 @@
+{
+  "modes": [
+    {
+      "mode": "dynamics-off",
+      "roi": {
+        "x": 115,
+        "y": 528,
+        "width": 1209,
+        "height": 384
+      },
+      "changedPixels": 0,
+      "maxChannelDifference": 0,
+      "meanAbsoluteChannelDifference": 0,
+      "glError": 0,
+      "name": "dynamics-off"
+    },
+    {
+      "mode": "original",
+      "roi": {
+        "x": 115,
+        "y": 528,
+        "width": 1209,
+        "height": 384
+      },
+      "changedPixels": 19,
+      "maxChannelDifference": 1,
+      "meanAbsoluteChannelDifference": 0.000013641898722543883,
+      "glError": 0,
+      "name": "original"
+    },
+    {
+      "mode": "no-pebbles",
+      "roi": {
+        "x": 115,
+        "y": 528,
+        "width": 1209,
+        "height": 384
+      },
+      "changedPixels": 91940,
+      "maxChannelDifference": 29,
+      "meanAbsoluteChannelDifference": 1.7443350220567964,
+      "glError": 0,
+      "name": "no-pebbles"
+    },
+    {
+      "mode": "blend-only",
+      "roi": {
+        "x": 115,
+        "y": 528,
+        "width": 1209,
+        "height": 384
+      },
+      "changedPixels": 404795,
+      "maxChannelDifference": 42,
+      "meanAbsoluteChannelDifference": 8.232428516450694,
+      "glError": 0,
+      "name": "blend-only"
+    },
+    {
+      "mode": "base-detail",
+      "roi": {
+        "x": 115,
+        "y": 528,
+        "width": 1209,
+        "height": 384
+      },
+      "changedPixels": 427700,
+      "maxChannelDifference": 165,
+      "meanAbsoluteChannelDifference": 14.377082902536532,
+      "glError": 0,
+      "name": "base-detail"
+    },
+    {
+      "mode": "base-sand",
+      "roi": {
+        "x": 115,
+        "y": 528,
+        "width": 1209,
+        "height": 384
+      },
+      "changedPixels": 427713,
+      "maxChannelDifference": 80,
+      "meanAbsoluteChannelDifference": 11.23016826923077,
+      "glError": 0,
+      "name": "base-sand"
+    },
+    {
+      "mode": "dynamics-off",
+      "roi": {
+        "x": 115,
+        "y": 528,
+        "width": 1209,
+        "height": 384
+      },
+      "changedPixels": 0,
+      "maxChannelDifference": 0,
+      "meanAbsoluteChannelDifference": 0,
+      "glError": 0,
+      "name": "dynamics-off-repeat"
+    }
+  ],
+  "url": "http://127.0.0.1:5173/?intro=0&desertQA=1795718055436",
+  "fixture": {
+    "x": 130,
+    "z": -4100,
+    "y": -26.94814157485962,
+    "camera": [
+      130,
+      -23.94814157485962,
+      -4096
+    ],
+    "audit": [
+      {
+        "name": "Plano 4 / original illustrated earth + illustrated sand",
+        "uuid": "0cdda460-d1d1-4a4c-8254-0b6e4333983a",
+        "settings": {
+          "sandShare": 0.6,
+          "detailTileMetres": 12,
+          "sandTileMetres": 8.8,
+          "maskMetres": 32,
+          "edgeSoftness": 0.14,
+          "rockShare": 0.3,
+          "rockPatchMetres": 29,
+          "pebbleMetres": 0.36
+        },
+        "uniforms": [
+          "canyonDirt",
+          "uDesertSand",
+          "uDesertSandShare",
+          "uDesertDetailMetres",
+          "uDesertSandMetres",
+          "uDesertMaskMetres",
+          "uDesertEdgeSoftness",
+          "uDesertOrigin",
+          "uDesertRockShare",
+          "uDesertRockPatchMetres",
+          "uDesertPebbleMetres",
+          "uSurfaceDetail",
+          "uSurfaceSand"
+        ],
+        "textures": [
+          {
+            "key": "canyonDirt",
+            "uuid": "84554e75-6065-43a5-9340-ef6e3e49197b",
+            "source": "892498f0-065d-45e4-af7f-b1288747f1c2",
+            "width": 1774,
+            "height": 887,
+            "url": "http://127.0.0.1:5173/textures/desert/desierto-floor.png",
+            "renderTarget": false,
+            "wrapS": 1002,
+            "wrapT": 1002,
+            "colorSpace": "srgb",
+            "channel": 0
+          },
+          {
+            "key": "uDesertSand",
+            "uuid": "3c712ed2-b5f0-43d6-97c6-76651757126a",
+            "source": "19787dbf-150e-458a-89d4-5fe28dd27f4b",
+            "width": 1672,
+            "height": 941,
+            "url": "http://127.0.0.1:5173/assets/texturas/desierto-floor2.png",
+            "renderTarget": false,
+            "wrapS": 1002,
+            "wrapT": 1002,
+            "colorSpace": "srgb",
+            "channel": 0
+          },
+          {
+            "key": "uSurfaceDetail",
+            "uuid": "7db95cb3-a2d8-4099-bac3-c824529bf505",
+            "source": "892498f0-065d-45e4-af7f-b1288747f1c2",
+            "width": 1774,
+            "height": 887,
+            "url": "http://127.0.0.1:5173/textures/desert/desierto-floor.png",
+            "renderTarget": false,
+            "wrapS": 1000,
+            "wrapT": 1000,
+            "colorSpace": "srgb",
+            "channel": 0
+          },
+          {
+            "key": "uSurfaceSand",
+            "uuid": "90de7e3f-e9e3-4ed8-87b9-d461bc4cab92",
+            "source": "19787dbf-150e-458a-89d4-5fe28dd27f4b",
+            "width": 1672,
+            "height": 941,
+            "url": "http://127.0.0.1:5173/assets/texturas/desierto-floor2.png",
+            "renderTarget": false,
+            "wrapS": 1000,
+            "wrapT": 1000,
+            "colorSpace": "srgb",
+            "channel": 0
+          }
+        ],
+        "map": {
+          "uuid": "84554e75-6065-43a5-9340-ef6e3e49197b",
+          "source": "892498f0-065d-45e4-af7f-b1288747f1c2",
+          "width": 1774,
+          "height": 887,
+          "url": "http://127.0.0.1:5173/textures/desert/desierto-floor.png",
+          "renderTarget": false,
+          "wrapS": 1002,
+          "wrapT": 1002,
+          "colorSpace": "srgb",
+          "channel": 0
+        },
+        "otherMaps": [],
+        "soilReferences": 0
+      },
+      {
+        "name": "Plano 4 / original illustrated earth + illustrated sand",
+        "uuid": "562da740-6b71-4e53-be9e-fabf3b5b1036",
+        "settings": {
+          "sandShare": 0.6,
+          "detailTileMetres": 12,
+          "sandTileMetres": 8.8,
+          "maskMetres": 32,
+          "edgeSoftness": 0.14,
+          "rockShare": 0.3,
+          "rockPatchMetres": 29,
+          "pebbleMetres": 0.36
+        },
+        "uniforms": [
+          "canyonDirt",
+          "uDesertSand",
+          "uDesertSandShare",
+          "uDesertDetailMetres",
+          "uDesertSandMetres",
+          "uDesertMaskMetres",
+          "uDesertEdgeSoftness",
+          "uDesertOrigin",
+          "uDesertRockShare",
+          "uDesertRockPatchMetres",
+          "uDesertPebbleMetres"
+        ],
+        "textures": [
+          {
+            "key": "canyonDirt",
+            "uuid": "84554e75-6065-43a5-9340-ef6e3e49197b",
+            "source": "892498f0-065d-45e4-af7f-b1288747f1c2",
+            "width": 1774,
+            "height": 887,
+            "url": "http://127.0.0.1:5173/textures/desert/desierto-floor.png",
+            "renderTarget": false,
+            "wrapS": 1002,
+            "wrapT": 1002,
+            "colorSpace": "srgb",
+            "channel": 0
+          },
+          {
+            "key": "uDesertSand",
+            "uuid": "3c712ed2-b5f0-43d6-97c6-76651757126a",
+            "source": "19787dbf-150e-458a-89d4-5fe28dd27f4b",
+            "width": 1672,
+            "height": 941,
+            "url": "http://127.0.0.1:5173/assets/texturas/desierto-floor2.png",
+            "renderTarget": false,
+            "wrapS": 1002,
+            "wrapT": 1002,
+            "colorSpace": "srgb",
+            "channel": 0
+          }
+        ],
+        "map": {
+          "uuid": "84554e75-6065-43a5-9340-ef6e3e49197b",
+          "source": "892498f0-065d-45e4-af7f-b1288747f1c2",
+          "width": 1774,
+          "height": 887,
+          "url": "http://127.0.0.1:5173/textures/desert/desierto-floor.png",
+          "renderTarget": false,
+          "wrapS": 1002,
+          "wrapT": 1002,
+          "colorSpace": "srgb",
+          "channel": 0
+        },
+        "otherMaps": [],
+        "soilReferences": 0
+      }
+    ],
+    "alpha": [
+      {
+        "uuid": "84554e75-6065-43a5-9340-ef6e3e49197b",
+        "min": 255,
+        "max": 255
+      },
+      {
+        "uuid": "3c712ed2-b5f0-43d6-97c6-76651757126a",
+        "min": 255,
+        "max": 255
+      }
+    ]
+  },
+  "setupWebglMessages": [],
+  "captureStartedAt": "2026-11-26T18:37:53.712Z",
+  "errors": [],
+  "webgl": [],
+  "pass": true
+}

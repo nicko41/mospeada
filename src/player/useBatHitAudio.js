@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import {assetUrl} from '../loading/resources.js'
 import { subscribeBatImpact } from './batAttackState'
 
 const HIT_URLS = [
@@ -13,7 +14,7 @@ const HIT_URLS = [
 export default function useBatHitAudio() {
   useEffect(() => {
     const sounds = HIT_URLS.map(path => {
-      const sound = new Audio(`${import.meta.env.BASE_URL}${path}`)
+      const sound = new Audio(assetUrl('/'+path))
       sound.preload = 'auto'
       sound.load()
       return sound

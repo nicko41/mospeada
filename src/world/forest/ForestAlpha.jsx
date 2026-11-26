@@ -1,5 +1,6 @@
+import {useGLTF} from '../../loading/resources.js'
 import { useLayoutEffect, useMemo } from 'react'
-import { useGLTF } from '@react-three/drei'
+
 import { registerColliders } from '../../player/collisionWorld.js'
 import { FOREST_CRASH, crashLocal } from './forestCrashConfig.js'
 import { alphaCrashColliders, alphaCrashPlacement, alphaDamageMaterial } from './forestAlpha.js'

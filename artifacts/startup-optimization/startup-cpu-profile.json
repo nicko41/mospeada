@@ -1,0 +1,116 @@
+{
+  "top": [
+    [
+      "De http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4204",
+      11253.868000000013
+    ],
+    [
+      "(idle) :-1",
+      4050.488999999999
+    ],
+    [
+      "u http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4080",
+      3106.881000000005
+    ],
+    [
+      "C http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4170",
+      1865.408
+    ],
+    [
+      "(program) :-1",
+      1464.9330000000034
+    ],
+    [
+      "IF http://127.0.0.1:5181/assets/index-aKBFLIcr.js:5388",
+      1011.9919999999981
+    ],
+    [
+      "(garbage collector) :-1",
+      693.753
+    ],
+    [
+      "update http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4410",
+      603.6870000000004
+    ],
+    [
+      "LH http://127.0.0.1:5181/assets/index-aKBFLIcr.js:5793",
+      553.2370000000003
+    ],
+    [
+      "iO http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4410",
+      426.46100000000007
+    ],
+    [
+      "multiplyMatrices http://127.0.0.1:5181/assets/index-aKBFLIcr.js:9",
+      405.86699999999996
+    ],
+    [
+      " http://127.0.0.1:5181/assets/index-aKBFLIcr.js:5974",
+      394.82499999999993
+    ],
+    [
+      "TF http://127.0.0.1:5181/assets/index-aKBFLIcr.js:5382",
+      330.6860000000001
+    ],
+    [
+      "cM http://127.0.0.1:5181/assets/index-aKBFLIcr.js:5294",
+      271.82500000000005
+    ],
+    [
+      "x http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4283",
+      236.09000000000006
+    ],
+    [
+      " http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4283",
+      228.76499999999996
+    ],
+    [
+      "$U http://127.0.0.1:5181/assets/index-aKBFLIcr.js:5974",
+      219.6300000000001
+    ],
+    [
+      "N http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4283",
+      209.00600000000009
+    ],
+    [
+      "Pb http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4276",
+      190.93400000000005
+    ],
+    [
+      " http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4276",
+      182.15199999999987
+    ],
+    [
+      "PH http://127.0.0.1:5181/assets/index-aKBFLIcr.js:5793",
+      172.794
+    ],
+    [
+      "updateWorldMatrix http://127.0.0.1:5181/assets/index-aKBFLIcr.js:9",
+      152.264
+    ],
+    [
+      " http://127.0.0.1:5181/assets/index-aKBFLIcr.js:4410",
+      150.2110000000001
+    ],
+    [
+      "EF http://127.0.0.1:5181/assets/index-aKBFLIcr.js:5382",
+      146.04499999999996
+    ]
+  ],
+  "ready": 37086.20000000298,
+  "preparation": {
+    "startMs": 16416.09999999404,
+    "initialMode": "ANIME",
+    "initialNight": false,
+    "initialGLError": 0,
+    "compileMs": 2631.800000011921,
+    "primeMs": 14699.5,
+    "totalMs": 17331.60000000894,
+    "programs": 87,
+    "uploadedTextures": 59,
+    "textureMs": 1645.7000000029802,
+    "startupViews": 10,
+    "startupViewsMs": 1587.1000000089407,
+    "openingMs": 3267.800000011921
+  }
+}

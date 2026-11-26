@@ -1,6 +1,8 @@
+import {useGLTF,useTexture} from '../loading/resources.js'
+import {DeferredStage} from '../loading/DeferredStage.jsx'
 import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
-import { useGLTF,useTexture } from '@react-three/drei'
+
 import * as T from 'three'
 import { bikeConfig, TEST_STARTS } from './bikeConfig.js'
 import { createBikeState, advanceBike } from './bikePhysics.js'
@@ -298,5 +300,5 @@ export default function Motorcycle() {
     if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta)
     else if(runtime.state)runtime.cameraController?.update(riderCameraState(runtime.state),delta)
   })
-  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} /><GallantCombat runtime={runtime}/>{activeEnvironment==='forest'&&<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><ForestStage3Encounter runtime={runtime}/><ForestRandEscape runtime={runtime}/><ForestDesertScouts runtime={runtime}/><ForestEnding runtime={runtime}/></>}</>
+  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} />{activeEnvironment==='forest'?<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><DeferredStage id="stage3"><GallantCombat runtime={runtime}/><ForestStage3Encounter runtime={runtime}/></DeferredStage><DeferredStage id="rand"><ForestRandEscape runtime={runtime}/></DeferredStage><DeferredStage id="scouts"><ForestDesertScouts runtime={runtime}/></DeferredStage><ForestEnding runtime={runtime}/></>:<GallantCombat runtime={runtime}/>}</>
 }

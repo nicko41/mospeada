@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import {assetUrl} from '../loading/resources.js'
 import { subscribeBatSwing } from './batAttackState'
 
 const SWOOSH_URLS = [
@@ -10,7 +11,7 @@ const SWOOSH_URLS = [
 export default function useBatSwingAudio() {
   useEffect(() => {
     const sounds = SWOOSH_URLS.map(path => {
-      const sound = new Audio(`${import.meta.env.BASE_URL}${path}`)
+      const sound = new Audio(assetUrl('/'+path))
       sound.preload = 'auto'
       sound.volume = 0.5
       sound.load()

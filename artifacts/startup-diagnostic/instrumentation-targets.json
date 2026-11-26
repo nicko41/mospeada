@@ -1,0 +1,21 @@
+{
+  "sha256": "c7af0bb1296d6290ab91c18215221468cace8bc724fbe31221e4c7ae26b0c39f",
+  "identified": [
+    {
+      "type": "WebGLRenderer",
+      "name": "Mg"
+    },
+    {
+      "type": "GLTFLoader",
+      "name": "Qy"
+    },
+    {
+      "type": "GLTFLoader",
+      "name": "JS"
+    },
+    {
+      "type": "AnimeRenderer",
+      "name": "qK"
+    }
+  ]
+}

@@ -1,0 +1,809 @@
+{
+  "source": "before-20mbps-cold.json",
+  "mb": 211.438644,
+  "mandatoryBytes": 36676642,
+  "anticipatedBytes": 38602209,
+  "rows": [
+    {
+      "file": "/models/mospeada/scott-gear-v3-helmet-boundary.glb",
+      "transportBytes": 52470956,
+      "decodedBytes": 61857948,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+      "transportBytes": 40436344,
+      "decodedBytes": 46259340,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/models/mospeada/scott-bernard-animated-original.glb",
+      "transportBytes": 12563438,
+      "decodedBytes": 13993900,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/models/mospeada/invid-scout-rigged.glb?rig=flight-v4-leg-seam",
+      "transportBytes": 11911117,
+      "decodedBytes": 14784808,
+      "partial": false,
+      "group": "Scouts",
+      "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/models/mospeada/rand-casual-rigged.glb",
+      "transportBytes": 7937138,
+      "decodedBytes": 11058140,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/models/mospeada/scott-shoulders-normal.png",
+      "transportBytes": 5737901,
+      "decodedBytes": 5737544,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/models/mospeada/alpha-fighter-down.glb",
+      "transportBytes": 5091799,
+      "decodedBytes": 6311572,
+      "partial": false,
+      "group": "Introducción",
+      "why": "Alpha accidentado visible en la introducción y el claro inicial.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/mospeada/scott-shoulders-decals.png",
+      "transportBytes": 4943573,
+      "decodedBytes": 4943216,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/models/glTF/Bark_NormalTree_Normal.png",
+      "transportBytes": 4384853,
+      "decodedBytes": 4384496,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Bark_NormalTree.png",
+      "transportBytes": 3895145,
+      "decodedBytes": 3894788,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/mospeada/rand-cyclone.glb",
+      "transportBytes": 3817984,
+      "decodedBytes": 23345364,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/models/mospeada/cyclone-vr052f.glb",
+      "transportBytes": 3817984,
+      "decodedBytes": 23345364,
+      "partial": false,
+      "group": "Cyclone",
+      "why": "Modelo original de la moto para intro y conducción; URL compartida con la futura instancia de Rand.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/mospeada/horizon-t-desert-landmark.glb",
+      "transportBytes": 3599147,
+      "decodedBytes": 4412784,
+      "partial": false,
+      "group": "Desierto posterior",
+      "why": "Modelo posterior, descargado fuera de la barrera inicial.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/assets/02-Robotech-Lifeline-Bd__GJoj.mp3",
+      "transportBytes": 2977870,
+      "decodedBytes": 2977437,
+      "partial": false,
+      "group": "Música posterior",
+      "why": "Anticipación de Lifeline para su cue original; no bloquea el preloader.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/models/mospeada/mars-gallant.glb",
+      "transportBytes": 2897698,
+      "decodedBytes": 3299312,
+      "partial": false,
+      "group": "Plano 3",
+      "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/models/mospeada/scott-shoulders-roughness.png",
+      "transportBytes": 2809963,
+      "decodedBytes": 2809606,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/models/deadtrees01.glb",
+      "transportBytes": 2702180,
+      "decodedBytes": 2744172,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/assets/orilla-rio-BJGVuZGQ.png",
+      "transportBytes": 2650767,
+      "decodedBytes": 2650410,
+      "partial": false,
+      "group": "Plano 2",
+      "why": "Textura original del barranco/ribera; anticipada para el primer salto, fuera de la barrera del preloader.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/textures/desert/desierto-floor.png",
+      "transportBytes": 2628553,
+      "decodedBytes": 2627854,
+      "partial": false,
+      "group": "Plano 4",
+      "why": "Mapas originales del desierto; anticipados para la continuidad sin depender de cuánto dura el combate.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/models/glTF/Leaves.png",
+      "transportBytes": 2586789,
+      "decodedBytes": 2586432,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Rocks_Diffuse.png",
+      "transportBytes": 2517755,
+      "decodedBytes": 2517398,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/foliage/forest/atlas.png",
+      "transportBytes": 2323258,
+      "decodedBytes": 2322217,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/tree02.glb",
+      "transportBytes": 2300199,
+      "decodedBytes": 2385268,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/assets/01-intro-Robotech-Roy-Fokker-s-Theme-XxvuwqSQ.mp3",
+      "transportBytes": 2211265,
+      "decodedBytes": 2210832,
+      "partial": false,
+      "group": "Introducción",
+      "why": "Música de la introducción original.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/desierto-floor2-CulRt4mX.png",
+      "transportBytes": 2143467,
+      "decodedBytes": 2142768,
+      "partial": false,
+      "group": "Plano 4",
+      "why": "Mapas originales del desierto; anticipados para la continuidad sin depender de cuánto dura el combate.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/assets/follaje1-CKIQsWbX.png",
+      "transportBytes": 1897852,
+      "decodedBytes": 1897495,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/explosion-piso-DTBYY79e.png",
+      "transportBytes": 1881543,
+      "decodedBytes": 1880844,
+      "partial": false,
+      "group": "Plano 3",
+      "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/assets/invid-orbes-BLaJbtF8.png",
+      "transportBytes": 1507863,
+      "decodedBytes": 1507164,
+      "partial": false,
+      "group": "Scouts",
+      "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/assets/follaje2-tJ9eulzM.png",
+      "transportBytes": 1369442,
+      "decodedBytes": 1369085,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/explosion-aire-DrcJascN.png",
+      "transportBytes": 1365649,
+      "decodedBytes": 1364950,
+      "partial": false,
+      "group": "Plano 3",
+      "why": "Arma/VFX del próximo combate; descarga anticipada tras terminar las dependencias críticas, fuera de la barrera inicial.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/assets/invid-blood02-Chxk3y2v.png",
+      "transportBytes": 1344370,
+      "decodedBytes": 1343671,
+      "partial": false,
+      "group": "Scouts",
+      "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/assets/invid-blood01-DKbTfKQU.png",
+      "transportBytes": 1261099,
+      "decodedBytes": 1260400,
+      "partial": false,
+      "group": "Scouts",
+      "why": "Recursos del combate del desierto, anticipados después de los planos contiguos.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/assets/impascto-invid-suelo-DN9g5Zv7.png",
+      "transportBytes": 1208918,
+      "decodedBytes": 1208219,
+      "partial": false,
+      "group": "VFX iniciales",
+      "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/03-Robotech-Cyclone-OtF79o3S.mp3",
+      "transportBytes": 1111750,
+      "decodedBytes": 1111317,
+      "partial": false,
+      "group": "Música posterior",
+      "why": "Tema posterior solicitado según la preparación/estado del escenario; no bloquea el preloader.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/transformations/cyclone-rear-pieces.glb",
+      "transportBytes": 1027932,
+      "decodedBytes": 5608972,
+      "partial": false,
+      "group": "Armor",
+      "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/04-Robotech-Mission-Accomplished-BkeXgIiw.mp3",
+      "transportBytes": 1019518,
+      "decodedBytes": 1019085,
+      "partial": false,
+      "group": "Música posterior",
+      "why": "Tema posterior solicitado según la preparación/estado del escenario; no bloquea el preloader.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/models/glTF/PathRocks_Diffuse.png",
+      "transportBytes": 812088,
+      "decodedBytes": 811732,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/index-CyFGymvE.js",
+      "transportBytes": 659887,
+      "decodedBytes": 2409808,
+      "partial": false,
+      "group": "Aplicación",
+      "why": "HTML/JavaScript/CSS de arranque y runtime. Los GLB e imágenes grandes son archivos externos.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/hojas flotantes-CScvGVsT.png",
+      "transportBytes": 653609,
+      "decodedBytes": 652911,
+      "partial": false,
+      "group": "VFX iniciales",
+      "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/dirt01-Z3GgFyhG.jpg",
+      "transportBytes": 378175,
+      "decodedBytes": 377132,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/grass-01-BS-zutJV.jpg",
+      "transportBytes": 369063,
+      "decodedBytes": 368020,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Atlas/copa/suelo originales visibles desde la introducción y la conducción inicial.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/rangerover.glb",
+      "transportBytes": 345984,
+      "decodedBytes": 2181560,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/assets/barranco-B_hlRwfz.jpg",
+      "transportBytes": 301798,
+      "decodedBytes": 301441,
+      "partial": false,
+      "group": "Plano 2",
+      "why": "Textura original del barranco/ribera; anticipada para el primer salto, fuera de la barrera del preloader.",
+      "inclusion": "anticipado"
+    },
+    {
+      "file": "/models/glTF/CommonTree_1.bin",
+      "transportBytes": 217371,
+      "decodedBytes": 491576,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/CommonTree_2.bin",
+      "transportBytes": 184148,
+      "decodedBytes": 423024,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Leaves_NormalTree_C.png",
+      "transportBytes": 159152,
+      "decodedBytes": 158796,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/CommonTree_3.bin",
+      "transportBytes": 139725,
+      "decodedBytes": 296984,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/CommonTree_4.bin",
+      "transportBytes": 132251,
+      "decodedBytes": 307596,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/animations/scott-cyclone-actions.json",
+      "transportBytes": 129123,
+      "decodedBytes": 737452,
+      "partial": false,
+      "group": "Scott funcional",
+      "why": "Clips originales de conducción y transformación.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/phone.glb",
+      "transportBytes": 94133,
+      "decodedBytes": 362728,
+      "partial": false,
+      "group": "REVISAR",
+      "why": "Requiere identificar el consumidor antes de dar por cerrado el inventario.",
+      "inclusion": "revisar"
+    },
+    {
+      "file": "/assets/forestFoliageWorker-UZCMauDS.js",
+      "transportBytes": 78582,
+      "decodedBytes": 123632,
+      "partial": true,
+      "group": "Bosque inicial",
+      "why": "Worker de distribución forestal; URL compartida por los sectores iniciales y el barranco.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Leaves_TwistedTree_C.png",
+      "transportBytes": 70708,
+      "decodedBytes": 70353,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/mospeada/cyclone-cover-rango.png",
+      "transportBytes": 67989,
+      "decodedBytes": 67634,
+      "partial": false,
+      "group": "Cyclone",
+      "why": "Calcomanías originales utilizadas por los materiales finales de la moto.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Bush_Common.bin",
+      "transportBytes": 44919,
+      "decodedBytes": 91800,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/transformations/cyclone-front-battloid.json",
+      "transportBytes": 37215,
+      "decodedBytes": 156217,
+      "partial": false,
+      "group": "Armor",
+      "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Grass.png",
+      "transportBytes": 33960,
+      "decodedBytes": 33605,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Mapa de color/alpha utilizado por los materiales Lambert finales del bosque.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/mospeada/cyclone-cover-21.png",
+      "transportBytes": 23123,
+      "decodedBytes": 22768,
+      "partial": false,
+      "group": "Cyclone",
+      "why": "Calcomanías originales utilizadas por los materiales finales de la moto.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/transformations/cyclone-suspension-hide.json",
+      "transportBytes": 18437,
+      "decodedBytes": 51646,
+      "partial": false,
+      "group": "Armor",
+      "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Grass_Wispy_Short.bin",
+      "transportBytes": 15294,
+      "decodedBytes": 25324,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/transformations/cyclone-rear-battloid.json",
+      "transportBytes": 11316,
+      "decodedBytes": 39541,
+      "partial": false,
+      "group": "Armor",
+      "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/",
+      "transportBytes": 11238,
+      "decodedBytes": 48399,
+      "partial": false,
+      "group": "Aplicación",
+      "why": "HTML/JavaScript/CSS de arranque y runtime. Los GLB e imágenes grandes son archivos externos.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/transformations/cyclone-wheel-battloid.json",
+      "transportBytes": 10063,
+      "decodedBytes": 41102,
+      "partial": false,
+      "group": "Armor",
+      "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Rock_Medium_1.bin",
+      "transportBytes": 9338,
+      "decodedBytes": 13284,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/fonts/mospeada/Open24DisplayST.ttf",
+      "transportBytes": 8337,
+      "decodedBytes": 26988,
+      "partial": false,
+      "group": "Interfaz",
+      "why": "Fuente del display Cyclone; HTML y CSS usan exactamente la misma URL.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Fern_1.bin",
+      "transportBytes": 8315,
+      "decodedBytes": 11448,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/transformations/cyclone-guard-battloid.json",
+      "transportBytes": 8103,
+      "decodedBytes": 34843,
+      "partial": false,
+      "group": "Armor",
+      "why": "Geometrías y configuraciones originales para que la primera transformación esté preparada.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/assets/index-9q4cZWq1.css",
+      "transportBytes": 7043,
+      "decodedBytes": 26700,
+      "partial": false,
+      "group": "Aplicación",
+      "why": "HTML/JavaScript/CSS de arranque y runtime. Los GLB e imágenes grandes son archivos externos.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Rock_Medium_2.bin",
+      "transportBytes": 6761,
+      "decodedBytes": 9432,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/foliage/forest/wheel-fragments.png",
+      "transportBytes": 5595,
+      "decodedBytes": 4899,
+      "partial": false,
+      "group": "VFX iniciales",
+      "why": "Polvo/fragmentos/hojas y contactos necesarios desde el primer tramo.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Grass_Common_Short.bin",
+      "transportBytes": 5044,
+      "decodedBytes": 7052,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Plant_1.bin",
+      "transportBytes": 3891,
+      "decodedBytes": 5520,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Pebble_Round_2.bin",
+      "transportBytes": 3064,
+      "decodedBytes": 7468,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Plant_7.bin",
+      "transportBytes": 1923,
+      "decodedBytes": 2016,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Pebble_Square_3.bin",
+      "transportBytes": 1730,
+      "decodedBytes": 3768,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/CommonTree_4.gltf",
+      "transportBytes": 1382,
+      "decodedBytes": 3865,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/CommonTree_2.gltf",
+      "transportBytes": 1380,
+      "decodedBytes": 3866,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/CommonTree_1.gltf",
+      "transportBytes": 1380,
+      "decodedBytes": 3869,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/CommonTree_3.gltf",
+      "transportBytes": 1371,
+      "decodedBytes": 3864,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Bush_Common.gltf",
+      "transportBytes": 1129,
+      "decodedBytes": 2101,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Fern_1.gltf",
+      "transportBytes": 1129,
+      "decodedBytes": 2058,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Plant_1.gltf",
+      "transportBytes": 1122,
+      "decodedBytes": 2057,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Grass_Wispy_Short.gltf",
+      "transportBytes": 1108,
+      "decodedBytes": 2025,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Grass_Common_Short.gltf",
+      "transportBytes": 1104,
+      "decodedBytes": 2023,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Plant_7.gltf",
+      "transportBytes": 1093,
+      "decodedBytes": 1844,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Pebble_Square_3.gltf",
+      "transportBytes": 1092,
+      "decodedBytes": 1847,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Rock_Medium_1.gltf",
+      "transportBytes": 1087,
+      "decodedBytes": 1831,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Pebble_Round_2.gltf",
+      "transportBytes": 1086,
+      "decodedBytes": 1848,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/models/glTF/Rock_Medium_2.gltf",
+      "transportBytes": 1081,
+      "decodedBytes": 1825,
+      "partial": false,
+      "group": "Bosque inicial",
+      "why": "Geometría de vegetación/rocas del bosque inicial; también reutilizada en los planos posteriores.",
+      "inclusion": "obligatorio"
+    },
+    {
+      "file": "/favicon.svg",
+      "transportBytes": 526,
+      "decodedBytes": 186,
+      "partial": false,
+      "group": "Interfaz",
+      "why": "Icono del documento.",
+      "inclusion": "obligatorio"
+    }
+  ]
+}

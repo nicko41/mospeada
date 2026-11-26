@@ -1,0 +1,525 @@
+{
+  "top": [
+    [
+      "(idle) :-1",
+      27685.719000000045
+    ],
+    [
+      "getProgramParameter :-1",
+      1058.929
+    ],
+    [
+      "onBeforeRender http://127.0.0.1:5181/assets/index-BYsop6ON.js:9",
+      744.5750000000005
+    ],
+    [
+      "toDataURL :-1",
+      690.4740000000004
+    ],
+    [
+      "(program) :-1",
+      666.0979999999997
+    ],
+    [
+      "texSubImage2D :-1",
+      650.5959999999999
+    ],
+    [
+      "updateWorldMatrix http://127.0.0.1:5181/assets/index-BYsop6ON.js:9",
+      519.3160000000003
+    ],
+    [
+      "multiplyMatrices http://127.0.0.1:5181/assets/index-BYsop6ON.js:9",
+      377.4299999999999
+    ],
+    [
+      "Et http://127.0.0.1:5181/assets/index-BYsop6ON.js:4228",
+      356.76299999999986
+    ],
+    [
+      "renderBufferDirect http://127.0.0.1:5181/assets/index-BYsop6ON.js:4228",
+      350.90500000000014
+    ],
+    [
+      "updateMatrixWorld http://127.0.0.1:5181/assets/index-BYsop6ON.js:9",
+      316.439
+    ],
+    [
+      "sync http://127.0.0.1:5181/assets/index-BYsop6ON.js:5866",
+      252.171
+    ],
+    [
+      "upload http://127.0.0.1:5181/assets/index-BYsop6ON.js:4126",
+      219.19199999999987
+    ],
+    [
+      "setValue http://127.0.0.1:5181/assets/index-BYsop6ON.js:4126",
+      196.68100000000004
+    ],
+    [
+      "Pb http://127.0.0.1:5181/assets/index-BYsop6ON.js:4276",
+      191.776
+    ],
+    [
+      "a http://127.0.0.1:5181/assets/index-BYsop6ON.js:4228",
+      189.966
+    ],
+    [
+      "bt http://127.0.0.1:5181/assets/index-BYsop6ON.js:4228",
+      183.27000000000004
+    ],
+    [
+      "bindVertexArray :-1",
+      181.45200000000006
+    ],
+    [
+      "traverse http://127.0.0.1:5181/assets/index-BYsop6ON.js:9",
+      163.04200000000012
+    ],
+    [
+      "variant http://127.0.0.1:5181/assets/index-BYsop6ON.js:5866",
+      146.44499999999996
+    ],
+    [
+      "om http://127.0.0.1:5181/assets/index-BYsop6ON.js:4126",
+      145.767
+    ],
+    [
+      "ZH http://127.0.0.1:5181/assets/index-BYsop6ON.js:5866",
+      132.92
+    ]
+  ],
+  "slow": [
+    {
+      "id": "rand",
+      "name": "Pieza_30",
+      "type": "Mesh",
+      "ms": 1061.5,
+      "programsAdded": 1,
+      "drawCalls": 2,
+      "triangles": 2576
+    }
+  ],
+  "queue": {
+    "jobs": 1602,
+    "maxJobMs": 1061.5,
+    "overruns": [
+      {
+        "label": "stage2 canyon dressing",
+        "ms": 14.100000008940697
+      },
+      {
+        "label": "stage2 river",
+        "ms": 9.5
+      },
+      {
+        "label": "stage2 rim foliage",
+        "ms": 22.700000002980232
+      },
+      {
+        "label": "stage2 boundary layout",
+        "ms": 107.6000000089407
+      },
+      {
+        "label": "stage2 boundary batches",
+        "ms": 10.600000008940697
+      },
+      {
+        "label": "stage2 texture tile",
+        "ms": 20.700000002980232
+      },
+      {
+        "label": "stage2 texture tile",
+        "ms": 21.299999997019768
+      },
+      {
+        "label": "stage3 texture tile",
+        "ms": 20.799999997019768
+      },
+      {
+        "label": "stage3 texture tile",
+        "ms": 15.599999994039536
+      },
+      {
+        "label": "stage3 texture tile",
+        "ms": 15.599999994039536
+      },
+      {
+        "label": "stage3 texture tile",
+        "ms": 16.400000005960464
+      },
+      {
+        "label": "ForestStage3World",
+        "ms": 13.299999997019768
+      },
+      {
+        "label": "ForestStage3World",
+        "ms": 14.799999997019768
+      },
+      {
+        "label": "ForestStage3World",
+        "ms": 9.799999997019768
+      },
+      {
+        "label": "ForestStage4World",
+        "ms": 21.900000005960464
+      },
+      {
+        "label": "ForestStage4World",
+        "ms": 13.299999997019768
+      },
+      {
+        "label": "ForestStage4World",
+        "ms": 12
+      },
+      {
+        "label": "ForestStage4World",
+        "ms": 17.700000002980232
+      },
+      {
+        "label": "ForestStage4World",
+        "ms": 13.5
+      },
+      {
+        "label": "ForestStage4World",
+        "ms": 15.900000005960464
+      },
+      {
+        "label": "ForestStage4World",
+        "ms": 75.09999999403954
+      },
+      {
+        "label": "ForestStage4World",
+        "ms": 14.599999994039536
+      },
+      {
+        "label": "stage4 texture tile",
+        "ms": 19.30000001192093
+      },
+      {
+        "label": "stage4 texture tile",
+        "ms": 16.900000005960464
+      },
+      {
+        "label": "stage4 texture tile",
+        "ms": 18.399999991059303
+      },
+      {
+        "label": "stage4 texture tile",
+        "ms": 14.100000008940697
+      },
+      {
+        "label": "stage4 geometry tile",
+        "ms": 22.200000002980232
+      },
+      {
+        "label": "stage4 geometry tile",
+        "ms": 18.900000005960464
+      },
+      {
+        "label": "stage4 geometry tile",
+        "ms": 20.099999994039536
+      },
+      {
+        "label": "stage4 geometry tile",
+        "ms": 16.5
+      },
+      {
+        "label": "rand rider",
+        "ms": 25.599999994039536
+      },
+      {
+        "label": "rand geometry",
+        "ms": 1061.5
+      }
+    ],
+    "labels": {
+      "stage2 ground material": {
+        "count": 1,
+        "totalMs": 0.20000000298023224,
+        "maxMs": 0.20000000298023224
+      },
+      "stage2 cliff materials": {
+        "count": 1,
+        "totalMs": 0.5,
+        "maxMs": 0.5
+      },
+      "stage2 canyon dressing": {
+        "count": 1,
+        "totalMs": 14.100000008940697,
+        "maxMs": 14.100000008940697
+      },
+      "stage2 river": {
+        "count": 1,
+        "totalMs": 9.5,
+        "maxMs": 9.5
+      },
+      "stage2 impostors": {
+        "count": 1,
+        "totalMs": 0.30000001192092896,
+        "maxMs": 0.30000001192092896
+      },
+      "stage2 foliage manager": {
+        "count": 1,
+        "totalMs": 1.7999999970197678,
+        "maxMs": 1.7999999970197678
+      },
+      "stage2 rim foliage": {
+        "count": 60,
+        "totalMs": 174.70000000298023,
+        "maxMs": 22.700000002980232
+      },
+      "stage2 boundary layout": {
+        "count": 21,
+        "totalMs": 154.1000000089407,
+        "maxMs": 107.6000000089407
+      },
+      "stage2 boundary batches": {
+        "count": 11,
+        "totalMs": 30.600000008940697,
+        "maxMs": 10.600000008940697
+      },
+      "stage2 batch": {
+        "count": 42,
+        "totalMs": 55.5,
+        "maxMs": 2.2999999970197678
+      },
+      "stage2 texture": {
+        "count": 16,
+        "totalMs": 7.699999988079071,
+        "maxMs": 6.4000000059604645
+      },
+      "stage2 texture tile": {
+        "count": 2,
+        "totalMs": 42,
+        "maxMs": 21.299999997019768
+      },
+      "stage2 texture mipmaps": {
+        "count": 1,
+        "totalMs": 0.10000000894069672,
+        "maxMs": 0.10000000894069672
+      },
+      "stage2 shader": {
+        "count": 22,
+        "totalMs": 14.399999991059303,
+        "maxMs": 2.3999999910593033
+      },
+      "stage2 program bindings": {
+        "count": 7,
+        "totalMs": 0.7000000029802322,
+        "maxMs": 0.20000000298023224
+      },
+      "stage2 geometry": {
+        "count": 154,
+        "totalMs": 41.79999999701977,
+        "maxMs": 1
+      },
+      "stage2 geometry tile": {
+        "count": 3,
+        "totalMs": 0.3999999910593033,
+        "maxMs": 0.29999999701976776
+      },
+      "stage3 texture": {
+        "count": 15,
+        "totalMs": 1.1000000089406967,
+        "maxMs": 0.4000000059604645
+      },
+      "stage3 texture tile": {
+        "count": 4,
+        "totalMs": 68.3999999910593,
+        "maxMs": 20.799999997019768
+      },
+      "ForestStage3World": {
+        "count": 66,
+        "totalMs": 229.80000004172325,
+        "maxMs": 14.799999997019768
+      },
+      "stage3 shader": {
+        "count": 27,
+        "totalMs": 6.0999999940395355,
+        "maxMs": 1.6000000089406967
+      },
+      "stage3 program bindings": {
+        "count": 2,
+        "totalMs": 0.5,
+        "maxMs": 0.29999999701976776
+      },
+      "stage3 geometry": {
+        "count": 235,
+        "totalMs": 44.3999999910593,
+        "maxMs": 1
+      },
+      "scouts texture": {
+        "count": 6,
+        "totalMs": 0.5999999940395355,
+        "maxMs": 0.29999999701976776
+      },
+      "ForestStage4World": {
+        "count": 84,
+        "totalMs": 348.0000000447035,
+        "maxMs": 75.09999999403954
+      },
+      "stage4 texture": {
+        "count": 16,
+        "totalMs": 1.300000011920929,
+        "maxMs": 0.699999988079071
+      },
+      "stage4 texture tile": {
+        "count": 4,
+        "totalMs": 68.7000000178814,
+        "maxMs": 19.30000001192093
+      },
+      "stage4 texture mipmaps": {
+        "count": 2,
+        "totalMs": 0.19999998807907104,
+        "maxMs": 0.09999999403953552
+      },
+      "stage4 shader": {
+        "count": 22,
+        "totalMs": 11.000000014901161,
+        "maxMs": 2.6000000089406967
+      },
+      "stage4 program bindings": {
+        "count": 6,
+        "totalMs": 0.7000000029802322,
+        "maxMs": 0.20000000298023224
+      },
+      "stage4 geometry": {
+        "count": 220,
+        "totalMs": 46.200000032782555,
+        "maxMs": 5
+      },
+      "stage4 geometry tile": {
+        "count": 8,
+        "totalMs": 78.20000000298023,
+        "maxMs": 22.200000002980232
+      },
+      "stage4 geometry mipmaps": {
+        "count": 2,
+        "totalMs": 0.09999999403953552,
+        "maxMs": 0.09999999403953552
+      },
+      "scouts texture tile": {
+        "count": 12,
+        "totalMs": 47,
+        "maxMs": 6.9000000059604645
+      },
+      "scouts texture mipmaps": {
+        "count": 3,
+        "totalMs": 0,
+        "maxMs": 0
+      },
+      "horizon texture": {
+        "count": 4,
+        "totalMs": 14.699999988079071,
+        "maxMs": 6.5
+      },
+      "scouts shader": {
+        "count": 1,
+        "totalMs": 2,
+        "maxMs": 2
+      },
+      "rand vehicle": {
+        "count": 17,
+        "totalMs": 45.900000005960464,
+        "maxMs": 6.4000000059604645
+      },
+      "horizon shader": {
+        "count": 2,
+        "totalMs": 3.9000000059604645,
+        "maxMs": 2.4000000059604645
+      },
+      "scouts program bindings": {
+        "count": 3,
+        "totalMs": 0.4000000059604645,
+        "maxMs": 0.4000000059604645
+      },
+      "scouts geometry": {
+        "count": 3,
+        "totalMs": 3.2000000029802322,
+        "maxMs": 1.800000011920929
+      },
+      "horizon program bindings": {
+        "count": 2,
+        "totalMs": 0.3999999910593033,
+        "maxMs": 0.29999999701976776
+      },
+      "horizon geometry": {
+        "count": 5,
+        "totalMs": 2.8999999910593033,
+        "maxMs": 1.5999999940395355
+      },
+      "rand rider": {
+        "count": 1,
+        "totalMs": 25.599999994039536,
+        "maxMs": 25.599999994039536
+      },
+      "rand skinned bounds": {
+        "count": 6,
+        "totalMs": 11.799999997019768,
+        "maxMs": 2.3999999910593033
+      },
+      "rand texture": {
+        "count": 10,
+        "totalMs": 0.5000000149011612,
+        "maxMs": 0.20000000298023224
+      },
+      "rand texture tile": {
+        "count": 12,
+        "totalMs": 34.19999998807907,
+        "maxMs": 3.6000000089406967
+      },
+      "rand texture mipmaps": {
+        "count": 3,
+        "totalMs": 0.10000000894069672,
+        "maxMs": 0.10000000894069672
+      },
+      "rand shader": {
+        "count": 217,
+        "totalMs": 74.1000000089407,
+        "maxMs": 3.9000000059604645
+      },
+      "rand program bindings": {
+        "count": 17,
+        "totalMs": 4.200000002980232,
+        "maxMs": 0.4000000059604645
+      },
+      "rand geometry": {
+        "count": 217,
+        "totalMs": 1101.1000000238419,
+        "maxMs": 1061.5
+      },
+      "rand geometry tile": {
+        "count": 3,
+        "totalMs": 0.10000000894069672,
+        "maxMs": 0.10000000894069672
+      }
+    }
+  },
+  "stages": {
+    "stage2": {
+      "phase": "ready",
+      "ready": 32350.20000000298
+    },
+    "stage3": {
+      "phase": "ready",
+      "ready": 45357
+    },
+    "stage4": {
+      "phase": "ready",
+      "ready": 62414.09999999404
+    },
+    "scouts": {
+      "phase": "ready",
+      "ready": 65540.40000000596
+    },
+    "horizon": {
+      "phase": "ready",
+      "ready": 65998.59999999404
+    },
+    "rand": {
+      "phase": "ready",
+      "ready": 81282.5
+    }
+  }
+}

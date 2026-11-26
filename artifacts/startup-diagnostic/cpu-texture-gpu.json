@@ -1,0 +1,364 @@
+{
+  "readyMs": 35815.09999999404,
+  "preparation": {
+    "startMs": 15511.5,
+    "initialMode": "ANIME",
+    "initialNight": false,
+    "initialGLError": 0,
+    "compileMs": 3953.3999999910593,
+    "primeMs": 10553.90000000596,
+    "totalMs": 14507.29999999702,
+    "programs": 125,
+    "uploadedTextures": 92,
+    "textureMs": 1180.7000000029802,
+    "startupViews": 44,
+    "startupViewsMs": 4558.29999999702,
+    "openingMs": 5749
+  },
+  "renderer": {
+    "vendor": "Google Inc. (Intel)",
+    "renderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009A68) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "timerQuery": true,
+    "parallelCompile": true,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36"
+  },
+  "renderInfo": {
+    "memory": {
+      "geometries": 1566,
+      "textures": 1846
+    },
+    "programs": 125
+  },
+  "glb": {
+    "count": 15,
+    "sumInclusiveWallMs": 10125.29999999702,
+    "unionInclusiveWallMs": 3917.000000014901,
+    "assets": [
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 2395.5,
+        "end": 2400.7999999970198,
+        "duration": 5.299999997019768,
+        "path": "/models/",
+        "bytes": 362728,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/phone.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 2439.8999999910593,
+        "end": 2567.5999999940395,
+        "duration": 127.70000000298023,
+        "path": "/models/",
+        "bytes": 2181560,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/rangerover.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 2428.5999999940395,
+        "end": 2588,
+        "duration": 159.40000000596046,
+        "path": "/models/",
+        "bytes": 2385268,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/tree02.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 2447.5,
+        "end": 2597.0999999940395,
+        "duration": 149.59999999403954,
+        "path": "/models/",
+        "bytes": 2744172,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/deadtrees01.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 2753.8999999910593,
+        "end": 2921.5,
+        "duration": 167.6000000089407,
+        "path": "/models/mospeada/",
+        "bytes": 3299312,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/mars-gallant.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 3226.3999999910593,
+        "end": 3395.2999999970198,
+        "duration": 168.90000000596046,
+        "path": "/models/mospeada/",
+        "bytes": 23345364,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/cyclone-vr052f.glb",
+          "public/models/mospeada/rand-cyclone.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 3300.2000000029802,
+        "end": 3407.8999999910593,
+        "duration": 107.69999998807907,
+        "path": "/models/mospeada/",
+        "bytes": 23345364,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/cyclone-vr052f.glb",
+          "public/models/mospeada/rand-cyclone.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 3923.5999999940395,
+        "end": 4817,
+        "duration": 893.4000000059605,
+        "path": "/models/mospeada/",
+        "bytes": 4412784,
+        "meshes": 2,
+        "candidateFiles": [
+          "public/models/mospeada/horizon-t-desert-landmark.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 4025.2000000029802,
+        "end": 5132.0999999940395,
+        "duration": 1106.8999999910593,
+        "path": "/models/mospeada/",
+        "bytes": 6311572,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/alpha-fighter-down.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 3994.7999999970198,
+        "end": 5937.0999999940395,
+        "duration": 1942.2999999970198,
+        "path": "/models/mospeada/",
+        "bytes": 11058140,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/rand-casual-rigged.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 4043.2000000029802,
+        "end": 6073.70000000298,
+        "duration": 2030.5,
+        "path": "/models/mospeada/",
+        "bytes": 14784808,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/invid-scout-rigged.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 4111,
+        "end": 6101.70000000298,
+        "duration": 1990.7000000029802,
+        "path": "/models/mospeada/",
+        "bytes": 13993900,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/scott-bernard-animated-original.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 6534.5999999940395,
+        "end": 7036.29999999702,
+        "duration": 501.70000000298023,
+        "path": "/models/mospeada/",
+        "bytes": 46259340,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/scott-bernard-gear-v2-rear-refined.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 6977,
+        "end": 7744.79999999702,
+        "duration": 767.7999999970198,
+        "path": "/models/mospeada/",
+        "bytes": 61857948,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/models/mospeada/scott-gear-v3-helmet-boundary.glb"
+        ]
+      },
+      {
+        "name": "gltf.parse-inclusive",
+        "start": 30065.09999999404,
+        "end": 30070.89999999106,
+        "duration": 5.799999997019768,
+        "path": "/transformations/",
+        "bytes": 5608972,
+        "meshes": 1,
+        "candidateFiles": [
+          "public/transformations/cyclone-rear-pieces.glb"
+        ]
+      }
+    ],
+    "note": "parse() to onLoad, starting with GLB bytes already available. Includes embedded image decoding and scheduling; not exclusive CPU geometry decoding."
+  },
+  "bitmap": {
+    "count": 47,
+    "sumAsyncWallMs": 18198.29999999702,
+    "unionAsyncWallMs": 3034.0999999940395,
+    "traceDecodeCount": 84,
+    "traceDecodeSumWallMs": 2771.148,
+    "traceDecodeSumThreadCpuMs": 1762.715,
+    "threadCpuAvailable": 84,
+    "note": "Trace Decode Image includes external images as well as embedded GLB images. These times overlap GLB parse."
+  },
+  "gpu": {
+    "queries": 673,
+    "available": 673,
+    "disjoint": 0,
+    "sumRenderGpuMs": 2483.7754720000007,
+    "note": "EXT_disjoint_timer_query_webgl2 around renderer.render calls only, not a total of uploads, shader compilation or all GPU startup work."
+  },
+  "spans": {
+    "gltf.parse-sync-entry": {
+      "count": 29,
+      "totalMs": 86.99999998509884,
+      "maxMs": 12.299999997019768,
+      "firstStart": 2395.5,
+      "lastEnd": 30067.09999999404
+    },
+    "gltf.parse-inclusive": {
+      "count": 29,
+      "totalMs": 20370.499999970198,
+      "maxMs": 2030.5,
+      "firstStart": 2395.5,
+      "lastEnd": 30070.89999999106
+    },
+    "renderer.render": {
+      "count": 673,
+      "totalMs": 14596.799999952316,
+      "maxMs": 10526,
+      "firstStart": 2540.3999999910593,
+      "lastEnd": 35812.89999999106
+    },
+    "renderer.compile": {
+      "count": 2,
+      "totalMs": 398.19999998807907,
+      "maxMs": 397.5,
+      "firstStart": 15519.09999999404,
+      "lastEnd": 15919.39999999106
+    },
+    "renderer.initTexture": {
+      "count": 125,
+      "totalMs": 2707.2000000178814,
+      "maxMs": 378,
+      "firstStart": 15930.5,
+      "lastEnd": 31221.59999999404
+    },
+    "anime.compileObject": {
+      "count": 2,
+      "totalMs": 7362.20000000298,
+      "maxMs": 3816.2000000029802,
+      "firstStart": 15519,
+      "lastEnd": 19464.70000000298
+    },
+    "anime.compileVariant": {
+      "count": 1,
+      "totalMs": 3817.2000000029802,
+      "maxMs": 3817.2000000029802,
+      "firstStart": 15518,
+      "lastEnd": 19335.20000000298
+    },
+    "anime.primeVariant": {
+      "count": 1,
+      "totalMs": 10533.70000000298,
+      "maxMs": 10533.70000000298,
+      "firstStart": 19464.89999999106,
+      "lastEnd": 29998.59999999404
+    },
+    "anime.warm": {
+      "count": 1,
+      "totalMs": 14507.89999999106,
+      "maxMs": 14507.89999999106,
+      "firstStart": 15511,
+      "lastEnd": 30018.89999999106
+    },
+    "anime.prepareTextures": {
+      "count": 1,
+      "totalMs": 1187,
+      "maxMs": 1187,
+      "firstStart": 30034.70000000298,
+      "lastEnd": 31221.70000000298
+    },
+    "anime.waitForPreparedGpu": {
+      "count": 1,
+      "totalMs": 24.399999991059303,
+      "maxMs": 24.399999991059303,
+      "firstStart": 35758.5,
+      "lastEnd": 35782.89999999106
+    },
+    "anime.prepareStartupViews": {
+      "count": 1,
+      "totalMs": 4561.20000000298,
+      "maxMs": 4561.20000000298,
+      "firstStart": 31221.79999999702,
+      "lastEnd": 35783
+    },
+    "anime.prepareOpening": {
+      "count": 1,
+      "totalMs": 5749.100000008941,
+      "maxMs": 5749.100000008941,
+      "firstStart": 30033.89999999106,
+      "lastEnd": 35783
+    }
+  },
+  "glCalls": {
+    "texImage2D": {
+      "count": 37,
+      "cpuMs": 0.29999998211860657
+    },
+    "bufferData": {
+      "count": 5811,
+      "cpuMs": 230.9000000655651
+    },
+    "texStorage2D": {
+      "count": 1808,
+      "cpuMs": 1.399999976158142
+    },
+    "texSubImage2D": {
+      "count": 13470,
+      "cpuMs": 3512.0999999791384
+    },
+    "generateMipmap": {
+      "count": 136,
+      "cpuMs": 0.4000000059604645
+    },
+    "bufferSubData": {
+      "count": 441,
+      "cpuMs": 0.7999999672174454
+    }
+  },
+  "longTasks": {
+    "count": 45,
+    "sumWallMs": 27677,
+    "maxWallMs": 10554
+  }
+}

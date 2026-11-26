@@ -1,18 +1,19 @@
-import {createDrivingCyclone} from './createDrivingCyclone.js'
+import {createDrivingCycloneSteps} from './createDrivingCyclone.js'
 
-export const RAND_CYCLONE_URL='/models/mospeada/rand-cyclone.glb'
-export function createRandCyclone(source){
-  const rig=createDrivingCyclone(source)
+export const RAND_CYCLONE_URL='/models/mospeada/cyclone-vr052f.glb'
+export function createRandCyclone(source){const steps=createRandCycloneSteps(source);let step;do{step=steps.next()}while(!step.done);return step.value}
+export function* createRandCycloneSteps(source){
+  const rig=yield* createDrivingCycloneSteps(source)
   rig.root.name='Rand_Cyclone';rig.root.userData.owner='Rand';rig.root.userData.animeHero=true
   // The duplicate gets independent geometry too, allowing later bodywork edits
   // without changing Scott's bike, even when a caller shares the source GLTF.
   const privateGeometry=new Map(),lights=[]
-  rig.root.traverse(o=>{
+  const objects=[];rig.root.traverse(o=>objects.push(o));for(const o of objects){
     if(o.isLight)lights.push(o)
-    if(!o.isMesh)return
+    if(!o.isMesh)continue
     if(!privateGeometry.has(o.geometry))privateGeometry.set(o.geometry,o.geometry.clone())
-    o.geometry=privateGeometry.get(o.geometry);o.castShadow=false
-  })
+    o.geometry=privateGeometry.get(o.geometry);o.castShadow=false;yield
+  }
   // NPC lamps retain their emissive appearance; a second sun/headlight rig must
   // not change the approved scene lighting or add shadow passes.
   lights.forEach(l=>l.removeFromParent())

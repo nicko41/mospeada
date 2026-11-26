@@ -4,7 +4,7 @@ import {parseCycloneScottActions} from './cycloneScottActions.js'
 import {MountedScottMotion} from './mountedScottMotion.js'
 import {createRelaxedScottHands} from './relaxedScottHands.js'
 
-export const RAND_RIDER_URL='/models/mospeada/rand-casual-rigged.glb'
+export const RAND_RIDER_URL='/delivery/rand-rider.glb'
 const byName=scene=>{const result=new Map();scene.traverse(b=>{if(b.isBone)result.set(b.name,b)});return result}
 export class RandRider{
   constructor(randSource,scottSource,data,rig){

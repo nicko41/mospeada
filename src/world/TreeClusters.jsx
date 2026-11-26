@@ -1,5 +1,6 @@
+import {useGLTF} from '../loading/resources.js'
 import { useLayoutEffect, useMemo, useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+
 import * as THREE from 'three'
 import { HIGHWAY_CLEARANCE, HIGHWAY_Z } from './sectors/highwayProfile'
 import { terrainHeight } from './terrain'

@@ -13,10 +13,10 @@ import {SCOTT_V2_MODEL} from './scottModelConfig.js'
 globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:1,height:1,close(){}})
 const load=async path=>{const b=fs.readFileSync(path);return new GLTFLoader().parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'')}
 const assets=Promise.all(['public/models/mospeada/scott-bernard-animated-original.glb','public'+SCOTT_V2_MODEL].map(load))
-async function fixture(){
+async function fixture({lazy=false}={}){
  const [v1,v2]=await assets,model=clone(v2.scene);let mesh;model.traverse(n=>{if(n.isSkinnedMesh)mesh=n})
  const hand=createRelaxedScottHands(mesh),instance={model,skins:[{mesh,original:mesh.material,clean:mesh.material.clone()}],hands:[hand],bones:new Map(mesh.skeleton.bones.map(b=>[b.name,b])),mixer:new T.AnimationMixer(model)}
- const comparison=new ScottModelComparison(instance,{v1:v1.scene,v2:v2.scene},'v2');instance.modelComparison=comparison
+ const comparison=new ScottModelComparison(instance,lazy?{v2:v2.scene}:{v1:v1.scene,v2:v2.scene},'v2');instance.modelComparison=comparison
  return{instance,comparison,mesh,v1,v2,hand,dispose(){comparison.dispose();hand.dispose();instance.skins[0].clean.dispose()}}
 }
 test('V1/V2 comparison preserves live skeleton, mechanics and every original geometry attribute',async()=>{
@@ -53,4 +53,13 @@ test('selection is reversible, ignores invalid requests and stays disabled until
  let updates=0;const unsubscribe=state.subscribe(()=>updates++)
  state.ready(true);state.select('hybrid');assert.equal(state.snapshot().variant,initial);state.toggle();assert.notEqual(state.snapshot().variant,initial);state.toggle();assert.notEqual(state.snapshot().variant,initial);state.toggle();assert.equal(state.snapshot().variant,initial)
  assert.equal(updates,4);unsubscribe();state.ready(false)
+})
+
+test('a lazy V1 uses the active shoulder setting and inherits existing soil without recreating V2 materials',async()=>{
+ const f=await fixture({lazy:true}),soil=new ScottSoilLayer(f.instance),maps=[new T.Texture(),new T.Texture(),new T.Texture()]
+ try{
+  f.instance.clean=true;soil.install();const first=soil.records[0],material=first.mesh.material;soil.uniforms.uScottMud.value.set(.1,.2,.3,.4)
+  f.comparison.addVariant('v1',f.v1.scene,maps);const skin=f.comparison.skins.find(s=>s.variant==='v1');assert.equal(skin.mesh.material,skin.clean);assert.equal(skin.clean.map,maps[0]);assert.equal(skin.clean.normalMap,maps[1])
+  soil.addSkins([skin]);soil.install();assert.equal(soil.records.length,2);assert.equal(soil.records[0],first);assert.equal(first.mesh.material,material);assert.equal(soil.records[1].uniforms.uScottMud,soil.uniforms.uScottMud);assert.deepEqual(soil.records[1].uniforms.uScottMud.value.toArray(),[.1,.2,.3,.4]);assert.equal(skin.mesh.material,soil.records[1].variants.get(skin.clean));soil.addSkins([skin]);assert.equal(soil.records.length,2)
+ }finally{soil.dispose();f.dispose();maps.forEach(m=>m.dispose())}
 })

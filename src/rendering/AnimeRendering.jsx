@@ -9,7 +9,6 @@ import {frontTransformState} from '../vehicle/frontTransformState.js'
 import {forestOpeningState} from '../world/forest/forestOpeningState.js'
 import {forestEndingState} from '../world/forest/forestEndingState.js'
 import {canPrepareLighting} from './renderPreparation.js'
-import {forestFirstPassViews} from '../world/forest/forestFirstPassPreparation.js'
 import {Vector3} from 'three'
 import {CameraImpactFX} from './CameraImpactFX.js'
 import {cameraImpactEvents} from './cameraImpactEvents.js'
@@ -24,15 +23,17 @@ import {cinematicCombatState} from './cinematicCombatState.js'
 export default function AnimeRendering() {
   const { gl, scene, camera } = useThree(), controller = useRef(null),impactController=useRef(null)
   useLayoutEffect(() => {
-    animeState.set({ ready: false, openingReady: false, nightReady: false, error: '' })
+    animeState.set({ ready: false, openingReady: false, nightReady: false, startupPreparation:0,error: '' })
     const effect = new AnimeRenderer(gl, scene, camera); controller.current = effect
+    scene.userData.animeRenderer=effect
+    effect.onStartupProgress=value=>animeState.set({startupPreparation:value})
     const impact=new CameraImpactFX(camera)
     const boost=new BoostCameraFX(camera)
     const cinematic=new CinematicCombatFX(scene,camera);effect.cinematic=cinematic;Object.assign(effect.composite.uniforms,cinematic.uniforms)
     impactController.current={fx:impact,boost,cinematic,generation:cameraImpactEvents.generation,actor:null,player:new Vector3(),kick:new Vector3()}
     const unsubscribe=subscribeCameraImpactDamage(cameraImpactEvents,()=>impact.reset())
     effect.allowBackgroundWork=()=>!frontTransformState.snapshot().entryRunning&&forestOpeningState.snapshot().phase!=='playing'&&forestEndingState.snapshot().phase==='idle'&&(!effect.openingReady||!desktopInput.ready||rideMotion.paused||effect.initialNight!==(timeOfDayState.target<.5))
-    effect.startupViews=()=>[...forestOpeningState.startupViews(),...forestFirstPassViews(scene,camera)]
+    effect.startupViews=()=>forestOpeningState.startupViews()
     const previous = gl.debug.onShaderError
     gl.debug.onShaderError = (context, program, vertex, fragment) => {
       const message = [context.getProgramInfoLog(program), context.getShaderInfoLog(vertex), context.getShaderInfoLog(fragment)].filter(Boolean).join('\n')
@@ -46,6 +47,7 @@ export default function AnimeRendering() {
     if(import.meta.env.DEV)window.__CINEMATIC_COMBAT__={effect:cinematic,state:cinematicCombatState,events:cinematic.events}
     return () => {
       controller.current = null; cinematic.dispose();effect.dispose(); gl.debug.onShaderError = previous
+      if(scene.userData.animeRenderer===effect)delete scene.userData.animeRenderer
       unsubscribe();impact.reset();impactController.current=null
       if (import.meta.env.DEV) delete window.__ANIME__
       if(import.meta.env.DEV)delete window.__CAMERA_IMPACT__

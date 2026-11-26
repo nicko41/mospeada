@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "generatorSha256": "0770754af698c18031949d31d980cfbd622b3d780decdbdba4cc3b2cf14dce7e",
+  "lossless": true,
+  "files": [
+    {
+      "source": "public/models/mospeada/scott-bernard-gear-v2-rear-refined.glb",
+      "sourceSha256": "36b8998902e68119ded3b85ce6ec498cb9791a365fe8781ff572f1e8e54a695d",
+      "output": "public/delivery/scott-controller-v2.glb",
+      "sha256": "07f385dd3546948e8efe28e98f95e3c66279d194676d27dc65c5761d80201d80",
+      "bytes": 8826676,
+      "functional": true,
+      "verifiedViews": 791
+    },
+    {
+      "source": "public/models/mospeada/scott-bernard-animated-original.glb",
+      "sourceSha256": "c9f73c39b30761049dbd854d21cae6d8b2bc233547d59a2ec2170fc53a561961",
+      "output": "public/delivery/scott-reference-v1.glb",
+      "sha256": "06d19621dbb9e075203cf6d7d9117dec9758c9ec9d35c8c498a1c0dddb5c1b04",
+      "bytes": 1424304,
+      "functional": true,
+      "verifiedViews": 792
+    },
+    {
+      "source": "public/models/mospeada/scott-gear-v3-helmet-boundary.glb",
+      "sourceSha256": "bddf92324123a5d9d86f07a89c7b0e236c52ecfdbafdfe15b6eb51a090f38f71",
+      "output": "public/delivery/scott-v3.glb",
+      "sha256": "aff97f9fff1f22b5519794da57f57070ff718fa9f154e0c6ca94b11b27e65654",
+      "bytes": 34618288,
+      "functional": false,
+      "verifiedViews": 617
+    },
+    {
+      "source": "public/models/mospeada/invid-scout-rigged.glb",
+      "sourceSha256": "9dabb493f8f1d1c22cb4d47fa1e615de25110fd48dca32c00ab7afb7f1fb1b7d",
+      "output": "public/delivery/invid-scout.glb",
+      "sha256": "bf7db543db60ded7e0dbd85f404374f7adc195febbae272ca32c2e73e68c90aa",
+      "bytes": 12728428,
+      "functional": false,
+      "verifiedViews": 68
+    },
+    {
+      "source": "public/models/mospeada/rand-casual-rigged.glb",
+      "sourceSha256": "86f3c52ffad57b6d54106282bcce91613ee2bfccc3d4c7b5fafe309e17ed5f4f",
+      "output": "public/delivery/rand-rider.glb",
+      "sha256": "940996c110d3f02771552a0bc649b29e96169d8baee8fa1b7e0a13c1e4b861c9",
+      "bytes": 7365628,
+      "functional": false,
+      "verifiedViews": 351
+    },
+    {
+      "source": "public/models/mospeada/mars-gallant.glb",
+      "sourceSha256": "5fc7a610b5c94b71c95a5d0f8cd9a867e03b69c1c7dec82086d0c195ec6da277",
+      "output": "public/delivery/mars-gallant.glb",
+      "sha256": "0fecdf033f62e3e3ea99c25966c28a74a1a30655c9c9228a1b545d3c7a576d7c",
+      "bytes": 2986796,
+      "functional": false,
+      "verifiedViews": 4
+    },
+    {
+      "source": "public/models/mospeada/horizon-t-desert-landmark.glb",
+      "sourceSha256": "49a48e6532df85c369bf68de6f664f62819cb584360fa07fb3d182f7189052ba",
+      "output": "public/delivery/horizon-t.glb",
+      "sha256": "5689f74909c34ca3a5dfba10fc635e5006d5635cb55bd17fc0d90e0667e44243",
+      "bytes": 3245428,
+      "functional": false,
+      "verifiedViews": 8
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "invalidation": {
+    "original": "/resources/2af14fc220b9c3a5",
+    "added": "/resources/211d9edbb9f3177f",
+    "changed": "/resources/9dfc75a154f58fae",
+    "restored": "/resources/2af14fc220b9c3a5"
+  },
+  "headers": [
+    {
+      "path": "/",
+      "cache": "public, max-age=0, must-revalidate",
+      "encoding": "br",
+      "etag": "\"d4861a63257aeb323550f2cdbe5abc3c6d5c79ad31c8ce434296c09bcc59d3b3\"",
+      "revalidation": 304
+    },
+    {
+      "path": "/index.html",
+      "cache": "public, max-age=0, must-revalidate",
+      "encoding": "br",
+      "etag": "\"d4861a63257aeb323550f2cdbe5abc3c6d5c79ad31c8ce434296c09bcc59d3b3\"",
+      "revalidation": 304
+    },
+    {
+      "path": "/resource-version.json",
+      "cache": "public, max-age=0, must-revalidate",
+      "encoding": "br",
+      "etag": "\"527befa95d1631eb58fd614d4dfb0ec350991dcc63b4b443ab0a2acf36b410e1\"",
+      "revalidation": 304
+    },
+    {
+      "path": "/resources/2af14fc220b9c3a5/delivery/scott-v3.glb",
+      "cache": "public, max-age=31536000, immutable",
+      "encoding": "br",
+      "etag": "\"aff97f9fff1f22b5519794da57f57070ff718fa9f154e0c6ca94b11b27e65654\"",
+      "revalidation": 304
+    },
+    {
+      "path": "/assets/index-Cj1O8ogs.js",
+      "cache": "public, max-age=31536000, immutable",
+      "encoding": "br",
+      "etag": "\"aa9509f7a55c9ff5a67a2aefd593eeda188957447e44082a1d8c3e058b21eff2\"",
+      "revalidation": 304
+    },
+    {
+      "path": "/assets/index-Cufsa-II.css",
+      "cache": "public, max-age=31536000, immutable",
+      "encoding": "br",
+      "etag": "\"20be6f1cdf9f498c9f61d2b53858e5205feffe74cc63c98ed684e93dc5c63ffe\"",
+      "revalidation": 304
+    }
+  ],
+  "vercel": {
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "headers": [
+      {
+        "source": "/assets/:path(.*-[A-Za-z0-9_-]{8}\\.[^/]+)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "/resources/:version([a-f0-9]{16})/:path*",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "/",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/index.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/resource-version.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      }
+    ]
+  },
+  "fonts": {
+    "html": [
+      "/resources/2af14fc220b9c3a5/fonts/mospeada/Open24DisplayST.ttf"
+    ],
+    "css": [
+      "/resources/2af14fc220b9c3a5/fonts/mospeada/Open24DisplayST.ttf"
+    ]
+  },
+  "pass": true
+}

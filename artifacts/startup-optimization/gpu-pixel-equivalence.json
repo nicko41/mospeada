@@ -1,0 +1,128 @@
+[
+  {
+    "kind": "data",
+    "flipY": false,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "data",
+    "flipY": false,
+    "premultiply": true,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "data",
+    "flipY": true,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "data",
+    "flipY": true,
+    "premultiply": true,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "canvas",
+    "flipY": false,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "canvas",
+    "flipY": false,
+    "premultiply": true,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "canvas",
+    "flipY": true,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "canvas",
+    "flipY": true,
+    "premultiply": true,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "image",
+    "flipY": false,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "image",
+    "flipY": false,
+    "premultiply": true,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "image",
+    "flipY": true,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "image",
+    "flipY": true,
+    "premultiply": true,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "bitmap",
+    "flipY": false,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "bitmap",
+    "flipY": false,
+    "premultiply": true,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "bitmap",
+    "flipY": true,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "bitmap",
+    "flipY": true,
+    "premultiply": true,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "array",
+    "flipY": false,
+    "premultiply": false,
+    "differences": 0,
+    "error": 0
+  },
+  {
+    "kind": "prepared-placeholder-handoff",
+    "differences": 0,
+    "error": 0,
+    "width": 2048,
+    "height": 1024
+  }
+]

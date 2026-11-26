@@ -1,5 +1,6 @@
+import {useGLTF} from '../loading/resources.js'
 import {Component,useLayoutEffect} from 'react'
-import {useGLTF} from '@react-three/drei'
+
 import {attachScottHDVisual} from './scottHDVisualAdapter.js'
 import {SCOTT_HD_MODEL,scottVisualVariantState as state} from './scottVisualVariantState.js'
 

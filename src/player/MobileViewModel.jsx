@@ -1,4 +1,5 @@
 import { isGameInputActive } from './touchInput'
+import {assetUrl} from '../loading/resources.js'
 import { useEffect, useMemo, useRef } from 'react'
 import { createPortal, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -9,7 +10,7 @@ import { mobileClockTime } from './mobileClock'
 
 export default function MobileViewModel() {
   const asset = useLoader(GLTFLoader, '/models/mobile.glb')
-  const screenImage = useLoader(THREE.TextureLoader, `${import.meta.env.BASE_URL}textures/mobile/mobile-screen-clock.png`)
+  const screenImage = useLoader(THREE.TextureLoader, assetUrl('/textures/mobile/mobile-screen-clock.png'))
   const { camera, scene } = useThree()
   const pivot = useRef()
   const elapsedSeconds = useRef(0)

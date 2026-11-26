@@ -1,0 +1,125 @@
+MOSPEADA — Aislamiento de círculos oscuros en el desierto
+Fecha: 2026-11-26. Diagnóstico local; sin publicación.
+
+ORIGEN CONFIRMADO
+
+Los círculos los dibuja desertPebble() en el shader de terreno, no están
+en las dos imágenes originales. El patrón se multiplica por una máscara
+de islas de grava y oscurece el color final del suelo.
+
+Código: src/world/forest/forestStage4Materials.js, líneas 47–59 y 93–103.
+La función busca el centro pseudoaleatorio más cercano de una cuadrícula,
+calcula una distancia elíptica y la convierte en un disco oscuro mediante
+smoothstep. Esto explica las pequeñas manchas ovaladas repetidas en áreas
+amplias, desvinculadas de la trayectoria del vehículo.
+
+Este archivo es idéntico al del commit anterior 1dae241, normalizando CRLF.
+El patrón ya formaba parte del material antes de la optimización de carga.
+
+TEXTURAS, MEZCLA Y CANALES
+
+- public/textures/desert/desierto-floor.png: 1774 x 887, ilustración de tierra.
+- assets/texturas/desierto-floor2.png: 1672 x 941, ilustración de arena.
+- Ambos mapas se configuran en sRGB y se mezclan por su color RGB.
+  Su canal alpha es completamente opaco: mínimo y máximo 255 en ambas
+  imágenes, verificado leyendo todos los píxeles. No contiene los círculos.
+- No se conectan mapas AO, normal, bump, displacement, roughness ni metalness
+  al material de este suelo. No hay una máscara de suciedad en un canal
+  empaquetado R/G/B conectada a él.
+- La cobertura tierra/arena usa ruido escalar procedural, escala de 32 m,
+  sandShare 0.60 y suavizado 0.14.
+- Tierra: escala de muestreo 12 x 6 m. Arena: 8.8 x 4.9526 m, rotada.
+- El muestreador canyonPaint mezcla tres tomas desplazadas/rotadas para
+  disimular repetición; usa textureGrad para conservar derivadas y mipmaps.
+- En superficies planas se conserva esa ruta; las pendientes combinan
+  proyección triplanar. Los samplers de suelo usan MirroredRepeat; los de
+  superficies laterales, Repeat, con las mismas imágenes estáticas.
+- La grava usa islas de aproximadamente 29 m y celdas de 0.36 m.
+  desertPebble dibuja discos elípticos dentro de esas celdas y su salida
+  oscurece desertPaint; rockShare=0.3 controla la cobertura. Aparece a
+  partir de la profundidad 670–950 del plano y se atenúa en la ruta central.
+- No hay dependencia de cámara, tiempo, ruedas ni acumulación de combate
+  en la posición de las manchas. La huella de píxel sólo atenúa los discos
+  cuando son demasiado pequeños para evitar parpadeo.
+
+SISTEMAS DINÁMICOS Y BUFFERS
+
+Se apagaron temporalmente las capas de suciedad de Cyclone, Scott y Rand,
+el grupo VFX completo (incluye polvo, huellas y sombras de Scouts) y la
+malla de quemaduras de impactos. Se preservaron las cargas de suciedad,
+registros, geometrías, superficies de contacto y colisiones.
+
+La auditoría de los materiales de suelo encontró cero referencias a los
+materiales o mallas recubiertos por SoilLayer. Todos los samplers de suelo
+son texturas de archivo: ninguno es isRenderTargetTexture. Las variantes
+de pendiente comparten las fuentes de imagen, con samplers separados.
+
+WheelTracks usa geometría de tiras. SurfaceImpactMarks usa instancias y
+una pequeña DataTexture de alpha, con un límite de 48 marcas. Las sombras
+de Scouts también son instancias con su propia DataTexture. Ninguno pinta
+en los dos mapas del terreno ni los usa como destino de render.
+
+El render target general de AnimeRenderer se limpia antes de cada escena
+(renderer.clear y clearBufferfv para la máscara). No se detectó un buffer
+de dirt/decal reutilizado como entrada de este material. La eliminación
+selectiva del patrón confirma que esas manchas no provienen de ese camino.
+
+COMPARACIÓN REVERSIBLE
+
+Capturas de la misma escena, cámara e iluminación congeladas, 1440 x 960.
+Ubicación de prueba: x=130, z=-4100, profundidad 1700 del plano 4.
+Es un checkpoint de diagnóstico: no constituye una prueba de recorrido.
+
+1. original.png: material original y sistemas dinámicos habilitados.
+2. dynamics-off.png: sólo sistemas dinámicos apagados; persisten los círculos.
+3. no-pebbles.png: además, desertPebble(pebbleUv) sustituido por 0.0 en un
+   material temporal. Desaparecen los círculos; se conserva la mezcla de
+   imágenes, el sombreado macro de grava, el relieve y la ruta central.
+4. blend-only.png: sólo mezcla de las dos imágenes, sin grava ni marca
+   procedural de la ruta; sistemas dinámicos apagados.
+5. base-detail.png: sólo imagen base de tierra, sin máscaras de desierto,
+   sin grava ni decals; se conserva el muestreador antirrepetición existente.
+6. base-sand.png: equivalente usando únicamente la imagen de arena.
+7. dynamics-off-repeat.png: repite la referencia para comprobar estabilidad.
+
+material-isolation.json guarda la auditoría real, dimensiones, fuentes,
+canales, alpha, diferencias de píxeles y errores de la pasada validada.
+La pasada A/B final pasó todas sus comprobaciones, sin errores JS, avisos
+WebGL ni getError distinto de cero durante las siete capturas. Repetir
+la referencia dio diferencia exacta de cero. Original frente a efectos
+apagados difirió sólo en 19 píxeles y como máximo 1/255 por canal; anular
+desertPebble modificó 91940 píxeles, con máximo de 29/255 por canal.
+La región comparada es x=115, y=528, ancho=1209, alto=384; incluye parte
+del vehículo, por lo que no se interpreta como medición exclusiva del suelo.
+
+Las capturas muestran que apagar los sistemas dinámicos no elimina el
+patrón, mientras que anular solamente desertPebble sí lo elimina. Las
+manchas grandes pintadas en las imágenes permanecen y son independientes
+del problema de los círculos pequeños.
+
+Límite de esta validación: el contexto de desarrollo registró antes de la
+comparación avisos glGetProgramiv: Program object expected durante el
+arranque. Se conservaron en setupWebglMessages, separados del intervalo
+de capturas. No se investigan como parte de este aislamiento ni se afirma
+que esta prueba valide la preparación gráfica o el arranque completo.
+
+REPRODUCCIÓN Y REVERSIÓN
+
+Con Vite local y un Chrome de pruebas separado con CDP en el puerto 9365:
+
+  node scripts/diagnose-desert-material.mjs http://127.0.0.1:5173
+
+El script carga una página nueva, espera la preparación de los planos,
+aplica variantes temporales mediante scripts/desert-material-isolation.js,
+captura las comparaciones y restaura materiales y suciedad al finalizar.
+El módulo no está importado por la aplicación ni por el bundle de producción.
+Por defecto deja la pestaña de pruebas en blanco para liberar los recursos.
+Agregar --leave-base mantiene en esa pestaña la vista pausada con sólo la
+imagen base de tierra y los sistemas dinámicos apagados; recargar la página
+restaura el comportamiento original. --reuse permite repetir las capturas
+sobre el juego de pruebas ya preparado, sin otra navegación inicial.
+
+No se modificó permanentemente el shader del desierto, la resolución de
+las texturas, modelos, rigging, poses, animaciones, conducción ni combate.
+No se publicó en Vercel. La corrección visual definitiva queda separada
+de este aislamiento temporal, conforme al pedido de diagnóstico.
