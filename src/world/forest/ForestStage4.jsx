@@ -14,6 +14,7 @@ import {stage4World,smooth4} from './forestStage4Config.js'
 import {timeOfDayState} from '../TimeOfDay.jsx'
 import OvercastSky from '../OvercastSky.jsx'
 import {DesertClimaxAtmosphere} from './DesertClimaxAtmosphere.js'
+import DesertHorizonCarrier from './DesertHorizonCarrier.jsx'
 
 const desertUrl='/textures/desert/desierto-floor.png'
 useTexture.preload(desertUrl)
@@ -49,5 +50,5 @@ export default function ForestStage4({assets}){
     if(import.meta.env.DEV)window.__FOREST_STAGE4__=resources
     return()=>{resources.haze.restore(scene);remove();stage4World.clear(resources.world);camera.far=700;camera.updateProjectionMatrix();if(import.meta.env.DEV)delete window.__FOREST_STAGE4__;resources.refs--;setTimeout(()=>{if(!resources.refs){resources.world.dispose();const m=resources.materials;[m.ground,m.desert,m.cliff,m.foliage.near,m.foliage.far,...m.rocks.values()].forEach(m=>m.dispose())}},0)}
   },[resources,camera])
-  return <><primitive object={resources.world} dispose={null}/><OvercastSky clearSky coverage={resources.skyCoverage} haze={resources.haze.horizon} priority={.8}/></>
+  return <><primitive object={resources.world} dispose={null}/><DesertHorizonCarrier world={resources.world}/><OvercastSky clearSky coverage={resources.skyCoverage} haze={resources.haze.horizon} priority={.8}/></>
 }

@@ -10,7 +10,7 @@ import {SCOUT_CANNON} from '../../vfx/combatVFXPresets.js'
 
 // Scott sees the distant pursuit from the overlook. The same five world-space
 // models approach after he crosses the cliff; Rand is not represented yet.
-export const SCOUT_PATROL=Object.freeze({count:5,randPursuerId:4,hitsToDown:16,fallGravity:18,toppleSeconds:.9,triggerDistance:FOREST_STAGE4.forestLength-80,desertDistance:FOREST_STAGE4.forestLength,sightingDistance:220,sightingHeight:22,entrySeconds:3.2,flightClearance:2,altitudeSpread:.22,projectiles:SCOUT_PROJECTILE_CAPACITY,projectileSpeed:50,aimLead:.72,burstSpread:.95,playerHitCooldown:.45,projectileLife:3.5,burstShots:8,shotSpacing:.13,burstStagger:.6,attackInterval:2.6,muzzleBlink:.06,retrySeconds:1.25})
+export const SCOUT_PATROL=Object.freeze({count:5,randPursuerId:4,hitsToDown:16,fallGravity:18,toppleSeconds:.9,triggerDistance:FOREST_STAGE4.forestLength-80,desertDistance:FOREST_STAGE4.forestLength,sightingDistance:220,sightingHeight:22,entrySeconds:3.2,flightClearance:2,altitudeSpread:.22,projectiles:SCOUT_PROJECTILE_CAPACITY,projectileSpeed:70,aimLead:.72,burstSpread:.95,playerHitCooldown:.45,projectileLife:3.5,burstShots:8,shotSpacing:.13,burstStagger:.6,attackInterval:2.6,muzzleBlink:.06,retrySeconds:1.25})
 export const SCOUT_ATTACK_DAMAGE=8
 const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a)),clamp=MathUtils.clamp
 const burstSweep=[-2.4,-1.7,-.55,-.12,.12,.55,1.7,2.4]

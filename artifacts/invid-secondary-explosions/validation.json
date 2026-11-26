@@ -1,0 +1,92 @@
+{
+  "death": {
+    "hits": 16,
+    "dead": true,
+    "explosions": 1
+  },
+  "initial": {
+    "bursts": 1,
+    "dropped": 0,
+    "recycledTails": 0,
+    "activeBursts": 1,
+    "fragments": 22,
+    "smoke": 21,
+    "settings": {
+      "enabled": true,
+      "poolBursts": 4,
+      "reserveFragments": 32,
+      "reserveTrails": 8,
+      "reserveSamples": 8,
+      "fragmentMin": 12,
+      "fragmentMax": 20,
+      "trailFragmentMin": 4,
+      "trailFragmentMax": 6,
+      "speedMin": 15,
+      "speedMax": 30,
+      "drag": 4.5,
+      "gravity": 8,
+      "spawnRadius": 0.55,
+      "fragmentLifeMin": 0.4,
+      "fragmentLifeMax": 0.8,
+      "fragmentSizeMin": 0.14,
+      "fragmentSizeMax": 0.32,
+      "brightnessMin": 2.4,
+      "brightnessMax": 4,
+      "stretchSeconds": 0.035,
+      "maxStretch": 0.95,
+      "trailLifeMin": 0.8,
+      "trailLifeMax": 1.5,
+      "trailSamples": 6,
+      "trailEmissionTime": 0.3,
+      "smokeSizeMin": 0.22,
+      "smokeSizeMax": 0.38,
+      "smokeGrowth": 1.9,
+      "smokeOpacity": 0.25,
+      "smokeRise": 0.55,
+      "smokeInertia": 0.035,
+      "smokeColor": "#514943",
+      "maxDistance": 220
+    },
+    "active": [
+      {
+        "fragments": 17,
+        "trails": 5,
+        "age": 0.24,
+        "life": 1.430743050006612
+      }
+    ]
+  },
+  "visiblePixels": 784,
+  "tail": {
+    "bursts": 1,
+    "dropped": 0,
+    "recycledTails": 0,
+    "activeBursts": 1,
+    "fragments": 0,
+    "smoke": 12
+  },
+  "simultaneous": {
+    "bursts": 5,
+    "dropped": 0,
+    "recycledTails": 0,
+    "activeBursts": 4,
+    "fragments": 83,
+    "smoke": 105
+  },
+  "remaining": {
+    "bursts": 5,
+    "dropped": 0,
+    "recycledTails": 0,
+    "activeBursts": 0,
+    "fragments": 0,
+    "smoke": 0
+  },
+  "integrity": {
+    "gl": 0,
+    "shader": "",
+    "lights": 2,
+    "borrowedSparkMap": true,
+    "borrowedSmokeMap": true
+  },
+  "errors": []
+}

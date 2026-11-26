@@ -6,7 +6,7 @@ import {SCOUT_PROJECTILE_CAPACITY} from '../vehicle/EnergyProjectiles.js'
 export const INVID_ORB_SPRITE=Object.freeze({
  columns:5,rows:4,textureWidth:1774,textureHeight:887,
  firstFrame:5,lastFrame:11,fps:18,
- width:1.45,height:.90625,opacity:1,intensity:1.05,glowGain:2.2,alphaTest:.015,
+ width:2.05,height:1.28125,opacity:1,intensity:1.05,glowGain:4.5,glowColor:'#b54aff',alphaTest:.015,
 })
 export function invidOrbFrame(age,slot=0){
  const c=INVID_ORB_SPRITE,span=c.lastFrame-c.firstFrame,step=(Math.floor(Math.max(0,age)*c.fps)+slot*2)%(span*2)
@@ -30,10 +30,11 @@ export class InvidOrbSprites{
    shader.vertexShader='attribute vec4 aInvidOrbFrame;\n'+shader.vertexShader
    shader.vertexShader=shader.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\nvMapUv=aInvidOrbFrame.xy+vMapUv*aInvidOrbFrame.zw;')
    shader.uniforms.uInvidOrbGlowGain={value:c.glowGain}
-   shader.fragmentShader='uniform float uInvidOrbGlowGain;\n'+shader.fragmentShader
-   shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\nfloat invidViolet=clamp((diffuseColor.r+diffuseColor.b-2.0*diffuseColor.g)*8.0,0.0,1.0);\ndiffuseColor.rgb*=1.0+(uInvidOrbGlowGain-1.0)*invidViolet;')
+   shader.uniforms.uInvidOrbGlowColor={value:new Color(c.glowColor)}
+   shader.fragmentShader='uniform float uInvidOrbGlowGain;\nuniform vec3 uInvidOrbGlowColor;\n'+shader.fragmentShader
+   shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\nfloat invidCore=smoothstep(0.35,0.8,min(diffuseColor.r,min(diffuseColor.g,diffuseColor.b)));\nfloat invidViolet=clamp((diffuseColor.r+diffuseColor.b-2.0*diffuseColor.g)*8.0,0.0,1.0)*(1.0-invidCore);\nfloat invidHalo=max(diffuseColor.r,diffuseColor.b);\ndiffuseColor.rgb=mix(diffuseColor.rgb,uInvidOrbGlowColor*invidHalo,invidViolet*0.7);\ndiffuseColor.rgb*=1.0+(uInvidOrbGlowGain-1.0)*invidViolet;')
   }
-  this.material.customProgramCacheKey=()=> 'invid-orb-instanced-sheet-v2-violet'
+  this.material.customProgramCacheKey=()=> 'invid-orb-instanced-sheet-v3-strong-violet'
   this.mesh=new InstancedMesh(this.geometry,this.material,SCOUT_PROJECTILE_CAPACITY)
   this.mesh.name='Invid_animated_orbs';this.mesh.count=0;this.mesh.frustumCulled=false;this.mesh.castShadow=false;this.mesh.renderOrder=5;this.mesh.userData.prewarmVFX=true
   this.mesh.instanceMatrix.setUsage(DynamicDrawUsage)

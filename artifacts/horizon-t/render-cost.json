@@ -1,0 +1,15 @@
+{
+  "on": {
+    "calls": 706,
+    "triangles": 1640775
+  },
+  "off": {
+    "calls": 698,
+    "triangles": 1496935
+  },
+  "addedDrawCalls": 8,
+  "addedTriangles": 143840,
+  "visibleMeshes": 4,
+  "lod": 0,
+  "gl": 0
+}

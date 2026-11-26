@@ -1,0 +1,45 @@
+{
+  "file": "public/models/mospeada/horizon-t-desert-landmark.glb",
+  "beforeBytes": 11376564,
+  "afterBytes": 4412784,
+  "images": [
+    {
+      "before": [
+        2048,
+        2048
+      ],
+      "after": [
+        1024,
+        1024
+      ],
+      "beforeBytes": 2269739,
+      "afterBytes": 181888
+    },
+    {
+      "before": [
+        2048,
+        2048
+      ],
+      "after": [
+        1024,
+        1024
+      ],
+      "beforeBytes": 2872657,
+      "afterBytes": 307459
+    },
+    {
+      "before": [
+        2048,
+        2048
+      ],
+      "after": [
+        1024,
+        1024
+      ],
+      "beforeBytes": 2586466,
+      "afterBytes": 275746
+    }
+  ],
+  "geometry": "all LOD vertex attributes and indices unchanged",
+  "textureGpuBytesWithMipmaps": 16777216
+}

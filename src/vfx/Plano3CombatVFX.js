@@ -10,6 +10,7 @@ import {InvidImpactDust} from './InvidImpactDust.js'
 import {cameraImpactEvents} from '../rendering/cameraImpactEvents.js'
 import {cinematicCombatEvents} from '../rendering/cinematicCombatEvents.js'
 import {InvidOrbSprites} from './InvidOrbSprites.js'
+import {InvidExplosionDebris} from './InvidExplosionDebris.js'
 
 const rgba=hex=>{const c=new Color(hex);return new QVec4(c.r,c.g,c.b,1)}
 const MathUtilsSmooth=t=>{const x=Math.max(0,Math.min(1,t));return x*x*(3-2*x)}
@@ -44,6 +45,7 @@ export class Plano3CombatVFX{
     this.contactFlashes=this.mesh(this.plane,this.hitFlashMaterial,COMBAT_VFX_LIMITS.bursts*2,'Scout_contact_flashes');this.contactFlashes.renderOrder=8
     this.sampleGround=sampleGround
     this.impacts=new CombatBursts(this.blast,this.plane,explosionAtlases,bloodRandom);this.root.add(this.impacts.root);this.presets=this.impacts.presets;this.lightingRoot=this.impacts.lightingRoot
+    this.secondaryExplosion=new InvidExplosionDebris({sparkMap:this.impacts.haloTexture,smokeMap:this.impacts.smokeBallTexture});this.root.add(this.secondaryExplosion.root)
     this.impactScene=impactScene;this.surfaceMarks=new SurfaceImpactMarks();this.lightingRoot.add(this.surfaceMarks.mesh);this.lightingRoot.userData.prewarmVFX=true
     this.muzzleHaloMaterial=new MeshBasicMaterial({map:this.impacts.haloTexture,transparent:true,depthWrite:false,toneMapped:false,blending:AdditiveBlending,fog:false})
     this.muzzleHalos=this.mesh(this.plane,this.muzzleHaloMaterial,1,'Gallant_muzzle_warm_flare');this.muzzleHalos.renderOrder=9;this.flashMesh.renderOrder=10
@@ -152,6 +154,7 @@ export class Plano3CombatVFX{
   }
   emitDeathEnergy(point,scale){
     const preset=this.presets.invidExplosion,factor=Math.max(.15,Math.min(1.6,scale*preset.size/2.7)),power=Math.max(0,Math.min(3,preset.intensity)),ps=this.systems[1]
+    this.secondaryExplosion.burst(point,factor,preset)
     this.tint.set(preset.core).multiplyScalar(power);ps.startColor.a.set(this.tint.r,this.tint.g,this.tint.b,1)
     this.tint.set(preset.edge).multiplyScalar(power);ps.startColor.b.set(this.tint.r,this.tint.g,this.tint.b,1)
     // Outward hot ejecta and fast, short-lived fragments share one fixed pool.
@@ -295,6 +298,7 @@ export class Plano3CombatVFX{
     this.muzzleLife=0;this.impacts.clear();this.visuals=new WeakMap();this.traces.forEach(t=>t.life=0);this.systems.forEach(ps=>ps.restart());this.root.visible=false;this.hasEffects=false
     if(!keepClock){this.encounter=null;this.previousTime=0}
     this.orbSprites.clear()
+    this.secondaryExplosion.clear(resetStats)
     for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.blastMesh,this.shell,this.core,this.cannonFlashes,this.cannonHalos])mesh.count=0
     this.batches?.forEach(batch=>batch.update())
     if(resetStats)Object.assign(this.stats,{shots:0,hits:0,explosions:0})
@@ -311,7 +315,7 @@ export class Plano3CombatVFX{
     this.surfaceMarks.update(dt)
     if(this.encounter===encounter&&encounter.time<this.previousTime)this.clear(true);this.encounter=encounter;this.previousTime=encounter.time
     if(!encounter.active){if(this.hasEffects||this.root.visible)this.clear(false,true,true);return}
-    this.clock+=Math.max(0,dt);this.impacts.update(dt,camera)
+    this.clock+=Math.max(0,dt);this.impacts.update(dt,camera);this.secondaryExplosion.update(dt,camera)
     this.root.visible=true;camera.getWorldQuaternion(this.cameraRotation)
     let flashes=0,contacts=0,beams=0,cannons=0
     this.orbSprites.begin(encounter.bolts)
@@ -361,5 +365,5 @@ export class Plano3CombatVFX{
     this.cannonFlashes.count=this.cannonHalos.count=cannons
     for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.blastMesh,this.shell,this.core,this.cannonFlashes,this.cannonHalos])if(mesh.count){mesh.instanceMatrix.needsUpdate=true;mesh.instanceColor.needsUpdate=true}
   }
-  dispose(){this.root.removeFromParent();this.orbSprites.dispose();this.impactDust.dispose();this.surfaceMarks.dispose();this.impacts.dispose();for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.shell,this.core,this.cannonFlashes,this.cannonHalos])mesh.dispose();for(const resource of [this.volumeGeometry,this.volumeMaterial,this.plane,this.box,this.star,this.blast,this.muzzleTexture,this.fireballTexture,this.flashMaterial,this.muzzleHaloMaterial,this.fireballMaterial,this.muzzleSparkMaterial,this.hitFlashMaterial,this.shellMaterial,this.coreMaterial,this.sparkMaterial,this.deathSparkMaterial,this.deathFlashMaterial,this.deathSmokeMaterial,this.cannonGeometry,this.cannonMaterial,this.cannonHaloMaterial])resource.dispose()}
+  dispose(){this.root.removeFromParent();this.orbSprites.dispose();this.secondaryExplosion.dispose();this.impactDust.dispose();this.surfaceMarks.dispose();this.impacts.dispose();for(const mesh of [this.flashMesh,this.muzzleHalos,this.contactFlashes,this.shell,this.core,this.cannonFlashes,this.cannonHalos])mesh.dispose();for(const resource of [this.volumeGeometry,this.volumeMaterial,this.plane,this.box,this.star,this.blast,this.muzzleTexture,this.fireballTexture,this.flashMaterial,this.muzzleHaloMaterial,this.fireballMaterial,this.muzzleSparkMaterial,this.hitFlashMaterial,this.shellMaterial,this.coreMaterial,this.sparkMaterial,this.deathSparkMaterial,this.deathFlashMaterial,this.deathSmokeMaterial,this.cannonGeometry,this.cannonMaterial,this.cannonHaloMaterial])resource.dispose()}
 }
