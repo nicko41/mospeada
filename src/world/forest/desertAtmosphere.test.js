@@ -14,7 +14,7 @@ test('final desert leaves combat untouched and blends only the distant backgroun
  for(const d of [0,55,100,190,500,850])assert.equal(amount(scene.fog,d),0,'Scott, Rand and the active combat keep full contrast')
  assert.ok(amount(scene.fog,1200)<.05,'Little intervention at middle distance')
  assert.ok(amount(scene.fog,2000)>.3&&amount(scene.fog,2000)<.5)
- assert.equal(amount(scene.fog,3500),1,'Background finishes blending before the 4000 m camera clip')
+ assert.ok(amount(scene.fog,3500)>.96);assert.equal(amount(scene.fog,3950),1,'Background finishes blending before the 4000 m camera clip')
  assert.ok(scene.fog.color.r>scene.fog.color.b,'Warm sand rather than white fog')
  assert.ok(scene.fog.color.r<1&&scene.fog.color.g<1&&scene.fog.color.b<1)
  assert.ok(haze.horizon.strength>0&&haze.horizon.strength<1);assert.ok(haze.horizon.color.equals(scene.fog.color))

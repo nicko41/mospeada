@@ -1,0 +1,16 @@
+{
+  "variant": "v3",
+  "knockedDown": true,
+  "phase": "down",
+  "kind": "scout-body",
+  "riderMode": "onFoot",
+  "speed": 0,
+  "boost": 0,
+  "health": 100,
+  "initialHealth": 100,
+  "distanceToInvid": 3.238494735376599,
+  "minimumDistance": 1.738,
+  "recovered": true,
+  "gl": 0,
+  "errors": []
+}

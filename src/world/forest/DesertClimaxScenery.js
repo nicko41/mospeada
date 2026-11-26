@@ -1,8 +1,10 @@
 import {CylinderGeometry,IcosahedronGeometry,InstancedMesh,MeshLambertMaterial,Object3D,DynamicDrawUsage} from 'three'
 import {DESERT_CLIMAX as C,climaxPathX} from './forestClimaxConfig.js'
 import {stage4DesertHeight} from './forestStage4Config.js'
+import {DesertRockFormations} from './DesertRockFormations.js'
 
-const rocksPerRow=16,brushPerRow=24,treeBands=6,treesPerBand=8,bandLength=800
+export const DESERT_STONES=Object.freeze({clustersPerRow:12,stonesPerCluster:6,clearHalfWidth:46,minSize:.22,maxSize:1.5})
+const rocksPerRow=DESERT_STONES.clustersPerRow*DESERT_STONES.stonesPerCluster,brushPerRow=24,treeBands=6,treesPerBand=8,bandLength=800
 function seeded(seed){let n=seed>>>0;return()=>{n=(Math.imul(n,1664525)+1013904223)>>>0;return n/4294967296}}
 
 // Four small instanced batches, no colliders, shadows or per-frame vegetation
@@ -10,6 +12,7 @@ function seeded(seed){let n=seed>>>0;return()=>{n=(Math.imul(n,1664525)+10139042
 // groups keep deterministic world positions as their far-away bands recycle.
 export class DesertClimaxScenery{
   constructor(world){
+    this.formations=new DesertRockFormations(world)
     this.object=new Object3D();this.treeSectors=Array(treeBands).fill(null)
     const batch=(name,geometry,color,count)=>{
       const mesh=new InstancedMesh(geometry,new MeshLambertMaterial({color}),count)
@@ -18,7 +21,7 @@ export class DesertClimaxScenery{
       for(let i=0;i<count;i++)mesh.setMatrixAt(i,this.object.matrix)
       world.add(mesh);return mesh
     }
-    this.rocks=batch('Plano_5_small_stones',new IcosahedronGeometry(1,0),'#8b8069',C.terrainRows*rocksPerRow)
+    this.rocks=batch('Plano_5_clustered_low_stones',new IcosahedronGeometry(1,0),'#9b846c',C.terrainRows*rocksPerRow)
     this.brush=batch('Plano_5_dry_brush',new CylinderGeometry(0,1,1,3),'#82734b',C.terrainRows*brushPerRow)
     this.trunks=batch('Plano_5_horizon_trunks',new CylinderGeometry(.45,.7,1,5),'#615440',treeBands*treesPerBand)
     this.crowns=batch('Plano_5_horizon_tree_groups',new IcosahedronGeometry(1,1),'#62694c',treeBands*treesPerBand)
@@ -33,6 +36,16 @@ export class DesertClimaxScenery{
       for(let i=0;i<count;i++){
         const depth=start+random()*C.tileLength,side=random()<.5?-1:1
         // Keep the central combat strip and Rand's entire zigzag route empty.
+        if(mesh===this.rocks){
+          // Six low stones share each sparse patch; deterministic sector seeds
+          // keep the arrangement stable when recycled terrain rows return.
+          if(i%DESERT_STONES.stonesPerCluster===0){this.clusterDepth=start+random()*C.tileLength;this.clusterX=side*(60+random()*900)}
+          const d=this.clusterDepth+(random()-.5)*15,path=climaxPathX(d)
+          const cross=Math.sign(this.clusterX)*Math.max(DESERT_STONES.clearHalfWidth+3,Math.abs(this.clusterX)+(random()-.5)*19)
+          const size=DESERT_STONES.minSize+(DESERT_STONES.maxSize-DESERT_STONES.minSize)*random()**2
+          this.place(mesh,index*count+i,path+cross,-d,size*(.8+random()*.7),size*(.16+random()*.18),size*(.6+random()*.6),random()*Math.PI,size*.045)
+          continue
+        }
         const x=climaxPathX(depth)+side*(260+random()*1050),size=.25+random()*.55
         this.place(mesh,index*count+i,x,-depth,mesh===this.rocks?size:1+random()*1.6,mesh===this.rocks?size*.55:.4+random()*.5,mesh===this.rocks?size*.8:1+random(),random()*Math.PI,mesh===this.rocks?size*.18:undefined)
       }
@@ -40,6 +53,7 @@ export class DesertClimaxScenery{
     }
   }
   update(scottDistance,randDistance){
+    this.formations.update(scottDistance,randDistance)
     const base=Math.max(0,Math.floor((Math.min(scottDistance,randDistance)-C.start)/bandLength)-1)
     for(let sector=base;sector<base+treeBands;sector++){
       const slot=sector%treeBands;if(this.treeSectors[slot]===sector)continue
@@ -55,5 +69,5 @@ export class DesertClimaxScenery{
       this.trunks.instanceMatrix.needsUpdate=this.crowns.instanceMatrix.needsUpdate=true
     }
   }
-  dispose(){for(const mesh of this.meshes){mesh.removeFromParent();mesh.dispose();mesh.geometry.dispose();mesh.material.dispose()}}
+  dispose(){this.formations.dispose();for(const mesh of this.meshes){mesh.removeFromParent();mesh.dispose();mesh.geometry.dispose();mesh.material.dispose()}}
 }

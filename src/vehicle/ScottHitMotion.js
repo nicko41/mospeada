@@ -13,6 +13,7 @@ export class ScottHitMotion{
   constructor(instance,wrapper,runtime,random=Math.random){
     Object.assign(this,{instance,wrapper,runtime,random,applied:false,age:Infinity,cooldown:0,knockedDown:false,actor:null})
     this.version=playerCombat.hitVersion;this.resetVersion=playerCombat.resetVersion
+    this.collisionVersion=runtime.invidContact?.version||0
     this.point=new Vector3();this.before=new Vector3();this.hipOffset=new Vector3();this.delta=new Quaternion();this.identity=new Quaternion()
     this.matrix=new Matrix4();this.inverse=new Matrix4();this.floor=NaN;this.armorProbes=null
     const stand=instance.sourceClips.find(c=>c.name===SCOTT_DEFEAT.source),squat=instance.sourceClips.find(c=>c.name==='air_squat'),dodge=instance.sourceClips.find(c=>c.name==='Roll_Dodge_4'),arms=landingArmSamples(instance)
@@ -35,19 +36,36 @@ export class ScottHitMotion{
     this.restore();this.knockedDown=false;this.age=Infinity;this.cooldown=0
     if(this.runtime.armorController?.state)this.runtime.armorController.state.knockedDown=false
     this.actor=this.runtime.state;this.version=playerCombat.hitVersion;this.resetVersion=playerCombat.resetVersion
+    this.collisionVersion=this.runtime.invidContact?.version||0
   }
-  startHit(){
+  startHit(kind=playerCombat.hitKind,sample){
     this.version=playerCombat.hitVersion
     if(this.knockedDown)return
     const armor=this.runtime.armorController,a=armor?.state
-    const direct=playerCombat.hitKind==='scout-projectile',claw=playerCombat.hitKind==='scout-claw'
-    const canFall=armor?.active&&a.height<1.25&&!a.jump&&!a.groundLanding&&this.cooldown===0&&this.hip.position
+    const collision=kind==='scout-body',direct=kind==='scout-projectile',claw=kind==='scout-claw'
+    const canFall=this.hip?.position&&this.cooldown===0&&(collision||armor?.active&&a.height<1.25&&!a.jump&&!a.groundLanding)
     this.age=0;this.variant=this.version%2
-    if(canFall&&(claw||direct&&this.random()<SCOTT_HIT.directFallChance)){
+    this.kind=kind
+    if(canFall&&(collision||claw||direct&&this.random()<SCOTT_HIT.directFallChance)){
       this.knockedDown=true;this.cooldown=SCOTT_HIT.knockdownCooldown
-      this.returnMode=a.mode
-      a.knockedDown=true;a.mode='ARMOR_GROUND';a.groundTurn=null;a.boosting=false;a.boostBlend=0;a.vx*=.25;a.vz*=.25
-      a.vy=Math.min(a.vy,-3)
+      if(armor?.active){
+        this.returnMode=a.mode
+        a.knockedDown=true;a.mode='ARMOR_GROUND';a.groundTurn=null;a.boosting=false;a.boostBlend=0
+        if(collision)a.vx=a.vz=0;else{a.vx*=.25;a.vz*=.25}
+        if(collision){a.jump=null;a.groundLanding=null}
+        a.vy=Math.min(a.vy,-3)
+      }else{
+        const s=this.runtime.state
+        // Nonfatal body contact uses the existing on-foot control frame. No
+        // defeat/health event, bike crash, or edits to source clips are needed.
+        if(s.riderMode!=='onFoot'){
+          const x=this.wrapper.position.x,z=this.wrapper.position.z,ground=sample(x,z)
+          s.pedestrian={x,z,ground:Number.isFinite(ground)?ground:s.height,yaw:s.yaw,phase:0,moving:false,motionBlend:0,runBlend:0,crouchBlend:0,feet:{Left:null,Right:null}}
+          s.riderMode='onFoot';s.dismountBlend=1
+        }
+        s.pedestrian.moving=false;s.speed=0;s.boostTime=s.boostBlend=s.boostKick=0
+        this.runtime.boostQueued=false
+      }
       this.hipOffset.copy(this.hip.bone.position).sub(this.point.fromArray(this.hip.position.evaluate(SCOTT_DEFEAT.sourceStandingTime)))
       this.instance.missilePose?.cancel();this.runtime.gallant?.aimLock.clear()
     }
@@ -60,12 +78,14 @@ export class ScottHitMotion{
     }
     if(!r.paused){
       this.cooldown=Math.max(0,this.cooldown-dt)
-      if(this.version!==playerCombat.hitVersion)this.startHit()
+      const contact=r.invidContact
+      if(contact&&contact.version!==this.collisionVersion){this.collisionVersion=contact.version;this.startHit('scout-body',sample)}
+      if(this.version!==playerCombat.hitVersion)this.startHit(playerCombat.hitKind,sample)
       this.age+=dt
     }
     if(this.knockedDown&&this.age>=total){
       this.knockedDown=false
-      if(r.armorController?.state){r.armorController.state.knockedDown=false;r.armorController.state.mode=this.returnMode}
+      if(r.armorController?.active){r.armorController.state.knockedDown=false;r.armorController.state.mode=this.returnMode}
     }
     if(!this.knockedDown&&this.age>=SCOTT_HIT.flinch)return
     this.before.copy(this.wrapper.position)
@@ -86,12 +106,12 @@ export class ScottHitMotion{
     // A bounded set of cached source-mesh support points. Sample terrain once
     // at the stationary actor, instead of rescanning the mesh on every hit.
     if(this.knockedDown){
-      const a=r.armorController.state,floor=this.floor=sample(a.x,a.z);let lowest=Infinity
+      const a=r.armorController?.active?r.armorController.state:r.state.pedestrian,floor=this.floor=sample(a.x,a.z);let lowest=Infinity
       for(const {mesh,ids} of this.skins)for(const id of ids){mesh.getVertexPosition(id,this.point);mesh.localToWorld(this.point);lowest=Math.min(lowest,this.point.y)}
       if(Number.isFinite(floor)&&lowest<floor+.015){this.wrapper.position.y+=floor+.015-lowest;this.wrapper.updateMatrixWorld(true)}
     }
     this.applied=true
-    this.diagnostics={kind:playerCombat.hitKind,phase:this.knockedDown?this.age<SCOTT_HIT.fall?'fall':this.age<SCOTT_HIT.fall+SCOTT_HIT.downHold?'down':'get-up':'flinch',age:this.age}
+    this.diagnostics={kind:this.kind,phase:this.knockedDown?this.age<SCOTT_HIT.fall?'fall':this.age<SCOTT_HIT.fall+SCOTT_HIT.downHold?'down':'get-up':'flinch',age:this.age}
   }
   groundArmor(articulation){if(this.knockedDown&&this.runtime.armorController?.active)supportScottArmorOnGround(articulation,this.floor,this.wrapper,this)}
 }

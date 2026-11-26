@@ -4,7 +4,7 @@ import {connect} from './browser-cdp.mjs'
 
 // Run validate-invid-secondary-explosions.mjs first. This records the same
 // real level, live Scouts, native health and Gallant destruction callbacks.
-const c=await connect({port:9334}),ev=code=>c.evaluate(code),dir='artifacts/invid-secondary-explosions'
+const c=await connect({port:9334}),ev=code=>c.evaluate(code),dir=process.env.MOSPEADA_EXPLOSION_ARTIFACTS||'artifacts/invid-secondary-explosions'
 try{
  await ev(`(()=>{const q=__SECONDARY_QA__,d=__MOSPEADA__,s=d.runtime.state;
   q.prepare=()=>{q.p.reset();q.p.phase='active';q.p.time=10;q.p.previousPlayer.set(s.x,s.height,s.z);q.fx.clear(true);q.fx.previousTime=10;
@@ -18,12 +18,12 @@ try{
   const q=__SECONDARY_QA__,a=__ANIME__,stream=a.renderer.domElement.captureStream(30),parts=[],recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp8',videoBitsPerSecond:4500000}),events=[{at:.15,id:2},{at:2.1,id:0},{at:2.4,id:1},{at:2.7,id:3},{at:3,id:4}];
   recorder.ondataavailable=e=>{if(e.data.size)parts.push(e.data)};recorder.start();
   let elapsed=0,last=performance.now(),peakFragments=0,peakSmoke=0,kills=0;
-  await new Promise((resolve,reject)=>{function frame(now){try{const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;elapsed+=dt;while(events.length&&elapsed>=events[0].at){const e=events.shift(),result=q.hit(e.id);if(!result.dead)throw Error('Recorded hit did not destroy the prepared live Scout');kills++}q.step(dt);peakFragments=Math.max(peakFragments,q.fx.secondaryExplosion.hot.count);peakSmoke=Math.max(peakSmoke,q.fx.secondaryExplosion.smoke.count);a.effect.render(a.state.snapshot(),1);if(elapsed<5.2)requestAnimationFrame(frame);else resolve()}catch(error){reject(error)}}requestAnimationFrame(frame)});
+  await new Promise((resolve,reject)=>{function frame(now){try{const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;elapsed+=dt;while(events.length&&elapsed>=events[0].at){const e=events.shift(),result=q.hit(e.id);if(!result.dead)throw Error('Recorded hit did not destroy the prepared live Scout');kills++}q.step(dt);peakFragments=Math.max(peakFragments,q.fx.secondaryExplosion.hot.count);peakSmoke=Math.max(peakSmoke,q.fx.secondaryExplosion.ribbons.count);a.effect.render(a.state.snapshot(),1);if(elapsed<6.2)requestAnimationFrame(frame);else resolve()}catch(error){reject(error)}}requestAnimationFrame(frame)});
   const stopped=new Promise(resolve=>recorder.onstop=resolve);recorder.stop();await stopped;stream.getTracks().forEach(t=>t.stop());
   const blob=new Blob(parts,{type:'video/webm'}),data=await new Promise(resolve=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result.split(',')[1]);reader.readAsDataURL(blob)});
   return{data,elapsed,kills,peakFragments,peakSmoke,gl:a.renderer.getContext().getError(),shader:a.state.snapshot().error}
  })()`)
- fs.writeFileSync(`${dir}/gameplay-secondary-explosions.webm`,Buffer.from(result.data,'base64'));delete result.data
- assert.equal(result.kills,5);assert.equal(result.gl,0);assert.equal(result.shader,'');assert.ok(result.peakFragments<=104&&result.peakSmoke<=144)
+ fs.writeFileSync(`${dir}/gameplay-smoke-ribbons.webm`,Buffer.from(result.data,'base64'));delete result.data
+ assert.equal(result.kills,5);assert.equal(result.gl,0);assert.equal(result.shader,'');assert.ok(result.peakFragments<=104&&result.peakSmoke<=16)
  const report={...result,smokeVisiblePixels:smokePixels};fs.writeFileSync(`${dir}/video-validation.json`,JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2))
 }finally{c.close()}

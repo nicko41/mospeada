@@ -1,0 +1,24 @@
+{
+  "focusedTests": {
+    "passed": 41,
+    "failed": 0
+  },
+  "productionBuild": "passed",
+  "gameplay": {
+    "smokeRibbons": "5 real Scout destructions; continuous world-space mesh; shared material; GL/shader errors: none",
+    "collision": "Scott V3: back fall, auto recovery, health unchanged at 100",
+    "desert": "Horizon-T placement, bounds and LOD preserved; decoration has no new colliders"
+  },
+  "baselineTestFailure": {
+    "name": "a full moving escort can defeat all fifteen with ranged Gallant hits while Rand survives",
+    "result": "battle instead of victory",
+    "reproducedWithOriginalTestFromHEAD": true,
+    "scope": "Unchanged combat/escort simulation; not modified as part of visual FX work"
+  },
+  "captures": {
+    "video": "explosions/gameplay-smoke-ribbons.webm",
+    "explosion": "explosions/02-short-smoke-trails.png",
+    "desert": "desert/01-general.png",
+    "collision": "collision/v3-back-fall.png"
+  }
+}

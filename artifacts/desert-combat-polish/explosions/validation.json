@@ -1,0 +1,101 @@
+{
+  "death": {
+    "hits": 16,
+    "dead": true,
+    "explosions": 1
+  },
+  "initial": {
+    "bursts": 1,
+    "dropped": 0,
+    "recycledTails": 0,
+    "activeBursts": 1,
+    "fragments": 17,
+    "smoke": 3,
+    "smokeSegments": 31,
+    "settings": {
+      "enabled": true,
+      "poolBursts": 4,
+      "reserveFragments": 32,
+      "reserveTrails": 8,
+      "reserveSamples": 24,
+      "randomSeed": 77533867,
+      "fragmentMin": 12,
+      "fragmentMax": 20,
+      "trailFragmentMin": 2,
+      "trailFragmentMax": 4,
+      "speedMin": 25,
+      "speedMax": 45,
+      "drag": 2.4,
+      "gravity": 12,
+      "spawnRadius": 0.55,
+      "fragmentLifeMin": 0.4,
+      "fragmentLifeMax": 0.8,
+      "fragmentSizeMin": 0.18,
+      "fragmentSizeMax": 0.4,
+      "heroLifeMin": 0.6,
+      "heroLifeMax": 1.2,
+      "heroSize": 1.65,
+      "brightnessMin": 3,
+      "brightnessMax": 5,
+      "stretchSeconds": 0.045,
+      "maxStretch": 1.65,
+      "trailLifeMin": 1.5,
+      "trailLifeMax": 2.5,
+      "trailSamples": 24,
+      "trailEmissionTime": 1.2,
+      "smokeSizeMin": 0.6,
+      "smokeSizeMax": 0.85,
+      "smokeGrowth": 2.5,
+      "smokeOpacity": 0.48,
+      "smokeRise": 0.3,
+      "smokeTurbulence": 0.075,
+      "smokeColor": "#49413b",
+      "maxDistance": 220
+    },
+    "active": [
+      {
+        "fragments": 14,
+        "trails": 3,
+        "age": 0.24,
+        "life": 3.404641839116812
+      }
+    ]
+  },
+  "visiblePixels": 6329,
+  "tail": {
+    "bursts": 1,
+    "dropped": 0,
+    "recycledTails": 0,
+    "activeBursts": 1,
+    "fragments": 0,
+    "smoke": 3,
+    "smokeSegments": 69
+  },
+  "simultaneous": {
+    "bursts": 5,
+    "dropped": 0,
+    "recycledTails": 0,
+    "activeBursts": 4,
+    "fragments": 92,
+    "smoke": 16,
+    "smokeSegments": 180
+  },
+  "remaining": {
+    "bursts": 5,
+    "dropped": 0,
+    "recycledTails": 0,
+    "activeBursts": 0,
+    "fragments": 0,
+    "smoke": 0,
+    "smokeSegments": 0
+  },
+  "integrity": {
+    "gl": 0,
+    "shader": "",
+    "lights": 2,
+    "borrowedSparkMap": true,
+    "ribbonSmokeMap": true,
+    "continuousMesh": true
+  },
+  "errors": []
+}

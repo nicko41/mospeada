@@ -6,7 +6,7 @@ import {canyonEarthMaterial} from './forestCanyonMaterials.js'
 
 // Approximate area balance, not a uniform crossfade. Dimensions are metres.
 // These settings affect only the desert's existing opaque material.
-export const DESERT_BLEND_DEFAULTS=Object.freeze({sandShare:.60,detailTileMetres:12,sandTileMetres:8.8,maskMetres:32,edgeSoftness:.14})
+export const DESERT_BLEND_DEFAULTS=Object.freeze({sandShare:.60,detailTileMetres:12,sandTileMetres:8.8,maskMetres:32,edgeSoftness:.14,rockShare:.3,rockPatchMetres:29,pebbleMetres:.36})
 
 export function stage4CliffMaterial(texture){
   // Use the floor's rotated three-sample blend, not the former wall's
@@ -40,6 +40,9 @@ export function stage4DesertMaterial(detail,sand,settings={},origin=new Vector3(
     uDesertMaskMetres:{value:config.maskMetres},
     uDesertEdgeSoftness:{value:config.edgeSoftness},
     uDesertOrigin:{value:origin},
+    uDesertRockShare:{value:config.rockShare},
+    uDesertRockPatchMetres:{value:config.rockPatchMetres},
+    uDesertPebbleMetres:{value:config.pebbleMetres},
   }
   material.name='Plano 4 / original illustrated earth + illustrated sand'
   // Shared uniform objects also let the author compare/tune the balance live.
@@ -54,8 +57,22 @@ export function stage4DesertMaterial(detail,sand,settings={},origin=new Vector3(
       varying vec2 vDesertGround;
       uniform sampler2D uDesertSand;
       uniform float uDesertSandShare,uDesertDetailMetres,uDesertSandMetres,uDesertMaskMetres,uDesertEdgeSoftness;
+      uniform float uDesertRockShare,uDesertRockPatchMetres,uDesertPebbleMetres;
       float desertHash(vec2 p){vec3 h=fract(vec3(p.xyx)*vec3(.1031,.1030,.0973));h+=dot(h,h.yzx+33.33);return fract((h.x+h.y)*h.z);}
       float desertNoise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(desertHash(i),desertHash(i+vec2(1,0)),f.x),mix(desertHash(i+vec2(0,1)),desertHash(i+vec2(1)),f.x),f.y);}
+      float desertPebble(vec2 p){
+        vec2 cell=floor(p),f=fract(p);float nearest=2.0,shade=0.0;
+        for(int j=-1;j<=1;j++)for(int i=-1;i<=1;i++){
+          vec2 o=vec2(float(i),float(j)),id=cell+o;
+          vec2 seed=vec2(desertHash(id),desertHash(id+vec2(73.2,19.1)));
+          vec2 delta=o+.18+seed*.64-f;
+          float d=length(delta*vec2(1.0,1.24));
+          if(d<nearest){nearest=d;shade=seed.x;}
+        }
+        float edge=max(fwidth(nearest),.025);
+        float stone=1.0-smoothstep(.24-edge,.24+edge,nearest);
+        return stone*(.26+shade*.2);
+      }
     `+shader.fragmentShader
     shader.fragmentShader=shader.fragmentShader.replace('diffuseColor*=canyonPaint(canyonDirt,vCanyonUv);',`
       float sandShare=clamp(uDesertSandShare,0.0,1.0);
@@ -87,10 +104,23 @@ export function stage4DesertMaterial(detail,sand,settings={},origin=new Vector3(
       float routeX=(38.0*sin(routeAge*.0022)+16.0*sin(routeAge*.0041))*smoothstep(0.0,350.0,routeAge);
       float routeMark=(1.0-smoothstep(8.0,18.0,abs(vDesertGround.x-routeX)))*smoothstep(1150.0,1450.0,routeDepth);
       desertPaint.rgb*=mix(1.0,.84,routeMark);
+      // Irregular gravel islands blend into the two existing ground paintings.
+      // No decals/extra transparent layers, and subpixel pebbles fade out to
+      // avoid shimmer during boost. All masks share the terrain's local frame.
+      vec2 rockMacro=vDesertGround/max(1.0,uDesertRockPatchMetres);
+      vec2 rockWarp=vec2(desertNoise(rockMacro*.8+12.7),desertNoise(rockMacro*.9-9.4))-.5;
+      float rockDistribution=desertNoise(rockMacro+rockWarp)*.75+desertNoise(rockMacro*2.8)*.25;
+      float rockMask=smoothstep(.59,.71,rockDistribution)*clamp(uDesertRockShare,0.0,1.0)*2.5;
+      rockMask*=smoothstep(670.0,950.0,routeDepth)*(1.0-routeMark*.75);
+      vec2 pebbleUv=vDesertGround/max(.12,uDesertPebbleMetres);
+      float pebbleFootprint=max(length(dFdx(pebbleUv)),length(dFdy(pebbleUv)));
+      float pebbleDetail=desertPebble(pebbleUv)*(1.0-smoothstep(.35,1.2,pebbleFootprint));
+      vec3 gravel=desertPaint.rgb*vec3(.79,.82,.84)*(1.0-pebbleDetail);
+      desertPaint.rgb=mix(desertPaint.rgb,gravel,clamp(rockMask,0.0,.8));
       diffuseColor*=desertPaint;
     `)
   }
-  material.customProgramCacheKey=()=> 'stage4-two-original-desert-images-climax-v2'
+  material.customProgramCacheKey=()=> 'stage4-two-original-desert-images-gravel-v3'
   return material
 }
 

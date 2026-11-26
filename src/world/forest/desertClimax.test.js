@@ -14,6 +14,7 @@ import {bikeConfig} from '../../vehicle/bikeConfig.js'
 import {ForestStage4World} from './forestStage4World.js'
 import {GallantHitscan,GALLANT_FIRE} from '../../vehicle/GallantShot.js'
 import {registerMeleeTarget} from '../../player/meleeWorld.js'
+import {DESERT_STONES} from './DesertClimaxScenery.js'
 
 const metrics={frontZ:1,rearZ:-1,frontY:.4,rearY:.4,frontRadius:.4,rearRadius:.4,wheelbase:2}
 function fixture(){
@@ -166,7 +167,7 @@ test('the procedural plain recycles a fixed terrain pool, joins the desert and s
   assert.ok(plain.backdrop.visible&&!plain.backdrop.userData.rideSurface)
   assert.equal(plain.scenery.meshes.length,4);assert.ok(plain.scenery.meshes.every(m=>m.isInstancedMesh&&!m.castShadow))
   const matrix=new Matrix4(),point=new Vector3()
-  for(const mesh of [plain.scenery.rocks,plain.scenery.brush])for(let i=0;i<mesh.count;i++){mesh.getMatrixAt(i,matrix);point.setFromMatrixPosition(matrix);if(matrix.elements[0]===0&&matrix.elements[10]===0)continue;assert.ok(Math.abs(point.x-climaxPathX(-point.z))>=259,'Combat strip remains clear')}
+  for(const mesh of [plain.scenery.rocks,plain.scenery.brush])for(let i=0;i<mesh.count;i++){mesh.getMatrixAt(i,matrix);point.setFromMatrixPosition(matrix);if(matrix.elements[0]===0&&matrix.elements[10]===0)continue;assert.ok(Math.abs(point.x-climaxPathX(-point.z))>=(mesh===plain.scenery.rocks?DESERT_STONES.clearHalfWidth:259),'Combat strip remains clear')}
   assert.equal(meshes.length,36)
   const bike=createBikeState({x:0,z:-C.start+40,yaw:Math.PI},metrics,sampleRideHeight);bike.speed=28
   const start=bike.height

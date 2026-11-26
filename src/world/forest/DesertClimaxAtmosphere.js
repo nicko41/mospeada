@@ -2,8 +2,8 @@ import {Color,FogExp2,MathUtils} from 'three'
 import {DESERT_CLIMAX as C} from './forestClimaxConfig.js'
 
 export const DESERT_HAZE=Object.freeze({
-  enabled:true,color:'#dfd1b6',start:850,falloff:2650,density:1,
-  skyBlend:.18,horizonStrength:.78,horizonHeight:.10,blur:4.5,transition:340,
+  enabled:true,color:'#e0cbb0',start:950,falloff:2850,density:1,
+  skyBlend:.12,horizonStrength:.48,horizonHeight:.085,blur:2.5,transition:340,
 })
 
 // Keep the world's FOG_EXP2 program signature. The Anime shader's shared

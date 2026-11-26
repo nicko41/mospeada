@@ -36,6 +36,7 @@ import {COVER_DECALS} from './coverDecalData.js'
 import {applyCoverDecals} from './coverDecals.js'
 import {restoreVehiclePresentation} from './restoreVehiclePresentation.js'
 import {cameraImpactEvents} from '../rendering/cameraImpactEvents.js'
+import {invidMovementBlocker,separateInvidBodies,signalInvidContact} from './invidBodyCollision.js'
 
 const CYCLONE_MODEL='/models/mospeada/cyclone-vr052f.glb'
 useGLTF.preload(CYCLONE_MODEL)
@@ -61,8 +62,9 @@ export default function Motorcycle() {
     runtime.cameraController = drivingCamera
     const armor=new ArmorController(runtime,rig,sampleRideHeight,(x,z,y)=>{
       if(!Number.isFinite(sampleRideHeight(x,z)))return false
+      const feet=y+(armor.state?.soleOffset||0),hit=invidMovementBlocker(armor.state,x,z,feet,.34,1.85)
+      if(hit){signalInvidContact(runtime,hit);return false}
       queryColliders(x-.4,z-.4,x+.4,z+.4,runtime.cameraNearby)
-      const feet=y+(armor.state?.soleOffset||0)
       return !runtime.cameraNearby.some(c=>c.maxY>feet+.08&&c.minY<feet+1.85&&overlapsFootprint(c,x,z,.34))
     })
     const armorCamera=new ArmorCamera(camera,orbit,runtime,sampleRideHeight);armor.camera=armorCamera;runtime.armorController=armor
@@ -79,6 +81,7 @@ export default function Motorcycle() {
       runtime.bikeDefeatMotion?.reset();runtime.canyonCrash=null
       runtime.resumeClimaxCheckpoint=!!start.climax
       resetPlayerCombat()
+      runtime.invidContact=null;runtime.invidContactCooldown=0
       runtime.gallant?.bikeCamera.finish(runtime.state||{x:start.x,height:0,z:start.z})
       runtime.stage3?.encounter.reset();runtime.scottInstance?.shooterPose?.restore()
       const stage4=stage4World.get()
@@ -128,7 +131,7 @@ export default function Motorcycle() {
       if (event.code === 'KeyR') reset()
       if (event.code === 'KeyP' || event.code === 'Escape') pause()
       if (event.code === 'KeyC'&&!armor.active) setCameraMode((runtime.cameraMode + 1) % 4)
-      if (event.code === 'KeyF' && !runtime.paused && !runtime.stage3?.encounter.active && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
+      if (event.code === 'KeyF' && !runtime.scottInstance?.hitMotion?.knockedDown && !runtime.paused && !runtime.stage3?.encounter.active && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
       const starts = { Digit1: 'highway', Digit2: 'curves', Digit3: 'slope', Digit4: 'rough', Digit5: 'jump', Digit6: 'forest' }
       if (starts[event.code]) reset(starts[event.code])
     }
@@ -146,7 +149,7 @@ export default function Motorcycle() {
       if (event.detail.freeCamera&&!armor.active) setCameraMode(runtime.cameraMode === 3 ? 0 : 3)
       if (event.detail.centerCamera){if(armor.active)armorCamera.yaw=armor.state.yaw;else setCameraMode(0)}
       if(event.detail.armorGround)armor.toggle()
-      if (event.detail.rider && !runtime.paused && !runtime.stage3?.encounter.active && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
+      if (event.detail.rider && !runtime.scottInstance?.hitMotion?.knockedDown && !runtime.paused && !runtime.stage3?.encounter.active && !runtime.transformEntry?.blocksRiderChange) requestRiderToggle(runtime.state, getConfig())
       if (event.detail.touch) Object.assign(runtime.keys, event.detail.touch)
     }
     window.addEventListener('ride-command', command)
@@ -193,6 +196,8 @@ export default function Motorcycle() {
       // An airborne bike that arrives below the far lip hits the cliff; it
       // cannot snap upward onto the landing platform from underneath.
       if(Number.isFinite(y)&&s.airborne&&(s.frontOverVoid||s.rearOverVoid)&&s.height<y-.25)return false
+      const hit=invidMovementBlocker(s,x,z,s.height,1.15,1.9)
+      if(hit){if(s.riderMode==='mounted'||s.riderMode==='stopping')signalInvidContact(runtime,hit);return false}
       // Keep the entire contact footprint inside a rendered surface.
       for (const along of [-1.2, 1.2]) {
         const px=x+Math.sin(yaw)*along,pz=z+Math.cos(yaw)*along
@@ -210,6 +215,8 @@ export default function Motorcycle() {
     const canWalk = (x, z) => {
       const y = sampleRideHeight(x, z)
       if (!Number.isFinite(y)) return false
+      const hit=invidMovementBlocker(s.pedestrian||s,x,z,y,.23,1.9)
+      if(hit){if(s.riderMode==='onFoot'||s.riderMode==='approaching')signalInvidContact(runtime,hit);return false}
       const dx = x - s.x, dz = z - s.z
       if (Math.abs(Math.cos(s.yaw) * dx - Math.sin(s.yaw) * dz) < 0.49 && Math.abs(Math.sin(s.yaw) * dx + Math.cos(s.yaw) * dz) < 1.3) return false
       queryColliders(x - 0.3, z - 0.3, x + 0.3, z + 0.3, runtime.nearby)
@@ -224,6 +231,12 @@ export default function Motorcycle() {
     if (!runtime.paused&&!runtime.opening?.holding&&!runtime.ending?.holding&&!playerCombat.dead) {
       const dt=Math.min(delta,.1),entry=runtime.transformEntry
       const armor=runtime.armorController
+      runtime.invidContactCooldown=Math.max(0,(runtime.invidContactCooldown||0)-dt)
+      const actor=armor.active?armor.state:s.riderMode==='onFoot'?s.pedestrian:s
+      const feet=armor.active?actor.y+actor.soleOffset:actor.ground??s.height
+      separateInvidBodies(actor,feet,armor.active?.34:s.riderMode==='onFoot'?.23:1.15,1.9,target=>signalInvidContact(runtime,target))
+      if(armor.active)armor.sync()
+      if(runtime.scottInstance?.hitMotion?.knockedDown&&!armor.active){runtime.input={throttle:0,steer:0,brake:1};runtime.boostQueued=false}
       stage3World.get()?.ensureAround(s.z)
       const encounter=runtime.stage3?.encounter
       encounter?.observe(s,!armor.active&&(!entry||entry.phase==='idle'))

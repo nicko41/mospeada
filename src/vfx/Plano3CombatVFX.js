@@ -45,7 +45,7 @@ export class Plano3CombatVFX{
     this.contactFlashes=this.mesh(this.plane,this.hitFlashMaterial,COMBAT_VFX_LIMITS.bursts*2,'Scout_contact_flashes');this.contactFlashes.renderOrder=8
     this.sampleGround=sampleGround
     this.impacts=new CombatBursts(this.blast,this.plane,explosionAtlases,bloodRandom);this.root.add(this.impacts.root);this.presets=this.impacts.presets;this.lightingRoot=this.impacts.lightingRoot
-    this.secondaryExplosion=new InvidExplosionDebris({sparkMap:this.impacts.haloTexture,smokeMap:this.impacts.smokeBallTexture});this.root.add(this.secondaryExplosion.root)
+    this.secondaryExplosion=new InvidExplosionDebris({sparkMap:this.impacts.haloTexture});this.root.add(this.secondaryExplosion.root)
     this.impactScene=impactScene;this.surfaceMarks=new SurfaceImpactMarks();this.lightingRoot.add(this.surfaceMarks.mesh);this.lightingRoot.userData.prewarmVFX=true
     this.muzzleHaloMaterial=new MeshBasicMaterial({map:this.impacts.haloTexture,transparent:true,depthWrite:false,toneMapped:false,blending:AdditiveBlending,fog:false})
     this.muzzleHalos=this.mesh(this.plane,this.muzzleHaloMaterial,1,'Gallant_muzzle_warm_flare');this.muzzleHalos.renderOrder=9;this.flashMesh.renderOrder=10

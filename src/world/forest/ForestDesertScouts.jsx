@@ -11,6 +11,7 @@ import {createScoutSquad,renderScoutSquad,disposeScoutSquad} from './scoutSquadR
 import {stage4World,stage4DesertHeight} from './forestStage4Config.js'
 import {sampleRideHeight} from '../../vehicle/rideSurface.js'
 import {registerMeleeTarget} from '../../player/meleeWorld.js'
+import {registerInvidBody} from '../../vehicle/invidBodyCollision.js'
 import {damagePlayer,playerCombat} from '../../player/playerCombat.js'
 import {rideUI} from '../../vehicle/rideUI.js'
 
@@ -37,12 +38,12 @@ export default function ForestDesertScouts({runtime}){
     }
     resources.climax=new DesertScoutPatrol(all,sample,Math.random,{climax:true,bolts:resources.opening.bolts})
     for(let group=0;group<C.count/C.squadSize;group++)resources.squads[group+1].scouts=resources.climax.scouts.slice(group*C.squadSize,(group+1)*C.squadSize)
-    resources.removeTargets.push(...resources.climax.scouts.map(registerMeleeTarget))
+    resources.removeTargets.push(...resources.climax.scouts.flatMap(r=>[registerMeleeTarget(r),registerInvidBody(r)]))
   }
   useLayoutEffect(()=>{
     resources.refs++;runtime.desertPatrol=resources.patrol;runtime.climaxSequence=resources.sequence
-    resources.removeTargets=resources.opening.scouts.map(registerMeleeTarget)
-    if(resources.climax)resources.removeTargets.push(...resources.climax.scouts.map(registerMeleeTarget))
+    resources.removeTargets=resources.opening.scouts.flatMap(r=>[registerMeleeTarget(r),registerInvidBody(r)])
+    if(resources.climax)resources.removeTargets.push(...resources.climax.scouts.flatMap(r=>[registerMeleeTarget(r),registerInvidBody(r)]))
     if(import.meta.env.DEV)window.__DESERT_SCOUTS__=resources
     return()=>{resources.removeTargets.forEach(fn=>fn());resources.opening.reset();resources.climax?.reset();if(runtime.desertPatrol===resources.patrol)delete runtime.desertPatrol;if(runtime.climaxSequence===resources.sequence)delete runtime.climaxSequence;if(import.meta.env.DEV)delete window.__DESERT_SCOUTS__;resources.refs--;setTimeout(()=>{if(!resources.refs)resources.squads.forEach(disposeScoutSquad)},0)}
   },[resources,runtime])
