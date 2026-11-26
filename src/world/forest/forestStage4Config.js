@@ -1,3 +1,4 @@
+import {originalDesertRockHeight} from './desertRockProfile.js'
 import {stage3Height,stage3PathX,FOREST_STAGE3} from './forestStage3Config.js'
 import {DESERT_CLIMAX,climaxPathX,climaxTerrainHeight} from './forestClimaxConfig.js'
 
@@ -30,7 +31,9 @@ export function stage4DesertHeight(x,z){
   const pass=(1-smooth4(95,290,Math.abs(x)))*smooth4(1100,1450,d)
   const rim=Math.max(smooth4(750,1800,Math.abs(x)),smooth4(1400,2300,d)*(1-pass))
   const ridge=75+100*(.5+.5*Math.sin(x*.006+d*.002))**2+80*(.5+.5*Math.sin(x*.015-d*.004))**4
-  const oldHeight=h+rim*ridge
+  const rockMix=smooth4(95,160,Math.abs(x))
+  const rockHeight=originalDesertRockHeight(x,d)
+  const oldHeight=h+rim*ridge*(1-rockMix)+rockMix*(14*rim+rockHeight-14)
   return d>DESERT_CLIMAX.start?climaxTerrainHeight(x,z,oldHeight):oldHeight
 }
 export const stage4EarthWeight=(x,z,anchor=null)=>Math.max(1-smooth4(1.3,4.5,Math.abs(x-stage4Path(z,anchor))),smooth4(520,620,-z+4*Math.sin(x*.13)),smooth4(800,1024,Math.abs(x)))

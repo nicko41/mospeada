@@ -1,0 +1,14 @@
+{
+  "unchangedRouteSamples": 3696,
+  "centralRouteHalfWidth": 95,
+  "battleTerrainPreservedFromDepth": 2740,
+  "approvedRidgeGeometry": "positions, normals, UVs and colors byte-identical to fd094c7",
+  "productionBuild": "passed",
+  "mountainAndGroundTests": "passed",
+  "focusedTests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "originalMountains": "Broad stepped mesa profiles; truncated summits; no isolated apex",
+  "sharedMaterial": "Textured, flat shaded; compatible with terrain without vertex colors"
+}

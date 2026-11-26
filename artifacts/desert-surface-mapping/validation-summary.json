@@ -1,0 +1,19 @@
+{
+  "build": "passed",
+  "focusedTests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "gameplay": {
+    "gl": 0,
+    "shaderErrors": 0,
+    "floorPixelDifference": 0,
+    "floorComparedPixels": 307152
+  },
+  "scope": "Texture mapping only; existing mountain/cliff geometry and gameplay preserved",
+  "mapping": {
+    "recipe": "Approved desert floor earth/sand coverage and metric scale",
+    "surfaces": "World-space continuous projection, translation-only sampling, independently shared repeat samplers",
+    "levelGround": "Original floor samplers, route and gravel retained; upright sampling skipped"
+  }
+}

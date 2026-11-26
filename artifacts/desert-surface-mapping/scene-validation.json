@@ -1,0 +1,90 @@
+{
+  "visible": true,
+  "scale": 483.4089128040246,
+  "dimensions": [
+    1218.250488973141,
+    325.8061678858502,
+    1238.5188427930461
+  ],
+  "bounds": {
+    "min": [
+      440.87475551342936,
+      -107.05078382420912,
+      -5319.259421396523
+    ],
+    "max": [
+      1659.1252444865704,
+      218.75538406164105,
+      -4080.740578603477
+    ]
+  },
+  "ground": -52.05078382420911,
+  "groundUniform": -52.05078382420911,
+  "anchor": [
+    0,
+    0,
+    -2400
+  ],
+  "lodTriangles": [
+    70000,
+    15000
+  ],
+  "static": true,
+  "colliders": 0,
+  "mapping": {
+    "floorSampler": 1002,
+    "surfaceSamplers": [
+      1000,
+      1000
+    ],
+    "sharedSurfaceMaps": true,
+    "sandShared": true,
+    "cliff": {
+      "projection": "triplanar",
+      "orientation": "continuous",
+      "preserveFlatFloor": false,
+      "settings": {
+        "sandShare": 0.6,
+        "detailTileMetres": 12,
+        "sandTileMetres": 8.8,
+        "maskMetres": 32,
+        "edgeSoftness": 0.14,
+        "rockShare": 0.3,
+        "rockPatchMetres": 29,
+        "pebbleMetres": 0.36
+      }
+    },
+    "mountains": {
+      "projection": "triplanar",
+      "orientation": "continuous",
+      "preserveFlatFloor": false,
+      "settings": {
+        "sandShare": 0.6,
+        "detailTileMetres": 12,
+        "sandTileMetres": 8.8,
+        "maskMetres": 32,
+        "edgeSoftness": 0.14,
+        "rockShare": 0.3,
+        "rockPatchMetres": 29,
+        "pebbleMetres": 0.36
+      }
+    }
+  },
+  "mountains": {
+    "sharedTexturedMaterial": true,
+    "flatShading": true,
+    "texture": "",
+    "footingTextured": true,
+    "visualHalfWidth": 6496,
+    "rideHalfWidth": 3000,
+    "staticSkirt": true,
+    "sector": 11
+  },
+  "integrity": {
+    "gl": 0,
+    "shader": "",
+    "scottVariant": "v3",
+    "carrierLod": 1
+  },
+  "errors": []
+}

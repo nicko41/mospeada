@@ -7,7 +7,17 @@ import {DesertClimaxScenery} from './DesertClimaxScenery.js'
 
 const entryBands=[[-2400,-512,32],[-512,512,16],[512,2400,32]]
 const plainBands=[[-C.halfWidth,-640,64],[-640,640,16],[640,C.halfWidth,64]]
-const backdropColumns=[...new Set([...entryBands,...plainBands].flatMap(([a,b,step])=>Array.from({length:Math.ceil((b-a)/step)+1},(_,i)=>Math.min(b,a+i*step))))].sort((a,b)=>a-b)
+const apronMargin=[2560,2816,3000,3256,3512,4024,5048,S.desertHalfWidth+4096]
+export const DESERT_VISUAL_HALF_WIDTH=apronMargin.at(-1)
+const terrainColumns=[...entryBands,...plainBands].flatMap(([a,b,step])=>Array.from({length:Math.ceil((b-a)/step)+1},(_,i)=>Math.min(b,a+i*step)))
+const backdropColumns=[...new Set([...apronMargin.map(x=>-x),...apronMargin,...terrainColumns])].sort((a,b)=>a-b)
+const horizonColumns=[...new Set([...apronMargin.map(x=>-x),...apronMargin,...Array.from({length:49},(_,i)=>-C.halfWidth+i*C.halfWidth/24)])].sort((a,b)=>a-b)
+// Continue the same ground under both the old and new mountain silhouettes.
+// This is visual-only coverage outside the original playable plain width.
+export function desertApronHeight(x,depth){
+  const edge=stage4DesertHeight(MathUtils.clamp(x,-C.halfWidth,C.halfWidth),-depth)
+  return MathUtils.lerp(edge,-S.drop-C.drop-24,MathUtils.smoothstep(Math.abs(x),C.halfWidth,C.halfWidth+1536))
+}
 function edgeHeight(x,depth,bands){
   const band=bands.find(([a,b])=>x>=a&&x<=b)
   if(!band)return stage4DesertHeight(x,-depth)
@@ -21,11 +31,8 @@ function edgeHeight(x,depth,bands){
 // Continue their actual profile outward, tapering to a low visual floor.
 // These aprons belong only to the final scene and are never ride surfaces.
 function mountainFooting(){
-  const positions=[],uv=[],indices=[],outer=S.desertHalfWidth+4096,base=-S.drop-C.drop-24
-  const sideHeight=(x,depth)=>{
-    const sampleX=MathUtils.clamp(x,-C.halfWidth,C.halfWidth)
-    return MathUtils.lerp(stage4DesertHeight(sampleX,-depth),base,MathUtils.smoothstep(Math.abs(x),C.halfWidth,C.halfWidth+1536))
-  }
+  const positions=[],uv=[],indices=[],outer=DESERT_VISUAL_HALF_WIDTH,base=-S.drop-C.drop-24
+  const sideHeight=desertApronHeight
   const patch=(xs,depths,height)=>{
     const offset=positions.length/3,columns=xs.length
     for(const depth of depths)for(const x of xs){positions.push(x,height(x,depth),-depth);uv.push(x/12,depth/6)}
@@ -34,9 +41,9 @@ function mountainFooting(){
     }
   }
   const entryColumns=[...new Set(entryBands.flatMap(([a,b,step])=>Array.from({length:Math.ceil((b-a)/step)+1},(_,i)=>Math.min(b,a+i*step))))].sort((a,b)=>a-b)
-  const margin=[2560,2816,3000,3256,3512,4024,5048,outer]
+  const margin=apronMargin
   patch([...margin.map(x=>-x).reverse(),...entryColumns,...margin],[-4096,-2048,-1024,0,256,520],(x,depth)=>{
-    const edge=Math.abs(x)<=S.desertHalfWidth?edgeHeight(x,520,entryBands):sideHeight(x,520)
+    const edge=Math.abs(x)<=S.desertHalfWidth?edgeHeight(x,depth,entryBands):sideHeight(x,depth)
     return MathUtils.lerp(edge,base,MathUtils.smoothstep(520-depth,0,1536))
   })
   const depths=Array.from({length:Math.ceil((C.start-520)/16)+1},(_,i)=>Math.min(C.start,520+i*16))
@@ -57,18 +64,19 @@ export class DesertClimaxPlain{
       for(const [a,b,step] of [[-C.halfWidth,-640,64],[-640,640,16],[640,C.halfWidth,64]]){
         const geometry=stage4Grid(a,b,0,C.tileLength,step,16,()=>0)
         geometry.userData.rideMutableHeight=true
-        const mesh=new Mesh(geometry,this.world.materials.desert);mesh.name='Plano_5_recycled_desert_plain';mesh.visible=false;mesh.receiveShadow=true
+        const mesh=new Mesh(geometry,this.world.materials.terrainSlopes||this.world.materials.desert);mesh.name='Plano_5_recycled_desert_plain';mesh.visible=false;mesh.receiveShadow=true
         mesh.userData={forest:true,rideSurface:true,rideSurfaceActive:false,rideSurfaceType:'dirt',rideSurfaceBiome:'desert',rideSurfaceEarthWeight:()=>1}
         this.world.add(mesh);row.meshes.push(mesh);row.remove.push(registerRideSurfaces(mesh));yield
       }
     }
-    const geometry=stage4Grid(-C.halfWidth,C.halfWidth,0,4096,128,128,()=>0)
-    this.horizon=new Mesh(geometry,this.world.materials.desert);this.horizon.name='Plano_5_distant_plain';this.horizon.receiveShadow=true;this.horizon.visible=false;this.world.add(this.horizon)
+    const geometry=stage4Grid(0,horizonColumns.length-1,0,4096,1,128,()=>0)
+    for(let i=0;i<geometry.attributes.position.count;i++)geometry.attributes.position.setX(i,horizonColumns[i%horizonColumns.length])
+    this.horizon=new Mesh(geometry,this.world.materials.terrainSlopes||this.world.materials.desert);this.horizon.name='Plano_5_distant_plain';this.horizon.receiveShadow=true;this.horizon.visible=false;this.world.add(this.horizon)
     const backGeometry=stage4Grid(0,backdropColumns.length-1,0,4096,1,128,()=>0),backPositions=backGeometry.attributes.position
     for(let i=0;i<backPositions.count;i++)backPositions.setX(i,backdropColumns[i%backdropColumns.length])
-    this.backdrop=new Mesh(backGeometry,this.world.materials.desert);this.backdrop.name='Plano_5_distant_plain_behind';this.backdrop.visible=false;this.backdrop.receiveShadow=true;this.world.add(this.backdrop)
+    this.backdrop=new Mesh(backGeometry,this.world.materials.terrainSlopes||this.world.materials.desert);this.backdrop.name='Plano_5_distant_plain_behind';this.backdrop.visible=false;this.backdrop.receiveShadow=true;this.world.add(this.backdrop)
     yield
-    this.footing=new Mesh(mountainFooting(),this.world.materials.desert);this.footing.name='Plano_5_original_mountain_footing';this.footing.userData.forest=true;this.footing.visible=false;this.footing.receiveShadow=true;this.world.add(this.footing)
+    this.footing=new Mesh(mountainFooting(),this.world.materials.mountains||this.world.materials.terrainSlopes||this.world.materials.desert);this.footing.name='Plano_5_original_mountain_footing';this.footing.userData.forest=true;this.footing.visible=false;this.footing.receiveShadow=true;this.world.add(this.footing)
     this.ready=true
   }
   assign(row,sector){
@@ -102,12 +110,15 @@ export class DesertClimaxPlain{
       if(performance.now()-started>=3)break
     }
     if(this.horizon){
-      // Cover the visual gap between separated rider tile windows as well.
-      // Starting after the farther rider left an uncovered strip of sky.
-      const sector=Math.max(0,Math.floor((Math.min(scottDistance,randDistance)-C.start)/C.tileLength))+3
+      // Start at the back of the active terrain window, not three rows ahead:
+      // the full-width skirt must also cover the sides of the current arena.
+      const sector=Math.max(0,Math.floor((Math.min(scottDistance,randDistance)-C.start)/C.tileLength)-1)
       if(sector!==this.horizonSector){
         this.horizonSector=sector;const start=C.start+sector*C.tileLength,p=this.horizon.geometry.attributes.position
-        for(let i=0;i<p.count;i++)p.setY(i,stage4DesertHeight(p.getX(i),p.getZ(i)-start)-2.5)
+        for(let i=0;i<p.count;i++){
+          const x=p.getX(i),underTerrain=1-MathUtils.smoothstep(Math.abs(x),C.halfWidth-256,C.halfWidth)
+          p.setY(i,desertApronHeight(x,start-p.getZ(i))-2.5*underTerrain)
+        }
         p.needsUpdate=true;this.horizon.position.z=-start;this.horizon.geometry.computeVertexNormals();this.horizon.geometry.computeBoundingBox();this.horizon.geometry.computeBoundingSphere();this.horizon.visible=true
       }
     }
@@ -122,7 +133,7 @@ export class DesertClimaxPlain{
         // the final scene boundary; no geometry or collision changes earlier.
         for(let i=0;i<p.count;i++){
           const depth=Math.max(C.start,end-4096+Math.floor(i/columns)*128),x=p.getX(i)
-          const height=depth===C.start?edgeHeight(x,depth,entryBands):depth===end?edgeHeight(x,depth,plainBands):stage4DesertHeight(x,-depth)
+          const height=Math.abs(x)>C.halfWidth?desertApronHeight(x,depth):depth===C.start?edgeHeight(x,depth,entryBands):depth===end?edgeHeight(x,depth,plainBands):stage4DesertHeight(x,-depth)
           p.setXYZ(i,x,height,-depth)
         }
         p.needsUpdate=true;this.backdrop.geometry.computeVertexNormals();this.backdrop.geometry.computeBoundingBox();this.backdrop.geometry.computeBoundingSphere();this.backdrop.visible=true

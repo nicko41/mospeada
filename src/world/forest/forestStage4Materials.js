@@ -8,25 +8,9 @@ import {canyonEarthMaterial} from './forestCanyonMaterials.js'
 // These settings affect only the desert's existing opaque material.
 export const DESERT_BLEND_DEFAULTS=Object.freeze({sandShare:.60,detailTileMetres:12,sandTileMetres:8.8,maskMetres:32,edgeSoftness:.14,rockShare:.3,rockPatchMetres:29,pebbleMetres:.36})
 
-export function stage4CliffMaterial(texture){
-  // Use the floor's rotated three-sample blend, not the former wall's
-  // horizontal strata / per-cell reflection. Keep the authored wall UVs.
-  const material=canyonEarthMaterial(texture),compile=material.onBeforeCompile
-  material.name='Plano 4 / desierto-floor.png organic darkened cliff'
-  material.color.setScalar(.8)
-  material.onBeforeCompile=(shader,renderer)=>{
-    compile(shader,renderer)
-    shader.fragmentShader=shader.fragmentShader.replace('diffuseColor*=canyonPaint(canyonDirt,vCanyonUv);',`
-      // Match the floor's 12 x 6 metre texture scale on the vertical face.
-      vec2 cliffUv=vCanyonUv*vec2(.666666667,1.0);
-      vec2 cliffWarp=vec2(
-        sin(dot(cliffUv,vec2(.71,.43))+sin(cliffUv.y*.83)),
-        sin(dot(cliffUv,vec2(-.37,.61))+sin(cliffUv.x*.57))
-      )*.22;
-      diffuseColor*=canyonPaint(canyonDirt,cliffUv+cliffWarp);
-    `)
-  }
-  material.customProgramCacheKey=()=> 'stage4-organic-desert-cliff-v1'
+export function stage4CliffMaterial(texture,sand=texture,origin=new Vector3()){
+  const material=stage4DesertSurfaceMaterial(texture,sand,origin)
+  material.name='Plano 4 / continuous illustrated desert cliff';material.color.setScalar(.8)
   return material
 }
 
@@ -121,6 +105,49 @@ export function stage4DesertMaterial(detail,sand,settings={},origin=new Vector3(
     `)
   }
   material.customProgramCacheKey=()=> 'stage4-two-original-desert-images-gravel-v3'
+  return material
+}
+
+// Reuse the floor's exact two-paint coverage, metric scale and soft blending.
+// Each planar sample keeps one image orientation: no quarter-turn cells or
+// extra wall sine warp. The floor's own material/compiler is left untouched.
+export function stage4DesertSurfaceMaterial(detail,sand,origin=new Vector3(),settings={},floor=null){
+  const material=stage4DesertMaterial(floor?.detail||detail,floor?.sand||sand,settings,origin),compile=material.onBeforeCompile
+  material.userData.desertSurface={projection:'triplanar',orientation:'continuous',preserveFlatFloor:!!floor,settings:material.userData.desertBlend.settings}
+  material.onBeforeCompile=(shader,renderer)=>{
+    compile(shader,renderer)
+    Object.assign(shader.uniforms,{uSurfaceDetail:{value:detail},uSurfaceSand:{value:sand}})
+    shader.vertexShader='varying vec3 vDesertSurfacePoint;\n'+shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+      vec4 surfacePoint=vec4(transformed,1.0);
+      #ifdef USE_INSTANCING
+        surfacePoint=instanceMatrix*surfacePoint;
+      #endif
+      vDesertSurfacePoint=(modelMatrix*surfacePoint).xyz-uDesertOrigin;
+    `)
+    let fragment=shader.fragmentShader
+    const begin=fragment.indexOf('float sandShare=clamp(uDesertSandShare'),paintEnd=fragment.indexOf('// A restrained central trail',begin),end=fragment.indexOf('diffuseColor*=desertPaint;',paintEnd)
+    if(begin<0||paintEnd<0||end<0)throw Error('Desert surface: missing floor paint block')
+    const paint=fragment.slice(begin,paintEnd).replaceAll('vDesertGround','surfaceGround').replace('vCanyonUv','surfaceGround/vec2(uDesertDetailMetres,uDesertDetailMetres*.5)').replaceAll('canyonPaint','surfaceCanyonPaint').replaceAll('canyonDirt','uSurfaceDetail').replaceAll('uDesertSand,','uSurfaceSand,')
+    const tap=fragment.match(/vec4 canyonTap\([^\n]+/)[0],blend=fragment.match(/vec4 canyonPaint\([^\n]+/)[0]
+    const surfaceSampler=(tap+'\n'+blend).replaceAll('canyonTap','surfaceCanyonTap').replaceAll('canyonPaint','surfaceCanyonPaint').replace('float a=floor(h.z*4.0)*1.5707963;mat2 r=mat2(cos(a),sin(a),-sin(a),cos(a));','mat2 r=mat2(1.0,0.0,0.0,1.0);')
+    const sample=`
+      vec3 surfaceNormal=abs(normalize(cross(dFdx(vDesertSurfacePoint),dFdy(vDesertSurfacePoint))));
+      vec3 surfaceWeights=pow(surfaceNormal,vec3(4.0));surfaceWeights/=max(.001,dot(surfaceWeights,vec3(1.0)));
+      surfaceWeights=max(surfaceWeights-.025,vec3(0.0));surfaceWeights/=max(.001,dot(surfaceWeights,vec3(1.0)));
+      vec4 projectedPaint=vec4(0.0);
+      if(surfaceWeights.y>0.0)projectedPaint+=desertSurfacePaint(vDesertSurfacePoint.xz)*surfaceWeights.y;
+      if(surfaceWeights.x>0.0)projectedPaint+=desertSurfacePaint(vec2(vDesertSurfacePoint.z,-vDesertSurfacePoint.y))*surfaceWeights.x;
+      if(surfaceWeights.z>0.0)projectedPaint+=desertSurfacePaint(vec2(vDesertSurfacePoint.x,-vDesertSurfacePoint.y))*surfaceWeights.z;
+    `
+    if(floor){
+      // Keep the approved floor path, gravel and samplers on level ground.
+      const mapping=sample.replaceAll('if(surfaceWeights.','if(surfaceNormal.y<.9&&surfaceWeights.')+'float slopePaint=smoothstep(.10,.35,1.0-surfaceNormal.y);\ndesertPaint=mix(desertPaint,projectedPaint,slopePaint);\n'
+      fragment=fragment.slice(0,end)+mapping+fragment.slice(end)
+    }else fragment=fragment.slice(0,begin)+sample+'diffuseColor*=projectedPaint;'+fragment.slice(end+'diffuseColor*=desertPaint;'.length)
+    const helper='uniform sampler2D uSurfaceDetail,uSurfaceSand;\n'+surfaceSampler+'\nvec4 desertSurfacePaint(vec2 surfaceGround){\n'+paint+'\nreturn desertPaint;\n}\n'
+    shader.fragmentShader='varying vec3 vDesertSurfacePoint;\n'+fragment.replace(/void main\s*\(\s*\)\s*\{/,helper+'void main() {')
+  }
+  material.customProgramCacheKey=()=> 'stage4-floor-paint-continuous-surfaces-v2/'+!!floor
   return material
 }
 

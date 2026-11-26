@@ -21,7 +21,9 @@ export class ForestStage4World extends Group{
     super();this.name='Forest_Plano_4_Desert_Descent';this.visible=false;this.bound=false;this.anchor=null;this.materials=materials;this.tiles=[];this.batches=[];this.surfaces=[];this.colliderData=[];this.terrain=createStage4Terrain();this.removeColliders=null;this.checkpoint=null
     this.pending=null;this.patchedBatches=new Set();this.patchedGrass=new Set();this.preparationPeakMs=0
     for(const [kind,list,material]of [['forest',this.terrain.forest,materials.ground],['desert',this.terrain.desert,materials.desert]])for(const geometry of list){
-      const mesh=new Mesh(geometry,material);mesh.name='Plano_4_'+kind+'_terrain';mesh.receiveShadow=true;mesh.userData={forest:true,rideSurface:true,rideSurfaceActive:false,rideSurfaceType:'dirt',rideSurfaceBiome:kind==='desert'?'desert':'forest',rideSurfaceEarthWeight:(x,z)=>kind==='desert'?1:stage4EarthWeight(x-this.position.x,z-this.position.z,this.anchor)};this.add(mesh);this.surfaces.push(mesh)
+      const outer=kind==='desert'&&(geometry.boundingBox.min.x>=512||geometry.boundingBox.max.x<=-512)
+      const terrain=kind==='desert'?materials.terrainSlopes||material:material
+      const mesh=new Mesh(geometry,outer?materials.mountains||terrain:terrain);mesh.name='Plano_4_'+kind+'_terrain';mesh.receiveShadow=true;mesh.userData={forest:true,rideSurface:true,rideSurfaceActive:false,rideSurfaceType:'dirt',rideSurfaceBiome:kind==='desert'?'desert':'forest',rideSurfaceEarthWeight:(x,z)=>kind==='desert'?1:stage4EarthWeight(x-this.position.x,z-this.position.z,this.anchor)};this.add(mesh);this.surfaces.push(mesh)
     }
     const cliff=new Mesh(this.terrain.cliff,materials.cliff);cliff.name='Plano_4_natural_descent_face';cliff.userData.forest=true;this.add(cliff)
     const trees=assets.filter(a=>a.kind==='tree'),sprites=FOLIAGE_CATALOG.entries.filter(e=>['pasto','hierbas','helechos','arbustos'].includes(e.category))
