@@ -2,7 +2,9 @@ import { Matrix3, Matrix4, Ray, Vector3 } from 'three'
 
 const surfaces = new Set(), barriers = new Set(), geometryGrids = new WeakMap()
 const point = new Vector3(), world = new Vector3()
+const heightInverse=new Matrix4()
 const CELL = 4
+const translationOnly=e=>e[0]===1&&e[5]===1&&e[10]===1&&e[1]===0&&e[2]===0&&e[4]===0&&e[6]===0&&e[8]===0&&e[9]===0
 
 const shotInverse=new Matrix4(),shotRay=new Ray(),shotEnd=new Vector3(),shotHit=new Vector3()
 const shotA=new Vector3(),shotB=new Vector3(),shotC=new Vector3(),shotWorld=new Vector3(),shotVisited=new Set()
@@ -18,10 +20,14 @@ function raycastRegistered(raycaster,collection){
   for (const mesh of collection) {
     if (mesh.userData.rideSurfaceActive === false) continue
     mesh.updateWorldMatrix(true, false)
-    shotInverse.copy(mesh.matrixWorld).invert();shotRay.copy(raycaster.ray).applyMatrix4(shotInverse)
+    const e=mesh.matrixWorld.elements,translated=translationOnly(e)
+    raycaster.ray.at(raycaster.far,shotEnd)
+    if(translated){shotRay.copy(raycaster.ray);shotRay.origin.x-=e[12];shotRay.origin.y-=e[13];shotRay.origin.z-=e[14];shotEnd.x-=e[12];shotEnd.y-=e[13];shotEnd.z-=e[14]}
+    else{shotInverse.copy(mesh.matrixWorld).invert();shotRay.copy(raycaster.ray).applyMatrix4(shotInverse);shotEnd.applyMatrix4(shotInverse)}
     const bounds=mesh.geometry.boundingBox
-    if(bounds&&!shotRay.intersectsBox(bounds))continue
-    raycaster.ray.at(raycaster.far,shotEnd).applyMatrix4(shotInverse)
+    // Enemy bolts sweep short segments. An infinite ray hitting a later tile
+    // must not make that tile traverse its triangle grid on every live bolt.
+    if(bounds&&!bounds.containsPoint(shotRay.origin)&&(!shotRay.intersectBox(bounds,shotHit)||shotHit.distanceToSquared(shotRay.origin)>shotEnd.distanceToSquared(shotRay.origin)+1e-8))continue
     const grid=gridFor(mesh.geometry),size=grid.cellSize,o=shotRay.origin,d=shotRay.direction
     let x=Math.floor(o.x/size),z=Math.floor(o.z/size)
     const ex=Math.floor(shotEnd.x/size),ez=Math.floor(shotEnd.z/size),sx=Math.sign(d.x),sz=Math.sign(d.z)
@@ -33,7 +39,7 @@ function raycastRegistered(raycaster,collection){
       for(const t of grid.get(`${x},${z}`)||[]){
         if(shotVisited.has(t))continue;shotVisited.add(t)
         if(!shotRay.intersectTriangle(shotA.fromArray(t[0]),shotB.fromArray(t[1]),shotC.fromArray(t[2]),false,shotHit))continue
-        shotWorld.copy(shotHit).applyMatrix4(mesh.matrixWorld)
+        if(translated)shotWorld.set(shotHit.x+e[12],shotHit.y+e[13],shotHit.z+e[14]);else shotWorld.copy(shotHit).applyMatrix4(mesh.matrixWorld)
         const distance=shotWorld.distanceTo(raycaster.ray.origin)
         if(distance>=raycaster.near&&distance<=raycaster.far&&(!nearest||distance<nearest.distance)){
           shotNormal.subVectors(shotB,shotA).cross(shotEdge.subVectors(shotC,shotA)).applyNormalMatrix(shotNormalMatrix.getNormalMatrix(mesh.matrixWorld));if(shotNormal.dot(raycaster.ray.direction)>0)shotNormal.negate()
@@ -94,7 +100,9 @@ export function sampleRideHeight(x, z, contact) {
   for (const mesh of surfaces) {
     if(mesh.userData.rideSurfaceActive===false)continue
     mesh.updateWorldMatrix(true, false)
-    point.set(x, 0, z); mesh.worldToLocal(point)
+    const e=mesh.matrixWorld.elements,translated=translationOnly(e)
+    if(translated)point.set(x-e[12],-e[13],z-e[14])
+    else point.set(x,0,z).applyMatrix4(heightInverse.copy(mesh.matrixWorld).invert())
     const bounds=mesh.geometry.boundingBox
     if(bounds&&(point.x<bounds.min.x-1e-6||point.x>bounds.max.x+1e-6||point.z<bounds.min.z-1e-6||point.z>bounds.max.z+1e-6))continue
     const grid=gridFor(mesh.geometry),cellSize=grid.cellSize
@@ -107,7 +115,9 @@ export function sampleRideHeight(x, z, contact) {
       const v = ((c[2] - a[2]) * (point.x - c[0]) + (a[0] - c[0]) * (point.z - c[2])) / denominator
       if (u < -1e-6 || v < -1e-6 || u + v > 1.000001) continue
       world.set(point.x, u * a[1] + v * b[1] + (1 - u - v) * c[1], point.z)
-      const height = mesh.localToWorld(world).y
+      // The world matrix is already current above. Avoid updating every
+      // ancestor again for every supporting triangle and foot probe.
+      const height = translated?world.y+e[13]:world.applyMatrix4(mesh.matrixWorld).y
       if (height > highest) {
         highest = height
         if (contact) {

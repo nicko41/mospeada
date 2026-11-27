@@ -1,0 +1,49 @@
+{
+  "scope": "CPU measurements on identical animated meshes and terrain probes; these are not whole-game FPS",
+  "baselineRef": "1ad127e",
+  "queries": 32,
+  "scoutTriangles": 79986,
+  "oneTimeBuildMs": 308.77649999999994,
+  "shots": {
+    "before": {
+      "medianMs": 97.42610000000013,
+      "p95Ms": 192.7237,
+      "maxMs": 194.79770000000008
+    },
+    "after": {
+      "medianMs": 0.4715000000001055,
+      "p95Ms": 1.5300999999999476,
+      "maxMs": 2.1381000000000085
+    },
+    "meanTrianglesTested": 250.53125,
+    "identicalAimPoints": true
+  },
+  "projectileSweeps": {
+    "queriesPerTrial": 10000,
+    "before": {
+      "medianMs": 185.48620000000028,
+      "p95Ms": 188.3721999999998,
+      "maxMs": 188.3721999999998
+    },
+    "after": {
+      "medianMs": 161.3708999999999,
+      "p95Ms": 185.1255000000001,
+      "maxMs": 185.1255000000001
+    },
+    "identicalContacts": true
+  },
+  "terrain": {
+    "queriesPerTrial": 10000,
+    "before": {
+      "medianMs": 184.57600000000002,
+      "p95Ms": 214.5664999999999,
+      "maxMs": 214.5664999999999
+    },
+    "after": {
+      "medianMs": 115.13240000000042,
+      "p95Ms": 115.41849999999977,
+      "maxMs": 115.41849999999977
+    },
+    "identicalHeights": true
+  }
+}

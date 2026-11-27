@@ -1,6 +1,7 @@
 import {Group,Object3D} from 'three'
 import {clone as cloneSkeleton} from 'three/addons/utils/SkeletonUtils.js'
 import {ScoutMechanicalMotion} from './ScoutMechanicalMotion.js'
+import {prepareScoutSurface} from './scoutSurfaceQuery.js'
 
 export const INVID_SCOUT_URL='/delivery/invid-scout.glb?rig=flight-v4-leg-seam'
 // Measured from the supplied GLB (+Y up, face +Z). Each asymmetric barrel
@@ -32,6 +33,7 @@ export function createScoutView(source,id,clips=[]){
   const muzzles=SCOUT_ASSET.launchers.map((p,i)=>{const anchor=new Object3D();anchor.name=i?'Scout_right_launcher_aperture':'Scout_left_launcher_aperture';anchor.position.fromArray(p);body.add(anchor);return anchor})
   const view={id,root,model,muzzles,levels,lod:0}
   if(levels[0]?.isSkinnedMesh&&model.getObjectByName('arm_L'))view.motion=new ScoutMechanicalMotion(view,clips)
+  if(view.motion)for(const mesh of levels)prepareScoutSurface(mesh)
   return view
 }
 

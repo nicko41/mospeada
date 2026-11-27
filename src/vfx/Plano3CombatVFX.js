@@ -6,6 +6,7 @@ import {combatEnergyTexture} from './combatEnergyTextures.js'
 import {SCOUT_SCORCH_SLOTS} from '../world/forest/scoutHitAppearance.js'
 import {SurfaceImpactMarks} from './SurfaceImpactMarks.js'
 import {SCOUT_ASSET} from '../world/forest/invidScoutAsset.js'
+import {intersectScoutSurface} from '../world/forest/scoutSurfaceQuery.js'
 import {InvidImpactDust} from './InvidImpactDust.js'
 import {cameraImpactEvents} from '../rendering/cameraImpactEvents.js'
 import {cinematicCombatEvents} from '../rendering/cinematicCombatEvents.js'
@@ -257,7 +258,7 @@ export class Plano3CombatVFX{
     // Resolve the visible Scout skin so sparks leave its armour surface.
     const view=target.view,mesh=view.levels[view.lod||0];view.root.updateWorldMatrix(true,true)
     this.contactQuery.ray.set(from,this.direction.subVectors(point,from).normalize());this.contactQuery.near=0;this.contactQuery.far=from.distanceTo(point)+target.height+target.radius
-    this.contactHits.length=0;this.contactQuery.intersectObject(mesh,false,this.contactHits)
+    this.contactHits.length=0;intersectScoutSurface(view,this.contactQuery,this.contactHits)
     const contact=this.contactHits[0]
     if(contact){
       this.contactExact=true;this.contactPoint.copy(contact.point);this.contactNormal.copy(contact.face.normal).transformDirection(mesh.matrixWorld);if(this.contactNormal.dot(this.contactQuery.ray.direction)>0)this.contactNormal.negate()

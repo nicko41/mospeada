@@ -6,6 +6,7 @@ export class SoundEffects{
   constructor(effects,{createContext=()=>{const Context=globalThis.AudioContext||globalThis.webkitAudioContext;return Context?new Context({latencyHint:'interactive'}):null},fetchAudio=url=>fetch(url),random=Math.random,masterVolume=1}={}){
     this.effects=effects;this.createContext=createContext;this.fetchAudio=fetchAudio;this.random=random
     this.masterVolume=volume(masterVolume);this.volumes=new Map();this.buffers=new Map();this.pending=new Map();this.gains=new Map();this.voices=new Set();this.voiceGains=new Map();this.voiceFilters=new Map()
+    this.automationTargets=new WeakMap()
   }
   context(){
     if(!this.audioContext){
@@ -52,9 +53,12 @@ export class SoundEffects{
     const now=this.audioContext.currentTime
     const automate=(param,value)=>{
       if(!param||!Number.isFinite(value))return
+      const constant=Math.max(.005,timeConstant),previous=this.automationTargets.get(param)
+      if(previous?.value===value&&previous.constant===constant)return
       if(param.cancelAndHoldAtTime)param.cancelAndHoldAtTime(now)
       else{param.cancelScheduledValues(now);param.setValueAtTime(param.value,now)}
-      param.setTargetAtTime(value,now,Math.max(.005,timeConstant))
+      param.setTargetAtTime(value,now,constant)
+      if(previous){previous.value=value;previous.constant=constant}else this.automationTargets.set(param,{value,constant})
     }
     automate(source.playbackRate,playbackRate)
     automate(this.voiceGains.get(source)?.gain,gain)
@@ -65,6 +69,7 @@ export class SoundEffects{
     try{
       const gain=this.voiceGains.get(source),context=this.audioContext
       if(gain&&fadeOut>0&&context.state==='running'){
+        this.automationTargets.delete(gain.gain)
         const now=context.currentTime
         gain.gain.cancelScheduledValues(now);gain.gain.setValueAtTime(gain.gain.value,now);gain.gain.linearRampToValueAtTime(0,now+fadeOut)
         source.stop(now+fadeOut)
@@ -81,6 +86,7 @@ export class SoundEffects{
     const buffer=this.buffers.get(variant.url)
     if(!buffer)return null
     const voiceVolume=volume(variant.volume??1)*volume(gain)
+    if(!loop&&voiceVolume===0)return null
     let source,voiceGain,voiceFilter
     try{
       let gain=this.gains.get(name)

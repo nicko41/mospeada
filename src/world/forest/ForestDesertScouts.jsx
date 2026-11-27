@@ -19,10 +19,13 @@ import {damagePlayer,playerCombat} from '../../player/playerCombat.js'
 import {rideUI} from '../../vehicle/rideUI.js'
 import {gameAudio} from '../../audio/gameAudio.js'
 import {playEnemyExplosion} from '../../audio/enemyAudio.js'
+import {prepareScoutSurfaceSteps} from './scoutSurfaceQuery.js'
 
 export default function ForestDesertScouts({runtime}){
   const asset=useGLTF(INVID_SCOUT_URL),{camera,gl}=useThree()
   const resources=usePreparedResource(gl,'scouts resources',async()=>{
+    const meshes=[];asset.scene.traverse(mesh=>{if(mesh.isSkinnedMesh)meshes.push(mesh)})
+    for(const mesh of meshes)await workQueue.drain(prepareScoutSurfaceSteps(mesh),'scouts surface queries')
     const root=new Group();root.name='Desert_Invid_Scout_patrol';root.userData.prewarmVFX=true
     const views=[]
     for(let i=0;i<SCOUT_PATROL.count;i++)views.push(await workQueue.submit(()=>createScoutView(asset.scene,i,asset.animations),'scouts view'))

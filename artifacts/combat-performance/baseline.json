@@ -1,0 +1,474 @@
+[
+  {
+    "audio": false,
+    "frames": 17,
+    "median": 166.59999999999854,
+    "p95": 416.59999999999854,
+    "max": 416.59999999999854,
+    "metrics": {
+      "combatFX": {
+        "calls": 17,
+        "ms": 3.8999999463558197,
+        "max": 1.7999999821186066
+      },
+      "render": {
+        "calls": 17,
+        "ms": 422.2999999821186,
+        "max": 36.80000001192093
+      },
+      "enemyAnimation": {
+        "calls": 85,
+        "ms": 4.300000101327896,
+        "max": 0.20000001788139343
+      },
+      "enemyWorldRay": {
+        "calls": 19,
+        "ms": 129.80000004172325,
+        "max": 125.80000001192093
+      },
+      "AI": {
+        "calls": 17,
+        "ms": 151.80000007152557,
+        "max": 128
+      },
+      "enemyRenderUpload": {
+        "calls": 17,
+        "ms": 1.2000000178813934,
+        "max": 0.20000001788139343
+      },
+      "audioPlay": {
+        "calls": 2,
+        "ms": 0,
+        "max": 0
+      }
+    },
+    "voices": 0,
+    "triangles": 8307853,
+    "calls": 1051,
+    "raster": [
+      1262,
+      804
+    ],
+    "shots": 2,
+    "top": [
+      [
+        "(idle) :-1",
+        1647155
+      ],
+      [
+        "(program) :-1",
+        527973
+      ],
+      [
+        "castWorld GallantShot.js:46",
+        126819
+      ],
+      [
+        "updateWorldMatrix three.module-CwO0auyC.js?v=584d9b7b:10068",
+        40879
+      ],
+      [
+        "exports.jsxDEV react_jsx-dev-runtime.js?v=bb814902:188",
+        39547
+      ],
+      [
+        "multiplyMatrices three.module-CwO0auyC.js?v=584d9b7b:8252",
+        35435
+      ],
+      [
+        "WebGLRenderer.renderBufferDirect three.module-CwO0auyC.js?v=584d9b7b:52232",
+        34863
+      ],
+      [
+        "setProgram three.module-CwO0auyC.js?v=584d9b7b:52774",
+        34364
+      ],
+      [
+        "sampleRideHeight rideSurface.js:90",
+        27176
+      ],
+      [
+        "flatten three.module-CwO0auyC.js?v=584d9b7b:45328",
+        24227
+      ],
+      [
+        "sync AnimeRenderer.js:105",
+        20192
+      ],
+      [
+        "upload three.module-CwO0auyC.js?v=584d9b7b:45860",
+        19250
+      ],
+      [
+        "setValue three.module-CwO0auyC.js?v=584d9b7b:45803",
+        18594
+      ],
+      [
+        "updateMatrixWorld three.module-CwO0auyC.js?v=584d9b7b:10046",
+        15846
+      ],
+      [
+        "refreshUniformsCommon three.module-CwO0auyC.js?v=584d9b7b:50529",
+        15579
+      ],
+      [
+        " createDrivingCyclone.js:67",
+        13129
+      ]
+    ]
+  },
+  {
+    "audio": true,
+    "frames": 18,
+    "median": 145.79999999999563,
+    "p95": 347.09999999999854,
+    "max": 347.09999999999854,
+    "metrics": {
+      "combatFX": {
+        "calls": 18,
+        "ms": 2.099999964237213,
+        "max": 0.30000001192092896
+      },
+      "render": {
+        "calls": 18,
+        "ms": 352.0000000298023,
+        "max": 31.799999982118607
+      },
+      "enemyAnimation": {
+        "calls": 90,
+        "ms": 3.8999999463558197,
+        "max": 0.20000001788139343
+      },
+      "enemyWorldRay": {
+        "calls": 22,
+        "ms": 2.2999999821186066,
+        "max": 0.30000001192092896
+      },
+      "AI": {
+        "calls": 18,
+        "ms": 20.39999994635582,
+        "max": 1.7999999821186066
+      },
+      "enemyRenderUpload": {
+        "calls": 18,
+        "ms": 0.9000000655651093,
+        "max": 0.20000001788139343
+      },
+      "audioPlay": {
+        "calls": 2,
+        "ms": 0.4000000059604645,
+        "max": 0.20000001788139343
+      }
+    },
+    "voices": 2,
+    "triangles": 8307853,
+    "calls": 1051,
+    "raster": [
+      1262,
+      804
+    ],
+    "shots": 3,
+    "top": [
+      [
+        "(idle) :-1",
+        1874877
+      ],
+      [
+        "(program) :-1",
+        414197
+      ],
+      [
+        "exports.jsxDEV react_jsx-dev-runtime.js?v=bb814902:188",
+        42776
+      ],
+      [
+        "WebGLRenderer.renderBufferDirect three.module-CwO0auyC.js?v=584d9b7b:52232",
+        39272
+      ],
+      [
+        "updateWorldMatrix three.module-CwO0auyC.js?v=584d9b7b:10068",
+        38430
+      ],
+      [
+        "flatten three.module-CwO0auyC.js?v=584d9b7b:45328",
+        28185
+      ],
+      [
+        "sampleRideHeight rideSurface.js:90",
+        28050
+      ],
+      [
+        "multiplyMatrices three.module-CwO0auyC.js?v=584d9b7b:8252",
+        27576
+      ],
+      [
+        "upload three.module-CwO0auyC.js?v=584d9b7b:45860",
+        25196
+      ],
+      [
+        "setValue three.module-CwO0auyC.js?v=584d9b7b:45803",
+        20168
+      ],
+      [
+        "updateMatrixWorld three.module-CwO0auyC.js?v=584d9b7b:10046",
+        19512
+      ],
+      [
+        "sync AnimeRenderer.js:105",
+        18894
+      ],
+      [
+        "setProgram three.module-CwO0auyC.js?v=584d9b7b:52774",
+        18759
+      ],
+      [
+        "setValueV1f three.module-CwO0auyC.js?v=584d9b7b:45363",
+        12932
+      ],
+      [
+        "bindVertexArray :-1",
+        12923
+      ],
+      [
+        "getProgram three.module-CwO0auyC.js?v=584d9b7b:52673",
+        9472
+      ]
+    ]
+  },
+  {
+    "audio": false,
+    "frames": 18,
+    "median": 138.90000000000146,
+    "p95": 201.5,
+    "max": 201.5,
+    "metrics": {
+      "combatFX": {
+        "calls": 18,
+        "ms": 1.0000000596046448,
+        "max": 0.20000001788139343
+      },
+      "render": {
+        "calls": 18,
+        "ms": 267.59999999403954,
+        "max": 26
+      },
+      "enemyAnimation": {
+        "calls": 90,
+        "ms": 3.5000001192092896,
+        "max": 0.20000001788139343
+      },
+      "enemyWorldRay": {
+        "calls": 21,
+        "ms": 1.6000000536441803,
+        "max": 0.20000001788139343
+      },
+      "AI": {
+        "calls": 18,
+        "ms": 15.000000029802322,
+        "max": 1.0999999940395355
+      },
+      "enemyRenderUpload": {
+        "calls": 18,
+        "ms": 0.699999988079071,
+        "max": 0.10000002384185791
+      },
+      "audioPlay": {
+        "calls": 2,
+        "ms": 0.09999999403953552,
+        "max": 0.09999999403953552
+      }
+    },
+    "voices": 2,
+    "triangles": 8307853,
+    "calls": 1051,
+    "raster": [
+      1262,
+      804
+    ],
+    "shots": 2,
+    "top": [
+      [
+        "(idle) :-1",
+        2021152
+      ],
+      [
+        "(program) :-1",
+        203059
+      ],
+      [
+        "updateWorldMatrix three.module-CwO0auyC.js?v=584d9b7b:10068",
+        45245
+      ],
+      [
+        "exports.jsxDEV react_jsx-dev-runtime.js?v=bb814902:188",
+        34380
+      ],
+      [
+        "multiplyMatrices three.module-CwO0auyC.js?v=584d9b7b:8252",
+        20512
+      ],
+      [
+        "setProgram three.module-CwO0auyC.js?v=584d9b7b:52774",
+        20127
+      ],
+      [
+        "sync AnimeRenderer.js:105",
+        17396
+      ],
+      [
+        "WebGLRenderer.renderBufferDirect three.module-CwO0auyC.js?v=584d9b7b:52232",
+        14707
+      ],
+      [
+        "arraysEqual three.module-CwO0auyC.js?v=584d9b7b:45346",
+        12387
+      ],
+      [
+        "projectObject three.module-CwO0auyC.js?v=584d9b7b:52526",
+        11208
+      ],
+      [
+        "renderObject three.module-CwO0auyC.js?v=584d9b7b:52656",
+        10807
+      ],
+      [
+        "setValue three.module-CwO0auyC.js?v=584d9b7b:45803",
+        10771
+      ],
+      [
+        "updateMatrixWorld three.module-CwO0auyC.js?v=584d9b7b:10046",
+        9545
+      ],
+      [
+        "setMaterial three.module-CwO0auyC.js?v=584d9b7b:48265",
+        9275
+      ],
+      [
+        "sampleRideHeight rideSurface.js:90",
+        9145
+      ],
+      [
+        "getParameters three.module-CwO0auyC.js?v=584d9b7b:46531",
+        8733
+      ]
+    ]
+  },
+  {
+    "audio": true,
+    "frames": 16,
+    "median": 152.89999999999418,
+    "p95": 208.29999999999563,
+    "max": 208.29999999999563,
+    "metrics": {
+      "combatFX": {
+        "calls": 16,
+        "ms": 0.9000000357627869,
+        "max": 0.19999998807907104
+      },
+      "render": {
+        "calls": 16,
+        "ms": 239.3999999165535,
+        "max": 18.599999994039536
+      },
+      "enemyAnimation": {
+        "calls": 80,
+        "ms": 1.9000000953674316,
+        "max": 0.10000002384185791
+      },
+      "enemyWorldRay": {
+        "calls": 18,
+        "ms": 1.7000000178813934,
+        "max": 0.20000001788139343
+      },
+      "AI": {
+        "calls": 16,
+        "ms": 14.500000059604645,
+        "max": 1.5
+      },
+      "enemyRenderUpload": {
+        "calls": 16,
+        "ms": 0.29999998211860657,
+        "max": 0.09999999403953552
+      },
+      "audioPlay": {
+        "calls": 2,
+        "ms": 0.19999998807907104,
+        "max": 0.19999998807907104
+      }
+    },
+    "voices": 1,
+    "triangles": 8307853,
+    "calls": 1051,
+    "raster": [
+      1262,
+      804
+    ],
+    "shots": 2,
+    "top": [
+      [
+        "(idle) :-1",
+        2057461
+      ],
+      [
+        "(program) :-1",
+        204199
+      ],
+      [
+        "exports.jsxDEV react_jsx-dev-runtime.js?v=bb814902:188",
+        37503
+      ],
+      [
+        "updateWorldMatrix three.module-CwO0auyC.js?v=584d9b7b:10068",
+        34907
+      ],
+      [
+        "WebGLRenderer.renderBufferDirect three.module-CwO0auyC.js?v=584d9b7b:52232",
+        28825
+      ],
+      [
+        "multiplyMatrices three.module-CwO0auyC.js?v=584d9b7b:8252",
+        21699
+      ],
+      [
+        "setProgram three.module-CwO0auyC.js?v=584d9b7b:52774",
+        19784
+      ],
+      [
+        "sync AnimeRenderer.js:105",
+        17622
+      ],
+      [
+        "upload three.module-CwO0auyC.js?v=584d9b7b:45860",
+        13523
+      ],
+      [
+        "projectObject three.module-CwO0auyC.js?v=584d9b7b:52526",
+        13241
+      ],
+      [
+        "bindVertexArray :-1",
+        12715
+      ],
+      [
+        "updateMatrixWorld three.module-CwO0auyC.js?v=584d9b7b:10046",
+        12714
+      ],
+      [
+        "sampleRideHeight rideSurface.js:90",
+        9817
+      ],
+      [
+        "refreshUniformsCommon three.module-CwO0auyC.js?v=584d9b7b:50529",
+        9656
+      ],
+      [
+        " AmbienceAudio.jsx?t=1795744940696:82",
+        9562
+      ],
+      [
+        "getBindingState three.module-CwO0auyC.js?v=584d9b7b:43358",
+        7976
+      ]
+    ]
+  }
+]

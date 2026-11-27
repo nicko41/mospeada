@@ -11,27 +11,29 @@ function plainCanyonMaterial(source,wall=false){
   const map=canyonTexture(source),material=new MeshLambertMaterial({map,side:DoubleSide,fog:true,name:wall?'Forest canyon / barranco.jpg':'Forest river bank / original shore',userData:{forest:true}})
   material.onBeforeCompile=shader=>{
     shader.uniforms.canyonDirt={value:map}
-    shader.vertexShader='varying vec2 vCanyonUv;\n'+shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>\nvCanyonUv=${wall?'vec2((modelMatrix*vec4(transformed,1.0)).x/48.0,uv.y/12.0)':'uv'};`)
+    shader.vertexShader='varying vec2 vCanyonUv;\n'+shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>\nvCanyonUv=${wall?'vec2((modelMatrix*vec4(transformed,1.0)).x/12.0,uv.y/3.0)':'uv'};`)
     shader.fragmentShader='uniform sampler2D canyonDirt;varying vec2 vCanyonUv;\n'+shader.fragmentShader
     shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>','diffuseColor*=texture2D(canyonDirt,vCanyonUv);')
   }
   material.addEventListener('dispose',()=>map.dispose())
-  material.customProgramCacheKey=()=> 'forest-canyon-original-image-v2/'+wall
+  material.customProgramCacheKey=()=> 'forest-canyon-original-image-v3/'+wall
   return material
 }
 
+// Drivable upper terrain keeps its original scale. Only canyonShoreMaterial
+// below enlarges the distant, non-drivable valley floor.
 export function stage2GroundMaterial(grass,dirt){
-  const map=canyonTexture(grass),soil=canyonTexture(dirt),material=new MeshLambertMaterial({map,name:'Forest Plano 2 / original grass and dirt',userData:{forest:true,forestGround:{tileMetres:24,source:'original grass-01.jpg + dirt01.jpg'}}})
+  const map=canyonTexture(grass),soil=canyonTexture(dirt),material=new MeshLambertMaterial({map,name:'Forest Plano 2 / original grass and dirt',userData:{forest:true,forestGround:{tileMetres:6,source:'original grass-01.jpg + dirt01.jpg'}}})
   material.onBeforeCompile=shader=>{
     shader.uniforms.stage2Dirt={value:soil}
     shader.vertexShader='varying vec2 vStage2Ground;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvStage2Ground=(modelMatrix*vec4(transformed,1.0)).xz;')
     shader.fragmentShader=`uniform sampler2D stage2Dirt;varying vec2 vStage2Ground;
       float stage2Earth(vec2 p){float t=smoothstep(0.0,80.0,-p.y-400.0);float oldX=sin(p.y*.013)*20.0+sin(p.y*.033)*3.0;float pathX=mix(oldX,${stage2PathX(-480).toFixed(9)},t);return 1.0-smoothstep(1.2,4.5,abs(p.x-pathX));}
     `+shader.fragmentShader
-    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>','vec2 groundUv=vStage2Ground/24.0;diffuseColor*=mix(texture2D(map,groundUv),texture2D(stage2Dirt,groundUv),stage2Earth(vStage2Ground));')
+    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>','vec2 groundUv=vStage2Ground/6.0;diffuseColor*=mix(texture2D(map,groundUv),texture2D(stage2Dirt,groundUv),stage2Earth(vStage2Ground));')
   }
   material.addEventListener('dispose',()=>{map.dispose();soil.dispose()})
-  material.customProgramCacheKey=()=> 'forest-stage2-original-ground-v3'
+  material.customProgramCacheKey=()=> 'forest-stage2-original-ground-v4'
   return material
 }
 

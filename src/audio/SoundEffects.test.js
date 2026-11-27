@@ -17,6 +17,24 @@ function fixture({state='running',random=()=>0}={}){
   return {audio,context,nodes,requests,decodes,gestures,target,prepare:()=>Promise.all(GALLANT_SHOT_URLS.map(url=>audio.loadBuffer(url)))}
 }
 
+test('stable loop controls do not cancel and reschedule identical audio ramps every frame',async()=>{
+ const f=fixture();await f.audio.loadBuffer(SOUND_EFFECTS.cycloneEngineLoop.variants[0].url)
+ const voice=f.audio.play('cycloneEngineLoop',{loop:true,filter:{frequency:1000}}),gain=f.audio.voiceGains.get(voice).gain,filter=f.audio.voiceFilters.get(voice).frequency
+ for(let i=0;i<240;i++){f.context.currentTime+=1/60;f.audio.modulate(voice,{playbackRate:1.2,gain:.4,frequency:2000})}
+ for(const param of[voice.playbackRate,gain,filter])assert.equal(param.events.filter(e=>e[0]==='target').length,1)
+ f.audio.modulate(voice,{gain:0,timeConstant:.12});f.audio.modulate(voice,{gain:0,timeConstant:.025})
+ assert.equal(gain.events.filter(e=>e[0]==='target').length,3,'Changing pause smoothing still takes effect immediately')
+ assert.equal(gain.events.at(-1)[3],.025);f.audio.stop(voice,.08);f.audio.modulate(voice,{gain:0})
+ assert.equal(gain.events.filter(e=>e[0]==='target').length,4,'A separately scheduled fade invalidates the cached target')
+ voice.onended();assert.equal(f.audio.voices.size,0)
+})
+
+test('inaudible distance-attenuated one-shots do not allocate or start sources',async()=>{
+ const f=fixture();await f.prepare();const nodes=f.nodes.length
+ assert.equal(f.audio.play('gallantShot',{gain:0}),null);assert.equal(f.nodes.length,nodes);assert.equal(f.audio.voices.size,0)
+ assert.ok(f.audio.play('gallantShot',{gain:.01}));assert.equal(f.audio.voices.size,1)
+})
+
 test('concurrent preparation downloads and decodes each original MP3 once, even before audio is unlocked',async()=>{
   const f=fixture({state:'suspended'})
   await Promise.all([f.prepare(),f.prepare(),f.prepare()])
