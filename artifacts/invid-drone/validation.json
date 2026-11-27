@@ -1,0 +1,114 @@
+{
+  "prepared": {
+    "batches": 3,
+    "instanced": true,
+    "capacity": [
+      11,
+      11,
+      11
+    ],
+    "triangles": [
+      20000,
+      5000,
+      3336
+    ],
+    "mapsShared": true,
+    "streaming": {
+      "objects": 224,
+      "textures": 13,
+      "programs": 16,
+      "gpuFenceMs": 577.6999999880791,
+      "readyMs": 42907.30000001192
+    },
+    "requests": 1,
+    "originalRequested": false,
+    "registered": true
+  },
+  "firstWave": {
+    "phase": "active",
+    "enemyShots": 2,
+    "counts": [
+      2,
+      0,
+      0
+    ],
+    "flightLoop": true,
+    "audioState": "running"
+  },
+  "destroyed": {
+    "hp": 0,
+    "shots": 3,
+    "kills": 1,
+    "explosions": 1
+  },
+  "hidden": {
+    "counts": [
+      0,
+      0,
+      0
+    ],
+    "flightLoop": false
+  },
+  "reused": {
+    "levels": [
+      [
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        3
+      ]
+    ],
+    "pooled": true,
+    "empty": true,
+    "requests": 1,
+    "gl": 0
+  },
+  "logs": [
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "[.WebGL-0x7bdc10965400] GL_INVALID_VALUE: glGetProgramiv: Program object expected.",
+    "Failed to load resource: net::ERR_CACHE_OPERATION_NOT_SUPPORTED"
+  ],
+  "errors": [],
+  "appearance": {
+    "name": "Invid drone / violet carapace",
+    "metalness": 0.16,
+    "roughness": 0.8,
+    "gl": 0
+  }
+}

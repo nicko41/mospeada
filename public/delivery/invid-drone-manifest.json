@@ -1,0 +1,68 @@
+{
+  "source": "assets/invid/invid_drone.glb",
+  "output": "public/delivery/invid-drone.glb",
+  "sourceSha256": "79b8c82087712c7a97c40a876faf95dc254d80144dfaed225979d91e4391983a",
+  "runtimeSha256": "07ff9bac75578c92294b9078876993db787bb391ed9b667b53a2bf2dd8bdf3d1",
+  "sourceBytes": 62251724,
+  "runtimeBytes": 2835288,
+  "sourceTriangles": 1943878,
+  "lods": [
+    {
+      "level": 0,
+      "triangles": 20000,
+      "vertices": 18068,
+      "relativeError": 0.001655427273362875
+    },
+    {
+      "level": 1,
+      "triangles": 5000,
+      "vertices": 6200,
+      "relativeError": 0.006876714061945677
+    },
+    {
+      "level": 2,
+      "triangles": 3336,
+      "vertices": 4792,
+      "relativeError": 0.02487366832792759
+    }
+  ],
+  "images": [
+    {
+      "width": 2048,
+      "height": 2048,
+      "bytes": 1796027,
+      "originalWidth": 2048,
+      "originalHeight": 2048,
+      "unchanged": true
+    },
+    {
+      "width": 512,
+      "height": 512,
+      "bytes": 48939,
+      "originalWidth": 2048,
+      "originalHeight": 2048,
+      "unchanged": false
+    },
+    {
+      "width": 1024,
+      "height": 1024,
+      "bytes": 106007,
+      "originalWidth": 2048,
+      "originalHeight": 2048,
+      "unchanged": false
+    }
+  ],
+  "materialsUnchanged": true,
+  "sourceBounds": {
+    "min": [
+      -0.596343994140625,
+      -0.45394599437713623,
+      -0.9512850046157837
+    ],
+    "max": [
+      0.595229983329773,
+      0.45694300532341003,
+      0.9504979848861694
+    ]
+  }
+}

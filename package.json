@@ -17,6 +17,7 @@
     "assets:alpha": "node scripts/prepare-forest-alpha.mjs",
     "assets:gallant": "node scripts/prepare-mars-gallant.mjs",
     "assets:scout": "node scripts/prepare-invid-scout.mjs",
+    "assets:drone": "node scripts/prepare-invid-drone.mjs",
     "assets:scout:rig": "node scripts/prepare-scout-mechanical-rig.mjs",
     "assets:rand": "node scripts/adjust-rand-arms.mjs && node scripts/prepare-rand.mjs assets/rand-cyclone/rand-casual-rigged-adjusted.glb",
     "assets:foliage": "node scripts/extract-forest-foliage.mjs"

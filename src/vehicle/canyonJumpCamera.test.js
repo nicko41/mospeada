@@ -52,6 +52,30 @@ test('an unboosted jump turns 180 degrees then leaves both visible actors behind
  }finally{c.controller.dispose();f.dispose()}
 })
 
+test('failed jumps keep Scott readable from the far bank, crop the fall, and never alter actor scale',async()=>{
+ const f=await stage2PhysicsFixture()
+ try{
+  for(const fps of[30,60,120]){
+   const s=createBikeState(stage2Checkpoint(),f.rig.metrics,f.sample),c=cameraFixture(s,f.sample),wrapper=new Group(),root=new Group()
+   wrapper.scale.setScalar(1.26);root.scale.setScalar(.85);const scales=[wrapper.scale.toArray(),root.scale.toArray()]
+   c.runtime.scottInstance={mountedMotion:{wrapper}};c.runtime.vehicleRig={root};let partial=false,seen=0,offscreen=false,farBank=false
+   try{
+    for(let i=0;i<fps*15&&s.height>S.fallY;i++){
+     advanceBike(s,{throttle:1},1/fps,f.rig.metrics,f.sample,(x,z)=>Number.isFinite(f.sample(x,z))||stage2Void(x,z),{...bikeConfig,airBoostEnabled:true})
+     const before=JSON.stringify(s);c.controller.update(s,1/fps);assert.equal(JSON.stringify(s),before)
+     assert.deepEqual([wrapper.scale.toArray(),root.scale.toArray()],scales);assert.ok(wrapper.visible&&root.visible)
+     if(c.controller.canyonShot?.phase!=='conceal')continue
+     const head=new Vector3(s.x,s.height+2.1,s.z).project(c.camera),feet=new Vector3(s.x,s.height,s.z).project(c.camera)
+     if(head.z>0&&head.z<1&&head.y>=-1&&head.y<=1){seen++;assert.ok(Math.abs(head.y-feet.y)/2>.1,'Scott must not become a tiny whole-body silhouette');partial||=feet.y< -1;farBank||=c.camera.position.z< -920}
+     if(s.height<0){assert.ok(head.y< -1,'The deep fall is below the frame instead of followed');offscreen=true}
+    }
+    assert.ok(seen>0&&partial&&offscreen&&farBank,'A readable glimpse from the opposite end leads to a cropped exit')
+    assert.ok(c.camera.fov<30);c.controller.reset(s);assert.equal(c.camera.fov,70)
+   }finally{c.controller.dispose()}
+  }
+ }finally{f.dispose()}
+})
+
 test('the preceding small jump and other driving areas keep the ordinary camera; fall scenes only apply inside this canyon',async()=>{
  const f=await stage2PhysicsFixture(),s=createBikeState({x:stage2PathX(-475),z:-475,yaw:Math.PI},f.rig.metrics,f.sample),c=cameraFixture(s,f.sample);s.speed=30
  try{
