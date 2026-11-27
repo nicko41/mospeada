@@ -1,10 +1,12 @@
 import {useMemo} from 'react'
+import {buildGraph} from '@react-three/fiber'
 import {DefaultLoadingManager,LoadingManager,TextureLoader,Texture} from 'three'
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {MeshoptDecoder} from 'meshoptimizer/decoder'
 import {ForestFoliageWorldLoader} from '../world/forest/forestFoliageWorldLoader.js'
 import {prepareGpu} from './gpuUploads.js'
 import {workQueue} from './workQueue.js'
+import {gameAudio} from '../audio/gameAudio.js'
 
 // Keep lossless geometry decoding off the driving thread. GLTFLoader uses
 // decodeGltfBufferAsync and transfers buffer views to these shared workers.
@@ -61,7 +63,7 @@ const manager=new LoadingManager();manager.setURLModifier(assetUrl)
 manager.addHandler(/\.(png|jpe?g|webp)(?:\?|$)/i,{load(url,onLoad,onProgress,onError){const entry=textureRecord(url);entry.promise.then(onLoad,onError);return entry.value}})
 const loader=new GLTFLoader(manager).setMeshoptDecoder(MeshoptDecoder)
 const forestLoader=createForestLoader()
-function gltfRecord(url){return record('gltf',url,entry=>new Promise((resolve,reject)=>(url.includes('/models/glTF/')?forestLoader:loader).load(assetUrl(url),resolve,event=>{entry.loaded=event.loaded;entry.total=event.total||entry.total;publish()},reject)))}
+function gltfRecord(url){return record('gltf',url,entry=>new Promise((resolve,reject)=>(url.includes('/models/glTF/')?forestLoader:loader).load(assetUrl(url),gltf=>resolve(Object.assign(gltf,buildGraph(gltf.scene))),event=>{entry.loaded=event.loaded;entry.total=event.total||entry.total;publish()},reject)))}
 function read(entry){if(entry.state==='error')throw entry.error;if(entry.state!=='ready')throw entry.promise;return entry.value}
 export const loadGLTF=url=>gltfRecord(url).promise
 export const useGLTF=url=>read(gltfRecord(url))
@@ -69,6 +71,7 @@ useGLTF.preload=url=>loadGLTF(url)
 export function loadJSON(url){return record('json',url,async()=>{const response=await fetch(assetUrl(url));if(!response.ok)throw Error(`${response.status}: ${url}`);return response.json()}).promise}
 export function useJSON(url){return read(record('json',url,async()=>{const response=await fetch(assetUrl(url));if(!response.ok)throw Error(`${response.status}: ${url}`);return response.json()}))}
 export function resourceState(kind,url){return cache.get(key(kind,url))}
+export const loadAudio=url=>record('audio',url,()=>gameAudio.loadBuffer(assetUrl(url))).promise
 const foliageLoader=new ForestFoliageWorldLoader()
 const foliageRecord=url=>record('foliage',url,()=>foliageLoader.loadAsync(url))
 export const loadFoliage=url=>foliageRecord(url).promise

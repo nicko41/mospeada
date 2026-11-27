@@ -1,9 +1,10 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import {Group,Quaternion,Vector3} from 'three'
+import {Group,Vector3} from 'three'
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {ScottHitMotion,SCOTT_HIT} from './ScottHitMotion.js'
+import {SCOTT_DEFEAT} from './ScottDefeatMotion.js'
 import {signalInvidContact} from './invidBodyCollision.js'
 import {playerCombat,resetPlayerCombat} from '../player/playerCombat.js'
 
@@ -20,13 +21,16 @@ async function fixture(armor){
 }
 test('body collision forces a recoverable native back fall without damaging Scott, respects pause, and restores Armor controls',async()=>{
   resetPlayerCombat();const {motion,runtime,wrapper,bones,a}=await fixture(true),health=playerCombat.playerHealth,hitVersion=playerCombat.hitVersion
-  const geometries=motion.skins.map(r=>r.mesh.geometry),front=bones.get('mixamorigSpine2').getWorldQuaternion(new Quaternion()).invert()
+  const geometries=motion.skins.map(r=>r.mesh.geometry)
   signalInvidContact(runtime,{position:new Vector3(0,0,2)});motion.apply(1/60,()=>0)
   assert.equal(motion.knockedDown,true);assert.equal(a.knockedDown,true);assert.equal(a.vx,0);assert.equal(a.mode,'ARMOR_GROUND')
   for(let i=0;i<33;i++){motion.restore();motion.apply(1/60,()=>0)}
   assert.equal(motion.diagnostics.phase,'down')
-  const facing=new Vector3(0,0,1).applyQuaternion(bones.get('mixamorigSpine2').getWorldQuaternion(new Quaternion()).multiply(front))
-  assert.ok(facing.y>.7,'Native fall lies on the back')
+  for(const side of ['Left','Right']){
+    const hip=bones.get('mixamorig'+side+'UpLeg').getWorldPosition(new Vector3()),knee=bones.get('mixamorig'+side+'Leg').getWorldPosition(new Vector3()),foot=bones.get('mixamorig'+side+'Foot').getWorldPosition(new Vector3())
+    assert.ok(knee.clone().sub(hip).angleTo(foot.sub(knee))>.35,'The supported Armor pose keeps both knees flexed')
+  }
+  assert.equal(motion.diagnostics.sourceTime,SCOTT_DEFEAT.armorDownTime)
   runtime.paused=true;const age=motion.age,position=wrapper.position.clone();motion.restore();motion.apply(.1,()=>0);assert.equal(motion.age,age);assert.ok(wrapper.position.distanceTo(position)<1e-6)
   runtime.paused=false;for(let i=0;i<140;i++){motion.restore();motion.apply(1/60,()=>0)}
   assert.equal(motion.knockedDown,false);assert.equal(a.knockedDown,false);assert.equal(a.mode,'ARMOR_HOVER')

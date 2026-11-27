@@ -12,6 +12,7 @@ import { TransformationFrame } from './TransformationFrame.js'
 import { wheelArmorState } from './wheelArmorState.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import {playerCombat} from '../player/playerCombat.js'
+import {gameAudio} from '../audio/gameAudio.js'
 const CONFIGS=['front','rear','guard','wheel','suspension-hide'].map(n=>`/transformations/cyclone-${n}${n==='suspension-hide'?'':'-battloid'}.json`)
 const ARMOR_GEOMETRY='/transformations/cyclone-rear-pieces.glb'
 const preparedData=Promise.all([...CONFIGS.map(loadJSON),loadGLTF(ARMOR_GEOMETRY)]).then(([front,rear,guards,wheels,suspension,asset])=>({front,rear,guards,wheels,suspension,geometry:asset.scene}))
@@ -57,7 +58,7 @@ export default function FrontTransformation({ rig, runtime }) {
         runtime.wheelTransformation=wheels.current
         runtime.suspensionTransformation=suspension.current
         runtime.transformationFrame=frame.current
-        runtime.transformEntry=new FrontTransformEntry(store,runtime);store.bindEntry(runtime.transformEntry)
+        runtime.transformEntry=new FrontTransformEntry(store,runtime,Math.random,{onTransform:()=>gameAudio.play('cycloneTransform')});store.bindEntry(runtime.transformEntry)
         store.set({ready:true,surfaces:effect.current.parts.length+rear.current.parts.length+guards.current.parts.length+wheels.current.parts.length,warnings:data.current.front.issues})
         if(import.meta.env.DEV)window.__FRONT_BATTLOID__={effect:effect.current,rear:rear.current,guards:guards.current,wheels:wheels.current,suspension:suspension.current,frame:frame.current,wheelSettings:wheelArmorState,data:data.current.front,store,entry:runtime.transformEntry}
         runtime.finishArmorPreparation?.()

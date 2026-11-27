@@ -1,0 +1,60 @@
+{
+  "continuous": {
+    "duration": 2.7262916666666666,
+    "cycles": {
+      "0": 0.0427181040267848,
+      "1": 0.043170646817912,
+      "2": 0.041001681108477614,
+      "3": 0.026611016751600113
+    },
+    "samples": 1191,
+    "calls": [
+      {
+        "name": "droneFlight",
+        "loop": true,
+        "rate": 1,
+        "gain": 1
+      }
+    ],
+    "loop": true,
+    "sameSource": true,
+    "flightVolume": 1,
+    "explosionVolume": 1,
+    "gallantVolume": 0.35,
+    "sourceGain": 0.8406162858009338,
+    "context": "running",
+    "master": 1
+  },
+  "after": {
+    "loopStopped": true,
+    "calls": [
+      {
+        "name": "droneFlight",
+        "loop": true,
+        "rate": 1,
+        "gain": 1
+      },
+      {
+        "name": "droneExplosion",
+        "loop": false,
+        "rate": 1,
+        "gain": 0.805036966846684
+      },
+      {
+        "name": "droneExplosion",
+        "loop": false,
+        "rate": 1,
+        "gain": 0.8526574974448311
+      },
+      {
+        "name": "invidExplosion",
+        "loop": false,
+        "rate": 1,
+        "gain": 0.5
+      }
+    ],
+    "kills": 2,
+    "sourceLoop": true
+  },
+  "errors": []
+}

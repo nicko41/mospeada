@@ -1,0 +1,93 @@
+{
+  "calls": [
+    {
+      "name": "droneFlight",
+      "loop": true,
+      "rate": 1,
+      "file": "http://127.0.0.1:5173/assets/sound/invid/drone-loop.mp3"
+    },
+    {
+      "name": "droneExplosion",
+      "loop": false,
+      "rate": 1,
+      "file": "http://127.0.0.1:5173/assets/sound/invid/drone-explode.mp3"
+    },
+    {
+      "name": "invidExplosion",
+      "loop": false,
+      "rate": 1,
+      "file": "http://127.0.0.1:5173/assets/sound/invid/01-explode.mp3"
+    },
+    {
+      "name": "invidExplosion",
+      "loop": false,
+      "rate": 1,
+      "file": "http://127.0.0.1:5173/assets/sound/invid/02-explode.mp3"
+    },
+    {
+      "name": "invidExplosion",
+      "loop": false,
+      "rate": 1,
+      "file": "http://127.0.0.1:5173/assets/sound/invid/03-explode.mp3"
+    }
+  ],
+  "sameFlightSource": true,
+  "flightVolume": 1,
+  "explosionVolume": 1,
+  "buffers": 6,
+  "files": [
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/01-invid-laser.mp3",
+      "duration": 0.4865
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/drone-explode.mp3",
+      "duration": 1.7419583333333333
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/drone-loop.mp3",
+      "duration": 2.7262916666666666
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/03-explode.mp3",
+      "duration": 1.68
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/02-explode.mp3",
+      "duration": 3.192
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/01-explode.mp3",
+      "duration": 5.496
+    }
+  ],
+  "resources": [
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/drone-loop.mp3",
+      "state": "ready"
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/drone-explode.mp3",
+      "state": "ready"
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/01-invid-laser.mp3",
+      "state": "ready"
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/01-explode.mp3",
+      "state": "ready"
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/02-explode.mp3",
+      "state": "ready"
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/invid/03-explode.mp3",
+      "state": "ready"
+    }
+  ],
+  "initialRequests": 6,
+  "newRequests": 0,
+  "errors": []
+}

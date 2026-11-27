@@ -1,0 +1,22 @@
+{
+  "prepared": [
+    "http://127.0.0.1:5173/assets/sound/cyclone-armor/transform/cyclone-to-armor.mp3"
+  ],
+  "playback": {
+    "count": 2,
+    "sameBuffer": true,
+    "duration": 3.576,
+    "loops": [
+      false,
+      false
+    ],
+    "rates": [
+      1,
+      1
+    ],
+    "volume": 0.65
+  },
+  "newRequests": 0,
+  "volumeControl": true,
+  "errors": []
+}

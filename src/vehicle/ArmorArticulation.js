@@ -15,6 +15,7 @@ export class ArmorArticulation{
     this.runtime=runtime;this.body=runtime.vehicleRig.body;this.instance=runtime.scottInstance
     this.hips=this.instance.bones.get('mixamorigHips')
     this.guards=runtime.guardTransformation.groups
+    this.suspension=(runtime.suspensionTransformation?.groups||[]).flatMap(group=>group.parts.map(part=>({mesh:part.mesh,bone:group.guard.bone})))
     this.legs=runtime.rearTransformation.parts.filter(p=>p.record.role==='leg')
     this.spine=this.instance.bones.get('mixamorigSpine2')
     const front=runtime.frontTransformation,rear=runtime.rearTransformation,wheels=runtime.wheelTransformation
@@ -27,7 +28,7 @@ export class ArmorArticulation{
       ...(wheels?.groups||[]).flatMap(g=>[g.hydraulic.root,g.hydraulic.endPin]),
     ])]
     if(!this.hips||this.legs.length!==2||this.guards.length!==2)throw Error('Armor requiere pelvis, dos caballer y dos cuffs identificados')
-    this.records=[...this.legs.map(p=>p.mesh),...this.guards.flatMap(g=>g.parts.map(p=>p.mesh)),...this.torso].map(mesh=>({mesh,canonical:new Matrix4(),auto:false,residual:new Matrix4(),lastInBody:new Matrix4()}))
+    this.records=[...new Set([...this.legs.map(p=>p.mesh),...this.guards.flatMap(g=>g.parts.map(p=>p.mesh)),...this.suspension.map(part=>part.mesh),...this.torso])].map(mesh=>({mesh,canonical:new Matrix4(),auto:false,residual:new Matrix4(),lastInBody:new Matrix4()}))
     this.applied=false;this.active=false;this.releaseTime=0;this.session=null
     this.inverse=new Matrix4();this.world=new Matrix4();this.candidate=new Matrix4();this.delta=new Matrix4();this.stretch=new Matrix4();this.adjust=new Matrix4();this.translation=new Matrix4();this.bodyInverse=new Matrix4()
     this.top=new Vector3();this.bottom=new Vector3();this.goal=new Vector3();this.direction=new Vector3();this.targetDirection=new Vector3();this.position=new Vector3();this.scale=new Vector3();this.quaternion=new Quaternion();this.turn=new Quaternion();this.euler=new Euler()
@@ -46,6 +47,9 @@ export class ArmorArticulation{
     // The tank/backpack can still be travelling. Refresh these offsets until
     // the very last assembly frame, without freezing their canonical motion.
     this.torsoBindings=this.torso.map(mesh=>({mesh,inBone:this.spine.matrixWorld.clone().invert().multiply(mesh.matrixWorld)}))
+    // The folded fork internals are still separate original meshes. They
+    // must follow their cuff through falls, not remain at the standing pose.
+    this.suspensionBindings=this.suspension.map(({mesh,bone})=>({mesh,bone,inBone:bone.matrixWorld.clone().invert().multiply(mesh.matrixWorld)}))
     const reuse=this.bindings&&this.sessionEntry===(armor.entry||armor.state)
     this.session=armor.state;this.sessionEntry=armor.entry||armor.state;this.releaseTime=0
     if(reuse)return
@@ -107,6 +111,7 @@ export class ArmorArticulation{
       this.instance.model.updateWorldMatrix(true,true)
       this.diagnostics.legs=[];this.diagnostics.cuffs=[]
       if(!armor.assembling)for(const b of this.torsoBindings)this.write(b.mesh,this.world.copy(this.spine.matrixWorld).multiply(b.inBone))
+      if(!armor.assembling)for(const b of this.suspensionBindings)this.write(b.mesh,this.world.copy(b.bone.matrixWorld).multiply(b.inBone))
       this.diagnostics.torso={bone:this.spine.name,parts:this.torso.length,matrix:this.spine.matrixWorld.toArray()}
       for(const g of this.guards){
         // The original 3D LAB offset is already expressed in THIS forearm.

@@ -1,0 +1,11 @@
+{
+  "url": "http://127.0.0.1:5173/assets/sound/invid/01-invid-laser.mp3",
+  "duration": 0.4865,
+  "context": "running",
+  "rate": 0.800000011920929,
+  "secondRate": 0.800000011920929,
+  "sameBuffer": true,
+  "loop": false,
+  "buffers": 1,
+  "requests": 1
+}

@@ -17,6 +17,8 @@ import {registerMeleeTarget} from '../../player/meleeWorld.js'
 import {registerInvidBody} from '../../vehicle/invidBodyCollision.js'
 import {damagePlayer,playerCombat} from '../../player/playerCombat.js'
 import {rideUI} from '../../vehicle/rideUI.js'
+import {gameAudio} from '../../audio/gameAudio.js'
+import {playEnemyExplosion} from '../../audio/enemyAudio.js'
 
 export default function ForestDesertScouts({runtime}){
   const asset=useGLTF(INVID_SCOUT_URL),{camera,gl}=useThree()
@@ -24,7 +26,7 @@ export default function ForestDesertScouts({runtime}){
     const root=new Group();root.name='Desert_Invid_Scout_patrol';root.userData.prewarmVFX=true
     const views=[]
     for(let i=0;i<SCOUT_PATROL.count;i++)views.push(await workQueue.submit(()=>createScoutView(asset.scene,i,asset.animations),'scouts view'))
-    const opening=new DesertScoutPatrol(views,sampleRideHeight),squad=await workQueue.submit(()=>createScoutSquad(root,views),'scouts squad')
+    const opening=new DesertScoutPatrol(views,sampleRideHeight,Math.random,{onDestroyed:target=>playEnemyExplosion(gameAudio,'invidExplosion',target,camera.position)}),squad=await workQueue.submit(()=>createScoutSquad(root,views),'scouts squad')
     squad.scouts=opening.scouts
     const sequence=new DesertClimaxSequence(opening,{onTransition:()=>window.dispatchEvent(new Event('level1-climax-transition')),onVictory:()=>window.dispatchEvent(new Event('level1-victory'))})
     return{root,opening,patrol:opening,views,batches:squad.batches,sequence,squads:[squad],climax:null,preparing:null,removeTargets:[],refs:0,actorState:null,recoveryAge:0,publishAge:0,actorPosition:new Vector3(),player:{x:0,z:0,height:0,speed:0}}
@@ -40,7 +42,7 @@ export default function ForestDesertScouts({runtime}){
       const h=sampleRideHeight(x,z),world=stage4World.get()
       return Number.isFinite(h)||!world?.climaxPlain?h:world.position.y+stage4DesertHeight(x-world.position.x,z-world.position.z)
     }
-    resources.climax=new DesertScoutPatrol(all,sample,Math.random,{climax:true,bolts:resources.opening.bolts})
+    resources.climax=new DesertScoutPatrol(all,sample,Math.random,{climax:true,bolts:resources.opening.bolts,onDestroyed:target=>playEnemyExplosion(gameAudio,'invidExplosion',target,camera.position)})
     for(let group=0;group<C.count/C.squadSize;group++)resources.squads[group+1].scouts=resources.climax.scouts.slice(group*C.squadSize,(group+1)*C.squadSize)
     resources.removeTargets.push(...resources.climax.scouts.flatMap(r=>[registerMeleeTarget(r),registerInvidBody(r)]))
   }
@@ -77,6 +79,7 @@ export default function ForestDesertScouts({runtime}){
     resources.patrol.update(dt,player,camera,world,{
       allowAttack:!playerCombat.dead&&(sequence.phase==='opening'||sequence.phase==='battle'),randTarget:runtime.randEscape,
       lockedTarget:runtime.gallant?.aimLock.target,
+      onShot:()=>gameAudio.play('scoutOrb'),
       onRandHit:b=>{runtime.randEscape?.receiveHit();runtime.combatVFX?.enemyImpact(b.position,b.velocity)},
       onPlayerHit:b=>{damagePlayer(SCOUT_ATTACK_DAMAGE,b.source,{kind:b.kind==='claw'?'scout-claw':'scout-projectile'});runtime.combatVFX?.enemyImpact(b.position,b.velocity)},
       onImpact:b=>runtime.combatVFX?.enemyWorldImpact(b.position,b.velocity),

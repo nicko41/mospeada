@@ -14,16 +14,38 @@ const config={...cameraImpactState.defaults},player=new Vector3(),camera=()=>{co
 const event=(x=0,kind='explosion',y=0,z=-2)=>({kind,strength:1,origin:{x,y,z}})
 function pulse(events,cfg=config){const fx=new CameraImpactFX(),c=camera();fx.update(0,c,player,cfg,events);const result=fx.update(1/60,c,player,cfg);return{fx,c,result}}
 
-test('only Invid explosions shake; orb contacts, damage and scenery explosions cannot shake',()=>{
+test('Invid explosions shake while orb contacts and scenery explosions cannot shake',()=>{
  const near=pulse([event(0,'explosion',0,-2)]),far=pulse([event(0,'explosion',0,-12)]),outside=pulse([event(0,'explosion',0,-config.range)])
  assert.ok(near.fx.rotation.length()>far.fx.rotation.length());assert.ok(far.fx.rotation.length()>0)
  assert.equal(outside.result.camera,outside.c);assert.equal(outside.fx.slots.some(s=>s.active),false)
- for(const kind of ['enemyImpact','directHit','environmentExplosion']){
+ for(const kind of ['enemyImpact','environmentExplosion']){
   const hit=pulse([event(2,kind)]);assert.equal(hit.result.camera,hit.c);assert.equal(hit.fx.translation.length(),0);assert.equal(hit.fx.rotation.length(),0)
   assert.equal(hit.result.blurBlend>0,kind!=='enemyImpact','Existing impact blur remains independent of shake')
   const baseline=pulse([event(2,kind)],{...config,explosionPower:1});assert.equal(hit.result.blurBlend,baseline.result.blurBlend);assert.equal(hit.result.blurPixels,baseline.result.blurPixels,'Invid power must not amplify other effects')
  }
  const explosion=event(2),alone=pulse([explosion]),withOrb=pulse([explosion,event(1,'enemyImpact')]);assert.deepEqual(withOrb.fx.translation.toArray(),alone.fx.translation.toArray());assert.deepEqual(withOrb.fx.rotation.toArray(),alone.fx.rotation.toArray())
+})
+
+test('Scott hits produce a subtle 200 ms shake independent of Invid power, preserving aim and the blur toggle',()=>{
+ for(const fps of [10,30,60,120]){
+  const c=camera(),fx=new CameraImpactFX(c),before=c.matrixWorld.toArray(),point=new Vector3(0,0,-50),baseline=point.clone().project(c)
+  let pixels=0
+  for(let i=0;i<Math.ceil(.4*fps);i++){
+   const result=fx.update(1/fps,c,player,config,i===0?[event(2,'directHit')]:[])
+   const p=point.clone().project(result.camera)
+   pixels=Math.max(pixels,Math.hypot((p.x-baseline.x)*960,(p.y-baseline.y)*540))
+   assert.ok(fx.translation.length()<.02);assert.ok(fx.rotation.length()<.005)
+   assert.deepEqual(c.matrixWorld.toArray(),before)
+   if(i/fps>=.2)assert.equal(result.camera,c)
+  }
+  assert.ok(pixels>.2&&pixels<5,`Subtle Scott hit at ${fps} FPS: ${pixels} px`)
+ }
+ const hit=pulse([event(2,'directHit')]),plain=pulse([event(2,'directHit')],{...config,explosionPower:1})
+ assert.deepEqual(hit.fx.translation.toArray(),plain.fx.translation.toArray())
+ assert.deepEqual(hit.fx.rotation.toArray(),plain.fx.rotation.toArray())
+ const shakeOnly=pulse([event(2,'directHit')],{...config,blurEnabled:false})
+ assert.notEqual(shakeOnly.result.camera,shakeOnly.c);assert.equal(shakeOnly.result.blurBlend,0)
+ assert.equal(pulse([event(2,'directHit')],{...config,shakeEnabled:false}).fx.translation.length(),0)
 })
 
 test('violet drone deaths reduce only shake amplitude, preserving explosion blur, timing and all untagged enemies',()=>{

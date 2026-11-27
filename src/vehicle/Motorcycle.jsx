@@ -27,6 +27,8 @@ import ForestFoliageInteraction from '../world/forest/ForestFoliageInteraction.j
 import ForestOpening from '../world/forest/ForestOpening.jsx'
 import ForestStage3Encounter from '../world/forest/ForestStage3Encounter.jsx'
 import GallantCombat from './GallantCombat.jsx'
+import CycloneEngineAudio from '../audio/CycloneEngineAudio.jsx'
+import MovementAudio from '../audio/MovementAudio.jsx'
 import ForestDesertScouts from '../world/forest/ForestDesertScouts.jsx'
 import ForestRandEscape from '../world/forest/ForestRandEscape.jsx'
 import ForestEnding from '../world/forest/ForestEnding.jsx'
@@ -300,5 +302,5 @@ export default function Motorcycle() {
     if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta)
     else if(runtime.state)runtime.cameraController?.update(riderCameraState(runtime.state),delta)
   })
-  return <><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} />{activeEnvironment==='forest'?<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><DeferredStage id="stage3"><GallantCombat runtime={runtime}/><ForestStage3Encounter runtime={runtime}/></DeferredStage><DeferredStage id="rand"><ForestRandEscape runtime={runtime}/></DeferredStage><DeferredStage id="scouts"><ForestDesertScouts runtime={runtime}/></DeferredStage><ForestEnding runtime={runtime}/></>:<GallantCombat runtime={runtime}/>}</>
+  return <><CycloneEngineAudio runtime={runtime}/><MovementAudio runtime={runtime}/><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} />{activeEnvironment==='forest'?<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><DeferredStage id="stage3"><GallantCombat runtime={runtime}/><ForestStage3Encounter runtime={runtime}/></DeferredStage><DeferredStage id="rand"><ForestRandEscape runtime={runtime}/></DeferredStage><DeferredStage id="scouts"><ForestDesertScouts runtime={runtime}/></DeferredStage><ForestEnding runtime={runtime}/></>:<GallantCombat runtime={runtime}/>}</>
 }

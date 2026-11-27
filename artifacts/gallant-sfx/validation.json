@@ -1,0 +1,188 @@
+{
+  "prepared": {
+    "buffers": 12,
+    "pending": 12,
+    "files": [
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/gallant/gallant-shot2.mp3",
+        "duration": 0.4865,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/gallant/gallant-shot1.mp3",
+        "duration": 0.4865,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/gallant/gallant-shot3.mp3",
+        "duration": 0.4865,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/boost/strafe03.mp3",
+        "duration": 0.8065,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/boost/strafe01.mp3",
+        "duration": 0.8065,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/boost/strafe02.mp3",
+        "duration": 0.8065,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/boost/boost.mp3",
+        "duration": 0.8065,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/steps/armor-step1.mp3",
+        "duration": 3,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/steps/armor-step3.mp3",
+        "duration": 3,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/steps/armor-step4.mp3",
+        "duration": 3,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/steps/armor-step2.mp3",
+        "duration": 3,
+        "channels": 2,
+        "sampleRate": 48000
+      },
+      {
+        "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/engine/02-engine-loop1.mp3",
+        "duration": 7.868083333333334,
+        "channels": 2,
+        "sampleRate": 48000
+      }
+    ],
+    "requests": 0
+  },
+  "unlocked": true,
+  "cyclone": {
+    "shots": 6,
+    "mounted": true
+  },
+  "armor": {
+    "shots": 6,
+    "mounted": false
+  },
+  "playback": {
+    "shots": 12,
+    "calls": [
+      {
+        "name": "gallantShot",
+        "shot": 1,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 2,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 3,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 4,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 5,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 6,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 7,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 8,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 9,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 10,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 11,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "gallantShot",
+        "shot": 12,
+        "played": true,
+        "rate": 1,
+        "detune": 0
+      }
+    ],
+    "maxVoices": 2,
+    "requests": 0,
+    "buffers": 12,
+    "newRequests": 0
+  },
+  "controls": {
+    "sfx": "1",
+    "gallant": "0.7"
+  },
+  "errors": []
+}

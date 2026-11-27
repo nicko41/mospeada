@@ -15,6 +15,7 @@ export class ScottHitMotion{
     this.version=playerCombat.hitVersion;this.resetVersion=playerCombat.resetVersion
     this.collisionVersion=runtime.invidContact?.version||0
     this.point=new Vector3();this.before=new Vector3();this.hipOffset=new Vector3();this.delta=new Quaternion();this.identity=new Quaternion()
+    this.hitAxis=new Vector3();this.shoulder=new Vector3();this.orientation=new Quaternion()
     this.matrix=new Matrix4();this.inverse=new Matrix4();this.floor=NaN;this.armorProbes=null
     const stand=instance.sourceClips.find(c=>c.name===SCOTT_DEFEAT.source),squat=instance.sourceClips.find(c=>c.name==='air_squat'),dodge=instance.sourceClips.find(c=>c.name==='Roll_Dodge_4'),arms=landingArmSamples(instance)
     this.records=[...instance.bones.values()].map(bone=>{
@@ -90,8 +91,9 @@ export class ScottHitMotion{
     if(!this.knockedDown&&this.age>=SCOTT_HIT.flinch)return
     this.before.copy(this.wrapper.position)
     const weight=this.knockedDown?smooth(this.age/.1)*(1-smooth((this.age-(total-SCOTT_HIT.release))/SCOTT_HIT.release)):Math.sin(Math.PI*Math.min(1,this.age/SCOTT_HIT.flinch))*.55
-    const nativeTime=this.age<SCOTT_HIT.fall?SCOTT_DEFEAT.sourceStandingTime*(1-smooth(this.age/SCOTT_HIT.fall)):
-      this.age<SCOTT_HIT.fall+SCOTT_HIT.downHold?0:SCOTT_DEFEAT.sourceStandingTime*smooth((this.age-SCOTT_HIT.fall-SCOTT_HIT.downHold)/SCOTT_HIT.getUp)
+    const downTime=r.armorController?.active?SCOTT_DEFEAT.armorDownTime:0,standTime=SCOTT_DEFEAT.sourceStandingTime-downTime
+    const nativeTime=this.age<SCOTT_HIT.fall?downTime+standTime*(1-smooth(this.age/SCOTT_HIT.fall)):
+      this.age<SCOTT_HIT.fall+SCOTT_HIT.downHold?downTime:downTime+standTime*smooth((this.age-SCOTT_HIT.fall-SCOTT_HIT.downHold)/SCOTT_HIT.getUp)
     for(const b of this.records){
       b.p.copy(b.bone.position);b.q.copy(b.bone.quaternion)
       if(this.knockedDown){
@@ -99,9 +101,10 @@ export class ScottHitMotion{
         if(b===this.hip&&b.position)b.bone.position.lerp(b.nativeP.fromArray(b.position.evaluate(nativeTime)).add(this.hipOffset),weight)
       }else{
         if(b.impulse)b.bone.quaternion.multiply(this.delta.copy(this.identity).slerp(b.impulse,weight*(b.leg?.3:.35)))
-        if(b.arm)b.bone.quaternion.slerp(this.variant?b.arm.back:b.arm.front,weight*.75)
+        if(b.arm&&!r.gallant?.active)b.bone.quaternion.slerp(this.variant?b.arm.back:b.arm.front,weight*.75)
       }
     }
+    if(!this.knockedDown&&r.gallant?.active)this.lowerGallant(weight/.55)
     this.wrapper.updateMatrixWorld(true)
     // A bounded set of cached source-mesh support points. Sample terrain once
     // at the stationary actor, instead of rescanning the mesh on every hit.
@@ -111,7 +114,25 @@ export class ScottHitMotion{
       if(Number.isFinite(floor)&&lowest<floor+.015){this.wrapper.position.y+=floor+.015-lowest;this.wrapper.updateMatrixWorld(true)}
     }
     this.applied=true
-    this.diagnostics={kind:this.kind,phase:this.knockedDown?this.age<SCOTT_HIT.fall?'fall':this.age<SCOTT_HIT.fall+SCOTT_HIT.downHold?'down':'get-up':'flinch',age:this.age}
+    this.diagnostics={kind:this.kind,phase:this.knockedDown?this.age<SCOTT_HIT.fall?'fall':this.age<SCOTT_HIT.fall+SCOTT_HIT.downHold?'down':'get-up':'flinch',age:this.age,sourceTime:nativeTime}
+  }
+  lowerGallant(pulse){
+    const motion=this.instance.mountedMotion,right=motion?.limbs.find(l=>!l.leg&&l.side==='Right')
+    if(!right)return
+    // Additive visual reaction after weapon IK; the native pose is restored
+    // next frame. Keep the aim target, fire clock and locomotion untouched.
+    for(const {bone}of this.records)if(/Spine/.test(bone.name))bone.rotateX(-.025*pulse)
+    this.wrapper.updateMatrixWorld(true)
+    right.a.getWorldPosition(this.shoulder);right.c.getWorldPosition(this.point)
+    this.hitAxis.subVectors(this.point,this.shoulder);this.hitAxis.y=0
+    if(this.hitAxis.lengthSq()<1e-8)return
+    this.hitAxis.normalize();this.hitAxis.set(this.hitAxis.z,0,-this.hitAxis.x)
+    this.delta.setFromAxisAngle(this.hitAxis,.2*pulse)
+    const arms=r=>!r.leg&&(r.side==='Right'||this.runtime.gallant.mounted&&this.instance.shooterPose?.twoHanded)
+    for(const limb of motion.limbs.filter(arms)){
+      limb.a.getWorldQuaternion(this.orientation).premultiply(this.delta)
+      motion.worldRotation(limb.a,this.orientation)
+    }
   }
   groundArmor(articulation){if(this.knockedDown&&this.runtime.armorController?.active)supportScottArmorOnGround(articulation,this.floor,this.wrapper,this)}
 }

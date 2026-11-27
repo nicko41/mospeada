@@ -40,7 +40,8 @@ export class ArmorLocomotion{
     supportSpeeds.sort((a,b)=>a-b)
     if(supportSpeeds.length<6)throw Error(`No se pudo medir el apoyo del clip original ${clip.name}`)
     const speed=supportSpeeds[Math.floor(supportSpeeds.length/2)],contactPhase=frames.findIndex(f=>f[0].y===floors[0])/count
-    return{speed,cycleDistance:speed*clip.duration,contactPhase}
+    const contactPhases=floors.map((floor,side)=>frames.findIndex(f=>f[side].y===floor)/count)
+    return{speed,cycleDistance:speed*clip.duration,contactPhase,contactPhases}
   }
   groundGait(speed){this.gait=speed>(this.gait==='Armor_Run'?3:3.5)?'Armor_Run':'Armor_Walk';return this.gait}
   restore(){if(!this.applied)return;for(const r of this.records){r.bone.position.copy(r.p);r.bone.quaternion.copy(r.q);r.bone.scale.copy(r.s)}this.applied=false}

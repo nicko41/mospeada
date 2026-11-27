@@ -21,9 +21,9 @@ export function canStartFrontTransformation(state) {
 // ordinary wheelie/boost inputs, then one explicit launch of the axle supports.
 // Regular driving, wheelie, jump and boost implementations stay untouched.
 export class FrontTransformEntry {
-  constructor(store,runtime,random=Math.random) {
+  constructor(store,runtime,random=Math.random,{onTransform=()=>{}}={}) {
     this.store=store;this.runtime=runtime;this.state=null;this.phase='idle';this.time=0
-    this.random=random;this.transformationCount=0;this.orbitCamera=true
+    this.random=random;this.onTransform=onTransform;this.transformationCount=0;this.orbitCamera=true
     this.poseBlend=0;this.paused=false;this.flightActive=false;this.messageTime=0;this.elapsed=0;this.returnMotion=null
     this.actorOffset=new Vector3();this.departure=new Vector3();this.returnOffset=new Vector3();this.armorBoostCount=0
     this.returnFlight=false;this.returnLaunchPending=false
@@ -45,22 +45,22 @@ export class FrontTransformEntry {
       // the real axle supports. The assembly stays in the same world place.
       this.reverseMotion={...this.choreography,progress:this.store.snapshot().progress}
       this.state=s;this.returnFlight=true;this.returnLaunchPending=true
-      this.paused=false;this.store.pause();this.armorBoostCount++;this.stage('returnboost');return
+      this.paused=false;this.store.pause();this.armorBoostCount++;this.stage('returnboost');this.onTransform();return
     }
     if(this.phase==='wheelie'||this.phase==='boost'){
       if(this.phase==='boost'&&this.choreography.chestLift>0){
         this.returnMotion={...this.choreography};this.returnFrom=this.poseBlend
-        this.paused=false;this.store.pause();this.stage('returning');return
+        this.paused=false;this.store.pause();this.stage('returning');this.onTransform();return
       }
       this.reset();return
     }
     if(this.phase==='reversing'&&this.store.snapshot().progress>0){
-      this.paused=false;this.store.set({direction:1,playing:true});this.stage('transforming');return
+      this.paused=false;this.store.set({direction:1,playing:true});this.stage('transforming');this.onTransform();return
     }
     if(['airpose','transforming','armorboost','complete','returning'].includes(this.phase)||this.store.snapshot().progress>0||this.poseBlend>0){
       this.reverseMotion={...this.choreography,progress:this.store.snapshot().progress}
       this.returnOffset.copy(this.actorOffset)
-      this.paused=false;this.store.set({direction:-1,playing:true});this.stage('reversing');return
+      this.paused=false;this.store.set({direction:-1,playing:true});this.stage('reversing');this.onTransform();return
     }
     if(!armorTransformationUnlocked(this.runtime)){
       this.messageTime=2.5;this.publish('Armor se habilita al caer al barranco, en el primer encuentro con Invid');return
@@ -75,7 +75,7 @@ export class FrontTransformEntry {
     this.returnFlight=false;this.returnLaunchPending=false
     this.mechanicalStarted=false
     s.wheelieTime=0;s.wheelieExhausted=false
-    this.store.reset();this.stage('wheelie')
+    this.store.reset();this.stage('wheelie');this.onTransform()
   }
   resetLevelCamera(){this.transformationCount=0;this.orbitCamera=true;this.runtime.armorUnlocked=false}
   reset() {

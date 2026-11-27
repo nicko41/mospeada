@@ -74,7 +74,8 @@ export function updateScottGameplay(instance, authored, clips, runtime, wrapper,
   }
   instance.action.paused = hold
   const backward=armor?.state.aiming&&armor.state.localForward<-Math.abs(armor.state.localSide)?-1:1
-  instance.action.setEffectiveTimeScale(armor&&name.startsWith('Armor_')?backward*Math.min(3,armor.state.speed/instance.armorLocomotion.info.get(name).speed):1)
+  // Keep physical run speed, easing only the native Armor running cadence.
+  instance.action.setEffectiveTimeScale(armor&&name.startsWith('Armor_')?backward*Math.min(3,armor.state.speed/instance.armorLocomotion.info.get(name).speed)*(name==='Armor_Run'?.8:1):1)
   if (hold) { instance.action.enabled = true; instance.action.time = time }
   instance.mixer.update(dt)
   for (const retired of instance.retiredActions || []) { retired.remaining -= dt; if (retired.remaining <= 0 && retired.action !== instance.action) retired.action.stop() }

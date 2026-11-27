@@ -16,7 +16,7 @@ export class CameraImpactFX{
  reset(){for(const slot of this.slots)slot.active=false;this.translation.set(0,0,0);this.rotation.set(0,0,0);this.presentation.blurPixels=this.presentation.blurBlend=0}
  add(event,player,config){
   const direct=event.kind==='directHit',boost=event.kind==='boostStart',distance=direct||boost?0:Math.hypot(event.origin.x-player.x,event.origin.y-player.y,event.origin.z-player.z)
-  if(event.kind==='enemyImpact'||direct&&!config.blurEnabled)return
+  if(event.kind==='enemyImpact'||direct&&!config.blurEnabled&&!config.shakeEnabled)return
   if(boost){if(!config.shakeEnabled||this.slots.some(s=>s.active&&s.kind!=='boostStart'))return}
   const strength=event.strength*gain[event.kind]*falloff(distance,config.range)
   if(!(strength>0))return
@@ -30,7 +30,7 @@ export class CameraImpactFX{
   // Invid destruction has its own amplification; other impacts and the
   // approved Cyclone boost keep their existing settings and response.
   const power=event.kind==='explosion'?(config.explosionPower??1):1,extension=1+(power-1)*.2
-  Object.assign(slot,{active:true,kind:event.kind,shake:event.kind==='explosion'||boost,shakeScale:event.shakeScale??1,age:0,strength,power,duration:config.duration*extension,damping:config.damping/Math.sqrt(power),blurDuration:config.blurDuration*extension,blurPixels:config.blurPixels*power,blur:direct?event.strength:['explosion','environmentExplosion'].includes(event.kind)?event.strength*falloff(distance,config.blurRange):0})
+  Object.assign(slot,{active:true,kind:event.kind,shake:event.kind==='explosion'||boost||direct,shakeScale:(event.shakeScale??1)*(direct?.12:1),age:0,strength,power,duration:direct?.2:config.duration*extension,damping:direct?12:config.damping/Math.sqrt(power),blurDuration:config.blurDuration*extension,blurPixels:config.blurPixels*power,blur:direct?event.strength:['explosion','environmentExplosion'].includes(event.kind)?event.strength*falloff(distance,config.blurRange):0})
   if(event.origin)slot.direction.set(event.origin.x-player.x,event.origin.y-player.y,event.origin.z-player.z)
   else slot.direction.set(0,0,-1)
   if(slot.direction.lengthSq()<1e-8)slot.direction.set(0,0,-1)

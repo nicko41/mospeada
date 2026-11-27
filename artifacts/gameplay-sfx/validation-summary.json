@@ -1,0 +1,73 @@
+{
+  "specificTests": {
+    "passed": 35,
+    "failed": 0
+  },
+  "fullSuite": {
+    "tests": 580,
+    "passed": 572,
+    "failed": 8,
+    "baselineFailuresConfirmed": true
+  },
+  "build": "passed",
+  "browser": {
+    "gallant": {
+      "shots": 12,
+      "successfulSounds": 12,
+      "overlappingVoices": 2,
+      "requestsWhileFiring": 0,
+      "gestureUnlock": true
+    },
+    "movement": {
+      "cyclone": {
+        "boosts": 1,
+        "calls": [
+          {
+            "name": "cycloneIgnition",
+            "loop": false,
+            "rate": 1,
+            "detune": 0
+          },
+          {
+            "name": "cycloneAcceleration",
+            "loop": false,
+            "rate": 1,
+            "detune": 0
+          },
+          {
+            "name": "cycloneEngineLoop",
+            "loop": true,
+            "rate": 1,
+            "detune": 0
+          },
+          {
+            "name": "cycloneBoost",
+            "loop": false,
+            "rate": 1,
+            "detune": 0
+          }
+        ]
+      },
+      "armor": {
+        "strafe": [
+          {
+            "name": "armorStrafe",
+            "loop": false,
+            "rate": 1,
+            "detune": 0
+          },
+          {
+            "name": "armorStrafe",
+            "loop": false,
+            "rate": 1,
+            "detune": 0
+          }
+        ],
+        "steps": 4,
+        "landings": 2
+      },
+      "errors": []
+    },
+    "errors": []
+  }
+}

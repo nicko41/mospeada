@@ -16,7 +16,8 @@ const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a)),clamp=MathUtils.clamp
 const burstSweep=[-2.4,-1.7,-.55,-.12,.12,.55,1.7,2.4]
 const formationFront=[1,-1,1,1,-1]
 export class DesertScoutPatrol{
-  constructor(views,sample,random=Math.random,{rigTestId=-1,climax=false,bolts=null}={}){
+  constructor(views,sample,random=Math.random,{rigTestId=-1,climax=false,bolts=null,onDestroyed=null}={}){
+    this.onDestroyed=onDestroyed
     this.rigTestId=rigTestId
     this.climax=climax
     this.views=views;this.sample=sample;this.random=random;this.worldQuery=new GallantHitscan();this.bolts=bolts||createEnergyProjectiles(SCOUT_PATROL.projectiles,'scoutOval');this.supportCorner=new Vector3()
@@ -45,7 +46,7 @@ export class DesertScoutPatrol{
       r.fallTargetPitch=r.fallFace==='up'?-Math.PI/2:Math.PI/2;r.fallTargetBank=(this.random()-.5)*.18
       if(direction)r.velocity.addScaledVector(direction,2)
       r.velocity.y=0;if(r.velocity.length()>5)r.velocity.setLength(5)
-      this.kills++
+      this.kills++;this.onDestroyed?.(r)
       if(this.climax){const patrol=this.patrols[r.patrolIndex];patrol.kills++;if(r.patrolIndex===0&&patrol.kills===C.squadSize)this.activatePatrol(2)}
       if(this.kills===this.scouts.length){this.defeated=true;this.stopCombat()}
     }
@@ -187,7 +188,7 @@ export class DesertScoutPatrol{
     }
     return floor+.025
   }
-  update(dt,s,camera,world,{allowAttack=true,onPlayerHit=()=>{},onImpact=()=>{},onClawImpact=()=>{},lockedTarget=null,randTarget=null,onRandHit=()=>{}}={}){
+  update(dt,s,camera,world,{allowAttack=true,onPlayerHit=()=>{},onImpact=()=>{},onClawImpact=()=>{},onShot=()=>{},lockedTarget=null,randTarget=null,onRandHit=()=>{}}={}){
     if(!world?.bound)return
     const distance=world.distance(s.z)
     if(this.phase==='idle'){
@@ -310,6 +311,7 @@ export class DesertScoutPatrol{
             r.cannonFlash[r.side]=SCOUT_CANNON.duration
             projectile.scoutId=r.id;projectile.launcher=r.side;projectile.targetId=r.focus;projectile.visualScale=.94+this.random()*.12;projectile.burstId=r.bursts;projectile.burstRound=round
             r.burstRemaining--;r.side=1-r.side;r.shots++;this.shots++
+            onShot(projectile,r)
             r.cooldown=r.burstRemaining>0?SCOUT_PATROL.shotSpacing-SCOUT_PATROL.muzzleBlink:SCOUT_PATROL.attackInterval+(this.random()-.5)*.4
           }else{r.cooldown=.4;r.burstRemaining=0}
         }else{r.cooldown=.4;r.charging=false;r.chargeLeft=0;r.burstRemaining=0}

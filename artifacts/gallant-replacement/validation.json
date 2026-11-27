@@ -1,0 +1,37 @@
+{
+  "files": [
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/gallant/gallant-shot-default.mp3",
+      "duration": 0.672
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/gallant/gallant-shot-alt.mp3",
+      "duration": 0.4865
+    }
+  ],
+  "selection": [
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/gallant/gallant-shot-default.mp3",
+      "rate": 1,
+      "loop": false
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/gallant/gallant-shot-alt.mp3",
+      "rate": 1,
+      "loop": false
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/gallant/gallant-shot-default.mp3",
+      "rate": 1,
+      "loop": false
+    }
+  ],
+  "reuse": true,
+  "overlap": 3,
+  "requests": 2,
+  "records": [
+    "ready",
+    "ready"
+  ],
+  "errors": []
+}

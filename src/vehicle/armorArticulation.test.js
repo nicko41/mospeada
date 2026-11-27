@@ -115,8 +115,9 @@ test('Ground uses complete native walk/run tracks through the existing mixer, re
   const rate=f.instance.action.getEffectiveTimeScale();a.speed=1.25;f.tick();assert.ok(Math.abs(f.instance.action.getEffectiveTimeScale()-rate/2)<1e-8)
   a.speed=armorConfig.runSpeed;for(let i=0;i<90;i++)f.tick();assert.equal(loco.source,'Running');assert.equal(f.instance.clip,'Armor_Run');assert.ok(f.articulation.diagnostics.legs.every(l=>l.error<1e-6))
   const runRate=f.instance.action.getEffectiveTimeScale(),runInfo=loco.info.get('Armor_Run')
-  assert.ok(runRate>1.9&&runRate<2.2,'An agile run uses about twice the native cadence, with matching controller travel')
-  assert.ok(Math.abs(a.speed*f.instance.action.getClip().duration/runRate-runInfo.cycleDistance)<1e-6)
+  assert.ok(runRate>1.5&&runRate<1.8,'Run cadence is calmer while remaining quicker than the native source')
+  assert.equal(a.speed,armorConfig.runSpeed,'Animation tuning must not reduce physical travel speed')
+  assert.ok(Math.abs(runRate/(a.speed/runInfo.speed)-.8)<1e-6)
   assert.equal(f.instance.action.getEffectiveWeight(),1)
   assert.equal(f.instance.mixer.clipAction(loco.clips.get('Armor_Walk')).getEffectiveWeight(),0,'Walking must fully leave the running pose')
   for(const track of f.instance.action.getClip().tracks.filter(t=>t.name.endsWith('.quaternion'))){

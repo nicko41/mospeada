@@ -28,6 +28,15 @@ import { desktopInput } from './player/touchInput'
 import {preloadInitial,initialProgress,resourceProgress} from './loading/startupProgress.js'
 import {initializeGpuPreparation} from './loading/gpuUploads.js'
 import {stageStreaming} from './loading/stageStreaming.js'
+import {gameAudio,GALLANT_SHOT_URLS,PLAYER_INITIAL_AUDIO_URLS} from './audio/gameAudio.js'
+import {loadAudio,resourceState} from './loading/resources.js'
+const removeAudioUnlock=gameAudio.installUnlock(window)
+if(import.meta.hot)import.meta.hot.dispose(removeAudioUnlock)
+// Forest prepares movement audio at entry and weapon audio with each streamed
+// encounter. Other environments mount Gallant immediately, so prepare both.
+const entryAudioUrls=[...GALLANT_SHOT_URLS,...PLAYER_INITIAL_AUDIO_URLS]
+if(activeEnvironment!=='forest')entryAudioUrls.forEach(loadAudio)
+if(import.meta.env.DEV)window.__SFX__=gameAudio
 if(activeEnvironment==='forest'){
   preloadInitial()
   // The next combat's small network set must be discovered before graphics
@@ -64,7 +73,8 @@ function EntryPreloader({ sceneReady }) {
     const forest=activeEnvironment==='forest',initial=initialProgress(sceneReady,renderReady,renderState.startupPreparation)
     highestProgress.current = Math.max(highestProgress.current, forest?initial.percent:Math.min(progress, 95))
     updateEntryPreloader(highestProgress.current,forest?initial.message:entryLoadingMessage({active,sceneReady,renderReady,item}))
-    if ((forest?!initial.complete:active) || !sceneReady || !renderReady) return
+    const audioReady=forest||entryAudioUrls.every(url=>resourceState('audio',url)?.state==='ready')
+    if ((forest?!initial.complete:active) || !audioReady || !sceneReady || !renderReady) return
 
     updateEntryPreloader(100,'SYSTEM READY')
     overlay.classList.add('is-ready')

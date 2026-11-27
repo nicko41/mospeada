@@ -5,12 +5,15 @@ import {Vector3} from 'three'
 import {CycloneShooterEncounter} from './CycloneShooterEncounter.js'
 import {FOREST_STAGE3 as S} from './forestStage3Config.js'
 import {damagePlayer,playerCombat} from '../../player/playerCombat.js'
+import {gameAudio} from '../../audio/gameAudio.js'
+import {DroneFlightSound} from '../../audio/DroneFlightSound.js'
+import {playEnemyExplosion} from '../../audio/enemyAudio.js'
 
 export default function ForestStage3Encounter({runtime}){
   const {camera}=useThree(),meshes=useRef([]),hud=useRef(),label=useRef(),feedback=useRef(),hudAnchor=useRef()
   const resources=useMemo(()=>{
-    const encounter=new CycloneShooterEncounter(),origin=new Vector3()
-    return {encounter,origin}
+    const encounter=new CycloneShooterEncounter({onDestroyed:target=>playEnemyExplosion(gameAudio,'droneExplosion',target,camera.position)}),origin=new Vector3(),flightAudio=new DroneFlightSound(gameAudio)
+    return {encounter,origin,flightAudio}
   },[camera,runtime])
   useLayoutEffect(()=>{
     runtime.stage3=resources
@@ -18,6 +21,7 @@ export default function ForestStage3Encounter({runtime}){
     e.onPlayerHit=b=>damagePlayer(playerCombat.playerMaxHealth*S.boltDamageFraction,b.source)
     if(import.meta.env.DEV)window.__FOREST_STAGE3__=resources
     return()=>{
+      resources.flightAudio.dispose()
       e.onPlayerHit=null;delete runtime.stage3
       runtime.combatVFX?.clear()
       if(import.meta.env.DEV)delete window.__FOREST_STAGE3__
@@ -27,6 +31,7 @@ export default function ForestStage3Encounter({runtime}){
     const r=resources,e=r.encounter,s=runtime.state
     if(!s)return
     const active=e.active
+    r.flightAudio.update({encounter:e,listener:camera.position,paused:runtime.paused,enabled:!playerCombat.dead&&!runtime.opening?.active&&!runtime.ending?.holding})
     if(hudAnchor.current){camera.getWorldDirection(r.origin);hudAnchor.current.position.copy(camera.position).addScaledVector(r.origin,10);hudAnchor.current.updateMatrixWorld(true)}
     if(hud.current)hud.current.style.display=active?'block':'none'
     if(label.current)label.current.style.display=runtime.paused?'block':'none'

@@ -1,0 +1,37 @@
+{
+  "cyclone": {
+    "boosts": 1,
+    "calls": [
+      {
+        "name": "cycloneBoost",
+        "loop": false,
+        "rate": 1,
+        "detune": 0
+      }
+    ]
+  },
+  "armorRun": {
+    "speed": 10.571003452766767,
+    "rate": 1.605235662914691,
+    "nativeRate": 2.0065445786433638
+  },
+  "armor": {
+    "strafe": [
+      {
+        "name": "armorStrafe",
+        "loop": false,
+        "rate": 1,
+        "detune": 0
+      },
+      {
+        "name": "armorStrafe",
+        "loop": false,
+        "rate": 1,
+        "detune": 0
+      }
+    ],
+    "steps": 5,
+    "landings": 2
+  },
+  "errors": []
+}

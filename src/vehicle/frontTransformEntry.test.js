@@ -17,14 +17,30 @@ globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:1,heigh
 async function load(p){const b=fs.readFileSync(p);return new GLTFLoader().parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.length),'')}
 const assets=Promise.all([load('public/models/mospeada/cyclone-vr052f.glb'),load('public/models/mospeada/scott-bernard-animated-original.glb')])
 const flat=(x,z,out)=>{if(out)out.surface='asphalt';return 0}
-async function fixture(speed=12,sample=flat){
+async function fixture(speed=12,sample=flat,options={}){
   const rig=createDrivingCyclone((await assets)[0].scene),s=createBikeState({x:0,z:0,yaw:0},rig.metrics,sample)
   s.speed=speed;s.parked=speed===0;s.idleBlend=speed===0?1:0
   const runtime={state:s};store.bindEntry(null);store.reset();store.set({ready:true,duration:2})
-  const entry=new FrontTransformEntry(store,runtime)
+  const entry=new FrontTransformEntry(store,runtime,Math.random,options)
   const tick=(input={},dt=1/60)=>{const effective=entry.beforePhysics(input,dt),cfg={...bikeConfig,...entry.physicsConfig};advanceBike(s,effective,dt,rig.metrics,sample,()=>true,cfg);entry.afterPhysics(dt,rig.metrics,cfg);store.advance(dt,entry.assemblyDuration);return effective}
   return{rig,s,runtime,entry,tick}
 }
+
+test('transformation sound fires on accepted forward/return starts, never on rejected requests, automatic phases or resume',async()=>{
+  const events=[],f=await fixture(0,flat,{onTransform:()=>events.push(f.entry.phase)})
+  f.entry.request();assert.deepEqual(events,[])
+  f.s.speed=12;store.set({ready:false});f.entry.request();assert.deepEqual(events,[])
+  store.set({ready:true});f.runtime.stage3={encounter:{active:true}};f.entry.request();assert.deepEqual(events,[])
+  f.runtime.stage3.encounter.active=false;f.entry.request();assert.deepEqual(events,['wheelie'])
+  f.entry.pause();f.entry.resume();assert.equal(events.length,1)
+  for(let i=0;i<420&&f.entry.phase!=='complete';i++)f.tick()
+  assert.equal(f.entry.phase,'complete');assert.equal(events.length,1)
+  f.entry.request();assert.deepEqual(events,['wheelie','returnboost'])
+  f.entry.request();assert.equal(events.length,2)
+  for(let i=0;i<420&&f.entry.phase!=='idle';i++)f.tick()
+  assert.equal(f.entry.phase,'idle');assert.equal(events.length,2)
+  f.entry.reset();assert.equal(events.length,2)
+})
 
 test('moving downhill can transform without waiting for flat terrain or rear-wheel support',async()=>{
  for(const grade of [.12,.35,.65])for(const speed of [8,30,55]){

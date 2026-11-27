@@ -1,8 +1,8 @@
 import {LEVEL_ASSETS} from './levelAssets.js'
-import {loadGLTF,loadTexture,loadJSON,loadFoliage,resourceState,resourceProgress} from './resources.js'
+import {loadGLTF,loadTexture,loadJSON,loadFoliage,loadAudio,resourceState,resourceProgress} from './resources.js'
 import {STAGE2_FOLIAGE_KEY} from '../world/forest/forestStage2Foliage.js'
 import {prepareTerrain} from './terrainPreparation.js'
-export function preloadInitial(){const set=LEVEL_ASSETS.initial;set.gltf.forEach(loadGLTF);set.texture.forEach(loadTexture);set.json.forEach(loadJSON);prepareTerrain('stage2');loadFoliage(STAGE2_FOLIAGE_KEY)}
+export function preloadInitial(){const set=LEVEL_ASSETS.initial;set.gltf.forEach(loadGLTF);set.texture.forEach(loadTexture);set.json.forEach(loadJSON);set.audio.forEach(loadAudio);prepareTerrain('stage2');loadFoliage(STAGE2_FOLIAGE_KEY)}
 export function initialProgress(sceneReady,renderReady,graphicsProgress=0){
  const entries=Object.entries(LEVEL_ASSETS.initial).flatMap(([kind,urls])=>urls.map(url=>({kind,url,entry:resourceState(kind,url)})))
  let loaded=0,total=0,complete=true,error=''

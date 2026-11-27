@@ -124,6 +124,18 @@ test('Scouts respect sloped real-height samples during landing and body-only mov
  assert.ok(f.patrol.scouts.some(r=>r.landings>0&&r.takeoffs>0))
 })
 
+test('Scout orb SFX event fires once per real projectile and never on charge, pause, or a blocked muzzle',async()=>{
+ const {patrol,s,camera,world}=await fixture(()=>0,()=>.5),shots=[]
+ const onShot=(projectile,scout)=>{assert.ok(projectile.active);assert.equal(projectile.scoutId,scout.id);shots.push({projectile,scout})}
+ for(let i=0;i<500;i++)patrol.update(.1,s,camera,world,{onShot})
+ assert.ok(shots.length>20);assert.equal(shots.length,patrol.shots)
+ const before=shots.length
+ patrol.update(0,s,camera,world,{onShot});assert.equal(shots.length,before)
+ patrol.worldQuery.castWorld=(ray,range)=>({solid:true,point:ray.at(range,new Vector3()),normal:new Vector3(0,1,0)})
+ for(let i=0;i<50;i++)patrol.update(.1,s,camera,world,{onShot})
+ assert.equal(shots.length,before)
+})
+
 test('pooled energy projectiles sweep the player once, expire and stop at existing world solids',()=>{
  const bolts=createEnergyProjectiles(2,'scoutOval'),s={x:0,height:0,z:5},origin=new Vector3(0,1,0),target=new Vector3(0,1,5),query=new GallantHitscan();let hits=0,blocked=0
  launchEnergyProjectile(bolts,origin,target,30,2);advanceEnergyProjectiles(bolts,s,.25,{onPlayerHit:()=>hits++});assert.equal(hits,1);assert.equal(bolts[0].active,false)

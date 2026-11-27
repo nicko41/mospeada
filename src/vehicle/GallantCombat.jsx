@@ -16,12 +16,13 @@ import {GallantAimLock,cuffMissileLockReady} from './GallantAimLock.js'
 import {CuffMissiles} from './CuffMissiles.js'
 import {ScottMissilePose} from './ScottMissilePose.js'
 import {GallantAimInput} from './GallantAimInput.js'
+import {gameAudio} from '../audio/gameAudio.js'
 
 // Crosshair, camera aim and shot selection share the exact screen centre.
 const armorReticle=new Vector2(0,0)
 
 export default function GallantCombat({runtime}){
-  const source=useGLTF(MARS_GALLANT_URL),{camera,gl}=useThree(),anchor=useRef(),hud=useRef(),reticle=useRef(),feedback=useRef(),label=useRef()
+  const source=useGLTF(MARS_GALLANT_URL),{camera,gl}=useThree(),anchor=useRef(),hud=useRef(),reticle=useRef(),label=useRef()
   const combat=useMemo(()=>({weapon:new MarsGallant(source.scene),aimInput:new GallantAimInput(),aimLock:new GallantAimLock(),bikeCamera:new CycloneShooterCamera(camera,runtime),pointer:new Vector2(.12,.08),mounted:false,hitscan:new GallantHitscan(),raycaster:new Raycaster(),ray:new Ray(),aimPoint:new Vector3(),endpoint:new Vector3(),origin:new Vector3(),forward:new Vector3(),active:false,aiming:false,firing:false,time:0,bolts:[],cooldown:0,recoil:0,hurt:0,hit:0,hitVersion:playerCombat.hitVersion,shots:0,hits:0,refs:0}),[source.scene,camera,runtime])
   useLayoutEffect(()=>{
     combat.missiles ||=new CuffMissiles()
@@ -117,6 +118,7 @@ export default function GallantCombat({runtime}){
         const result=p3?.active?p3.fire(c.ray,runtime.state):c.hitscan.fire(c.ray,range)
         if(!result)return
         c.cooldown=GALLANT_FIRE.interval;c.recoil=1;c.shots++
+        gameAudio.play('gallantShot')
         if(result.hit!==null){c.hit=.18;c.hits++}
         if(c.aimLock.target?.dead)c.aimLock.clear()
         runtime.combatVFX?.shot(w,result,p3?.active?p3:c)
@@ -131,11 +133,9 @@ export default function GallantCombat({runtime}){
     if(hud.current)hud.current.style.display=!runtime.ending?.holding&&(c.active||patrol?.active&&(c.hurt>0||playerCombat.dead))?'block':'none'
     if(label.current)label.current.style.display=runtime.paused?'block':'none'
     if(reticle.current){const locked=!!c.aimLock.target,ready=cuffMissileLockReady(c.aimLock,c.aiming),pointer=locked?c.aimLock.screen:c.mounted?c.pointer:armorReticle;reticle.current.style.opacity=String(c.active&&!playerCombat.dead?blend||0:0);reticle.current.style.left=`${(pointer.x+1)*50}%`;reticle.current.style.top=`${(1-pointer.y)*50}%`;reticle.current.style.color=ready?'#ff3b32':locked&&c.aimLock.target.receiveMissileHit?'#ffc65e':c.hit>0?'#fff6a0':locked?'#7fffea':'#e3efd6';reticle.current.style.borderRadius=locked?'4px':'50%';reticle.current.style.width=reticle.current.style.height=locked?'26px':'18px';reticle.current.dataset.locked=String(locked);reticle.current.dataset.lockReady=String(ready);reticle.current.dataset.lockProgress=String(c.aimLock.progress)}
-    if(feedback.current)feedback.current.style.opacity=String(c.hurt*.4)
     if(label.current)label.current.textContent=playerCombat.dead?'Derrotado · Reintentar desde el checkpoint':c.active?`Gallant · clic derecho: apuntar · clic izquierdo: disparar${patrol?.active||c.hurt>0?' · Salud '+playerCombat.playerHealth:''}`:`Impacto · Salud ${playerCombat.playerHealth}`
   },.12)
   return <group ref={anchor}><Html fullscreen calculatePosition={(_,__,size)=>[size.width/2,size.height/2]} style={{pointerEvents:'none'}}><div ref={hud} style={{display:'none',position:'absolute',inset:0,pointerEvents:'none',fontFamily:'sans-serif'}}>
-    <div ref={feedback} style={{position:'absolute',inset:0,boxShadow:'inset 0 0 80px 10px #ba4268',opacity:0}}/>
     <div ref={reticle} className="armor-reticle" style={{position:'absolute',left:`${(armorReticle.x+1)*50}%`,top:`${(1-armorReticle.y)*50}%`,width:18,height:18,transform:'translate(-50%,-50%)',border:'1px solid currentColor',borderRadius:'50%',opacity:0}}/>
     <div ref={label} style={{position:'absolute',bottom:65,left:'50%',transform:'translateX(-50%)',fontSize:12,color:'#e0ecda',background:'#10291dc0',padding:'5px 10px',whiteSpace:'nowrap'}}/>
   </div></Html></group>

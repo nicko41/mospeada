@@ -1,0 +1,33 @@
+{
+  "build": "passed",
+  "focusedTests": {
+    "passed": 40,
+    "failed": 0
+  },
+  "continuousEngine": {
+    "sourcesStarted": 1,
+    "newAudioRequests": 0,
+    "files": [
+      "http://127.0.0.1:5173/assets/sound/cyclone-armor/engine/02-engine-loop1.mp3"
+    ],
+    "liveControls": {
+      "paused": false,
+      "throttle": 1,
+      "pitchMax": 2.94,
+      "source": true,
+      "focused": "BODY"
+    }
+  },
+  "armorRun": {
+    "speed": 10.571003452766767,
+    "rate": 1.605235662914691,
+    "nativeRate": 2.0065445786433638
+  },
+  "audioLevels": {
+    "gallantMainRelative": 0.8,
+    "gallantAlternatesRelative": 1,
+    "boost": 0.25,
+    "strafe": 0.22
+  },
+  "browserErrors": []
+}

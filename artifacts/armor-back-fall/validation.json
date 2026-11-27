@@ -1,0 +1,40 @@
+{
+  "down": {
+    "feet": {
+      "Left": 0.04674682988544987,
+      "Right": 0.03696047612166886
+    },
+    "maxAttachmentError": 7.105427357601002e-14,
+    "attachedParts": 26,
+    "pose": {
+      "kind": "scout-claw",
+      "phase": "down",
+      "age": 0.55,
+      "sourceTime": 3.1
+    },
+    "phase": "complete",
+    "variant": "v3"
+  },
+  "recovered": {
+    "knockedDown": false,
+    "health": 100
+  },
+  "defeat": {
+    "feet": {
+      "Left": 0.042620056780511284,
+      "Right": 0.03421463501248656
+    },
+    "maxAttachmentError": 2.842170943040401e-14,
+    "attachedParts": 26,
+    "pose": {
+      "kind": "scout-claw",
+      "phase": "get-up",
+      "age": 2.0500000000000007,
+      "sourceTime": 6.3
+    },
+    "phase": "complete",
+    "variant": "v3"
+  },
+  "gl": 0,
+  "errors": []
+}

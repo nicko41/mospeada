@@ -1,6 +1,8 @@
 import {Matrix4,Quaternion,Vector3} from 'three'
 
-export const SCOTT_DEFEAT=Object.freeze({fallSeconds:1.7,retrySeconds:2.3,ejectDistance:1.5,source:'Stand_Up1',sourceStandingTime:6.3,gravity:18,wallHoldSeconds:.7})
+// Armor rests on its backpack. This native recovery frame bends both knees
+// and brings the soles down beside that support instead of extending in air.
+export const SCOTT_DEFEAT=Object.freeze({fallSeconds:1.7,retrySeconds:2.3,ejectDistance:1.5,source:'Stand_Up1',sourceStandingTime:6.3,armorDownTime:3.1,gravity:18,wallHoldSeconds:.7})
 const probes=new WeakMap()
 export function bodyProbes(geometry){
   if(probes.has(geometry))return probes.get(geometry)
@@ -68,7 +70,7 @@ export class ScottDefeatMotion{
       }
     }
     this.beforeP.copy(this.wrapper.position);this.beforeQ.copy(this.wrapper.quaternion);this.beforeS.copy(this.wrapper.scale)
-    dt=Math.max(0,Math.min(.1,dt));this.age+=dt;const t=Math.min(1,this.age/(this.crash ? .3 : SCOTT_DEFEAT.fallSeconds)),smooth=t*t*(3-2*t),nativeTime=SCOTT_DEFEAT.sourceStandingTime*(1-smooth),enter=Math.min(1,this.age/.22)
+    dt=Math.max(0,Math.min(.1,dt));this.age+=dt;const t=Math.min(1,this.age/(this.crash ? .3 : SCOTT_DEFEAT.fallSeconds)),smooth=t*t*(3-2*t),downTime=this.runtime.armorController?.active?SCOTT_DEFEAT.armorDownTime:0,nativeTime=downTime+(SCOTT_DEFEAT.sourceStandingTime-downTime)*(1-smooth),enter=Math.min(1,this.age/.22)
     for(const r of this.records){
       r.p.copy(r.bone.position);r.q.copy(r.bone.quaternion);r.s.copy(r.bone.scale)
       if(r.quaternion){r.nativeQ.fromArray(r.quaternion.evaluate(nativeTime)).normalize();r.bone.quaternion.slerpQuaternions(r.startQ,r.nativeQ,enter)}

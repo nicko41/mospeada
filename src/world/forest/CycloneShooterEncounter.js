@@ -5,7 +5,8 @@ import {createEnergyProjectiles,advanceEnergyProjectiles} from '../../vehicle/En
 const droneBounds=(d,box)=>{box.min.copy(d.position).addScalar(-.65);box.max.copy(d.position).addScalar(.65)}
 const droneEligible=d=>d.spawned&&!d.dead
 export class CycloneShooterEncounter{
-  constructor(){
+  constructor({onDestroyed=null}={}){
+    this.onDestroyed=onDestroyed
     this.pointer=new Vector2(.12,.08);this.aimPoint=new Vector3();this.targeting=new GallantTargeting();this.scratch=new Vector3()
     this.drones=S.waves.flatMap((count,wave)=>Array.from({length:count},(_,slot)=>({wave,slot,position:new Vector3()}))).map((d,id)=>({...d,id,cameraShakeScale:.35}))
     this.bolts=createEnergyProjectiles(S.maxEnemyBolts)
@@ -69,7 +70,7 @@ export class CycloneShooterEncounter{
   fire(ray,s){
     if(!this.canShoot||this.fireCooldown>0)return null
     this.fireCooldown=S.fireInterval;this.shots++;const hit=this.target(ray)
-    if(hit){hit.hp--;hit.flash=.18;if(hit.hp===0){hit.dead=true;hit.death=.3;this.kills++
+    if(hit){hit.hp--;hit.flash=.18;if(hit.hp===0){hit.dead=true;hit.death=.3;this.kills++;this.onDestroyed?.(hit)
       if(this.remaining===0){this.phase='exiting';this.phaseTime=0;this.firing=false;this.exitAnchor={x:stage3PathX(s.z-35),z:s.z-35,yaw:stage3Yaw(s.z-35),label:'Salida Plano 3'}}
       else if(this.drones.filter(d=>d.wave===this.waveIndex).every(d=>d.dead))this.nextWaveAt=this.time+S.waveBreak
     }}

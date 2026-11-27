@@ -1,5 +1,5 @@
 import {LEVEL_ASSETS} from './levelAssets.js'
-import {loadGLTF,loadTexture,loadJSON,prepareTexture} from './resources.js'
+import {loadGLTF,loadTexture,loadJSON,loadAudio,prepareTexture} from './resources.js'
 const listeners=new Set(),states=Object.fromEntries(['stage2','stage3','stage4','scouts','horizon','rand'].map(id=>[id,{id,phase:'idle',parts:0,error:''}]))
 let revision=0,started=false
 const publish=()=>{revision++;listeners.forEach(f=>f())}
@@ -12,7 +12,7 @@ export const stageStreaming={states,subscribe:f=>{listeners.add(f);return()=>lis
   state.phase='fetching';state.startMs=performance.now();publish()
   state.downloadPromise=(async()=>{
    const set=LEVEL_ASSETS[id],combat=id==='stage3'||id==='scouts'
-   await Promise.all([Promise.all((set.gltf||[]).map(loadGLTF)),Promise.all((set.texture||[]).map(url=>loadTexture(url,{hold:combat}))),Promise.all((set.json||[]).map(loadJSON))])
+   await Promise.all([Promise.all((set.gltf||[]).map(loadGLTF)),Promise.all((set.texture||[]).map(url=>loadTexture(url,{hold:combat}))),Promise.all((set.json||[]).map(loadJSON)),Promise.all((set.audio||[]).map(loadAudio))])
    state.networkReadyMs=performance.now();publish()
   })().catch(error=>{state.phase='error';state.error=error.message;publish();throw error})
   state.downloadPromise.catch(()=>{});return state.downloadPromise

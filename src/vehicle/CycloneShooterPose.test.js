@@ -16,6 +16,7 @@ import {MarsGallant,GALLANT_MOUNT,ARMOR_GALLANT_BIND_OFFSET} from './MarsGallant
 import {ArmorGallantPose} from './ArmorGallantPose.js'
 import {ArmorController} from './ArmorController.js'
 import {ArmorArmMotion} from './ArmorArmMotion.js'
+import {ScottHitMotion} from './ScottHitMotion.js'
 
 test('aim extends the original right arm/hand while the left grip remains fixed, then restores both hands for maneuvers',async()=>{
   globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:1,height:1,close(){}})
@@ -142,6 +143,19 @@ test('aim extends the original right arm/hand while the left grip remains fixed,
   step();const originalRight=[right.a,right.b,right.c].map(b=>b.quaternion.clone())
   combatPose.applyArmor(point,true,armor.state,1/60,1,1);combatPose.reset()
   for(const [n,b]of [right.a,right.b,right.c].entries())assert.ok(b.quaternion.angleTo(originalRight[n])<1e-7,'Recoil/hurt layers restore without a persistent pose lock')
+  step();combatPose.applyArmor(point,true,armor.state,1/60);weapon.present(instance,true,null,1,true)
+  const hitMotion=instance.hitMotion=new ScottHitMotion(instance,wrapper,runtime)
+  runtime.gallant={active:true,mounted:false};hitMotion.reset();hitMotion.age=.21
+  const aimed=weapon.getMuzzle(new Vector3()),poseBefore=[...bones.values()].map(b=>({b,q:b.quaternion.clone(),p:b.position.clone()})),control=JSON.stringify(runtime.state),target=point.clone()
+  hitMotion.apply(0,()=>0)
+  assert.ok(weapon.getMuzzle(new Vector3()).y<aimed.y-.06,`An effective flinch visibly lowers the hand-mounted Gallant: ${aimed.y} -> ${weapon.getMuzzle(new Vector3()).y}`)
+  assert.ok(combatPose.spines.some(b=>b.quaternion.angleTo(poseBefore.find(r=>r.b===b).q)>.02),'The torso participates in the hit reaction')
+  assert.equal(JSON.stringify(runtime.state),control);assert.deepEqual(point.toArray(),target.toArray())
+  hitMotion.restore()
+  for(const {b,q,p}of poseBefore){assert.deepEqual(b.quaternion.toArray(),q.toArray());assert.deepEqual(b.position.toArray(),p.toArray())}
+  assert.ok(weapon.getMuzzle(new Vector3()).distanceTo(aimed)<1e-7,'The next native pose fully restores the weapon without drift')
+  hitMotion.age=.5;hitMotion.apply(0,()=>0);assert.equal(hitMotion.applied,false)
+  delete instance.hitMotion;delete runtime.gallant
   armor.deactivate();runtime.transformEntry.phase='idle';step();weapon.update(instance,encounter,runtime.state)
   assert.equal(weapon.root.visible,false,'No Armor weapon pose leaks into riding/transformation')
   weapon.dispose();assert.equal(weapon.root.parent,null)
