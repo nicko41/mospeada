@@ -1,0 +1,13 @@
+{
+  "surface": {
+    "oldSixMetreCorrelation": 1,
+    "newSixMetreCorrelation": -0.021543652267054614,
+    "maximumGrassPixelChange": 0,
+    "gl": 0
+  },
+  "game": {
+    "gl": 0,
+    "shader": ""
+  },
+  "errors": []
+}

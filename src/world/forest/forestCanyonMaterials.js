@@ -1,6 +1,7 @@
-import {Color,DoubleSide,MeshLambertMaterial,RepeatWrapping,Vector3} from 'three'
+import {Color,DoubleSide,MeshLambertMaterial,MirroredRepeatWrapping,RepeatWrapping,Vector3} from 'three'
 import {riverObstacles} from './forestCanyon.js'
 import {stage2PathX} from './forestStage2Config.js'
+import {FOREST_GROUND_SAMPLING_GLSL} from './forestGroundSampling.js'
 
 // Own the sampler settings: the cached grass is also used by other stages.
 // Repeat the original image in one direction, with no mirrored/rotated cells.
@@ -24,16 +25,28 @@ function plainCanyonMaterial(source,wall=false){
 // below enlarges the distant, non-drivable valley floor.
 export function stage2GroundMaterial(grass,dirt){
   const map=canyonTexture(grass),soil=canyonTexture(dirt),material=new MeshLambertMaterial({map,name:'Forest Plano 2 / original grass and dirt',userData:{forest:true,forestGround:{tileMetres:6,source:'original grass-01.jpg + dirt01.jpg'}}})
+  // Only the road uses the opening's approved sampler and four-metre detail.
+  // Keep the six-metre grass mapping and the separate ravine materials.
+  soil.wrapS=soil.wrapT=MirroredRepeatWrapping
   material.onBeforeCompile=shader=>{
     shader.uniforms.stage2Dirt={value:soil}
     shader.vertexShader='varying vec2 vStage2Ground;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvStage2Ground=(modelMatrix*vec4(transformed,1.0)).xz;')
     shader.fragmentShader=`uniform sampler2D stage2Dirt;varying vec2 vStage2Ground;
+      ${FOREST_GROUND_SAMPLING_GLSL}
       float stage2Earth(vec2 p){float t=smoothstep(0.0,80.0,-p.y-400.0);float oldX=sin(p.y*.013)*20.0+sin(p.y*.033)*3.0;float pathX=mix(oldX,${stage2PathX(-480).toFixed(9)},t);return 1.0-smoothstep(1.2,4.5,abs(p.x-pathX));}
     `+shader.fragmentShader
-    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>','vec2 groundUv=vStage2Ground/6.0;diffuseColor*=mix(texture2D(map,groundUv),texture2D(stage2Dirt,groundUv),stage2Earth(vStage2Ground));')
+    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`
+      vec2 groundUv=vStage2Ground/6.0,dirtUv=vStage2Ground/4.0;
+      vec2 dirtDx=dFdx(dirtUv),dirtDy=dFdy(dirtUv);
+      float earthMask=stage2Earth(vStage2Ground);vec4 groundPaint;
+      if(earthMask<.001)groundPaint=texture2D(map,groundUv);
+      else if(earthMask>.999)groundPaint=groundIllustration(stage2Dirt,dirtUv+vec2(13.7,-9.3),dirtDx,dirtDy);
+      else groundPaint=mix(texture2D(map,groundUv),groundIllustration(stage2Dirt,dirtUv+vec2(13.7,-9.3),dirtDx,dirtDy),earthMask);
+      diffuseColor*=groundPaint;
+    `)
   }
   material.addEventListener('dispose',()=>{map.dispose();soil.dispose()})
-  material.customProgramCacheKey=()=> 'forest-stage2-original-ground-v4'
+  material.customProgramCacheKey=()=> 'forest-stage2-opening-road-sampling-v5'
   return material
 }
 
