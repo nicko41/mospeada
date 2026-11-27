@@ -1,4 +1,4 @@
-const volume=value=>Math.max(0,Math.min(1,Number(value)||0))
+const volume=(value,maximum=1)=>Math.max(0,Math.min(maximum,Number(value)||0))
 
 // Buffers and effect gains are shared. Only the inexpensive one-shot source
 // is new for each voice, so consecutive effects can overlap naturally.
@@ -42,7 +42,7 @@ export class SoundEffects{
   getVolume(name){return this.volumes.get(name)??this.effects[name]?.volume??1}
   setVolume(name,value){
     if(!this.effects[name])throw Error(`Unknown sound effect: ${name}`)
-    const level=volume(value);this.volumes.set(name,level)
+    const level=volume(value,this.effects[name].maxVolume??1);this.volumes.set(name,level)
     if(this.gains.has(name))this.gains.get(name).gain.value=level
   }
   setMasterVolume(value){this.masterVolume=volume(value);if(this.master)this.master.gain.value=this.masterVolume}

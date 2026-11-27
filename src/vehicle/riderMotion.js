@@ -18,7 +18,8 @@ export function updateRiderMotion(s, dt, config) {
       s.reverseFeet[side] = { cycle, x: s.x + Math.cos(s.yaw) * x + Math.sin(s.yaw) * z, z: s.z - Math.sin(s.yaw) * x + Math.cos(s.yaw) * z }
     }
   } else { s.reverseFeet.Left = s.reverseFeet.Right = null; s.reversePhase = 0 }
-  const dab = !s.airborne && !takingOff ? s.handbrake * clamp(Math.abs(roll) / 0.24, 0, 1) * clamp(Math.abs(s.speed) / 4, 0, 1) * (1 - s.riderStand) * (1 - s.reverseBlend) : 0
+  const burnout=s.burnout?.blend||0
+  const dab = !s.airborne && !takingOff ? Math.max(s.handbrake * clamp(Math.abs(s.speed) / 4, 0, 1),burnout) * clamp(Math.abs(roll) / 0.24, 0, 1) * (1 - s.riderStand) * (1 - s.reverseBlend) : 0
   // Negative roll tips the chassis toward +X, Scott's left side.
   s.riderDabLeft = damp(s.riderDabLeft || 0, roll < -0.035 ? dab : 0, 15, dt)
   s.riderDabRight = damp(s.riderDabRight || 0, roll > 0.035 ? dab : 0, 15, dt)

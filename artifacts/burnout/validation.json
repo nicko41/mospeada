@@ -1,0 +1,277 @@
+{
+  "hold": {
+    "phase": "holding",
+    "blend": 0.9992534141916234,
+    "spinSpeed": 23.998374510324222,
+    "yawRate": 0,
+    "chordSeen": true,
+    "pivot": 1,
+    "speed": 0,
+    "yaw": -1.5707963267948966,
+    "lean": -0.0048002017548800895,
+    "frontSpin": 0,
+    "rearSpin": 68.0519343213758,
+    "grounded": true,
+    "logicalFront": [
+      64.26208584620356,
+      -78.25
+    ],
+    "front": [
+      64.26824876918378,
+      2.2161855960160257,
+      -78.24829621516078
+    ],
+    "rear": [
+      65.74427220130407,
+      2.2175636723710515,
+      -78.24842378175998
+    ],
+    "surface": "asphalt",
+    "dustRate": 16.09701609179626,
+    "dustActive": 19,
+    "emitted": 19,
+    "tracks": 1,
+    "trackActive": 1,
+    "rpm": 7828.51764039561,
+    "engineRate": 1.7585604190826416,
+    "sameEngine": true
+  },
+  "turnStart": {
+    "phase": "holding",
+    "blend": 0.9995902650210202,
+    "spinSpeed": 23.999269620407798,
+    "yawRate": 0.3246683054481676,
+    "chordSeen": true,
+    "pivot": 1,
+    "speed": 0,
+    "yaw": -1.5522727160681469,
+    "lean": -0.00796225689207908,
+    "frontSpin": 0,
+    "rearSpin": 68.05447257548094,
+    "grounded": true,
+    "logicalFront": [
+      64.26208584620355,
+      -78.25000000000003
+    ],
+    "front": [
+      64.26363620857607,
+      2.216170043113705,
+      -78.2523927416669
+    ],
+    "rear": [
+      65.74401664594716,
+      2.217496123737267,
+      -78.27541566877353
+    ],
+    "surface": "asphalt",
+    "dustRate": 16.331274536190715,
+    "dustActive": 21,
+    "emitted": 21,
+    "tracks": 1,
+    "trackActive": 1,
+    "rpm": 7887.5505376305955,
+    "engineRate": 1.7691582441329956,
+    "sameEngine": true
+  },
+  "turn": {
+    "phase": "holding",
+    "blend": 0.9999785545916834,
+    "spinSpeed": 23.999985700407294,
+    "yawRate": 0.961202089683022,
+    "chordSeen": true,
+    "pivot": 1,
+    "speed": 0,
+    "yaw": -1.1907362682934035,
+    "lean": -0.12751284373504007,
+    "frontSpin": 0,
+    "rearSpin": 68.05650315588854,
+    "grounded": true,
+    "logicalFront": [
+      64.2620858462035,
+      -78.25000000000003
+    ],
+    "front": [
+      64.28468627402228,
+      2.216333680064438,
+      -78.1965712534512
+    ],
+    "rear": [
+      65.64510323900177,
+      2.216158752823226,
+      -78.78288786492288
+    ],
+    "surface": "asphalt",
+    "dustRate": 16.783284057089805,
+    "dustActive": 30,
+    "emitted": 33,
+    "tracks": 4,
+    "trackActive": 4,
+    "rpm": 8003.689406919746,
+    "engineRate": 1.7874983549118042,
+    "sameEngine": true
+  },
+  "frontAnchorError": 6.355287432313019e-14,
+  "renderedFrontError": 0.054273964561040965,
+  "inertia": {
+    "phase": "holding",
+    "blend": 0.9999882305103751,
+    "spinSpeed": 23.999993574778824,
+    "yawRate": 0.6773476644123642,
+    "chordSeen": true,
+    "pivot": 1,
+    "speed": 0,
+    "yaw": -1.1108119814175814,
+    "lean": -0.14160457857507716,
+    "frontSpin": 0,
+    "rearSpin": 68.0565254851598,
+    "grounded": true,
+    "logicalFront": [
+      64.26208584620348,
+      -78.25000000000003
+    ],
+    "front": [
+      64.26646923168539,
+      2.216227083688425,
+      -78.23084928492712
+    ],
+    "rear": [
+      65.59817539617663,
+      2.215853380251742,
+      -78.89177830433793
+    ],
+    "surface": "asphalt",
+    "dustRate": 16.586618669579984,
+    "dustActive": 30,
+    "emitted": 35,
+    "tracks": 4,
+    "trackActive": 4,
+    "rpm": 8010.9653503060335,
+    "engineRate": 1.7880890369415283,
+    "sameEngine": true
+  },
+  "exit": {
+    "x": 64.99947805484368,
+    "z": -78.27774939656788,
+    "yaw": -1.5331822752266415
+  },
+  "acceleration": {
+    "maximum": 8.326524886187515,
+    "speed": 11.404158153627579,
+    "phase": "idle",
+    "yaw": -1.5588088109533493,
+    "blocked": false
+  },
+  "running": {
+    "phase": "idle",
+    "blend": 0,
+    "spinSpeed": 0,
+    "yawRate": -0.00004644506475948802,
+    "chordSeen": false,
+    "pivot": 0,
+    "speed": 11.404158153627579,
+    "yaw": -1.5588088109533493,
+    "lean": 0.0003351683273909179,
+    "frontSpin": 32.33866532568044,
+    "rearSpin": 32.33866419955521,
+    "grounded": true,
+    "logicalFront": [
+      57.44435073245338,
+      -78.17381033821529
+    ],
+    "front": [
+      57.4460586083419,
+      2.209900434316556,
+      -78.1735902390214
+    ],
+    "rear": [
+      58.948583426922035,
+      2.211373700872684,
+      -78.19211196162802
+    ],
+    "surface": "asphalt",
+    "dustRate": 0,
+    "dustActive": 8,
+    "emitted": 80,
+    "tracks": 20,
+    "trackActive": 20,
+    "rpm": 5103.480585793969,
+    "engineRate": 1.3503334522247314,
+    "sameEngine": true
+  },
+  "dirt": {
+    "phase": "holding",
+    "blend": 0.9999172759344434,
+    "spinSpeed": 23.99991349250522,
+    "yawRate": 0,
+    "chordSeen": true,
+    "pivot": 1,
+    "speed": 0,
+    "yaw": 3.141592653589793,
+    "lean": -0.0011173235099452001,
+    "frontSpin": 0,
+    "rearSpin": 68.05629839671174,
+    "grounded": true,
+    "logicalFront": [
+      16,
+      -180.73791415379642
+    ],
+    "front": [
+      15.999613615707652,
+      -0.00042976906228251263,
+      -180.73175222074255
+    ],
+    "rear": [
+      15.999654563510816,
+      -0.00442995597960751,
+      -179.25573059518516
+    ],
+    "surface": "dirt",
+    "dustRate": 134.29043576189682,
+    "dustActive": 188,
+    "emitted": 267,
+    "tracks": 21,
+    "trackActive": 1,
+    "rpm": 7973.970964446872,
+    "engineRate": 1.7800523042678833,
+    "sameEngine": true
+  },
+  "stopped": {
+    "phase": "idle",
+    "blend": 0,
+    "spinSpeed": 0,
+    "yawRate": 0,
+    "chordSeen": false,
+    "pivot": 0,
+    "speed": 0,
+    "yaw": 3.141592653589793,
+    "lean": -0.13415713509410723,
+    "frontSpin": 0,
+    "rearSpin": 0,
+    "grounded": true,
+    "logicalFront": [
+      16,
+      -180.73791415379642
+    ],
+    "front": [
+      15.985800451695429,
+      -0.0004461251661858389,
+      -180.73182714177054
+    ],
+    "rear": [
+      15.982539416289505,
+      -0.004450508931664252,
+      -179.2557175330105
+    ],
+    "surface": "dirt",
+    "dustRate": 0,
+    "dustActive": 68,
+    "emitted": 427,
+    "tracks": 21,
+    "trackActive": 1,
+    "rpm": 3900.911173930338,
+    "engineRate": 1.1355348825454712,
+    "sameEngine": true
+  },
+  "gl": 0,
+  "errors": []
+}

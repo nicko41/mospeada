@@ -73,7 +73,7 @@ export class ScottV3Visual{
   this.retarget.apply()
   const retarget=this.retarget,body=runtime?.scottBikeBody,bones=retarget.bones
   this.diagnostics={mappedBones:retarget.records.length,nativeBones:this.skins[0].mesh.skeleton.bones.length}
-  const riding=body&&this.instance.clip==='Cyclone_RidingPose'&&v2RidingAllowed(runtime)
+  const riding=body&&!this.instance.defeatMotion?.active&&this.instance.clip==='Cyclone_RidingPose'&&v2RidingAllowed(runtime)
   if(!riding)this.speedResponse.reset()
   if(riding){
    this.diagnostics.elbowReference=config.riding.elbowReference

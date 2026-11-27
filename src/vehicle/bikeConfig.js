@@ -35,6 +35,8 @@ export const bikeConfig = {
   handbrakeTurnDuration: 1.25,
   handbrakeWagAngle: 0.12, handbrakeWagFrequency: 1.7, handbrakeWagDuration: 0.8,
   handbrakeGrip: 0.55, recoveryGrip: 5.5, maxDriftAngle: 1.15,
+  burnoutEnabled:true,burnoutEntrySpeed:1.2,burnoutWheelSpeed:24,
+  burnoutYawRate:1.1,burnoutYawResponse:3.5,burnoutReleaseRate:5.5,burnoutLean:.20,
   idleLean: 0.14, idlePoseResponse: 4, idleFootOffset: 0.52,
   idleHeadAngle: 0.48, idleHeadSpeed: 0.65,
   riderStandHeight: 0.30, riderStandForward: 0.14, riderStandTorsoLean: 0.50,

@@ -5,6 +5,7 @@ import { updateRiderMotion } from './riderMotion.js'
 import { updateRoadResponse } from './roadResponse.js'
 import { updateWheelie, wheelieSteerBlend } from './wheelieDynamics.js'
 import { updateRiderPresence } from './riderPresence.js'
+import {createBurnoutState,updateBurnout} from './burnoutDynamics.js'
 export { clamp, damp, spring } from './physicsMath.js'
 
 export function createBikeState(start, metrics, sample) {
@@ -16,6 +17,7 @@ export function createBikeState(start, metrics, sample) {
     distance: 0, blocked: false, accumulator: 0,
     travelYaw: start.yaw, slip: 0, handbrake: 0,
     handbrakeTime: 0, rearLateralVelocity: 0,
+    burnout:createBurnoutState(),
     parked: true,
     frontGrounded: true, rearGrounded: true, airborne: false, airTime: 0,
     frontAirGap: 0, rearAirGap: 0, verticalVelocity: 0, landingImpact: 0,
@@ -62,6 +64,7 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
     input = { ...input, brake: canPush ? 0 : 1, reverse: canPush && s.reverseWait >= c.reversePause }
   } else { s.reverseWait = 0; s.reverseIntent = !!input.reverse && s.speed <= 0.025 }
   if (input.reverse && s.speed > 0.025) input = { ...input, reverse: false, brake: 1 }
+  const burnout=updateBurnout(s,input,dt,c),burning=burnout.phase==='holding'
   const speed = Math.abs(s.speed), previousSpeed = s.speed
   const traction = s.frontGrounded ? 1 : s.rearGrounded ? 0.35 : 0
   s.boostCooldown = Math.max(0, s.boostCooldown - dt)
@@ -109,7 +112,7 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
     force = 0
   } else {
     const turbine = (s.boostMode==='air'?c.airBoostAcceleration:c.boostAcceleration) * (s.boostTime / (s.boostMode==='air'?c.airBoostDuration:c.boostDuration))
-    const rearDrive = input.reverse ? traction : s.rearGrounded ? 1 - s.handbrake : 0
+    const rearDrive = (input.reverse ? traction : s.rearGrounded ? 1 - s.handbrake : 0)*(1-burnout.blend*.8)
     s.speed += (force * rearDrive + turbine - c.gravity * grade * traction) * dt
     s.speed = Math.sign(s.speed) * Math.max(0, Math.abs(s.speed) - drag * dt)
   }
@@ -137,6 +140,7 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
     const oversteer = clamp(groundYawRate * c.handbrakeYawMultiplier, -c.handbrakeYawRate, c.handbrakeYawRate) * turnFade
     s.yawRate = damp(s.yawRate, (oversteer + wag) * s.handbrake * moving, 11, dt)
   } else s.yawRate = s.frontGrounded ? damp(s.yawRate, groundYawRate, 18, dt) : damp(s.yawRate,c.airBoostEnabled?(input.steer||0)*c.airSteerRate:0,c.airBoostEnabled?c.airSteerResponse:1.5,dt)
+  if(burnout.phase!=='idle')s.yawRate=burning?burnout.yawRate:s.yawRate*(1-burnout.blend)+burnout.yawRate*burnout.blend
   const yaw = s.yaw + s.yawRate * dt, middleYaw = (s.yaw + yaw) / 2, previousTravelYaw = s.travelYaw
   const drifting = s.handbrake > 0.02 || Math.abs(s.slip) > 0.002
   if (drifting || !traction) {
@@ -146,21 +150,23 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
     const slip = traction ? clamp(wrapAngle(yaw - s.travelYaw), -c.maxDriftAngle, c.maxDriftAngle) : wrapAngle(yaw - s.travelYaw)
     s.travelYaw = yaw - slip; s.slip = slip
   } else { s.travelYaw = middleYaw; s.slip = 0 }
+  if(burning){s.travelYaw=yaw;s.slip=0}
   if (traction && s.speed === 0) { s.travelYaw = s.yaw; s.slip = 0; s.rearAngularSpeed = 0 }
   const distance = s.speed * dt
   // A locked rear slides around the planted front contact. The centre follows
   // that pivot instead of merely tracing a tighter bicycle arc.
-  const frontPivot = s.frontGrounded ? m.frontZ * s.handbrake * clamp(speed / 3, 0, 1) : 0
+  const frontPivot = s.frontGrounded ? m.frontZ * Math.max(s.handbrake * clamp(speed / 3, 0, 1),burnout.pivot) : 0
   const x = s.x + Math.sin(s.travelYaw) * distance + (Math.sin(s.yaw) - Math.sin(yaw)) * frontPivot
   const z = s.z + Math.cos(s.travelYaw) * distance + (Math.cos(s.yaw) - Math.cos(yaw)) * frontPivot
-  s.rearLateralVelocity = -Math.sin(s.slip) * s.speed - s.yawRate * m.wheelbase * s.handbrake
+  s.rearLateralVelocity = -Math.sin(s.slip) * s.speed - s.yawRate * m.wheelbase * Math.max(s.handbrake,burnout.pivot)
   s.blocked = !canMove(x, z, yaw)
   if (!s.blocked) { s.x = x; s.z = z; s.yaw = yaw; s.distance += Math.abs(distance) }
-  else { s.speed = 0; s.yawRate = 0; s.slip = 0; s.travelYaw = s.yaw }
-  if (!s.blocked) {
+  else { s.speed = 0; s.yawRate = 0; s.slip = 0; s.travelYaw = s.yaw;burnout.yawRate=0 }
+  if (!s.blocked||burnout.phase!=='idle') {
     if (s.frontGrounded) s.frontAngularSpeed = s.speed * Math.sqrt(1 + grade * grade) / (m.frontRadius * Math.cos(s.steer))
     if (s.rearGrounded && s.handbrake < 0.02) s.rearAngularSpeed = s.speed * Math.sqrt(1 + grade * grade) * Math.cos(s.slip) / m.rearRadius
     if (s.handbrake > 0.02) s.rearAngularSpeed = damp(s.rearAngularSpeed, 0, 42 * s.handbrake, dt)
+    if(burnout.phase!=='idle'&&s.rearGrounded)s.rearAngularSpeed=Math.max(Math.abs(s.rearAngularSpeed),burnout.spinSpeed/m.rearRadius)
     s.frontSpin = (s.frontSpin + s.frontAngularSpeed * dt) % (Math.PI * 2)
     s.rearSpin = (s.rearSpin + s.rearAngularSpeed * dt) % (Math.PI * 2)
   }
@@ -177,7 +183,8 @@ export function stepBike(s, input, dt, m, sample, canMove = () => true, c = bike
   s.idleTime = s.idleBlend > 0.5 ? s.idleTime + dt : 0
   const pathYawRate = wrapAngle(s.travelYaw - previousTravelYaw) / dt
   const leanYawRate = s.yawRate * (1 - s.handbrake * 0.8) + pathYawRate * s.handbrake * 0.8
-  const targetLean = traction ? clamp(-Math.atan(s.speed * leanYawRate / c.gravity) - c.idleLean * s.idleBlend - s.wheelieSteer * wheelieSteerBlend(s) * 0.14, -c.maxLean, c.maxLean) : s.lean
+  const burnoutLean=burnout.phase==='idle'?0:burnout.yawRate/c.burnoutYawRate*c.burnoutLean*burnout.blend
+  const targetLean = traction ? clamp(-Math.atan(s.speed * leanYawRate / c.gravity) - c.idleLean * s.idleBlend - s.wheelieSteer * wheelieSteerBlend(s) * 0.14-burnoutLean, -c.maxLean, c.maxLean) : s.lean
   ;[s.lean, s.leanVelocity] = spring(s.lean, s.leanVelocity, targetLean, c.leanStiffness, c.leanDamping, dt)
   updateRoadResponse(s, dt, m, c)
   updateWheelie(s, input, dt, c)

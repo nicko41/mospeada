@@ -2,7 +2,7 @@ import {Matrix4,Quaternion,Vector3} from 'three'
 
 // Armor rests on its backpack. This native recovery frame bends both knees
 // and brings the soles down beside that support instead of extending in air.
-export const SCOTT_DEFEAT=Object.freeze({fallSeconds:1.7,retrySeconds:2.3,ejectDistance:1.5,source:'Stand_Up1',sourceStandingTime:6.3,armorDownTime:3.1,gravity:18,wallHoldSeconds:.7})
+export const SCOTT_DEFEAT=Object.freeze({fallSeconds:1.7,retrySeconds:2.3,ejectDistance:1.5,source:'Stand_Up1',sourceStandingTime:6.3,armorDownTime:3.1,canyonDownTime:.8,gravity:18,wallHoldSeconds:.7})
 const probes=new WeakMap()
 export function bodyProbes(geometry){
   if(probes.has(geometry))return probes.get(geometry)
@@ -53,6 +53,7 @@ export class ScottDefeatMotion{
   }
   reset(){this.restore();this.active=false;this.age=this.offsetY=this.vy=0;this.contact=false;this.runtime.defeat=null}
   apply(dt,sample){
+    sample=this.runtime.canyonFall?.floorAt||sample
     if(!this.active){
       this.active=true;this.age=0;this.offsetY=0;this.vy=Math.min(0,this.runtime.state?.verticalVelocity||0);this.contact=false
       this.origin.copy(this.wrapper.position);this.originQ.copy(this.wrapper.quaternion);this.originS.copy(this.wrapper.scale)
@@ -70,7 +71,7 @@ export class ScottDefeatMotion{
       }
     }
     this.beforeP.copy(this.wrapper.position);this.beforeQ.copy(this.wrapper.quaternion);this.beforeS.copy(this.wrapper.scale)
-    dt=Math.max(0,Math.min(.1,dt));this.age+=dt;const t=Math.min(1,this.age/(this.crash ? .3 : SCOTT_DEFEAT.fallSeconds)),smooth=t*t*(3-2*t),downTime=this.runtime.armorController?.active?SCOTT_DEFEAT.armorDownTime:0,nativeTime=downTime+(SCOTT_DEFEAT.sourceStandingTime-downTime)*(1-smooth),enter=Math.min(1,this.age/.22)
+    dt=Math.max(0,Math.min(.1,dt));this.age+=dt;const t=Math.min(1,this.age/(this.crash ? .3 : SCOTT_DEFEAT.fallSeconds)),smooth=t*t*(3-2*t),downTime=this.runtime.armorController?.active?SCOTT_DEFEAT.armorDownTime:this.crash||this.runtime.canyonFall?SCOTT_DEFEAT.canyonDownTime:0,nativeTime=downTime+(SCOTT_DEFEAT.sourceStandingTime-downTime)*(1-smooth),enter=Math.min(1,this.age/.22)
     for(const r of this.records){
       r.p.copy(r.bone.position);r.q.copy(r.bone.quaternion);r.s.copy(r.bone.scale)
       if(r.quaternion){r.nativeQ.fromArray(r.quaternion.evaluate(nativeTime)).normalize();r.bone.quaternion.slerpQuaternions(r.startQ,r.nativeQ,enter)}
@@ -111,7 +112,7 @@ export class ScottDefeatMotion{
   }
   fallFromWall(dt){
     // Hold the impact briefly, then translate the existing pose under gravity.
-    // No new clip or limb animation; the camera stays at the impact above.
+    // The camera leaves this motion out of frame until both actors rest.
     const step=Math.max(0,this.age-SCOTT_DEFEAT.wallHoldSeconds)-Math.max(0,this.age-dt-SCOTT_DEFEAT.wallHoldSeconds)
     if(step>0&&!this.wallLanded){
       this.wallVy-=SCOTT_DEFEAT.gravity*step;this.wallPosition.y+=this.wallVy*step
@@ -124,7 +125,17 @@ export class ScottDefeatMotion{
     if(this.contact||step===0)return
     let lift=-Infinity
     for(const {mesh,ids}of this.skins)for(const id of ids){mesh.getVertexPosition(id,this.point);mesh.localToWorld(this.point);const floor=this.crash.floorAt(this.point.x,this.point.z);if(Number.isFinite(floor))lift=Math.max(lift,floor+.015-this.point.y)}
-    if(lift>=0){this.wallPosition.y+=lift;this.wrapper.position.copy(this.wallPosition);this.wrapper.updateMatrixWorld(true);this.wallVy=0;this.wallLanded=this.contact=true}
+    if(lift>=0){
+      this.wallPosition.y+=lift;this.wallRotation.copy(this.upright)
+      // The camera is looking away here. Leave Scott beside the bike so
+      // the overhead reveal shows his whole body rather than overlapping it.
+      this.wallPosition.addScaledVector(this.wallTangent.crossVectors(this.wallUp,this.wallNormal).normalize(),2.4)
+      this.wrapper.position.copy(this.wallPosition);this.wrapper.quaternion.copy(this.wallRotation);this.wrapper.updateMatrixWorld(true)
+      let rest=-Infinity
+      for(const {mesh,ids}of this.skins)for(const id of ids){mesh.getVertexPosition(id,this.point);mesh.localToWorld(this.point);const floor=this.crash.floorAt(this.point.x,this.point.z);if(Number.isFinite(floor))rest=Math.max(rest,floor+.015-this.point.y)}
+      if(Number.isFinite(rest)){this.wallPosition.y+=rest;this.wrapper.position.copy(this.wallPosition);this.wrapper.updateMatrixWorld(true)}
+      this.wallVy=0;this.wallLanded=this.contact=true
+    }
   }
   publish(){this.runtime.defeat.age=this.age;this.runtime.defeat.ready=this.age>=SCOTT_DEFEAT.retrySeconds&&this.contact&&(!this.runtime.bikeDefeatMotion?.active||this.runtime.bikeDefeatMotion.settled)}
   groundArmor(articulation){

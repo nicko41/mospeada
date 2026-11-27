@@ -1,9 +1,44 @@
-import {Color,DoubleSide,MeshLambertMaterial,Vector3} from 'three'
+import {Color,DoubleSide,MeshLambertMaterial,RepeatWrapping,Vector3} from 'three'
 import {riverObstacles} from './forestCanyon.js'
+import {stage2PathX} from './forestStage2Config.js'
+
+// Own the sampler settings: the cached grass is also used by other stages.
+// Repeat the original image in one direction, with no mirrored/rotated cells.
+function canyonTexture(source){
+  const texture=source.clone();texture.wrapS=texture.wrapT=RepeatWrapping;texture.repeat.set(1,1);texture.needsUpdate=true;return texture
+}
+function plainCanyonMaterial(source,wall=false){
+  const map=canyonTexture(source),material=new MeshLambertMaterial({map,side:DoubleSide,fog:true,name:wall?'Forest canyon / barranco.jpg':'Forest river bank / original shore',userData:{forest:true}})
+  material.onBeforeCompile=shader=>{
+    shader.uniforms.canyonDirt={value:map}
+    shader.vertexShader='varying vec2 vCanyonUv;\n'+shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>\nvCanyonUv=${wall?'vec2((modelMatrix*vec4(transformed,1.0)).x/48.0,uv.y/12.0)':'uv'};`)
+    shader.fragmentShader='uniform sampler2D canyonDirt;varying vec2 vCanyonUv;\n'+shader.fragmentShader
+    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>','diffuseColor*=texture2D(canyonDirt,vCanyonUv);')
+  }
+  material.addEventListener('dispose',()=>map.dispose())
+  material.customProgramCacheKey=()=> 'forest-canyon-original-image-v2/'+wall
+  return material
+}
+
+export function stage2GroundMaterial(grass,dirt){
+  const map=canyonTexture(grass),soil=canyonTexture(dirt),material=new MeshLambertMaterial({map,name:'Forest Plano 2 / original grass and dirt',userData:{forest:true,forestGround:{tileMetres:24,source:'original grass-01.jpg + dirt01.jpg'}}})
+  material.onBeforeCompile=shader=>{
+    shader.uniforms.stage2Dirt={value:soil}
+    shader.vertexShader='varying vec2 vStage2Ground;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvStage2Ground=(modelMatrix*vec4(transformed,1.0)).xz;')
+    shader.fragmentShader=`uniform sampler2D stage2Dirt;varying vec2 vStage2Ground;
+      float stage2Earth(vec2 p){float t=smoothstep(0.0,80.0,-p.y-400.0);float oldX=sin(p.y*.013)*20.0+sin(p.y*.033)*3.0;float pathX=mix(oldX,${stage2PathX(-480).toFixed(9)},t);return 1.0-smoothstep(1.2,4.5,abs(p.x-pathX));}
+    `+shader.fragmentShader
+    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>','vec2 groundUv=vStage2Ground/24.0;diffuseColor*=mix(texture2D(map,groundUv),texture2D(stage2Dirt,groundUv),stage2Earth(vStage2Ground));')
+  }
+  material.addEventListener('dispose',()=>{map.dispose();soil.dispose()})
+  material.customProgramCacheKey=()=> 'forest-stage2-original-ground-v3'
+  return material
+}
 
 // Raw atlas coordinates bypass the shared terrain texture's UV transform.
 // Three taps blend the original illustration, never synthetic RGB patches.
 export function canyonEarthMaterial(dirt,{stratified=false}={}){
+  if(stratified)return plainCanyonMaterial(dirt,true)
   const m=new MeshLambertMaterial({map:dirt,side:DoubleSide,vertexColors:false,fog:true,name:stratified?'Forest canyon / barranco.jpg':'Forest canyon / original dirt01 illustration',userData:{forest:true}})
   m.onBeforeCompile=shader=>{
     shader.vertexShader='varying vec2 vCanyonUv;\n'+shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>\nvCanyonUv=${stratified?'vec2((modelMatrix*vec4(transformed,1.0)).x/8.0,uv.y)':'uv'};`)
@@ -23,16 +58,17 @@ export function canyonEarthMaterial(dirt,{stratified=false}={}){
 // Only the existing river-floor banks: outer half illustrated grass, inner
 // half original shore earth. Cliff-wall materials are completely separate.
 export function canyonShoreMaterial(texture,grass){
-  const material=canyonEarthMaterial(texture),compile=material.onBeforeCompile
+  const material=plainCanyonMaterial(texture),compile=material.onBeforeCompile,grassMap=canyonTexture(grass)
+  material.addEventListener('dispose',()=>grassMap.dispose())
   material.name='Forest river banks / green outer half and earth at water'
   material.onBeforeCompile=(shader,renderer)=>{
-    compile(shader,renderer);shader.uniforms.canyonGrass={value:grass}
+    compile(shader,renderer);shader.uniforms.canyonGrass={value:grassMap}
     shader.vertexShader='attribute vec4 aRiverBankFrame;varying vec4 vRiverBankFrame;varying vec3 vBankPoint;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvRiverBankFrame=aRiverBankFrame;vBankPoint=(modelMatrix*vec4(transformed,1.0)).xyz;')
     shader.fragmentShader=`uniform sampler2D canyonGrass;varying vec4 vRiverBankFrame;varying vec3 vBankPoint;
       float bankHash(vec2 p){vec3 h=fract(vec3(p.xyx)*vec3(.1031,.1030,.0973));h+=dot(h,h.yzx+33.33);return fract((h.x+h.y)*h.z);}
       float bankNoise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(bankHash(i),bankHash(i+vec2(1,0)),f.x),mix(bankHash(i+vec2(0,1)),bankHash(i+vec2(1)),f.x),f.y);}
     `+shader.fragmentShader
-    shader.fragmentShader=shader.fragmentShader.replace('diffuseColor*=canyonPaint(canyonDirt,vCanyonUv);',`
+    shader.fragmentShader=shader.fragmentShader.replace('diffuseColor*=texture2D(canyonDirt,vCanyonUv);',`
       vec2 bankWorld=vBankPoint.xz;
       float bankOuter=vBankPoint.z>=vRiverBankFrame.x?vRiverBankFrame.z:vRiverBankFrame.w;
       float bankWidth=max(1.0,abs(bankOuter-vRiverBankFrame.x)-vRiverBankFrame.y-1.3);
@@ -43,16 +79,15 @@ export function canyonShoreMaterial(texture,grass){
       // Feather grass back into earth at the foot of the wall, so the separate
       // cliff mesh cannot read as a clean green/brown ruler line.
       grassCoverage*=1.0-smoothstep(.84,.995,acrossBank+(medium-.5)*.12);
-      vec2 imageWarp=(vec2(medium,bankNoise(bankWorld*.095+vec2(11.3,-4.2)))-.5)*.35;
-      vec2 soilUv=vCanyonUv*.5+imageWarp,grassUv=vCanyonUv+imageWarp;
+      vec2 soilUv=bankWorld/32.0,grassUv=bankWorld/24.0;
       vec4 shorePaint;
-      if(grassCoverage<.001)shorePaint=canyonPaint(canyonDirt,soilUv);
-      else if(grassCoverage>.999)shorePaint=canyonPaint(canyonGrass,grassUv);
-      else shorePaint=mix(canyonPaint(canyonDirt,soilUv),canyonPaint(canyonGrass,grassUv),grassCoverage);
+      if(grassCoverage<.001)shorePaint=texture2D(canyonDirt,soilUv);
+      else if(grassCoverage>.999)shorePaint=texture2D(canyonGrass,grassUv);
+      else shorePaint=mix(texture2D(canyonDirt,soilUv),texture2D(canyonGrass,grassUv),grassCoverage);
       diffuseColor*=shorePaint;
     `)
   }
-  material.customProgramCacheKey=()=> 'forest-river-banks-organic-grass-earth-v2'
+  material.customProgramCacheKey=()=> 'forest-river-banks-original-images-v4'
   return material
 }
 export function canyonRiverMaterial(){

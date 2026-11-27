@@ -13,10 +13,27 @@ import {ScottSoilLayer} from './ScottSoilLayer.js'
 import {parseCycloneScottActions} from './cycloneScottActions.js'
 import {v3ArmorFixture} from '../../scripts/scott-v3-armor-fixture.mjs'
 import {MarsGallant} from './MarsGallant.js'
+import {ScottDefeatMotion} from './ScottDefeatMotion.js'
 
 globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:1,height:1,close(){}})
 const load=async path=>{const b=fs.readFileSync(path);return new GLTFLoader().parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.length),'')}
 const assets=Promise.all(['public/models/mospeada/scott-bernard-animated-original.glb','public/models/mospeada/scott-gear-v3-animated.glb'].map(load))
+
+test('V3 leaves the bike contacts during defeat and preserves the open native fallen pose',async()=>{
+ const [,asset]=await assets,f=await ridingFixture(),visual=new ScottV3Visual(f.instance,asset.scene)
+ f.runtime.scottData=f.authored.data;f.step(2);visual.apply(f.runtime)
+ const fall=f.instance.defeatMotion=new ScottDefeatMotion(f.instance,f.wrapper,f.runtime)
+ f.runtime.canyonFall={floorAt:()=>0}
+ try{
+  for(let i=0;i<240;i++){f.step(1);fall.apply(1/60,()=>0);visual.apply(f.runtime)}
+  assert.equal(f.instance.clip,'Cyclone_RidingPose','Mounted source clip remains selected after fatal fall')
+  assert.equal(visual.diagnostics.contacts,undefined,'Riding IK must not overwrite the fallen arms and legs')
+  const point=name=>visual.retarget.bones.get(name).getWorldPosition(new Vector3())
+  assert.ok(point('LeftHand').distanceTo(point('RightHand'))>1,'Both native V3 arms remain open')
+  assert.ok(point('LeftFoot').distanceTo(point('RightFoot'))>.5,'Both native V3 legs remain open')
+  assert.ok(Math.abs(point('Head').y-point('Hips').y)<.15,'The native V3 body lies flat')
+ }finally{fall.reset();visual.dispose()}
+})
 
 test('V3 artifact preserves every original byte of native geometry, skinning and textures, with all game clips added',()=>{
  const source=readGlb('assets/01-SCOTT/scott-gear-v3.glb'),result=readGlb('assets/01-SCOTT/scott-gear-v3-animated.glb')

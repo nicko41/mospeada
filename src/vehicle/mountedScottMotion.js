@@ -139,7 +139,7 @@ export class MountedScottMotion {
     hip.y += allowedStand - boost * c.boostRiderCrouch - impact * .025 - reverse * .025
     if(this.minimumSeatedHipY!==undefined)hip.y=Math.max(hip.y,this.minimumSeatedHipY)
     this.hips.position.copy(this.hips.parent.worldToLocal(this.body.localToWorld(hip))); this.wrapper.updateMatrixWorld(true)
-    let flex = boost * c.boostRiderLean + brake * c.brakeRiderLean + impact * .06 + stand * c.riderStandTorsoLean
+    let flex = boost * c.boostRiderLean + brake * c.brakeRiderLean + impact * .06 + stand * c.riderStandTorsoLean+(s.burnout?.blend||0)*.10
     const axis = new T.Vector3(1, 0, 0).applyQuaternion(rotation(this.body))
     const spineNames = ['Spine', 'Spine1', 'Spine2'], spineBase = spineNames.map(n => this.bones.get(n).quaternion.clone())
     const applyFlex = angle => {

@@ -1,0 +1,242 @@
+{
+  "preloaded": [
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/engine/terrain-grass-pass.mp3",
+      "duration": 2.50975
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/engine/terrain-dirt-drift.mp3",
+      "duration": 3.540958333333333
+    },
+    {
+      "url": "http://127.0.0.1:5173/assets/sound/cyclone-armor/engine/terrain-dirt-pass.mp3",
+      "duration": 11.784
+    }
+  ],
+  "dirt": {
+    "gains": {
+      "terrainDirtPass": 1,
+      "terrainGrassPass": 0
+    },
+    "volumes": {
+      "terrainDirtPass": 1,
+      "terrainGrassPass": 0.5,
+      "terrainDirtDrift": 0.5
+    },
+    "voices": {
+      "terrainDirtPass": {
+        "gain": 0.9948688745498657,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 11.784
+      }
+    },
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": null,
+        "earthWeight": 1,
+        "grounded": true
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": null,
+        "earthWeight": 1,
+        "grounded": true
+      }
+    }
+  },
+  "fullCycle": {
+    "same": true,
+    "playing": true
+  },
+  "grass": {
+    "gains": {
+      "terrainDirtPass": 0,
+      "terrainGrassPass": 1
+    },
+    "volumes": {
+      "terrainDirtPass": 1,
+      "terrainGrassPass": 0.5,
+      "terrainDirtDrift": 0.5
+    },
+    "voices": {
+      "terrainDirtPass": {
+        "gain": 0,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 11.784
+      },
+      "terrainGrassPass": {
+        "gain": 0.9999251365661621,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 2.50975
+      }
+    },
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": "forest",
+        "earthWeight": 0,
+        "grounded": true
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": "forest",
+        "earthWeight": 0,
+        "grounded": true
+      }
+    }
+  },
+  "desert": {
+    "gains": {
+      "terrainDirtPass": 1,
+      "terrainGrassPass": 0
+    },
+    "volumes": {
+      "terrainDirtPass": 1,
+      "terrainGrassPass": 0.5,
+      "terrainDirtDrift": 0.5
+    },
+    "voices": {
+      "terrainDirtPass": {
+        "gain": 0.9994736313819885,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 11.784
+      },
+      "terrainGrassPass": {
+        "gain": 0,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 2.50975
+      }
+    },
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": "desert",
+        "earthWeight": 0,
+        "grounded": true
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": "desert",
+        "earthWeight": 0,
+        "grounded": true
+      }
+    }
+  },
+  "pause": {
+    "gains": {
+      "terrainDirtPass": 0,
+      "terrainGrassPass": 0
+    },
+    "volumes": {
+      "terrainDirtPass": 1,
+      "terrainGrassPass": 0.5,
+      "terrainDirtDrift": 0.5
+    },
+    "voices": {
+      "terrainDirtPass": {
+        "gain": 0,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 11.784
+      },
+      "terrainGrassPass": {
+        "gain": 0,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 2.50975
+      }
+    },
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": "desert",
+        "earthWeight": 0,
+        "grounded": true
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": "desert",
+        "earthWeight": 0,
+        "grounded": true
+      }
+    }
+  },
+  "transform": {
+    "gains": {
+      "terrainDirtPass": 0,
+      "terrainGrassPass": 0
+    },
+    "volumes": {
+      "terrainDirtPass": 1,
+      "terrainGrassPass": 0.5,
+      "terrainDirtDrift": 0.5
+    },
+    "voices": {
+      "terrainDirtPass": {
+        "gain": 0.009949618950486183,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 11.784
+      },
+      "terrainGrassPass": {
+        "gain": 0,
+        "loop": true,
+        "rate": 1,
+        "playing": true,
+        "duration": 2.50975
+      }
+    },
+    "contacts": {
+      "front": {
+        "surface": "dirt",
+        "biome": "desert",
+        "earthWeight": 0,
+        "grounded": false
+      },
+      "rear": {
+        "surface": "dirt",
+        "biome": "desert",
+        "earthWeight": 0,
+        "grounded": true
+      }
+    }
+  },
+  "calls": [
+    {
+      "name": "terrainDirtPass",
+      "loop": true,
+      "rate": 1
+    },
+    {
+      "name": "terrainDirtDrift",
+      "loop": false,
+      "rate": 1
+    },
+    {
+      "name": "terrainGrassPass",
+      "loop": true,
+      "rate": 1
+    },
+    {
+      "name": "terrainDirtDrift",
+      "loop": false,
+      "rate": 1
+    }
+  ],
+  "newRequests": 0,
+  "errors": []
+}

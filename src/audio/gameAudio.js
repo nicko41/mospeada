@@ -10,8 +10,12 @@ export const SOUND_EFFECTS=Object.freeze({
     {url:new URL('../../assets/sound/cyclone-armor/gallant/gallant-shot-alt.mp3',import.meta.url).href,weight:20},
   ]},
   cycloneEngineLoop:{volume:1,variants:[{url:new URL('../../assets/sound/cyclone-armor/engine/02-engine-loop1.mp3',import.meta.url).href,weight:1}]},
+  terrainDirtPass:{volume:.57,maxVolume:1.2,variants:[{url:new URL('../../assets/sound/cyclone-armor/engine/terrain-dirt-pass2.mp3?rev=d10d29f9',import.meta.url).href,weight:1}]},
+  terrainGrassPass:{volume:.35,variants:[{url:new URL('../../assets/sound/cyclone-armor/engine/terrain-grass-pass.mp3',import.meta.url).href,weight:1}]},
+  terrainDirtDrift:{volume:.35,variants:[{url:new URL('../../assets/sound/cyclone-armor/engine/terrain-dirt-drift.mp3',import.meta.url).href,weight:1}]},
   cycloneBoost:{volume:.25,variants:[{url:new URL('../../assets/sound/cyclone-armor/boost/boost.mp3',import.meta.url).href,weight:1}]},
   cycloneTransform:{volume:.52,variants:[{url:new URL('../../assets/sound/cyclone-armor/transform/cyclone-to-armor.mp3',import.meta.url).href,weight:1}]},
+  targetLock:{volume:.5,variants:[{url:new URL('../../assets/sound/cyclone-armor/lock/lock-on-target.mp3',import.meta.url).href,weight:1}]},
   armorStrafe:{volume:.22,variants:[
     {url:new URL('../../assets/sound/cyclone-armor/boost/strafe01.mp3',import.meta.url).href,weight:1},
     {url:new URL('../../assets/sound/cyclone-armor/boost/strafe02.mp3',import.meta.url).href,weight:1},
@@ -30,7 +34,7 @@ export const SOUND_EFFECTS=Object.freeze({
 })
 export const GALLANT_SHOT_URLS=SOUND_EFFECTS.gallantShot.variants.map(variant=>variant.url)
 export const CYCLONE_ENGINE_URLS=SOUND_EFFECTS.cycloneEngineLoop.variants.map(variant=>variant.url)
-export const PLAYER_INITIAL_AUDIO_URLS=[...new Set([...CYCLONE_ENGINE_URLS,...['cycloneBoost','cycloneTransform','armorStrafe','armorStep','armorLanding'].flatMap(name=>SOUND_EFFECTS[name].variants.map(variant=>variant.url))])]
+export const PLAYER_INITIAL_AUDIO_URLS=[...new Set([...CYCLONE_ENGINE_URLS,...['terrainDirtPass','terrainGrassPass','terrainDirtDrift','cycloneBoost','cycloneTransform','targetLock','armorStrafe','armorStep','armorLanding'].flatMap(name=>SOUND_EFFECTS[name].variants.map(variant=>variant.url))])]
 export const SCOUT_AUDIO_URLS=['scoutOrb','invidExplosion'].flatMap(name=>SOUND_EFFECTS[name].variants.map(variant=>variant.url))
 export const DRONE_AUDIO_URLS=['droneFlight','droneExplosion'].flatMap(name=>SOUND_EFFECTS[name].variants.map(variant=>variant.url))
 export const gameAudio=new SoundEffects(SOUND_EFFECTS)

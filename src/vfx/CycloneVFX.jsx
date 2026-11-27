@@ -30,14 +30,15 @@ import floatingLeavesUrl from '../../assets/texturas/hojas flotantes.png'
 import invidBlood01Url from '../../assets/texturas/invid-blood01.png'
 import invidBlood02Url from '../../assets/texturas/invid-blood02.png'
 import invidOrbUrl from '../../assets/invid/invid-orbes.png'
+import cuffSmokeUrl from '../../assets/texturas/humo-misil-cuff.png'
 
 const forest=activeEnvironment==='forest',grassUrl='/foliage/forest/wheel-fragments.png'
-useTexture.preload(terrainImpactUrl)
+useTexture.preload([terrainImpactUrl,cuffSmokeUrl])
 if(forest)useTexture.preload([grassUrl,floatingLeavesUrl])
 export default function CycloneVFX(props){return forest?<ForestCycloneVFX {...props}/>:<HighwayCycloneVFX {...props}/>}
-function HighwayCycloneVFX(props){const terrain=useTexture(terrainImpactUrl);return <CycloneVFXInstance {...props} terrainImpactAtlas={terrain}/>}
-function ForestCycloneVFX(props){const [atlas,terrain,leaves]=useTexture([grassUrl,terrainImpactUrl,floatingLeavesUrl]);return <CycloneVFXInstance {...props} grassAtlas={atlas} groundExplosionAtlas={deferredTexture(groundExplosionUrl)} airExplosionAtlas={deferredTexture(airExplosionUrl)} terrainImpactAtlas={terrain} leafAtlas={leaves} blood01Atlas={deferredTexture(invidBlood01Url)} blood02Atlas={deferredTexture(invidBlood02Url)} invidOrbAtlas={deferredTexture(invidOrbUrl)}/>}
-function CycloneVFXInstance({ rig, runtime,grassAtlas=null,groundExplosionAtlas=null,airExplosionAtlas=null,terrainImpactAtlas=null,leafAtlas=null,blood01Atlas=null,blood02Atlas=null,invidOrbAtlas=null }) {
+function HighwayCycloneVFX(props){const [terrain,cuffSmoke]=useTexture([terrainImpactUrl,cuffSmokeUrl]);return <CycloneVFXInstance {...props} terrainImpactAtlas={terrain} cuffSmokeAtlas={cuffSmoke}/>}
+function ForestCycloneVFX(props){const [atlas,terrain,leaves,cuffSmoke]=useTexture([grassUrl,terrainImpactUrl,floatingLeavesUrl,cuffSmokeUrl]);return <CycloneVFXInstance {...props} grassAtlas={atlas} cuffSmokeAtlas={cuffSmoke} groundExplosionAtlas={deferredTexture(groundExplosionUrl)} airExplosionAtlas={deferredTexture(airExplosionUrl)} terrainImpactAtlas={terrain} leafAtlas={leaves} blood01Atlas={deferredTexture(invidBlood01Url)} blood02Atlas={deferredTexture(invidBlood02Url)} invidOrbAtlas={deferredTexture(invidOrbUrl)}/>}
+function CycloneVFXInstance({ rig, runtime,grassAtlas=null,groundExplosionAtlas=null,airExplosionAtlas=null,terrainImpactAtlas=null,leafAtlas=null,blood01Atlas=null,blood02Atlas=null,invidOrbAtlas=null,cuffSmokeAtlas=null }) {
   const { scene } = useThree(), current = useRef(null)
   useLayoutEffect(() => {
     const vfx = new VFXRuntime(), dust = vfx.register('cyclone.dust', new DustTrail())
@@ -50,11 +51,11 @@ function CycloneVFXInstance({ rig, runtime,grassAtlas=null,groundExplosionAtlas=
     const ejecta = vfx.register('cyclone.wheel-ejecta', new WheelEjecta({grassAtlas}))
     const engine = vfx.register('cyclone.engine-smoke', new EngineSmoke(rig))
     const armorBoost = vfx.register('cyclone.armor-boost',new ArmorBoost())
-    for(const texture of [groundExplosionAtlas,airExplosionAtlas,terrainImpactAtlas,leafAtlas,blood01Atlas,blood02Atlas,invidOrbAtlas])if(texture){texture.colorSpace=SRGBColorSpace;texture.minFilter=texture.magFilter=LinearFilter;texture.generateMipmaps=false;texture.needsUpdate=true}
+    for(const texture of [groundExplosionAtlas,airExplosionAtlas,terrainImpactAtlas,leafAtlas,blood01Atlas,blood02Atlas,invidOrbAtlas,cuffSmokeAtlas])if(texture){texture.colorSpace=SRGBColorSpace;texture.minFilter=texture.magFilter=LinearFilter;texture.generateMipmaps=false;texture.needsUpdate=true}
     const combat=vfx.register('gallant.combat',new Plano3CombatVFX({explosionAtlases:{ground:groundExplosionAtlas,air:airExplosionAtlas,terrain:terrainImpactAtlas,blood:[blood01Atlas,blood02Atlas]},invidOrbAtlas,sampleGround:sampleRideHeight,impactScene:scene,sharedDust:dust}))
     const tracks=vfx.register('cyclone.wheel-tracks',new WheelTracks(sampleRideHeight))
     runtime.combatVFX=combat
-    const missiles=vfx.register('scott.cuff-missiles',new CuffMissileVFX());runtime.missileVFX=missiles
+    const missiles=vfx.register('scott.cuff-missiles',new CuffMissileVFX({launchAtlas:cuffSmokeAtlas}));runtime.missileVFX=missiles
     const ambient=forest?vfx.register('world.ambient',new AmbientAtmosphere({sampleGround:sampleRideHeight,leafAtlas})):null
     runtime.ambientVFX=ambient
     const wash={front:{position:new Vector3(),normal:new Vector3(0,1,0),forward:new Vector3(),radius:.2},rear:{position:new Vector3(),normal:new Vector3(0,1,0),forward:new Vector3(),radius:.2}}
@@ -62,7 +63,7 @@ function CycloneVFXInstance({ rig, runtime,grassAtlas=null,groundExplosionAtlas=
     scene.add(vfx.root); current.current = { vfx, dust,randDust,scoutFlight,scoutShadows, ejecta, engine, armorBoost, tracks,ambient, wash,surfaceFX,randSurfaceFX:forest?new ForestWheelFX():null,randTracks:{enabled:false},randDustConfig:{},sharedDustConfig:{},publish: 0 }
     if (import.meta.env.DEV) window.__MOSPEADA_VFX__ = { vfx, dust,randDust,scoutFlight,scoutShadows, ejecta, engine, armorBoost,tracks,surfaceFX,ambient,ambientStore:ambientVFXState, store: vfxState, engineStore: engineVFXState }
     return () => { if(runtime.missileVFX===missiles)delete runtime.missileVFX;if(runtime.combatVFX===combat)delete runtime.combatVFX;if(runtime.ambientVFX===ambient)delete runtime.ambientVFX;if(runtime.scoutFlightVFX===scoutFlight)delete runtime.scoutFlightVFX;if(runtime.scoutShadows===scoutShadows)delete runtime.scoutShadows;vfx.dispose(); current.current = null; if (import.meta.env.DEV) delete window.__MOSPEADA_VFX__ }
-  }, [scene, rig,grassAtlas,groundExplosionAtlas,airExplosionAtlas,terrainImpactAtlas,leafAtlas,blood01Atlas,blood02Atlas,invidOrbAtlas])
+  }, [scene, rig,grassAtlas,groundExplosionAtlas,airExplosionAtlas,terrainImpactAtlas,leafAtlas,blood01Atlas,blood02Atlas,invidOrbAtlas,cuffSmokeAtlas])
   useFrame(({ camera }, delta) => {
     const effect = current.current, state = runtime.state, wheel = runtime.weathering?.contacts.wheels.rear
     if (!effect || !state || !wheel) return

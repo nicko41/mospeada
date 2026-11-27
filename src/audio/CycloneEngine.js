@@ -14,9 +14,11 @@ export class EngineRPM{
     const throttle=braking?0:clamp(input.throttle||0)
     const boost=state.boostTime>0?1:0
     const acceleration=clamp(Math.max(0,state.acceleration||0)/6)
+    const burnout=clamp(state.burnout?.blend||0)
     const demand=throttle*config.throttleSensitivity
     let target=clamp(speedLoad*config.speedSensitivity+demand*(.45-.15*speedLoad)+boost*.23)
     if(braking)target*=.4
+    target=Math.max(target,burnout*.88)
     const time=target>this.rpm?config.riseTime:config.fallTime*(braking?.25:1)
     const step=Math.max(0,Math.min(.1,dt))
     this.rpm=damp(this.rpm,target,step,time)
@@ -25,8 +27,8 @@ export class EngineRPM{
     // Load responds immediately; rotational speed retains its own inertia.
     // Physical acceleration adds presence, then settles at constant speed.
     const pitch=clamp(this.rpm+demand*.06+boost*.04)*(1-.12*this.airborneBlend)
-    const intensity=clamp(this.rpm*.45+throttle*(.3+.15*acceleration)+boost*.3)
-    const openness=clamp(this.rpm*.6+throttle*.3+throttle*acceleration*.1+boost*.25)
+    const intensity=clamp(this.rpm*.45+throttle*(.3+.15*acceleration)+boost*.3+burnout*.4)
+    const openness=clamp(this.rpm*.6+throttle*.3+throttle*acceleration*.1+boost*.25+burnout*.4)
     return this.output={rpm:900+this.rpm*8100,normalizedRpm:this.rpm,targetRpm:target,throttle,braking,boost,
       playbackRate:mix(config.pitchMin,config.pitchMax,pitch),gain:mix(config.volumeMin,config.volumeMax,intensity),
       frequency:18000*Math.pow(800/18000,(1-openness)*config.filterIntensity)}

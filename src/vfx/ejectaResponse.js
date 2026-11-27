@@ -4,7 +4,7 @@ export function ejectaResponse(wheel, state, side, config, rain, distance, frame
   const speed = Math.abs(state.speed || 0), rolling = Math.abs(state[side + 'AngularSpeed'] || 0) * wheel.radius
   const slide = Math.min(2, Math.abs(state.slip || 0) + Math.abs(state.rearLateralVelocity || 0) / 12)
   const force = Math.min(1.5, Math.abs(state.acceleration || 0) / 16 + (state.brakeBlend || 0) * .5 + (state.handbrake || 0) * .8 + (state.boostBlend || 0) * .8)
-  const moving = clamp((speed - .2) / 1.8, 0, 1), humidity = config.humidity
+  const moving = Math.max(clamp((speed - .2) / 1.8, 0, 1),side==='rear'?clamp(state.burnout?.blend||0,0,1):0), humidity = config.humidity
   const lod = distance > 75 ? 0 : distance > 40 ? .2 : distance > 22 ? .5 : 1
   const performance = frameSeconds > .085 ? .55 : frameSeconds > .045 ? .75 : 1
   const base = wheel.grounded ? moving * (10 + Math.min(45, Math.max(rolling, speed * .5)) * 3.8) * (1 + slide * .7 + force * .55) * lod * performance : 0

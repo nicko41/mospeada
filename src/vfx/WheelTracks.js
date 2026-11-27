@@ -2,7 +2,7 @@ import { BufferAttribute, BufferGeometry, Color, DataTexture, DoubleSide, Dynami
 import { wheelTrackResponse } from './wheelTrackResponse.js'
 
 export const WHEEL_TRACK_DEFAULTS = Object.freeze({ capacity: 4096, spacing: .4, minDistance: .12, lifetime: 180, radius: 120, maxSteps: 16 })
-const palette = Object.fromEntries(Object.entries({ dirt: '#998067', mud: '#6b503c', sand: '#d4ae7b', grass: '#634029' }).map(([k, v]) => [k, new Color(v)]))
+const palette = Object.fromEntries(Object.entries({ dirt: '#998067', mud: '#6b503c', sand: '#d4ae7b', grass: '#634029',asphalt:'#242728' }).map(([k, v]) => [k, new Color(v)]))
 
 // Small authored alpha atlas: a dark bed, broken raised shoulders and repeated
 // chevron tread. The second half exposes dense soil under compressed grass.
@@ -79,7 +79,7 @@ export class WheelTracks {
       const px = x + dz * width * .5 * sign, pz = z - dx * width * .5 * sign
       const h = this.ground(px, pz, y, this.edgeProbe)
       if (h === null || Math.abs(h - y) > .35) return null
-      if (this.sample && (!wheelTrackResponse({ ...this.edgeProbe, grounded: true }, {}, 0).allowed)) return null
+      if (this.sample && (!wheelTrackResponse({ ...this.edgeProbe, grounded: true }, {}, 0).allowed)&&!(response.kind==='asphalt'&&this.edgeProbe.surface==='asphalt')) return null
       points.push([px, h + .018 + (response.kind === 'grass' ? .005 : 0), pz])
     }
     return points
@@ -127,7 +127,7 @@ export class WheelTracks {
     if (!enabled) { this.breakTrail(history); return }
     for (const side of ['front', 'rear']) {
       const wheel = wheels[side], humidity = configs[side]?.humidity ?? configs.humidity ?? .3
-      const response = wheelTrackResponse(wheel, state, humidity), p = wheel.position
+      const response = wheelTrackResponse(wheel, state, humidity,side), p = wheel.position
       let previous = history[side]
       if (!response.allowed) { history[side] = null; continue }
       const distance = previous ? Math.hypot(p.x - previous.x, p.z - previous.z) : 0
@@ -139,14 +139,25 @@ export class WheelTracks {
         history[side] = edges ? { x: p.x, y: p.y, z: p.z, edges, dx, dz, phase: 0, kind: response.kind } : null
         continue
       }
-      if (distance < this.config.minDistance) continue
+      if (distance < this.config.minDistance){
+        // One contact patch for a stationary spinning rear tire, never a new
+        // ribbon every frame. Directional slides then use the normal trail.
+        if(side==='rear'&&state.burnout?.phase==='holding'&&state.burnout.blend>.2&&Math.abs(state.rearLateralVelocity||0)<.1&&Math.abs(state.speed||0)<.1&&!previous.burnoutStamped){
+          const len=Math.hypot(wheel.forward.x,wheel.forward.z)||1,dx=wheel.forward.x/len,dz=wheel.forward.z/len
+          const a=this.edge(p.x-dx*.14,p.y,p.z-dz*.14,dx,dz,response.width,response),b=this.edge(p.x+dx*.14,p.y,p.z+dz*.14,dx,dz,response.width,response)
+          if(a&&b)this.emit({edges:a,phase:0},{x:p.x,z:p.z,edges:b},response,.28)
+          previous.burnoutStamped=true
+        }
+        if(state.burnout?.phase!=='holding')previous.burnoutStamped=false
+        continue
+      }
       const steps = Math.min(this.config.maxSteps, Math.ceil(distance / this.config.spacing))
       const from = previous, dx = (p.x - from.x) / distance, dz = (p.z - from.z) / distance
       if (from.dx * dx + from.dz * dz < -.2) { history[side] = null; continue }
       for (let j = 1; j <= steps; j++) {
         const t = j / steps, x = from.x + (p.x - from.x) * t, z = from.z + (p.z - from.z) * t
         const y = this.ground(x, z, from.y + (p.y - from.y) * t, this.probe)
-        const local = this.sample ? wheelTrackResponse({ ...this.probe, grounded: true }, state, humidity) : response
+        const local = this.sample ? wheelTrackResponse({ ...this.probe, grounded: true }, state, humidity,side) : response
         if (y === null || !local.allowed || local.kind !== response.kind) { previous = null; break }
         const edges = this.edge(x, y, z, dx, dz, local.width, local)
         if (!edges) { previous = null; break }

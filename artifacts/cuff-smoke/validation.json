@@ -1,0 +1,30 @@
+{
+  "birth": {
+    "particles": 48,
+    "originError": 0,
+    "currentCuffOffset": 0.04626386717704893,
+    "worldSpace": true,
+    "clouds": 48
+  },
+  "wake": {
+    "particles": 107,
+    "wakeParticles": 56,
+    "age": 0.5000000000000007,
+    "distance": 17.64274276603123,
+    "wakeSpan": 16.931067711782358,
+    "samePool": true,
+    "sameBuffer": true
+  },
+  "hit": {
+    "hits": 1,
+    "stats": {
+      "launched": 1,
+      "hits": 1,
+      "blocked": 0
+    }
+  },
+  "remainingSmoke": 0,
+  "flightSourceSHA256": "43190d280834c6f4bb7c2de93760f6e3a267e22db623789a9e796ce788f71898",
+  "gl": 0,
+  "errors": []
+}

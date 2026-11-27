@@ -18,6 +18,7 @@ export class BikeDefeatMotion{
       this.age=0;this.distance=0;this.height=s.height;this.vy=Math.min(0,s.verticalVelocity||0);this.pitch=s.pitch;this.lean=s.lean;this.bank=s.bank;this.wheelie=s.wheelieAngle
       this.speed=Math.max(2.4,Math.min(6,Math.abs(s.speed)*.35));this.blocked=false
       this.crash=this.runtime.canyonCrash;this.originX=s.x;this.originZ=s.z
+      this.floorAt=this.runtime.canyonFall?.floorAt
     }
     if(!this.active){s.speed=0;return}
     dt=Math.max(0,Math.min(.1,dt));this.age+=dt
@@ -67,6 +68,7 @@ export class BikeDefeatMotion{
   apply(sample){
     if(!this.active)return
     if(this.crash)sample=this.crash.floorAt
+    else if(this.floorAt)sample=this.floorAt
     if(!this.probes)this.prepareProbes()
     const {rig}=this
     // +Z is forward and -X is the rider's right in the imported Cyclone.

@@ -36,5 +36,6 @@ export class ForestStage2Progress{
     if(hit){s.x=hit.point.x+this.end.x*1.35;s.z=hit.point.z+this.end.z*1.35}
   }
   needsRecovery(s){return !!this.checkpoint&&(s.height<S.fallY||!Number.isFinite(s.height))}
+  canyonFall(s){return s.riderMode==='mounted'&&s.airborne&&Number.isFinite(s.height)&&s.height<S.fallY&&stage2Void(s.x,s.z)?{kind:'fall',point:new Vector3(s.x,s.height,s.z),normal:new Vector3(0,0,1),floorAt:canyonFloor}:null}
   recover(resetAt){if(!this.checkpoint)return false;this.recoveries++;resetAt(this.checkpoint);return true}
 }

@@ -4,6 +4,7 @@ import { queryColliders, overlapsFootprint } from '../player/collisionWorld.js'
 import {armorConfig} from './armorPhysics.js'
 import {armorCameraWeight,cameraFraming,setCameraFov,smoothCamera} from './cameraFraming.js'
 import {MiddleMouseLook} from './MiddleMouseLook.js'
+import {CanyonJumpCamera} from './CanyonJumpCamera.js'
 
 // Follow the vehicle's translation immediately; smooth the view angle instead.
 // Smoothing absolute position made camera lag grow by speed / response rate.
@@ -29,6 +30,7 @@ export class DrivingCamera {
     orbit.mouseButtons.RIGHT = MOUSE.ROTATE
     orbit.rotateSpeed = 0.6
     this.middleLook=new MiddleMouseLook(camera,orbit,runtime)
+    this.canyonJump=new CanyonJumpCamera(camera,orbit,runtime,config,sample)
     this.zoom = () => {
       if(runtime.armorController?.active||this.canyonShot)return
       this.lastInput = this.time
@@ -59,6 +61,7 @@ export class DrivingCamera {
   }
   setMode(mode, s) {
     const { orbit, camera, config: c } = this
+    if(this.canyonShot)return
     this.middleLook.cancel()
     this.dragging = false
     this.touchPointers.clear()
@@ -82,6 +85,7 @@ export class DrivingCamera {
     const { camera, orbit, config: c, runtime } = this
     this.updating = true
     const dt = Math.min(Math.max(delta, 0), 0.1); this.time += dt
+    if(this.updateCanyon(s,delta)){this.updating=false;return}
     this.frameWeight=armorCameraWeight(runtime)
     setCameraFov(camera,MathUtils.lerp(cameraFraming.cycloneFov,cameraFraming.armorFov,this.frameWeight)+(s.airBoostBlend||0)*1.2*(1-this.frameWeight))
     this.offset.copy(this.center(s)).sub(this.anchor)
@@ -131,7 +135,7 @@ export class DrivingCamera {
     if(!fall?.active)return false
     this.middleLook.cancel()
     this.finishTransformation();this.finishArmorReturn()
-    if(runtime.canyonCrash)return this.updateCanyonDefeat(runtime.canyonCrash)
+    if(runtime.canyonCrash||runtime.canyonFall)return this.updateCanyon(runtime.state,delta)
     const dt=Math.min(.1,Math.max(0,delta)),hip=fall.hip.bone.getWorldPosition(this.probe),bike=runtime.vehicleRig.root.position
     this.target.copy(hip)
     if(runtime.bikeDefeatMotion?.active&&!runtime.canyonCrash)this.target.lerp(bike,.5)
@@ -146,28 +150,17 @@ export class DrivingCamera {
     if(Number.isFinite(floor))camera.position.y=Math.max(camera.position.y,floor+.35)
     setCameraFov(camera,cameraFraming.cycloneFov);orbit.update(delta);return true
   }
-  updateCanyonDefeat(crash){
-    const {camera,orbit}=this
-    if(!this.canyonShot||this.canyonShot.crash!==crash){
-      this.finishCanyonDefeat()
-      const controls={};for(const key of ['enabled','enableDamping','enableRotate','enablePan','enableZoom'])controls[key]=orbit[key]
-      // Flush any pending orbit inertia before recording the final safe view.
-      orbit.enableDamping=false;orbit.update()
-      this.target.copy(crash.point).addScaledVector(crash.normal,.6)
-      this.offset.copy(crash.normal).setY(0).normalize();this.candidate.copy(camera.position)
-      const ground=this.sample(this.candidate.x,this.candidate.z)
-      if(this.probe.subVectors(this.candidate,crash.point).dot(this.offset)<1||Number.isFinite(ground)&&this.candidate.y<ground+.35)this.candidate.copy(this.target).addScaledVector(this.offset,this.radius).add(new Vector3(0,1.4,0))
-      this.cliffRay.ray.origin.copy(this.target);this.cliffRay.ray.direction.subVectors(this.candidate,this.target);this.cliffRay.far=this.cliffRay.ray.direction.length();this.cliffRay.ray.direction.normalize()
-      const hit=raycastRideBarriers(this.cliffRay)
-      if(hit)this.candidate.copy(this.target).addScaledVector(this.cliffRay.ray.direction,Math.max(.2,hit.distance-.35))
-      camera.position.copy(this.candidate);camera.lookAt(this.target);setCameraFov(camera,cameraFraming.cycloneFov)
-      this.canyonShot={crash,controls,position:camera.position.clone(),rotation:camera.quaternion.clone(),target:this.target.clone()}
-    }
-    for(const key of Object.keys(this.canyonShot.controls))orbit[key]=false
-    camera.position.copy(this.canyonShot.position);camera.quaternion.copy(this.canyonShot.rotation);orbit.target.copy(this.canyonShot.target);camera.updateMatrixWorld(true)
-    return true
+  get canyonShot(){return this.canyonJump.shot}
+  updateCanyon(s,delta){
+    if(!this.canyonShot&&!this.runtime.canyonCrash&&!this.runtime.canyonFall&&!this.canyonJump.eligible(s))return false
+    this.middleLook.cancel()
+    if(!this.canyonShot){this.finishTransformation();this.finishArmorReturn();this.runtime.gallant?.bikeCamera.finish(s)}
+    this.canyonJump.followRadius=this.radius
+    const handled=this.canyonJump.update(s,delta)
+    if(handled){this.anchor.copy(this.center(s));this.lastInput=this.time;this.collisionRadius=this.radius}
+    return handled
   }
-  finishCanyonDefeat(){if(this.canyonShot){Object.assign(this.orbit,this.canyonShot.controls);this.canyonShot=null}}
+  finishCanyonDefeat(){this.canyonJump.finish()}
   updateTransformation(s){
     const {camera,orbit,runtime}=this,p=runtime.transformEntry?.cameraProgress
     if(this.returnShot&&runtime.transformEntry?.returnFlight){

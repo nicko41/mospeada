@@ -17,6 +17,8 @@ import {CuffMissiles} from './CuffMissiles.js'
 import {ScottMissilePose} from './ScottMissilePose.js'
 import {GallantAimInput} from './GallantAimInput.js'
 import {gameAudio} from '../audio/gameAudio.js'
+import {TargetLockSound} from '../audio/TargetLockSound.js'
+import {GallantLockShots} from './GallantLockShots.js'
 
 // Crosshair, camera aim and shot selection share the exact screen centre.
 const armorReticle=new Vector2(0,0)
@@ -25,6 +27,8 @@ export default function GallantCombat({runtime}){
   const source=useGLTF(MARS_GALLANT_URL),{camera,gl}=useThree(),anchor=useRef(),hud=useRef(),reticle=useRef(),label=useRef()
   const combat=useMemo(()=>({weapon:new MarsGallant(source.scene),aimInput:new GallantAimInput(),aimLock:new GallantAimLock(),bikeCamera:new CycloneShooterCamera(camera,runtime),pointer:new Vector2(.12,.08),mounted:false,hitscan:new GallantHitscan(),raycaster:new Raycaster(),ray:new Ray(),aimPoint:new Vector3(),endpoint:new Vector3(),origin:new Vector3(),forward:new Vector3(),active:false,aiming:false,firing:false,time:0,bolts:[],cooldown:0,recoil:0,hurt:0,hit:0,hitVersion:playerCombat.hitVersion,shots:0,hits:0,refs:0}),[source.scene,camera,runtime])
   useLayoutEffect(()=>{
+    combat.lockSound ||=new TargetLockSound(gameAudio)
+    combat.lockShots ||=new GallantLockShots()
     combat.missiles ||=new CuffMissiles()
     combat.missileVelocity ||=new Vector3()
     combat.refs++;runtime.gallant=combat;runtime.armorCombat=combat
@@ -96,6 +100,7 @@ export default function GallantCombat({runtime}){
     // This is the only timed update: the earlier pose pass refreshes target
     // geometry with delta=0, so acquisition cannot advance twice per frame.
     c.aimLock.update(c.active&&c.aiming&&!runtime.paused&&!playerCombat.dead,camera,c.mounted?c.pointer:armorReticle,p3?.active?p3.drones:runtime.desertPatrol?.scouts||[],c.hitscan,runtime.state,dt)
+    c.lockSound.update({lock:c.aimLock,aiming:c.aiming,state:runtime.state,enabled:c.active&&!runtime.paused&&!playerCombat.dead&&!runtime.opening?.active&&!runtime.ending?.holding})
     if(c.aimLock.target)c.aimPoint.copy(c.aimLock.point)
     const launchPose=instance?.missilePose
     if(launchPose?.active&&!launchPose.fired&&!cuffMissileLockReady(c.aimLock,c.aiming,launchPose.target))launchPose.cancel()
@@ -108,11 +113,12 @@ export default function GallantCombat({runtime}){
       w.present(instance,!c.mounted||blend>.04,c.mounted?c.aimPoint:null,c.mounted?blend:1,!c.mounted)
       if(c.firing&&!instance.missilePose?.active&&(!c.mounted||c.aiming)&&!runtime.paused&&!playerCombat.dead&&blend>.82&&c.cooldown<=0&&(c.mounted||armorWeaponAvailable(runtime.armorController.state))){
         c.raycaster.setFromCamera(c.mounted?c.pointer:armorReticle,camera)
-        if(c.aimLock.target)c.endpoint.copy(c.aimLock.point)
+        w.getMuzzle(c.origin)
+        if(c.aimLock.target)c.lockShots.point(c.aimLock.target,c.origin,c.endpoint)
         else if(p3?.active){p3.target(c.raycaster.ray);c.endpoint.copy(p3.aimPoint)}else c.endpoint.copy(c.hitscan.cast(c.raycaster.ray).point)
         // Camera establishes the crosshair; a second ray from the real muzzle
         // prevents shooting through cover beside Scott's shoulder or hand.
-        w.getMuzzle(c.origin);c.forward.subVectors(c.endpoint,c.origin)
+        c.forward.subVectors(c.endpoint,c.origin)
         const range=Math.min(GALLANT_FIRE.range,c.forward.length()+.025)
         c.ray.set(c.origin,c.forward.normalize())
         const result=p3?.active?p3.fire(c.ray,runtime.state):c.hitscan.fire(c.ray,range)
@@ -136,7 +142,7 @@ export default function GallantCombat({runtime}){
     if(label.current)label.current.textContent=playerCombat.dead?'Derrotado · Reintentar desde el checkpoint':c.active?`Gallant · clic derecho: apuntar · clic izquierdo: disparar${patrol?.active||c.hurt>0?' · Salud '+playerCombat.playerHealth:''}`:`Impacto · Salud ${playerCombat.playerHealth}`
   },.12)
   return <group ref={anchor}><Html fullscreen calculatePosition={(_,__,size)=>[size.width/2,size.height/2]} style={{pointerEvents:'none'}}><div ref={hud} style={{display:'none',position:'absolute',inset:0,pointerEvents:'none',fontFamily:'sans-serif'}}>
-    <div ref={reticle} className="armor-reticle" style={{position:'absolute',left:`${(armorReticle.x+1)*50}%`,top:`${(1-armorReticle.y)*50}%`,width:18,height:18,transform:'translate(-50%,-50%)',border:'1px solid currentColor',borderRadius:'50%',opacity:0}}/>
+    <div ref={reticle} className="armor-reticle" style={{position:'absolute',left:`${(armorReticle.x+1)*50}%`,top:`${(1-armorReticle.y)*50}%`,width:18,height:18,transform:'translate(-50%,-50%)',border:'2px solid currentColor',borderRadius:'50%',opacity:0}}/>
     <div ref={label} style={{position:'absolute',bottom:65,left:'50%',transform:'translateX(-50%)',fontSize:12,color:'#e0ecda',background:'#10291dc0',padding:'5px 10px',whiteSpace:'nowrap'}}/>
   </div></Html></group>
 }

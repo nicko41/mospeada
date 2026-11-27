@@ -51,7 +51,7 @@ try{
   await wait(800);assert.ok((await sample('transformationFade')).gain<.01)
   await key('KeyW',false);await c.evaluate('__MOSPEADA__.reset();true');await wait(200);await sample('checkpoint')
   report.starts=await c.evaluate('__DYNAMIC_ENGINE_QA__.starts');assert.equal(report.starts,1)
-  report.engineFiles=await c.evaluate("[...__SFX__.buffers.keys()].filter(url=>url.includes('/engine/'))")
+  report.engineFiles=await c.evaluate("[...__SFX__.buffers.keys()].filter(url=>url.includes('/engine/')&&!url.includes('/terrain-'))")
   assert.equal(report.engineFiles.length,1);assert.match(report.engineFiles[0],/02-engine-loop1.mp3$/)
   report.newRequests=requests.length-initialRequests;assert.equal(report.newRequests,0)
   report.errors=c.events.filter(event=>event.method==='Runtime.exceptionThrown').map(event=>event.params.exceptionDetails.exception?.description||event.params.exceptionDetails.text);assert.deepEqual(report.errors,[])

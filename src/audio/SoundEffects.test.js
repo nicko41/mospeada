@@ -70,6 +70,16 @@ test('only the main Gallant variant is softened, while boost and all strafes use
   for(sample of [.1,.5,.9])assert.equal(f.audio.play('armorStrafe').target.gain.value,.22)
 })
 
+test('dirt pass supports 120% gain without raising other effect or master limits',async()=>{
+  const f=fixture();await f.audio.loadBuffer(SOUND_EFFECTS.terrainDirtPass.variants[0].url)
+  const loop=f.audio.play('terrainDirtPass',{loop:true}),bus=f.audio.gains.get('terrainDirtPass')
+  assert.equal(bus.gain.value,.57);assert.equal(loop.playbackRate.value,1)
+  f.audio.setVolume('terrainDirtPass',1.1);assert.equal(bus.gain.value,1.1)
+  f.audio.setVolume('terrainDirtPass',2);assert.equal(bus.gain.value,1.2)
+  f.audio.setVolume('terrainGrassPass',2);assert.equal(f.audio.getVolume('terrainGrassPass'),1)
+  f.audio.setMasterVolume(2);assert.equal(f.audio.masterVolume,1)
+})
+
 test('unprepared or suspended playback never fetches, resumes, or queues a late sound',async()=>{
   const f=fixture({state:'suspended'})
   assert.equal(f.audio.play('gallantShot'),null);assert.equal(f.requests.length,0)
@@ -122,7 +132,7 @@ test('Armor steps favor step2 at 80%, share step1 with landings, and strafe vari
   const landing=f.audio.play('armorLanding')
   assert.equal(landing.buffer.bytes,SOUND_EFFECTS.armorStep.variants[1].url)
   for(sample of [.1,.5,.9]){const voice=f.audio.play('armorStrafe');assert.equal(voice.loop,false)}
-  assert.equal(f.requests.length,18);assert.equal(f.decodes.length,18)
+  assert.equal(f.requests.length,22);assert.equal(f.decodes.length,22)
 })
 
 test('both transformation directions reuse the initial cached sound once per activation, without looping or changing pitch',async()=>{

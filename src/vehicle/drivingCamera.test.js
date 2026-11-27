@@ -149,22 +149,31 @@ test('defeat camera keeps the fallen rider and the separated bike inside the fra
   controller.reset(s);assert.equal(controller.radius,Math.hypot(bikeConfig.cameraDistance,bikeConfig.cameraHeight-1.05));controller.dispose()
 })
 
-test('canyon defeat locks a safe view outside the cliff while Scott falls and restores orbit on retry',()=>{
+test('canyon defeat leaves actors visible, crosses the gap and tilts down after they settle',()=>{
  const {camera,orbit,runtime,s,controller}=setup(),wall=new Mesh(new PlaneGeometry(20,20),new MeshBasicMaterial()),scene=new Group()
  wall.position.set(0,2,-4);wall.userData.rideBarrier=true;scene.add(wall);const remove=registerRideSurfaces(scene)
  Object.assign(orbit,{enableDamping:true,enableRotate:true,enableZoom:true})
- const hip=new Vector3(0,2,-3.5);runtime.scottInstance={defeatMotion:{active:true,hip:{bone:{getWorldPosition:p=>p.copy(hip)}}}};runtime.vehicleRig={root:{position:new Vector3(0,1,-3)}}
- runtime.canyonCrash={point:new Vector3(0,2,-4),normal:new Vector3(0,0,1)}
+ const hip=new Vector3(0,2,-3.5),wrapper=new Group();runtime.state=s;runtime.scottInstance={defeatMotion:{wrapper,active:true,contact:false,hip:{bone:{getWorldPosition:p=>p.copy(hip)}}}};runtime.vehicleRig={root:new Group()};runtime.vehicleRig.root.position.set(0,1,-3);runtime.bikeDefeatMotion={active:true,settled:false}
+ runtime.canyonCrash={point:new Vector3(0,2,-4),normal:new Vector3(0,0,1),floorAt:()=>-36}
  try{
   // Begin with a bad orbit on the far side of the rock.
   camera.position.set(0,3,-7);controller.updateDefeat(1/60)
-  assert.ok(camera.position.z>-3.7,'Capture moves out of the cliff before locking')
-  const position=camera.position.clone(),rotation=camera.quaternion.clone(),target=orbit.target.clone()
-  for(let i=0;i<180;i++){hip.y-=.2;runtime.paused=i%2===0;controller.updateDefeat(1/60)}
+  assert.equal(wrapper.visible,true);assert.equal(runtime.vehicleRig.root.visible,true)
+  for(let i=0;i<90;i++)controller.updateDefeat(1/60)
+  assert.equal(controller.canyonShot.phase,'conceal')
+  assert.equal(wrapper.visible,true);assert.equal(runtime.vehicleRig.root.visible,true);assert.ok(camera.position.z<-930,'Camera retreats above the opposite bank');assert.ok(camera.position.y>0,'Camera keeps its flight height');assert.ok(camera.getWorldDirection(new Vector3()).z>.999,'Retreat keeps looking toward the takeoff side')
+  const position=camera.position.clone(),rotation=camera.quaternion.clone(),target=orbit.target.clone();runtime.paused=true
+  for(let i=0;i<60;i++)controller.updateDefeat(1/60)
   assert.ok(camera.position.distanceTo(position)<1e-9);assert.ok(camera.quaternion.angleTo(rotation)<1e-7);assert.ok(orbit.target.distanceTo(target)<1e-9)
   for(const key of ['enabled','enableDamping','enableRotate','enablePan','enableZoom'])assert.equal(orbit[key],false)
-  camera.position.set(0,-10,-10);orbit.target.set(0,-20,-20);controller.updateDefeat(1/60);assert.ok(camera.position.distanceTo(position)<1e-9,'View cannot be moved through rock after locking')
-  controller.cliffRay.ray.origin.copy(target);controller.cliffRay.ray.direction.subVectors(position,target).normalize();controller.cliffRay.far=target.distanceTo(position);assert.equal(raycastRideBarriers(controller.cliffRay),null)
+  runtime.paused=false;hip.y=-35.8;runtime.vehicleRig.root.position.y=-36;runtime.scottInstance.defeatMotion.contact=true;runtime.bikeDefeatMotion.settled=true;controller.updateDefeat(1/60);assert.equal(wrapper.visible,true);runtime.defeat={ready:true}
+  controller.updateDefeat(1/60);assert.equal(controller.canyonShot.phase,'approach');const bank=camera.position.clone()
+  for(let i=0;i<30;i++)controller.updateDefeat(1/60)
+  assert.ok(camera.position.z>bank.z,'Camera advances toward the edge after the fall');assert.equal(camera.position.y,bank.y);assert.ok(camera.getWorldDirection(new Vector3()).z>.999,'Approach keeps the same view toward the takeoff side')
+  for(let i=0;i<150;i++)controller.updateDefeat(1/60)
+  assert.equal(controller.canyonShot.phase,'settled');assert.equal(camera.position.y,bank.y,'Downward tilt keeps the camera above the bank');assert.ok(orbit.target.y<-35);assert.equal(wrapper.visible,true);assert.equal(runtime.vehicleRig.root.visible,true);assert.ok(camera.getWorldDirection(new Vector3()).y<-.99999,'Final camera points straight down');assert.ok(camera.position.y>orbit.target.y+9)
+  for(const point of[hip,runtime.vehicleRig.root.position]){const projected=point.clone().project(camera);assert.ok(Math.abs(projected.x)<.95&&Math.abs(projected.y)<.95,'Scott and Cyclone fit inside the final shot')}
+  controller.cliffRay.ray.origin.copy(orbit.target);controller.cliffRay.ray.direction.subVectors(camera.position,orbit.target).normalize();controller.cliffRay.far=orbit.target.distanceTo(camera.position);assert.equal(raycastRideBarriers(controller.cliffRay),null)
   runtime.canyonCrash=null;controller.reset(s);assert.equal(orbit.enabled,true);assert.equal(orbit.enableDamping,true);assert.equal(orbit.enableRotate,true);assert.equal(orbit.enableZoom,true);assert.equal(controller.canyonShot,null)
  }finally{remove();wall.geometry.dispose();wall.material.dispose();controller.dispose()}
 })

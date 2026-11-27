@@ -5,16 +5,16 @@ import {prepareTerrain} from '../../loading/terrainPreparation.js'
 import {useLayoutEffect,useMemo,useRef} from 'react'
 import {useFrame,useThree} from '@react-three/fiber'
 
-import {LinearFilter,LinearMipmapLinearFilter,MirroredRepeatWrapping,SRGBColorSpace,Vector3} from 'three'
+import {LinearFilter,LinearMipmapLinearFilter,SRGBColorSpace,Vector3} from 'three'
 import grassUrl from '../../../assets/texturas/pasto/grass-01.jpg'
 import dirtUrl from '../../../assets/texturas/pasto/dirt01.jpg'
 import canyonUrl from '../../../assets/texturas/pasto/barranco.jpg'
 import shoreUrl from '../../../assets/texturas/pasto/orilla-rio.png'
 import ForestCanyonSides from './ForestCanyonSides.jsx'
-import {createForestGroundMaterial} from './forestGroundMaterial.js'
+
 import {stage2SurfaceHeight,stage2Height} from './forestStage2Terrain.js'
 import {createRiverGeometry} from './forestCanyon.js'
-import {canyonEarthMaterial,canyonRiverMaterial,canyonShoreMaterial} from './forestCanyonMaterials.js'
+import {canyonEarthMaterial,canyonRiverMaterial,canyonShoreMaterial,stage2GroundMaterial} from './forestCanyonMaterials.js'
 import {createCanyonDressing} from './forestCanyonDressing.js'
 import {createCanyonFoliageSteps} from './forestCanyonFoliage.js'
 import {stage2Layout} from './forestStage2Layout.js'
@@ -39,18 +39,11 @@ async function createStage2Resources(gl,camera,assets){
 
   const {terrain,sides}=await prepareTerrain('stage2')
   const ground=await workQueue.submit(()=>{
-    const material=createForestGroundMaterial(grass,dirt,gl.capabilities.getMaxAnisotropy()),compile=material.onBeforeCompile
-    material.name='Forest Plano 2 / approved illustrated ground'
-    material.onBeforeCompile=(shader,renderer)=>{
-      compile(shader,renderer)
-      shader.fragmentShader=`float stage2Earth(vec2 p){float t=smoothstep(0.0,80.0,-p.y-400.0);float oldX=sin(p.y*.013)*20.0+sin(p.y*.033)*3.0;float pathX=mix(oldX,${stage2PathX(-480).toFixed(9)},t);return 1.0-smoothstep(1.2,4.5,abs(p.x-pathX));}\n`+shader.fragmentShader
-      shader.fragmentShader=shader.fragmentShader.replace('float earthMask=forestPathEarth(ground);','float earthMask=stage2Earth(ground);').replace('float forestGroundShade=texture2D(uForestGroundShade,vForestGround/800.0+.5).r;','float forestGroundShade=1.0;')
-    }
-    material.customProgramCacheKey=()=> 'forest-stage2-approved-images-v1';return material
+    for(const texture of [grass,dirt]){texture.colorSpace=SRGBColorSpace;texture.minFilter=LinearMipmapLinearFilter;texture.magFilter=LinearFilter;texture.generateMipmaps=true;texture.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy())}
+    return stage2GroundMaterial(grass,dirt)
   },'stage2 ground material')
   const cliff=await workQueue.submit(()=>{
-    for(const texture of [canyonTexture,shoreTexture]){texture.colorSpace=SRGBColorSpace;texture.wrapS=texture.wrapT=MirroredRepeatWrapping;texture.minFilter=LinearMipmapLinearFilter;texture.magFilter=LinearFilter;texture.generateMipmaps=true;texture.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());texture.needsUpdate=true}
-    shoreTexture.repeat.set(.5,.5)
+    for(const texture of [canyonTexture,shoreTexture]){texture.colorSpace=SRGBColorSpace;texture.minFilter=LinearMipmapLinearFilter;texture.magFilter=LinearFilter;texture.generateMipmaps=true;texture.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());texture.needsUpdate=true}
     return {wall:canyonEarthMaterial(canyonTexture,{stratified:true}),bed:canyonShoreMaterial(shoreTexture,grass)}
   },'stage2 cliff materials')
   const canyon=await workQueue.submit(()=>createCanyonDressing(assets,stage2Height),'stage2 canyon dressing')

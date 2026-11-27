@@ -1,7 +1,7 @@
 import {useState,useSyncExternalStore} from 'react'
 import {gameAudio} from './gameAudio.js'
 import {engineAudioState,ENGINE_AUDIO_CONTROLS} from './engineAudioState.js'
-const controls=[['gallantShot','Disparos Gallant'],['cycloneBoost','Cyclone · boost'],['cycloneTransform','Cyclone ↔ Armor · transformación'],['armorStrafe','Armor · strafe'],['armorStep','Armor · pisadas'],['armorLanding','Armor · aterrizaje'],['scoutOrb','Scout · orbs'],['invidExplosion','Invid · explosiones'],['droneFlight','Drones · vuelo'],['droneExplosion','Drones · explosión']]
+const controls=[['gallantShot','Disparos Gallant'],['targetLock','Target · lock rojo'],['terrainDirtPass','Terreno · tierra/desierto'],['terrainGrassPass','Terreno · pasto'],['terrainDirtDrift','Terreno · derrape'],['cycloneBoost','Cyclone · boost'],['cycloneTransform','Cyclone ↔ Armor · transformación'],['armorStrafe','Armor · strafe'],['armorStep','Armor · pisadas'],['armorLanding','Armor · aterrizaje'],['scoutOrb','Scout · orbs'],['invidExplosion','Invid · explosiones'],['droneFlight','Drones · vuelo'],['droneExplosion','Drones · explosión']]
 
 export default function AudioControls({driving=false,onToggleDriving}){
   const [master,setMaster]=useState(gameAudio.masterVolume),[levels,setLevels]=useState(()=>Object.fromEntries(Object.keys(gameAudio.effects).map(name=>[name,gameAudio.getVolume(name)])))
@@ -13,7 +13,7 @@ export default function AudioControls({driving=false,onToggleDriving}){
     <button onClick={()=>engineAudioState.reset()}>Restaurar motor</button>
     <h3>Mezcla de efectos</h3>
     <label><span>Efectos de sonido · {Math.round(master*100)}%</span><input aria-label="Volumen de efectos de sonido" type="range" min="0" max="1" step="0.01" value={master} onChange={event=>{const value=Number(event.target.value);gameAudio.setMasterVolume(value);setMaster(value)}}/></label>
-    {controls.map(([name,label])=><label key={name}><span>{label} · {Math.round(levels[name]*100)}%</span><input aria-label={'Volumen de '+label.toLowerCase()} type="range" min="0" max="1" step="0.01" value={levels[name]} onChange={event=>{const value=Number(event.target.value);gameAudio.setVolume(name,value);setLevels(previous=>({...previous,[name]:value}))}}/></label>)}
+    {controls.map(([name,label])=><label key={name}><span>{label} · {Math.round(levels[name]*100)}%</span><input aria-label={'Volumen de '+label.toLowerCase()} type="range" min="0" max={gameAudio.effects[name].maxVolume??1} step="0.01" value={levels[name]} onChange={event=>{const value=Number(event.target.value);gameAudio.setVolume(name,value);setLevels(previous=>({...previous,[name]:value}))}}/></label>)}
     <small>Se aplican al instante durante esta sesión. La música conserva su volumen independiente.</small>
   </section>
 }

@@ -6,6 +6,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import * as T from 'three'
 import { bikeConfig, TEST_STARTS } from './bikeConfig.js'
 import { createBikeState, advanceBike } from './bikePhysics.js'
+import {resetBurnout} from './burnoutDynamics.js'
 import { createDrivingCyclone } from './createDrivingCyclone.js'
 import OriginalScott from './OriginalScott.jsx'
 import { registerRideSurfaces, sampleRideHeight } from './rideSurface.js'
@@ -29,6 +30,7 @@ import ForestStage3Encounter from '../world/forest/ForestStage3Encounter.jsx'
 import GallantCombat from './GallantCombat.jsx'
 import CycloneEngineAudio from '../audio/CycloneEngineAudio.jsx'
 import MovementAudio from '../audio/MovementAudio.jsx'
+import TerrainAudio from '../audio/TerrainAudio.jsx'
 import ForestDesertScouts from '../world/forest/ForestDesertScouts.jsx'
 import ForestRandEscape from '../world/forest/ForestRandEscape.jsx'
 import ForestEnding from '../world/forest/ForestEnding.jsx'
@@ -82,7 +84,7 @@ export default function Motorcycle() {
       runtime.ending?.reset()
       restoreVehiclePresentation(runtime)
       runtime.scottInstance?.defeatMotion?.reset();runtime.defeat=null;runtime.pendingDefeatRetry=false
-      runtime.bikeDefeatMotion?.reset();runtime.canyonCrash=null
+      runtime.bikeDefeatMotion?.reset();runtime.canyonCrash=null;runtime.canyonFall=null
       runtime.resumeClimaxCheckpoint=!!start.climax
       resetPlayerCombat()
       runtime.invidContact=null;runtime.invidContactCooldown=0
@@ -227,6 +229,7 @@ export default function Motorcycle() {
       return !runtime.nearby.some(item => item.maxY > y + 0.2 && item.minY < y + 1.9 && overlapsFootprint(item, x, z, 0.23))
     }
     if(playerCombat.dead){
+      resetBurnout(s)
       runtime.bikeDefeatMotion ||=new BikeDefeatMotion(rig,runtime)
       runtime.bikeDefeatMotion.advance(runtime.paused?0:Math.min(delta,.1),sampleRideHeight,canMove)
       runtime.keys={};runtime.input={};runtime.boostQueued=false;s.acceleration=0;s.boostTime=s.boostBlend=s.boostKick=0
@@ -259,6 +262,7 @@ export default function Motorcycle() {
         if(entry&&entry.phase!=='idle'&&entry.phase!=='complete')runtime.input={throttle:0,steer:0,boost:false,handbrake:false,brake:0}
         if(entry)runtime.input=entry.beforePhysics(runtime.input,dt)
         const config={...getConfig(),...entry?.physicsConfig}
+        config.burnoutEnabled=config.burnoutEnabled&&(!entry||entry.phase==='idle')
         if(runtime.levelProgress)config.airBoostEnabled=runtime.levelProgress.airEnabled(s,entry?.phase||'idle')||stage4?.airEnabled(s,entry?.phase||'idle')||false
         advanceBike(s,runtime.input,dt,rig.metrics,sampleRideHeight,canMove,config,canWalk)
         entry?.afterPhysics(dt,rig.metrics,config)
@@ -273,7 +277,9 @@ export default function Motorcycle() {
         s.boostTime=s.boostBlend=s.boostKick=0;runtime.keys={};runtime.input={};runtime.boostQueued=false
         damagePlayer(playerCombat.playerMaxHealth)
       }else if(runtime.levelProgress?.needsRecovery(runtime.state)){
-        runtime.levelProgress.recover(runtime.resetAt);s=runtime.state
+        const fall=runtime.levelProgress.canyonFall(s)
+        if(fall){runtime.canyonFall=fall;runtime.keys={};runtime.input={};runtime.boostQueued=false;damagePlayer(playerCombat.playerMaxHealth)}
+        else{runtime.levelProgress.recover(runtime.resetAt);s=runtime.state}
       }
     }
     if (s.boostPressed || s.riderMode !== 'mounted') runtime.boostQueued = false
@@ -297,10 +303,11 @@ export default function Motorcycle() {
   useFrame((_, delta) => {
     if(runtime.opening?.update(delta))return
     if(runtime.ending?.holding){runtime.ending.presentCamera(camera);return}
+    if(runtime.state&&runtime.cameraController?.updateCanyon(runtime.state,delta))return
     if(playerCombat.dead){runtime.gallant?.bikeCamera.finish(runtime.state);if(runtime.cameraController?.updateDefeat(delta))return}
     if(!runtime.cameraController?.middleLook.active&&runtime.state&&runtime.gallant?.bikeCamera.update(runtime.gallant,runtime.state,runtime.paused?0:delta))return
     if(runtime.armorController?.active)runtime.armorController.camera.update(runtime.armorController.state,delta)
     else if(runtime.state)runtime.cameraController?.update(riderCameraState(runtime.state),delta)
   })
-  return <><CycloneEngineAudio runtime={runtime}/><MovementAudio runtime={runtime}/><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} />{activeEnvironment==='forest'?<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><DeferredStage id="stage3"><GallantCombat runtime={runtime}/><ForestStage3Encounter runtime={runtime}/></DeferredStage><DeferredStage id="rand"><ForestRandEscape runtime={runtime}/></DeferredStage><DeferredStage id="scouts"><ForestDesertScouts runtime={runtime}/></DeferredStage><ForestEnding runtime={runtime}/></>:<GallantCombat runtime={runtime}/>}</>
+  return <><CycloneEngineAudio runtime={runtime}/><TerrainAudio runtime={runtime}/><MovementAudio runtime={runtime}/><primitive object={rig.root} dispose={null} /><OriginalScott runtime={runtime} /><FrontTransformation rig={rig} runtime={runtime} /><CycloneWeathering rig={rig} runtime={runtime} /><CycloneVFX rig={rig} runtime={runtime} />{activeEnvironment==='forest'?<><ForestFoliageInteraction runtime={runtime}/><ForestOpening runtime={runtime}/><DeferredStage id="stage3"><GallantCombat runtime={runtime}/><ForestStage3Encounter runtime={runtime}/></DeferredStage><DeferredStage id="rand"><ForestRandEscape runtime={runtime}/></DeferredStage><DeferredStage id="scouts"><ForestDesertScouts runtime={runtime}/></DeferredStage><ForestEnding runtime={runtime}/></>:<GallantCombat runtime={runtime}/>}</>
 }

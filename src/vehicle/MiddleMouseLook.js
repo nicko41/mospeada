@@ -10,7 +10,7 @@ export class MiddleMouseLook{
    if(e.button!==1)return
    e.preventDefault();e.stopImmediatePropagation?.()
    const entry=runtime.transformEntry
-   if(runtime.canyonCrash||runtime.scottInstance?.defeatMotion?.active||runtime.opening?.holding||entry?.cameraProgress!=null&&entry.cameraProgress<1)return
+   if(runtime.canyonCrash||runtime.canyonCameraActive||runtime.scottInstance?.defeatMotion?.active||runtime.opening?.holding||entry?.cameraProgress!=null&&entry.cameraProgress<1)return
    this.cancel()
    const enabled=orbit.enabled,damping=orbit.enableDamping
    orbit.enableDamping=false;orbit.update();orbit.enabled=false
